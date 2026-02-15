@@ -668,6 +668,43 @@ footer {
 }
 
 /* =====================
+   ABOUT PAGE IMAGES
+   ===================== */
+.about-portrait {
+  float: right;
+  width: 200px;
+  margin: 4px 0 20px 28px;
+  border-radius: 8px;
+  display: block;
+}
+
+.about-img-row {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0 28px;
+}
+.about-img-row a {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: block;
+  transition: opacity 0.15s;
+}
+.about-img-row a:hover { opacity: 0.82; }
+.about-img-row img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .about-portrait { width: 130px; margin-left: 16px; }
+  .about-img-row { flex-direction: column; }
+  .about-img-row img { height: 180px; }
+}
+
+/* =====================
    HOME VIDEOS STRIP
    ===================== */
 .home-videos-strip {
