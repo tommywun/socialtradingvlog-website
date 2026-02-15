@@ -676,6 +676,26 @@ footer {
   .article-sidebar { position: static; }
 }
 
+/* ── Video embeds ── */
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 28px 0;
+  border-radius: 8px;
+  background: #000;
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
 /* ── Lightbox ── */
 #lb-overlay {
   display: none;
