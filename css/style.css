@@ -734,6 +734,11 @@ footer {
   border-radius: var(--radius);
 }
 
+@media (min-width: 769px) {
+  .nav-hamburger { display: none !important; }
+  .nav-drawer { display: none !important; }
+}
+
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
