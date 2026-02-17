@@ -929,6 +929,14 @@ def generate_page(article: dict) -> str:
   {faq_schema}  </script>
   <script type="application/ld+json">
   {breadcrumb}  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-PBGDJ951LL');
+  </script>
 </head>
 <body>
 
@@ -1068,6 +1076,20 @@ def generate_page(article: dict) -> str:
   </footer>
 
   <script src="{P}/js/nav.js"></script>
+  <script>
+  document.addEventListener('click', function(e) {{
+    var link = e.target.closest('a.btn-primary');
+    if (!link) return;
+    if (typeof gtag === 'function') {{
+      gtag('event', 'cta_click', {{
+        'event_category': 'affiliate',
+        'event_label': link.textContent.trim(),
+        'link_url': link.href || '',
+        'page_path': location.pathname
+      }});
+    }}
+  }});
+  </script>
 </body>
 </html>"""
 

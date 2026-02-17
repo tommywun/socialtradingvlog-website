@@ -5,8 +5,33 @@
   <meta http-equiv="refresh" content="0; url=what-is-social-trading.html" />
   <link rel="canonical" href="https://socialtradingvlog.com/../social-trading.html" />
   <title>Redirecting…</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PBGDJ951LL');
+</script>
 </head>
 <body>
   <p>Redirecting… <a href="../social-trading.html">Click here if not redirected</a></p>
+<script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a.btn-primary');
+  if (!link) return;
+  var page = location.pathname;
+  var label = link.textContent.trim();
+  var dest = link.href || '';
+  if (typeof gtag === 'function') {
+    gtag('event', 'cta_click', {
+      'event_category': 'affiliate',
+      'event_label': label,
+      'link_url': dest,
+      'page_path': page
+    });
+  }
+});
+</script>
 </body>
 </html>

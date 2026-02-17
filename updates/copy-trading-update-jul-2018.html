@@ -6,6 +6,14 @@
   <meta name="description" content="Copy trading update — July 2018. Honest documentation of my experience using eToro's copy trading feature." />
   <title>Copy Trading Update — July 2018 | SocialTradingVlog</title>
   <link rel="stylesheet" href="../css/style.css" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PBGDJ951LL');
+</script>
 </head>
 <body>
 
@@ -138,5 +146,22 @@
 
   <script src="../js/lightbox.js"></script>
   <script src="../js/nav.js"></script>
+<script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a.btn-primary');
+  if (!link) return;
+  var page = location.pathname;
+  var label = link.textContent.trim();
+  var dest = link.href || '';
+  if (typeof gtag === 'function') {
+    gtag('event', 'cta_click', {
+      'event_category': 'affiliate',
+      'event_label': label,
+      'link_url': dest,
+      'page_path': page
+    });
+  }
+});
+</script>
 </body>
 </html>

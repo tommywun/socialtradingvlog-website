@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 """
-Transcribe a YouTube video using yt-dlp + OpenAI Whisper.
+Transcribe a YouTube video using yt-dlp + OpenAI Whisper API.
 
 Usage:
-    python3 tools/transcribe_video.py VIDEO_ID [--model small]
-
-Example:
-    python3 tools/transcribe_video.py YZYgjitj7DM
-    python3 tools/transcribe_video.py YZYgjitj7DM --model medium
+    python3 tools/transcribe_video.py VIDEO_ID
+    python3 tools/transcribe_video.py VIDEO_ID --model local-large
 
 Outputs (in transcriptions/VIDEO_ID/):
     transcript.txt       - plain text transcript
     subtitles.en.srt     - SRT format (upload to YouTube)
     subtitles.en.vtt     - WebVTT format (for website use)
 
-Models (speed vs accuracy trade-off):
-    tiny   - fastest, least accurate (~1min for 10min video)
-    base   - fast, decent accuracy
-    small  - good balance (recommended, ~3min for 10min video)
-    medium - better accuracy, slower (~6min for 10min video)
-    large  - best accuracy, slowest (~12min for 10min video)
-
-Models download automatically on first use to ~/.cache/whisper/
+By default uses the OpenAI Whisper API (whisper-1) which is fast and accurate.
+Pass --model local-large to use the free local Whisper large model instead.
 """
 
 import sys
@@ -30,25 +21,17 @@ import subprocess
 import pathlib
 import argparse
 
-# Ensure local user packages are on the path
 sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
-
-import whisper
-
 
 YDLP = os.path.expanduser("~/Library/Python/3.9/bin/yt-dlp")
 FFMPEG = "/opt/homebrew/bin/ffmpeg"
 
-# Ensure Homebrew ffmpeg is on PATH (Whisper calls it by name)
 os.environ["PATH"] = f"/opt/homebrew/bin:{os.environ.get('PATH', '')}"
 
 
 def download_audio(video_id, output_dir):
     url = f"https://www.youtube.com/watch?v={video_id}"
 
-    # YouTube sometimes forces SABR streaming which blocks direct format downloads.
-    # Using the Android player client bypasses this. We download the combined
-    # video+audio (format 18, ~32MB for a 10-min video) and Whisper reads it directly.
     audio_path = output_dir / "audio.mp4"
     if audio_path.exists():
         print(f"  (audio already downloaded)")
@@ -66,7 +49,6 @@ def download_audio(video_id, output_dir):
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
 
-    # yt-dlp may have saved with a different extension
     if not audio_path.exists():
         matches = list(output_dir.glob("audio.*"))
         if matches:
@@ -109,14 +91,96 @@ def write_vtt(segments, path):
             f.write(f"{seg['text'].strip()}\n\n")
 
 
+def compress_audio(audio_path):
+    """Compress audio to mono mp3 at 64kbps to stay under OpenAI's 25MB limit."""
+    mp3_path = audio_path.parent / "audio_compressed.mp3"
+    if mp3_path.exists():
+        return mp3_path
+
+    print("  Compressing audio for API upload...")
+    cmd = [
+        FFMPEG, "-i", str(audio_path),
+        "-ac", "1",           # mono
+        "-ab", "64k",         # 64kbps — plenty for speech
+        "-ar", "16000",       # 16kHz sample rate
+        "-y",                 # overwrite
+        str(mp3_path),
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0 or not mp3_path.exists():
+        print(f"  Warning: compression failed, using original file")
+        return audio_path
+    return mp3_path
+
+
+def transcribe_openai(audio_path):
+    """Transcribe using OpenAI Whisper API (whisper-1 model)."""
+    from openai import OpenAI
+
+    client = OpenAI()
+
+    # Compress if over 25MB
+    if audio_path.stat().st_size > 24_000_000:
+        upload_path = compress_audio(audio_path)
+    else:
+        upload_path = audio_path
+
+    print("  Transcribing via OpenAI Whisper API...")
+    with open(upload_path, "rb") as audio_file:
+        result = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=audio_file,
+            language="en",
+            response_format="verbose_json",
+            timestamp_granularities=["segment"],
+        )
+
+    # Clean up compressed file
+    if upload_path != audio_path:
+        upload_path.unlink(missing_ok=True)
+
+    text = result.text
+    segments = []
+    for seg in result.segments:
+        segments.append({
+            "start": seg["start"] if isinstance(seg, dict) else seg.start,
+            "end": seg["end"] if isinstance(seg, dict) else seg.end,
+            "text": seg["text"] if isinstance(seg, dict) else seg.text,
+        })
+
+    return text, segments
+
+
+def transcribe_local(audio_path, model_name="large"):
+    """Transcribe using local Whisper model."""
+    import whisper
+    import torch
+
+    device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+    try:
+        print(f"  Loading Whisper ({model_name} model) on {device.upper()}...")
+        model = whisper.load_model(model_name, device=device)
+        print("  Transcribing locally... (this takes a while)")
+        result = model.transcribe(str(audio_path), verbose=False, fp16=False, language="en")
+    except Exception as e:
+        if device == "mps":
+            print(f"  MPS unsupported ({type(e).__name__}), retrying on CPU...")
+            model = whisper.load_model(model_name, device="cpu")
+            result = model.transcribe(str(audio_path), verbose=False, fp16=False, language="en")
+        else:
+            raise
+
+    return result["text"], result["segments"]
+
+
 def main():
     parser = argparse.ArgumentParser(description="Transcribe a YouTube video with Whisper")
     parser.add_argument("video_id", help="YouTube video ID (the part after ?v=)")
     parser.add_argument(
         "--model",
-        default="small",
-        choices=["tiny", "base", "small", "medium", "large"],
-        help="Whisper model size (default: small)",
+        default="api",
+        help="'api' for OpenAI Whisper API (default), or 'local-large', 'local-small', etc.",
     )
     parser.add_argument(
         "--keep-audio",
@@ -128,7 +192,6 @@ def main():
     base_dir = pathlib.Path(__file__).parent.parent / "transcriptions" / args.video_id
     base_dir.mkdir(parents=True, exist_ok=True)
 
-    # Skip if already transcribed
     transcript_path = base_dir / "transcript.txt"
     srt_path = base_dir / "subtitles.en.srt"
     if transcript_path.exists() and srt_path.exists():
@@ -138,42 +201,26 @@ def main():
     print(f"Downloading audio for {args.video_id}...")
     audio_path = download_audio(args.video_id, base_dir)
 
-    # Try MPS (Apple Silicon GPU) first; large model uses sparse tensors
-    # that MPS doesn't support, so fall back to CPU automatically.
-    import torch
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
+    if args.model == "api":
+        text, segments = transcribe_openai(audio_path)
+    else:
+        local_model = args.model.replace("local-", "") if args.model.startswith("local-") else args.model
+        text, segments = transcribe_local(audio_path, local_model)
 
-    try:
-        print(f"Loading Whisper ({args.model} model) on {device.upper()}...")
-        model = whisper.load_model(args.model, device=device)
-        print("Transcribing... (this takes a few minutes)")
-        result = model.transcribe(str(audio_path), verbose=False, fp16=False, language="en")
-    except Exception as e:
-        if device == "mps":
-            print(f"  MPS unsupported ({type(e).__name__}), retrying on CPU...")
-            model = whisper.load_model(args.model, device="cpu")
-            print("Transcribing on CPU...")
-            result = model.transcribe(str(audio_path), verbose=False, fp16=False, language="en")
-        else:
-            raise
-
-    print("Writing output files...")
-    transcript_path.write_text(result["text"], encoding="utf-8")
-    write_srt(result["segments"], srt_path)
-    write_vtt(result["segments"], base_dir / "subtitles.en.vtt")
+    print("  Writing output files...")
+    transcript_path.write_text(text, encoding="utf-8")
+    write_srt(segments, srt_path)
+    write_vtt(segments, base_dir / "subtitles.en.vtt")
 
     if not args.keep_audio:
         audio_path.unlink(missing_ok=True)
 
-    duration = sum(seg["end"] - seg["start"] for seg in result["segments"])
-    word_count = len(result["text"].split())
-    print(f"\nDone!")
+    duration = sum(seg["end"] - seg["start"] for seg in segments)
+    word_count = len(text.split())
+    print(f"\n  Done!")
     print(f"  Video duration : ~{int(duration // 60)}m {int(duration % 60)}s")
     print(f"  Words          : ~{word_count}")
     print(f"  Output folder  : transcriptions/{args.video_id}/")
-    print(f"    transcript.txt      - plain text")
-    print(f"    subtitles.en.srt    - upload to YouTube Studio")
-    print(f"    subtitles.en.vtt    - for website use")
 
 
 if __name__ == "__main__":

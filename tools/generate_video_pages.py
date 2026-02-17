@@ -58,7 +58,7 @@ CTA_PRESETS = {
         "url":      "https://etoro.tw/4cuYCBg",
         "label":    "Explore eToro",
         "headline": "Ready to try eToro?",
-        "body":     "Tom's been on eToro since 2017. Here's his honest affiliate link.",
+        "body":     "Tom's been on eToro since 2017. Here's his affiliate link.",
     },
     "copy": {
         "url":      "https://etoro.tw/46TVRpv",
@@ -342,9 +342,9 @@ KEYWORD_MAP = {
         "keyphrase": "How Much Money Can I Make Copy Trading on eToro?",
         "h1": "How Much Money Will You Make Copy Trading on eToro?",
         "tag": "Copy trading returns",
-        "description": "Tom gives an honest, realistic answer to the most common eToro question — how much can you actually expect to make copy trading?",
-        "intro": "How much money can you realistically make copy trading on eToro? It's the question everyone asks first, and the honest answer might surprise you. Tom gives a realistic breakdown based on years of personal experience — covering expected returns, the impact of your starting amount, and what 'good' actually looks like.",
-        "headings": ["Realistic Returns from eToro Copy Trading", "Why Your Starting Amount Matters More Than % Returns", "What Good Copy Traders Actually Make", "The Maths That Surprises People", "Tom's Honest Advice"],
+        "description": "Tom gives a realistic answer to the most common eToro question — how much can you actually expect to make copy trading?",
+        "intro": "How much money can you realistically make copy trading on eToro? It's the question everyone asks first, and the answer might surprise you. Tom gives a realistic breakdown based on years of personal experience — covering expected returns, the impact of your starting amount, and what 'good' actually looks like.",
+        "headings": ["Realistic Returns from eToro Copy Trading", "Why Your Starting Amount Matters More Than % Returns", "What Good Copy Traders Actually Make", "The Maths That Surprises People", "Tom's Advice"],
         "faqs": [
             {"q": "How much money can you make copy trading on eToro?", "a": "Realistic annual returns from copy trading on eToro range from around 10-25% per year when following lower-risk traders with consistent track records. Higher returns are possible but come with higher risk. On a $1,000 investment at 20% annual return, that's $200 per year."},
             {"q": "Is copy trading on eToro worth it?", "a": "For most people, copy trading on eToro is worth it as a long-term investment strategy if you invest an amount you can afford to lose, copy lower-risk traders, and treat it as a supplement to your income rather than a replacement. It's not a route to quick wealth."},
@@ -357,7 +357,7 @@ KEYWORD_MAP = {
         "h1": "Leverage Trading for Beginners — eToro Explained",
         "tag": "Beginners guide",
         "description": "Tom explains leverage trading on eToro for complete beginners — what it means, how it multiplies gains and losses, and whether you should use it.",
-        "intro": "Leverage trading is one of the most misunderstood features on eToro — and one of the most dangerous for beginners. Tom explains what leverage actually means, shows you how it multiplies both your gains and your losses, and gives his honest take on whether beginners should use it at all.",
+        "intro": "Leverage trading is one of the most misunderstood features on eToro — and one of the most dangerous for beginners. Tom explains what leverage actually means, shows you how it multiplies both your gains and your losses, and gives his view on whether beginners should use it at all.",
         "headings": ["What Is Leverage Trading?", "How Leverage Works on eToro", "The Danger: Losses Are Multiplied Too", "Leverage Fees and Overnight Costs", "Tom's Verdict for Beginners"],
         "faqs": [
             {"q": "What is leverage trading on eToro?", "a": "Leverage trading means eToro lends you extra money to open a position larger than your own funds would allow. For example, with x5 leverage and $100 of your own money, you can control a $500 position. If the price moves 10% in your favour, you gain 50% on your original $100 — but a 10% move against you also loses 50%."},
@@ -413,9 +413,9 @@ KEYWORD_MAP = {
         "keyphrase": "Is eToro a Scam?",
         "h1": "Is eToro a Scam? Will They Steal Your Money?",
         "tag": "Platform review",
-        "description": "Tom answers the question directly — is eToro a scam? After years of real deposits, withdrawals and copy trading, here's his honest answer.",
-        "intro": "Is eToro a scam? It's the first question most people ask before putting any money in — and it's exactly the question Tom asked too. After years of real deposits, withdrawals, and copy trading on the platform, here's his honest, first-hand answer.",
-        "headings": ["Why People Ask 'Is eToro a Scam'?", "Tom's First Deposit and Withdrawal Test", "How eToro Actually Makes Money", "What Real Users Experience", "Tom's Honest Verdict"],
+        "description": "Tom answers the question directly — is eToro a scam? After years of real deposits, withdrawals and copy trading, here's his answer.",
+        "intro": "Is eToro a scam? It's the first question most people ask before putting any money in — and it's exactly the question Tom asked too. After years of real deposits, withdrawals, and copy trading on the platform, here's his first-hand answer.",
+        "headings": ["Why People Ask 'Is eToro a Scam'?", "Tom's First Deposit and Withdrawal Test", "How eToro Actually Makes Money", "What Real Users Experience", "Tom's Verdict"],
         "faqs": [
             {"q": "Is eToro a scam?", "a": "No, eToro is not a scam. It is a legitimate, regulated trading platform authorised by the FCA (UK), CySEC (EU), and ASIC (Australia). Tom has personally deposited and withdrawn real money multiple times and can confirm funds are returned as expected."},
             {"q": "Can I trust eToro with my money?", "a": "Yes, eToro is regulated by multiple top-tier financial authorities and has been operating since 2007 with millions of users worldwide. Client funds are held in segregated accounts at tier-1 banks. The bigger risk is not the platform itself but the investments you make on it."},
@@ -765,6 +765,14 @@ def generate_page(video_id, title, meta, transcript_text):
   <script type="application/ld+json">
   {json.dumps(breadcrumb_schema, ensure_ascii=False, indent=2)}
   </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-PBGDJ951LL');
+  </script>
 </head>
 <body>
 
@@ -846,7 +854,7 @@ def generate_page(video_id, title, meta, transcript_text):
         </div>
 
         <div class="inline-cta">
-          <p class="inline-cta-text">{cta_headline} — Tom's honest affiliate link.</p>
+          <p class="inline-cta-text">{cta_headline} — Tom's affiliate link.</p>
           <a href="{cta_url}" class="btn btn-primary" target="_blank" rel="noopener sponsored">{cta_label} →</a>
         </div>
 
@@ -923,6 +931,20 @@ def generate_page(video_id, title, meta, transcript_text):
 
   <script src="../../js/lightbox.js"></script>
   <script src="../../js/nav.js"></script>
+  <script>
+  document.addEventListener('click', function(e) {{
+    var link = e.target.closest('a.btn-primary');
+    if (!link) return;
+    if (typeof gtag === 'function') {{
+      gtag('event', 'cta_click', {{
+        'event_category': 'affiliate',
+        'event_label': link.textContent.trim(),
+        'link_url': link.href || '',
+        'page_path': location.pathname
+      }});
+    }}
+  }});
+  </script>
 </body>
 </html>'''
 
@@ -941,7 +963,7 @@ def get_meta_for_video(video_id, title):
             "h1": title,
             "tag": "Copy trading video",
             "description": f"Tom's video: {title}. Watch with full transcript on Social Trading Vlog.",
-            "intro": f"In this video, Tom covers {title.lower()} — sharing his personal experience and honest take from years of copy trading on eToro.",
+            "intro": f"In this video, Tom covers {title.lower()} — sharing his personal experience from years of copy trading on eToro.",
         }
     meta["cta"] = VIDEO_CTA_MAP.get(video_id, "main")
     return meta

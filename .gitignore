@@ -1,0 +1,4 @@
+.ga-service-account.json
+transcriptions/
+*.pyc
+__pycache__/

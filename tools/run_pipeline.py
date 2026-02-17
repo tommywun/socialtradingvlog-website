@@ -41,7 +41,7 @@ TRANSCRIBE  = pathlib.Path(__file__).parent / "transcribe_video.py"
 TRANSLATE   = pathlib.Path(__file__).parent / "translate_subtitles.py"
 LOG_PATH    = TRANS_DIR / "pipeline.log"
 
-MODEL = "large"
+MODEL = "api"
 
 LANGUAGES = [
     "zh-CN",  # Chinese (Simplified)
@@ -120,7 +120,7 @@ def main():
         else:
             log(f"  transcribing with {MODEL} model...")
             r = subprocess.run(
-                [PYTHON, str(TRANSCRIBE), "--model", MODEL, "--", vid_id],
+                [PYTHON, str(TRANSCRIBE), "--model", MODEL, vid_id],
                 capture_output=False,
             )
             if r.returncode != 0 or not srt_en.exists():
