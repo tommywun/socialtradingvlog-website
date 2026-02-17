@@ -328,11 +328,27 @@ section { padding: 72px 0; }
   margin: 0 auto 32px;
 }
 
-.cta-disclaimer {
-  font-size: 0.75rem;
+.cta-banner .cta-disclaimer {
+  font-size: 0.83rem;
   color: var(--muted);
-  margin-top: 16px;
-  opacity: 0.7;
+  max-width: 580px;
+  margin: 20px auto 0;
+  line-height: 1.7;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: inline-block;
+}
+.cta-banner .cta-disclaimer li {
+  padding-left: 1.2em;
+  position: relative;
+}
+.cta-banner .cta-disclaimer li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* =====================
@@ -950,3 +966,177 @@ footer {
   transition: opacity 0.15s;
 }
 .lb-trigger:hover { opacity: 0.88; }
+
+/* =====================
+   VIDEO PAGE — ARTICLE INTRO
+   ===================== */
+.article-intro {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--text);
+  background: rgba(0, 200, 150, 0.05);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 0 0 24px;
+}
+
+/* =====================
+   VIDEO PAGE — TABLE OF CONTENTS
+   ===================== */
+.toc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin: 0 0 28px;
+  display: inline-block;
+  min-width: 240px;
+  max-width: 100%;
+}
+
+.toc h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: toc-counter;
+}
+
+.toc ul li {
+  counter-increment: toc-counter;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.toc ul li::before {
+  content: counter(toc-counter) ".";
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 18px;
+}
+
+.toc ul li a {
+  font-size: 0.88rem;
+  color: var(--muted);
+  transition: color 0.15s;
+  line-height: 1.4;
+}
+
+.toc ul li a:hover { color: var(--accent); }
+
+/* =====================
+   VIDEO PAGE — FAQ SECTION
+   ===================== */
+.faq-section {
+  border-top: 1px solid var(--border);
+  margin: 40px 0 32px;
+  padding-top: 32px;
+}
+
+.faq-section > h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  background: var(--bg2);
+  transition: border-color 0.15s;
+}
+
+.faq-item:hover { border-color: rgba(0, 200, 150, 0.35); }
+
+.faq-q {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.faq-a {
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* =====================
+   VIDEO PAGE — INLINE ARTICLE CTA
+   ===================== */
+.inline-cta {
+  background: linear-gradient(135deg, #0d2d24 0%, #0a1f18 100%);
+  border: 1px solid rgba(0, 200, 150, 0.25);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.inline-cta-text {
+  font-size: 0.93rem;
+  color: var(--text);
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.inline-cta .btn {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .toc { display: block; }
+  .article-intro { font-size: 1rem; }
+  .inline-cta { flex-direction: column; text-align: center; }
+  .inline-cta .btn { width: 100%; }
+}
+
+/* ARTICLE — TOM'S PERSONAL NOTE */
+.toms-note {
+  position: relative;
+  background: var(--bg2);
+  border-left: 3px solid var(--muted);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px 14px 18px;
+  margin: 20px 0 24px;
+  font-size: 0.9rem;
+  color: #aab;
+  line-height: 1.75;
+  font-style: italic;
+}
+.toms-note::before {
+  content: "Tom:";
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
