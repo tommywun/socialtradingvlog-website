@@ -1,0 +1,806 @@
+{
+  "social-trading": {
+    "slug": "quest-ce-que-le-trading-social",
+    "title": "Qu'est-ce que le Trading Social ? Guide pour Débutants | SocialTradingVlog",
+    "description": "Qu'est-ce que le trading social ? Guide débutant sur le fonctionnement du trading social, son histoire, les risques, les coûts et les avantages — expliqué simplement par un vrai trader.",
+    "og_title": "Qu'est-ce que le Trading Social ? Guide pour Débutants",
+    "og_description": "Le trading social expliqué simplement. Comment ça marche, l'histoire, les risques et si c'est fait pour toi.",
+    "tag": "Guide débutant",
+    "h1": "Qu'est-ce que le Trading Social ?",
+    "og_type": "article",
+    "content": [
+      {
+        "type": "p",
+        "text": "Le trading social, ce n'est pas tout à fait ce à quoi tu es habitué. D'une certaine manière, tout le monde connaît les « traders » — ce sont ces types avec des bretelles rouges ou des téléphones surdimensionnés, qui conduisent des voitures de luxe et qui ont l'air riches. Mais qu'est-ce qu'ils faisaient exactement pour gagner tout cet argent ? Personne ne savait vraiment. Ça avait un rapport avec l'argent, passer des coups de fil, et crier « achetez ! » et « vendez ! » dans un bâtiment bizarre. Et des graphiques incompréhensibles sur des écrans d'ordinateur."
+      },
+      {
+        "type": "h2",
+        "text": "Supprimer les barrières à l'entrée"
+      },
+      {
+        "type": "p",
+        "text": "Et puis Internet est arrivé, et avec lui, les réseaux sociaux. Tout le monde a un profil, tout le monde sait s'envoyer des messages et regarder le « Fil » ou le « Mur » de ses amis. On voit ce que tout le monde pense, boit, mange et prend en photo. C'est conçu pour être social. Communautaire."
+      },
+      {
+        "type": "img",
+        "src": "images/stock-brokers-classic-braces-limo-300x206.jpeg",
+        "alt": "Courtiers des années 80 en bretelles — représentant les anciennes barrières à l'entrée des marchés financiers"
+      },
+      {
+        "type": "p",
+        "text": "On s'est tous habitués à ces sites tellement vite — on sait comment ils fonctionnent et quoi faire. Et quand le moment était venu, quand les connexions Internet étaient assez rapides, que tout le monde était habitué aux réseaux sociaux et que les sites web étaient devenus assez sophistiqués, le trading social est né. Un mélange de réseaux sociaux et de trading classique."
+      },
+      {
+        "type": "h2",
+        "text": "Le trading devient social"
+      },
+      {
+        "type": "p",
+        "text": "Même si c'est social, ça reste du trading, donc il y a encore beaucoup à apprendre et à découvrir. Ce serait une erreur de croire qu'ils ont rendu le trading en lui-même facile — c'est toujours aussi difficile qu'avant — la seule différence, c'est que maintenant tout le monde y a facilement accès."
+      },
+      {
+        "type": "img",
+        "src": "images/80s-stock-brokers.jpeg",
+        "alt": "Courtiers des années 80 au travail avant l'existence du trading social"
+      },
+      {
+        "type": "p",
+        "text": "« Démocratiser le trading » est un slogan que tu as peut-être déjà entendu, et c'est vrai, mais c'est aussi un peu un écran de fumée — les « plateformes d'échange » restent avant tout des entreprises, et avoir des millions de nouveaux clients est un coup de génie de leur part. Ils ont ouvert l'accès à tout le monde et ont fait en sorte que tout ait l'air familier."
+      },
+      {
+        "type": "h2",
+        "text": "Le Copy Trading — l'étape suivante"
+      },
+      {
+        "type": "p",
+        "text": "Le coup de génie suivant a été d'exploiter toute cette puissance informatique et le haut débit pour permettre au petit investisseur de trader comme les pros. Et si tu pouvais parcourir les profils de plein de traders différents sur une de ces plateformes, vérifier leurs statistiques, repérer ceux qui tradent bien, et ensuite simplement configurer ton compte pour les copier automatiquement ? Ce serait pas mal, non ?"
+      },
+      {
+        "type": "p",
+        "text": "Eh bien c'est possible. Quand tu trouves un trader qui semble savoir ce qu'il fait, tu peux simplement appuyer sur le gros bouton « Copier », définir le montant que tu veux investir pour le copier, et hop, ton compte reproduit automatiquement tous ses trades. C'est génial, et c'est uniquement possible grâce à la technologie dont on dispose aujourd'hui."
+      },
+      {
+        "type": "h2",
+        "text": "Le trading social est-il sûr ?"
+      },
+      {
+        "type": "p",
+        "text": "Non. Bien sûr que non — c'est toujours du trading. Tu peux toujours perdre de l'argent. Si quelqu'un te garantit qu'il va te faire gagner « X » de profit, il y a de grandes chances que tu doives fuir aussi vite que possible. Personne n'a de boule de cristal."
+      },
+      {
+        "type": "img",
+        "src": "images/tightrope-walker.jpeg",
+        "alt": "Funambule illustrant l'équilibre des risques dans le trading social"
+      },
+      {
+        "type": "risk_warning",
+        "title": "Avertissement sur les risques",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. Les performances passées ne sont pas une indication des résultats futurs. Ce contenu est à des fins éducatives uniquement."
+      },
+      {
+        "type": "h2",
+        "text": "Est-ce réglementé ?"
+      },
+      {
+        "type": "p",
+        "text": "Le trading social est aujourd'hui un marché tellement énorme et lucratif que les entreprises ne peuvent pas exister si elles ne sont pas réglementées — c'est-à-dire qu'elles sont supervisées par des autorités financières nationales et internationales. Il vaut mieux éviter toute plateforme de trading qui n'est pas régulée par des autorités légitimes."
+      },
+      {
+        "type": "h2",
+        "text": "Quels sont les coûts ?"
+      },
+      {
+        "type": "p",
+        "text": "Tu dois approvisionner ton compte avec de l'argent réel, mais tu n'es pas facturé par la personne que tu copies. Elle reçoit des incitations de la plateforme — plus il y a de gens qui la copient, plus elle reçoit de la part des propriétaires du site. Il y a des frais associés au trading social, comme avec tous les courtiers, mais copier quelqu'un en soi est gratuit."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/videoseries?list=PLSp_9hRpu6lJBtVto207ex9SdvxpbF9sT",
+        "title": "Social Trading Vlog — playlist YouTube de vidéos sur le copy trading"
+      },
+      {
+        "type": "h2",
+        "text": "Prêt à en savoir plus ?"
+      },
+      {
+        "type": "p_html",
+        "html": "Consulte le <a href='copy-trading.html'>guide du Copy Trading</a> pour un aperçu plus détaillé de son fonctionnement en pratique, ou lis mon article sur <a href='etoro-scam.html'>la fiabilité d'eToro</a> — c'est la première question que je me suis posée quand je l'ai découvert."
+      }
+    ],
+    "sidebar_cta": {
+      "h3": "Prêt à essayer ?",
+      "p": "J'utilise eToro pour tout mon trading social et copy trading. Voici mon lien affilié.",
+      "btn": "Ouvrir un compte eToro"
+    },
+    "sidebar_nav_heading": "Plus de guides"
+  },
+  "copy-trading": {
+    "slug": "quest-ce-que-le-copy-trading",
+    "title": "Qu'est-ce que le Copy Trading ? Comment ça marche | SocialTradingVlog",
+    "description": "Qu'est-ce que le copy trading ? Comment ça marche, comment ça s'est développé et à quoi faire attention — expliqué par un vrai utilisateur eToro qui fait du copy trading depuis 2017.",
+    "og_title": "Qu'est-ce que le Copy Trading ? Comment ça marche | SocialTradingVlog",
+    "og_description": "Le copy trading expliqué — comment ça marche, comment c'est passé des salles de marché aux plateformes sociales, et à quoi s'attendre.",
+    "tag": "Guide débutant",
+    "h1": "Qu'est-ce que le Copy Trading ?",
+    "og_type": "article",
+    "content": [
+      {
+        "type": "p",
+        "text": "Le Copy Trading est en gros un moyen de permettre aux traders amateurs, ou aux débutants complets, de copier automatiquement les trades de traders plus expérimentés. Aussi parfois appelé « trading miroir » ou « trading automatique », il te permet de parcourir les profils de traders expérimentés et de consulter leurs statistiques de trading. Quand tu en trouves un qui te plaît, tu peux configurer ton compte pour copier automatiquement tous ses futurs trades."
+      },
+      {
+        "type": "risk_warning",
+        "title": "Avertissement sur les risques",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque."
+      },
+      {
+        "type": "h2",
+        "text": "Comment le Copy Trading s'est développé"
+      },
+      {
+        "type": "p",
+        "text": "Revenons un peu en arrière. Par le passé, si tu voulais investir, tu devais trouver un « courtier » à qui tu payais une commission pour effectuer des trades en ton nom. Les trades pouvaient être l'achat ou la vente d'actions de sociétés, ou toute une gamme d'autres investissements."
+      },
+      {
+        "type": "img",
+        "src": "images/nyse-stocks-man.jpeg",
+        "alt": "Trader sur le parquet du New York Stock Exchange représentant l'investissement boursier traditionnel"
+      },
+      {
+        "type": "p",
+        "text": "Tu pouvais soit dire au courtier quoi acheter, suivre ses conseils d'investissement, soit simplement le laisser trader pour toi. C'est comme ça que les choses ont fonctionné pendant longtemps. Le trading était un monde fermé à bien des égards, et les courtiers en étaient les gardiens. Le reste d'entre nous regardait de loin pendant qu'une petite élite de la société semblait gagner beaucoup d'argent sur les marchés financiers."
+      },
+      {
+        "type": "h2",
+        "text": "Les salles de marché et les graphiques incompréhensibles"
+      },
+      {
+        "type": "p",
+        "text": "Les autres traders qu'on voyait étaient tous occupés à se crier dessus dans des salles bizarres et à fixer des chiffres sur des tableaux. Trading Places était un super film, mais ça ne nous a vraiment pas aidés à nous sentir à notre place là-dedans. Au fil du temps, on a vu beaucoup d'ordinateurs et des graphiques incompréhensibles. Les choses avaient changé, mais elles n'étaient pas devenues plus simples. Pourquoi ce type a 6 écrans d'ordinateur !?"
+      },
+      {
+        "type": "img_grid",
+        "cols": 3,
+        "images": [
+          {"src": "images/Trading-Exchange-Floor.jpg", "alt": "Salle de marché historique bondée de courtiers"},
+          {"src": "images/traders-shouting2-1024x683.jpg", "alt": "Traders boursiers criant sur le parquet"},
+          {"src": "images/Trading-Pit.jpg", "alt": "Fosse de trading classique montrant la méthode à la criée"},
+          {"src": "images/chicago-traders-pit-1024x627.jpg", "alt": "Fosse de trading de Chicago avec des courtiers en action"},
+          {"src": "images/New-York-Stock-Exchange-Trading-Floor-Vintage-1024x678.jpg", "alt": "Parquet historique du New York Stock Exchange"}
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "L'évolution de la technologie du trading"
+      },
+      {
+        "type": "p",
+        "text": "Des anciennes salles de marché aux bureaux vitrés et élégants, le saut était considérable. Les ordinateurs avaient gagné, et tout est passé au numérique. Internet est apparu, et les salles de marché étaient en déclin. Les cris et les hurlements dans les grandes fosses de trading de New York, Londres et Chicago ont été remplacés par des ordinateurs traitant l'information à une vitesse inimaginable, et des traders du monde entier collés à leurs écrans. Le trading restait du trading, et les gens gagnaient et perdaient des fortunes sur les marchés financiers."
+      },
+      {
+        "type": "img_grid",
+        "cols": 3,
+        "images": [
+          {"src": "images/US-Stock_market-Trader-1024x575.jpg", "alt": "Trader américain moderne travaillant avec plusieurs écrans"},
+          {"src": "images/trading-charts-1024x536.jpeg", "alt": "Graphiques de trading financier et analyse de données de prix"},
+          {"src": "images/European-prop-desk-traders.jpg", "alt": "Traders européens de bureau propriétaire au travail"},
+          {"src": "images/prop-desk-traders-1024x576.jpg", "alt": "Bureau de trading propriétaire avec plusieurs moniteurs"},
+          {"src": "images/modern-stock-trading.jpeg", "alt": "Technologie et interface de trading boursier moderne"},
+          {"src": "images/financial-trading-technology.jpg", "alt": "Technologie de trading financier et infrastructure numérique"}
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "L'arrivée des réseaux sociaux"
+      },
+      {
+        "type": "p",
+        "text": "Dans un développement sans rapport direct, des connexions Internet plus rapides et de meilleurs sites web ont facilité l'essor des réseaux sociaux, et il n'a pas fallu longtemps pour que tout le monde s'y mette. En une décennie, les réseaux sociaux sont devenus partie intégrante de la vie quotidienne. On sait ce qu'est un « profil », comment « suivre » quelqu'un ou « commenter » quelque chose — on comprend comment construire des relations numériques et faire partie d'un grand espace communautaire en ligne."
+      },
+      {
+        "type": "img_grid",
+        "cols": 3,
+        "images": [
+          {"src": "images/myspace-logo.jpg", "alt": "Myspace — l'un des premiers grands réseaux sociaux"},
+          {"src": "images/facebook-icon-transparent-background-20.png", "alt": "Facebook — le réseau social qui a changé notre façon de communiquer"},
+          {"src": "images/linkedinlogo.png", "alt": "LinkedIn — réseau social professionnel"},
+          {"src": "images/pinterest-logo.png", "alt": "Pinterest — plateforme sociale visuelle"},
+          {"src": "images/instagram-logo-1024x1024.png", "alt": "Instagram — réseau social de partage de photos"},
+          {"src": "images/Snapchat-Logo-1024x906.png", "alt": "Snapchat — application de réseau social populaire chez les jeunes"}
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "La naissance du trading social"
+      },
+      {
+        "type": "p",
+        "text": "Dès que tout le monde s'est habitué aux réseaux sociaux, quelqu'un a eu la brillante idée de combiner les fonctionnalités de nos sites sociaux préférés avec le trading classique, permettant à tout le monde de rejoindre la communauté du trading. Ce n'était jamais possible avant — la technologie n'existait tout simplement pas. Et maintenant, le monde fermé du trading s'est ouvert à tous, et les « investisseurs particuliers » (par opposition aux investisseurs professionnels) ont commencé à s'intéresser à cet accès soudain au terrain de jeu des riches."
+      },
+      {
+        "type": "h2",
+        "text": "L'arrivée du Copy Trading"
+      },
+      {
+        "type": "p",
+        "text": "Le copy trading va encore plus loin. Alors que des investisseurs non professionnels affluaient sur le marché, quelqu'un a eu la brillante idée de permettre aux nouveaux investisseurs de « copier » les trades des investisseurs plus expérimentés."
+      },
+      {
+        "type": "img_grid",
+        "cols": 4,
+        "images": [
+          {"src": "images/Browse-traders-profiles-150x150.png", "alt": "Parcourir les profils de traders sur la plateforme de copy trading eToro"},
+          {"src": "images/Copytrading-trader-statistics-150x150.png", "alt": "Statistiques de traders affichées sur eToro copy trading"},
+          {"src": "images/Etoro-Popular-investor-program-150x150.png", "alt": "Icône du programme Popular Investor d'eToro"},
+          {"src": "images/Copy-Button-in-Copytrading-150x150.png", "alt": "Le bouton Copier dans l'interface de copy trading eToro"}
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Ils ont donné à tout le monde la possibilité de voir les statistiques des autres. Ils ont simplifié les graphiques, rendu possible de voir le niveau de risque du trading de chacun, combien ils avaient gagné depuis qu'ils avaient commencé à trader sur le site — mois par mois. On pouvait voir ce que tout le monde tradait, et lire leurs publications expliquant pourquoi ils tradaient de cette façon."
+      },
+      {
+        "type": "h3",
+        "text": "Rendre le tout accessible"
+      },
+      {
+        "type": "p",
+        "text": "En résumé, ils ont rendu facile de « faire son shopping » pour trouver un trader talentueux. Et quand tu en trouves un, ils ont mis un gros bouton « Copier » bien visible, pour que tu puisses facilement configurer ton compte pour copier automatiquement tous les futurs trades de cette personne."
+      },
+      {
+        "type": "p",
+        "text": "Quand il achète, tu achètes. Quand il vend, tu vends. Entièrement automatisé — tu n'as rien à faire. Tu peux vaquer à tes occupations quotidiennes pendant que quelqu'un trade pour toi. Tu choisis le montant avec lequel tu veux le copier, et c'est ce montant qui sera utilisé pour ses trades."
+      },
+      {
+        "type": "p",
+        "text": "Si tu perds un certain montant (celui que tu définis), le système arrête automatiquement de copier cette personne pour toi et l'argent restant retourne dans ton compte de trading. Et il n'y a aucun frais pour copier quelqu'un — le site lui donne des incitations proportionnelles au nombre de personnes qui le copient."
+      },
+      {
+        "type": "h2",
+        "text": "Le Copy Trading fonctionne-t-il vraiment ?"
+      },
+      {
+        "type": "p",
+        "text": "Sur eToro, tu paies les frais de spread habituels pour chaque trade, et il y a d'autres frais à connaître. Les personnes que tu copies s'appellent des « Popular Investors ». Si tu penses être assez bon en trading et que tu veux tenter l'expérience, tu peux t'inscrire à leur programme Popular Investor."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/UZ9F2F42vvI",
+        "title": "Le copy trading sur eToro — tutoriel complet"
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/noSTWBJkfvk",
+        "title": "Qu'est-ce que le copy trading et comment ça marche sur eToro ?"
+      },
+      {
+        "type": "p",
+        "text": "Ça reste du trading, donc les actifs peuvent aussi bien monter que baisser en valeur. Apprendre à choisir les bons investisseurs prend un peu de temps, mais toutes leurs statistiques et leur historique sont visibles en détail."
+      },
+      {
+        "type": "risk_warning",
+        "title": "Important",
+        "text": "Les performances passées ne sont pas une indication des résultats futurs. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque."
+      }
+    ],
+    "sidebar_cta": {
+      "h3": "Prêt à essayer ?",
+      "p": "J'utilise eToro pour tout mon copy trading. Voici mon lien affilié.",
+      "btn": "Ouvrir un compte eToro"
+    },
+    "sidebar_nav_heading": "Plus de guides"
+  },
+  "about": {
+    "slug": "a-propos",
+    "title": "À propos | SocialTradingVlog",
+    "description": "À propos de Social Trading Vlog — Tom documente son expérience avec la fonction copy trading d'eToro depuis 2017. Une vraie expérience, des mises à jour honnêtes, pas de blabla.",
+    "og_title": "À propos | SocialTradingVlog",
+    "og_description": "Tom a découvert la fonction copy trading d'eToro en 2016 et documente son expérience depuis. Authentique, honnête, indépendant.",
+    "tag": "À propos de ce site",
+    "h1": "Salut, moi c'est Tom",
+    "og_type": "website",
+    "content": [
+      {
+        "type": "img_about",
+        "src": "images/J0867_971-683x1024.jpg",
+        "alt": "Tom — Social Trading Vlog",
+        "class": "about-portrait lb-trigger"
+      },
+      {
+        "type": "p",
+        "text": "J'ai commencé à chercher des moyens d'investir en 2016 après avoir regardé plein de vidéos sur le Trading Haute Fréquence et beaucoup trop d'actualités financières. Je ne cherchais pas à devenir trader — je cherchais un moyen de faire fructifier mon argent sans avoir besoin de devenir expert dans un domaine que je n'avais jamais étudié."
+      },
+      {
+        "type": "p",
+        "text": "Je suis tombé sur eToro et sa fonction de copy trading, qui te permet de copier automatiquement les investissements de personnes plus expérimentées sur la plateforme. Aucune expertise en trading n'est nécessaire — tu trouves simplement quelqu'un dont le parcours te plaît, tu définis un montant pour le copier, et la plateforme fait le reste."
+      },
+      {
+        "type": "clear"
+      },
+      {
+        "type": "p",
+        "text": "Je me suis dit « Ouais, ça pourrait marcher... » — et je documente cette expérience depuis."
+      },
+      {
+        "type": "h2",
+        "text": "De quoi parle ce site"
+      },
+      {
+        "type": "p",
+        "text": "Ce site est mon compte-rendu honnête et indépendant de l'utilisation de la fonction copy trading d'eToro. Je ne suis pas un professionnel de la finance. Je ne donne pas de conseils en investissement. Ce que je fais, c'est documenter ce que j'ai appris — comment la plateforme fonctionne, comment le copy trading marche en pratique, ce qui a bien fonctionné, ce qui n'a pas fonctionné, et ce que j'ai compris en chemin."
+      },
+      {
+        "type": "img_row",
+        "images": [
+          {"src": "images/Copy-A-New-Trader-3-1024x576-landscape-1b7471b9930825940558f04cbefc5f25-.png", "alt": "Copier un nouveau trader sur eToro", "href": "copy-trading.html"},
+          {"src": "images/Etoro-for-beginners-1024x576-landscape-6e920b34b74e93296f4c66c7c6bb51a4-.png", "alt": "eToro pour les débutants", "href": "social-trading.html"},
+          {"src": "images/Taking-Profits-Copy-Trading-Etoro-2-1024x576-landscape-84070984055689bd0633102784d7f399-.png", "alt": "Retirer ses gains du copy trading sur eToro", "href": "taking-profits.html"}
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Tout ce qui est ici vient de ma propre expérience. J'ai une relation d'affiliation avec eToro (je peux toucher une commission si tu t'inscris via mes liens), mais ça ne change rien à ce que j'écris. Je ne recommande eToro que parce que c'est la plateforme que j'utilise vraiment et que j'utilise depuis des années."
+      },
+      {
+        "type": "h2",
+        "text": "Pourquoi le Copy Trading ?"
+      },
+      {
+        "type": "p",
+        "text": "La réponse honnête, c'est que je ne voulais pas devenir trader. Je n'ai aucun intérêt particulier à passer mes journées à fixer des graphiques ou à apprendre les subtilités techniques des marchés financiers. Le copy trading m'a attiré parce qu'il laisse des investisseurs expérimentés faire l'investissement, pendant que je profite de leurs décisions — et je peux continuer à faire tout ce que je fais d'autre de mon temps."
+      },
+      {
+        "type": "p",
+        "text": "Cela dit, j'ai vite appris que le copy trading n'est pas aussi passif que ce qu'on imagine parfois. Il faut quand même choisir soigneusement qui copier, comprendre les risques et garder un œil sur les choses. Ce site, c'est ma tentative de partager tout ce que j'ai appris en faisant ça."
+      },
+      {
+        "type": "h2",
+        "text": "La chaîne YouTube"
+      },
+      {
+        "type": "p",
+        "text": "En parallèle de ce site, je documente mon parcours sur YouTube. La chaîne couvre les bases du copy trading, mes mises à jour régulières de portefeuille, et des tutoriels sur le fonctionnement réel des fonctionnalités d'eToro. Tu y trouveras des playlists sur :"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Les bases du copy trading",
+          "Un guide débutant sur eToro",
+          "Comment retirer ses gains du copy trading",
+          "Des mises à jour régulières sur le copy trading"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Mon profil eToro"
+      },
+      {
+        "type": "p",
+        "text": "Si tu veux voir mes vraies statistiques et mon historique sur eToro, tu peux consulter mon profil directement sur la plateforme."
+      },
+      {
+        "type": "btn_outline",
+        "text": "Voir mon profil eToro",
+        "href": "https://etoro.tw/2rcYYm0"
+      },
+      {
+        "type": "risk_warning",
+        "title": "Important",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. Les performances passées ne sont pas une indication des résultats futurs. Tout le contenu de ce site est à des fins éducatives et informatives uniquement."
+      }
+    ],
+    "sidebar_cta": {
+      "h3": "Essaye le copy trading eToro",
+      "p": "Si le copy trading t'intrigue, voici mon lien affilié pour commencer.",
+      "btn": "Ouvrir un compte eToro"
+    },
+    "sidebar_nav_heading": "Commencer à lire"
+  },
+  "copy-trading-returns": {
+    "slug": "combien-peut-on-gagner-avec-le-copy-trading",
+    "title": "Combien peut-on gagner avec le Copy Trading ? | SocialTradingVlog",
+    "description": "Combien d'argent peut-on gagner avec le copy trading sur eToro ? Tom explique comment fonctionnent les profits, pourquoi les pourcentages comptent, et la réalité du rapport risque/rendement.",
+    "og_title": "Combien peut-on gagner avec le Copy Trading ? | SocialTradingVlog",
+    "og_description": "Des chiffres réels, des attentes réalistes. Comment fonctionnent les profits en copy trading et ce à quoi tu peux raisonnablement t'attendre.",
+    "tag": "Analyse approfondie",
+    "h1": "Combien d'argent peut-on gagner avec le Copy Trading ?",
+    "og_type": "article",
+    "content": [
+      {
+        "type": "p",
+        "text": "L'objectif du copy trading, c'est de gagner de l'argent. C'est super que la technologie soit ingénieuse et que la plateforme soit jolie, mais qu'en est-il des profits ? Combien vas-tu vraiment gagner ? On veut tous des faits concrets — alors allons-y honnêtement."
+      },
+      {
+        "type": "risk_warning",
+        "title": "Avertissement sur les risques",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. Les performances passées ne sont pas une indication des résultats futurs."
+      },
+      {
+        "type": "h2",
+        "text": "Ça dépend de qui tu copies"
+      },
+      {
+        "type": "p",
+        "text": "Quand tu fais du copy trading, tu choisis de copier automatiquement les trades d'une autre personne. Évidemment, toutes les personnes sont différentes et prennent des décisions différentes. Un trader peut faire 60% de profit en un an, un autre 30%, un autre 120%, et un autre encore peut avoir enregistré une perte de 20% sur la même période. Il n'y a aucune garantie."
+      },
+      {
+        "type": "img_grid",
+        "cols": 2,
+        "images": [
+          {"src": "images/Etoro-Copytrading-chart-1024x673.png", "alt": "Graphique de performance du copy trading eToro montrant les rendements historiques"},
+          {"src": "images/Range-of-traders-to-copy-1024x579.png", "alt": "L'éventail de traders disponibles à copier sur la plateforme eToro"}
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Pourquoi les profits sont-ils exprimés en pourcentages ?"
+      },
+      {
+        "type": "p",
+        "text": "Un point vraiment important à comprendre, c'est que quand on parle de trading, les résultats sont toujours exprimés en pourcentages. « Le Trader A a fait 6% ce mois-ci. » Tu entendras toujours parler de profits et de pertes en termes de pourcentages. Pourquoi ?"
+      },
+      {
+        "type": "p",
+        "text": "C'est parce qu'on ne peut pas voir combien d'argent réel chaque personne trade, mais ça n'a pas d'importance — on voit leur efficacité à trader à travers leurs pourcentages. Le montant avec lequel tu les copies est l'autre partie de l'équation."
+      },
+      {
+        "type": "h2",
+        "text": "Faire le calcul — un exemple simple"
+      },
+      {
+        "type": "p",
+        "text": "Prenons le « Trader A » comme exemple. Au cours du mois suivant, le Trader A réalise un profit de 10%. Tu copies actuellement le Trader A — alors combien d'argent réel vas-tu gagner ?"
+      },
+      {
+        "type": "img_grid",
+        "cols": 2,
+        "images": [
+          {"src": "images/Jaynemesis-trading-stats-Etoro.png", "alt": "Statistiques de trading de Jaynemesis sur eToro et performance sur 12 mois"},
+          {"src": "images/fifty-five-trader-stats-etoro.png", "alt": "Statistiques d'un trader eToro montrant des rendements annuels constants"},
+          {"src": "images/Alnayef-12-month-trading-stats-etoro.png", "alt": "Statistiques de trading d'Alnayef sur 12 mois sur eToro"},
+          {"src": "images/Trader-profit-percentage-etoro-1024x275.png", "alt": "Comparaison des pourcentages de profit de traders sur eToro"}
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Ça dépend du montant avec lequel tu les copies :"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Si tu copies le Trader A avec €200, tu gagneras 10% de €200 = <strong>€20</strong>",
+          "Si tu copies le Trader A avec €1,000, tu gagneras 10% de €1,000 = <strong>€100</strong>",
+          "Si tu copies le Trader A avec €5,000, tu gagneras 10% de €5,000 = <strong>€500</strong>"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "C'est un concept très simple, mais si tu n'y es pas habitué, il faut un petit temps d'adaptation. Une fois que tu l'as compris, tout devient beaucoup plus clair. La formule est : <strong>Montant copié × % de rendement du trader = Ton profit (ou ta perte)</strong>."
+      },
+      {
+        "type": "p",
+        "text": "Note que ça marche dans les deux sens — s'il perd 10%, tu perds aussi 10% du montant que tu as investi pour le copier."
+      },
+      {
+        "type": "h2",
+        "text": "Risque et rendement"
+      },
+      {
+        "type": "p",
+        "text": "Naturellement, comme j'essayais de gagner de l'argent, j'ai commencé à chercher des traders à plus haut risque qui pouvaient générer des rendements plus élevés. J'ai appris à me méfier de ça."
+      },
+      {
+        "type": "img_grid",
+        "cols": 2,
+        "images": [
+          {"src": "images/Risk-Score-chart-Etoro-example-1024x466.png", "alt": "Graphique du score de risque eToro montrant comment le risque d'un trader est évalué"},
+          {"src": "images/etoro-trader-stats-12-months.png", "alt": "Performance d'un trader eToro sur une période de 12 mois"}
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Si je copie le Trader A et qu'il fait 5%, je fais 5%. Mais il est aussi vrai que s'il perd 5%, je perds 5% du montant que j'ai investi pour le copier. À chaque fois que quelqu'un trade, il parie sur l'évolution future du prix d'un actif — ça peut être une action Apple, le cours de l'or ou le prix du Bitcoin."
+      },
+      {
+        "type": "h3",
+        "text": "La volatilité"
+      },
+      {
+        "type": "p",
+        "text": "En trading, un actif peut être décrit comme plus ou moins « volatile » — c'est-à-dire la fréquence à laquelle il connaît de grandes variations de prix à la hausse ou à la baisse. Plus les variations sont importantes, plus on dit que l'actif est « volatile ». Si le prix bouge fortement, ça signifie que tu peux potentiellement gagner ou perdre plus d'argent. « Risque » et « rendement » sont étroitement liés."
+      },
+      {
+        "type": "img_grid",
+        "cols": 2,
+        "images": [
+          {"src": "images/Apple-Equities-Copytrading-Mini-chart.png", "alt": "Mini graphique de l'action Apple pour le copy trading sur eToro"},
+          {"src": "images/Bitcoin-historic-Chart.png", "alt": "Graphique historique du prix du Bitcoin montrant une volatilité extrême"},
+          {"src": "images/Gold-mini-chart-on-Etoro.png", "alt": "Mini graphique du cours de l'or sur la plateforme eToro"},
+          {"src": "images/SP-500-ETF-Chart.png", "alt": "Graphique de l'ETF S&P 500 — un indice de référence de la performance boursière"}
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "L'effet de levier"
+      },
+      {
+        "type": "p",
+        "text": "Il existe des méthodes en trading qui augmentent aussi ton risque. La plus importante est l'« effet de levier » — en gros, un moyen d'amplifier ton trade, de sorte que si tu trades avec $100, tu peux appliquer un levier de 10x et c'est comme si tu tradais avec $1,000. Potentiellement, tu gagnes beaucoup plus d'argent. Potentiellement, tu peux aussi en perdre beaucoup plus. L'effet de levier amplifie considérablement les gains et les pertes potentiels."
+      },
+      {
+        "type": "h2",
+        "text": "Qu'est-ce que ça signifie pour le Copy Trading ?"
+      },
+      {
+        "type": "p",
+        "text": "Quand j'ai commencé à chercher des traders à copier qui pouvaient faire plus de 5% par mois, je me suis vite rendu compte que pour réaliser d'énormes profits chaque mois, certains traders utilisaient des méthodes plus risquées. Si je les copiais, je m'exposais aussi à plus de pertes potentielles en plus des profits que je recherchais."
+      },
+      {
+        "type": "p",
+        "text": "C'est une question que chacun doit trancher par lui-même : combien de risque suis-je prêt à prendre pour chercher des profits ? Combien puis-je vraiment me permettre de perdre ?"
+      },
+      {
+        "type": "h3",
+        "text": "Ma propre expérience avec le risque"
+      },
+      {
+        "type": "p",
+        "text": "J'ai commencé avec un risque assez faible, puis j'ai été attiré par les rendements élevés des traders crypto en me disant que comme les cryptos montaient tout le temps, il y avait beaucoup de rendement pour très peu de risque. Mais là où il y a un potentiel de gros gains, il y a toujours un potentiel de gros risques — comme je l'ai constaté quand les marchés crypto ont chuté début 2018."
+      },
+      {
+        "type": "img_grid",
+        "cols": 3,
+        "images": [
+          {"src": "images/10-profit-copytrading-in-a-month.png", "alt": "10% de profit réalisé en un mois grâce au copy trading eToro"},
+          {"src": "images/10-profit-copytrading-last-month-1.png", "alt": "10% de profit en copy trading enregistré le mois précédent sur eToro"},
+          {"src": "images/Copy-traders-over-100.png", "alt": "Traders eToro en copy trading ayant dépassé les 100% de rendement"}
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Maintenant, je cherche des traders qui ont réalisé de bons pourcentages de profit sur un ou deux ans, mais qui montrent aussi une capacité claire à maintenir un niveau de risque bas. C'est un bon compromis, et j'espère que ça fonctionnera sur le long terme sans que mes cheveux ne blanchissent du jour au lendemain."
+      },
+      {
+        "type": "h2",
+        "text": "Avoir des attentes réalistes"
+      },
+      {
+        "type": "p",
+        "text": "Je sais maintenant qu'il est difficile de gagner £1,000 par mois quand on n'a que £1,000 ou £2,000 à investir. Ça voudrait dire aller chercher des traders très risqués, et ça pourrait marcher, mais statistiquement tu aurais beaucoup plus de chances de perdre ton argent. Un objectif plus réaliste est une croissance régulière et modérée grâce à des traders avec un historique solide et constant."
+      },
+      {
+        "type": "risk_warning",
+        "title": "Rappel important",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Les performances passées ne sont pas une indication des résultats futurs. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. Ce contenu est à des fins éducatives uniquement et ne constitue pas un conseil en investissement."
+      }
+    ],
+    "sidebar_cta": {
+      "h3": "Prêt à commencer ?",
+      "p": "J'utilise eToro pour tout mon copy trading. Voici mon lien affilié.",
+      "btn": "Ouvrir un compte eToro"
+    },
+    "sidebar_nav_heading": "Plus de guides"
+  },
+  "taking-profits": {
+    "slug": "comment-retirer-ses-gains-du-copy-trading-etoro",
+    "title": "Retirer ses gains du Copy Trading sur eToro | SocialTradingVlog",
+    "description": "Comment retirer ses gains du copy trading sur eToro — quand les profits sont réinvestis automatiquement, comment mettre une copie en pause, retirer des fonds et faire un retrait. Un guide pratique.",
+    "og_title": "Retirer ses gains du Copy Trading sur eToro | SocialTradingVlog",
+    "og_description": "Guide pratique sur ce qui arrive à tes profits en copy trading — réinvestissement automatique, pause des copies, retrait de fonds et retraits.",
+    "tag": "Guide pratique",
+    "h1": "Retirer ses gains du Copy Trading sur eToro",
+    "og_type": "article",
+    "content": [
+      {
+        "type": "risk_warning",
+        "title": "Avertissement sur les risques",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. Les performances passées ne sont pas une indication des résultats futurs."
+      },
+      {
+        "type": "p",
+        "text": "C'est pour ça qu'on est tous là — gagner de l'argent. Alors qu'arrive-t-il à tes profits quand tu fais du copy trading sur eToro ? Est-ce qu'ils sont réutilisés automatiquement ou tu dois les remettre toi-même à chaque fois ? Combien peux-tu perdre ? Ce guide couvre tout ce que tu dois savoir."
+      },
+      {
+        "type": "h2",
+        "text": "Tes profits sont-ils automatiquement réinvestis ?"
+      },
+      {
+        "type": "p",
+        "text": "La réponse est oui. Le copy trading est conçu pour être le plus autonome possible. C'est censé être une solution pour les gens qui veulent investir et pouvoir ensuite s'en éloigner pendant de longues périodes — un investissement qui s'occupe de lui-même et continue à croître au fil du temps."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/videoseries?list=PLSp_9hRpu6lIv6D6AnKpeR6ZslI5l03eS",
+        "title": "Retirer ses gains du copy trading — série complète de vidéos guides"
+      },
+      {
+        "type": "img",
+        "src": "images/copytrading-designed-to-reinvest.gif",
+        "alt": "Animation montrant comment les profits du copy trading eToro sont automatiquement réinvestis"
+      },
+      {
+        "type": "h3",
+        "text": "On peut donc juste copier quelqu'un et laisser tourner ?"
+      },
+      {
+        "type": "p",
+        "text": "C'est exactement l'objectif. Quand tu copies quelqu'un, tu investis dans sa capacité à prendre des décisions de trading — quand acheter, quand vendre, s'il faut utiliser l'« effet de levier ». Tout est entre ses mains. Avec un peu de chance, il prendra de bonnes décisions et te fera gagner de l'argent. C'est pour ça que tu regardes ses statistiques avant et que tu essaies de choisir des performers réguliers."
+      },
+      {
+        "type": "img",
+        "src": "images/Copytrading-investment-growth-1024x576.png",
+        "alt": "Graphique montrant la croissance d'un investissement en copy trading au fil du temps sur eToro"
+      },
+      {
+        "type": "h3",
+        "text": "Bon, imaginons qu'il gagne..."
+      },
+      {
+        "type": "p",
+        "text": "Si tu as copié quelqu'un avec $1,000 et qu'il a fait 10% de profit, tu as maintenant tes $1,000 de départ plus les $100 de profit — soit $1,100. Chaque jour, eToro regarde le montant initial que tu as investi dans la personne que tu copies, et ajoute ou soustrait les profits ou pertes qu'elle a réalisés pour toi."
+      },
+      {
+        "type": "img",
+        "src": "images/Profits-included-in-copytrading-investment.png",
+        "alt": "Interface eToro montrant les profits inclus dans le total de l'investissement en copy trading"
+      },
+      {
+        "type": "h3",
+        "text": "eToro fait le calcul pour toi"
+      },
+      {
+        "type": "p",
+        "text": "Dans notre exemple, eToro voit ton profit de 10% et l'ajoute à ton montant initial investi. Donc maintenant, puisque tu as déjà fait 10% de profit — soit $100 de plus — ton montant total dans cette position de copie est de $1,100. Quand le système copie automatiquement le prochain trade pour toi, il le fait avec la totalité de tes $1,100, ce qui signifie que même un gain modeste génère désormais un rendement légèrement plus élevé en valeur absolue. C'est ainsi que fonctionne l'intérêt composé dans le copy trading."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/UZ9F2F42vvI?start=215",
+        "title": "Comment eToro compose automatiquement tes profits de copy trading"
+      },
+      {
+        "type": "h2",
+        "text": "Pourquoi mes profits sont-ils automatiquement réutilisés ?"
+      },
+      {
+        "type": "p",
+        "text": "Une fois que tu trouves la bonne personne à copier, tu te rends vite compte que laisser tes gains continuer à aller dans de nouvelles positions plus importantes — être automatiquement réinvestis — est le meilleur moyen de faire croître ton compte au fil du temps. Le copy trading fait ça pour toi automatiquement. Tant que tu laisses faire, tes profits seront réinvestis et réutilisés. Ça fait travailler ton argent dur."
+      },
+      {
+        "type": "h2",
+        "text": "Comment retirer tes profits"
+      },
+      {
+        "type": "p",
+        "text": "Admettons que tu es satisfait de la taille de ton compte, ou que tu as simplement besoin de l'argent. Comment retirer tes profits d'un copy trade ? Il y a trois options :"
+      },
+      {
+        "type": "h3",
+        "text": "Option 1 — Arrêter de copier quelqu'un"
+      },
+      {
+        "type": "p",
+        "text": "Ta première option est d'arrêter complètement la copie. Ça signifie que tu ne copieras plus cette personne. Tu peux la recopier à tout moment plus tard, mais pour l'instant ça s'arrête. Quand tu choisis cette option, eToro renvoie l'argent de cette position de copie vers ton « Solde disponible » — plus ou moins les profits ou pertes réalisés pour toi pendant la période où tu la copiais."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/mbaSu_VQ9bY",
+        "title": "Comment arrêter de copier quelqu'un sur eToro et retirer ton argent"
+      },
+      {
+        "type": "p",
+        "text": "Donc si tu as investi $1,000 et qu'il t'a fait gagner $200 de profit pendant que tu le copiais, $1,200 seront renvoyés vers ton solde disponible. S'il t'a fait perdre $200, alors $800 seront renvoyés."
+      },
+      {
+        "type": "h3",
+        "text": "À propos de ton « Solde disponible »"
+      },
+      {
+        "type": "p",
+        "text": "Ton « Solde disponible » sur ton compte eToro, c'est l'argent que tu as disponible pour trader — de l'argent que tu peux retirer vers ton compte bancaire à tout moment. Quand tu alimentes ton compte, l'argent apparaît dans ton solde disponible. Dès que tu utilises une partie de cet argent dans une position de copie, il quitte ton solde disponible et va travailler pour toi. Si tu veux le retirer d'eToro, tu dois d'abord fermer la position de copie, puis l'argent retourne dans ton solde disponible."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/Gx1x01n8i8A",
+        "title": "Comprendre ton Solde disponible sur eToro"
+      },
+      {
+        "type": "img",
+        "src": "images/Available-balance-area-on-Etoro-social-trading.png",
+        "alt": "La section Solde disponible dans la plateforme de trading social eToro"
+      },
+      {
+        "type": "h3",
+        "text": "Option 2 — Mettre la copie en pause"
+      },
+      {
+        "type": "p",
+        "text": "Un autre moyen d'accéder à tes profits est de « mettre en pause » la copie sur une personne en particulier. Tu peux utiliser cette option si tu veux continuer à la copier, mais que tu veux d'abord pouvoir retirer de l'argent. Quand tu cliques sur « Pause », tous les trades actuellement ouverts via cette personne restent ouverts — elle les fermera naturellement quand elle les fermera. Mais à partir du moment où tu cliques sur « Pause », plus aucun de ses nouveaux trades ne sera copié."
+      },
+      {
+        "type": "img",
+        "src": "images/Pause-Copy-Button-on-Etoro-Social-Trading.png",
+        "alt": "Bouton Mettre en pause la copie dans l'interface de trading social eToro"
+      },
+      {
+        "type": "h3",
+        "text": "Pourquoi voudrais-tu faire ça ?"
+      },
+      {
+        "type": "p",
+        "text": "Parfois tu veux retirer de l'argent d'eToro, ou utiliser une partie de ton argent pour copier une autre personne. Tu ne peux utiliser que l'argent de ton solde « Disponible » pour ça, donc tu dois d'abord t'assurer qu'il n'est pas bloqué dans des positions actives. Quand tu « mets en pause » une copie, les fonds inutilisés commencent à s'accumuler dans cette position de copie au fil du temps — à mesure que les anciens trades se ferment et que les nouveaux ne sont pas ouverts."
+      },
+      {
+        "type": "h3",
+        "text": "Retirer des fonds et reprendre la copie"
+      },
+      {
+        "type": "p",
+        "text": "Une fois que l'argent disponible s'est accumulé dans la position de copie, tu peux choisir « Retirer des fonds » dans le menu du copy trading, et ça transférera cet argent vers ton solde « Disponible ». Pour reprendre la copie, utilise simplement le même menu et sélectionne « Reprendre la copie ». La plateforme recommencera automatiquement à copier tous ses nouveaux trades."
+      },
+      {
+        "type": "img",
+        "src": "images/Resume-Copy-Button-Etoro-Copy-Trading-1.png",
+        "alt": "Bouton Reprendre la copie dans le menu de copy trading eToro"
+      },
+      {
+        "type": "h3",
+        "text": "Option 3 — Retirer des fonds directement"
+      },
+      {
+        "type": "p",
+        "text": "Parfois, la personne que tu copies n'utilise pas la totalité des fonds que tu lui as alloués dans des trades actifs — elle peut garder de l'argent en réserve en attendant une bonne opportunité. Tu peux retirer tout l'argent qui n'est pas actuellement utilisé dans des trades actifs. Sélectionne simplement l'option de menu pour ce copy trade et tu verras l'option « Retirer des fonds ». Une fenêtre pop-up t'indiquera combien tu peux actuellement transférer vers ton « Solde disponible »."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/6ff45NaA9_g",
+        "title": "Comment retirer des fonds directement d'un copy trade sur eToro"
+      },
+      {
+        "type": "p",
+        "text": "N'oublie pas — le montant que tu peux retirer change au fil du temps, en fonction du nombre de trades actifs ouverts. Utiliser la fonction « Pause de la copie » fera augmenter ce montant à mesure que les anciens trades se ferment et que les nouveaux ne sont pas ouverts."
+      },
+      {
+        "type": "h2",
+        "text": "« Copy Pending Close » — Qu'est-ce que ça veut dire ?"
+      },
+      {
+        "type": "p",
+        "text": "Si tu décides d'arrêter de copier quelqu'un, le système essaie automatiquement de fermer tous les trades que tu as via cette personne. Ce sont des trades en cours exécutés sur des places boursières dans le monde entier — certains ont peut-être été achetés sur le NASDAQ à New York, d'autres sur le London Stock Exchange, ou à Paris ou en Allemagne. Pour fermer les trades et récupérer ton argent, la place boursière concernée doit être ouverte."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/C601NAtmHM8",
+        "title": "Que signifie « Copy Pending Close » sur eToro ?"
+      },
+      {
+        "type": "img",
+        "src": "images/Pending-Close-message-on-Etoro-Copy-Trade.png",
+        "alt": "Message de notification Copy Pending Close sur un copy trade eToro"
+      },
+      {
+        "type": "h3",
+        "text": "Les places boursières ne sont pas ouvertes 24h/24"
+      },
+      {
+        "type": "p",
+        "text": "La plupart des places boursières fonctionnent environ 7 heures par jour, 5 jours par semaine, et sont fermées le week-end. Donc si tu choisis d'arrêter de copier quelqu'un un vendredi soir, certaines des positions peuvent être des actions achetées sur différentes places boursières nationales. Le système fermera ces positions dès que les places concernées seront ouvertes — très probablement le lundi suivant. C'est ce que signifie « Copy Pending Close » — ça se ferme, ça attend juste les bonnes conditions de marché pour le faire."
+      },
+      {
+        "type": "video_embed",
+        "src": "https://www.youtube.com/embed/hzJx-KPvgu8",
+        "title": "Pourquoi les copy trades restent ouverts le week-end — les places boursières expliquées"
+      },
+      {
+        "type": "risk_warning",
+        "title": "Rappel important",
+        "text": "51% des comptes d'investisseurs particuliers perdent de l'argent en négociant des CFD avec eToro. Vous devriez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Les performances passées ne sont pas une indication des résultats futurs. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque."
+      }
+    ],
+    "sidebar_cta": {
+      "h3": "Prêt à commencer ?",
+      "p": "J'utilise eToro pour le copy trading. Voici mon lien affilié.",
+      "btn": "Ouvrir un compte eToro"
+    },
+    "sidebar_nav_heading": "Plus de guides"
+  }
+}
