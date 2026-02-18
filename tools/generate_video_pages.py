@@ -175,12 +175,142 @@ KEYWORD_MAP = {
         "h1": "Why Do 76% of eToro Traders Lose Money?",
         "tag": "Platform reality",
         "description": "The uncomfortable truth about eToro's loss statistics — Tom explains why most retail traders lose money and what to do differently.",
-        "intro": "eToro publishes a striking statistic: around 76% of retail accounts lose money on the platform. In this video, Tom digs into exactly why most eToro traders lose money — and what the minority who don't lose are doing differently.",
-        "headings": ["The 76% Statistic Explained", "Why Beginners Lose Money on eToro", "The Mindset Problem", "What Successful Traders Do Differently", "Tom's Honest Conclusion"],
+        "intro": "As an eToro affiliate, I have to display a risk warning on every page — and at its peak, it said 76% of retail investors lose money on the platform. That's over three quarters. So what's going on, why are so many people losing, and how do you make sure you're not one of them?",
+        "headings": ["The 76% Statistic — What It Actually Means", "The Get-Rich-Quick Trap", "Why Small Amounts Make It Worse", "Leverage: The Account Killer", "Fear of Missing Out", "The Emotional Rollercoaster", "What the Profitable 24% Do Differently", "Copy Trading Isn't a Shortcut Either", "Tom's Conclusion"],
+        "article_sections": [
+            {
+                "h2": "The 76% Statistic — What It Actually Means",
+                "paragraphs": [
+                    "As an eToro affiliate, I HAVE to display a little warning on all my pages, and update it whenever eToro asks. At the moment it says:",
+                    {"type": "note", "text": "Risk warning: 51% of retail investor accounts lose money when trading CFDs with eToro. Your capital is at risk."},
+                    "In the past that little warning (which is a legal requirement) has been as high as 76%. 76% are losing money when using the platform - What a sobering thought! That's over 3 quarters. It's a really scary stat for new users - so how do we make sure we're not part of that majority?",
+                    "eToro has done a brilliant job of making trading accessible. The interface looks like social media which we're all used to — nice profiles, white backgrounds, everything beautifully designed. Whilst it makes everything simple and possible for us noobs to use, it may also be part of the problem - we think we're possibly safer than we are.",
+                    "Compare it to something like MetaTrader 4, which looks like a NASA control panel, and you can see why people flock to eToro. But that accessibility can create a false sense of simplicity. Trading is not simple. The platform is. The markets are not.",
+                ]
+            },
+            {
+                "h2": "The Get-Rich-Quick Trap",
+                "paragraphs": [
+                    "If there's one single reason that explains most of that 76%, it's this: the desire to get rich quick.",
+                    "As a kid, my ideas about trading and investing came from films and tv. Rich guys looking stressed but winning, white Lamborghinis, Manhattan glass skylines, expensive dinners and clubs. Everyone was beautiful, houses were huge, they all stared at numbers I didn't understand. No idea how they were doing it, but it looked great.",
+                    "So when sites like eToro started popping up, my ideas of investing and trading were fuelled by hopes of finally being part of it all - let's go!",
+                    {"type": "h3", "text": "What Happens Next"},
+                    "So what do we do? We find a thing called 'leverage' which lets you amplify your trade sizes and we think \"yes please!\" Without the slightest clue what we're doing or how the markets work we pile into amplified trades, and immediately start panicking when the markets move against us. Chasing volatile assets, panic-buying into trends, doubling-down to recoup our losses — but underneath all of it is the same impulse. People come to eToro hoping to turn a small amount of money into a life-changing amount of money, fast. And that mindset is almost guaranteed to lose you money.",
+                    {"type": "h3", "text": "So What Do the Pros Actually Make?"},
+                    "The top hedge funds in the world — the Quantum Fund, Berkshire Hathaway, the absolute best in the business — generate returns of around 16-20% per year. These are people with decades of experience, teams of analysts, and billions under management. And they're making 20%.",
+                    "When a new user deposits $500 and expects to turn it into $2,000 in a year, they're expecting to outperform Warren Buffett by a factor of four. It's not realistic, and chasing that kind of return leads to terrible decisions.",
+                ]
+            },
+            {
+                "h2": "Why Small Amounts Make It Worse",
+                "paragraphs": [
+                    "Most of us aren't rich. We come to eToro with maybe a few hundred dollars, or even a couple of thousand. If you put in $100, would you be extremely happy with $20 profit after a year? That's 20% - you're alongside the best in the world. But nobody wants $20 after a year. What are we really looking for?",
+                    "We're looking for money that can make a significant difference to our lives. $500 needs to produce another $500. At least. Even then, it won't make much difference but there's no way $50 in a year is even worth our time. But that's a 100% return. It's almost completely impossible. If you've managed it, it's because you've taken incredible amounts of risk and somehow come out ahead. Statistically most people lose this bet.",
+                    {"type": "h3", "text": "Think Percentages, Not Pounds"},
+                    "We've got to think in terms of percentages, not in terms of cash amounts. What does this mean? It means when we see huge cash profits being reported by the Warren Buffets of the world, we need to realise they started with much more money, so it's easy to make seemingly huge returns whilst taking less risk than your average retail investor.",
+                    "They invest a million and at the end of the year come away with $100,000 in profit. Wow! We say - $100,000! But that's a 10% return. They could have kept their risk reasonably low to get that return.",
+                    {"type": "h3", "text": "The \"I've Got Nothing to Lose\" Mindset"},
+                    "We who want to strike it rich are generally thinking \"Look, I don't have much money. I've put in $500 - I either hit big and it changes my life a bit, or I lose $500 and I'm pretty much in the same situation as I am now. My $500 isn't going to get me anywhere anyway.\"",
+                    "So what happens? You start looking at the traders who are up 200%, 400%. \"This is the guy for me!\" You start using leverage. You start making manual trades on gut instinct. (Believe me, in the beginning I was trying to trade Gold with 20X leverage before I was even fully awake - it would have been a comedy sketch if I wasn't losing real money quite so fast.) And before you know it, you're part of the 76%.",
+                    "The irony is that 20% on $500 is genuinely excellent. It's world-class performance. But it doesn't feel like it when the number is only $100. This is a psychological trap, and it catches almost everyone who starts small.",
+                ]
+            },
+            {
+                "h2": "Leverage: The Account Killer",
+                "paragraphs": [
+                    "Leverage is a way to amplify your trade — eToro lends you extra money so you can control a bigger position than your balance would normally allow. And for beginners, it's the single fastest way to blow your account.",
+                    {"type": "h3", "text": "A Quick Example: The Apple Trade"},
+                    "Let's say. You want to open a $100 trade in Apple stock. But then you see the leverage \"X10\" button.",
+                    "All of a sudden your $100 trade could be a $1000 trade! \"Wow\" you think\u2026, \"if Apple stock goes up 10%, I'll make $100! - Apple always does well - let's go!\" And so, you open your new Apple trade.",
+                    "You put in $100, and chose X10 leverage, so your position size is actually now $1000. It's like magic! We don't have much money so this seems like a great way to level the playing field and really have some proper trades open!",
+                    "Now the thing about the markets is that they never go up or down in a straight line - it takes time to get used to this, but in the beginning, these jagged moves can be terrifying. Markets can move fast, and losses can appear suddenly.",
+                    "Apple stock drops 2%. We're watching our trade like a hawk, and it's not 2% of $100 we've lost, (an easy to deal with $2), it's 2% of $1000 we've lost (because of our leverage) - a slightly harder $20. And it's a bad day, so it keeps dropping (this often happens). Now we're down 4% - $40 dollars in less than an hour.",
+                    {"type": "h3", "text": "When Panic Takes the Wheel"},
+                    "Over time, you may get used to this fluctuation and it doesn't worry you so much - you start looking at longer term trends, but in the beginning, when you see your money vanishing and you really don't know why, statistically you'll make terrible decisions based on emotion and panic, and you'll lose money. We hold when we should cut our losses. We panic-sell when we should have held, we double down to chase our losses, and statistically overall, we lose more than we win.",
+                    "The other problem is that when our Apple trade loses 5%, we'll have lost $50 of our original $100 investment, as it's 5% of $1000 we've lost due to our leverage use. This could lead to eToro closing our position automatically so that we don't lose too much money - in some cases they set mandatory 'stop-losses' on trades as protection\u2026 All of a sudden, we've lost half of our $100, we're out of the trade and we're wondering what just happened.",
+                    "So, in the beginning, watch out for leverage. You can do what you want, this isn't investment advice! But be aware that a LOT of people get themselves into trouble using it before they understand the markets or how leverage works\u2026",
+                ]
+            },
+            {
+                "h2": "Fear of Missing Out",
+                "paragraphs": [
+                    "FOMO — the fear of missing out — is another major driver of losses. It's that feeling of 'if I don't make this trade right now, I'll never get another chance.' Every opportunity feels urgent. Every price movement feels like the last train leaving the station.",
+                    "The reality is the exact opposite. In financial markets, there's a new opportunity every five minutes. There are thousands of instruments to trade — stocks, crypto, commodities, forex — and the markets are open almost around the clock. The experienced traders know this. They don't rush. They wait for the right setup.",
+                    "But when you're new and you're desperate to make money, everything feels like now or never. And that urgency leads to over-trading, chasing trends that have already peaked, and entering positions without proper analysis.",
+                    {"type": "h3", "text": "The Life Lessons Nobody Mentions"},
+                    "It's a strange thing about trading and investing that so many of the lessons we need to learn aren't about maths or technical analysis or analysing businesses (although if we're going to trade manually, we'll need to learn all that as well!) but rather, there's a whole bunch of self-development lessons to learn. How to stay detached and rational instead of letting our emotions control us - how to let go of that tempting fear that \"If I don't make this one trade, there'll never be another like it! This is my one big chance!\"",
+                    "It sounds overly dramatic but you'll see :) This thought pops up for everyone, and it comes back repeatedly throughout our investing life cycle - sales and marketing people actually try to trigger it in us by saying there's limited supply, and \"only 20 spots left!\" etc. It's a powerful emotional trigger, and we need to learn to recognise it and not fall for the bait...",
+                ]
+            },
+            {
+                "h2": "The Emotional Rollercoaster",
+                "paragraphs": [
+                    "One pattern that's incredibly common on eToro — and you can see it on hundreds of profiles — is the boom-bust cycle. A trader has a few great months, gains are flying, everything looks brilliant. Then one bad month wipes out everything.",
+                    "This happens because the strategies that produce big gains are usually the same ones that carry big risk. You can't consistently make 30-40% monthly returns without taking on enormous risk — and eventually that risk catches up with you. If you keep rolling the dice, and greed takes over, eventually, statistically, it goes wrong.",
+                    {"type": "h3", "text": "Popular Investors Have It Even Worse"},
+                    "And if you're planning to become a popular investor on the site and hopefully have people copying your trades, (it can be very lucrative if you do well enough on the popular investor program) it's on a whole other level\u2026",
+                    "I can't tell you how many times I've seen this, even with popular investors. They gather loads of new copiers during their huge-gains months. It's going up and up, and everyone's praising the trader they're copying for what looks like an almost magical ability to win in the markets.",
+                    "Then the losses start, and the followers turn ugly - constant comments about \"what's happening to my money!\" Suggestions fly in from people who've only been on the site for a few weeks, but suddenly everyone's a pro telling them how it should be done, and you see the trader start to buckle under the pressure\u2026",
+                    "Instead of following their carefully constructed plan and taking things slow, they react to the pressure and fear and start making bad decisions - trades which they'd normally avoid due to risk suddenly become their only way to 'make it all back' and pretty soon they're blown 80% of their account and all the copiers are gone.",
+                    "I don't envy them - having a channel and having my account so public, it's very easy to start thinking \"What will they all say..\" before making investing decisions, and that's a terrible motivation. Investing and trading really require cold hard logic - it's another one of those life-lessons we all need to learn if we're hoping to really make this work for us.",
+                ]
+            },
+            {
+                "h2": "What the Profitable 24% Do Differently",
+                "paragraphs": [
+                    "So if 76% are losing, what are the 24% doing right? From years of watching profiles on eToro, a few patterns emerge.",
+                    "They accept lower returns. A 15-20% annual return with low drawdowns is their goal, not 400%. They understand that consistent, boring gains compound into real wealth over time.",
+                    "They use little or no leverage. By trading with their own money (x1 leverage), they avoid overnight fees, reduce risk dramatically, and can ride out temporary dips without being forced to close.",
+                    "There ARE experienced great traders who employ leverage as part of their strategy, but these are traders who really understand what they're doing - statistics show that for beginners, the use of leverage is one of the greatest risks, and tends toward gambling rather than trading or investing. I'm not a pro, I'm not a financial advisor, but wow does it seem to cause us all problems as beginners, so be warned!",
+                    "They invest more capital at lower risk, rather than less capital at higher risk. It's better to put $5,000 in and expect 20% ($1,000 gain) than to put $500 in and chase 200% ($1,000 gain). The expected return is the same but the risk profile is completely different.",
+                    {"type": "h3", "text": "The Excitement Trap"},
+                    "I think when we come in, it's all so exciting that we're just brimming with enthusiasm - we log in all the time watching our money - how much have we made? Did I choose right? What are other people saying? It's exciting, it's new and we want to see some action.",
+                    "What we need to realise is that it can all be a lot slower than we anticipated. If we approach it sensibly, expecting 15% in a year, and we've put in $1000, then we're looking at $150 profit after 12 months. We're not going to be seeing huge movements all the time. It's going to be much slower than we expect...",
+                    "So the temptation can be to try to make something happen - open extra trades, use leverage to make things move faster, constantly try to jump onto a new asset which might make things happen and create some excitement. It's understandable, and it's another little trap - if we're here for the dopamine fix, it's another version of the wrong approach. This requires a certain detachment (I know! I want adrenaline too!! but this isn't the place for it, as statistically that's where losses stack up)",
+                    {"type": "h3", "text": "\"Why Aren't You Trading?!\""},
+                    "The same's true for copy trading - I see a lot of new people copy a trader who has years of steady statistics showing profit. But the new guy is impatient, and the trader they've copied is taking things slow, watching the markets, waiting for their right entry point. \"Why aren't you trading?\" comes the comment from the new guy... \"What's wrong with this guy??\" says another - It's all too familiar :) We want some action - we want to see those big moves that happen in the films.",
+                    "Be aware that whilst copying someone, it's long term success we're looking for - that's the whole point. Let them take care of the day to day ups and downs and worries. It takes some getting used to though as we realise we just have to get on with life as normal - this isn't going to change everything in a month... again - more letting go and life lessons :)",
+                    "They don't panic. They have a plan, they stick to it, and they don't react emotionally to every dip. If a copied trader has a bad month but their long-term statistics are solid, they stay the course.",
+                ]
+            },
+            {
+                "h2": "Copy Trading Isn't a Shortcut Either",
+                "paragraphs": [
+                    "Copy trading removes one big problem — you don't need to know how to trade. But it introduces its own risks. If you're copying someone who trades with a boom-bust style, you'll get the same boom-bust results.",
+                    "The key is choosing who to copy very carefully. Look for low risk scores, low drawdowns, and consistent returns over at least 12 months. The traders who look exciting — up 80% one month, down 40% the next — are the ones most likely to blow up your account along with theirs.",
+                    {"type": "h3", "text": "How My Approach Has Changed"},
+                    "Over time my approach to who I copy has changed. I've tried copying some of the traders who appear to be vastly outperforming everyone else and haven't had any losing months for over a year, only to watch them lose it all after a couple of terrible months and that dreaded switch in behaviour.",
+                    "I used to think 12 months trading history was enough, but now I think the longer the better - I look for at least two years of trading history now, and I've learned to check their charts looking for hidden large sudden losses and other patterns which might signal trouble in future. I've made videos about that if you're interested.",
+                    {"type": "h3", "text": "What to Look For When Choosing a Trader"},
+                    "You get used to it really - looking at all the stats shown and getting a rough idea of their trading style. That takes a little time, but as a general rule of thumb I look for a few years of trading history and stability above all. I can't deal with the boom/bust guys anymore as you spend two years accumulating gains only to lose it all in a month, and suddenly those entire two years were a waste of time!",
+                    "eToro's copy people page was revamped a while ago, and they included some useful new filtering options - 'most consistent' has been my favourite and how I found some really good traders. You can also filter by those who outperformed the markets in general and things like that - it's got more helpful over time and there's a large pool of traders, but it still tends to be the best ones who can somehow beat or equal the broader markets but also avoid the inevitable drawdowns who attract all the copiers. When they get too big, eToro usually raises the amount needed to copy them, so there's a bit of an art to timing when to copy.",
+                    "If you want to manually trade instead of copy, invest in education first. Do a proper course. Learn the fundamentals before you put real money at risk. The cost of a good trading course is almost always less than the cost of learning by losing money on the platform.",
+                    {"type": "h3", "text": "Only Invest What You Can Afford to Lose"},
+                    "They say \"only invest what you can afford to lose\" and that sounds great, but as beginners, we're just hoping we don't lose and it can often be money we actually really need. You've got to watch out for this - as we all know, things pop up unexpectedly in life and suddenly we need money for something urgently. Investing can be a long slow process, and if we have to close trades just because we desperately need the cash and have no other backup, then it can mean closing trades at the wrong time and incurring significant losses.",
+                    "Unless you plan to be an incredibly active trader, and it's your profession, understand that if you're somehow relying on this as a primary driver of your income, you're liable to start gambling to get the kind of gains you need. The pros make a life of it - It's slow, methodical, and they've got a plan. For the more passive among us, we've got to realise that at times the investment will be down and may stay down for quite a while before things pick back up. It might be a wise idea to have your emergency fund for unexpected life-events separate from your trading account if possible to avoid forced sells at bad times.",
+                    {"type": "h3", "text": "When Losses Get Real"},
+                    "You've got to also realise that losses are a huge potential reality. If the money you're trading with is really money you need and not money you can genuinely afford to lose, it's going to put a lot of stress on you. Is that worth it? It's a horrible situation when you've lost money you or your family needs and you're not wanting to tell them about it.",
+                    "\"Maybe I can make it back without telling them..\" It's a classic line which many have thought before us, and which often leads to taking huge risks and losing even more. That's a terrible situation for anyone to be in, and before starting, realise it's a genuine possibility and people do find themselves in this situation.",
+                    "It's really easy to see the potential huge gains we might make and just brush the risks aside, but if the worst happens, it's just not worth even the huge potential gains. This takes some real discipline, as everyone's tempted when they try this out.",
+                    "They say \"Only risk what you can afford to lose\". I think there's real wisdom in that. We may get away with it for a while, but eventually if we don't follow this rule, the stress is going to be enormous.",
+                    {"type": "note", "text": "I'd say the single most important thing I've learned is this: it's not a get-rich-quick scheme. It can make money — I believe that — but it's a get-rich-slowly scheme. Or more honestly, a make-some-money-slowly scheme. The sooner you accept that, the sooner you stop making the mistakes that put you in the 76%."},
+                ]
+            },
+            {
+                "h2": "Tom's Conclusion",
+                "paragraphs": [
+                    "76% is a big, real, frightening number. And it's not because eToro is a scam or the fees are unfair — it's because trading is inherently risky, and the platform's accessibility makes people underestimate that risk.",
+                    "If you're starting out, here's what I'd suggest: use the virtual account first, copy low-risk traders, forget about getting rich quick, and put in money you can genuinely afford to leave alone for years. The returns will feel small at first, but that's exactly what sustainable investing looks like.",
+                    "The people who make money on eToro are the patient ones. The boring ones. The ones who aren't trying to turn $500 into a Lamborghini by next month. I hope I'm finally learning to be one of those people!",
+                ]
+            },
+        ],
         "faqs": [
             {"q": "Why do most eToro traders lose money?", "a": "The main reasons are over-leveraging, chasing quick profits, poor risk management, and emotional decision-making. eToro's platform makes trading feel simple, which can lead beginners to underestimate the risks of CFDs and leverage."},
             {"q": "What percentage of eToro traders are profitable?", "a": "According to eToro's own risk disclosure, around 76% of retail investor accounts lose money when trading CFDs. Only roughly 24% of traders are consistently profitable on the platform."},
-            {"q": "How can I avoid losing money on eToro?", "a": "Tom's advice: avoid high leverage, use the virtual practice account first, copy only lower-risk traders with consistent long-term returns, and never invest more than you can afford to lose. Treat it as a long-term investment, not a get-rich-quick scheme."},
+            {"q": "How can I avoid losing money on eToro?", "a": "Avoid high leverage, use the virtual practice account first, copy only lower-risk traders with consistent long-term returns, and never invest more than you can afford to lose. Treat it as a long-term investment, not a get-rich-quick scheme."},
+            {"q": "Is eToro a scam?", "a": "No. eToro is a regulated platform authorised by the FCA, CySEC, and ASIC. The 76% statistic reflects the inherent risk of trading CFDs, not a problem with the platform itself. Most traders lose money on every CFD platform, not just eToro."},
+            {"q": "What returns should I realistically expect from eToro copy trading?", "a": "Realistic annual returns from copy trading lower-risk traders are around 10-25% per year. The world's best hedge funds average 16-20% annually. Anyone promising significantly more than that is taking on significant risk."},
         ],
     },
     "hO1zncbWqFM": {
@@ -636,7 +766,7 @@ def format_transcript(text, headings=None):
 
 def build_toc(blocks, first_h2):
     """Build a table of contents from H2 headings."""
-    h2s = [first_h2] + [content for typ, content in blocks if typ == 'h2']
+    h2s = list(dict.fromkeys([first_h2] + [content for typ, content in blocks if typ == 'h2']))
     if len(h2s) < 2:
         return ''
     items = ''
@@ -697,26 +827,48 @@ def generate_page(video_id, title, meta, transcript_text):
     canonical = f"https://socialtradingvlog.com/video/{slug}/"
     thumbnail = f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg"
 
-    # First H2 heading for transcript
-    first_h2 = headings[0] if headings else "In This Video"
-    first_h2_anchor = re.sub(r'[^a-z0-9]+', '-', first_h2.lower()).strip('-')
+    # Check for hand-written article content (overrides raw transcript)
+    article_sections = meta.get("article_sections", None)
 
-    # Format transcript
-    blocks = format_transcript(transcript_text, headings)
+    if article_sections:
+        # Build article HTML from structured sections
+        transcript_html_parts = []
+        blocks = []  # for TOC
+        for section in article_sections:
+            h2 = section["h2"]
+            anchor = re.sub(r'[^a-z0-9]+', '-', h2.lower()).strip('-')
+            transcript_html_parts.append(f'<h2 id="{anchor}">{html.escape(h2)}</h2>')
+            blocks.append(('h2', h2))
+            for para in section["paragraphs"]:
+                if isinstance(para, dict) and para.get("type") == "note":
+                    transcript_html_parts.append(f'<p class="toms-note">{html.escape(para["text"])}</p>')
+                elif isinstance(para, dict) and para.get("type") == "h3":
+                    transcript_html_parts.append(f'<h3>{html.escape(para["text"])}</h3>')
+                else:
+                    linked = apply_internal_links(html.escape(para), slug)
+                    transcript_html_parts.append(f'<p>{linked}</p>')
+                    blocks.append(('p', para))
+        transcript_html = '\n        '.join(transcript_html_parts)
+        first_h2 = article_sections[0]["h2"]
+        toc_html = build_toc(blocks, first_h2)
+    else:
+        # Fall back to auto-formatted raw transcript
+        first_h2 = headings[0] if headings else "In This Video"
+        first_h2_anchor = re.sub(r'[^a-z0-9]+', '-', first_h2.lower()).strip('-')
 
-    # Build transcript HTML with internal links applied to paragraphs
-    transcript_html_parts = [f'<h2 id="{first_h2_anchor}">{html.escape(first_h2)}</h2>']
-    for typ, content in blocks:
-        if typ == 'h2':
-            anchor = re.sub(r'[^a-z0-9]+', '-', content.lower()).strip('-')
-            transcript_html_parts.append(f'<h2 id="{anchor}">{html.escape(content)}</h2>')
-        else:
-            linked = apply_internal_links(html.escape(content), slug)
-            transcript_html_parts.append(f'<p>{linked}</p>')
-    transcript_html = '\n        '.join(transcript_html_parts)
+        blocks = format_transcript(transcript_text, headings)
 
-    # Table of contents
-    toc_html = build_toc(blocks, first_h2)
+        transcript_html_parts = [f'<h2 id="{first_h2_anchor}">{html.escape(first_h2)}</h2>']
+        for typ, content in blocks:
+            if typ == 'h2':
+                anchor = re.sub(r'[^a-z0-9]+', '-', content.lower()).strip('-')
+                transcript_html_parts.append(f'<h2 id="{anchor}">{html.escape(content)}</h2>')
+            else:
+                linked = apply_internal_links(html.escape(content), slug)
+                transcript_html_parts.append(f'<p>{linked}</p>')
+        transcript_html = '\n        '.join(transcript_html_parts)
+
+        toc_html = build_toc(blocks, first_h2)
 
     # FAQ section
     faq_html = build_faq_html(faqs)

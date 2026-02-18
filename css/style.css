@@ -1009,6 +1009,8 @@ footer {
   padding: 0;
   margin: 0;
   counter-reset: toc-counter;
+  max-height: 240px;
+  overflow-y: auto;
 }
 
 .toc ul li {
