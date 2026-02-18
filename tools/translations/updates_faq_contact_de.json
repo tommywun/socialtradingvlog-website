@@ -1,0 +1,280 @@
+{
+  "faq": {
+    "slug": "haeufig-gestellte-fragen",
+    "meta_description": "Haeufig gestellte Fragen zu Copy Trading und eToro: Ist es kostenlos, welche Gebuehren gibt es, warum bewerbe ich eToro, und mehr.",
+    "title": "Haeufig gestellte Fragen | SocialTradingVlog",
+    "article_tag": "FAQ",
+    "h1": "Haeufig gestellte Fragen",
+    "article_meta": "Dieser Bereich waechst mit der Zeit, sobald neue Fragen auftauchen.",
+    "questions": [
+      {
+        "question": "Warum bewirbst du eToro?",
+        "answer": "Es ist die beste Social-Trading-Plattform, die ich bisher gefunden habe. Ich benutze sie seit 2016, und hier dokumentiere ich meine eigene Erfahrung mit dem Copy Trading. Ich habe eine Affiliate-Beziehung mit eToro — wenn du dich ueber meinen Link registrierst, erhalte ich moeglicherweise eine Provision, ohne zusaetzliche Kosten fuer dich. Diese Beziehung beeinflusst nicht, was ich schreibe oder wie ich meine Erfahrung schildere."
+      },
+      {
+        "question": "Ist Copy Trading kostenlos?",
+        "answer": "Ja. Es gibt Gebuehren, die mit dem Handel auf allen Plattformen verbunden sind — eToro eingeschlossen — aber das Kopieren der Trades eines anderen Anlegers ist kostenlos. Du musst der Person, die du kopierst, keinen Prozentsatz oder keine Gebuehr zahlen. Sie investieren mit ihrem eigenen Geld; dein Konto kopiert einfach automatisch all ihre Trades. Die Person, die du kopierst, erhaelt Anreize von eToro — je mehr Leute sie kopieren und je mehr Geld in das Kopieren investiert wird, desto mehr zahlt eToro ihnen. Sie profitieren von der Situation, aber nicht direkt von dir."
+      },
+      {
+        "question": "Welche Gebuehren gibt es bei eToro?",
+        "answer": "Es gibt einige, die man kennen sollte:<ul><li><strong>Spread-Gebuehren</strong> — in jeden Trade eingebaut. Wenn du einen Trade eroeffnest, wirst du feststellen, dass er mit einem kleinen Verlust beginnt. Das ist der Spread. Wenn sich der Vermoegenswert zu deinen Gunsten bewegt, holst du das wieder auf und gehst in den Gewinn.</li><li><strong>Auszahlungsgebuehr</strong> — eToro erhebt eine feste Gebuehr, wenn du Geld von der Plattform abhebst.</li><li><strong>Waehrungsumrechnung</strong> — da alles bei eToro in USD laeuft, wird bei Ein- oder Auszahlungen in einer anderen Waehrung ein Wechselkurs angewendet.</li><li><strong>Uebernacht-/Wochenendgebuehren</strong> — wenn du gehebelte Positionen ueber Nacht haeltst, koennen zusaetzliche Gebuehren anfallen. Wenn du die Copy-Trading-Funktion mit ungehebelten Positionen nutzt, ist das weniger relevant.</li></ul>"
+      },
+      {
+        "question": "Brauche ich Trading-Erfahrung?",
+        "answer": "Nein — genau das ist der Sinn des Copy Trading. Die ganze Idee ist, dass du von der Erfahrung von Leuten profitieren kannst, die wissen, was sie tun, ohne selbst ein Experte werden zu muessen. Du musst trotzdem sorgfaeltig auswaehlen, wen du kopierst, und die damit verbundenen Risiken verstehen, aber du musst keine Charts lesen oder Maerkte analysieren koennen."
+      },
+      {
+        "question": "Kann ich Geld verlieren?",
+        "answer": "Ja. Copy Trading eliminiert nicht das Risiko — es ist immer noch eine Investition. Wenn die Person, die du kopierst, Verluste macht, wirst auch du Verluste machen. Du solltest nur Geld investieren, dessen Verlust du dir leisten kannst. Lies den Artikel <a href=\"copy-trading-returns.html\">Wie viel kann man verdienen?</a> fuer eine realistische Einschaetzung von Risiko und Rendite."
+      },
+      {
+        "question": "Ist eToro reguliert?",
+        "answer": "Ja. eToro wird von mehreren Finanzaufsichtsbehoerden reguliert, darunter die FCA (Grossbritannien), CySEC (Zypern) und ASIC (Australien). Regulierung bedeutet, dass es Aufsicht und rechtliche Verantwortlichkeit gibt. Lies meinen vollstaendigen Artikel <a href=\"etoro-scam.html\">Ist eToro Betrug?</a> fuer weitere Informationen dazu."
+      },
+      {
+        "question": "Wie fange ich mit Copy Trading an?",
+        "answer": "Die grundlegenden Schritte sind: Ein Konto bei eToro eroeffnen, deine Identitaet verifizieren, Geld einzahlen, den Bereich 'Personen kopieren' erkunden, jemanden auswaehlen, dessen Statistiken dir gefallen, deinen Kopierbetrag festlegen und auf Kopieren klicken. Der <a href=\"copy-trading.html\">Copy-Trading-Leitfaden</a> behandelt dies ausfuehrlicher."
+      }
+    ],
+    "sidebar_h3": "Bereit, Copy Trading auszuprobieren?",
+    "sidebar_p": "Hier ist mein eToro-Affiliate-Link, um loszulegen.",
+    "sidebar_nav_h4": "Nuetzliche Leitfaeden"
+  },
+  "contact": {
+    "slug": "kontakt",
+    "meta_description": "Nimm Kontakt mit Social Trading Vlog auf — Fragen zu Copy Trading, eToro oder der Website.",
+    "title": "Kontakt | SocialTradingVlog",
+    "article_tag": "Kontakt",
+    "h1": "Kontakt",
+    "intro": "Hast du eine Frage zum Copy Trading, zu eToro oder zu etwas auf der Website? Zoegere nicht, dich zu melden. Bitte beachte, dass ich kein Finanzberater bin und keine Anlageberatung geben kann, aber ich beantworte gerne Fragen zur Funktionsweise der Plattform oder teile meine Erfahrung.",
+    "form_labels": {
+      "name": "Dein Name",
+      "name_placeholder": "z.B. Max Mustermann",
+      "email": "E-Mail-Adresse",
+      "email_placeholder": "du@beispiel.com",
+      "message": "Nachricht",
+      "message_placeholder": "Deine Frage oder Nachricht...",
+      "submit": "Nachricht senden"
+    },
+    "reminder_title": "Hinweis",
+    "reminder_text": "Diese Website dient ausschliesslich zu Bildungs- und Informationszwecken. Nichts, was hier veroeffentlicht wird, stellt eine Finanz- oder Anlageberatung dar. 51% der Privatanlegerkonten verlieren Geld beim CFD-Handel mit eToro. Dein Kapital ist gefaehrdet."
+  },
+  "updates": {
+    "copy-trading-update-01-mar-2019": {
+      "slug": "copy-trading-update-01-maerz-2019",
+      "meta_description": "Copy Trading Update — 01. Maerz 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 01. Maerz 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Maerz 2019",
+      "h1": "Copy Trading Update — 01. Maerz 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-02-aug-2019": {
+      "slug": "copy-trading-update-02-august-2019",
+      "meta_description": "Copy Trading Update — 02. August 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 02. August 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · August 2019",
+      "h1": "Copy Trading Update — 02. August 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-03-feb-2019": {
+      "slug": "copy-trading-update-03-februar-2019",
+      "meta_description": "Copy Trading Update — 03. Februar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 03. Februar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Februar 2019",
+      "h1": "Copy Trading Update — 03. Februar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-04-apr-2019": {
+      "slug": "copy-trading-update-04-april-2019",
+      "meta_description": "Copy Trading Update — 04. April 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 04. April 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · April 2019",
+      "h1": "Copy Trading Update — 04. April 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-04-jun-2019": {
+      "slug": "copy-trading-update-04-juni-2019",
+      "meta_description": "Copy Trading Update — 04. Juni 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 04. Juni 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Juni 2019",
+      "h1": "Copy Trading Update — 04. Juni 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-07-feb-2019": {
+      "slug": "copy-trading-update-07-februar-2019",
+      "meta_description": "Copy Trading Update — 07. Februar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 07. Februar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Februar 2019",
+      "h1": "Copy Trading Update — 07. Februar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-07-may-2019": {
+      "slug": "copy-trading-update-07-mai-2019",
+      "meta_description": "Copy Trading Update — 07. Mai 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 07. Mai 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Mai 2019",
+      "h1": "Copy Trading Update — 07. Mai 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-11-jan-2019": {
+      "slug": "copy-trading-update-11-januar-2019",
+      "meta_description": "Copy Trading Update — 11. Januar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 11. Januar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Januar 2019",
+      "h1": "Copy Trading Update — 11. Januar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-13-jan-2019": {
+      "slug": "copy-trading-update-13-januar-2019",
+      "meta_description": "Copy Trading Update — 13. Januar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 13. Januar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Januar 2019",
+      "h1": "Copy Trading Update — 13. Januar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-13-mar-2019": {
+      "slug": "copy-trading-update-13-maerz-2019",
+      "meta_description": "Copy Trading Update — 13. Maerz 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 13. Maerz 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Maerz 2019",
+      "h1": "Copy Trading Update — 13. Maerz 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-14-dec-2018": {
+      "slug": "copy-trading-update-14-dezember-2018",
+      "meta_description": "Copy Trading Update — 14. Dezember 2018. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 14. Dezember 2018 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Dezember 2018",
+      "h1": "Copy Trading Update — 14. Dezember 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-14-feb-2019": {
+      "slug": "copy-trading-update-14-februar-2019",
+      "meta_description": "Copy Trading Update — 14. Februar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 14. Februar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Februar 2019",
+      "h1": "Copy Trading Update — 14. Februar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-15-jun-2019": {
+      "slug": "copy-trading-update-15-juni-2019",
+      "meta_description": "Copy Trading Update — 15. Juni 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 15. Juni 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Juni 2019",
+      "h1": "Copy Trading Update — 15. Juni 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-16-apr-2019": {
+      "slug": "copy-trading-update-16-april-2019",
+      "meta_description": "Copy Trading Update — 16. April 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 16. April 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · April 2019",
+      "h1": "Copy Trading Update — 16. April 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-16-may-2019": {
+      "slug": "copy-trading-update-16-mai-2019",
+      "meta_description": "Copy Trading Update — 16. Mai 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 16. Mai 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Mai 2019",
+      "h1": "Copy Trading Update — 16. Mai 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-20-feb-2019": {
+      "slug": "copy-trading-update-20-februar-2019",
+      "meta_description": "Copy Trading Update — 20. Februar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 20. Februar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Februar 2019",
+      "h1": "Copy Trading Update — 20. Februar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-apr-2019": {
+      "slug": "copy-trading-update-23-april-2019",
+      "meta_description": "Copy Trading Update — 23. April 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 23. April 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · April 2019",
+      "h1": "Copy Trading Update — 23. April 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-aug-2018": {
+      "slug": "copy-trading-update-23-august-2018",
+      "meta_description": "Copy Trading Update — 23. August 2018. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 23. August 2018 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · August 2018",
+      "h1": "Copy Trading Update — 23. August 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-jul-2019": {
+      "slug": "copy-trading-update-23-juli-2019",
+      "meta_description": "Copy Trading Update — 23. Juli 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 23. Juli 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Juli 2019",
+      "h1": "Copy Trading Update — 23. Juli 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-24-aug-2019": {
+      "slug": "copy-trading-update-24-august-2019",
+      "meta_description": "Copy Trading Update — 24. August 2019. Gold, Silber und Portfolio-Entscheidungen ehrlich dokumentiert.",
+      "title": "Copy Trading Update — 24. August 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · August 2019",
+      "h1": "Copy Trading Update — 24. August 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-25-nov-2018": {
+      "slug": "copy-trading-update-25-november-2018",
+      "meta_description": "Copy Trading Update — 25. November 2018. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 25. November 2018 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · November 2018",
+      "h1": "Copy Trading Update — 25. November 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-26-mar-2019": {
+      "slug": "copy-trading-update-26-maerz-2019",
+      "meta_description": "Copy Trading Update — 26. Maerz 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 26. Maerz 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Maerz 2019",
+      "h1": "Copy Trading Update — 26. Maerz 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-28-nov-2017": {
+      "slug": "copy-trading-update-28-november-2017",
+      "meta_description": "Copy Trading Update — 28. November 2017. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 28. November 2017 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · November 2017",
+      "h1": "Copy Trading Update — 28. November 2017",
+      "content_blocks": []
+    },
+    "copy-trading-update-29-jan-2019": {
+      "slug": "copy-trading-update-29-januar-2019",
+      "meta_description": "Copy Trading Update — 29. Januar 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 29. Januar 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Januar 2019",
+      "h1": "Copy Trading Update — 29. Januar 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-30-apr-2019": {
+      "slug": "copy-trading-update-30-april-2019",
+      "meta_description": "Copy Trading Update — 30. April 2019. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — 30. April 2019 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · April 2019",
+      "h1": "Copy Trading Update — 30. April 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-jul-2018": {
+      "slug": "copy-trading-update-juli-2018",
+      "meta_description": "Copy Trading Update — Juli 2018. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — Juli 2018 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Juli 2018",
+      "h1": "Copy Trading Update — Juli 2018",
+      "content_blocks": []
+    },
+    "social-trading-update-jun-2017": {
+      "slug": "copy-trading-update-juni-2017",
+      "meta_description": "Copy Trading Update — Juni 2017. Ehrliche Dokumentation meiner Erfahrung mit der Copy-Trading-Funktion auf eToro.",
+      "title": "Copy Trading Update — Juni 2017 | SocialTradingVlog",
+      "article_tag": "Portfolio-Update · Juni 2017",
+      "h1": "Copy Trading Update — Juni 2017",
+      "content_blocks": []
+    }
+  }
+}

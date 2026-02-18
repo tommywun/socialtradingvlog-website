@@ -1,0 +1,280 @@
+{
+  "faq": {
+    "slug": "perguntas-frequentes",
+    "meta_description": "Perguntas frequentes sobre copy trading e eToro: e gratuito, quais sao as taxas, por que promovo o eToro, e mais.",
+    "title": "Perguntas Frequentes | SocialTradingVlog",
+    "article_tag": "FAQ",
+    "h1": "Perguntas Frequentes",
+    "article_meta": "Esta secao cresce com o tempo a medida que novas perguntas surgem.",
+    "questions": [
+      {
+        "question": "Por que voce promove o eToro?",
+        "answer": "E a melhor plataforma de trading social que encontrei ate agora. Uso desde 2016 e e onde documento minha propria experiencia com copy trading. Tenho uma relacao de afiliado com o eToro — se voce se cadastrar pelo meu link, posso receber uma comissao sem custo adicional para voce. Essa relacao nao muda o que escrevo nem como conto minha experiencia."
+      },
+      {
+        "question": "O copy trading e gratuito?",
+        "answer": "Sim. Existem taxas associadas a operacoes em todas as plataformas — incluindo o eToro — mas copiar as operacoes de outro investidor e gratuito. Voce nao precisa pagar nenhum percentual ou comissao a pessoa que voce copia. Eles investem com o proprio dinheiro; sua conta simplesmente copia automaticamente todas as operacoes deles. A pessoa que voce copia recebe incentivos do eToro — quanto mais pessoas os copiam e mais dinheiro e investido copiando-os, mais o eToro paga a eles. Eles se beneficiam da situacao, mas nao diretamente de voce."
+      },
+      {
+        "question": "Quais sao as taxas do eToro?",
+        "answer": "Existem algumas que vale a pena conhecer:<ul><li><strong>Taxas de spread</strong> — integradas em cada operacao. Quando voce abre uma operacao, vai notar que ela comeca com uma pequena perda. Isso e o spread. A medida que o ativo se move a seu favor, voce recupera esse valor e passa para o lucro.</li><li><strong>Taxa de saque</strong> — o eToro cobra uma taxa fixa quando voce retira dinheiro da plataforma.</li><li><strong>Conversao de moeda</strong> — como tudo no eToro e em USD, se voce depositar ou sacar em outra moeda, sera aplicada uma taxa de cambio.</li><li><strong>Taxas overnight/fim de semana</strong> — se voce mantiver posicoes alavancadas durante a noite, pode haver taxas adicionais. Se voce usar a funcao de copy trading com posicoes sem alavancagem, isso e menos preocupante.</li></ul>"
+      },
+      {
+        "question": "Preciso ter experiencia em trading?",
+        "answer": "Nao — esse e justamente o objetivo do copy trading. A ideia e que voce possa se beneficiar da experiencia de pessoas que sabem o que estao fazendo, sem precisar se tornar um especialista. Mesmo assim, voce precisa escolher com cuidado quem copiar e entender os riscos envolvidos, mas nao precisa saber ler graficos nem analisar mercados."
+      },
+      {
+        "question": "Posso perder dinheiro?",
+        "answer": "Sim. O copy trading nao elimina o risco — continua sendo um investimento. Se a pessoa que voce copia tiver perdas, voce tambem tera perdas. So invista dinheiro que voce pode se dar ao luxo de perder. Leia o artigo <a href=\"copy-trading-returns.html\">Quanto voce pode ganhar?</a> para uma visao realista do risco e da recompensa."
+      },
+      {
+        "question": "O eToro e regulamentado?",
+        "answer": "Sim. O eToro e regulamentado por varias autoridades financeiras, incluindo a FCA (Reino Unido), CySEC (Chipre) e ASIC (Australia). A regulamentacao significa que ha supervisao e responsabilidade legal. Leia meu artigo completo <a href=\"etoro-scam.html\">O eToro e uma fraude?</a> para mais informacoes."
+      },
+      {
+        "question": "Como comeco a fazer copy trading?",
+        "answer": "Os passos basicos sao: abrir uma conta no eToro, verificar sua identidade, depositar fundos, explorar a secao 'Copiar Pessoas', escolher alguem cujas estatisticas voce goste, definir o valor de copia e clicar em copiar. O <a href=\"copy-trading.html\">guia de Copy Trading</a> cobre isso com mais detalhes."
+      }
+    ],
+    "sidebar_h3": "Pronto para experimentar o copy trading?",
+    "sidebar_p": "Aqui esta meu link de afiliado do eToro para comecar.",
+    "sidebar_nav_h4": "Guias uteis"
+  },
+  "contact": {
+    "slug": "contato",
+    "meta_description": "Entre em contato com o Social Trading Vlog — perguntas sobre copy trading, eToro ou o site.",
+    "title": "Contato | SocialTradingVlog",
+    "article_tag": "Contato",
+    "h1": "Contato",
+    "intro": "Tem alguma pergunta sobre copy trading, eToro ou algo do site? Fique a vontade para entrar em contato. Observe que nao sou consultor financeiro e nao posso dar conselhos de investimento, mas ficarei feliz em responder perguntas sobre como a plataforma funciona ou compartilhar minha experiencia.",
+    "form_labels": {
+      "name": "Seu nome",
+      "name_placeholder": "ex. Maria Silva",
+      "email": "E-mail",
+      "email_placeholder": "voce@exemplo.com",
+      "message": "Mensagem",
+      "message_placeholder": "Sua pergunta ou mensagem...",
+      "submit": "Enviar mensagem"
+    },
+    "reminder_title": "Lembrete",
+    "reminder_text": "Este site e apenas para fins educacionais e informativos. Nada publicado aqui constitui aconselhamento financeiro ou de investimento. 51% das contas de investidores de varejo perdem dinheiro ao negociar CFDs no eToro. Seu capital esta em risco."
+  },
+  "updates": {
+    "copy-trading-update-01-mar-2019": {
+      "slug": "atualizacao-copy-trading-01-mar-2019",
+      "meta_description": "Atualizacao de copy trading — 01 de marco de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 01 Mar 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Marco 2019",
+      "h1": "Atualizacao Copy Trading — 01 de Marco de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-02-aug-2019": {
+      "slug": "atualizacao-copy-trading-02-ago-2019",
+      "meta_description": "Atualizacao de copy trading — 02 de agosto de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 02 Ago 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Agosto 2019",
+      "h1": "Atualizacao Copy Trading — 02 de Agosto de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-03-feb-2019": {
+      "slug": "atualizacao-copy-trading-03-fev-2019",
+      "meta_description": "Atualizacao de copy trading — 03 de fevereiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 03 Fev 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+      "h1": "Atualizacao Copy Trading — 03 de Fevereiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-04-apr-2019": {
+      "slug": "atualizacao-copy-trading-04-abr-2019",
+      "meta_description": "Atualizacao de copy trading — 04 de abril de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 04 Abr 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Abril 2019",
+      "h1": "Atualizacao Copy Trading — 04 de Abril de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-04-jun-2019": {
+      "slug": "atualizacao-copy-trading-04-jun-2019",
+      "meta_description": "Atualizacao de copy trading — 04 de junho de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 04 Jun 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Junho 2019",
+      "h1": "Atualizacao Copy Trading — 04 de Junho de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-07-feb-2019": {
+      "slug": "atualizacao-copy-trading-07-fev-2019",
+      "meta_description": "Atualizacao de copy trading — 07 de fevereiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 07 Fev 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+      "h1": "Atualizacao Copy Trading — 07 de Fevereiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-07-may-2019": {
+      "slug": "atualizacao-copy-trading-07-mai-2019",
+      "meta_description": "Atualizacao de copy trading — 07 de maio de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 07 Mai 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Maio 2019",
+      "h1": "Atualizacao Copy Trading — 07 de Maio de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-11-jan-2019": {
+      "slug": "atualizacao-copy-trading-11-jan-2019",
+      "meta_description": "Atualizacao de copy trading — 11 de janeiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 11 Jan 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Janeiro 2019",
+      "h1": "Atualizacao Copy Trading — 11 de Janeiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-13-jan-2019": {
+      "slug": "atualizacao-copy-trading-13-jan-2019",
+      "meta_description": "Atualizacao de copy trading — 13 de janeiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 13 Jan 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Janeiro 2019",
+      "h1": "Atualizacao Copy Trading — 13 de Janeiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-13-mar-2019": {
+      "slug": "atualizacao-copy-trading-13-mar-2019",
+      "meta_description": "Atualizacao de copy trading — 13 de marco de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 13 Mar 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Marco 2019",
+      "h1": "Atualizacao Copy Trading — 13 de Marco de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-14-dec-2018": {
+      "slug": "atualizacao-copy-trading-14-dez-2018",
+      "meta_description": "Atualizacao de copy trading — 14 de dezembro de 2018. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 14 Dez 2018 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Dezembro 2018",
+      "h1": "Atualizacao Copy Trading — 14 de Dezembro de 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-14-feb-2019": {
+      "slug": "atualizacao-copy-trading-14-fev-2019",
+      "meta_description": "Atualizacao de copy trading — 14 de fevereiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 14 Fev 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+      "h1": "Atualizacao Copy Trading — 14 de Fevereiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-15-jun-2019": {
+      "slug": "atualizacao-copy-trading-15-jun-2019",
+      "meta_description": "Atualizacao de copy trading — 15 de junho de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 15 Jun 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Junho 2019",
+      "h1": "Atualizacao Copy Trading — 15 de Junho de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-16-apr-2019": {
+      "slug": "atualizacao-copy-trading-16-abr-2019",
+      "meta_description": "Atualizacao de copy trading — 16 de abril de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 16 Abr 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Abril 2019",
+      "h1": "Atualizacao Copy Trading — 16 de Abril de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-16-may-2019": {
+      "slug": "atualizacao-copy-trading-16-mai-2019",
+      "meta_description": "Atualizacao de copy trading — 16 de maio de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 16 Mai 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Maio 2019",
+      "h1": "Atualizacao Copy Trading — 16 de Maio de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-20-feb-2019": {
+      "slug": "atualizacao-copy-trading-20-fev-2019",
+      "meta_description": "Atualizacao de copy trading — 20 de fevereiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 20 Fev 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+      "h1": "Atualizacao Copy Trading — 20 de Fevereiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-apr-2019": {
+      "slug": "atualizacao-copy-trading-23-abr-2019",
+      "meta_description": "Atualizacao de copy trading — 23 de abril de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 23 Abr 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Abril 2019",
+      "h1": "Atualizacao Copy Trading — 23 de Abril de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-aug-2018": {
+      "slug": "atualizacao-copy-trading-23-ago-2018",
+      "meta_description": "Atualizacao de copy trading — 23 de agosto de 2018. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 23 Ago 2018 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Agosto 2018",
+      "h1": "Atualizacao Copy Trading — 23 de Agosto de 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-23-jul-2019": {
+      "slug": "atualizacao-copy-trading-23-jul-2019",
+      "meta_description": "Atualizacao de copy trading — 23 de julho de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 23 Jul 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Julho 2019",
+      "h1": "Atualizacao Copy Trading — 23 de Julho de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-24-aug-2019": {
+      "slug": "atualizacao-copy-trading-24-ago-2019",
+      "meta_description": "Atualizacao de copy trading — 24 de agosto de 2019. Ouro, prata e decisoes de portfolio documentadas com honestidade.",
+      "title": "Atualizacao Copy Trading — 24 Ago 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Agosto 2019",
+      "h1": "Atualizacao Copy Trading — 24 de Agosto de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-25-nov-2018": {
+      "slug": "atualizacao-copy-trading-25-nov-2018",
+      "meta_description": "Atualizacao de copy trading — 25 de novembro de 2018. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 25 Nov 2018 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Novembro 2018",
+      "h1": "Atualizacao Copy Trading — 25 de Novembro de 2018",
+      "content_blocks": []
+    },
+    "copy-trading-update-26-mar-2019": {
+      "slug": "atualizacao-copy-trading-26-mar-2019",
+      "meta_description": "Atualizacao de copy trading — 26 de marco de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 26 Mar 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Marco 2019",
+      "h1": "Atualizacao Copy Trading — 26 de Marco de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-28-nov-2017": {
+      "slug": "atualizacao-copy-trading-28-nov-2017",
+      "meta_description": "Atualizacao de copy trading — 28 de novembro de 2017. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 28 Nov 2017 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Novembro 2017",
+      "h1": "Atualizacao Copy Trading — 28 de Novembro de 2017",
+      "content_blocks": []
+    },
+    "copy-trading-update-29-jan-2019": {
+      "slug": "atualizacao-copy-trading-29-jan-2019",
+      "meta_description": "Atualizacao de copy trading — 29 de janeiro de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 29 Jan 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Janeiro 2019",
+      "h1": "Atualizacao Copy Trading — 29 de Janeiro de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-30-apr-2019": {
+      "slug": "atualizacao-copy-trading-30-abr-2019",
+      "meta_description": "Atualizacao de copy trading — 30 de abril de 2019. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — 30 Abr 2019 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Abril 2019",
+      "h1": "Atualizacao Copy Trading — 30 de Abril de 2019",
+      "content_blocks": []
+    },
+    "copy-trading-update-jul-2018": {
+      "slug": "atualizacao-copy-trading-jul-2018",
+      "meta_description": "Atualizacao de copy trading — julho de 2018. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Copy Trading — Jul 2018 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Julho 2018",
+      "h1": "Atualizacao Copy Trading — Julho de 2018",
+      "content_blocks": []
+    },
+    "social-trading-update-jun-2017": {
+      "slug": "atualizacao-social-trading-jun-2017",
+      "meta_description": "Atualizacao de social trading — junho de 2017. Documentacao honesta da minha experiencia com copy trading no eToro.",
+      "title": "Atualizacao Social Trading — Jun 2017 | SocialTradingVlog",
+      "article_tag": "Atualizacao do portfolio · Junho 2017",
+      "h1": "Atualizacao Social Trading — Junho de 2017",
+      "content_blocks": []
+    }
+  }
+}

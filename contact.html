@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Get in touch with Social Trading Vlog — questions about copy trading, eToro, or the site." />
   <title>Contact | SocialTradingVlog</title>
+  <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/contact.html" />
+  <link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/contact.html" />
+  <link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/ittisal/" />
+  <link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/kontakt/" />
+  <link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/contacto/" />
+  <link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/contact/" />
+  <link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/contato/" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
     .contact-form {
@@ -96,21 +103,24 @@
     <div class="container">
       <p style="color:var(--muted); margin-bottom: 32px; max-width: 560px;">Have a question about copy trading, eToro, or something on the site? Feel free to get in touch. Please note I'm not a financial adviser and can't give investment advice — but I'm happy to answer questions about how the platform works or share my experience.</p>
 
-      <div class="contact-form">
+      <form class="contact-form" action="https://formspree.io/f/FORM_ID_HERE" method="POST">
+        <input type="hidden" name="_subject" value="New message from SocialTradingVlog contact form" />
+        <input type="hidden" name="_next" value="https://socialtradingvlog.com/contact-thanks.html" />
+        <input type="text" name="_gotcha" style="display:none" />
         <div class="form-group">
           <label for="name">Your name</label>
-          <input type="text" id="name" placeholder="e.g. Jane Smith" />
+          <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required />
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" placeholder="you@example.com" />
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" placeholder="Your question or message..."></textarea>
+          <textarea id="message" name="message" placeholder="Your question or message..." required></textarea>
         </div>
-        <button class="btn btn-primary" style="width:100%">Send message</button>
-      </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Send message</button>
+      </form>
 
       <div class="risk-warning" style="max-width:600px; margin-top: 32px;">
         <strong>Reminder</strong>
