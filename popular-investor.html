@@ -12,11 +12,53 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "eToro Popular Investor Program Explained",
-    "author": {"@type": "Person", "name": "Tom"},
-    "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
-    "description": "A full breakdown of the eToro Popular Investor Program — the 4 tiers, requirements, and payments."
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "eToro Popular Investor Program Explained",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"},
+        "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
+        "description": "A full breakdown of the eToro Popular Investor Program — the 4 tiers, requirements, and payments.",
+        "mainEntityOfPage": "https://socialtradingvlog.com/popular-investor.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an eToro Popular Investor?",
+            "acceptedAnswer": {"@type": "Answer", "text": "An eToro Popular Investor is a trader on the platform whose trades you can automatically copy. They are the experienced investors that power eToro's copy trading feature. The more people who copy them and the more money used to copy them, the more they earn from eToro."}
+          },
+          {
+            "@type": "Question",
+            "name": "How do eToro Popular Investors get paid?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Popular Investors earn money directly from eToro — the people copying them don't pay anything. Payments are based on a performance-based incentive system. At Elite and Elite Pro levels, Popular Investors receive 1.5% to 2.5% of their annual Assets Under Custody (AUC), paid monthly."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do you need to be a professional to become an eToro Popular Investor?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. You don't need financial qualifications, certificates, or degrees. You just need a consistent trading track record. Users check your statistics page and if they like what they see, they'll copy you."}
+          },
+          {
+            "@type": "Question",
+            "name": "What are the 4 levels of the eToro Popular Investor Program?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The 4 tiers are: Level 1 'Cadet' (Blue Star) — requires 1 verified copier and $1,000 AUC; Level 2 'Champion' (Red Star) — receives monthly payments and fee-free withdrawals; Level 3 'Elite' (Green Star) — receives percentage-based payout on AUC; Level 4 'Elite Pro' (Black Star) — the highest tier with the most lucrative payments, up to 2.5% of AUC annually."}
+          },
+          {
+            "@type": "Question",
+            "name": "How hard is it to reach Elite Pro on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "It's not easy. Your statistics need to be attractive in both risk and profitability. Consistent performance is key — the more copiers you have, the more visible you become, which brings more copiers. It gains momentum over time, but reaching Elite Pro requires sustained, genuine trading performance."}
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/"},
+          {"@type": "ListItem", "position": 2, "name": "eToro Popular Investor Program", "item": "https://socialtradingvlog.com/popular-investor.html"}
+        ]
+      }
+    ]
   }
   </script>
 <!-- Google tag (gtag.js) -->
@@ -40,6 +82,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -55,6 +98,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -167,6 +211,17 @@
           51% of retail investor accounts lose money when trading CFDs with eToro. You should consider whether you can afford to take the high risk of losing your money. Past performance is not an indication of future results. Copy Trading does not amount to investment advice. The value of your investments may go up or down. Your capital is at risk.
         </div>
 
+        <div class="newsletter-inline">
+          <h3>Get weekly copy trading updates</h3>
+          <p>I share honest portfolio updates, practical tips, and new articles every week. No spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg" style="margin-top:8px;"></div>
+          <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a></p>
+        </div>
+
 </article>
 
       <aside class="article-sidebar">
@@ -178,6 +233,16 @@
             <strong>51% of retail investor accounts lose money when trading CFDs with eToro.</strong>
             You should consider whether you can afford to take the high risk of losing your money. This is an affiliate link — I may earn a commission at no cost to you.
           </div>
+        </div>
+        <div class="sidebar-newsletter">
+          <h4>Free weekly updates</h4>
+          <p>Portfolio updates, tips, and new articles — straight to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg"></div>
+          <p class="newsletter-fine">No spam. Unsubscribe any time.</p>
         </div>
         <div class="sidebar-nav">
           <h4>More guides</h4>
@@ -195,6 +260,14 @@
             <li><a href="etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
             <li><a href="etoro-vs-trading-212/">eToro vs Trading 212</a></li>
+            <li><a href="etoro-minimum-deposit/">eToro Minimum Deposit</a></li>
+            <li><a href="etoro-withdrawal-fees/">Withdrawal Fees</a></li>
+            <li><a href="etoro-spread-fees/">Spread Fees Explained</a></li>
+            <li><a href="is-etoro-safe/">Is eToro Safe?</a></li>
+            <li><a href="etoro-copy-trading-fees/">Copy Trading Fees</a></li>
+            <li><a href="etoro-copy-trading-review/">Copy Trading Review</a></li>
+            <li><a href="best-traders-to-copy-etoro/">Best Traders to Copy</a></li>
+            <li><a href="how-to-close-etoro-account/">Close eToro Account</a></li>
 </ul>
         </div>
       </aside>
@@ -224,6 +297,7 @@
             <li><a href="updates.html">Trading Updates</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -237,6 +311,7 @@
 
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/lang-switcher.js"></script>
 <script>
 document.addEventListener('click', function(e) {

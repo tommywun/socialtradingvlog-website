@@ -19,11 +19,43 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "What is Copy Trading? How it Works",
-    "author": {"@type": "Person", "name": "Tom"},
-    "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
-    "description": "Copy trading explained — how it works, its history, and what to watch out for."
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What is Copy Trading? How it Works",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"},
+        "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
+        "description": "Copy trading explained — how it works, its history, and what to watch out for.",
+        "mainEntityOfPage": "https://socialtradingvlog.com/copy-trading.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is copy trading and how does it work?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Copy trading lets beginners automatically copy the trades of more experienced investors. You browse trader profiles, check their statistics and risk scores, and when you find one you like, press 'Copy' and set your investment amount. From then on, when they buy, you buy. When they sell, you sell. It's fully automated and proportional to your investment amount."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does copy trading actually work?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Copy trading is still trading — assets can go up or down in value. The key is choosing the right traders to copy by studying their statistics, risk scores, and trading history. All their performance data is publicly available on the platform. Past performance is not indicative of future results. 51% of retail investor accounts lose money when trading CFDs with eToro."}
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a charge to copy someone on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No — copying someone on eToro is free. The traders you copy (called Popular Investors) earn incentives directly from eToro based on how many people copy them. You pay the normal spread fees for each trade that's executed in your account, but there's no additional fee for the copy trading feature itself."}
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/"},
+          {"@type": "ListItem", "position": 2, "name": "What is Copy Trading?", "item": "https://socialtradingvlog.com/copy-trading.html"}
+        ]
+      }
+    ]
   }
   </script>
 <!-- Google tag (gtag.js) -->
@@ -47,6 +79,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -62,6 +95,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -167,6 +201,17 @@
           Past performance is not an indication of future results. Copy Trading does not amount to investment advice. The value of your investments may go up or down. Your capital is at risk.
         </div>
 
+        <div class="newsletter-inline">
+          <h3>Get weekly copy trading updates</h3>
+          <p>I share honest portfolio updates, practical tips, and new articles every week. No spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg" style="margin-top:8px;"></div>
+          <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a></p>
+        </div>
+
 </article>
 
       <aside class="article-sidebar">
@@ -178,6 +223,16 @@
             <strong>51% of retail investor accounts lose money when trading CFDs with eToro.</strong>
             You should consider whether you can afford to take the high risk of losing your money. This is an affiliate link — I may earn a commission at no cost to you.
           </div>
+        </div>
+        <div class="sidebar-newsletter">
+          <h4>Free weekly updates</h4>
+          <p>Portfolio updates, tips, and new articles — straight to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg"></div>
+          <p class="newsletter-fine">No spam. Unsubscribe any time.</p>
         </div>
         <div class="sidebar-nav">
           <h4>More guides</h4>
@@ -195,6 +250,14 @@
             <li><a href="etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
             <li><a href="etoro-vs-trading-212/">eToro vs Trading 212</a></li>
+            <li><a href="etoro-minimum-deposit/">eToro Minimum Deposit</a></li>
+            <li><a href="etoro-withdrawal-fees/">Withdrawal Fees</a></li>
+            <li><a href="etoro-spread-fees/">Spread Fees Explained</a></li>
+            <li><a href="is-etoro-safe/">Is eToro Safe?</a></li>
+            <li><a href="etoro-copy-trading-fees/">Copy Trading Fees</a></li>
+            <li><a href="etoro-copy-trading-review/">Copy Trading Review</a></li>
+            <li><a href="best-traders-to-copy-etoro/">Best Traders to Copy</a></li>
+            <li><a href="how-to-close-etoro-account/">Close eToro Account</a></li>
 </ul>
         </div>
       </aside>
@@ -224,6 +287,7 @@
             <li><a href="updates.html">Trading Updates</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -237,6 +301,7 @@
 
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/lang-switcher.js"></script>
 <script>
 document.addEventListener('click', function(e) {

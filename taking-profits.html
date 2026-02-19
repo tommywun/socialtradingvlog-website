@@ -19,11 +19,43 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Taking Profits from Copy Trading on eToro",
-    "author": {"@type": "Person", "name": "Tom"},
-    "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
-    "description": "A practical guide to withdrawing profits from copy trading on eToro."
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Taking Profits from Copy Trading on eToro",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"},
+        "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
+        "description": "A practical guide to withdrawing profits from copy trading on eToro.",
+        "mainEntityOfPage": "https://socialtradingvlog.com/taking-profits.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do copy trading profits get automatically reinvested on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. When you copy a trader on eToro, any profits from their trades are automatically reinvested into that copy relationship. Your copy amount grows as profits accumulate, which means you're effectively compounding your returns. You don't need to do anything — it happens automatically."}
+          },
+          {
+            "@type": "Question",
+            "name": "How do you withdraw profits from copy trading on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "There are three main ways: 1) Stop copying the trader entirely, which closes all positions and returns funds to your balance. 2) Pause the copy, remove some funds, then resume. 3) Use the 'Remove Funds' option to take money directly from an active copy without stopping it. Each method has different implications for your positions."}
+          },
+          {
+            "@type": "Question",
+            "name": "What does 'Copy Pending Close' mean on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "This appears when you've stopped copying someone but some of their positions are in assets whose exchanges aren't currently open. The positions will close as soon as the relevant exchange opens. Stock exchanges have specific trading hours, so positions in stocks can't close outside those hours."}
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Taking Profits from Copy Trading", "item": "https://socialtradingvlog.com/taking-profits.html"}
+        ]
+      }
+    ]
   }
   </script>
 <!-- Google tag (gtag.js) -->
@@ -47,6 +79,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -62,6 +95,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -181,6 +215,17 @@
           51% of retail investor accounts lose money when trading CFDs with eToro. You should consider whether you can afford to take the high risk of losing your money. Past performance is not an indication of future results. Copy Trading does not amount to investment advice. The value of your investments may go up or down. Your capital is at risk.
         </div>
 
+        <div class="newsletter-inline">
+          <h3>Get weekly copy trading updates</h3>
+          <p>I share honest portfolio updates, practical tips, and new articles every week. No spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg" style="margin-top:8px;"></div>
+          <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a></p>
+        </div>
+
 </article>
 
       <aside class="article-sidebar">
@@ -192,6 +237,16 @@
             <strong>51% of retail investor accounts lose money when trading CFDs with eToro.</strong>
             You should consider whether you can afford to take the high risk of losing your money. This is an affiliate link — I may earn a commission at no cost to you.
           </div>
+        </div>
+        <div class="sidebar-newsletter">
+          <h4>Free weekly updates</h4>
+          <p>Portfolio updates, tips, and new articles — straight to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg"></div>
+          <p class="newsletter-fine">No spam. Unsubscribe any time.</p>
         </div>
         <div class="sidebar-nav">
           <h4>More guides</h4>
@@ -209,6 +264,14 @@
             <li><a href="etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
             <li><a href="etoro-vs-trading-212/">eToro vs Trading 212</a></li>
+            <li><a href="etoro-minimum-deposit/">eToro Minimum Deposit</a></li>
+            <li><a href="etoro-withdrawal-fees/">Withdrawal Fees</a></li>
+            <li><a href="etoro-spread-fees/">Spread Fees Explained</a></li>
+            <li><a href="is-etoro-safe/">Is eToro Safe?</a></li>
+            <li><a href="etoro-copy-trading-fees/">Copy Trading Fees</a></li>
+            <li><a href="etoro-copy-trading-review/">Copy Trading Review</a></li>
+            <li><a href="best-traders-to-copy-etoro/">Best Traders to Copy</a></li>
+            <li><a href="how-to-close-etoro-account/">Close eToro Account</a></li>
 </ul>
         </div>
       </aside>
@@ -238,6 +301,7 @@
             <li><a href="updates.html">Trading Updates</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -251,6 +315,7 @@
 
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/lang-switcher.js"></script>
 <script>
 document.addEventListener('click', function(e) {

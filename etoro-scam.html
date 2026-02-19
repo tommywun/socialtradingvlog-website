@@ -12,11 +12,48 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Is eToro a Scam? An Honest Review",
-    "author": {"@type": "Person", "name": "Tom"},
-    "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
-    "description": "An honest review of eToro after years of real use — deposits, withdrawals, copy trading and more."
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Is eToro a Scam? An Honest Review",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"},
+        "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
+        "description": "An honest review of eToro after years of real use — deposits, withdrawals, copy trading and more.",
+        "mainEntityOfPage": "https://socialtradingvlog.com/etoro-scam.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is eToro a scam?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. eToro is a legitimate, regulated trading platform. It's regulated by the FCA (UK), CySEC (Cyprus), and ASIC (Australia). Tom has used eToro since 2016, successfully depositing and withdrawing money multiple times. However, trading involves risk — 51% of retail investor accounts lose money when trading CFDs with eToro."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can you withdraw money from eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tom has successfully withdrawn money from eToro multiple times over the years. Withdrawal processing typically takes 1-2 business days. There is a $5 withdrawal fee for USD accounts, though GBP and EUR withdrawals are now free for some account types."}
+          },
+          {
+            "@type": "Question",
+            "name": "How does eToro actually make money?",
+            "acceptedAnswer": {"@type": "Answer", "text": "eToro makes money primarily through spreads (the difference between buy and sell prices), overnight fees on CFD positions, currency conversion fees for non-USD accounts, and withdrawal fees. They make money whether traders win or lose — the spread is charged on every trade."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why are my trades losing as soon as I open them on eToro?",
+            "acceptedAnswer": {"@type": "Answer", "text": "This is because of the spread — the difference between the buy and sell price. When you open a trade, you buy at the slightly higher 'ask' price, but the position is valued at the lower 'bid' price. This means every trade starts slightly negative. The trade needs to move in your favour by at least the spread amount before you see a profit."}
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Is eToro a Scam?", "item": "https://socialtradingvlog.com/etoro-scam.html"}
+        ]
+      }
+    ]
   }
   </script>
 <!-- Google tag (gtag.js) -->
@@ -40,6 +77,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -55,6 +93,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -150,6 +189,17 @@
           51% of retail investor accounts lose money when trading CFDs with eToro. You should consider whether you can afford to take the high risk of losing your money. Past performance is not an indication of future results. This content is for educational purposes only and is not investment advice.
         </div>
 
+        <div class="newsletter-inline">
+          <h3>Get weekly copy trading updates</h3>
+          <p>I share honest portfolio updates, practical tips, and new articles every week. No spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg" style="margin-top:8px;"></div>
+          <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a></p>
+        </div>
+
 </article>
 
       <aside class="article-sidebar">
@@ -161,6 +211,16 @@
             <strong>51% of retail investor accounts lose money when trading CFDs with eToro.</strong>
             You should consider whether you can afford to take the high risk of losing your money. This is an affiliate link — I may earn a commission at no cost to you.
           </div>
+        </div>
+        <div class="sidebar-newsletter">
+          <h4>Free weekly updates</h4>
+          <p>Portfolio updates, tips, and new articles — straight to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg"></div>
+          <p class="newsletter-fine">No spam. Unsubscribe any time.</p>
         </div>
         <div class="sidebar-nav">
           <h4>More guides</h4>
@@ -178,6 +238,14 @@
             <li><a href="etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
             <li><a href="etoro-vs-trading-212/">eToro vs Trading 212</a></li>
+            <li><a href="etoro-minimum-deposit/">eToro Minimum Deposit</a></li>
+            <li><a href="etoro-withdrawal-fees/">Withdrawal Fees</a></li>
+            <li><a href="etoro-spread-fees/">Spread Fees Explained</a></li>
+            <li><a href="is-etoro-safe/">Is eToro Safe?</a></li>
+            <li><a href="etoro-copy-trading-fees/">Copy Trading Fees</a></li>
+            <li><a href="etoro-copy-trading-review/">Copy Trading Review</a></li>
+            <li><a href="best-traders-to-copy-etoro/">Best Traders to Copy</a></li>
+            <li><a href="how-to-close-etoro-account/">Close eToro Account</a></li>
 </ul>
         </div>
       </aside>
@@ -207,6 +275,7 @@
             <li><a href="updates.html">Trading Updates</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -220,6 +289,7 @@
 
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/lang-switcher.js"></script>
 <script>
 document.addEventListener('click', function(e) {

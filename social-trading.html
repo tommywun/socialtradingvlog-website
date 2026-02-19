@@ -19,11 +19,48 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "What is Social Trading? A Beginner's Guide",
-    "author": {"@type": "Person", "name": "Tom"},
-    "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
-    "description": "A beginner's guide to social trading — how it works, its history, risks and benefits."
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What is Social Trading? A Beginner's Guide",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"},
+        "publisher": {"@type": "Organization", "name": "Social Trading Vlog"},
+        "description": "A beginner's guide to social trading — how it works, its history, risks and benefits.",
+        "mainEntityOfPage": "https://socialtradingvlog.com/social-trading.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is social trading safe?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No — it's still trading and you can still lose money. Nobody can guarantee profits. Social trading platforms are regulated by financial authorities (eToro is regulated by FCA, CySEC, and ASIC), but regulation doesn't eliminate investment risk. 51% of retail investor accounts lose money when trading CFDs with eToro."}
+          },
+          {
+            "@type": "Question",
+            "name": "Is social trading regulated?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Social trading is now such a large marketplace that platforms must be regulated by national and international financial authorities to operate. It's best to avoid any trading platform that isn't regulated by legitimate authorities. eToro, for example, is regulated by the FCA (UK), CySEC (Cyprus), and ASIC (Australia)."}
+          },
+          {
+            "@type": "Question",
+            "name": "What are the costs of social trading?",
+            "acceptedAnswer": {"@type": "Answer", "text": "You need to deposit real money into your account, but you're not charged by the person you copy. They earn incentives from the platform. There are standard trading fees (spreads, overnight fees) as with all brokerages, but the act of copying someone is free on eToro."}
+          },
+          {
+            "@type": "Question",
+            "name": "What is copy trading?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Copy trading lets you browse through traders' profiles on a platform, check their statistics and track record, and then automatically copy all their future trades. When they buy, you buy. When they sell, you sell. It's fully automated — you choose how much to invest, and the system mirrors their trades proportionally."}
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/"},
+          {"@type": "ListItem", "position": 2, "name": "What is Social Trading?", "item": "https://socialtradingvlog.com/social-trading.html"}
+        ]
+      }
+    ]
   }
   </script>
 <!-- Google tag (gtag.js) -->
@@ -47,6 +84,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -62,6 +100,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#etoro-cta" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -124,6 +163,17 @@
         <h2>Ready to Learn More?</h2>
         <p>Check out the <a href="copy-trading.html">Copy Trading guide</a> for a deeper look at exactly how it works in practice, or read about <a href="etoro-scam.html">whether eToro is a scam</a> — the first question I had when I found it.</p>
 
+        <div class="newsletter-inline">
+          <h3>Get weekly copy trading updates</h3>
+          <p>I share honest portfolio updates, practical tips, and new articles every week. No spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg" style="margin-top:8px;"></div>
+          <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a></p>
+        </div>
+
 </article>
 
       <aside class="article-sidebar">
@@ -135,6 +185,16 @@
             <strong>51% of retail investor accounts lose money when trading CFDs with eToro.</strong>
             You should consider whether you can afford to take the high risk of losing your money. This is an affiliate link — I may earn a commission at no cost to you.
           </div>
+        </div>
+        <div class="sidebar-newsletter">
+          <h4>Free weekly updates</h4>
+          <p>Portfolio updates, tips, and new articles — straight to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-msg"></div>
+          <p class="newsletter-fine">No spam. Unsubscribe any time.</p>
         </div>
         <div class="sidebar-nav">
           <h4>More guides</h4>
@@ -152,6 +212,14 @@
             <li><a href="etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
             <li><a href="etoro-vs-trading-212/">eToro vs Trading 212</a></li>
+            <li><a href="etoro-minimum-deposit/">eToro Minimum Deposit</a></li>
+            <li><a href="etoro-withdrawal-fees/">Withdrawal Fees</a></li>
+            <li><a href="etoro-spread-fees/">Spread Fees Explained</a></li>
+            <li><a href="is-etoro-safe/">Is eToro Safe?</a></li>
+            <li><a href="etoro-copy-trading-fees/">Copy Trading Fees</a></li>
+            <li><a href="etoro-copy-trading-review/">Copy Trading Review</a></li>
+            <li><a href="best-traders-to-copy-etoro/">Best Traders to Copy</a></li>
+            <li><a href="how-to-close-etoro-account/">Close eToro Account</a></li>
 </ul>
         </div>
       </aside>
@@ -181,6 +249,7 @@
             <li><a href="updates.html">Trading Updates</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -194,6 +263,7 @@
 
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/lang-switcher.js"></script>
 <script>
 document.addEventListener('click', function(e) {

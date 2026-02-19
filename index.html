@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Social Trading Vlog - Tom's honest journey into copy trading and social investing on eToro. Real results, real updates, no hype." />
   <title>Social Trading Vlog | Copy Trading with Tom</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "SocialTradingVlog",
+        "url": "https://socialtradingvlog.com/",
+        "description": "Tom's honest journey into copy trading and social investing on eToro. Real results, real updates, no hype.",
+        "author": {"@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about.html"}
+      },
+      {
+        "@type": "Organization",
+        "name": "Social Trading Vlog",
+        "url": "https://socialtradingvlog.com/",
+        "sameAs": ["https://www.youtube.com/@SocialTradingVlog"]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/style.css" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
@@ -28,6 +48,7 @@
         <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
         <li><a href="#start" class="nav-cta">Start Copy Trading</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
@@ -43,6 +64,7 @@
       <li><a href="videos.html">Videos</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
       <li><a href="#start" class="nav-cta">Try eToro</a></li>
     </ul>
   </div>
@@ -229,6 +251,20 @@
     </div>
   </div>
 
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="container">
+      <h2>Get weekly copy trading updates</h2>
+      <p>I share honest portfolio updates, practical tips, and new articles every week. Join for free — no spam, unsubscribe any time.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-msg" style="margin-top:8px;"></div>
+      <p class="newsletter-fine">Plus get my free <a href="checklist/" style="color:var(--accent);">Copy Trading Checklist</a> — 10 things I check before copying any trader.</p>
+    </div>
+  </div>
+
   <!-- POPULAR VIDEOS -->
   <section class="home-videos-strip">
     <div class="container">
@@ -322,6 +358,7 @@
             <li><a href="videos.html">Videos</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
+        <li><a href="calculators/">Tools</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -338,6 +375,7 @@
   <script src="js/lightbox.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/lang-switcher.js"></script>
+  <script src="js/newsletter.js"></script>
 <script>
 document.addEventListener('click', function(e) {
   var link = e.target.closest('a.btn-primary');
