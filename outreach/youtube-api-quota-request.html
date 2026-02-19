@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YouTube API Client Documentation — Social Trading Vlog Subtitle Manager</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; line-height: 1.6; padding: 40px; max-width: 820px; margin: 0 auto; font-size: 14px; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 16px; margin-top: 28px; margin-bottom: 8px; color: #c00; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  .subtitle { color: #666; font-size: 14px; margin-bottom: 24px; }
+  p { margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
+  th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; }
+  th { background: #f5f5f5; font-weight: 600; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+  .code-block { background: #f4f4f4; padding: 10px 14px; border-radius: 4px; font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 12px; margin: 8px 0; white-space: pre-wrap; }
+  ul { margin: 4px 0 8px 20px; }
+  li { margin-bottom: 2px; }
+  .highlight { background: #fff3cd; padding: 10px 14px; border-radius: 4px; border-left: 3px solid #ffc107; margin: 12px 0; font-size: 13px; }
+
+  /* Terminal styling */
+  .terminal { background: #1e1e1e; border-radius: 8px; overflow: hidden; margin: 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .terminal-header { background: #363636; padding: 8px 12px; display: flex; align-items: center; gap: 6px; }
+  .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .terminal-dot.red { background: #ff5f57; }
+  .terminal-dot.yellow { background: #febc2e; }
+  .terminal-dot.green { background: #28c840; }
+  .terminal-title { color: #999; font-size: 11px; margin-left: 8px; font-family: monospace; }
+  .terminal-body { padding: 14px 16px; font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 12px; line-height: 1.7; color: #d4d4d4; }
+  .terminal-body .time { color: #6a9955; }
+  .terminal-body .info { color: #569cd6; }
+  .terminal-body .success { color: #4ec9b0; }
+  .terminal-body .warn { color: #ce9178; }
+  .terminal-body .dim { color: #666; }
+  .terminal-body .bright { color: #fff; font-weight: 600; }
+
+  /* Architecture diagram */
+  .arch-diagram { margin: 16px 0; }
+
+  @media print { body { padding: 20px; } .terminal { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>YouTube API Client Documentation</h1>
+<p class="subtitle">Social Trading Vlog Subtitle Manager &mdash; Internal Creator Tool</p>
+
+<h2>1. Overview</h2>
+<p><strong>API Client Name:</strong> Social Trading Vlog Subtitle Manager</p>
+<p><strong>Type:</strong> Internal Python script (not publicly distributed)</p>
+<p><strong>Purpose:</strong> Upload translated SRT subtitle files to my own YouTube channel's videos, making content accessible to non-English-speaking audiences.</p>
+<p><strong>Channel:</strong> Social Trading Vlog &mdash; <a href="https://www.youtube.com/@SocialTradingVlog">youtube.com/@SocialTradingVlog</a> (66,400+ subscribers, 335 videos, active since September 2016)</p>
+<p><strong>Website:</strong> <a href="https://socialtradingvlog.com">socialtradingvlog.com</a></p>
+
+<h2>2. Architecture &amp; Data Flow</h2>
+<p>The tool is part of a 3-step pipeline that runs on my local machine. Only Step 3 uses the YouTube API.</p>
+
+<svg class="arch-diagram" viewBox="0 0 740 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:740px;">
+  <!-- Background -->
+  <rect width="740" height="200" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- Step 1: Transcribe -->
+  <rect x="20" y="30" width="160" height="90" rx="8" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.5"/>
+  <text x="100" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">STEP 1</text>
+  <text x="100" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Transcribe</text>
+  <text x="100" y="90" text-anchor="middle" font-size="10" fill="#666">OpenAI Whisper API</text>
+  <text x="100" y="105" text-anchor="middle" font-size="10" fill="#666">Audio → English SRT</text>
+
+  <!-- Arrow 1 -->
+  <path d="M185 75 L225 75" stroke="#999" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Translate -->
+  <rect x="230" y="30" width="160" height="90" rx="8" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="1.5"/>
+  <text x="310" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d32">STEP 2</text>
+  <text x="310" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Translate</text>
+  <text x="310" y="90" text-anchor="middle" font-size="10" fill="#666">Google Translate</text>
+  <text x="310" y="105" text-anchor="middle" font-size="10" fill="#666">English → 10 languages</text>
+
+  <!-- Arrow 2 -->
+  <path d="M395 75 L435 75" stroke="#999" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3: Upload (highlighted) -->
+  <rect x="440" y="20" width="170" height="100" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="525" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#e65100">STEP 3 — YouTube API</text>
+  <text x="525" y="65" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Upload Subtitles</text>
+  <text x="525" y="83" text-anchor="middle" font-size="10" fill="#666">captions.insert</text>
+  <text x="525" y="98" text-anchor="middle" font-size="10" fill="#666">SRT → YouTube captions</text>
+
+  <!-- Arrow to YouTube -->
+  <path d="M615 70 L650 70" stroke="#c00" stroke-width="1.5" fill="none" marker-end="url(#arrowhead-red)"/>
+
+  <!-- YouTube icon -->
+  <rect x="655" y="45" width="65" height="50" rx="8" fill="#ff0000"/>
+  <polygon points="680,62 680,80 698,71" fill="#fff"/>
+  <text x="687" y="108" text-anchor="middle" font-size="9" fill="#666">My Videos</text>
+
+  <!-- Languages list below -->
+  <text x="20" y="150" font-size="11" font-weight="600" fill="#1a1a1a">10 Target Languages:</text>
+  <text x="20" y="168" font-size="10" fill="#666">Spanish · Chinese · Hindi · Arabic · Portuguese · French · Russian · German · Japanese · Korean</text>
+  <text x="20" y="186" font-size="10" fill="#999">335 videos × 10 languages = 3,350 subtitle tracks to upload</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#999"/>
+    </marker>
+    <marker id="arrowhead-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c00"/>
+    </marker>
+  </defs>
+</svg>
+
+<h2>3. Tool in Action</h2>
+<p>Below is the actual output from the pipeline running on my machine (19 Feb 2026):</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-dot red"></div>
+    <div class="terminal-dot yellow"></div>
+    <div class="terminal-dot green"></div>
+    <span class="terminal-title">python3 tools/run_pipeline.py</span>
+  </div>
+  <div class="terminal-body">
+<span class="time">[14:03:15]</span> <span class="bright">=== Pipeline started 2026-02-19T14:03:15 ===</span>
+<span class="time">[14:03:15]</span> Videos: <span class="info">333</span> | Model: api | Languages: <span class="info">10</span>
+<span class="time">[14:03:15]</span> YouTube: <span class="success">authenticated — uploads enabled</span>
+<span class="time">[14:03:15]</span> Already complete: 0/333
+<span class="dim">─────────────────────────────────────────────</span>
+<span class="time">[14:03:15]</span> <span class="bright">[1/333]</span> daMK1Y54M-E
+<span class="time">[14:03:15]</span>   transcription already exists
+<span class="time">[14:03:15]</span>   translating to 2 languages: <span class="info">hi ko</span>
+<span class="time">[14:08:38]</span>   uploading subtitles to YouTube...
+<span class="time">[14:08:38]</span>     <span class="success">uploaded es (Spanish)</span>
+<span class="time">[14:08:38]</span>     <span class="success">uploaded de (German)</span>
+<span class="time">[14:08:38]</span>     <span class="success">uploaded fr (French)</span>
+<span class="time">[14:08:39]</span>     <span class="warn">YouTube quota exceeded — pausing uploads</span>
+<span class="time">[14:08:39]</span>   done in 5m 24s
+<span class="dim">─────────────────────────────────────────────</span>
+<span class="time">[14:08:39]</span> <span class="bright">[2/333]</span> YZYgjitj7DM
+<span class="time">[14:08:39]</span>   transcription already exists
+<span class="time">[14:08:39]</span>   translating to 2 languages: <span class="info">hi ko</span>
+<span class="time">[14:16:08]</span>   done in 7m 28s
+<span class="dim">─────────────────────────────────────────────</span>
+<span class="time">[14:16:08]</span> <span class="bright">[3/333]</span> k48YLAbEcY0
+<span class="time">[14:16:08]</span>   transcription already exists
+<span class="time">[14:16:08]</span>   translating to 2 languages: <span class="info">hi ko</span>
+<span class="dim">   ...</span>
+  </div>
+</div>
+
+<h2>4. YouTube API Endpoints Used</h2>
+<table>
+  <tr><th>Endpoint</th><th>Method</th><th>Purpose</th><th>Quota Cost</th></tr>
+  <tr><td><code>captions.list</code></td><td>GET</td><td>Check if subtitle track already exists for a video</td><td>50 units</td></tr>
+  <tr><td><code>captions.insert</code></td><td>POST</td><td>Upload a new SRT subtitle file to a video</td><td>400 units</td></tr>
+</table>
+<p><strong>No other YouTube API endpoints are used.</strong> The tool does not read, modify, or delete any video content &mdash; it only manages caption/subtitle tracks on my own videos.</p>
+
+<h2>5. OAuth Scopes &amp; Authentication</h2>
+<table>
+  <tr><th>Scope</th><th>Reason</th></tr>
+  <tr><td><code>youtube.force-ssl</code></td><td>Required for Captions API operations</td></tr>
+  <tr><td><code>youtube</code></td><td>General YouTube management scope</td></tr>
+</table>
+<p>Authentication is via OAuth 2.0 with <code>InstalledAppFlow.run_local_server()</code>. The token is stored locally on my machine. Only my Google account is authenticated &mdash; <strong>no other users access this tool.</strong></p>
+
+<h2>6. Data Handling</h2>
+<ul>
+  <li><strong>Data stored:</strong> Only caption IDs returned by <code>captions.insert</code>, used to track which subtitles have already been uploaded (avoids duplicates)</li>
+  <li><strong>Storage duration:</strong> Indefinite (simple JSON log file on my local machine)</li>
+  <li><strong>No YouTube user data is collected, shared, or commercialised</strong></li>
+  <li><strong>No data is displayed to any end users</strong> &mdash; this is a command-line tool I run locally</li>
+</ul>
+
+<h2>7. Quota Justification</h2>
+
+<!-- Quota comparison chart -->
+<svg viewBox="0 0 740 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:740px;margin:12px 0;">
+  <rect width="740" height="180" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="370" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a1a">Daily Upload Capacity: Current vs Requested Quota</text>
+
+  <!-- Current quota bar -->
+  <text x="20" y="58" font-size="10" fill="#666">Current (10K units/day)</text>
+  <rect x="180" y="44" width="37" height="22" rx="3" fill="#ef5350"/>
+  <text x="224" y="59" font-size="10" fill="#c62828" font-weight="600">25 uploads/day → 134 days</text>
+
+  <!-- Requested quota bar -->
+  <text x="20" y="90" font-size="10" fill="#666">Requested (50K units/day)</text>
+  <rect x="180" y="76" width="185" height="22" rx="3" fill="#4caf50"/>
+  <text x="372" y="91" font-size="10" fill="#2e7d32" font-weight="600">125 uploads/day → 27 days</text>
+
+  <!-- After completion -->
+  <text x="20" y="122" font-size="10" fill="#666">After initial upload</text>
+  <rect x="180" y="108" width="15" height="22" rx="3" fill="#90caf9"/>
+  <text x="202" y="123" font-size="10" fill="#1565c0" font-weight="600">~10 uploads/week (new videos only)</text>
+
+  <!-- Scale -->
+  <line x1="180" y1="142" x2="180" y2="148" stroke="#999" stroke-width="1"/>
+  <text x="180" y="160" text-anchor="middle" font-size="9" fill="#999">0</text>
+  <line x1="290" y1="142" x2="290" y2="148" stroke="#999" stroke-width="1"/>
+  <text x="290" y="160" text-anchor="middle" font-size="9" fill="#999">50/day</text>
+  <line x1="400" y1="142" x2="400" y2="148" stroke="#999" stroke-width="1"/>
+  <text x="400" y="160" text-anchor="middle" font-size="9" fill="#999">100/day</text>
+  <line x1="510" y1="142" x2="510" y2="148" stroke="#999" stroke-width="1"/>
+  <text x="510" y="160" text-anchor="middle" font-size="9" fill="#999">150/day</text>
+  <line x1="180" y1="142" x2="510" y2="142" stroke="#ddd" stroke-width="1"/>
+</svg>
+
+<table>
+  <tr><th>Metric</th><th>Value</th></tr>
+  <tr><td>Total videos</td><td>335</td></tr>
+  <tr><td>Languages per video</td><td>10 (ES, ZH, HI, AR, PT, FR, RU, DE, JA, KO)</td></tr>
+  <tr><td>Total subtitle uploads needed</td><td>3,350</td></tr>
+  <tr><td>Quota per upload (<code>captions.insert</code>)</td><td>400 units</td></tr>
+  <tr><td>Total quota needed (one-time)</td><td>1,340,000 units</td></tr>
+  <tr><td>Current daily quota</td><td>10,000 units = 25 uploads/day</td></tr>
+  <tr><td>Time at current quota</td><td>~134 days (4.5 months)</td></tr>
+  <tr><td><strong>Requested daily quota</strong></td><td><strong>50,000 units = 125 uploads/day</strong></td></tr>
+  <tr><td><strong>Time at requested quota</strong></td><td><strong>~27 days</strong></td></tr>
+</table>
+
+<div class="highlight">
+  <strong>After the initial upload is complete,</strong> ongoing usage will be minimal: approximately 10 uploads per week (1 new video &times; 10 languages), well within the default 10,000 units/day quota. The increased quota is only needed for the one-time bulk upload of existing content.
+</div>
+
+<h2>8. Rate Limiting &amp; Best Practices</h2>
+<ul>
+  <li>Uploads are spaced <strong>0.5 seconds apart</strong> to avoid burst traffic</li>
+  <li>The script respects <code>quotaExceeded</code> errors and <strong>stops immediately</strong></li>
+  <li>A daily upload cap of <strong>20 subtitles per run</strong> is enforced in the script</li>
+  <li>Previously uploaded tracks are tracked in a JSON log and <strong>never re-uploaded</strong></li>
+  <li>Only <code>captions.insert</code> and <code>captions.list</code> are called &mdash; no other API access</li>
+</ul>
+
+<h2>9. Code Excerpt (upload function)</h2>
+<div class="code-block">def upload_caption(youtube, video_id, lang_code, lang_name, srt_path):
+    body = {
+        "snippet": {
+            "videoId": video_id,
+            "language": lang_code,
+            "name": lang_name,
+            "isDraft": False,
+        }
+    }
+    media = MediaFileUpload(str(srt_path), mimetype="application/x-subrip")
+    response = youtube.captions().insert(
+        part="snippet", body=body, media_body=media
+    ).execute()
+    return response.get("id", "")</div>
+
+<p style="margin-top: 30px; color: #666; font-size: 12px; border-top: 1px solid #eee; padding-top: 12px;">
+  Document prepared: 19 February 2026 &mdash; Tom West, Social Trading Vlog<br>
+  Channel: <a href="https://www.youtube.com/@SocialTradingVlog">youtube.com/@SocialTradingVlog</a> &mdash; Website: <a href="https://socialtradingvlog.com">socialtradingvlog.com</a>
+</p>
+
+</body>
+</html>

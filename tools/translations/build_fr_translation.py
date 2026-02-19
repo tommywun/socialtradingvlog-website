@@ -1,0 +1,404 @@
+#!/usr/bin/env python3
+"""Build the complete French translation JSON file."""
+import json
+
+data = {}
+
+# ============================================================
+# FAQ SECTION
+# ============================================================
+data["faq"] = {
+    "slug": "questions-frequentes",
+    "meta_description": "Questions frequentes sur le copy trading et eToro — est-ce gratuit, quels sont les frais, pourquoi je fais la promotion d'eToro, et bien plus.",
+    "title": "Questions Frequentes | SocialTradingVlog",
+    "article_tag": "FAQ",
+    "h1": "Questions Frequentes",
+    "article_meta": "Cette section s'enrichit au fil du temps avec les nouvelles questions.",
+    "questions": [
+        {
+            "question": "Pourquoi faites-vous la promotion d'eToro ?",
+            "answer": "C'est la meilleure plateforme de trading social que j'ai trouvee jusqu'a present. Je l'utilise depuis 2016 et c'est la que je documente ma propre experience de copy trading. J'ai une relation d'affiliation avec eToro — si vous vous inscrivez via mon lien, je peux recevoir une commission sans frais supplementaires pour vous. Cette relation n'influence pas ce que j'ecris ni la facon dont je rends compte de mon experience."
+        },
+        {
+            "question": "Le copy trading est-il gratuit ?",
+            "answer": "Oui. Il y a des frais associes au trading sur toutes les plateformes — eToro inclus — mais copier les trades d'un autre investisseur est gratuit. Vous n'avez pas a payer de commission ou de part a la personne que vous copiez. Elle investit avec son propre argent ; votre compte copie simplement et automatiquement tous ses trades. La personne que vous copiez recoit des incentives de la part d'eToro — plus elle a de copieurs et plus le montant copie est eleve, plus eToro la remunere. Elle tire profit de la situation, mais pas directement de vous."
+        },
+        {
+            "question": "Quels sont les frais sur eToro ?",
+            "answer": "<p>Il y en a quelques-uns a connaitre :</p><ul><li><strong>Frais de spread</strong> — integres a chaque trade. Lorsque vous ouvrez un trade, vous remarquerez qu'il est immediatement en legere perte. C'est le spread. A mesure que l'actif evolue en votre faveur, vous le recupererez puis passerez en profit.</li><li><strong>Frais de retrait</strong> — eToro facture des frais fixes lorsque vous retirez de l'argent de la plateforme.</li><li><strong>Conversion de devises</strong> — puisque tout sur eToro est en USD, si vous deposez ou retirez dans une autre devise, un taux de change s'appliquera.</li><li><strong>Frais overnight/weekend</strong> — si vous detenez des positions a effet de levier pendant la nuit, des frais supplementaires peuvent s'appliquer. Si vous utilisez la fonction copy trading avec des positions sans effet de levier, c'est moins problematique.</li></ul>"
+        },
+        {
+            "question": "Ai-je besoin d'experience en trading ?",
+            "answer": "Non — c'est justement tout l'interet du copy trading. L'idee est que vous pouvez beneficier de l'experience de personnes qui savent ce qu'elles font, sans avoir a devenir vous-meme un expert. Vous devez quand meme choisir soigneusement qui copier et comprendre les risques impliques, mais vous n'avez pas besoin de savoir lire des graphiques ou analyser les marches."
+        },
+        {
+            "question": "Puis-je perdre de l'argent ?",
+            "answer": "Oui. Le copy trading n'elimine pas le risque — c'est toujours de l'investissement. Si la personne que vous copiez fait des pertes, vous faites des pertes aussi. Vous ne devriez investir que de l'argent que vous pouvez vous permettre de perdre. Lisez l'article <a href=\"copy-trading-returns.html\">Combien peut-on gagner ?</a> pour un regard realiste sur le risque et le rendement."
+        },
+        {
+            "question": "eToro est-il regulemente ?",
+            "answer": "Oui. eToro est regulemente par plusieurs autorites financieres, dont la FCA (Royaume-Uni), la CySEC (Chypre) et l'ASIC (Australie). La reglementation signifie qu'il y a une supervision et une responsabilite juridique. Lisez mon article complet <a href=\"etoro-scam.html\">eToro est-il une arnaque ?</a> pour en savoir plus."
+        },
+        {
+            "question": "Comment commencer le copy trading ?",
+            "answer": "Les etapes de base sont : ouvrir un compte eToro, verifier votre identite, deposer des fonds, parcourir la section 'Copier des personnes', choisir quelqu'un dont les statistiques vous plaisent, definir votre montant de copie, et cliquer sur copier. Le <a href=\"copy-trading.html\">guide du Copy Trading</a> couvre tout cela en detail."
+        }
+    ],
+    "sidebar_h3": "Pret a essayer le copy trading ?",
+    "sidebar_p": "Voici mon lien d'affiliation eToro pour commencer.",
+    "sidebar_nav_h4": "Guides utiles"
+}
+
+# ============================================================
+# CONTACT SECTION
+# ============================================================
+data["contact"] = {
+    "slug": "contact",
+    "meta_description": "Contactez Social Trading Vlog — questions sur le copy trading, eToro ou le site.",
+    "title": "Contact | SocialTradingVlog",
+    "article_tag": "Nous contacter",
+    "h1": "Contact",
+    "intro": "Vous avez une question sur le copy trading, eToro ou quelque chose sur le site ? N'hesitez pas a me contacter. Veuillez noter que je ne suis pas conseiller financier et ne peux pas donner de conseils en investissement — mais je suis heureux de repondre aux questions sur le fonctionnement de la plateforme ou de partager mon experience.",
+    "form_labels": {
+        "name": "Votre nom",
+        "name_placeholder": "ex. Marie Dupont",
+        "email": "Adresse e-mail",
+        "email_placeholder": "vous@exemple.fr",
+        "message": "Message",
+        "message_placeholder": "Votre question ou message...",
+        "submit": "Envoyer le message"
+    },
+    "reminder_title": "Rappel",
+    "reminder_text": "Ce site est uniquement a des fins educatives et informatives. Rien ici ne constitue un conseil financier ou en investissement. 51% des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils negocient des CFD avec eToro. Votre capital est a risque."
+}
+
+# ============================================================
+# UPDATES SECTION
+# ============================================================
+data["updates"] = {}
+
+# Helper for risk_warning blocks
+def rw():
+    return {"type": "risk_warning", "text": "Rappel Les performances passees ne sont pas une indication des resultats futurs. 51% des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils negocient des CFD avec eToro. Votre capital est a risque. Ceci n'est pas un conseil en investissement."}
+
+# -------------------------------------------------------
+# 1. social-trading-update-jun-2017
+# -------------------------------------------------------
+data["updates"]["social-trading-update-jun-2017"] = {
+    "slug": "mise-a-jour-copy-trading-juin-2017",
+    "meta_description": "Mise a jour copy trading — juin 2017. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — Juin 2017 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Juin 2017",
+    "h1": "Mise a jour Copy Trading — Juin 2017",
+    "content_blocks": [
+        {"type": "p", "text": "21 juin 2017 Social Trading Vlog Alors, c'etait en 2017, quand je faisais encore du trading manuel et que les cryptos faisaient leur apparition. Je traversais un sacre cauchemar en essayant de garder ma position sur Ethereum... J'aurais bien aime avoir attendu 5 mois de plus ! Ah, la sagesse apres coup, quelle merveille."},
+        {"type": "h3", "text": "Voir mon profil par vous-meme ?"},
+        {"type": "p", "text": "Voir mon profil"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 2. copy-trading-update-28-nov-2017
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-28-nov-2017"] = {
+    "slug": "mise-a-jour-copy-trading-28-novembre-2017",
+    "meta_description": "Mise a jour copy trading — 28 nov. 2017. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 28 Nov 2017 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Novembre 2017",
+    "h1": "Mise a jour Copy Trading — 28 Nov 2017",
+    "content_blocks": [
+        {"type": "h3", "text": "Jetez un oeil a mon profil..."},
+        {"type": "p", "text": "J'espere que ca va bien ! Vous pouvez verifier ici. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Mon profil actuel sur eToro"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 3. copy-trading-update-jul-2018
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-jul-2018"] = {
+    "slug": "mise-a-jour-copy-trading-juillet-2018",
+    "meta_description": "Mise a jour copy trading — juillet 2018. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — Juillet 2018 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Juillet 2018",
+    "h1": "Mise a jour Copy Trading — Juillet 2018",
+    "content_blocks": [
+        {"type": "p", "text": "9 juillet 2018 Social Trading Vlog Toujours en Italie, je fais un bref point sur mon Copy Trading sur eToro. Les choses avancent tres lentement et j'attends, j'attends. J'ai copie un nouveau trader, et on verra comment ca se passe."},
+        {"type": "p", "text": "Je parle aussi de ce site web et de pourquoi j'ai commence a le construire. Merci de votre suivi !"},
+        {"type": "p", "text": "Si vous souhaitez voir mon profil ou mon portefeuille sur eToro, vous pouvez cliquer ici. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "h3", "text": "Envie de voir mon portefeuille ?"},
+        {"type": "p", "text": "J'espere que ca va bien aujourd'hui ! Jetez un oeil a mon portefeuille."},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Cliquez ici"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 4. copy-trading-update-23-aug-2018
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-23-aug-2018"] = {
+    "slug": "mise-a-jour-copy-trading-23-aout-2018",
+    "meta_description": "Mise a jour copy trading — 23 aout 2018. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 23 Aout 2018 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Aout 2018",
+    "h1": "Mise a jour Copy Trading — 23 Aout 2018",
+    "content_blocks": [
+        {"type": "p", "text": "23 aout 2018 Social Trading Vlog Voici ma derniere mise a jour sur mes aventures de copy trading sur eToro. Dans celle-ci, j'explique pourquoi j'ai arrete de copier l'un des traders et je parle aussi des autres que je copie encore."},
+        {"type": "p", "text": "Ca a ete des mois difficiles, et ils ont perdu de l'argent regulierement, donc je commence a envisager de chercher de nouveaux traders."},
+        {"type": "p", "text": "Je parle aussi du fonctionnement des paiements d'affiliation avec eToro et comment ils les ont recemment modifies, apparemment pour se conformer aux nouvelles reglementations europeennes ESMA."},
+        {"type": "p", "text": "C'est tres frustrant quand on fait du copy trading et que les personnes qu'on copie continuent de perdre de plus en plus d'argent lentement. J'ai toujours envie de tenir bon et d'attendre qu'ils recuperent les pertes, mais parfois il faut simplement dire 'ca suffit' et arreter la copie, absorber les pertes, et trouver de nouvelles personnes."},
+        {"type": "p", "text": "J'ai tourne cette video a Malte, chez mon frere. Mes excuses pour la transpiration ! Il fait tres chaud a Malte en aout..."},
+        {"type": "h3", "text": "Envie de voir comment je m'en sors ?"},
+        {"type": "p", "text": "Mes statistiques sur eToro"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 5. copy-trading-update-25-nov-2018
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-25-nov-2018"] = {
+    "slug": "mise-a-jour-copy-trading-25-novembre-2018",
+    "meta_description": "Mise a jour copy trading — 25 nov. 2018. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 25 Nov 2018 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Novembre 2018",
+    "h1": "Mise a jour Copy Trading — 25 Nov 2018",
+    "content_blocks": [
+        {"type": "p", "text": "Le 'Copy Stop Loss' est un moyen de definir automatiquement le montant d'argent que vous etes pret a perdre sur chaque trader que vous copiez, afin que le systeme puisse automatiquement arreter la copie si ce montant est atteint."},
+        {"type": "p", "text": "Je parle aussi des autres traders dans mon portefeuille, de la facon dont j'ai revu mes attentes de gains a la baisse apres les jours fous de la crypto en 2017, et de pourquoi je pense parfois que les traders que nous copions ont besoin d'un peu plus d'empathie et d'espace pour reflechir que ce qu'on leur donne..."},
+        {"type": "p", "text": "Je sais que ca peut paraitre comme si je leur trouvais des excuses, mais vraiment, pouvez-vous imaginer le temps et l'energie que ca doit prendre a ces hommes et ces femmes de repondre a tous les commentaires et questions qu'ils recoivent ?"},
+        {"type": "p", "text": "Ca pourrait expliquer pourquoi, apres etre devenus 'PI' (Popular Investor — les personnes qu'on peut copier sur eToro), beaucoup de traders enregistrent soudainement une baisse de performance et de grands changements dans leur style de trading. Peut-etre qu'il faut simplement les laisser tranquilles pour qu'ils continuent ce qu'ils faisaient. Je ne suis pas sur..."},
+        {"type": "p", "text": "Faire partie du programme PI sur eToro implique de communiquer avec les personnes qui vous copient. Dans une certaine mesure, c'est meme dans les regles. Mais si ce qu'on veut ce sont des resultats, peut-etre qu'eToro pourrait leur donner un bouton 'Muet' optionnel !"},
+        {"type": "h3", "text": "Envie de voir comment je m'en sors maintenant ?"},
+        {"type": "p", "text": "Consulter mon profil et mes statistiques"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 6. copy-trading-update-14-dec-2018
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-14-dec-2018"] = {
+    "slug": "mise-a-jour-copy-trading-14-decembre-2018",
+    "meta_description": "Mise a jour copy trading — 14 dec. 2018. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 14 Dec 2018 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Decembre 2018",
+    "h1": "Mise a jour Copy Trading — 14 Dec 2018",
+    "content_blocks": [
+        {"type": "p", "text": "Je passe en revue les pages de statistiques de chacun et montre un peu de l'historique de trading de chacun pour avoir une idee de leur methodologie et de leurs performances. Toutes les copies sont nouvelles, donc c'est le tout debut avec chacun d'entre eux, et je surveille comment ils s'en sortent."},
+        {"type": "p", "text": "Tout au long de 2018, j'ai ete beaucoup plus passif car je ne voulais pas fermer mes copies et realiser les pertes de toutes ces cryptos qui perdaient de l'argent toute l'annee. Mais finalement, ces copies se sont fermees, et maintenant je suis de nouveau beaucoup plus actif, a la recherche des meilleurs traders a copier dans mon nouveau portefeuille."},
+        {"type": "h3", "text": "Envie de voir comment je m'en sors maintenant ?"},
+        {"type": "p", "text": "Mes statistiques et mon portefeuille actuel"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 7. copy-trading-update-11-jan-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-11-jan-2019"] = {
+    "slug": "mise-a-jour-copy-trading-11-janvier-2019",
+    "meta_description": "Mise a jour copy trading — 11 janv. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 11 Jan 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Janvier 2019",
+    "h1": "Mise a jour Copy Trading — 11 Jan 2019",
+    "content_blocks": [
+        {"type": "p", "text": "Voici mon profil sur eToro : https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Tout trading comporte des risques. Ne risquez que le capital que vous etes pret a perdre. Les performances passees ne sont pas une indication des resultats futurs. Ce contenu est a des fins educatives uniquement et ne constitue pas un conseil en investissement."},
+        {"type": "p", "text": "Premierement, j'ai arrete de copier mon trader crypto \"SaveTheAnimals\" parce que tout etait un peu plat pour le moment, et je pense que l'argent peut etre mieux utilise ailleurs. Je suis toujours a la recherche de traders crypto a copier cependant, car je pense que l'avenir des cryptos va encore etre enorme."},
+        {"type": "p", "text": "Je parle aussi de \"ChineseTiger\" — un trader que j'ai copie tres recemment et qui a fait des trades vraiment risques. J'ai arrete de le copier car il a perdu plus de 10% de ce que j'avais investi avec lui en quelques jours seulement, et sa gestion du risque semblait pratiquement inexistante. Ce n'est pas ce que je veux pour le portefeuille — les gros risques et les grandes fluctuations ne sont plus pour moi. Je discute de ses graphiques, et il semble y avoir une certaine logique derriere ses trades perdants, mais c'est loin du style de trading que je recherche — beaucoup trop risque pour moi."},
+        {"type": "p", "text": "Je parle aussi de comment quelque chose semble clocher avec les statistiques. Je ne suis pas sur de ce qui se passe, mais elles semblent erronees dans pas mal de cas. eToro m'a dit de les prevenir si je trouvais des bugs, donc j'ai transmis mes inquietudes, et jusqu'ici ils ne m'ont pas repondu. Ma copie de DazPanda montre aussi des statistiques irrealistes, ce que j'ai signale a DazPanda et il l'a remarque aussi. On verra. Je n'ai pas encore pleinement compris comment ils calculent les statistiques de trading — c'est vraiment tres difficile de voir ce qui se passe reellement."},
+        {"type": "p", "text": "J'ai aussi copie le trader 'Chocowin' car j'avais recemment re-analyse ses statistiques et j'ai decide de lui donner sa chance..."},
+        {"type": "h3", "text": "Envie de voir comment je m'en sors ?"},
+        {"type": "p", "text": "Vous pouvez consulter mes statistiques ici. Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Mes statistiques..."},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 8. copy-trading-update-13-jan-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-13-jan-2019"] = {
+    "slug": "mise-a-jour-copy-trading-13-janvier-2019",
+    "meta_description": "Mise a jour copy trading — 13 janv. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 13 Jan 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Janvier 2019",
+    "h1": "Mise a jour Copy Trading — 13 Jan 2019",
+    "content_blocks": [
+        {"type": "p", "text": "13 janvier 2019 Social Trading Vlog J'ai copie deux nouveaux traders — l'un specialise dans le Forex, et l'autre dans une gamme d'actifs, mais principalement les actions (equities)."},
+        {"type": "p", "text": "Voici mon profil sur eToro : https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Tout trading comporte des risques. Ne risquez que le capital que vous etes pret a perdre. Les performances passees ne sont pas une indication des resultats futurs. Ce contenu est a des fins educatives uniquement et ne constitue pas un conseil en investissement."},
+        {"type": "h3", "text": "Pourquoi les ai-je copies ?"},
+        {"type": "p", "text": "Alors, Citadelpoint a l'air de vraiment s'y connaitre. C'est une sorte de cador des chiffres, tres qualifie, qui travaille dans le secteur du trading — j'ai lu l'un de ses articles academiques et c'etait extremement pointu. Je sais qu'il n'a pas beaucoup d'historique de trading sur eToro, mais je veux lui donner sa chance et voir comment ca se passe..."},
+        {"type": "p", "text": "Chocowin a un bilan prouve — j'avais en fait deja consulte son profil il y a quelques mois et j'avais passe mon tour, mais apres avoir tout re-analyse, j'ai decide de le copier et de suivre sa progression. Il trade principalement des actions, mais ne se limite pas a ca — on trouve aussi des indices et des matieres premieres dans son portefeuille de temps en temps, et il semble comprendre les liens entre tous les actifs (les 'correlations'), ce qui devrait lui permettre de tirer profit de differentes conditions de marche. Si un actif ne performe pas bien, il saura vers quel autre actif se tourner pour generer des profits. On verra !"},
+        {"type": "p", "text": "Depuis un moment, j'evitais les traders d'actions car je m'inquietais de l'approche d'achat-conservation que beaucoup de traders utilisaient en 2017... que se passe-t-il si le retournement que tant de gens predisent se produit reellement — je ne veux pas d'un portefeuille rempli de traders qui attendent et attendent et perdent tout mon argent. Donc, j'ai cherche quelqu'un qui a une exposition aux actions, mais qui semble aussi capable de couper les pertes et de passer a d'autres classes d'actifs si le contexte des marches change. J'espere que Chocowin est cette personne."},
+        {"type": "h3", "text": "Envie de voir comment je m'en sors aujourd'hui ?"},
+        {"type": "p", "text": "Consultez mes statistiques et performances actuelles ici... Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Jetez un oeil"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 9. copy-trading-update-29-jan-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-29-jan-2019"] = {
+    "slug": "mise-a-jour-copy-trading-29-janvier-2019",
+    "meta_description": "Mise a jour copy trading — 29 janv. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 29 Jan 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Janvier 2019",
+    "h1": "Mise a jour Copy Trading — 29 Jan 2019",
+    "content_blocks": [
+        {"type": "p", "text": "29 janvier 2019 Social Trading Vlog Voici une autre mise a jour de mes aventures de copy trading sur eToro. Dans celle-ci, je presente un nouveau trader au portefeuille — Olivier Danvel."},
+        {"type": "p", "text": "Voici mon profil sur eToro : https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "C'est un trader a tres faible risque avec quelques annees d'historique et aucune perte mensuelle dans ses statistiques. Je n'avais jamais vu ca avant — normalement, on voit pas mal de pertes quand on regarde les statistiques de quelqu'un sur 3 ans, mais pas avec Olivier."},
+        {"type": "p", "text": "Il avait apparemment garde son profil prive jusqu'a recemment (j'ai demande pourquoi je ne l'avais jamais vu sur le site avant) et maintenant qu'il est visible, je parie que les copieurs vont affluer. Il trade principalement le forex, et prend beaucoup plus de temps que tout ce que j'ai vu avant pour attendre les bons points d'entree dans les trades — il est prudent et patient — deux qualites tres admirables chez un trader a mes yeux ces jours-ci."},
+        {"type": "p", "text": "De plus en plus, je m'oriente vers les traders plus surs et a moindre risque pour essayer de garder les choses aussi stables que possible. Ca signifie s'attendre a des profits plus faibles, mais franchement, chercher les gros gains ne m'a jamais rendu service..."},
+        {"type": "p", "text": "Tout trading comporte des risques. Ne risquez que le capital que vous etes pret a perdre. Les performances passees ne sont pas une indication des resultats futurs. Ce contenu est a des fins educatives uniquement et ne constitue pas un conseil en investissement."},
+        {"type": "h3", "text": "Envie de voir mes statistiques ?"},
+        {"type": "p", "text": "Mon profil"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 10. copy-trading-update-03-feb-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-03-feb-2019"] = {
+    "slug": "mise-a-jour-copy-trading-03-fevrier-2019",
+    "meta_description": "Mise a jour copy trading — 03 fev. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 03 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Fevrier 2019",
+    "h1": "Mise a jour Copy Trading — 03 Fev 2019",
+    "content_blocks": [
+        {"type": "p", "text": "3 fevrier 2019 Social Trading Vlog Ma derniere mise a jour de copy trading ! C'est dimanche soir, les marches rouvrent dans environ six heures, et il est presque temps pour une nouvelle semaine de trading."},
+        {"type": "p", "text": "Voici mon profil sur eToro : https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Tout trading comporte des risques. Ne risquez que le capital que vous etes pret a perdre. Les performances passees ne sont pas une indication des resultats futurs. Ce contenu est a des fins educatives uniquement et ne constitue pas un conseil en investissement."},
+        {"type": "h3", "text": "Alors, que s'est-il passe ?"},
+        {"type": "p", "text": "Ca a ete un debut de mois un peu rude, avec 'DazPanda' — un ajout tres recent au portefeuille — qui m'a fait perdre environ 1% de la valeur totale de mon portefeuille en quelques jours... Ca ne se passe pas bien. Un autre trader, Manusabrina, s'en sort aussi assez mal, et je commence a me demander s'il est temps de mettre fin a ces deux copies."},
+        {"type": "p", "text": "Il y a eu une grande decision et un changement de sentiment autour des taux d'interet aux Etats-Unis, et je sais que ca peut avoir un gros impact sur la facon dont tout le monde trade, donc pour le moment, j'attends un peu pour voir si ces deux traders peuvent capitaliser sur un eventuel changement de tendance que les nouvelles infos sur les taux d'interet pourraient provoquer..."},
+        {"type": "h3", "text": "Comment evolue le portefeuille ?"},
+        {"type": "p", "text": "Les autres gars du portefeuille ont tous bien trade, avec la plupart d'entre eux ayant des scores de risque et une volatilite plus faibles que DazPanda et Manusabrina. Je regarde d'autres traders a copier, et dans mes recherches, je suis en fait retourne vers certains des anciens traders — ceux qui etaient au sommet et populaires quand j'ai commence a utiliser eToro en 2016. Quand la fievre crypto de 2017 s'est emparee de tout le monde, ces traders plus stables ont ete oublies car tout le monde (moi y compris) a vu les enormes profits generes par les traders crypto et s'est lance."},
+        {"type": "p", "text": "Maintenant cependant, je cherche specifiquement des personnes a faible risque a copier et Berrau est certainement quelqu'un que j'ai dans le viseur. J'ai aussi re-examine CatyFX que j'avais copie pour une courte periode en 2017 avant d'arreter la copie pour investir mes fonds dans la cryptosphere... L'autre trader que je regarde, et que j'ai vraiment envie de copier, c'est Harshsmith qui trade principalement des actions, mais d'apres ce qu'il dit, il est pret pour d'eventuels retournements, et semble appliquer de tres bonnes regles de gestion du risque a son trading et son portefeuille. J'aimerais aussi voir si les nouvelles decisions sur les taux d'interet americains peuvent etre exploitees par quelqu'un comme lui..."},
+        {"type": "p", "text": "Tous les trois ont des drawdowns tres faibles, dans ma limite approximative de 15%, ce qui est super. Harshsmith a l'air d'etre mon candidat le plus probable, meme si le copier rendrait un peu plus difficile pour les gens de me copier a cause de la regle de taille minimale de trade pour le copy trading. J'expliquerai ca dans une autre video car c'est un peu complique. J'y reflechis encore. En tant que trader, je pense que c'est un bon choix."},
+        {"type": "h3", "text": "Envie de voir mes performances actuelles ?"},
+        {"type": "p", "text": "Mes performances"},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 11. copy-trading-update-07-feb-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-07-feb-2019"] = {
+    "slug": "mise-a-jour-copy-trading-07-fevrier-2019",
+    "meta_description": "Mise a jour copy trading — 07 fev. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 07 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Fevrier 2019",
+    "h1": "Mise a jour Copy Trading — 07 Fev 2019",
+    "content_blocks": [
+        {"type": "p", "text": "7 fevrier 2019 Social Trading Vlog Ca a ete une semaine difficile avec l'un de mes traders qui a atteint son Stop Loss, et un autre que j'ai du fermer manuellement..."},
+        {"type": "p", "text": "Voici mon profil sur eToro : https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Tout trading comporte des risques. Ne risquez que le capital que vous etes pret a perdre. Les performances passees ne sont pas une indication des resultats futurs. Ce contenu est a des fins educatives uniquement et ne constitue pas un conseil en investissement."},
+        {"type": "h2", "text": "Un Copy Stop Loss s'est declenche..."},
+        {"type": "p", "text": "Le trader 'DazPanda' a ete ejecte de mon portefeuille ! Il a en fait declenche mon copy stop loss, qui est une fonction concue pour arreter automatiquement votre copie d'un trader s'il perd un montant predetermine. Quand j'ai vu que le Copy Stop Loss s'etait declenche, j'ai eu l'impression de rater quelque chose, mais dans l'ensemble, c'est une bonne chose, car c'est conforme a mes idees de gestion du risque."},
+        {"type": "p", "text": "Un autre trader, 'Manusabrina' a aussi quitte le portefeuille, meme si j'ai arrete cette copie manuellement car son score de risque etait aussi trop eleve, et je veux vraiment un portefeuille plus stable."},
+        {"type": "h3", "text": "Ce que j'ai fait ensuite"},
+        {"type": "p", "text": "Apres ca, j'ai copie puis de-copie 'Berrau' et 'Harshsmith' — c'etait un peu la panique car je voulais juste reutiliser l'argent des copies arretees de DazPanda et Manusabrina aussi vite que possible. La panique n'est jamais bonne cependant, donc j'ai simplement reinvesti les fonds dans mes traders existants et je prendrai le temps de reflechir a qui copier ensuite."},
+        {"type": "p", "text": "Je passe en revue les autres traders du portefeuille, en parlant des problemes actuels d'Aimstrader, et de pourquoi j'attends de voir ce qui va se passer."},
+        {"type": "h3", "text": "Problemes de statistiques"},
+        {"type": "p", "text": "J'entends des gens avoir des problemes et des inquietudes concernant les statistiques sur eToro et il y a eu beaucoup de confusion sur quelles statistiques sont justes et pourquoi il y a certaines contradictions et resultats differents. Pour etre honnete, je ne suis toujours pas sur de ce qui se passe, mais je fais maintenant le point en comparant le graphique de statistiques de trading normal avec les trades clotures dans la section 'historique' du portefeuille. J'essaie aussi de recouper ca avec le graphique de chaque trader pour avoir une image complete. Je vous tiendrai au courant."},
+        {"type": "p", "text": "Je cherche aussi un bon trader de matieres premieres a faible risque, donc si vous en connaissez un, faites-le moi savoir !"},
+        {"type": "h3", "text": "Voir mes performances actuelles"},
+        {"type": "p", "text": "Comment je m'en sors aujourd'hui ? Decouvrez-le ici."},
+        {"type": "p", "text": "Le Copy Trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est a risque."},
+        {"type": "p", "text": "Mes statistiques..."},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 12. copy-trading-update-14-feb-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-14-feb-2019"] = {
+    "slug": "mise-a-jour-copy-trading-14-fevrier-2019",
+    "meta_description": "Mise a jour copy trading — 14 fev. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 14 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Fevrier 2019",
+    "h1": "Mise a jour Copy Trading — 14 Fev 2019",
+    "content_blocks": [
+        {"type": "h2", "text": "14 fevrier 2019 Une semaine inquietante... Cette semaine a ete un peu stressante a cause d'un de mes traders — 'Citadelpoint' qui a fait le yoyo toute la semaine..."},
+        {"type": "p", "text": "Il vendait le USD/SEK dans un trade utilisant 100% de l'argent que j'avais investi avec lui en utilisant l'effet de levier. Le trade a pris la mauvaise direction et il a perdu plus de 3% de la valeur totale de mon portefeuille en l'espace de 3 jours... Effrayant. Et tandis que mes statistiques baissaient, les personnes qui me copiaient ont fui aussi."},
+        {"type": "h3", "text": "Vais-je continuer a copier Citadelpoint ?"},
+        {"type": "p", "text": "Je pense vraiment que Citadelpoint est un gars tres intelligent — il a un doctorat de Cambridge ou il a travaille sur la prevision de volatilite des risques. Mais cette semaine a ete effrayante. Son score de risque a bondi a 8 sur 10. Il avait finalement raison sur la direction de l'actif, mais sa facon de trader est tout simplement trop risquee pour mon portefeuille actuel."},
+        {"type": "p", "text": "Donc... j'essaie actuellement de determiner s'il faut le garder dans le portefeuille ou non. Son drawdown maximum annuel a deja depasse le maximum de 15% que je vise avec les personnes que je copie... Ce n'est pas bon signe. Donc, pour pouvoir continuer a le copier (je pense vraiment qu'il a du talent) tout en etant moins expose a son nouveau comportement plus risque, j'ai reduit la proportion du portefeuille qui le copie."},
+        {"type": "h2", "text": "Comment vont les autres traders de mon portefeuille ?"},
+        {"type": "p", "text": "C'est un chiffre tres significatif, mais je ne suis pas tout a fait sur de quoi faire avec lui pour le moment — je vais le surveiller de pres et reduire mon exposition a lui dans le portefeuille."},
+        {"type": "p", "text": "On m'a aussi dit qu'il pourrait ne pas avoir a payer de frais du fait d'avoir un 'compte islamique', bien que je doive verifier ca."},
+        {"type": "h3", "text": "Il semble trader a l'envers"},
+        {"type": "p", "text": "Je pense que s'il avait ouvert tous ses trades recents dans l'autre sens (par exemple acheter au lieu de vendre, ou vendre au lieu d'acheter), il aurait en fait gagne enormement d'argent. Mais bon — je ne peux pas micro-gerer ses trades, et ces gars ne semblent pas s'adapter aux conditions changeantes du marche tres rapidement, donc je suppose qu'il va garder sa strategie actuelle dans un avenir previsible. Je vais continuer a surveiller et voir comment ca evolue dans les prochaines semaines."},
+        {"type": "h2", "text": "Mon portefeuille en general"},
+        {"type": "p", "text": "La plupart de mes traders tradent le Forex, en esperant capitaliser sur les mouvements des marches qui se produisent constamment et potentiellement rester a l'ecart de tout retournement majeur des actions s'il devait se produire."},
+        {"type": "h3", "text": "Etre un Popular Investor"},
+        {"type": "p", "text": "Maintenant que je suis un Popular Investor sur eToro, je commence a penser a comment grimper les echelons du systeme d'etoiles PI. Ca signifierait avoir 20 000 euros dans mon compte de trading et a ce stade, je voudrais absolument copier des traders qui ont une forte orientation faible risque. Cette preoccupation influence vraiment toutes mes decisions sur qui copier maintenant. C'est une chose de risquer 500 euros (meme si je ne veux pas vraiment risquer ca non plus) mais risquer 20 000 euros, c'est un tout autre niveau de risque..."},
+        {"type": "p", "text": "Donc j'essaie vraiment de construire un portefeuille rentable et a tres faible risque. On verra comment ca se passe."},
+        rw()
+    ]
+}
+
+# -------------------------------------------------------
+# 13. copy-trading-update-20-feb-2019
+# -------------------------------------------------------
+data["updates"]["copy-trading-update-20-feb-2019"] = {
+    "slug": "mise-a-jour-copy-trading-20-fevrier-2019",
+    "meta_description": "Mise a jour copy trading — 20 fev. 2019. Documentation honnete de mon experience avec la fonction copy trading d'eToro.",
+    "title": "Mise a jour Copy Trading — 20 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Mise a jour du portefeuille · Fevrier 2019",
+    "h1": "Mise a jour Copy Trading — 20 Fev 2019",
+    "content_blocks": [
+        {"type": "p", "text": "20 fevrier 2019 Bienvenue dans ma derniere mise a jour de Copy Trading, ou je passe en revue mon portefeuille et vois comment tout se passe..."},
+        {"type": "h2", "text": "Aimstrader"},
+        {"type": "p", "text": "Il s'en est sorti assez mal en fait, ouvrant divers shorts sur des indices quand il aurait fallu acheter et ouvrant des achats quand il aurait fallu shorter... Apparemment, en janvier, il s'etait fixe des regles strictes de gestion du risque, mais il semble enfreindre ces regles qu'il s'etait lui-meme imposees. Ce n'est pas terrible si c'est vrai."},
+        {"type": "p", "text": "Alors y a-t-il de bonnes raisons pour les trades qu'il fait ? Je pense que oui — il cherche des corrections basees sur de grands mouvements de prix recents, mais il semble juste mal timer les choses et ensuite garder les trades perdants plus longtemps qu'il ne le devrait peut-etre."},
+        {"type": "p", "text": "Quand je regarde les graphiques des actifs qu'il trade, je peux appliquer une analyse technique basique et voir qu'il y a de forts supports et resistances autour des niveaux actuels de ses actifs. En gros, je pense pouvoir voir pourquoi il fait ce qu'il fait, mais ca ne se passe pas bien et beaucoup de ses copieurs sont actuellement inquiets..."},
+        {"type": "p", "text": "Meme si Aimstrader m'a fait perdre de l'argent, les autres traders de mon portefeuille ont pris le relais."},
+        {"type": "h2", "text": "Citadelpoint"},
+        {"type": "p", "text": "Il s'en est beaucoup mieux sorti cette semaine. Finis les gros coups risques — j'ai reduit le montant que je copie avec lui et ca a bien fonctionne recemment."},
+        {"type": "p", "text": "Il utilise de plus petites proportions de la taille totale de son compte et fait des trades a plus court terme en prenant de petites bouchees du marche. C'est plutot positif dans l'ensemble pour le moment..."},
+        {"type": "h2", "text": "Chocowin"},
+        {"type": "p", "text": "Profitant de la recente hausse des actions, Chocowin s'en sort bien meme si je ne sais pas ce qu'il ferait si un marche baissier arrivait. Il faudra attendre et voir."},
+        {"type": "h2", "text": "Alnayef"},
+        {"type": "p", "text": "Il a fait plein de petits trades recemment, ce qui est bien a voir — je me demande parfois s'il a tout simplement disparu... Il semble disparaitre par moments, et personne ne sait trop ou il est passe ni ce qui se passe. Il reapparait toujours cependant et passe par une periode de trading beaucoup plus frequent avant de redevenir silencieux."},
+        {"type": "p", "text": "Certains de ses trades sont ouverts depuis tres longtemps et il continue de les garder ouverts en attendant qu'ils passent au vert. C'est toujours un probleme que je continue de surveiller. Je ne veux pas arreter de le copier pour le moment car je pense qu'il est toujours a faible risque et potentiellement rentable a l'avenir."},
+        {"type": "h2", "text": "Olivier Danvel"},
+        {"type": "p", "text": "Il a fait ce que j'attendais de lui. De petits trades, en attendant ce qu'il considere comme les meilleurs points d'entree (donc des periodes avec tres peu d'activite). Il avait dit qu'il ferait ca, donc je m'y attendais."},
+        {"type": "p", "text": "Le premier trade qu'il a passe etait un trade a 3%, ce qui est dans ses regles de gestion du risque. Son objectif declare est d'environ 1% de profit par mois, et jusqu'ici il semble etre sur la bonne voie. C'est l'une des personnes que je copie avec la plus grande proportion de mes fonds."},
+        {"type": "h2", "text": "Analisisciclico"},
+        {"type": "p", "text": "Il est en baisse jusqu'ici ce mois-ci, mais il continue d'appliquer son approche de gestion du risque a faible risque. Ses trades representent tous environ 2 a 3% de la taille de son compte comme prevu. Je reste avec lui — rien ne declenche d'alarme pour le moment, donc je le laisse poursuivre ses methodes."},
+        {"type": "h3", "text": "Olivier Danvel a-t-il importe ses statistiques d'une autre plateforme ?"},
+        {"type": "p", "text": "Je lui ai demande directement car j'avais entendu qu'il avait peut-etre fait ca et il a donne une reponse un peu cryptique, mais en gros semblait dire que non, il a ete sur eToro tout du long et etait juste cache d'une maniere ou d'une autre. Je ne suis pas sur, mais je dois prendre ce qu'il dit pour argent comptant..."},
+        {"type": "h3", "text": "Aimstrader a ete vivement critique pour son trading..."},
+        {"type": "p", "text": "J'ai eu un peu de peine pour Aimstrader recemment. Le cote 'social' d'eToro peut parfois etre assez rude, et avec des rumeurs non fondees qui circulent selon lesquelles il aurait deja fait exploser 2 comptes de trading precedents sur eToro, ca a ete une periode difficile pour lui... J'espere qu'il arrivera a tout remettre en ordre."},
+        {"type": "h3", "text": "Un marche baissier arrive-t-il ?"},
+        {"type": "p", "text": "C'est possible — beaucoup de gens en parlent comme une possibilite, et certains meme comme une probabilite. C'est l'une des raisons pour lesquelles j'evite les trades d'actions en ce moment — je ne suis pas sur de la vitesse a laquelle ils reagiraient tous si les choses tournaient mal... Il se pourrait qu'Aimstrader attende en fait le marche baissier et se retrouve du mauvais cote des trades un peu plus souvent en ce moment a cause de ca. Je ne suis pas sur..."},
+        {"type": "h3", "text": "Etre un Popular Investor"},
+        {"type": "p", "text": "Je pense a faire des videos sur ce que c'est que d'etre un Popular Investor sur eToro car c'est vraiment interessant pour moi, donc peut-etre que d'autres personnes aimeraient ca. J'aimerais aussi faire des videos sur le fait d'etre affilie, donc on verra ce qui se passe avec ca."},
+        rw()
+    ]
+}
+
+# Write part 1 - we'll continue in the next script
+with open('/Users/thomaswest/socialtradingvlog-website/tools/translations/_fr_part1.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+
+print(f"Part 1 written with {len(data['updates'])} updates so far")
+print("Keys:", list(data['updates'].keys()))

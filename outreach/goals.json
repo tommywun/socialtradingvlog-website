@@ -1,0 +1,506 @@
+[
+  {
+    "id": 1,
+    "title": "Accelerate Content Production",
+    "description": "Publish video pages for all 335 YouTube videos. Currently automated via launchd \u2014 YouTube descriptions updating daily.",
+    "status": "in_progress",
+    "category": "content",
+    "progress": 15,
+    "recommendations": [
+      "Maintain the launchd automation for YouTube descriptions \u2014 ~142 remaining",
+      "Batch-generate video pages from transcriptions using the existing pipeline",
+      "Prioritise videos with highest view counts \u2014 they'll rank faster",
+      "Add timestamps/chapters to video pages for better engagement",
+      "Create 'series' pages that group related videos (e.g. 'My First Year Copy Trading')"
+    ],
+    "tasks": [
+      {
+        "text": "YouTube descriptions auto-updating via launchd",
+        "done": true
+      },
+      {
+        "text": "Video page generator script working",
+        "done": true
+      },
+      {
+        "text": "All 335 transcriptions completed",
+        "done": false
+      },
+      {
+        "text": "Subtitle translations (12 languages) pipeline running",
+        "done": true
+      },
+      {
+        "text": "YouTube subtitle upload integrated into pipeline",
+        "done": true
+      },
+      {
+        "text": "YouTube API quota increase requested (pending Google approval)",
+        "done": true
+      },
+      {
+        "text": "All video pages published",
+        "done": false
+      },
+      {
+        "text": "Series/collection pages created",
+        "done": false
+      }
+    ],
+    "notes": "Pipeline running: transcribe (OpenAI Whisper) \u2192 translate (12 languages via Google Translate) \u2192 upload to YouTube (paused until quota resets/increase approved). ~27 transcriptions done, 306 remaining. YouTube API quota form submitted Feb 2026 requesting 50K units/day (from 10K default)."
+  },
+  {
+    "id": 2,
+    "title": "Build Email List & Newsletter",
+    "description": "Capture site visitors into an email list with lead magnets. Regular newsletter drives repeat visits, builds trust, and creates a direct channel to promote content + affiliate links.",
+    "status": "in_progress",
+    "category": "monetization",
+    "progress": 85,
+    "recommendations": [
+      "Lead magnet idea: 'My eToro Copy Trading Checklist \u2014 10 Things I Check Before Copying a Trader' (PDF)",
+      "Use a free tier email service (Resend, Buttondown, or ConvertKit free plan)",
+      "Add email capture form to every page \u2014 sidebar + end of articles",
+      "Weekly newsletter: your latest content, market observations, copy trading updates",
+      "Include affiliate links naturally in newsletters (higher CTR than website)",
+      "Segment list: 'new to eToro' vs 'experienced traders' for targeted content",
+      "Exit-intent popup with lead magnet offer (tasteful, not spammy)"
+    ],
+    "tasks": [
+      {
+        "text": "Subscribe API backend on VPS (stores subscribers in JSON)",
+        "done": true
+      },
+      {
+        "text": "Create lead magnet (Copy Trading Checklist — 10 items)",
+        "done": true
+      },
+      {
+        "text": "Design email capture form component (sidebar + inline)",
+        "done": true
+      },
+      {
+        "text": "Add forms to all English pages (55 pages)",
+        "done": true
+      },
+      {
+        "text": "Newsletter section added to homepage",
+        "done": true
+      },
+      {
+        "text": "Deploy updated dashboard.py to VPS",
+        "done": true
+      },
+      {
+        "text": "Configure email sending (Resend API)",
+        "done": true
+      },
+      {
+        "text": "Set up welcome email sequence",
+        "done": true
+      },
+      {
+        "text": "Create newsletter template",
+        "done": false
+      },
+      {
+        "text": "First newsletter sent",
+        "done": false
+      }
+    ],
+    "notes": "Newsletter system 85% complete. Forms on all 55 pages + homepage, pushed to GitHub. VPS API handles subscriptions with auto-welcome email via Resend (send.socialtradingvlog.com). Lead magnet at /checklist/. send_newsletter.py on VPS handles sending. Remaining: create first newsletter content and send it."
+  },
+  {
+    "id": 3,
+    "title": "Long-Tail Keyword Articles",
+    "description": "Target specific, high-intent search queries that eToro users actually type. These have lower competition and higher conversion rates than broad terms.",
+    "status": "in_progress",
+    "category": "seo",
+    "progress": 75,
+    "recommendations": [
+      "Priority keywords (1K-10K monthly searches each): 'eToro minimum deposit', 'eToro withdrawal fees', 'eToro copy trading fees', 'how to close eToro account', 'eToro vs Trading 212'",
+      "Write from personal experience \u2014 Google rewards first-hand knowledge (EEAT)",
+      "Each article should target ONE primary keyword + related long-tails",
+      "Include comparison tables, screenshots, and real numbers from your account",
+      "Translate high-performing articles into ES/DE/FR/PT for 5x the reach",
+      "Add FAQ schema to every article \u2014 increases search snippet size",
+      "Internal link new articles to existing content (and vice versa)"
+    ],
+    "tasks": [
+      {
+        "text": "Keyword research completed",
+        "done": true
+      },
+      {
+        "text": "Content calendar created (9 articles)",
+        "done": true
+      },
+      {
+        "text": "8 articles drafted (pending Tom's review)",
+        "done": true
+      },
+      {
+        "text": "Sidebar cross-links updated across all pages",
+        "done": true
+      },
+      {
+        "text": "Articles translated to target languages",
+        "done": false
+      },
+      {
+        "text": "Tom to review and approve all articles",
+        "done": false
+      }
+    ],
+    "notes": "8 articles drafted (Feb 2026): eToro minimum deposit, withdrawal fees, spread fees, is eToro safe, copy trading fees, copy trading review, best traders to copy, how to close account. ~4,300\u20137,400 words each, ~43,700 words total. Keyword research at outreach/keyword-research-content-calendar.md. Sidebar links updated across all existing pages. Awaiting Tom's review."
+  },
+  {
+    "id": 4,
+    "title": "Complete Multi-Language SEO",
+    "description": "All pages translated to ES/DE/FR/PT/AR with localised keyphrases. Currently 8 pages translated to 5 languages.",
+    "status": "in_progress",
+    "category": "seo",
+    "progress": 40,
+    "recommendations": [
+      "Keep translating new content as it's published \u2014 don't let it stall",
+      "Research local keyphrases in each language (not just literal translations)",
+      "Monitor which languages drive the most traffic and double down",
+      "Add language switcher to site navigation for better UX",
+      "Submit translated sitemaps to Google Search Console",
+      "Consider adding Italian and Dutch \u2014 large eToro markets with low competition"
+    ],
+    "tasks": [
+      {
+        "text": "76% article translated (5 languages)",
+        "done": true
+      },
+      {
+        "text": "eToro review translated (5 languages)",
+        "done": true
+      },
+      {
+        "text": "About/FAQ/Contact translated",
+        "done": true
+      },
+      {
+        "text": "Copy trading pages translated",
+        "done": true
+      },
+      {
+        "text": "Copy trading updates translated",
+        "done": true
+      },
+      {
+        "text": "Language switcher added to nav",
+        "done": false
+      },
+      {
+        "text": "Translated sitemaps submitted",
+        "done": false
+      },
+      {
+        "text": "New content auto-translated pipeline",
+        "done": false
+      }
+    ],
+    "notes": "Not stalled \u2014 8 pages across 5 languages done. Need to maintain momentum as new content is published."
+  },
+  {
+    "id": 5,
+    "title": "Create Linkable Assets & Tools",
+    "description": "Build genuinely useful interactive tools that attract backlinks naturally. People link to useful resources \u2014 calculators, comparison tools, and data visualizations.",
+    "status": "in_progress",
+    "category": "seo",
+    "progress": 85,
+    "recommendations": [
+      "eToro Fee Calculator \u2014 input trade size, show all fees (spread, overnight, withdrawal). Every comparison site will want to link to this",
+      "Copy Trading ROI Calculator \u2014 input amount + trader to copy, show projected returns based on historical data",
+      "eToro Popular Investor Dashboard \u2014 visualize top traders' performance (use public eToro data)",
+      "Social Trading Platform Comparison Table \u2014 interactive, filterable comparison of eToro vs competitors",
+      "These pages rank for '[platform] calculator' keywords AND attract editorial backlinks",
+      "Keep tools updated with current fee data \u2014 stale tools lose credibility and links"
+    ],
+    "tasks": [
+      {
+        "text": "Design eToro Fee Calculator",
+        "done": true
+      },
+      {
+        "text": "Build and publish fee calculator",
+        "done": true
+      },
+      {
+        "text": "Design Copy Trading ROI Calculator",
+        "done": true
+      },
+      {
+        "text": "Build and publish ROI calculator",
+        "done": true
+      },
+      {
+        "text": "Create platform comparison tool",
+        "done": true
+      },
+      {
+        "text": "Promote tools in relevant communities",
+        "done": false
+      },
+      {
+        "text": "Translate tools to 5 languages (ES/DE/FR/PT/AR)",
+        "done": false
+      }
+    ],
+    "notes": "3 tools live: Fee Calculator, ROI Calculator, Platform Comparison. Hub page links all three. Tools link added to site nav across 150 pages. Legal disclaimers on every tool. Remaining: promote in communities, translate tools to 5 languages (targets non-English tool keywords like 'eToro Gebühren Rechner', 'calculadora de comisiones eToro'), and consider adding Popular Investor Tracker and Portfolio Analyser."
+  },
+  {
+    "id": 6,
+    "title": "Competitor Comparison Content",
+    "description": "Write detailed 'eToro vs X' comparison articles using your real experience. Your unique advantage: nearly 10 years of actual eToro use. Competitors don't have that.",
+    "status": "in_progress",
+    "category": "content",
+    "progress": 80,
+    "recommendations": [
+      "Priority comparisons: 'eToro vs Plus500', 'eToro vs Trading 212', 'eToro vs DEGIRO', 'eToro vs Interactive Brokers'",
+      "I can analyse competitor sites: features, fee structures, UI, supported markets, regulation",
+      "Your angle: 'I've used eToro for 9 years \u2014 here's how it actually compares'",
+      "Include honest pros AND cons of eToro (builds trust, Google rewards honesty)",
+      "Add comparison tables with clear feature-by-feature breakdown",
+      "Target '[platform A] vs [platform B]' keywords \u2014 high commercial intent",
+      "These articles are prime for affiliate link placement (high conversion intent)"
+    ],
+    "tasks": [
+      {
+        "text": "Research top 5 eToro competitors",
+        "done": true
+      },
+      {
+        "text": "Analyse competitor features, fees, regulation",
+        "done": true
+      },
+      {
+        "text": "Write 'eToro vs Plus500' article",
+        "done": true
+      },
+      {
+        "text": "Write 'eToro vs Trading 212' article",
+        "done": true
+      },
+      {
+        "text": "Write 'eToro vs DEGIRO' article",
+        "done": true
+      },
+      {
+        "text": "Write 'eToro vs Interactive Brokers' article",
+        "done": true
+      },
+      {
+        "text": "Write 'eToro vs XTB' article",
+        "done": true
+      },
+      {
+        "text": "Translate comparison articles",
+        "done": false
+      }
+    ],
+    "notes": "All 5 comparison articles written: Plus500, Trading 212, DEGIRO, Interactive Brokers, XTB. Awaiting Tom's review + translation to 5 languages. Research at outreach/competitor-research-notes.md."
+  },
+  {
+    "id": 7,
+    "title": "Implement Structured Data & Rich Snippets",
+    "description": "Add schema markup to all pages for enhanced search results. FAQ schema, review schema, breadcrumbs, and article schema increase click-through rates from search results.",
+    "status": "in_progress",
+    "category": "seo",
+    "progress": 60,
+    "recommendations": [
+      "Add FAQ schema to every page with FAQs (already have the content, just need the markup)",
+      "Add Article schema to all blog posts and video pages",
+      "Add BreadcrumbList schema for clear navigation in search results",
+      "Add VideoObject schema for video pages (triggers video rich snippets)",
+      "Add Review/Rating schema where appropriate",
+      "Test all schema with Google Rich Results Test",
+      "This is pure technical SEO \u2014 no content creation needed, just markup"
+    ],
+    "tasks": [
+      {
+        "text": "Add FAQ schema to all FAQ sections",
+        "done": true
+      },
+      {
+        "text": "Add Article schema to articles",
+        "done": true
+      },
+      {
+        "text": "Add VideoObject schema to video pages",
+        "done": true
+      },
+      {
+        "text": "Add BreadcrumbList schema",
+        "done": true
+      },
+      {
+        "text": "Validate with Rich Results Test",
+        "done": false
+      },
+      {
+        "text": "Monitor rich snippet appearances in GSC",
+        "done": false
+      }
+    ],
+    "notes": "Schema added to all main pages: WebSite+Organization on homepage, FAQPage on popular-investor/social-trading/copy-trading/etoro-scam/taking-profits/copy-trading-returns, Person on about, CollectionPage on videos+updates, ContactPage on contact. BreadcrumbList on all content pages. Video pages already had VideoObject+FAQPage from generation. Remaining: validate with Rich Results Test and monitor GSC."
+  },
+  {
+    "id": 8,
+    "title": "Build Community Presence",
+    "description": "Create a community around social trading discussion. Discord server, Reddit presence, and forum engagement. Drives repeat visits and organic backlinks.",
+    "status": "not_started",
+    "category": "distribution",
+    "progress": 0,
+    "recommendations": [
+      "Start with Discord \u2014 free, easy to set up, suits the trading audience",
+      "Create channels: #copy-trading-discussion, #my-portfolio-updates, #beginner-questions, #trader-reviews",
+      "Post your monthly copy trading updates there (drives engagement)",
+      "Yes, AI agents CAN moderate \u2014 on the private server, a Claude-based bot can: answer FAQs, flag spam, welcome new members, surface common questions for content ideas",
+      "Cross-promote: mention Discord in YouTube videos, site pages, email newsletter",
+      "Eventually: create a subreddit r/SocialTradingVlog for broader reach",
+      "Community members become your most loyal affiliate converters"
+    ],
+    "tasks": [
+      {
+        "text": "Create Discord server with channels",
+        "done": false
+      },
+      {
+        "text": "Set up moderation bot (private server)",
+        "done": false
+      },
+      {
+        "text": "Add Discord invite to site + YouTube",
+        "done": false
+      },
+      {
+        "text": "Post first 5 discussion starters",
+        "done": false
+      },
+      {
+        "text": "Set up auto-posting of new content to Discord",
+        "done": false
+      },
+      {
+        "text": "Evaluate Reddit community creation",
+        "done": false
+      }
+    ],
+    "notes": "Agent moderation is feasible on the private server \u2014 Claude can handle FAQ answering, spam detection, and welcome messages. You'd review flagged items."
+  },
+  {
+    "id": 9,
+    "title": "Social Media Content Automation",
+    "description": "Automatically repurpose YouTube content into social media posts. Extract clips, create quote graphics, and schedule posts across platforms.",
+    "status": "not_started",
+    "category": "distribution",
+    "progress": 0,
+    "recommendations": [
+      "YES this can be automated \u2014 pipeline: YouTube video \u2192 extract key moments \u2192 generate short clips \u2192 create caption \u2192 schedule post",
+      "Tools: FFmpeg for clip extraction, Claude for caption writing, Buffer/Later API for scheduling",
+      "Platforms: Twitter/X (trading audience), Instagram Reels, TikTok (younger traders), LinkedIn",
+      "Auto-generate quote graphics from article key points",
+      "Repurpose monthly update posts into social threads",
+      "Track which clips/posts drive the most site traffic",
+      "Run on the private server as a cron job \u2014 fully hands-off"
+    ],
+    "tasks": [
+      {
+        "text": "Set up clip extraction pipeline",
+        "done": false
+      },
+      {
+        "text": "Create social media accounts if needed",
+        "done": false
+      },
+      {
+        "text": "Build auto-captioning with Claude API",
+        "done": false
+      },
+      {
+        "text": "Connect to scheduling API (Buffer/Later)",
+        "done": false
+      },
+      {
+        "text": "First automated social post published",
+        "done": false
+      },
+      {
+        "text": "Track social traffic in GA",
+        "done": false
+      }
+    ],
+    "notes": "Fully automatable on the private server. YouTube \u2192 FFmpeg clip extraction \u2192 Claude caption \u2192 scheduling API. Runs as a daily cron job."
+  },
+  {
+    "id": 10,
+    "title": "Multi-Platform Affiliate Partnerships",
+    "description": "Secure affiliate deals with all major trading platforms featured on the comparison tool. Turn every platform button into an affiliate link. Negotiate the best possible rates by leveraging 66K YouTube subscribers, 4.5M views, multi-language content, and nearly 10 years of documented trading.",
+    "status": "in_progress",
+    "category": "monetization",
+    "progress": 30,
+    "recommendations": [
+      "Interactive Brokers is warmest lead \u2014 they've been chasing Tom since 2022, mentioned $25K/month for top creators",
+      "Webull UK also warm \u2014 multiple outreach attempts, ISA launch timing is perfect",
+      "Trading 212 offers highest CPA in the industry ($1,000 for CFD accounts)",
+      "Don't accept first offer from any platform \u2014 published rates are starting points",
+      "Offer exclusivity windows in exchange for better rates",
+      "Ask for unique promo codes \u2014 helps track performance and negotiate future increases",
+      "Multi-language content is a rare differentiator \u2014 emphasise this with DEGIRO and XTB especially"
+    ],
+    "tasks": [
+      {
+        "text": "Research affiliate programmes for all 5 platforms + Webull",
+        "done": true
+      },
+      {
+        "text": "Check Gmail for past correspondence",
+        "done": true
+      },
+      {
+        "text": "Draft outreach emails for all 6 platforms",
+        "done": true
+      },
+      {
+        "text": "Tom to review and send emails",
+        "done": false
+      },
+      {
+        "text": "Interactive Brokers \u2014 intro call and negotiate CPC rate",
+        "done": false
+      },
+      {
+        "text": "Webull UK \u2014 negotiate ISA partnership terms",
+        "done": false
+      },
+      {
+        "text": "Plus500 \u2014 negotiate CPA/rev share terms",
+        "done": false
+      },
+      {
+        "text": "Trading 212 \u2014 negotiate CPA terms",
+        "done": false
+      },
+      {
+        "text": "DEGIRO \u2014 negotiate CPL terms",
+        "done": false
+      },
+      {
+        "text": "XTB \u2014 negotiate CPA terms",
+        "done": false
+      },
+      {
+        "text": "Add affiliate links to comparison tool",
+        "done": false
+      },
+      {
+        "text": "Track affiliate revenue in command centre",
+        "done": false
+      }
+    ],
+    "notes": "Emails drafted and saved in outreach/drafts/affiliate-*.json. Full research at outreach/affiliate-programme-research.md. IBKR contact: Josh Cantor (jcantor@interactivebrokers.com) \u2014 3 follow-ups since Aug 2022, mentioned top creators earn $25K/month. Webull: Johnson Di (Johnson@webull-uk.com) \u2014 persistent since Nov 2025, ISA launch April 2026."
+  }
+]

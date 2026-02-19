@@ -1,0 +1,151 @@
+import json
+
+updates = {}
+
+# 4. copy-trading-update-04-apr-2019
+updates["copy-trading-update-04-apr-2019"] = {
+    "slug": "atualizacao-copy-trading-04-abril-2019",
+    "meta_description": "Atualizacao de copy trading — 04 Abr 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 04 Abr 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Abril 2019",
+    "h1": "Atualizacao de Copy Trading — 04 Abr 2019",
+    "content_blocks": [
+        {"type": "h2", "text": "4 de abril de 2019 Tenho um score de risco 2 no meu portfolio! Pela primeira vez, meu score de risco realmente caiu pra 2 de 10. Isso e fantastico! Meu objetivo agora e criar um portfolio de copy trading estavel e de baixo risco, e esta funcionando."},
+        {"type": "p", "text": "Bem, estou copiando 5 traders diferentes, entao todos estao operando de formas diferentes pra comecar. Isso significa que provavelmente nao estao todos tomando exatamente as mesmas decisoes de trading ao mesmo tempo. Levou a um portfolio muito mais diversificado. Nem todos os ovos estao na mesma cesta, entao e improvavel que todos 'errem' ao mesmo tempo..."},
+        {"type": "p", "text": "Junto com isso, todos sao traders de baixo risco por si mesmos. Entao e como ter duas camadas de foco em baixo risco. Tem os traders em si, todos aplicando boa gestao de risco e visando preservar capital primariamente. Todos sao historicamente lucrativos, e tem historicos comprovados."},
+        {"type": "p", "text": "Depois tem eu, colocando todos esses caras de baixo risco no meu portfolio, adicionando diversificacao, e aplicando um Copy Stop Loss de 15% em cada um deles. No geral, e um bom sistema, projetado pra garantir que qualquer dinheiro que eu coloque no eToro vai ser:"},
+        {"type": "p", "text": "A: O mais seguro que eu consiga (e improvavel que tenham grandes sequencias de perdas)."},
+        {"type": "p", "text": "B: Usado de forma lucrativa no futuro."},
+        {"type": "p", "text": "Excelente! E o antidoto pra montanha-russa e grandes oscilacoes da mentalidade de boom-bust do trading. Vamos ver como vai. Meu objetivo ainda e construir um portfolio no qual ficaria feliz em colocar $20.000. Isso e MUITO dinheiro pra mim, entao preciso ter o maximo de certeza possivel de que seria seguro. Meus nervos simplesmente nao aguentariam de outra forma..."},
+        {"type": "h2", "text": "Como esta o portfolio?"},
+        {"type": "h3", "text": "Citadelpoint ainda esta na lideranca!"},
+        {"type": "p", "text": "Citadelpoint continua dominando os lucros no meu portfolio, gerando lucros como se nao houvesse amanha. Ele esta cortando perdedores cedo, pegando os lucros bem dos vencedores, e fazendo isso regularmente. E como uma maquina de fazer dinheiro agora, com muitas vitorias incrementais."},
+        {"type": "p", "text": "O perfil de risco dele ainda e mais alto do que estou buscando no meu portfolio, e reduzi quanto estou copiando dele. Espero, no entanto, que ele continue operando com seguranca, pois seria uma grande pena perde-lo como um dos meus traders."},
+        {"type": "p", "text": "Ele tem falado sobre possivelmente entrar no programa Popular Investor no eToro, o que seria otimo, mas vamos ver se isso acontece. Acredito que ele trabalha no setor financeiro, entao pode depender do que o empregador dele diz realmente..."},
+        {"type": "p", "text": "Entrar no programa PI restringiria seu trading de certas formas - menor alavancagem permitida, tamanhos de operacao menores incentivados. Ele pode nao querer essas coisas, mas certamente seriam bem-vindas pra mim como copiador, pois reduziria significativamente o perfil de risco dele. Vamos ver o que acontece..."},
+        {"type": "h3", "text": "Chocowin meu trader de acoes"},
+        {"type": "p", "text": "Chocowin tambem tem ido muito bem ultimamente. Ele recentemente parou todas as operacoes e adicionou muito mais dinheiro a conta. Foi por causa do programa Popular Investor - ele acabou de subir de nivel de 'Rising Star' para 'Champion'."},
+        {"type": "p", "text": "O programa Popular Investor exige que voce tenha uma certa quantia na sua conta de trading pra chegar ao proximo nivel, entao Chocowin fechou todas as operacoes, adicionou o dinheiro necessario, e comecou a operar de novo pra que todos tenhamos copias limpas dele."},
+        {"type": "p", "text": "Tenho tentado reduzir a quantidade do meu portfolio copiando Chocowin tambem, devido ao perfil de risco mais alto. Ate agora, tirei $30 de lucro que ele me deu e adicionei aos meus traders de menor risco. Ele tem ido muito bem. Entre ele e Citadelpoint, removi $80 das copias deles ate agora e adicionei aos outros caras. Pode nao parecer muito, mas como proporcao dos $200 que copio com cada um, e bastante."},
+        {"type": "h3", "text": "Como esta o Alnayef?"},
+        {"type": "p", "text": "Mais ou menos na mesma. Neste ponto, porem, algumas das operacoes abertas dele comecaram a se mover na direcao certa. E um bom sinal, mas ainda estou muito preocupado com quanto tempo ele mantem as operacoes perdedoras abertas. E otimo ser paciente, mas as taxas continuam subindo e comecam a realmente comer os lucros. Ele ainda tem operacoes abertas desde novembro do ano passado..."},
+        {"type": "h3", "text": "O 'novato' Berrau - como esta operando?"},
+        {"type": "p", "text": "Atualmente com mais de 1% de alta, e operando muito bem. Houve alguns momentos assustadores quando abriu uma operacao que rapidamente virou contra ele. Ele lidou bem, abrindo vendas no mesmo ativo pra parar os prejuizos. Acabou bem no final, com as operacoes de venda vencedoras cobrindo as de compra perdedoras e ele terminou em lucro. E bom ver que alguem sabe o que fazer quando as coisas viram contra ele."},
+        {"type": "p", "text": "Dizem que ate os melhores traders so acertam 50% das vezes. A habilidade, aparentemente, esta em saber como cortar os perdedores rapido e deixar os vencedores correr. Ele parece conseguir fazer isso ate agora, o que e otimo de ver."},
+        {"type": "h3", "text": "Olivier Danvel - trading consistente com gestao de risco?"},
+        {"type": "p", "text": "Sim. Lentamente e firmemente ganhando operacoes. Ha grandes periodos de espera onde ele aguarda os pontos de entrada certos pra novas operacoes, mas isso e otimo. Se encaixa no plano... Fico feliz em sentar e deixar ele operar."},
+        {"type": "h2", "text": "Qual e meu proximo passo pro portfolio?"},
+        {"type": "p", "text": "Posso adicionar uma nova pessoa quando tiver mais dinheiro pra rebalancear o portfolio e reduzir minha exposicao aos caras mais arriscados. Preciso esperar ter mais dinheiro pra isso. Definitivamente vou copiar Harshsmith, mas preciso de $460 extras pra isso, o que pode demorar um pouco. Tomara que nao muito."},
+        {"type": "p", "text": "Estou no processo de fazer videos onde entrevisto os melhores traders no eToro, fazendo a todos as mesmas perguntas... Estou tentando entrar em contato com alguns dos grandes nomes do site. Se voce conhece algum dos traders que menciono no final do video, por favor me avise, ou avise a eles que estou tentando entrar em contato."},
+        {"type": "risk_warning"}
+    ]
+}
+
+# 5. copy-trading-update-04-jun-2019
+updates["copy-trading-update-04-jun-2019"] = {
+    "slug": "atualizacao-copy-trading-04-junho-2019",
+    "meta_description": "Atualizacao de copy trading — 04 Jun 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 04 Jun 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Junho 2019",
+    "h1": "Atualizacao de Copy Trading — 04 Jun 2019",
+    "content_blocks": [
+        {"type": "h2", "text": "4 de junho de 2019 Social Trading Vlog Fui promovido a Popular Investor nivel 'Rising Star'!"},
+        {"type": "p", "text": "Ganhei a estrela amarela do eToro, e agora sou um 'Rising Star' no programa PI deles. Legal. Entao como isso aconteceu?"},
+        {"type": "img_grid", "images": [
+            {"src": "../images/eToro-Yellow-Star-Popular-Investor-Program.png", "alt": "Estrela amarela do eToro indicando nivel Rising Star no programa Popular Investor"},
+            {"src": "../images/Etoro-Red-star-champion-popular-investor.png", "alt": "Estrela vermelha do eToro para nivel Champion Popular Investor — o proximo nivel"}
+        ]},
+        {"type": "p", "text": "Bem, como parte do Programa Popular Investor do eToro, posso subir de nivel e obter melhores beneficios. Qualquer um que entre no programa pode. Se inscrever e facil - basta dar uma olhada na pagina acima que vai explicar tudo."},
+        {"type": "p", "text": "Basicamente, consegui $40K AUM (ativos sob gestao) e cumpri todos os outros requisitos. Assim que isso aconteceu, fui promovido ao proximo nivel."},
+        {"type": "h2", "text": "A estrela amarela mostra que voce e PI nivel 'rising star'. Quais beneficios eu ganho?"},
+        {"type": "p", "text": "Bem, agora vou receber um pagamento de $500 diretamente do eToro todo mes, enquanto me mantiver neste nivel. Isso e otimo!"},
+        {"type": "p", "text": "Tambem nao pago taxas de saque quando retiro dinheiro do eToro. Muito bom..."},
+        {"type": "h2", "text": "Voce pode perder sua estrela de novo?"},
+        {"type": "p", "text": "Nao tenho certeza ainda, mas acho que sim. Preciso ficar acima do nivel necessario pra manter meu status atual, ou subir mais pra chegar ao proximo."},
+        {"type": "h2", "text": "Qual e o proximo nivel de Popular Investor?"},
+        {"type": "p", "text": "O proximo nivel seria a estrela vermelha - o Popular Investor nivel 'Champion'."},
+        {"type": "h2", "text": "Uma vez no nivel 'Champion' voce tera uma estrela vermelha. Voltando as minhas aventuras de Copy Trading"},
+        {"type": "p", "text": "As coisas estao indo bem no portfolio na verdade. Vou passar por eles e falar sobre o que tem acontecido."},
+        {"type": "p", "text": "Estou um pouco preocupado com as taxas do Alnayef, e Berrau acabou de entrar em uma operacao forex um pouco assustadora. Kela-Leo parece estar ainda um pouquinho pra cima, um pouquinho pra baixo. Os outros estao praticamente iguais a ultima vez..."},
+        {"type": "h2", "text": "Alnayef e suas taxas de trading"},
+        {"type": "p", "text": "A questao do Alnayef e que ele pode nao estar pagando taxas overnight e de fim de semana. Ouvi relatos de que contas 'islamicas' no eToro sao isentas dessas taxas por razoes religiosas."},
+        {"type": "img", "src": "../images/Fees-page-on-eToro.png", "alt": "Pagina de taxas do eToro mostrando taxas de overnight e fim de semana explicadas"},
+        {"type": "p", "text": "Mas as pessoas com contas nao-islamicas que copiam esses traders nao sao isentas. Isso criou uma situacao um pouco dificil em relacao a lucratividade pelo que posso ver. Pode ser que haja alguma outra cobranca que o pessoal de conta islamica paga e eu nao."},
+        {"type": "p", "text": "Nao sei se se equilibra no longo prazo, e tudo so tem nome diferente. Pode ser - empresas sempre querem seus lucros..."},
+        {"type": "p", "text": "Mas, pelo que vejo, nao ha fator de tempo nas operacoes do Alanayef, enquanto o relogio esta correndo pra mim."},
+        {"type": "h2", "text": "O que sao taxas overnight e de fim de semana?"},
+        {"type": "p", "text": "Caso voce nao saiba o que sao taxas overnight e de fim de semana, vou explicar brevemente. (Aqui esta a pagina do eToro) Quando voce faz uma operacao:"},
+        {"type": "p", "text": "Voce sera cobrado taxas overnight por cada dia que mantiver essa operacao aberta de um dia pro outro."},
+        {"type": "p", "text": "Taxas de 'fim de semana' sao apenas multiplas 'taxas overnight' somadas pra contabilizar o fim de semana."},
+        {"type": "p", "text": "Sao valores minusculos - calculados com base em quantas unidades do ativo voce esta segurando. Com o tempo, porem, essas pequenas cobracas podem comecar a se acumular... Se voce esta pagando isso, fica muito consciente do tempo. Por quanto tempo vai manter essa operacao aberta?"},
+        {"type": "h3", "text": "Vale a pena com essas taxas se acumulando?"},
+        {"type": "p", "text": "Se voce nao esta pagando essas taxas, toda sua atitude em relacao ao tempo muda. Quem se importa com quanto tempo a operacao fica aberta? Pode estar perdendo agora, mas em alguns meses vai virar e estarei em lucro. Qual e o problema?"},
+        {"type": "p", "text": "O problema e que estou copiando voce, e voce nao paga essas taxas, mas eu pago. Entao, quando voce pensa sobre qual lucro vai ter, nao leva essas taxas em conta."},
+        {"type": "p", "text": "Eu, porem, estou pagando essas taxas. Entao voce pode dizer \"Olha, tive lucro\" quando fecha a operacao, e eu posso estar no prejuizo. Na mesma operacao. Nao e tao bom."},
+        {"type": "h2", "text": "Vou continuar copiando as operacoes do Alnayef?"},
+        {"type": "p", "text": "Por enquanto, sim. No passado, as taxas em cada operacao representavam apenas uma proporcao muito pequena da operacao total. So agora o problema esta comecando a ser perceptivel."},
+        {"type": "p", "text": "Ele ficou preso em algumas operacoes que estao contra as tendencias do mercado. Ele ve uma moeda se fortalecendo, e ela tem se enfraquecido."},
+        {"type": "p", "text": "Os mercados forex parecem ser movidos por grandes fatores macroeconomicos. Isso significa que algumas tendencias podem durar bastante tempo. Enquanto essa tendencia durar, e Alanayef estiver do lado errado, as operacoes continuarao abertas. Isso significa que as taxas se acumularam e agora sao uma proporcao perceptivel dessas operacoes especificas."},
+        {"type": "p", "text": "Mas vou continuar copiando ele. Ele tem sido um trader bom, consistente e de baixo risco, entao vou esperar e ver como as coisas se desenvolvem. Estou acompanhando cada vez mais de perto."},
+        {"type": "h2", "text": "Como Olivier Danvel se saiu com a media de custo?"},
+        {"type": "p", "text": "Muito bem! Se voce se lembra da ultima vez, falei sobre como Olivier estava comprando multiplos lotes no mesmo par forex."},
+        {"type": "p", "text": "A estrategia dele deu certo e ele terminou maio em bom lucro."},
+        {"type": "p", "text": "Olivier manteve seu recorde ininterrupto de estatisticas verdes. E muito impressionante!"},
+        {"type": "h2", "text": "A operacao forex complicada do Berrau"},
+        {"type": "p", "text": "Berrau tem ido bem, mas caiu em lucro este mes. E devido a uma operacao forex especifica no par AUD/USD. Ele abriu uma operacao de 'Venda' no par. Infelizmente, o Dolar Australiano (AUD) na verdade comecou a se fortalecer contra o Dolar Americano (USD). Entao, comecou a perder dinheiro..."},
+        {"type": "img", "src": "../images/Berrau-short-term-AUDUSD-trades-june-2019-2400x1150.png", "alt": "Operacoes forex de curto prazo AUD/USD do Berrau abertas no eToro — Junho 2019"},
+        {"type": "p", "text": "Ele manteve a operacao aberta, e continuou caindo, mas nem tudo esta perdido!"},
+        {"type": "p", "text": "Ele tambem tem feito operacoes de compra e venda de curto prazo no AUD/USD que tem dado algum lucro de volta."},
+        {"type": "p", "text": "Vou continuar acompanhando e ver como ele lida com esse drawdown nessa operacao especifica. E se chegar a 100% de perda (nessa operacao)? Ele vai estender o stop loss alem de 100% ou fechar? Nao sei, entao estou esperando pra ver que decisao ele toma."},
+        {"type": "p", "text": "Fora isso, ele tem ido bem. Sempre me interessa muito ver como os traders que copio lidam com situacoes adversas/inesperadas. Pra ser honesto, estou sempre ganhando ou perdendo confianca neles."},
+        {"type": "p", "text": "Estou procurando pessoas em que eu possa simplesmente parar de assistir as vezes, confiando que farao a escolha certa. Vamos ver como fica..."},
+        {"type": "h2", "text": "Kela-Leo - Como ele esta operando?"},
+        {"type": "p", "text": "De novo, Kela-Leo nao tem feito muita coisa. Subiu um pouco, depois caiu um pouco, depois subiu um pouco, caiu um pouco. Nao tem muito acontecendo."},
+        {"type": "p", "text": "Ele tem operado, mas os ganhos e perdas praticamente se equilibram. O risco dele continua baixo - ainda esta alinhado com minhas metas de risco pro portfolio. So estou continuando a esperar e ver o que ele faz."},
+        {"type": "h3", "text": "Hedging dentro do portfolio"},
+        {"type": "p", "text": "Na verdade tenho uma situacao estranha com Kela-Leo e alguns dos meus outros traders. Alguns estao comprando GBP/USD, e outros estao vendendo! Isso esta acontecendo com alguns pares forex diferentes agora. Alguns dos meus traders estao apostando contra outros traders meus."},
+        {"type": "p", "text": "E meio estranho de assistir, mas tambem esta mantendo o portfolio bem seguro de certa forma. Se todos estivessem operando o mesmo ativo na mesma direcao, eu poderia estar exposto a risco demais... Seria como ter ovos demais na mesma cesta. Pelo menos assim, minha exposicao ao risco e menor. Tomara que a matematica funcione no final, e eu saia em lucro!"},
+        {"type": "h2", "text": "Harshsmith e a operacao da Baidu"},
+        {"type": "p", "text": "Entao, logo depois que comecei a copiar Harshsmith, uma empresa em que ele investe chamada Baidu teve seu relatorio de resultados. Os resultados ficaram abaixo das expectativas, e a acao caiu. E so azar no timing. Entao na semana passada, Harshsmith estava mais pra baixo, mas esta voltando devagar."},
+        {"type": "img", "src": "../images/Harshsmith-losing-baidu-trade-june-2019-2400x1300.png", "alt": "Operacao perdedora do Harshsmith em Baidu visivel no portfolio do eToro — Junho 2019"},
+        {"type": "p", "text": "Por enquanto, muitas das operacoes ainda estao no vermelho, mas estao se movendo de volta na direcao certa."},
+        {"type": "p", "text": "Ele so usa uma pequena proporcao do tamanho da conta em cada operacao, entao no geral nao fez uma diferenca enorme..."},
+        {"type": "p", "text": "Ele so esta com uma fracao de queda mesmo que essa operacao pareca muito ruim. Seu sistema de portfolio long/short significa que esta protegido contra grandes movimentos do mercado. Se alguns caem, outros sobem e vice-versa. Equilibrar isso e garantir que no geral seja lucrativo e a habilidade dele."},
+        {"type": "p", "text": "Eu, claro, vou esperar e assistir enquanto ele recupera. Estou feliz de finalmente estar copiando Harshsmith! Demorou pra juntar os fundos por causa da questao do tamanho minimo de operacao."},
+        {"type": "risk_warning"}
+    ]
+}
+
+# 6. copy-trading-update-07-feb-2019
+updates["copy-trading-update-07-feb-2019"] = {
+    "slug": "atualizacao-copy-trading-07-fevereiro-2019",
+    "meta_description": "Atualizacao de copy trading — 07 Fev 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 07 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+    "h1": "Atualizacao de Copy Trading — 07 Fev 2019",
+    "content_blocks": [
+        {"type": "p", "text": "7 de fevereiro de 2019 Social Trading Vlog Foi uma semana dificil com um dos meus traders atingindo o Stop Loss, e eu tendo que fechar outro manualmente..."},
+        {"type": "p", "text": "Aqui esta meu perfil no eToro: https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."},
+        {"type": "p", "text": "Todo trading envolve risco. Arrisque apenas capital que esta preparado pra perder. Resultados passados nao sao indicacao de resultados futuros. Este conteudo e apenas para fins educacionais e nao constitui aconselhamento de investimento."},
+        {"type": "h2", "text": "Um Copy Stop Loss foi acionado..."},
+        {"type": "p", "text": "O trader 'DazPanda' foi removido do meu portfolio! Ele na verdade acionou meu copy stop loss, que e um recurso projetado pra parar automaticamente sua copia de um trader se ele perder uma quantia pre-definida de dinheiro. Quando vi que o Copy Stop Loss tinha sido acionado, senti que estava perdendo uma oportunidade, mas no geral e uma coisa boa, ja que esta alinhado com minhas ideias de gestao de risco."},
+        {"type": "p", "text": "Outro trader, 'Manusabrina', tambem saiu do portfolio, embora tenha parado essa copia manualmente ja que o score de risco dele era alto demais, e realmente quero um portfolio mais estavel."},
+        {"type": "h3", "text": "O que fiz em seguida"},
+        {"type": "p", "text": "Depois disso copiei e depois descopiei 'Berrau' e 'Harshsmith' - foi meio panico pois so queria reutilizar o dinheiro das copias paradas de DazPanda e Manusabrina o mais rapido possivel. Panico nunca e bom, entao so reinvesti os fundos nos meus traders existentes e vou tomar um tempo pra pensar sobre quem copiar em seguida."},
+        {"type": "p", "text": "Falo sobre os outros traders no portfolio, comentando os problemas atuais do Aimstrader, e por que estou esperando pra ver o que acontece."},
+        {"type": "h3", "text": "Problemas com estatisticas"},
+        {"type": "p", "text": "Tenho ouvido pessoas com problemas e preocupacoes sobre as estatisticas no eToro e tem havido muita confusao sobre quais estatisticas estao certas e por que ha certas contradicoes e resultados divergentes. Pra ser honesto, ainda nao tenho certeza do que esta acontecendo, mas agora estou comparando o grafico normal de estatisticas de trading com as operacoes fechadas na secao de 'historico' do portfolio. Tambem estou tentando cruzar isso com o grafico de cada trader pra ter uma visao completa. Vou avisar como vai."},
+        {"type": "p", "text": "Tambem estou procurando um bom trader de commodities de baixo risco, entao se voce conhecer algum, por favor me avise!"},
+        {"type": "h3", "text": "Veja meu desempenho atual"},
+        {"type": "p", "text": "Como estou indo hoje? Descubra aqui."},
+        {"type": "p", "text": "Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."},
+        {"type": "p", "text": "Minhas Estatisticas..."},
+        {"type": "risk_warning"}
+    ]
+}
+
+with open('/Users/thomaswest/socialtradingvlog-website/tools/translations/_pt_part3.json', 'w', encoding='utf-8') as f:
+    json.dump(updates, f, ensure_ascii=False, indent=2)
+
+print(f"Part 3 written: {len(updates)} posts")

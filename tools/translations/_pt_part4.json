@@ -1,0 +1,290 @@
+{
+  "copy-trading-update-07-may-2019": {
+    "slug": "atualizacao-copy-trading-07-maio-2019",
+    "meta_description": "Atualizacao de copy trading — 07 Mai 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 07 Mai 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Maio 2019",
+    "h1": "Atualizacao de Copy Trading — 07 Mai 2019",
+    "content_blocks": [
+      {
+        "type": "h2",
+        "text": "7 de maio de 2019 Social Trading Vlog Qual trader de acoes eu mantenho?"
+      },
+      {
+        "type": "p",
+        "text": "A principal questao nesta atualizacao e se troco meu trader de acoes atual por um novo. No momento, estou copiando Chocowin pras minhas acoes. Ele tem ido bem, mas o perfil de risco dele e um pouco alto pras minhas metas."
+      },
+      {
+        "type": "p",
+        "text": "Tenho acompanhado um trader chamado 'Harshsmith' ha algum tempo. Os scores de risco dele sao menores, o desempenho e bom, e estou pensando em trocar pra ele. Mas primeiro, vou repassar algumas das enquetes dos meus videos anteriores..."
+      },
+      {
+        "type": "h2",
+        "text": "Resultados das enquetes sobre quais traders copiar"
+      },
+      {
+        "type": "p",
+        "text": "Recentemente, tenho feito alguns videos de \"Voce copiaria este trader?\". Tem sido uma boa forma de revisar algumas sugestoes dos espectadores e tambem deixar todo mundo dar sua opiniao. Enquetes sao muito uteis pra isso, pois permitem que todos os futuros espectadores vejam como outras pessoas estao pensando..."
+      },
+      {
+        "type": "p",
+        "text": "Entao aqui estao:"
+      },
+      {
+        "type": "p",
+        "text": "1. VIDEO: \"Voce copiaria Berrau\" Sim: 54% Adicionar a lista de observacao por enquanto: 21% Nao, ele e muito chato: 18% Nao, ele e muito arriscado: 5%"
+      },
+      {
+        "type": "img",
+        "src": "../images/Berrau-closed-trades-may-07-2019-eToro-2400x1300.png",
+        "alt": "Operacoes fechadas do Berrau no eToro — 7 Mai 2019"
+      },
+      {
+        "type": "p",
+        "text": "2. VIDEO: \"Voce copiaria LoydBazaar\" SIM: 40% Adicionar a lista de observacao por enquanto: 37% Nao tenho certeza: 15% Nao: 6%"
+      },
+      {
+        "type": "p",
+        "text": "3. VIDEO: \"Voce copiaria Kela-Leo\" Sim: 53% Adicionar a lista de observacao por enquanto: 12% Nao tenho certeza: 20% Nao: 14%"
+      },
+      {
+        "type": "p",
+        "text": "Sei que isso nao e cientifico! Fiz perguntas ligeiramente diferentes e dei opcoes diferentes de resposta. Entao considere como uma indicacao aproximada e um pouco de diversao... Sempre faca sua propria pesquisa antes de decidir quem copiar!"
+      },
+      {
+        "type": "h2",
+        "text": "Voltando a Harshsmith VS Chocowin"
+      },
+      {
+        "type": "p",
+        "text": "Entao, como eu dizia, estou pensando em trocar o trader de acoes que copio no meu portfolio. Por que?"
+      },
+      {
+        "type": "p",
+        "text": "Chocowin tem ido muito bem pra mim, mas comparado ao Harshsmith, ele e de alto risco. Meu objetivo e ter um portfolio de baixo risco. Estabeleci algumas regras informais pra alcancar essa meta."
+      },
+      {
+        "type": "p",
+        "text": "Uma delas e sobre 'Max Drawdown'. Essa e uma metrica nas estatisticas do eToro que mede o drawdown maximo de cada trader no ultimo ano. 'Drawdown' pode quase ser comparado a uma 'sequencia de perdas'."
+      },
+      {
+        "type": "p",
+        "text": "Basicamente descreve a maior perda que voce teve antes de comecar a ter ganhos novamente. E como olhar pra um mergulho nos seus lucros - ate onde o trader deixou cair antes de:"
+      },
+      {
+        "type": "p",
+        "text": "Uso isso pra ter uma ideia aproximada de se um trader tem probabilidade de acionar meu Copy Stop Loss de 15%. Estou configurando meu Copy Stop Loss (CSL) em 15% pra cada trader que copio pra nao arriscar demais do meu capital. Mas tambem tento escolher traders cujo historico mostra que provavelmente nao vao acionar meu CSL."
+      },
+      {
+        "type": "p",
+        "text": "Nao quero definir um stop loss tao apertado so pra ser acionado constantemente. Nao faria sentido algum. Entao acompanho as estatisticas deles..."
+      },
+      {
+        "type": "h2",
+        "text": "Scores de risco e drawdown maximo anual do Chocowin"
+      },
+      {
+        "type": "p",
+        "text": "Aqui voce pode ver os scores de risco do Chocowin nos ultimos doze meses e as estatisticas de Max Drawdown. Se comparar com os do Harshsmith (mostrados abaixo), vai ver que os scores de risco sao mais altos durante todo o ano."
+      },
+      {
+        "type": "img",
+        "src": "../images/Chocowin-risk-scores-max-yearly-drawdown-May-2019-1024x657.png",
+        "alt": "Scores de risco e drawdown maximo anual do Chocowin no eToro — Mai 2019"
+      },
+      {
+        "type": "p",
+        "text": "Abaixo do grafico de barras, voce pode ver a secao de Max Drawdown. O numero no lado direito da caixa mostra o 'Drawdown Maximo Anual'. Como pode ver, o do Chocowin esta acima da minha meta de 15%, enquanto o do Harshsmith esta bem abaixo..."
+      },
+      {
+        "type": "h2",
+        "text": "Scores de risco e drawdown maximo anual do Harshsmith"
+      },
+      {
+        "type": "p",
+        "text": "Parece estranho parar de copiar um trader que me deu bons lucros. Mas tudo se resume a crescimento sustentavel e de baixa volatilidade no futuro. Essa e minha meta principal. Se eu colocasse $20.000 na minha conta de trading do eToro, quais traders eu gostaria operando com meu dinheiro?"
+      },
+      {
+        "type": "img",
+        "src": "../images/Harshsmith-risk-scores-max-yerly-drawdonw-may-2019-1024x657.png",
+        "alt": "Scores de risco e drawdown maximo anual do Harshsmith no eToro — Mai 2019"
+      },
+      {
+        "type": "p",
+        "text": "Ambos operam acoes, ambos sao historicamente lucrativos. Um e estatisticamente menos arriscado que o outro. O que voce faria? Perguntei aos espectadores, e vou ver o que a sabedoria da multidao diz. Estou inclinado a parar com Chocowin e copiar Harshsmith."
+      },
+      {
+        "type": "p",
+        "text": "Nao quero muita exposicao a acoes ja que a volatilidade parece ser o novo normal, e preciso observar meu risco. Portanto, estou inclinado a manter apenas um trader de acoes no meu portfolio."
+      },
+      {
+        "type": "h2",
+        "text": "Como estao os outros traders?"
+      },
+      {
+        "type": "h3",
+        "text": "Alnayef"
+      },
+      {
+        "type": "p",
+        "text": "Esta praticamente no mesmo nivel da ultima atualizacao. Nao mudou muita coisa... Ha muito vermelho."
+      },
+      {
+        "type": "img",
+        "src": "../images/Alnayef-open-trade-may-07-2019-eToro-2400x1300.png",
+        "alt": "Operacoes abertas do Alnayef visiveis no portfolio do eToro — 7 Mai 2019"
+      },
+      {
+        "type": "p",
+        "text": "Alnayef nao tem feito muito. Ainda tem muitas operacoes levemente perdedoras abertas, e parece estar deixando elas la. Ele esta esperando ate virarem pro verde, eu acho. Nao sei quanto tempo vai levar. Por enquanto, vou continuar deixando ele e observando. Tomara que as coisas melhorem."
+      },
+      {
+        "type": "p",
+        "text": "Ele nao esta tomando riscos enormes, e nao esta fazendo nada imprudente. So esta do lado errado de muitas operacoes - mas nao seriamente o suficiente pra causar panico. So tem aquela sensacao persistente de que ele esta numa sequencia lenta de perdas."
+      },
+      {
+        "type": "h3",
+        "text": "Berrau"
+      },
+      {
+        "type": "p",
+        "text": "Tem ido muito bem. Ganhos lentos e estaveis - fazendo cerca de 0,25% em cada operacao vencedora, com uma serie de vitorias ultimamente."
+      },
+      {
+        "type": "p",
+        "text": "Seus scores de risco e max drawdown continuam baixos, e ele parece estar num bom caminho no momento. A cada dois dias, ele abre uma nova operacao. Quando ganha um quarto de porcento, fecha e pega o lucro. Simples e limpo."
+      },
+      {
+        "type": "p",
+        "text": "Quando comecei a copia-lo, muitas das operacoes estavam indo contra ele. Ele ainda conseguia operar ate sair com lucro. Recentemente, no entanto, todas as novas operacoes parecem ter ido a favor dele. Que continue assim!"
+      },
+      {
+        "type": "h3",
+        "text": "Olivier Danvel"
+      },
+      {
+        "type": "p",
+        "text": "Esta praticamente no mesmo nivel tambem. Teve um pequeno drawdown no final do mes passado, mas recuperou pra terminar em lucro. Ainda tem 100% de estatisticas mensais verdes. Estou satisfeito com Olivier, e vou deixa-lo la fazendo o que sabe!"
+      },
+      {
+        "type": "h3",
+        "text": "Kela-Leo"
+      },
+      {
+        "type": "p",
+        "text": "Kela-Leo subiu um pouco, depois caiu um pouco, depois subiu um pouco o mes todo. Meus lucros da copia nao mudaram muito, entao nao tem muito a dizer. De novo, vou esperar e observar..."
+      },
+      {
+        "type": "risk_warning"
+      }
+    ]
+  },
+  "copy-trading-update-11-jan-2019": {
+    "slug": "atualizacao-copy-trading-11-janeiro-2019",
+    "meta_description": "Atualizacao de copy trading — 11 Jan 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 11 Jan 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Janeiro 2019",
+    "h1": "Atualizacao de Copy Trading — 11 Jan 2019",
+    "content_blocks": [
+      {
+        "type": "p",
+        "text": "Aqui esta meu perfil no eToro: https://etoro.tw/2rcYYm0"
+      },
+      {
+        "type": "p",
+        "text": "Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."
+      },
+      {
+        "type": "p",
+        "text": "Todo trading envolve risco. Arrisque apenas capital que esta preparado pra perder. Resultados passados nao sao indicacao de resultados futuros. Este conteudo e apenas para fins educacionais e nao constitui aconselhamento de investimento."
+      },
+      {
+        "type": "p",
+        "text": "Primeiramente, descopiei meu trader de cripto \"SaveTheAnimals\" porque tudo estava meio parado por enquanto, e acho que o dinheiro pode ser melhor usado em outro lugar. Ainda estou de olho em traders de cripto pra copiar, pois acho que o futuro das criptos ainda vai ser enorme."
+      },
+      {
+        "type": "p",
+        "text": "Tambem falo sobre \"ChineseTiger\" - um trader que copiei muito recentemente e que tem feito operacoes muito arriscadas. Parei de copia-lo pois ele perdeu mais de 10% do que investi com ele em apenas dois dias, e a gestao de risco dele parecia praticamente inexistente. Nao e o que quero pro portfolio - grande risco e grandes flutuacoes nao sao mais pra mim. Discuto os graficos dele, e como parece haver alguma logica nas operacoes perdedoras, mas esta muito longe do estilo de trading que procuro - arriscado demais pra mim."
+      },
+      {
+        "type": "p",
+        "text": "Tambem falo sobre como algo parece estar errado com as estatisticas. Nao sei o que esta acontecendo, mas parecem estar incorretas em varios casos. O eToro me disse pra avisar se encontrar bugs, entao passei minhas preocupacoes pra eles, e ate agora nao me responderam. Minha copia de DazPanda tambem mostra estatisticas irreais, o que perguntei ao DazPanda e ele tambem percebeu. Vamos ver o que acontece. Ainda preciso entender como calculam as estatisticas de trading - e muito dificil ver o que realmente esta acontecendo ali."
+      },
+      {
+        "type": "p",
+        "text": "Copiei o trader 'Chocowin' tambem pois recentemente reanalisei suas estatisticas e decidi dar uma chance a ele..."
+      },
+      {
+        "type": "h3",
+        "text": "Quer ver como estou indo?"
+      },
+      {
+        "type": "p",
+        "text": "Voce pode conferir minhas estatisticas aqui! Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."
+      },
+      {
+        "type": "p",
+        "text": "Minhas Estatisticas..."
+      },
+      {
+        "type": "risk_warning"
+      }
+    ]
+  },
+  "copy-trading-update-13-jan-2019": {
+    "slug": "atualizacao-copy-trading-13-janeiro-2019",
+    "meta_description": "Atualizacao de copy trading — 13 Jan 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 13 Jan 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Janeiro 2019",
+    "h1": "Atualizacao de Copy Trading — 13 Jan 2019",
+    "content_blocks": [
+      {
+        "type": "p",
+        "text": "13 de janeiro de 2019 Social Trading Vlog Copiei dois novos traders - um especializado em Forex, e o outro em uma variedade de ativos, mas principalmente acoes."
+      },
+      {
+        "type": "p",
+        "text": "Aqui esta meu perfil no eToro: https://etoro.tw/2rcYYm0"
+      },
+      {
+        "type": "p",
+        "text": "Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."
+      },
+      {
+        "type": "p",
+        "text": "Todo trading envolve risco. Arrisque apenas capital que esta preparado pra perder. Resultados passados nao sao indicacao de resultados futuros. Este conteudo e apenas para fins educacionais e nao constitui aconselhamento de investimento."
+      },
+      {
+        "type": "h3",
+        "text": "Por que os copiei?"
+      },
+      {
+        "type": "p",
+        "text": "Entao, Citadelpoint simplesmente parece entender do assunto. Ele e um cara altamente qualificado com numeros, e trabalha no setor de trading - li um dos artigos academicos dele e era extremamente inteligente. Sei que ele nao tem muito historico de trading no eToro, mas quero dar uma chance a ele e ver como vai..."
+      },
+      {
+        "type": "p",
+        "text": "Chocowin tem um historico comprovado - na verdade eu ja tinha analisado o perfil dele alguns meses atras e nao o copiei, mas reanalisando tudo, decidi copia-lo e acompanhar seu progresso. Ele opera principalmente acoes, mas nao se limita a elas - tambem ha alguns indices e commodities no portfolio dele de vez em quando e parece entender as formas como todos os ativos estao ligados ('Correlacoes'), o que deveria permitir que ele capitalize em diversas condicoes de mercado, pois se um ativo nao esta indo bem, ele sabera qual outro ativo usar pra gerar lucros. Vamos ver!"
+      },
+      {
+        "type": "p",
+        "text": "Ja faz um tempo que estou me afastando de traders de acoes pois estou preocupado com a abordagem buy-and-hold que muitos traders usavam em 2017... o que acontece se a queda que tantas pessoas preveem realmente acontecer - nao quero um portfolio cheio de traders que so esperam e esperam e perdem todo meu dinheiro. Entao, tenho procurado alguem que tenha exposicao a acoes, mas que tambem pareca capaz de cortar prejuizos e mudar pra outras classes de ativos se o contexto dos mercados mudar. Espero que Chocowin seja esse cara."
+      },
+      {
+        "type": "h3",
+        "text": "Quer ver como estou indo hoje?"
+      },
+      {
+        "type": "p",
+        "text": "Veja minhas estatisticas e desempenho atuais aqui... Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."
+      },
+      {
+        "type": "p",
+        "text": "Da Uma Olhada"
+      },
+      {
+        "type": "risk_warning"
+      }
+    ]
+  }
+}

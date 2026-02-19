@@ -1,0 +1,173 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-02-19
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 12 Feb 2026 → 19 Feb 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           14
+  Users:              13
+  Page views:         15
+  Avg session:        1m 43s
+  Bounce rate:        100.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                       7      8    0m 0s
+  /about                                                  2      1    1m 3s
+  /index.html                                             2      2    5m 3s
+  /copy-trading-returns.html                              1      1    0m 0s
+  /etoro-review/                                          1      1    0m 0s
+  /faq.html                                               1      1    0m 0s
+  /social-trading.html                                    1      1    0m 0s
+  /videos.html                                            0      1  11m 56s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                 11         11
+  Unassigned                              3          2
+  Organic Search                          1          1
+  Referral                                1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                         11
+  (not set)                                         3
+  app.sedric.ai                                     1
+  google                                            1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+                                          4          4
+  China                                   3          3
+  Singapore                               3          3
+  Malta                                   2          2
+  Netherlands                             2          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                       8          7
+  mobile                        6          6
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 20 Jan 2026 → 19 Feb 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           14
+  Users:              13
+  Page views:         15
+  Avg session:        1m 43s
+  Bounce rate:        100.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                       7      8    0m 0s
+  /about                                                  2      1    1m 3s
+  /index.html                                             2      2    5m 3s
+  /copy-trading-returns.html                              1      1    0m 0s
+  /etoro-review/                                          1      1    0m 0s
+  /faq.html                                               1      1    0m 0s
+  /social-trading.html                                    1      1    0m 0s
+  /videos.html                                            0      1  11m 56s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                 11         11
+  Unassigned                              3          2
+  Organic Search                          1          1
+  Referral                                1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                         11
+  (not set)                                         3
+  app.sedric.ai                                     1
+  google                                            1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+                                          4          4
+  China                                   3          3
+  Singapore                               3          3
+  Malta                                   2          2
+  Netherlands                             2          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                       8          7
+  mobile                        6          6
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  27 completed
+  Video pages:     30 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [04:37:22]   transcribing with api model...
+    [04:37:22]   ERROR: transcription failed
+    [04:37:22] === Pipeline finished 2026-02-19T04:37:22.786003 ===
+    [04:37:22] Completed: 27/333 | Errors: 306
+    [04:37:22] Failed video IDs: -qeBPdi5LR8, 0mQM1-ENlgU, 64YEt3i7kFo, -bIQja3gEm4, A1iTColkAck, n3ulZJxYDxA, v6Dd5LUh1_4, iw0xvpejt98, yXyQ0tgx--I, MjzXbe8lz40, mbaSu_VQ9bY, FN-LEQo5n50, KU56yDvug8g, tCXC6E2RrBI, PQz66EBS83o, kHuERm35vzM, C601NAtmHM8, SZvU0u3SpKU, W9KcllRB5Ng, Gbhfgkhb90s, 4_EiZBcUT1U, 93I4ENG_-0c, 6ff45NaA9_g, b1mBEXpDgy8, d_7RopG_bOc, n-d5djk0pfY, zoylfSiK38k, cx3Kc3M2Jxg, kP68l37HwiY, x1JnVWJ-vKA, hzJx-KPvgu8, LH-v_ZghQGM, mf-WNVDzf-0, rO60YB0ax-g, qePnF1kFG7E, FEel7OxVfKc, ZMxyrNTvC9Y, C2IW-Q9tnbs, vxe1RZccgA4, tHNtskWEV0c, EKnBxgPfIIw, SGZ4OPqH3Uk, 41vNc40_4I4, P_JLPCBAsd4, X3Br64efBQE, Fx2PW0EK1FY, cHDwP6JJSUo, HChUarY2jBk, 9nVG2sl1akk, vRlsI9yEZvQ, hZHME680AAA, p-XX2BAtBxg, AO8VfMjKiq4, o1I59KnvPok, yFew7U4CLYI, 1BnXCYESEpc, qgyNkT5mmP4, ku6_hkdWu2Y, Jy7Bp9YR6fo, Ye8BD9FUC3U, 0suGWBsTk0g, z3alVw7Zd5Q, kbZEU4S70Qc, wkBNNsJoIfA, 7SSefThSYTQ, wiNOakDCjiA, Xb_td5gZCCg, OZExivHralM, M1aMdjFhH2w, KiKm4qqcOxI, sEgyYZ4_QRA, aJDuxuazRBM, oUV0ti-nqCs, pcjiT6ad55g, JrIa_ojeabs, xMDUCd3jxTs, IRt1W6da1zg, 0gyrWmP_FP4, lKfEBGLrGm8, mtFGidaEgWE, w0Irtnuj9Cw, cJjnIJTMVhU, e2IcAHWSjvY, VX_3y76ZjAE, G4Rlme8sA1A, -drsvFO2m00, eDAz3kJ3iLY, AfV2qDeX4Jk, bgSLxA1tFeU, Gx1x01n8i8A, cAkJLavVCOY, -x60w6N_UmM, 4e0Dobo5Qzo, _TkvRBl4-7k, IVSjyCr_VcQ, jkxqz2BMqhg, 069hi-kCFC8, IdT4HV4xrY4, DZrV7Sr4YiM, HZ92d_TrWDw, AmDLdY38ZUA, IJrlxQve4l4, E7LalBgFf6c, GaEKw54prhc, cbk-BCrkIQI, soG2T6J3be8, c4AB-B3lx78, _dNVNS3K5Kw, JiHlmRwDd-M, 7SCtjv1EP7Y, 38yLH7MmOIU, npqywBaoXV0, -1pegi21Wj4, nzdRdcW13ZQ, ygcHO_Iqt5k, y8Qkn2GjhE8, QBG2gtw4Flw, bkVVasNwJ8E, mzyVzmyC8mw, ZBpqtRkejx4, rTEtcI1xcv8, IUP9ipZecbI, d4U0qEAvAHI, l83O5o6Tbls, T9bk-PedQyA, ZtvrgvIqxKw, MPCY5ddORbc, wtwviuyvQOs, Hcb8p7u18jE, dwD72otV92c, VYO5WBinYQs, RfGtiGLI2Cc, TJuK18DxSrE, FEAQOYcKktA, lWKyCN2sCbU, dcQJ3OGrFEQ, xxmCr497PQQ, _Zj15JypCD0, xRpUv4_QdrQ, bbt5xvuZJpE, 02W-AxXCMNY, O_zXRsqj97E, 0KHXPAyfMAU, 5KinSVZeYmM, JDFhH4bPiug, ZHotk2iYxM4, Pt6F9-yJBCY, rnGos4x3-Lw, bEUTRcdYzVE, FMHMJ8TJmQw, FoDhv-Rj1JM, AD_oFg82Bds, hcWHSuCgn6k, pM02EAjRQqk, 99P412nPokI, 78WZZsS6Z1k, ky3giVL9hYA, m7aySWjAw2s, XSEB3yNHP_Q, zauEs36xNxI, NhT5aELgvBk, 9W60r4_Tb2c, dI7HLbCOZN4, XXDAW-3RkSE, nWrtQz4enmI, ORuhmeJUhYs, 2bBr40eJs5c, O5j7PnKCoX4, PCICeBJBs24, _DRpZ4MtoFg, sMSYL2-qWMM, db4ec1bfvGI, r5MPLPNYAAQ, 7-Zgzi_f_ac, edSfN2nQkKU, evPQ0eGh9_o, hdee2I47f00, OmHQhHGrR2I, Gg03eqPGjaw, m3DrEXz2E1s, C9RZkFKFH3k, p5Zu0fuN5W4, R_VDW_Rvj18, qEf2Zf-Lgdo, 6-mRmhzYc-0, XnYWYLklUCU, McmMZ1_8ozA, NhqJlVEf4Hk, kyY1sSUHghQ, dKRy6nUbUY4, Bn7clqkE5iI, MNgQk9HipKs, QrLvVsWN6PU, I5vtckM0UAE, nBZupr8r9r0, XP00lHIlIes, _ZoR5zOUowg, Y1oCgpW2Z48, dhTAU-aA21g, BOuVLIvsDMc, rWOcvFA_dcE, IiHVdEMuNfc, RnXnJz6EAtw, Wgb8JRQi_v4, Q4trE8mXqng, Ey6SxbFwXuY, UXev8teYQlQ, sJ14gF_2sC8, QcixYq06cxI, jGDuqEN859k, spVRF1nw-8Y, S1Yc8gy_reM, J1md5zp7EvY, TuHpLSmH32U, Q_CW1vdEPUM, fkyJdQ7BXPQ, j_XLeXqbXB4, FDS2qPIxCeI, XMENj8UO5XU, -k5UqELjDug, bD3J2G5GEUU, QWXsIaxnb4w, XAzRZb7_8G4, BwaLAO7VcpQ, 4snHBKnbZgE, meMvW7IZvS8, iaYLsbXie5c, GsU2VvBpzfY, LGTFCsNOprw, __w-ceIVsGQ, fCsZUgbG5Nk, JGZR3SPn5Us, MUm0qyXma5o, IYqiKsI6BCk, MelwOce5BMk, qhRsvEFBnxk, PIRRrsSeXsI, WUgFaTKH0Ec, od5Ik7YhZk0, 9B12bG43heE, 40JQ5LXSaVE, 7iXsRYFMLOc, _HGW4Rcj_A4, J6r71TdqiJc, _cnPyB0_FqM, C54P35jI1O0, N0KuRYdM2Ow, I6MPmZCe4EY, DeO2oAAdGCc, p_K1gWWzBY8, BDMPeX46OoY, WWD6jTqXgr4, apDCBo12874, W_99Y09z1xw, GMcjb7LIrR8, Mbw71A3CwqE, u4TVW7zS_go, BaGYBcGodKI, h2bFXJuDsGY, _qXnIvCnoME, EmxmkWY4lLM, agPGjEV9HOI, rR6usEEAwOk, jcLbLi14iOM, IFQ0VWdnPLY, oomIgsN8Wsk, KcM0w5ecww0, 5VMVXKCGTR4, zp7gLSLwWgU, 5bqj3fY5_b4, hTq-aUJWP0o, 2bHJtinggIk, BD8Bc_x4Kmk, jT63Z8j0FVY, TztwVJEEna8, yKRnqrbCNrQ, lS4INF2d2Bg, sjKsVzMK3uM, DOMqLMWmldE, igXrznqnw7Y, TBfbDXRxvT8, zwUlhEnuPUE, HHFMWKOBXrE, T5yZaW5Fbmg, Wr8YiZI9LoY, -Cs61K1HPLY, 9bBPQta-yos, W5a2AxZuv8A, HjigJgQ5U-8, L3QBEVWL-hc, vnIHRSVHi2I, JCwdKqqaOek, o0cckYWmv4A, rsMHvE6cu1Q, 3-LDctgrBfc, EmI-IxgXw2w, nPXonJRpU3U, e6ON4_8CgEw, kwVw5vbqdF8, lyOEfZzKMOc, 33ueN_plnc0, 2u2v23Xmekg, 6PsA-CR8x7E, PbgkmUxt1Aw, Ii2qN_7hIfQ, gDTQYw7Bh9w
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-19.txt
+============================================================

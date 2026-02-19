@@ -1,0 +1,138 @@
+import json
+
+updates = {}
+
+# 1. copy-trading-update-01-mar-2019
+updates["copy-trading-update-01-mar-2019"] = {
+    "slug": "atualizacao-copy-trading-01-marco-2019",
+    "meta_description": "Atualizacao de copy trading — 01 Mar 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 01 Mar 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Marco 2019",
+    "h1": "Atualizacao de Copy Trading — 01 Mar 2019",
+    "content_blocks": [
+        {"type": "p", "text": "1 de marco de 2019 Qual desses traders e arriscado demais?"},
+        {"type": "p", "text": "Olhando meu portfolio, tem alguns traders claramente de maior risco ali, e estou comecando a me perguntar se talvez o risco deles nao compense a recompensa..."},
+        {"type": "p", "text": "Mas por que seria assim? Com certeza risco vem com recompensa, entao quanto maiores os retornos que busco, maior o risco que devo aceitar. Isso tambem e verdade. Um trader como Citadelpoint so esta no meu portfolio porque parece muito bem versado nos mercados, um cara educado com tecnicas solidas de analise e um historico de analise de risco na Universidade de Cambridge. Ele esta no portfolio por boas razoes (eu acho*). Mas devo mante-lo?"},
+        {"type": "h2", "text": "As Consideracoes sobre Popular Investor"},
+        {"type": "p", "text": "Isso soa mais como uma decisao de negocios do que de trading, e realmente e... Logo depois de me tornar Popular Investor no eToro, percebi que poderia potencialmente ganhar muito mais dinheiro sendo Popular Investor e tendo muitos ativos sob gestao do que com meu trading de verdade. Por que isso?"},
+        {"type": "p", "text": "Bem, digamos que eu pudesse fazer 2% ao mes (o que e uma taxa de retorno muito muito alta comparada aos padroes do setor para veiculos de investimento). Quanto eu precisaria ter na minha conta de trading para que 2% de lucro igualasse $1000/mes?"},
+        {"type": "p", "text": "2% de $10.000 = $200"},
+        {"type": "p", "text": "2% de $20.000 = $400"},
+        {"type": "p", "text": "2% de $40.000 = $800"},
+        {"type": "p", "text": "2% de $50.000 = $1000"},
+        {"type": "p", "text": "Entao, se eu fizesse 2% todo mes e esperasse sacar continuamente esses 2% pra viver disso, precisaria ter $50.000 na minha conta de trading. Isso e MUITO dinheiro..."},
+        {"type": "h2", "text": "De que outra forma eu poderia ganhar esse dinheiro com o programa PI do eToro?"},
+        {"type": "p", "text": "Bem, se eu conseguir alcancar o nivel estrela vermelha 'Champion' no Programa Popular Investor do eToro, vou receber $1000 por mes diretamente do eToro."},
+        {"type": "p", "text": "Um minimo de $5000 na minha conta de trading, e um minimo de 10 copiadores que, juntos, tenham investido $150.000 comigo."},
+        {"type": "p", "text": "Nao estou dizendo que e facil conseguir esses copiadores, com essa quantidade de ativos sob gestao... Mas provavelmente e mais provavel do que eu de alguma forma conseguir $50.000 pra colocar na minha conta. Entao, instantaneamente, minha forma de pensar muda... E de repente estou me perguntando se esses traders arriscados estao potencialmente espantando os copiadores com seus drawdowns."},
+        {"type": "p", "text": "A verdade e que eu deveria potencialmente estar mais preocupado com esses drawdowns pro meu proprio portfolio e metas de copy trading. Mas pareco estar um pouco cego pela ganancia ainda, entao me exponho a riscos maiores em busca de retornos mais altos e frequentemente sai pela culatra. As esperancas de ganhar mais dinheiro sendo PI (ganancia mesmo) estao na verdade superando e anulando a ganancia que me leva a tomar mas decisoes de risco sobre quem copiar. E um pouco de equilibrio, e nao tenho certeza de onde vai se estabilizar ainda."},
+        {"type": "h2", "text": "Preocupacoes com as Estatisticas de Trading"},
+        {"type": "p", "text": "De repente estou muito mais preocupado com minhas estatisticas por causa de tudo isso. Consistencia e o que busco agora. Em 2017, eu aceitava um drawdown de 30% em um mes se acreditasse que subiria 60% no mes seguinte. Minhas estatisticas nao eram importantes da mesma forma."},
+        {"type": "p", "text": "No geral eu queria 'grandes vitorias' em vez de crescimento menor e consistente. Obviamente, eu nao queria ver um drawdown de 30% nunca! MAS, meu foco era muito mais nas grandes vitorias naquela epoca, entao, contanto que eu acreditasse que no geral os traders que copiava, ou minhas proprias operacoes sairiam vencedoras, nao me importava como minhas estatisticas ficavam no caminho."},
+        {"type": "h3", "text": "Estou assumindo pouco risco? Ou me preocupando demais com estatisticas de trading?"},
+        {"type": "p", "text": "Voce pode ficar focado demais nas suas estatisticas de trading? Algumas pessoas tem reclamado de alguns PIs no eToro recentemente dizendo que estao preocupados demais com suas estatisticas. Isso e possivel? Voce pode se preocupar demais com seus numeros? Afinal, e assim que medimos quem devemos copiar. Estamos todos aqui pra ganhar dinheiro, entao por que nao ficariamos extremamente preocupados com o desempenho de um trader ate agora..."},
+        {"type": "p", "text": "E verdade que estatisticas verdes e consistentes sao nosso melhor cartao de visita e propaganda como PIs. Tambem pode ser verdade, no entanto, que se estamos perdendo operacoes e nao assumindo certos riscos, pode ser que nao estejamos mais operando naturalmente. E isso pode significar que estamos atrapalhando nosso proprio sistema de trading, o que, no final, vai nos causar problemas."},
+        {"type": "p", "text": "Isso obviamente e diferente pra mim ja que so faco copy trading. Mas mesmo no meu caso, estou alterando meu sistema de escolha de traders a ponto de se tornar um problema real? Nao tenho certeza ainda - vou ver. Mas estou comecando a pensar mais como um 'gestor de fundo de copias' do que qualquer outra coisa. Nao sei o que pensar disso ainda. E interessante com certeza. E empolgante. Vamos ver como vai."},
+        {"type": "p", "text": "Sei que quando se tratou de investir o dinheiro dos meus pais no eToro, instantaneamente escolhi a estrategia de baixo risco. Preservacao de capital foi minha preocupacao principal imediatamente. Eu assumiria muito menos risco com o dinheiro deles do que com o meu. E na verdade, a conta deles deu muito mais lucro que a minha. Isso tambem me fez pensar... Talvez eu devesse seguir meu proprio conselho!"},
+        {"type": "h2", "text": "Entao... Alguns traders devem ser removidos do portfolio?"},
+        {"type": "p", "text": "Estou considerando seriamente remover alguns traders do meu portfolio - aimstrader e Citadelpoint. Agora, Citadelpoint e na verdade o trader com melhor desempenho no meu portfolio. Mas tambem e de longe o mais arriscado... Eu o mantenho pelos lucros potenciais? Ou me livro dele por causa dos prejuizos potenciais que tambem pode causar se as coisas derem errado?"},
+        {"type": "p", "text": "Seria uma otima solucao, mas infelizmente nao tenho dinheiro adicional suficiente pra acrescentar ao meu portfolio. Precisaria adicionar muito mais dinheiro do que tenho para que pudesse fazer Citadelpoint representar cerca de 3% do meu portfolio. Acho que com 3% do meu portfolio, me sentiria seguro copiando-o com minhas metas de risco atuais... Mas simplesmente nao tenho fundos suficientes pra reestruturar meu portfolio dessa forma. Nao por enquanto."},
+        {"type": "p", "text": "Nao tenho certeza do que vou fazer... Mas estou tendendo pra ideia de que remove-lo seria a escolha mais sensata."},
+        {"type": "risk_warning"}
+    ]
+}
+
+# 2. copy-trading-update-02-aug-2019
+updates["copy-trading-update-02-aug-2019"] = {
+    "slug": "atualizacao-copy-trading-02-agosto-2019",
+    "meta_description": "Atualizacao de copy trading — 02 Ago 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 02 Ago 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Agosto 2019",
+    "h1": "Atualizacao de Copy Trading — 02 Ago 2019",
+    "content_blocks": [
+        {"type": "h2", "text": "3 de agosto de 2019 Social Trading Vlog 3 Comentarios A Montanha-Russa do Trading... Foi uma semana louca! A eleicao de Boris Johnson no Reino Unido fez a Libra Esterlina despencar como uma pedra contra o USD. O Federal Reserve dos EUA baixou as taxas de juros, e a volatilidade foi la em cima por um curto periodo. Foi uma semana de choques na verdade..."},
+        {"type": "h2", "text": "Harshsmith operando como um campeao"},
+        {"type": "p", "text": "Na semana passada ele era o trader com maior drawdown no meu portfolio. Esta semana ele e a superestrela, e agora e o segundo melhor em desempenho entre todos os meus traders. E uma proeza incrivel. Ele fez cerca de 5% na ultima semana, com a virada chegando quando a noticia da taxa do Fed foi divulgada."},
+        {"type": "p", "text": "Foi incrivel de assistir na verdade. La estava eu, ouvindo as noticias do Fed online, grudado na tela assistindo meu portfolio. No momento em que a noticia saiu, vi o lucro do Harshsmith comecar a mudar. Subiu rapidamente nos proximos 30 minutos ou mais, e nos dias seguintes so continuou ganhando. Excelente."},
+        {"type": "p", "text": "Tenho certeza de que deve ter havido outros traders do 'lado errado' dessa noticia. Deve ter sido dificil... Mas felizmente, nosso cara Harshsmith estava bem preparado e posicionado antes do anuncio."},
+        {"type": "h3", "text": "Primeira lucratividade desde que comecei a copia-lo"},
+        {"type": "p", "text": "Esta e na verdade a primeira vez que ele esta em lucro desde que comecei a copiar suas operacoes ha 2 meses. Logo depois que o copiei, uma grande operacao que ele tinha aberto em Baidu caiu pesado apos um relatorio de resultados ruim. Desde entao, ficou no vermelho consistentemente, e lentamente caindo cada vez mais."},
+        {"type": "p", "text": "E uma coisa dificil de esperar. Voce assiste, e espera, e ve cada vez mais vermelho. Nao e nada divertido. Mas ele e um analista e trader habilidoso, entao aguentei firme e apenas esperei ate a estrategia dele dar resultado. Ele e meu unico trader de acoes, e sao tempos estranhos para acoes. Acho que todo mundo esta antecipando uma queda ao mesmo tempo em que os mercados estao subindo para maximas historicas. Pra que lado voce aposta?"},
+        {"type": "p", "text": "Por enquanto, a estrategia 'Net Short' do Harshsmith parece estar indo bem. 'Net Short' significa que no geral ele tem mais operacoes de 'venda' abertas do que de 'compra'. Agora, embora isso seja verdade, ele tambem tem feito ganhos significativos nas operacoes de compra. Entao, em um rally do mercado, mesmo estando net short, ele tem conseguido controlar seus prejuizos - compensando-os com ganhos nas compras. Otimo trabalho. Ele esta atualmente com cerca de 14% do tamanho total do meu portfolio."},
+        {"type": "h2", "text": "Berrau ainda esta operando como um touro?"},
+        {"type": "p", "text": "Uso estranho dessa frase, mas quando voce pensa bem, faz sentido. Um touro e lento, estavel, confiavel, e faz o trabalho. E basicamente isso que o Berrau tem sido ultimamente."},
+        {"type": "p", "text": "Ele ainda faz pequenos ganhos a cada 2 ou 3 dias. E praticamente como um relogio no momento. Tem uma operacao vencedora, depois uma pausa de um dia, e entao outra operacao vencedora, e depois outra pausa, e entao - etc. Ele tem sido realmente consistente, e e o trader de melhor desempenho no meu portfolio. Excelente. Ele tambem esta atualmente com cerca de 24% do meu portfolio total."},
+        {"type": "h2", "text": "Onde foi parar o Alanayef??"},
+        {"type": "p", "text": "Parei minha copia do Alanyef. E uma pena, pois ele era um dos meus traders mais fortes... Mas ja faz meses de inatividade basica e sem comunicacao. Ao mesmo tempo, ele tinha todas aquelas operacoes alavancadas abertas - algumas por cerca de 8 meses - todas acumulando taxas, e so ficando ali lentamente caindo mais."},
+        {"type": "p", "text": "Deveria eu ser mais paciente? E possivel. Quer dizer, muitos dos instrumentos que ele opera estao em ou perto de niveis historicos de suporte. Isso sugeriria que uma virada pra cima pode ser iminente e agora nao e hora de parar a copia. Mas tambem tem os custos de oportunidade - meu dinheiro poderia ser usado de forma mais eficiente em outro lugar? Acho que sim agora. Esperei 8 meses para algumas dessas operacoes serem fechadas e o dinheiro usado em outro lugar. Nao foi. As operacoes ficaram la, interminavelmente. As taxas subiram. Todos os fundos disponiveis foram usados em novas operacoes perdedoras abertas, e neste ponto a copia esta simplesmente travada."},
+        {"type": "p", "text": "Nao ha mais fundos disponiveis pra abrir novas operacoes pra compensar os prejuizos. Entao so fiquei assistindo lentamente (e recentemente mais rapidamente) cair. E uma pena. Ainda estou questionando se parar a copia foi a decisao certa, mas por enquanto, e onde estou. Vamos ver no futuro."},
+        {"type": "h2", "text": "Como meu novo trader tem se saido?"},
+        {"type": "p", "text": "Ai de mim... Logo depois de copiar meu trader mais recente - Gianlucal Conte, ele abriu algumas operacoes de maior risco que prontamente viraram contra ele e perderam muito dinheiro... Nada bom. Ele perdeu, em 3 dias, tanto quanto Alnayef perdeu nos ultimos tres meses. Arriscado demais."},
+        {"type": "h3", "text": "Foi um erro copia-lo?"},
+        {"type": "p", "text": "Nao, ainda acho que dadas as estatisticas recentes dele (ultimos 2 anos), e seus scores de risco no ultimo ano, foi uma boa jogada. O que nao foi boa jogada e que o copiei com um pouco de fundos demais. Deveria ter mantido no minimo... Nao mantive. O pequeno apostador dentro de mim estava la. Arrisquei um pouco, e o copiei com cerca de 14% do meu portfolio em vez dos 6% minimos com que deveria ter comecado. Meu erro."},
+        {"type": "p", "text": "Com os grandes drawdowns que eu podia ver nas estatisticas de 2018 dele, deveria ter tomado mais precaucao. Esta la pra ver... Ele tem ido bem. Parece ter reduzido seu risco. As coisas tem sido estaveis nos ultimos dois anos. Mas AINDA assim, a evidencia estava la de seu risco anterior, e eu deveria ter ficado cauteloso o maximo possivel."},
+        {"type": "h3", "text": "E agora com ele?"},
+        {"type": "p", "text": "A principal operacao perdedora que ele tem aberta esta perto de minimas historicas e niveis de suporte. Acho que ele espera que atinja essa minima historica e volte pra cima... Ele disse isso no feed dele, e os graficos confirmam a analise dele. Vamos ver. Duas coisas podem acontecer:"},
+        {"type": "p", "text": "1. A operacao atinge o nivel de suporte e volta pra cima, recuperando os prejuizos."},
+        {"type": "p", "text": "2. A operacao rompe o suporte, e vemos como ele lida com isso. Ele fecharia a operacao e sairia? Ou manteria aberta e continuaria perdendo?"},
+        {"type": "p", "text": "Ainda nao sei - tenho lido comentarios sobre ele e vejo evidencias para ambos os cenarios possiveis. Estou nervoso com isso, mas vamos ver."},
+        {"type": "p", "text": "Estou retirando parte do dinheiro que copiei com ele para que os tamanhos das operacoes futuras sejam menores. Tambem estou ajustando meu Copy Stop Loss pra dar espaco justo pra ele operar, controlando meu risco. Estou trabalhando nisso."},
+        {"type": "h2", "text": "Olivier Danvel ainda esta no verde?"},
+        {"type": "p", "text": "Sim! Esteve bem perto no ultimo dia de julho. Olivier esteve envolvido em varias operacoes que tinham caido bastante no final do mes passado. Quando a GBP foi castigada pela noticia do Boris Johnson, as operacoes dele estavam indo pesadamente pro vermelho. Parecia genuinamente que ele ia encerrar seu primeiro mes no vermelho..."},
+        {"type": "p", "text": "No ultimo dia do mes, houve uma recuperacao, e Olivier fechou todas as operacoes abertas com prejuizo, mas potencialmente muito menos prejuizo do que poderia ter sido. Na hora em que as operacoes foram fechadas, parecia que estavam voltando a cair."},
+        {"type": "h3", "text": "O 'FED' e a volatilidade..."},
+        {"type": "p", "text": "Tambem coincidiu com a noticia da taxa do Fed. Quando o Federal Reserve dos EUA (conhecido como 'O Fed') divulga noticias sobre seus planos para taxas de juros, tudo enlouquece."},
+        {"type": "p", "text": "A volatilidade dispara sempre que tem noticias do Fed, entao Olivier sabiamente fechou todas as operacoes antes dessa noticia sair. Manter operacoes abertas durante a coletiva do Fed pode ser uma grande aposta dada a volatilidade que frequentemente se segue. Entao acho que foi um movimento sabio da parte do Sr. Danvel."},
+        {"type": "p", "text": "Assustou muita gente, e houve comentarios sobre se ele fechou todas as operacoes so pra que suas estatisticas ficassem verdes no mes. Mas acho que foi um movimento muito sabio. Ele foi pego do lado errado em algumas operacoes, e conseguiu controlar bem seus prejuizos e prejuizos potenciais."},
+        {"type": "p", "text": "Entao, Olivier caiu no meu portfolio em relacao ao mes passado, mas ainda esta lucrativo e ja tem operacoes abertas de novo, entao vamos ver como vai este mes. Ainda estou copiando Olivier com cerca de 24% do meu portfolio total."},
+        {"type": "p", "text": "Entao, Olivier, Harshsmith e Berrau respondem por cerca de 72% do meu portfolio total entre eles. Legal."},
+        {"type": "h2", "text": "Kela Leo - como ele esta indo?"},
+        {"type": "p", "text": "Caiu um pouco mais desde o ultimo video. Ainda esta aplicando mais ou menos a mesma estrategia, e infelizmente ainda parece incapaz de conter o lento drawdown e os prejuizos crescentes. Nao sei o que dizer sobre ele. Ele ainda nao esta tendo prejuizos enormes - nao esta fazendo coisas arriscadas. Ele so parece estar do lado errado das operacoes consistentemente."},
+        {"type": "p", "text": "Nao sei se e possivelmente so um timing muito azarado... Ele nao esta fazendo coisas estupidas na verdade. Tudo faz sentido - so nao esta funcionando. Ainda esperando por enquanto..."},
+        {"type": "h2", "text": "O novo trader que copiei"},
+        {"type": "p", "text": "Entao, copiei uma nova - mtsnom015. Ela tem 7 anos de experiencia segundo sua bio. Os ultimos 3 anos de estatisticas sao solidos e de baixo risco. Seus scores de risco no ultimo ano sao baixos, e seus drawdowns estao abaixo da minha meta de 15% de drawdown maximo anual."},
+        {"type": "p", "text": "Ela e outra trader de forex. (Sei que estou muito pesado em traders de forex, mas ainda estou limitando exposicao a acoes). Copiei ela com o minimo de cerca de 6% do portfolio."},
+        {"type": "p", "text": "Nao copiei operacoes abertas - vamos ver como vai."},
+        {"type": "h2", "text": "3 comentarios sobre \"Atualizacao de Copy Trading - eToro -02/Ago/2019\""},
+        {"type": "p", "text": "Oi amigo,"},
+        {"type": "p", "text": "Como voce compara o eToro com o ZuluTrade? Adoro todos os seus videos no Youtube e baseio toda minha estrategia no eToro com a ajuda dos seus videos."},
+        {"type": "p", "text": "Tendo em mente que o ZuluTrade e o maior site de trading social de Forex, gostaria de saber o que voce acha?"},
+        {"type": "p", "text": "O numero de pessoas pra copiar no ZuluTrade e muito maior que no eToro e os retornos deles sao muito melhores que os melhores do eToro."},
+        {"type": "p", "text": "Yugal (Australia)"},
+        {"type": "p", "text": "Oi, olhei o Zulutrade, mas achei muito menos amigavel ao usuario, e mais dificil de entender. Tive que escolher uma plataforma pra focar no inicio, e fui com o eToro. Voce tem certeza que ha mais traders de forex la? Acho que o eToro e atualmente o lider mundial em trading social - posso estar errado, vou dar outra olhada. Obrigado!"},
+        {"type": "p", "text": "Ola,"},
+        {"type": "p", "text": "Obrigado pelo seu vblog, e interessante. Li muitas regras sobre CFD e eToro, mas ainda nao consigo entender: Se copio outro trader com $100 e ele investe em CFD, e possivel que eu perca mais dinheiro do que $100?"},
+        {"type": "p", "text": "Comentarios encerrados."},
+        {"type": "risk_warning"}
+    ]
+}
+
+# 3. copy-trading-update-03-feb-2019
+updates["copy-trading-update-03-feb-2019"] = {
+    "slug": "atualizacao-copy-trading-03-fevereiro-2019",
+    "meta_description": "Atualizacao de copy trading — 03 Fev 2019. Documentacao honesta da minha experiencia usando o recurso de copy trading do eToro.",
+    "title": "Atualizacao de Copy Trading — 03 Fev 2019 | SocialTradingVlog",
+    "article_tag": "Atualizacao do portfolio · Fevereiro 2019",
+    "h1": "Atualizacao de Copy Trading — 03 Fev 2019",
+    "content_blocks": [
+        {"type": "p", "text": "3 de fevereiro de 2019 Social Trading Vlog Minha ultima atualizacao de copy trading! E domingo a noite, os mercados abrem de novo em cerca de seis horas, e esta quase na hora de mais uma semana de trading."},
+        {"type": "p", "text": "Aqui esta meu perfil no eToro: https://etoro.tw/2rcYYm0"},
+        {"type": "p", "text": "Copy Trading nao constitui aconselhamento de investimento. O valor dos seus investimentos pode subir ou descer. Seu capital esta em risco."},
+        {"type": "p", "text": "Todo trading envolve risco. Arrisque apenas capital que esta preparado pra perder. Resultados passados nao sao indicacao de resultados futuros. Este conteudo e apenas para fins educacionais e nao constitui aconselhamento de investimento."},
+        {"type": "h3", "text": "Entao o que tem acontecido?"},
+        {"type": "p", "text": "Foi um comeco de mes meio turbulento, com 'DazPanda' - uma adicao muito recente ao portfolio, me fazendo perder cerca de 1% do valor do meu portfolio inteiro em questao de dias... Nao tem ido bem. Outro trader, Manusabrina, tambem tem ido bastante mal, e estou comecando a me perguntar se e hora de encerrar essas duas copias."},
+        {"type": "p", "text": "Houve uma grande decisao e mudanca de sentimento em torno das taxas de juros nos Estados Unidos, e sei que isso pode ter grande impacto em como todo mundo opera, entao no momento estou esperando um pouco pra ver se esses dois traders conseguem capitalizar qualquer mudanca de tendencia que a nova informacao sobre juros pode causar..."},
+        {"type": "h3", "text": "Como o portfolio esta mudando?"},
+        {"type": "p", "text": "Os outros caras no portfolio tem operado bem, com a maioria tendo scores de risco e volatilidade (oscilacoes pra cima e pra baixo) menores que DazPanda e Manusabrina. Estou pesquisando outros traders pra copiar, e na minha busca, voltei a olhar alguns dos traders mais antigos - aqueles que estavam em alta e populares quando comecei a usar o eToro em 2016. Quando a febre cripto de 2017 tomou conta, esses traders mais estaveis foram esquecidos ja que todo mundo (incluindo eu) via os lucros enormes gerados pelos traders de cripto e embarcou nessa."},
+        {"type": "p", "text": "Agora, estou de volta procurando especificamente pessoas de menor risco pra copiar e Berrau e certamente um que esta no meu radar. Tambem olhei novamente CatyFX que copiei por um curto periodo em 2017 antes de parar a copia pra despejar meus fundos na criptoesfera... O outro trader que olhei, e que realmente quero copiar, e Harshsmith que opera principalmente acoes, mas pelo que diz, esta preparado pra possiveis quedas e parece aplicar regras muito boas de gestao de risco ao seu trading e portfolio. Tambem gostaria de ver se os novos movimentos de taxa de juros na America podem ser capitalizados por alguem como ele..."},
+        {"type": "p", "text": "Todos os tres tem drawdowns muito baixos, dentro do meu limite de 15%, o que e otimo. Harshsmith parece ser meu candidato mais provavel, embora copia-lo tornasse um pouco mais dificil pra pessoas me copiarem devido a regra de tamanhos minimos de operacao no copy trading. Vou explicar isso em outro video pois e um pouco complicado. Ainda estou pensando. Como trader, acho que ele e uma boa escolha."},
+        {"type": "h3", "text": "Quer ver meu desempenho atual?"},
+        {"type": "p", "text": "Meu Desempenho"},
+        {"type": "risk_warning"}
+    ]
+}
+
+with open('/Users/thomaswest/socialtradingvlog-website/tools/translations/_pt_part2.json', 'w', encoding='utf-8') as f:
+    json.dump(updates, f, ensure_ascii=False, indent=2)
+
+print(f"Part 2 written: {len(updates)} posts")
