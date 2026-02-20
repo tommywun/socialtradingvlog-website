@@ -2607,13 +2607,12 @@ tbody tr.clickable { cursor: pointer; }
 
   <!-- OVERVIEW -->
   <div id="overview" class="section active">
+    <div id="system-alerts"></div>
+    <div id="system-health" style="margin-bottom:16px"></div>
     <div class="section-header"><h2>Overview</h2><p>Everything at a glance</p></div>
     <div class="stats-row" id="overview-stats"></div>
     <div class="section-header" style="margin-top:8px"><h2 style="font-size:18px">Content Pipeline</h2></div>
     <div class="pipeline-grid" id="overview-pipeline"></div>
-    <div class="section-header" style="margin-top:16px"><h2 style="font-size:18px">Status</h2></div>
-    <div id="system-alerts"></div>
-    <div id="system-health" style="margin-bottom:16px"></div>
     <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">Translation Coverage</h2></div>
     <div class="lang-grid" id="overview-translations"></div>
     <div class="two-col" style="margin-top:20px">
