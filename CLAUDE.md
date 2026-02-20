@@ -94,4 +94,12 @@ Calculator pages link to each other via nav bar.
   7. If error messages are unhelpful, improve the logging as part of the fix
   8. Don't stop at the first plausible explanation — verify it matches ALL the evidence
 - **Dual environment**: When fixing files locally, ALWAYS apply the same fix on the VPS immediately. The site runs from two locations — local Mac and VPS (89.167.73.64). Never assume a local fix is sufficient.
-- **Check before bulk actions**: Before removing, unpublishing, or modifying content in bulk, always cross-reference each item against existing approvals, live status, schema references, and CLAUDE.md notes. Never assume all items in a group have the same status — check individually. Ask: "Has Tom already reviewed/approved any of these?"
+- **MANDATORY pre-deletion audit**: Before ANY bulk removal or unpublishing, you MUST complete this checklist and show it to Tom BEFORE executing:
+  1. List every item that will be affected
+  2. For each item, check: does it have `"approved": True` in any generation script?
+  3. For each item, check: does it have `article_sections` or other hand-written content?
+  4. For each item, check: is it mentioned in CLAUDE.md as reviewed/approved/live?
+  5. For each item, check: did Tom explicitly approve it in conversation history?
+  6. Present the audit to Tom: "These X items will be removed. These Y items appear to be approved/hand-written and will be KEPT: [list]"
+  7. Only proceed after Tom confirms
+  This rule exists because bulk deletions have destroyed approved content TWICE (etoro-review, why-do-most-etoro-traders-lose-money). The fix is to audit first, act second — never the other way around.
