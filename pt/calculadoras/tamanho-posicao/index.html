@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Tamanho de Posi&ccedil;&atilde;o do eToro &mdash; Quanto Alocar por Copy Trader</title>
+<meta name="description" content="Calculadora gratuita de tamanho de posi&ccedil;&atilde;o para copy trading. Descubra quanto investir por trader no eToro com base no tamanho do seu portf&oacute;lio, toler&acirc;ncia ao risco e objetivos de diversifica&ccedil;&atilde;o.">
+<meta name="keywords" content="tamanho posi&ccedil;&atilde;o copy trading, quanto investir por trader eToro, aloca&ccedil;&atilde;o copy trading eToro, dimensionamento posi&ccedil;&atilde;o copy trading, aloca&ccedil;&atilde;o portf&oacute;lio eToro">
+<link rel="canonical" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<meta property="og:title" content="Calculadora de Tamanho de Posi&ccedil;&atilde;o do eToro &mdash; Quanto Alocar por Copy Trader">
+<meta property="og:description" content="Calculadora gratuita de tamanho de posi&ccedil;&atilde;o para copy trading. Descubra quanto investir por trader no eToro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Container ─── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero ─── */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+/* ─── Calculator Card ─── */
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.calc-card:hover { box-shadow: var(--shadow-hover); }
+
+/* ─── Input Groups ─── */
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn {
+  padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.pill-btn:hover { border-color: var(--info); color: var(--text-primary); }
+.pill-btn.active { background: var(--info); border-color: var(--info); color: #fff; }
+.pill-btn.active.conservative { background: var(--success); border-color: var(--success); }
+.pill-btn.active.moderate { background: var(--chart-1); border-color: var(--chart-1); }
+.pill-btn.active.aggressive { background: var(--chart-3); border-color: var(--chart-3); }
+
+/* Slider */
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 6px; border-radius: 3px; background: var(--border);
+  outline: none; transition: background .2s;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--info); cursor: pointer; box-shadow: 0 2px 6px rgba(0,143,248,.35);
+  transition: transform .15s;
+}
+.slider-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.amount-input {
+  width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: right;
+  transition: border-color .2s, box-shadow .2s;
+}
+.amount-input:focus { outline: none; border-color: var(--info); box-shadow: 0 0 0 3px rgba(0,143,248,.15); }
+.trader-count-display {
+  min-width: 48px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: center;
+}
+
+/* ─── Results ─── */
+.results { padding: 32px 0 16px; }
+.results-hero { text-align: center; margin-bottom: 32px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.1; transition: color .3s;
+}
+.results-hero .total-pct {
+  display: inline-flex; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+}
+.results-hero .total-pct.low { background: var(--success-light); color: var(--success); }
+.results-hero .total-pct.medium { background: var(--warning-light); color: #B8860B; }
+.results-hero .total-pct.high { background: var(--critical-light); color: var(--critical); }
+
+/* Breakdown cards */
+.breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.breakdown-card {
+  border-radius: var(--radius); padding: 18px; text-align: center;
+  transition: transform .2s;
+}
+.breakdown-card:hover { transform: translateY(-2px); }
+.breakdown-card .bc-label { font-size: 12px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+.breakdown-card .bc-value { font-size: 22px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+.breakdown-card .bc-note { font-size: 11px; opacity: .6; margin-top: 2px; }
+.bc-cash { background: rgba(43,179,255,.1); color: #0077CC; }
+.bc-per-trader { background: rgba(89,221,170,.1); color: #007A5E; }
+.bc-traders { background: rgba(139,92,246,.1); color: #7C3AED; }
+.bc-score { background: rgba(255,100,45,.1); color: #C33909; }
+
+/* Allocation bar chart */
+.bar-chart-wrap { margin-bottom: 24px; }
+.bar-chart-title { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+.bar-chart { display: flex; flex-direction: column; gap: 6px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-label { width: 70px; font-size: 12px; font-weight: 600; color: var(--text-secondary); text-align: right; flex-shrink: 0; }
+.bar-track { flex: 1; height: 28px; background: var(--bg-page); border-radius: 14px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 14px; display: flex; align-items: center; padding: 0 12px; font-size: 11px; font-weight: 700; color: #fff; min-width: 0; transition: width .5s ease; }
+.bar-amount { font-size: 12px; font-weight: 600; color: var(--text-secondary); width: 65px; text-align: left; flex-shrink: 0; }
+.bar-cash .bar-fill { background: #8A8E9B; }
+
+/* Warning card */
+.warning-card {
+  background: var(--critical-light); border: 1px solid rgba(255,73,83,.2);
+  border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: #B91C2A; line-height: 1.6;
+}
+.warning-card.hidden { display: none; }
+.warning-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* Diversification score */
+.score-meter { margin-bottom: 24px; }
+.score-meter-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+.score-meter-fill { height: 100%; border-radius: 4px; transition: width .5s ease, background .3s; }
+
+/* Context callout */
+.callout {
+  background: linear-gradient(135deg, #F0F8FF 0%, #F5F0FF 100%);
+  border: 1px solid #E8E0F0;
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
+  font-size: 14px; color: var(--text-primary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── Explainer Section ─── */
+.explainer { padding: 40px 0; }
+.explainer h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.explainer-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+}
+.explainer-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.explainer-card .ec-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Guide Link ─── */
+.guide-link-section { margin-bottom: 32px; }
+.guide-link-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 20px 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+  text-decoration: none; color: var(--text-primary);
+}
+.guide-link-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.guide-link-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; flex-shrink: 0;
+  background: rgba(0,143,248,.1); color: var(--info);
+}
+.guide-link-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.guide-link-text p { font-size: 14px; color: var(--text-secondary); }
+.guide-link-arrow { margin-left: auto; font-size: 20px; color: var(--info); flex-shrink: 0; }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 32px 0; }
+.faq-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .15s; }
+.faq-q:hover { background: rgba(0,143,248,.03); }
+.faq-q .chevron { font-size: 12px; color: var(--text-muted); transition: transform .3s; }
+.faq-q.open .chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.faq-a.open { max-height: 300px; padding: 0 20px 16px; }
+.faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%);
+  border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0;
+  color: #fff;
+}
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700;
+  background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer;
+  transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+.tool-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; overflow-x: auto; }
+  .tool-nav-links { flex-shrink: 0; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; white-space: nowrap; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .pill-group { gap: 6px; }
+  .pill-btn { padding: 7px 14px; font-size: 12px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  .explainer-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 28px 20px; }
+  .bar-label { width: 55px; font-size: 11px; }
+  .bar-amount { width: 55px; font-size: 11px; }
+  .guide-link-card { flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .pill-btn { padding: 6px 12px; font-size: 11px; }
+}
+</style>
+
+<!-- Schema: WebApplication + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Tamanho de Posi\u00e7\u00e3o do eToro",
+  "description": "Calcule quanto alocar por copy trader no eToro com base no tamanho do seu portf\u00f3lio, toler\u00e2ncia ao risco e objetivos de diversifica\u00e7\u00e3o.",
+  "url": "https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Quanto devo alocar por copy trader no eToro?", "acceptedAnswer": {"@type": "Answer", "text": "Uma abordagem comum \u00e9 alocar de 5 a 20% do seu portf\u00f3lio por trader, dependendo da sua toler\u00e2ncia ao risco e do n\u00famero de traders que voc\u00ea copia. Investidores conservadores geralmente mant\u00eam cada aloca\u00e7\u00e3o abaixo de 10%, enquanto investidores moderados podem ir at\u00e9 20%. Sempre mantenha uma reserva em dinheiro de pelo menos 5 a 20% para requisitos de margem e novas oportunidades."}},
+    {"@type": "Question", "name": "Qual \u00e9 o valor m\u00ednimo para copiar um trader no eToro?", "acceptedAnswer": {"@type": "Answer", "text": "O valor m\u00ednimo para copiar um trader no eToro \u00e9 de $200. Isso significa que voc\u00ea precisa de pelo menos $200 por trader que deseja copiar. Se o seu portf\u00f3lio \u00e9 de $1.000 e voc\u00ea quer copiar 5 traders, precisar\u00e1 do valor total apenas para atingir os m\u00ednimos, sem nenhuma reserva em dinheiro."}},
+    {"@type": "Question", "name": "Quantos traders devo copiar no eToro?", "acceptedAnswer": {"@type": "Answer", "text": "A maioria dos copy traders experientes recomenda copiar entre 5 e 15 traders para uma boa diversifica\u00e7\u00e3o. Copiar menos de 5 traders concentra o seu risco, enquanto copiar mais de 15 pode diluir seus retornos e dificultar o monitoramento do desempenho. O n\u00famero ideal depende do tamanho do seu portf\u00f3lio e de qu\u00e3o ativamente voc\u00ea deseja gerenciar suas aloca\u00e7\u00f5es."}},
+    {"@type": "Question", "name": "Devo dividir meu portf\u00f3lio de copy trading igualmente ou usar valores diferentes?", "acceptedAnswer": {"@type": "Answer", "text": "Ambas as abordagens t\u00eam m\u00e9rito. A divis\u00e3o igual \u00e9 mais simples e garante uma diversifica\u00e7\u00e3o equilibrada. A aloca\u00e7\u00e3o ponderada pelo risco permite investir mais nos traders em que voc\u00ea tem maior confian\u00e7a, ou menos nos traders de maior risco. Muitos copy traders come\u00e7am com divis\u00e3o igual e ajustam ao longo do tempo com base no desempenho e perfil de risco de cada trader."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../../" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../calculadora-taxas/">Calculadora de Taxas</a>
+    <a href="../calculadora-retorno/">Calculadora de Retorno</a>
+    <a href="../comparar-plataformas/">Comparar Plataformas</a>
+    <a href="../tamanho-posicao/" class="active">Tamanho da Posi&ccedil;&atilde;o</a>
+  </div>
+  <a href="../../" class="tool-nav-back">&larr; Voltar ao site</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Ferramenta de Copy Trading</div>
+    <h1>Calculadora de <span class="accent">Tamanho de Posi&ccedil;&atilde;o</span></h1>
+    <p>Descubra exatamente quanto alocar por copy trader no eToro. Insira os detalhes do seu portf&oacute;lio e obtenha um plano de aloca&ccedil;&atilde;o personalizado.</p>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calc-card">
+
+    <!-- Portfolio Size -->
+    <div class="input-section">
+      <div class="input-label">Tamanho total do portf&oacute;lio</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="portfolio-slider" min="500" max="100000" step="100" value="5000" oninput="syncPortfolio(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="portfolio-input" value="5.000" oninput="syncPortfolioFromInput(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Number of Traders -->
+    <div class="input-section">
+      <div class="input-label">N&uacute;mero de traders para copiar</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="traders-slider" min="1" max="20" step="1" value="5" oninput="syncTraders(this.value)">
+        <div class="trader-count-display" id="traders-display">5</div>
+      </div>
+    </div>
+
+    <!-- Risk Tolerance -->
+    <div class="input-section">
+      <div class="input-label">Toler&acirc;ncia ao risco</div>
+      <div class="pill-group" id="risk-pills">
+        <button class="pill-btn conservative" data-risk="conservative" onclick="setRisk('conservative',this)">Conservador</button>
+        <button class="pill-btn active moderate" data-risk="moderate" onclick="setRisk('moderate',this)">Moderado</button>
+        <button class="pill-btn aggressive" data-risk="aggressive" onclick="setRisk('aggressive',this)">Agressivo</button>
+      </div>
+    </div>
+
+    <!-- Strategy -->
+    <div class="input-section">
+      <div class="input-label">Estrat&eacute;gia de aloca&ccedil;&atilde;o</div>
+      <div class="pill-group" id="strategy-pills">
+        <button class="pill-btn active" data-strategy="equal" onclick="setStrategy('equal',this)">Divis&atilde;o Igual</button>
+        <button class="pill-btn" data-strategy="weighted" onclick="setStrategy('weighted',this)">Ponderada por Risco</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="results-hero">
+        <div class="total-label">Recomendado por trader</div>
+        <div class="total-value" id="total-value">$720</div>
+        <div class="total-pct low" id="total-pct">14,4% do seu portf&oacute;lio</div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid">
+        <div class="breakdown-card bc-cash">
+          <div class="bc-label">Reserva em Dinheiro</div>
+          <div class="bc-value" id="bc-cash">$500</div>
+          <div class="bc-note" id="bc-cash-note">10% reservado</div>
+        </div>
+        <div class="breakdown-card bc-per-trader">
+          <div class="bc-label">Alocado para C&oacute;pia</div>
+          <div class="bc-value" id="bc-allocated">$4.500</div>
+          <div class="bc-note">Entre todos os traders</div>
+        </div>
+        <div class="breakdown-card bc-traders">
+          <div class="bc-label">Traders</div>
+          <div class="bc-value" id="bc-traders">5</div>
+          <div class="bc-note" id="bc-traders-note">Copy traders</div>
+        </div>
+        <div class="breakdown-card bc-score">
+          <div class="bc-label">Diversifica&ccedil;&atilde;o</div>
+          <div class="bc-value" id="bc-score">Bom</div>
+          <div class="bc-note" id="bc-score-note">72 / 100</div>
+        </div>
+      </div>
+
+      <!-- Warning card -->
+      <div class="warning-card hidden" id="warning-card">
+        <span class="warning-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+        <span id="warning-text">Algumas aloca&ccedil;&otilde;es est&atilde;o abaixo do m&iacute;nimo de $200 do eToro por copy trader.</span>
+      </div>
+
+      <!-- Bar chart -->
+      <div class="bar-chart-wrap">
+        <div class="bar-chart-title">Detalhamento da aloca&ccedil;&atilde;o</div>
+        <div class="bar-chart" id="bar-chart"></div>
+      </div>
+
+      <!-- Diversification score meter -->
+      <div class="score-meter">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:13px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.5px">Pontua&ccedil;&atilde;o de Diversifica&ccedil;&atilde;o</span>
+          <span style="font-size:14px;font-weight:700;color:var(--text-primary)" id="score-label">72 / 100</span>
+        </div>
+        <div class="score-meter-bar">
+          <div class="score-meter-fill" id="score-fill" style="width:72%;background:var(--success)"></div>
+        </div>
+      </div>
+
+      <!-- Tom's approach callout -->
+      <div class="callout">
+        <span class="callout-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span><strong>A abordagem do Tom:</strong> Eu copio de 8 a 12 traders com 5-15% cada, mantendo 10% em reserva. Isso me d&aacute; diversifica&ccedil;&atilde;o entre estrat&eacute;gias e mant&eacute;m o suficiente por trader para que o m&iacute;nimo de $200 do eToro seja atendido confortavelmente.</span>
+      </div>
+    </div>
+
+    <div class="legal-disclaimer" style="background:#F8F8FA;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:24px 0 0;font-size:12px;color:var(--text-secondary);line-height:1.8;">
+      <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Aviso Legal</strong>
+      Esta calculadora fornece <strong style="display:inline;font-size:inherit;">apenas orienta&ccedil;&otilde;es gerais</strong> e destina-se a fins informativos e educacionais. N&atilde;o deve ser usada para tomar decis&otilde;es financeiras.
+      <ul style="margin:8px 0 0 18px;">
+        <li>As sugest&otilde;es de aloca&ccedil;&atilde;o s&atilde;o baseadas em princ&iacute;pios gerais de diversifica&ccedil;&atilde;o e podem n&atilde;o ser adequadas &agrave;s suas circunst&acirc;ncias individuais, objetivos financeiros ou apetite por risco.</li>
+        <li>O desempenho passado dos copy traders n&atilde;o &eacute; indicativo de resultados futuros. Sempre fa&ccedil;a sua pr&oacute;pria an&aacute;lise antes de copiar qualquer trader.</li>
+        <li>Esta ferramenta n&atilde;o constitui aconselhamento financeiro, de investimento ou tribut&aacute;rio. O SocialTradingVlog e seu autor n&atilde;o s&atilde;o consultores financeiros e n&atilde;o se responsabilizam por perdas ou danos decorrentes do uso desta calculadora.</li>
+        <li>O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Why Position Sizing Matters -->
+  <div class="explainer">
+    <h2>Por Que o Tamanho da Posi&ccedil;&atilde;o &Eacute; Importante</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Diversifica&ccedil;&atilde;o</h3>
+        <p>Distribuir seu capital entre v&aacute;rios copy traders reduz o impacto de qualquer trader individual ter uma fase ruim. Se um trader perde 30%, isso afeta apenas uma fra&ccedil;&atilde;o do seu portf&oacute;lio quando o tamanho da posi&ccedil;&atilde;o est&aacute; correto.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Gest&atilde;o de Risco</h3>
+        <p>Definir limites m&aacute;ximos de aloca&ccedil;&atilde;o por trader evita a superexposi&ccedil;&atilde;o. Um dimensionamento conservador com reserva em dinheiro significa que voc&ecirc; pode suportar quedas sem ser for&ccedil;ado a parar de copiar durante baixas tempor&aacute;rias.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Flexibilidade</h3>
+        <p>Manter dinheiro em reserva permite adicionar novos traders que voc&ecirc; descobrir, aumentar a aloca&ccedil;&atilde;o nos melhores desempenhos ou aproveitar quedas do mercado. Um portf&oacute;lio totalmente investido n&atilde;o tem espa&ccedil;o para se adaptar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guide link -->
+  <div class="guide-link-section">
+    <a href="../../../copy-trading/how-to-choose-copy-traders/" class="guide-link-card">
+      <div class="guide-link-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      </div>
+      <div class="guide-link-text">
+        <h3>Como Escolher Copy Traders no eToro</h3>
+        <p>Nosso guia completo para avaliar e selecionar os melhores traders para copiar.</p>
+      </div>
+      <span class="guide-link-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quanto devo alocar por copy trader no eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Uma abordagem comum &eacute; alocar de 5 a 20% do seu portf&oacute;lio por trader, dependendo da sua toler&acirc;ncia ao risco e do n&uacute;mero de traders que voc&ecirc; copia. Investidores conservadores geralmente mant&ecirc;m cada aloca&ccedil;&atilde;o abaixo de 10%, enquanto investidores moderados podem ir at&eacute; 20%. Sempre mantenha uma reserva em dinheiro de pelo menos 5 a 20% para requisitos de margem e novas oportunidades.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Qual &eacute; o valor m&iacute;nimo para copiar um trader no eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>O valor m&iacute;nimo para copiar um trader no eToro &eacute; de $200. Isso significa que voc&ecirc; precisa de pelo menos $200 por trader que deseja copiar. Se o seu portf&oacute;lio &eacute; de $1.000 e voc&ecirc; quer copiar 5 traders, precisar&aacute; do valor total apenas para atingir os m&iacute;nimos, sem nenhuma reserva em dinheiro. Use esta calculadora para encontrar o equil&iacute;brio ideal.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quantos traders devo copiar no eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>A maioria dos copy traders experientes recomenda copiar entre 5 e 15 traders para uma boa diversifica&ccedil;&atilde;o. Copiar menos de 5 traders concentra o seu risco, enquanto copiar mais de 15 pode diluir seus retornos e dificultar o monitoramento do desempenho. O n&uacute;mero ideal depende do tamanho do seu portf&oacute;lio e de qu&atilde;o ativamente voc&ecirc; deseja gerenciar suas aloca&ccedil;&otilde;es.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Devo dividir meu portf&oacute;lio de copy trading igualmente ou usar valores diferentes? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Ambas as abordagens t&ecirc;m m&eacute;rito. A divis&atilde;o igual &eacute; mais simples e garante uma diversifica&ccedil;&atilde;o equilibrada. A aloca&ccedil;&atilde;o ponderada pelo risco permite investir mais nos traders em que voc&ecirc; tem maior confian&ccedil;a, ou menos nos traders de maior risco. Muitos copy traders come&ccedil;am com divis&atilde;o igual e ajustam ao longo do tempo com base no desempenho e perfil de risco de cada trader.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Comece o copy trading no eToro</h2>
+    <p>Copie traders de alto desempenho automaticamente. Comece com apenas $200 por trader e construa um portf&oacute;lio diversificado.</p>
+    <a href="https://etoro.tw/3BnSzFc" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'position_size_pt'})">Abrir Conta no eToro &rarr;</a>
+    <div class="risk-text">
+      <strong>51% das contas de investidores de varejo perdem dinheiro ao negociar CFDs com este provedor.</strong>
+      Voc&ecirc; deve considerar se pode arcar com o alto risco de perder o seu dinheiro.
+      Isto n&atilde;o constitui aconselhamento financeiro. Capital em risco. Link de afiliado &mdash; o Tom pode receber uma comiss&atilde;o sem nenhum custo para voc&ecirc;.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../">SocialTradingVlog.com</a> &middot;
+      <a href="../">Todas as Ferramentas</a> &middot;
+      <a href="../../sobre/">Sobre o Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Esta calculadora &eacute; apenas para fins informativos e n&atilde;o constitui aconselhamento financeiro. As sugest&otilde;es de aloca&ccedil;&atilde;o s&atilde;o baseadas em princ&iacute;pios gerais e podem n&atilde;o ser adequadas &agrave;s suas circunst&acirc;ncias.
+      O SocialTradingVlog n&atilde;o se responsabiliza por perdas decorrentes do uso desta ferramenta. O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.
+      51% das contas de investidores de varejo perdem dinheiro ao negociar CFDs com este provedor.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Risk Profiles ───
+const RISK_PROFILES = {
+  conservative: { maxPerTrader: 0.10, cashReserve: 0.20, label: 'Conservador' },
+  moderate:     { maxPerTrader: 0.20, cashReserve: 0.10, label: 'Moderado' },
+  aggressive:   { maxPerTrader: 0.40, cashReserve: 0.05, label: 'Agressivo' },
+};
+
+const ETORO_MIN_COPY = 200;
+
+// Bar colors — cycle through the design system palette
+const BAR_COLORS = [
+  '#2BB3FF', '#59DDAA', '#FF642D', '#8B5CF6', '#FDC23C',
+  '#009F81', '#008FF8', '#FF4953', '#2BB3FF', '#59DDAA',
+  '#FF642D', '#8B5CF6', '#FDC23C', '#009F81', '#008FF8',
+  '#FF4953', '#2BB3FF', '#59DDAA', '#FF642D', '#8B5CF6'
+];
+
+let state = { portfolio: 5000, traders: 5, risk: 'moderate', strategy: 'equal' };
+
+function setRisk(r, el) {
+  state.risk = r;
+  document.querySelectorAll('#risk-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setStrategy(s, el) {
+  state.strategy = s;
+  document.querySelectorAll('#strategy-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function syncPortfolio(val) {
+  state.portfolio = parseInt(val) || 500;
+  document.getElementById('portfolio-input').value = state.portfolio.toLocaleString('pt-BR');
+  calculate();
+}
+function syncPortfolioFromInput(val) {
+  const n = parseInt(val.replace(/[^0-9]/g, '')) || 500;
+  state.portfolio = Math.min(Math.max(n, 500), 100000);
+  document.getElementById('portfolio-slider').value = state.portfolio;
+  calculate();
+}
+function syncTraders(val) {
+  state.traders = parseInt(val) || 1;
+  document.getElementById('traders-display').textContent = state.traders;
+  calculate();
+}
+
+function fmt(n) {
+  if (n >= 1) return '$' + Math.round(n).toLocaleString('pt-BR');
+  return '$0';
+}
+
+function getAllocations() {
+  const profile = RISK_PROFILES[state.risk];
+  const cashAmount = Math.round(state.portfolio * profile.cashReserve);
+  const investable = state.portfolio - cashAmount;
+
+  let allocations = [];
+
+  if (state.strategy === 'equal') {
+    const perTrader = Math.round(investable / state.traders);
+    for (let i = 0; i < state.traders; i++) {
+      allocations.push(perTrader);
+    }
+  } else {
+    // Risk-weighted: descending curve — first traders get more, last get less
+    // Uses a simple linear weighting: weight_i = (N - i + 1)
+    let weights = [];
+    for (let i = 0; i < state.traders; i++) {
+      weights.push(state.traders - i);
+    }
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+
+    for (let i = 0; i < state.traders; i++) {
+      let amount = Math.round(investable * (weights[i] / totalWeight));
+      // Cap at max per trader
+      const maxAllowed = Math.round(state.portfolio * profile.maxPerTrader);
+      amount = Math.min(amount, maxAllowed);
+      allocations.push(amount);
+    }
+
+    // Redistribute any excess from capping
+    const allocated = allocations.reduce((a, b) => a + b, 0);
+    const remainder = investable - allocated;
+    if (remainder > 0) {
+      // Spread remainder among traders that haven't hit the cap
+      const maxAllowed = Math.round(state.portfolio * profile.maxPerTrader);
+      for (let i = 0; i < state.traders && remainder > 0; i++) {
+        if (allocations[i] < maxAllowed) {
+          const add = Math.min(Math.round(remainder / state.traders), maxAllowed - allocations[i]);
+          allocations[i] += add;
+        }
+      }
+    }
+  }
+
+  // Enforce max per trader cap
+  const maxAllowed = Math.round(state.portfolio * RISK_PROFILES[state.risk].maxPerTrader);
+  allocations = allocations.map(a => Math.min(a, maxAllowed));
+
+  return { allocations, cashAmount, investable };
+}
+
+function getDiversificationScore() {
+  const profile = RISK_PROFILES[state.risk];
+  const { allocations, cashAmount } = getAllocations();
+
+  let score = 0;
+
+  // Number of traders component (0-40 points)
+  // Optimal is 8-12 traders
+  if (state.traders >= 8 && state.traders <= 12) {
+    score += 40;
+  } else if (state.traders >= 5 && state.traders <= 15) {
+    score += 30;
+  } else if (state.traders >= 3) {
+    score += 15;
+  } else {
+    score += 5;
+  }
+
+  // Allocation spread component (0-30 points)
+  // Measure how evenly distributed (lower coefficient of variation = better)
+  if (allocations.length > 1) {
+    const mean = allocations.reduce((a, b) => a + b, 0) / allocations.length;
+    const variance = allocations.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / allocations.length;
+    const cv = Math.sqrt(variance) / (mean || 1);
+    // cv of 0 = perfectly equal = 30 pts, cv of 1+ = 0 pts
+    score += Math.round(Math.max(0, 30 * (1 - cv)));
+  } else {
+    score += 0;
+  }
+
+  // Meets minimum threshold (0-15 points)
+  const belowMin = allocations.filter(a => a < ETORO_MIN_COPY).length;
+  if (belowMin === 0) {
+    score += 15;
+  } else {
+    score += Math.max(0, 15 - belowMin * 5);
+  }
+
+  // Cash reserve component (0-15 points)
+  const cashPct = cashAmount / state.portfolio;
+  if (cashPct >= 0.05 && cashPct <= 0.25) {
+    score += 15;
+  } else if (cashPct > 0) {
+    score += 8;
+  }
+
+  return Math.min(100, Math.max(0, score));
+}
+
+function getScoreLabel(score) {
+  if (score >= 80) return 'Excelente';
+  if (score >= 60) return 'Bom';
+  if (score >= 40) return 'Regular';
+  return 'Baixo';
+}
+
+function getScoreColor(score) {
+  if (score >= 80) return 'var(--success)';
+  if (score >= 60) return 'var(--chart-1)';
+  if (score >= 40) return 'var(--warning)';
+  return 'var(--critical)';
+}
+
+function calculate() {
+  const profile = RISK_PROFILES[state.risk];
+  const { allocations, cashAmount, investable } = getAllocations();
+  const perTrader = allocations.length > 0 ? allocations[0] : 0; // Hero shows first (or equal) allocation
+  const avgPerTrader = allocations.length > 0 ? Math.round(allocations.reduce((a, b) => a + b, 0) / allocations.length) : 0;
+  const pctPerTrader = ((avgPerTrader / state.portfolio) * 100).toFixed(1);
+
+  // Hero number — show average for equal split, range for weighted
+  const heroValue = state.strategy === 'equal' ? fmt(perTrader) : fmt(avgPerTrader);
+  document.getElementById('total-value').textContent = heroValue;
+
+  const pctEl = document.getElementById('total-pct');
+  if (state.strategy === 'equal') {
+    pctEl.textContent = pctPerTrader.replace('.', ',') + '% do seu portf\u00f3lio cada';
+  } else {
+    const minAlloc = Math.min(...allocations);
+    const maxAlloc = Math.max(...allocations);
+    pctEl.textContent = fmt(minAlloc) + ' - ' + fmt(maxAlloc) + ' faixa';
+  }
+  pctEl.className = 'total-pct ' + (parseFloat(pctPerTrader) <= 10 ? 'low' : parseFloat(pctPerTrader) <= 25 ? 'medium' : 'high');
+
+  // Breakdown cards
+  document.getElementById('bc-cash').textContent = fmt(cashAmount);
+  document.getElementById('bc-cash-note').textContent = Math.round(profile.cashReserve * 100) + '% reservado';
+  document.getElementById('bc-allocated').textContent = fmt(investable);
+  document.getElementById('bc-traders').textContent = state.traders;
+  document.getElementById('bc-traders-note').textContent = state.traders === 1 ? 'Copy trader' : 'Copy traders';
+
+  // Diversification score
+  const score = getDiversificationScore();
+  const scoreLabel = getScoreLabel(score);
+  const scoreColor = getScoreColor(score);
+  document.getElementById('bc-score').textContent = scoreLabel;
+  document.getElementById('bc-score-note').textContent = score + ' / 100';
+  document.getElementById('score-label').textContent = score + ' / 100';
+  const scoreFill = document.getElementById('score-fill');
+  scoreFill.style.width = score + '%';
+  scoreFill.style.background = scoreColor;
+
+  // Warning card
+  const belowMin = allocations.filter(a => a < ETORO_MIN_COPY).length;
+  const warningCard = document.getElementById('warning-card');
+  const warningText = document.getElementById('warning-text');
+  if (belowMin > 0) {
+    warningCard.classList.remove('hidden');
+    if (belowMin === state.traders) {
+      warningText.textContent = 'Todas as ' + state.traders + ' aloca\u00e7\u00f5es (' + fmt(allocations[0]) + ' cada) est\u00e3o abaixo do m\u00ednimo de $200 do eToro por copy trader. Voc\u00ea precisa de um portf\u00f3lio maior ou menos traders.';
+    } else {
+      warningText.textContent = belowMin + ' de ' + state.traders + ' aloca\u00e7\u00f5es est\u00e3o abaixo do m\u00ednimo de $200 do eToro por copy trader. Considere reduzir o n\u00famero de traders ou aumentar o tamanho do seu portf\u00f3lio.';
+    }
+  } else {
+    warningCard.classList.add('hidden');
+  }
+
+  // Bar chart
+  const barChart = document.getElementById('bar-chart');
+  const maxAllocation = Math.max(...allocations, cashAmount);
+  let barsHTML = '';
+
+  for (let i = 0; i < allocations.length; i++) {
+    const pct = maxAllocation > 0 ? (allocations[i] / maxAllocation * 100) : 0;
+    const belowMinClass = allocations[i] < ETORO_MIN_COPY ? ' style="opacity:.5"' : '';
+    barsHTML += `
+      <div class="bar-row"${belowMinClass}>
+        <span class="bar-label">Trader ${i + 1}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${Math.max(pct, 2)}%;background:${BAR_COLORS[i % BAR_COLORS.length]}">${allocations[i] >= maxAllocation * 0.15 ? fmt(allocations[i]) : ''}</div>
+        </div>
+        <span class="bar-amount">${fmt(allocations[i])}</span>
+      </div>`;
+  }
+
+  // Cash reserve bar
+  const cashPct = maxAllocation > 0 ? (cashAmount / maxAllocation * 100) : 0;
+  barsHTML += `
+    <div class="bar-row bar-cash">
+      <span class="bar-label">Reserva</span>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${Math.max(cashPct, 2)}%;background:#8A8E9B">${cashAmount >= maxAllocation * 0.15 ? fmt(cashAmount) : ''}</div>
+      </div>
+      <span class="bar-amount">${fmt(cashAmount)}</span>
+    </div>`;
+
+  barChart.innerHTML = barsHTML;
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// Initial calculation
+calculate();
+</script>
+</body>
+</html>

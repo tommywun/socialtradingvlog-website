@@ -36,6 +36,12 @@ os.environ["PATH"] = f"/opt/homebrew/bin:{os.environ.get('PATH', '')}"
 
 BASE_DIR    = pathlib.Path(__file__).parent.parent
 TRANS_DIR   = BASE_DIR / "transcriptions"
+
+# Load OpenAI API key from secrets file if not already in environment
+if not os.environ.get("OPENAI_API_KEY"):
+    key_file = pathlib.Path.home() / ".config" / "stv-secrets" / "openai-api-key.txt"
+    if key_file.exists():
+        os.environ["OPENAI_API_KEY"] = key_file.read_text().strip()
 PYTHON      = sys.executable
 TRANSCRIBE  = pathlib.Path(__file__).parent / "transcribe_video.py"
 TRANSLATE   = pathlib.Path(__file__).parent / "translate_subtitles.py"
