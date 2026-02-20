@@ -103,3 +103,5 @@ Calculator pages link to each other via nav bar.
   6. Present the audit to Tom: "These X items will be removed. These Y items appear to be approved/hand-written and will be KEPT: [list]"
   7. Only proceed after Tom confirms
   This rule exists because bulk deletions have destroyed approved content TWICE (etoro-review, why-do-most-etoro-traders-lose-money). The fix is to audit first, act second — never the other way around.
+- **Update CC immediately when status changes**: Whenever a task is completed, a situation changes, or progress is made on any tracked item (pipeline, subtitles, video pages, articles, etc.), immediately update `data/status-overrides.json` on VPS to reflect the current state. The command centre is Tom's window into what's happening — stale or inaccurate statuses are misleading. Use: `ssh stv@89.167.73.64 "cat > ~/socialtradingvlog-website/data/status-overrides.json << 'EOF' ... EOF"`
+- **VPS rsync excludes**: When syncing to VPS with rsync --delete, ALWAYS exclude: `.git`, `transcriptions`, `node_modules`, `data`, `.env`, `venv`. The venv on VPS is not in git and must not be deleted.
