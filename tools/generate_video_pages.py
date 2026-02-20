@@ -2,12 +2,20 @@
 """
 Generate SEO-optimised video landing pages for each transcribed video.
 
+VIDEO PAGES PIPELINE (Feb 2025):
+  Pages are no longer generated from raw transcripts. Each video page must be
+  a proper SEO-rewritten article based on the video's key points, targeting a
+  specific keyphrase. Tom must approve each article before it goes live.
+
+  To publish a video page, set "approved": True in its KEYWORD_MAP entry and
+  provide article_sections with the rewritten content.
+
 Creates /video/SLUG/index.html with:
   - Intro paragraph (keyphrase before the embed)
   - YouTube thumbnail as featured image
   - Embedded YouTube video
   - Table of contents
-  - Formatted transcript (readability-optimised paragraphs + H2 headings)
+  - Properly written article content (NOT a raw transcript dump)
   - FAQ section with FAQPage schema (rich snippets)
   - Breadcrumb + VideoObject schema
   - Auto-linked key terms
@@ -15,7 +23,7 @@ Creates /video/SLUG/index.html with:
   - Full site nav + footer
 
 Usage:
-    python3 tools/generate_video_pages.py              # generate all available
+    python3 tools/generate_video_pages.py              # generate all approved
     python3 tools/generate_video_pages.py --video-id YZYgjitj7DM
     python3 tools/generate_video_pages.py --force      # regenerate even if exists
 """
@@ -1133,6 +1141,8 @@ def main():
     VIDEO_DIR.mkdir(exist_ok=True)
     generated = skipped = no_transcript = 0
 
+    pending_approval = 0
+
     for video_id in target_ids:
         title = video_titles.get(video_id, f"Video {video_id}")
         transcript_path = TRANS_DIR / video_id / "transcript.txt"
@@ -1142,6 +1152,12 @@ def main():
             continue
 
         meta = get_meta_for_video(video_id, title)
+
+        # Only generate pages that Tom has approved for publication
+        if not meta.get("approved"):
+            pending_approval += 1
+            continue
+
         out_dir = VIDEO_DIR / meta["slug"]
         out_path = out_dir / "index.html"
 
@@ -1160,7 +1176,7 @@ def main():
         print(f"  [{video_id}] → /video/{meta['slug']}/")
         generated += 1
 
-    print(f"\nDone: {generated} generated, {skipped} skipped, {no_transcript} waiting for transcript")
+    print(f"\nDone: {generated} generated, {skipped} skipped, {pending_approval} pending approval, {no_transcript} waiting for transcript")
     if generated > 0:
         print("Run with --force to regenerate existing pages.")
 

@@ -20,7 +20,7 @@ Latest is always at `reports/latest.txt`.
 - `python3 tools/generate_article_pages.py --force` — regenerate article pages
 - `python3 tools/generate_video_pages.py --force` — regenerate video pages
 - `python3 tools/run_pipeline.py` — transcription + translation pipeline
-- `python3 tools/generate_sitemap.py` — regenerate sitemap.xml (289 URLs, hreflang)
+- `python3 tools/generate_sitemap.py` — regenerate sitemap.xml (266 URLs, hreflang)
 
 ## VPS (Command Centre)
 - **Host**: 89.167.73.64, user `stv`
@@ -45,6 +45,13 @@ Latest is always at `reports/latest.txt`.
 - Position Size Calculator — allocation per copied trader with risk profiles
 
 Translated to 5 languages: ES (`/es/calculadoras/`), DE (`/de/rechner/`), FR (`/fr/calculateurs/`), PT (`/pt/calculadoras/`), AR (`/ar/calculators/`)
+
+## Video Pages Pipeline
+Each of the 333 YouTube videos will get a proper SEO-rewritten article page (NOT a transcript dump).
+Pipeline: transcribe video → extract key points → rewrite as SEO article targeting specific keyphrase → Tom approves → publish → translate to all 9 languages with localised SEO terms.
+- `generate_video_pages.py` has an `"approved": True` gate — no pages generated without approval
+- Old transcript-dump pages have been purged (30 EN + 5 translated = 35 pages removed, Feb 2025)
+- Transcriptions in `transcriptions/` are preserved (used for subtitles and as source material for rewriting)
 
 ## Content review queue (20 articles)
 Articles in `data/review-staging/` on VPS. Review/publish via command centre Review tab.
