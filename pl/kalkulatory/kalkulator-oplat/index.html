@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator opłat eToro 2026 — Oblicz koszty transakcyjne | SocialTradingVlog |PODZIAŁ| Darmowy kalkulator opłat eToro. Zobacz dokładnie, ile zapłacisz w postaci spreadów, opłat jednodniowych, opłat za wypłatę i przeliczenia walut. Zaktualizowano na rok 2026.</title>
+<meta name="description" content="Opłaty eToro, opłaty transakcyjne eToro, kalkulator spreadu eToro, kalkulator kosztów eToro, opłata za wypłatę eToro">
+<meta name="keywords" content="eToro Kalkulator opłat 2026 — Oblicz koszty transakcyjne">
+<link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<meta property="og:title" content="Darmowy kalkulator opłat eToro. Zobacz dokładnie, ile zapłacisz w formie spreadów, opłat jednodniowych i nie tylko.">
+<meta property="og:description" content="Darmowy kalkulator opłat eToro. Zobacz dokładnie, ile zapłacisz w formie spreadów, opłat jednodniowych i nie tylko.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Container ─── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero ─── */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+/* ─── Calculator Card ─── */
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.calc-card:hover { box-shadow: var(--shadow-hover); }
+
+/* ─── Input Groups ─── */
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn {
+  padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.pill-btn:hover { border-color: var(--info); color: var(--text-primary); }
+.pill-btn.active { background: var(--info); border-color: var(--info); color: #fff; }
+.pill-btn.active.stocks { background: var(--chart-1); border-color: var(--chart-1); }
+.pill-btn.active.crypto { background: var(--chart-3); border-color: var(--chart-3); }
+.pill-btn.active.forex { background: var(--chart-2); border-color: var(--chart-2); }
+.pill-btn.active.commodities { background: var(--warning); border-color: var(--warning); color: var(--text-primary); }
+.pill-btn.active.indices { background: var(--purple); border-color: var(--purple); }
+.pill-btn.active.etfs { background: var(--success); border-color: var(--success); }
+
+/* Slider */
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 6px; border-radius: 3px; background: var(--border);
+  outline: none; transition: background .2s;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--info); cursor: pointer; box-shadow: 0 2px 6px rgba(0,143,248,.35);
+  transition: transform .15s;
+}
+.slider-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.amount-input {
+  width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: right;
+  transition: border-color .2s, box-shadow .2s;
+}
+.amount-input:focus { outline: none; border-color: var(--info); box-shadow: 0 0 0 3px rgba(0,143,248,.15); }
+
+/* ─── Results ─── */
+.results { padding: 32px 0 16px; }
+.results-hero { text-align: center; margin-bottom: 32px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.1; transition: color .3s;
+}
+.results-hero .total-pct {
+  display: inline-flex; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+}
+.results-hero .total-pct.low { background: var(--success-light); color: var(--success); }
+.results-hero .total-pct.medium { background: var(--warning-light); color: #B8860B; }
+.results-hero .total-pct.high { background: var(--critical-light); color: var(--critical); }
+
+/* Breakdown cards */
+.breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.breakdown-card {
+  border-radius: var(--radius); padding: 18px; text-align: center;
+  transition: transform .2s;
+}
+.breakdown-card:hover { transform: translateY(-2px); }
+.breakdown-card .bc-label { font-size: 12px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+.breakdown-card .bc-value { font-size: 22px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+.breakdown-card .bc-note { font-size: 11px; opacity: .6; margin-top: 2px; }
+.bc-spread { background: rgba(43,179,255,.1); color: #0077CC; }
+.bc-overnight { background: rgba(255,100,45,.1); color: #C33909; }
+.bc-conversion { background: rgba(139,92,246,.1); color: #7C3AED; }
+.bc-withdrawal { background: rgba(108,110,121,.1); color: var(--text-secondary); }
+
+/* Stacked bar */
+.stacked-bar-wrap { margin-bottom: 16px; }
+.stacked-bar { display: flex; height: 28px; border-radius: 14px; overflow: hidden; }
+.stacked-bar div { height: 100%; transition: width .5s ease; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; }
+.sb-spread { background: var(--chart-1); }
+.sb-overnight { background: var(--chart-3); }
+.sb-conversion { background: var(--purple); }
+.sb-withdrawal { background: #8A8E9B; }
+.stacked-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 10px; }
+.stacked-legend span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.stacked-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Context callout */
+.callout {
+  background: linear-gradient(135deg, #F0F8FF 0%, #F5F0FF 100%);
+  border: 1px solid #E8E0F0;
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
+  font-size: 14px; color: var(--text-primary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── Explainer Section ─── */
+.explainer { padding: 40px 0; }
+.explainer h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.explainer-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+}
+.explainer-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.explainer-card .ec-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Spread Table ─── */
+.spread-section { margin-bottom: 32px; }
+.spread-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px;
+  cursor: pointer; box-shadow: var(--shadow); transition: all .2s; border: none;
+  width: 100%; text-align: left; font-family: inherit; font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+}
+.spread-toggle:hover { box-shadow: var(--shadow-hover); }
+.spread-toggle .chevron { transition: transform .3s; font-size: 12px; color: var(--text-muted); }
+.spread-toggle.open .chevron { transform: rotate(180deg); }
+.spread-table-wrap {
+  max-height: 0; overflow: hidden; transition: max-height .4s ease;
+  background: var(--bg-card); border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 2px 4px rgba(25,27,35,.08);
+}
+.spread-table-wrap.open { max-height: 600px; }
+.spread-table { width: 100%; border-collapse: collapse; }
+.spread-table th { text-align: left; padding: 12px 20px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.spread-table td { padding: 10px 20px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+.spread-table tr:last-child td { border-bottom: none; }
+.spread-table tr:hover { background: rgba(0,143,248,.03); }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 32px 0; }
+.faq-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .15s; }
+.faq-q:hover { background: rgba(0,143,248,.03); }
+.faq-q .chevron { font-size: 12px; color: var(--text-muted); transition: transform .3s; }
+.faq-q.open .chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.faq-a.open { max-height: 300px; padding: 0 20px 16px; }
+.faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%);
+  border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0;
+  color: #fff;
+}
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700;
+  background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer;
+  transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-text-light { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: center; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+.tool-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .pill-group { gap: 6px; }
+  .pill-btn { padding: 7px 14px; font-size: 12px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  .explainer-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .pill-btn { padding: 6px 12px; font-size: 11px; }
+}
+</style>
+
+<!-- Schema: WebApplication + FAQPage + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Kalkulator opłat eToro",
+  "description": "Oblicz dokładne koszty handlu eToro, w tym spready, opłaty jednodniowe, opłaty za wypłatę i przeliczenie waluty.",
+  "url": "https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Narzędzia i kalkulatory", "item": "https://socialtradingvlog.com/calculators/" },
+    { "@type": "ListItem", "position": 3, "name": "Kalkulator opłat eToro", "item": "https://socialtradingvlog.com/calculators/fee-calculator/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Indeksy |PODZIEL| i ma charakter ogólnoinformacyjny i edukacyjny. Nie należy na nim polegać przy podejmowaniu decyzji finansowych. |PODZIEL| Akcje (UE/Wielka Brytania)", "acceptedAnswer": {"@type": "Answer", "text": "eToro pobiera opłaty głównie poprzez spready (różnicę pomiędzy cenami kupna i sprzedaży). Transakcje na akcjach i ETF mają 0% prowizji. Krypto ma 1% spreadu. Forex zaczyna się od 1 pipsa. Dodatkowe koszty obejmują opłaty za nocleg za pozycje CFD utrzymywane po godzinie 22:00 czasu brytyjskiego."}},
+    {"@type": "Question", "name": "Handel dzienny", "acceptedAnswer": {"@type": "Answer", "text": "Zamawiać"}},
+    {"@type": "Question", "name": "Opłata za nocleg", "acceptedAnswer": {"@type": "Answer", "text": "Głównymi „ukrytymi” kosztami są opłaty za jednodniowe transakcje na pozycjach CFD oraz opłaty za przeliczenie waluty, jeśli waluta Twojego konta różni się od waluty aktywa. Po 12 miesiącach braku logowania naliczana jest również opłata za brak aktywności w wysokości 10 USD miesięcznie."}},
+    {"@type": "Question", "name": "Czy kopiowanie transakcji na eToro jest bezpłatne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak, za korzystanie z funkcji CopyTrader w eToro nie są pobierane żadne dodatkowe opłaty. Płacisz tylko standardowe opłaty transakcyjne za pozycje, które kopiowany trader otwiera w Twoim imieniu."}},
+    {"@type": "Question", "name": "Handel dzienny", "acceptedAnswer": {"@type": "Answer", "text": "eToro pobiera 1% spreadu przy zakupach kryptowalut. Nie ma żadnych opłat za jednodniowe przechowywanie prawdziwych kryptowalut (innych niż CFD). Przeniesienie kryptowaluty do portfela zewnętrznego kosztuje 2%."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../../../pl/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../kalkulator-oplat/" class="active">Narzędzia te zostały zbudowane przez XBRAND026X, który handluje i kopiuje transakcje na XBRAND019X od 2016 roku. Wszystko tutaj opiera się na prawdziwym doświadczeniu i rzeczywistych danych &mdash; nie jest kopią marketingową. |PODZIEL| Recenzja XBRAND019X 2026 |PODZIAŁ| Śledź i porównuj wyniki najpopularniejszych inwestorów XBRAND019X na przestrzeni czasu. |PODZIEL| 4 scenariusze |PODZIEL| Zbudowany przez prawdziwego tradera</a>
+    <a href="../kalkulator-zwrotu/">Kalkulator zwrotu</a>
+    <a href="../porownaj-platformy/">Porównaj platformę</a>
+    <a href="../rozmiar-pozycji/">pozycja Rozmiar</a>
+  </div>
+  <a href="../../../pl/" class="tool-nav-back">&larr; Powrót do strony</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Pełny harmonogram spreadów XBRAND019X</div>
+    <h1>eToro <span class="accent">Kalkulator opłat</span></h1>
+    <p>1 miesiąc</p>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calc-card">
+
+    <!-- Asset Class -->
+    <div class="input-section">
+      <div class="input-label">Kwota transakcji</div>
+      <div class="pill-group" id="asset-pills">
+        <button class="pill-btn active stocks" data-asset="stocks" onclick="setAsset('stocks',this)">Akcje |PODZIEL| Przeliczenie waluty ma zastosowanie, jeśli waluta Twojego konta różni się od waluty zasobu. Wypłata wynosi 5 USD dla kont w USD (bezpłatna dla GBP/EUR). Po 12 miesiącach braku logowania naliczana jest opłata za brak aktywności w wysokości 10 USD miesięcznie. |PODZIEL| 5 pipsów</button>
+        <button class="pill-btn crypto" data-asset="crypto" onclick="setAsset('crypto',this)">Krypto</button>
+        <button class="pill-btn forex" data-asset="forex" onclick="setAsset('forex',this)">Forex</button>
+        <button class="pill-btn commodities" data-asset="commodities" onclick="setAsset('commodities',this)">Towary</button>
+        <button class="pill-btn indices" data-asset="indices" onclick="setAsset('indices',this)">Indeksy</button>
+        <button class="pill-btn etfs" data-asset="etfs" onclick="setAsset('etfs',this)">ETFs</button>
+      </div>
+    </div>
+
+    <!-- Trade Amount -->
+    <div class="input-section">
+      <div class="input-label">Kwota handlowa</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="amount-slider" min="100" max="50000" step="100" value="1000" oninput="syncAmount(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="amount-input" value="1,000" oninput="syncSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Holding Period -->
+    <div class="input-section">
+      <div class="input-label">Jak długo wytrzymasz?</div>
+      <div class="pill-group" id="period-pills">
+        <button class="pill-btn active" data-days="0" onclick="setPeriod(0,this)">Oficjalna strona opłat XBRAND019X</button>
+        <button class="pill-btn" data-days="7" onclick="setPeriod(7,this)">1 tydzień</button>
+        <button class="pill-btn" data-days="30" onclick="setPeriod(30,this)">1 miesiąc</button>
+        <button class="pill-btn" data-days="365" onclick="setPeriod(365,this)">1 rok</button>
+      </div>
+    </div>
+
+    <!-- Account Currency -->
+    <div class="input-section">
+      <div class="input-label">0,75 pkt |PODZIEL| Zastrzeżenie dotyczące dokładności danych</div>
+      <div class="pill-group" id="currency-pills">
+        <button class="pill-btn active" data-cur="USD" onclick="setCurrency('USD',this)">USD</button>
+        <button class="pill-btn" data-cur="GBP" onclick="setCurrency('GBP',this)">GBP</button>
+        <button class="pill-btn" data-cur="EUR" onclick="setCurrency('EUR',this)">EUR</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="results-hero">
+        <div class="total-label">0,15% Twojej transakcji</div>
+        <div class="total-value" id="total-value">$1.50</div>
+        <div class="total-pct low" id="total-pct">Inne kryptowaluty</div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid">
+        <div class="breakdown-card bc-spread">
+          <div class="bc-label">Spread to różnica pomiędzy ceną kupna i sprzedaży. To główny przychód XBRAND019X. Akcje i XBRAND025X mają 0% prowizji — płacisz tylko spread. Spready kryptowalut zaczynają się od 1%. |PODZIEL| XBRAND019X pobiera 1% spreadu przy zakupach kryptowalut. Nie ma żadnych opłat za jednodniowe przechowywanie prawdziwych kryptowalut (innych niż XBRAND033X). Przeniesienie kryptowaluty do portfela zewnętrznego kosztuje 2%. Spread kryptowalutowy jest naliczany przy zakupie i sprzedaży. |PODZIEL| Krypto</div>
+          <div class="bc-value" id="bc-spread">$1.50</div>
+          <div class="bc-note">Opłata handlowa</div>
+        </div>
+        <div class="breakdown-card bc-overnight">
+          <div class="bc-label">Opłaty za nocleg</div>
+          <div class="bc-value" id="bc-overnight">$0.00</div>
+          <div class="bc-note" id="bc-overnight-note">Typowy spread</div>
+        </div>
+        <div class="breakdown-card bc-conversion">
+          <div class="bc-label">Konwersja</div>
+          <div class="bc-value" id="bc-conversion">$0.00</div>
+          <div class="bc-note">Tak, za korzystanie z funkcji XBRAND005X w XBRAND019X nie są pobierane żadne dodatkowe opłaty. Płacisz tylko standardowe opłaty transakcyjne za pozycje, które kopiowany trader otwiera w Twoim imieniu. Minimum do skopiowania tradera to 200 dolarów. |PODZIEL| Kalkulator opłat</div>
+        </div>
+        <div class="breakdown-card bc-withdrawal">
+          <div class="bc-label">Wycofanie</div>
+          <div class="bc-value" id="bc-withdrawal">$5.00</div>
+          <div class="bc-note" id="bc-withdrawal-note">Czy XBRAND019X pobiera opłaty za wypłatę? |PODZIEL| Ile kosztuje handel kryptowalutami na XBRAND019X? |PODZIEL| Szacunkowy koszt całkowity</div>
+        </div>
+      </div>
+
+      <div class="stacked-bar-wrap">
+        <div class="stacked-bar" id="stacked-bar"></div>
+        <div class="stacked-legend">
+          <span><span class="dot" style="background:var(--chart-1)"></span>Spread to różnica pomiędzy ceną kupna i sprzedaży. To główny przychód XBRAND019X. Akcje i XBRAND025X mają 0% prowizji — płacisz tylko spread. Spready kryptowalut zaczynają się od 1%. |PODZIEL| XBRAND019X pobiera 1% spreadu przy zakupach kryptowalut. Nie ma żadnych opłat za jednodniowe przechowywanie prawdziwych kryptowalut (innych niż XBRAND033X). Przeniesienie kryptowaluty do portfela zewnętrznego kosztuje 2%. Spread kryptowalutowy jest naliczany przy zakupie i sprzedaży. |PODZIEL| Krypto</span>
+          <span><span class="dot" style="background:var(--chart-3)"></span>Nocny</span>
+          <span><span class="dot" style="background:var(--purple)"></span>Konwersja</span>
+          <span><span class="dot" style="background:#8A8E9B"></span>Wycofanie</span>
+        </div>
+      </div>
+
+      <div class="callout" id="callout">
+        <span class="callout-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span id="callout-text">Jest to 0,15% Twojego handlu. Dla porównania, typowy obrót akcjami banku kosztuje 10–25 dolarów prowizji.</span>
+      </div>
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>1 tydzień</strong>
+      Waluta Twojego konta <strong style="display:inline;font-size:inherit;">tylko szacunki</strong> i ma charakter ogólnoinformacyjny i edukacyjny. Nie należy na nim polegać przy podejmowaniu decyzji finansowych.
+      <ul>
+        <li>Wszystkie narzędzia</li>
+        <li>Rzeczywiste koszty handlowe mogą różnić się od przedstawionych szacunków. Zawsze sprawdzaj opłaty bezpośrednio na stronie <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:var(--info)">Spready |PODZIEL| 1 pips</a> Klasa aktywów</li>
+        <li>Konwersja |PODZIEL| Przeczytaj przewodnik &rarr; |PODZIEL| Czy kopiowanie transakcji na XBRAND019X jest bezpłatne? |PODZIEL| Wypłata</li>
+        <li>eToro to platforma inwestycyjna obejmująca wiele aktywów. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- How Fees Work -->
+  <div class="explainer">
+    <h2>Jak działają opłaty eToro</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3>Spready</h3>
+        <p>Spread to różnica pomiędzy ceną kupna i sprzedaży. To główny przychód eToro. Akcje i ETFs mają 0% prowizji — płacisz tylko spread. Spready kryptowalut zaczynają się od 1%.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Opłaty za nocleg</h3>
+        <p>Jak działają opłaty XBRAND019X</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a10 10 0 0110 10 10 10 0 01-10 10 10 10 0 01-10-10A10 10 0 0112 2z"/><path d="M2 12a15 15 0 014-10m0 20a15 15 0 01-4-10m20 0a15 15 0 01-4 10m0-20a15 15 0 014 10"/></svg>
+        </div>
+        <h3>Forex</h3>
+        <p>2,4 pkt |PODZIEL| Czym handlujesz? |PODZIEL| ~0,10 $/dzień na 10 000 $</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spread Table -->
+  <div class="spread-section">
+    <button class="spread-toggle" onclick="this.classList.toggle('open');document.getElementById('spread-wrap').classList.toggle('open')">
+      Pełny harmonogram spreadów eToro <span class="chevron">&#9660;</span>
+    </button>
+    <div class="spread-table-wrap" id="spread-wrap">
+      <table class="spread-table">
+        <thead><tr><th>Przeczytaj cały przewodnik &rarr; |PODZIEL| ~0,12 USD/dzień na 10 000 USD</th><th>Towary</th><th>Zamawiać</th><th>Opłata za nocleg</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jeśli wycofasz</strong></td><td>~0.15%</td><td>$0</td><td>~0,01%/dzień (tylko CFD)</td></tr>
+          <tr><td><strong>Zapasy (UE/Wielka Brytania)</strong></td><td>~0.15%</td><td>$1-$2</td><td>~0,01%/dzień (tylko CFD)</td></tr>
+          <tr><td><strong>ETFs</strong></td><td>~0.15%</td><td>$0</td><td>~0,01%/dzień (tylko CFD)</td></tr>
+          <tr><td><strong>Bitcoin</strong></td><td>1%</td><td>$0</td><td>Brak (prawdziwe kryptowaluty)</td></tr>
+          <tr><td><strong>Ethereum</strong></td><td>1%</td><td>$0</td><td>Brak (prawdziwe kryptowaluty)</td></tr>
+          <tr><td><strong>~0,01%/dzień (tylko XBRAND033X) |PODZIEL| tylko szacunki</strong></td><td>1-5%</td><td>$0</td><td>Brak (prawdziwe kryptowaluty)</td></tr>
+          <tr><td><strong>EUR/USD</strong></td><td>1 pips</td><td>$0</td><td>przed zawarciem transakcji. |PODZIEL| Ten kalkulator zapewnia</td></tr>
+          <tr><td><strong>GBP/USD</strong></td><td>Zanim dokonasz transakcji, zobacz dokładnie, ile zapłacisz. Wpisz poniżej szczegóły transakcji i uzyskaj pełne zestawienie kosztów w ciągu kilku sekund. |PODZIEL| Dane dotyczące opłat pochodzą z publicznie dostępnych informacji XBRAND019X i mogą nie odzwierciedlać aktualnych stawek, konkretnego poziomu konta lub warunków rynkowych w czasie rzeczywistym. |PODZIEL| Jak długo wytrzymasz? |PODZIEL| XBRAND019X pobiera opłaty głównie poprzez spready (różnicę pomiędzy cenami kupna i sprzedaży). Transakcje na akcjach i XBRAND034X mają 0% prowizji. Krypto ma 1% spreadu. Forex zaczyna się od 1 pipsa. Dodatkowe koszty obejmują opłaty za nocleg za pozycje XBRAND033X utrzymywane po godzinie 22:00 czasu brytyjskiego. |PODZIEL| Dołącz do XBRAND019X i uzyskaj dostęp do akcji, kryptowalut, forex i handlu kopiami. Zacznij już od 50 dolarów. |PODZIEL| Powiązane lektury |PODZIEL| Jest to 0,15% Twojego handlu. Dla porównania, typowy obrót akcjami banku kosztuje 10–25 dolarów prowizji. |PODZIEL| 1 rok</td><td>$0</td><td>Nocleg</td></tr>
+          <tr><td><strong>Złoto</strong></td><td>45 pipsów</td><td>$0</td><td>Zaktualizowano: luty 2026 r.</td></tr>
+          <tr><td><strong>Olej</strong></td><td>Pozycje XBRAND033X utrzymywane po godzinie 22:00 czasu brytyjskiego podlegają dziennym opłatom za nocleg. Sumują się one w czasie – pozycja utrzymywana przez rok kosztuje znacznie więcej niż transakcja jednodniowa. Prawdziwe pozycje kryptograficzne i giełdowe są zwolnione. |PODZIEL| Często zadawane pytania</td><td>$0</td><td>Zaktualizowano: luty 2026 r.</td></tr>
+          <tr><td><strong>S&P 500</strong></td><td>45 pipsów</td><td>$0</td><td>Nocleg</td></tr>
+          <tr><td><strong>NASDAQ 100</strong></td><td>Jakie są opłaty transakcyjne XBRAND019X? |PODZIEL| Posiadacze kont w USD płacą opłatę za wypłatę w wysokości 5 USD (minimalna wypłata 30 USD). Posiadacze kont w GBP i EUR mogą dokonywać wypłat za darmo. |PODZIEL| Opłata transakcyjna</td><td>$0</td><td>Nocleg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>XBRAND019X to platforma inwestycyjna obejmująca wiele aktywów. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony. |PODZIEL| Rzeczywiste koszty handlowe mogą różnić się od przedstawionych szacunków. Zawsze weryfikuj opłaty bezpośrednio w</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Indeksy |PODZIEL| i ma charakter ogólnoinformacyjny i edukacyjny. Nie należy na nim polegać przy podejmowaniu decyzji finansowych. |PODZIEL| Akcje (UE/Wielka Brytania) <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>eToro pobiera opłaty głównie poprzez spready (różnicę pomiędzy cenami kupna i sprzedaży). Transakcje na akcjach i ETF mają 0% prowizji. Krypto ma 1% spreadu. Forex zaczyna się od 1 pipsa. Dodatkowe koszty obejmują opłaty za nocleg za pozycje CFD utrzymywane po godzinie 22:00 czasu brytyjskiego.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Handel dzienny <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Zamawiać</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Opłata za nocleg <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Przyjazny dla początkujących przewodnik XBRAND026X dotyczący kopiowania handlu &mdash; jak to działa, czego się spodziewać i czy jest to dla Ciebie odpowiednie. |PODZIEL| Narzędzie to nie stanowi porady finansowej, inwestycyjnej ani podatkowej. XBRAND002X i jego autor nie są doradcami finansowymi i nie ponoszą żadnej odpowiedzialności za jakiekolwiek straty lub szkody powstałe w wyniku korzystania z tego kalkulatora. |PODZIEL| Opłata walutowa</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Czy kopiowanie transakcji na eToro jest bezpłatne? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Tak, za korzystanie z funkcji CopyTrader w eToro nie są pobierane żadne dodatkowe opłaty. Płacisz tylko standardowe opłaty transakcyjne za pozycje, które kopiowany trader otwiera w Twoim imieniu. Minimum do skopiowania tradera to 200 dolarów.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Handel dzienny <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>eToro pobiera 1% spreadu przy zakupach kryptowalut. Nie ma żadnych opłat za jednodniowe przechowywanie prawdziwych kryptowalut (innych niż CFD). Przeniesienie kryptowaluty do portfela zewnętrznego kosztuje 2%. Spread kryptowalutowy jest naliczany przy zakupie i sprzedaży.</p></div>
+    </div>
+  </div>
+
+  <!-- Related Reading -->
+  <div style="margin:32px 0;">
+    <h2 style="font-size:22px;font-weight:700;text-align:center;margin-bottom:20px;">Powiązane lektury</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3><a href="../../etoro-review/" style="color:var(--text-primary);text-decoration:none;">Narzędzia |PODZIEL| Wzrost złożony</a></h3>
+        <p>Szczera recenzja Tom na temat eToro po 9 latach używania prawdziwych pieniędzy &mdash; dotyczące opłat, handlu kopiami i tego, dla kogo jest to odpowiednie. |PODZIEL| Ponad 15 funkcji |PODZIEL| Narzędzia te służą wyłącznie celom informacyjnym i edukacyjnym. Nie stanowią one porady finansowej.
+    XBRAND002X nie ponosi odpowiedzialności za jakiekolwiek straty powstałe w wyniku użycia tych narzędzi. Twój kapitał jest zagrożony. |PODZIEL| Lata na eToro</p>
+        <a href="../../etoro-review/" style="color:var(--info);font-weight:600;font-size:14px;">Przeczytaj całą recenzję &rarr; |PODZIEL| Akcje (USA)</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3><a href="../../copy-trading-returns.html" style="color:var(--text-primary);text-decoration:none;">Ile możesz zarobić na kopiowaniu handlu?</a></h3>
+        <p>Prawdziwe liczby, prawdziwe oczekiwania. Jak działają zyski z kopiowania i czego możesz realistycznie oczekiwać.</p>
+        <a href="../../copy-trading-returns.html" style="color:var(--info);font-weight:600;font-size:14px;">Czy na XBRAND019X są ukryte opłaty? |PODZIEL| Rozprzestrzenianie |PODZIEL| Inne opłaty</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3><a href="../../copy-trading.html" style="color:var(--text-primary);text-decoration:none;">Co to jest kopiowanie handlu? |PODZIEL| ~0,08 USD dziennie na 10 000 USD</a></h3>
+        <p>Ropa</p>
+        <a href="../../copy-trading.html" style="color:var(--info);font-weight:600;font-size:14px;">Przeczytaj przewodnik &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>3 poziomy ryzyka</h2>
+    <p>Dołącz do eToro i uzyskaj dostęp do akcji, kryptowalut, forex i handlu kopiami. Zacznij już od 50 dolarów.</p>
+    <a href="https://etoro.tw/40bkzhp" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'fee_calculator_pl'})">Przeanalizuj dywersyfikację portfela handlu kopiami, ekspozycję na ryzyko i przewidywane zwroty. |PODZIEL| Dowiedz się więcej o XBRAND026X &rarr; |PODZIEL| Oblicz opłaty</a>
+    <div class="risk-text">
+      <strong>&larr; Powrót do strony</strong>
+      Powinieneś rozważyć, czy możesz sobie pozwolić na wysokie ryzyko utraty pieniędzy.
+      To nie jest porada inwestycyjna. Kapitał zagrożony. Link partnerski &mdash; Tom może otrzymać prowizję bezpłatnie.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../">SocialTradingVlog.com</a> &middot;
+      <a href="../">Wszystkie narzędzia</a> &middot;
+      <a href="../../about/">O Tomie |PODZIEL| Zobacz dokładnie, ile zapłacisz w postaci spreadów, opłat jednodniowych, przeliczenia walut i opłat za wypłatę dla dowolnej transakcji. |PODZIEL| Filmy z YouTube |PODZIEL| Darmowe narzędzia |PODZIEL| Bezpłatne, interaktywne narzędzia, które pomogą Ci zrozumieć koszty handlu, zyski z projektów i porównać platformy przed inwestycją. |PODZIEL| 6 platform</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Kalkulator ten służy wyłącznie celom informacyjnym i nie stanowi porady finansowej. Szacunkowe opłaty mogą być niedokładne lub nieaktualne &mdash; zawsze sprawdzaj na oficjalnej stronie eToro.
+      SocialTradingVlog nie ponosi żadnej odpowiedzialności za straty wynikające z polegania na tym narzędziu. eToro to platforma inwestycyjna obejmująca wiele aktywów. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony.
+      51% rachunków inwestorów detalicznych odnotowuje straty pieniężne podczas handlu CFDs u tego dostawcy. |PODZIEL| Głównymi „ukrytymi” kosztami są opłaty za jednodniowe transakcje na pozycjach XBRAND033X oraz opłaty za przeliczenie waluty, jeśli waluta Twojego konta różni się od waluty handlowej aktywów. Po 12 miesiącach braku logowania naliczana jest również opłata za brak aktywności w wysokości 10 USD miesięcznie. Ten kalkulator pokazuje wszystkie te koszty z góry. |PODZIEL| 2 pipsy
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+const FEE_DATA = {
+  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Akcje |PODZIEL| Przeliczenie waluty ma zastosowanie, jeśli waluta Twojego konta różni się od waluty zasobu. Wypłata wynosi 5 USD dla kont w USD (bezpłatna dla GBP/EUR). Po 12 miesiącach braku logowania naliczana jest opłata za brak aktywności w wysokości 10 USD miesięcznie. |PODZIEL| 5 pipsów', hasOvernight: true },
+  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Krypto', hasOvernight: false },
+  forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
+  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: 'Towary', hasOvernight: true },
+  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Indeksy', hasOvernight: true },
+  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
+};
+const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+
+let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
+
+function setAsset(a, el) {
+  state.asset = a;
+  document.querySelectorAll('#asset-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setPeriod(d, el) {
+  state.days = d;
+  document.querySelectorAll('#period-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setCurrency(c, el) {
+  state.currency = c;
+  document.querySelectorAll('#currency-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function syncAmount(val) {
+  state.amount = parseInt(val) || 100;
+  document.getElementById('amount-input').value = state.amount.toLocaleString();
+  calculate();
+}
+function syncSlider(val) {
+  const n = parseInt(val.replace(/[^0-9]/g, '')) || 100;
+  state.amount = Math.min(Math.max(n, 100), 50000);
+  document.getElementById('amount-slider').value = state.amount;
+  calculate();
+}
+
+function fmt(n) {
+  if (n >= 1) return '$' + n.toFixed(2);
+  if (n >= 0.01) return '$' + n.toFixed(2);
+  return '$0.00';
+}
+
+function calculate() {
+  const fd = FEE_DATA[state.asset];
+  const spread = state.amount * (fd.spread_pct / 100);
+  const overnight = fd.hasOvernight ? state.amount * (fd.overnight_daily_pct / 100) * state.days : 0;
+  const conversion = state.amount * (CONVERSION[state.currency] / 100);
+  const withdrawal = WITHDRAWAL[state.currency];
+  const total = spread + overnight + conversion;
+  const totalWithWithdraw = total + withdrawal;
+  const pct = (total / state.amount * 100);
+
+  // Update values
+  document.getElementById('total-value').textContent = fmt(total);
+  const pctEl = document.getElementById('total-pct');
+  pctEl.textContent = pct.toFixed(2) + '% swojego handlu';
+  pctEl.className = 'total-pct ' + (pct < 0.5 ? 'low' : pct < 2 ? 'medium' : 'high');
+
+  document.getElementById('bc-spread').textContent = fmt(spread);
+  document.getElementById('bc-overnight').textContent = fmt(overnight);
+  document.getElementById('bc-overnight-note').textContent = state.days === 0 ? 'Typowy spread' : state.days + ' dzień' + (state.days > 1 ? ''  : '');
+  document.getElementById('bc-conversion').textContent = fmt(conversion);
+  document.getElementById('bc-withdrawal').textContent = fmt(withdrawal);
+  document.getElementById('bc-withdrawal-note').textContent = withdrawal === 0 ? 'Bezpłatne dla ' + state.currency : 'Czy XBRAND019X pobiera opłaty za wypłatę? |PODZIEL| Ile kosztuje handel kryptowalutami na XBRAND019X? |PODZIEL| Szacunkowy koszt całkowity';
+
+  // Stacked bar
+  const barTotal = Math.max(totalWithWithdraw, 0.01);
+  const bar = document.getElementById('stacked-bar');
+  bar.innerHTML = `
+    <div class="sb-spread" style="width:${(spread/barTotal*100)}%">${spread > barTotal*0.08 ? fmt(spread) : ''}</div>
+    <div class="sb-overnight" style="width:${(overnight/barTotal*100)}%">${overnight > barTotal*0.08 ? fmt(overnight) : ''}</div>
+    <div class="sb-conversion" style="width:${(conversion/barTotal*100)}%">${conversion > barTotal*0.08 ? fmt(conversion) : ''}</div>
+    <div class="sb-withdrawal" style="width:${(withdrawal/barTotal*100)}%">${withdrawal > barTotal*0.08 ? fmt(withdrawal) : ''}</div>
+  `;
+
+  // Callout
+  const calloutText = document.getElementById('callout-text');
+  if (pct < 0.3) {
+    calloutText.textContent = `To jest tylko ${pct.toFixed(2)}% swojego handlu. eToro's ${fd.label.toLowerCase()} opłaty są bardzo konkurencyjne — typowy bank pobiera opłatę w wysokości 10–25 USD za transakcję na akcjach.`;
+  } else if (pct < 1) {
+    calloutText.textContent = `To jest ${pct.toFixed(2)}% swojego handlu. ${state.days > 30 ? 'Większość tych kosztów pochodzi z opłat za noclegi – rozważ krótsze okresy utrzymywania, aby obniżyć koszty.' : 'To jest in line with industry averages for ' + fd.label.toLowerCase() + ' handlowy.'}`;
+  } else {
+    calloutText.textContent = `To jest ${pct.toFixed(2)}% swojego handlu. ${state.asset === 'crypto' ? 'Spready kryptowalut są wyższe niż w przypadku akcji/forex – jest to standard na wszystkich platformach.' : 'Opłaty za noclegi sumują się w przypadku długich okresów przechowywania. Zastanów się, czy krótszy okres czasu mógłby obniżyć Twoje koszty.'}`;
+  }
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// Initial calculation
+calculate();
+</script>
+</body>
+</html>

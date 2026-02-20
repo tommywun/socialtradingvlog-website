@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eToro 수수료 계산기 2026 — 거래 비용 계산 | SocialTradingVlog |분할| 무료 eToro 수수료 계산기. 스프레드, 익일 수수료, 인출 수수료 및 통화 변환으로 지불할 금액을 정확히 확인하세요. 2026년에 업데이트되었습니다. |분할| eToro 수수료, eToro 거래 수수료, eToro 스프레드 계산기, eToro 비용 계산기, eToro 출금 수수료</title>
+<meta name="description" content="eToro 수수료 계산기 2026 — 거래 비용 계산">
+<meta name="keywords" content="무료 eToro 수수료 계산기. 스프레드, 익일 수수료 등으로 지불할 금액을 정확히 확인하세요.">
+<link rel="canonical" href="https://socialtradingvlog.com/ko/계산기/수수료-계산기/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/수수료-계산기/">
+<meta property="og:title" content="eToro 수수료 계산기 2026 — 거래 비용 계산">
+<meta property="og:description" content="무료 eToro 수수료 계산기. 스프레드, 익일 수수료 등으로 지불할 금액을 정확히 확인하세요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/ko/계산기/수수료-계산기/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Container ─── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero ─── */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+/* ─── Calculator Card ─── */
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.calc-card:hover { box-shadow: var(--shadow-hover); }
+
+/* ─── Input Groups ─── */
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn {
+  padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.pill-btn:hover { border-color: var(--info); color: var(--text-primary); }
+.pill-btn.active { background: var(--info); border-color: var(--info); color: #fff; }
+.pill-btn.active.stocks { background: var(--chart-1); border-color: var(--chart-1); }
+.pill-btn.active.crypto { background: var(--chart-3); border-color: var(--chart-3); }
+.pill-btn.active.forex { background: var(--chart-2); border-color: var(--chart-2); }
+.pill-btn.active.commodities { background: var(--warning); border-color: var(--warning); color: var(--text-primary); }
+.pill-btn.active.indices { background: var(--purple); border-color: var(--purple); }
+.pill-btn.active.etfs { background: var(--success); border-color: var(--success); }
+
+/* Slider */
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 6px; border-radius: 3px; background: var(--border);
+  outline: none; transition: background .2s;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--info); cursor: pointer; box-shadow: 0 2px 6px rgba(0,143,248,.35);
+  transition: transform .15s;
+}
+.slider-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.amount-input {
+  width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: right;
+  transition: border-color .2s, box-shadow .2s;
+}
+.amount-input:focus { outline: none; border-color: var(--info); box-shadow: 0 0 0 3px rgba(0,143,248,.15); }
+
+/* ─── Results ─── */
+.results { padding: 32px 0 16px; }
+.results-hero { text-align: center; margin-bottom: 32px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.1; transition: color .3s;
+}
+.results-hero .total-pct {
+  display: inline-flex; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+}
+.results-hero .total-pct.low { background: var(--success-light); color: var(--success); }
+.results-hero .total-pct.medium { background: var(--warning-light); color: #B8860B; }
+.results-hero .total-pct.high { background: var(--critical-light); color: var(--critical); }
+
+/* Breakdown cards */
+.breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.breakdown-card {
+  border-radius: var(--radius); padding: 18px; text-align: center;
+  transition: transform .2s;
+}
+.breakdown-card:hover { transform: translateY(-2px); }
+.breakdown-card .bc-label { font-size: 12px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+.breakdown-card .bc-value { font-size: 22px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+.breakdown-card .bc-note { font-size: 11px; opacity: .6; margin-top: 2px; }
+.bc-spread { background: rgba(43,179,255,.1); color: #0077CC; }
+.bc-overnight { background: rgba(255,100,45,.1); color: #C33909; }
+.bc-conversion { background: rgba(139,92,246,.1); color: #7C3AED; }
+.bc-withdrawal { background: rgba(108,110,121,.1); color: var(--text-secondary); }
+
+/* Stacked bar */
+.stacked-bar-wrap { margin-bottom: 16px; }
+.stacked-bar { display: flex; height: 28px; border-radius: 14px; overflow: hidden; }
+.stacked-bar div { height: 100%; transition: width .5s ease; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; }
+.sb-spread { background: var(--chart-1); }
+.sb-overnight { background: var(--chart-3); }
+.sb-conversion { background: var(--purple); }
+.sb-withdrawal { background: #8A8E9B; }
+.stacked-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 10px; }
+.stacked-legend span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.stacked-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Context callout */
+.callout {
+  background: linear-gradient(135deg, #F0F8FF 0%, #F5F0FF 100%);
+  border: 1px solid #E8E0F0;
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
+  font-size: 14px; color: var(--text-primary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── Explainer Section ─── */
+.explainer { padding: 40px 0; }
+.explainer h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.explainer-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+}
+.explainer-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.explainer-card .ec-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Spread Table ─── */
+.spread-section { margin-bottom: 32px; }
+.spread-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px;
+  cursor: pointer; box-shadow: var(--shadow); transition: all .2s; border: none;
+  width: 100%; text-align: left; font-family: inherit; font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+}
+.spread-toggle:hover { box-shadow: var(--shadow-hover); }
+.spread-toggle .chevron { transition: transform .3s; font-size: 12px; color: var(--text-muted); }
+.spread-toggle.open .chevron { transform: rotate(180deg); }
+.spread-table-wrap {
+  max-height: 0; overflow: hidden; transition: max-height .4s ease;
+  background: var(--bg-card); border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 2px 4px rgba(25,27,35,.08);
+}
+.spread-table-wrap.open { max-height: 600px; }
+.spread-table { width: 100%; border-collapse: collapse; }
+.spread-table th { text-align: left; padding: 12px 20px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.spread-table td { padding: 10px 20px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+.spread-table tr:last-child td { border-bottom: none; }
+.spread-table tr:hover { background: rgba(0,143,248,.03); }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 32px 0; }
+.faq-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .15s; }
+.faq-q:hover { background: rgba(0,143,248,.03); }
+.faq-q .chevron { font-size: 12px; color: var(--text-muted); transition: transform .3s; }
+.faq-q.open .chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.faq-a.open { max-height: 300px; padding: 0 20px 16px; }
+.faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%);
+  border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0;
+  color: #fff;
+}
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700;
+  background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer;
+  transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-text-light { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: center; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+.tool-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .pill-group { gap: 6px; }
+  .pill-btn { padding: 7px 14px; font-size: 12px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  .explainer-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .pill-btn { padding: 6px 12px; font-size: 11px; }
+}
+</style>
+
+<!-- Schema: WebApplication + FAQPage + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "eToro 수수료 계산기",
+  "description": "스프레드, 익일 수수료, 인출 수수료 및 통화 변환을 포함한 정확한 eToro 거래 비용을 계산하세요.",
+  "url": "https://socialtradingvlog.com/ko/계산기/수수료-계산기/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/" },
+    { "@type": "ListItem", "position": 2, "name": "도구 및 계산기", "item": "https://socialtradingvlog.com/calculators/" },
+    { "@type": "ListItem", "position": 3, "name": "eToro 수수료 계산기", "item": "https://socialtradingvlog.com/calculators/fee-calculator/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "eToro의 거래 수수료는 얼마입니까?", "acceptedAnswer": {"@type": "Answer", "text": "eToro는 주로 스프레드(구매 가격과 판매 가격의 차이)를 통해 수수료를 부과합니다. 주식 및 ETF 거래에는 수수료가 0%입니다. 암호화폐의 스프레드는 1%입니다. 외환은 1핍부터 시작합니다. 추가 비용에는 영국 시간으로 22:00 이후에 유지된 CFD 포지션에 대한 야간 수수료가 포함됩니다."}},
+    {"@type": "Question", "name": "데이 트레이드", "acceptedAnswer": {"@type": "Answer", "text": "USD 계좌 보유자는 인출 수수료 $5를 지불합니다(최소 인출 금액 $30). GBP 및 EUR 계좌 보유자는 무료로 인출할 수 있습니다."}},
+    {"@type": "Question", "name": "eToro에 숨겨진 수수료가 있습니까?", "acceptedAnswer": {"@type": "Answer", "text": "주요 '숨겨진' 비용은 CFD 포지션에 대한 익일 수수료와 계정 통화가 자산 통화와 다를 경우의 통화 변환 수수료입니다. 또한 12개월 동안 로그인하지 않으면 월 10달러의 비활성 수수료가 부과됩니다."}},
+    {"@type": "Question", "name": "eToro의 카피 트레이딩은 무료인가요?", "acceptedAnswer": {"@type": "Answer", "text": "예, eToro의 CopyTrader 기능 사용에 대한 추가 비용은 없습니다. 귀하는 복사된 트레이더가 귀하를 대신하여 개설한 포지션에 대한 표준 거래 수수료만 지불합니다."}},
+    {"@type": "Question", "name": "데이 트레이드", "acceptedAnswer": {"@type": "Answer", "text": "eToro는 암호화폐 구매 시 1% 스프레드를 청구합니다. 실제 암호화폐(CFD 아님)를 보유하는 데에는 익일 수수료가 없습니다. 외부 지갑으로 암호화폐를 전송하는 데에는 2%의 비용이 듭니다."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../../../ko/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../수수료-계산기/" class="active">리턴 미터</a>
+    <a href="../수익률-계산기/">리턴 미터</a>
+    <a href="../플랫폼-비교/">플랫폼 비교</a>
+    <a href="../포지션-크기/">이러한 도구는 정보 제공 및 교육 목적으로만 사용됩니다. 이는 재정적 조언을 구성하지 않습니다.
+    XBRAND002X는 이러한 도구 사용으로 인해 발생하는 모든 손실에 대해 책임을 지지 않습니다. 귀하의 자본이 위험에 처해 있습니다. |분할| XBRAND019X의 년</a>
+  </div>
+  <a href="../../../ko/" class="tool-nav-back">6가지 자산 클래스 |분할| 복리 수익을 통해 1~10년 동안 투자가 어떻게 성장할 수 있는지 예측해 보세요. 시나리오를 나란히 비교하세요.</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2026년 2월 업데이트됨</div>
+    <h1>eToro <span class="accent">수수료 계산기</span></h1>
+    <p>거래하기 전에 지불할 금액을 정확히 확인하세요. 아래에 거래 세부 정보를 입력하고 몇 초 만에 전체 비용 내역을 확인하세요.</p>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calc-card">
+
+    <!-- Asset Class -->
+    <div class="input-section">
+      <div class="input-label">당신은 무엇을 거래하고 있나요?</div>
+      <div class="pill-group" id="asset-pills">
+        <button class="pill-btn active stocks" data-asset="stocks" onclick="setAsset('stocks',this)">주식 |분할| 계정 통화가 자산과 다른 경우 통화 변환이 적용됩니다. USD 계좌의 경우 인출 비용은 $5입니다(GBP/EUR의 경우 무료). 12개월 동안 로그인하지 않으면 월 10달러의 비활성 수수료가 부과됩니다. |분할| 5핍 |분할| 2.4점 |분할| 당신은 무엇을 거래하고 있나요? |분할| $10,000당 ~$0.10/일 |분할| 영국 시간으로 22:00 이후에 개최된 XBRAND033X 포지션에는 일일 익일 수수료가 부과됩니다. 이는 시간이 지남에 따라 합산됩니다. 1년 동안 유지하는 비용은 일일 거래보다 훨씬 더 비쌉니다. 실제 암호화폐 및 주식 포지션은 면제됩니다. |분할| 모든 도구</button>
+        <button class="pill-btn crypto" data-asset="crypto" onclick="setAsset('crypto',this)">암호화폐</button>
+        <button class="pill-btn forex" data-asset="forex" onclick="setAsset('forex',this)">외환</button>
+        <button class="pill-btn commodities" data-asset="commodities" onclick="setAsset('commodities',this)">금</button>
+        <button class="pill-btn indices" data-asset="indices" onclick="setAsset('indices',this)">지수</button>
+        <button class="pill-btn etfs" data-asset="etfs" onclick="setAsset('etfs',this)">ETFs</button>
+      </div>
+    </div>
+
+    <!-- Trade Amount -->
+    <div class="input-section">
+      <div class="input-label">거래금액</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="amount-slider" min="100" max="50000" step="100" value="1000" oninput="syncAmount(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="amount-input" value="1,000" oninput="syncSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Holding Period -->
+    <div class="input-section">
+      <div class="input-label">언제까지 버티실 겁니까?</div>
+      <div class="pill-group" id="period-pills">
+        <button class="pill-btn active" data-days="0" onclick="setPeriod(0,this)">XBRAND019X 공식 수수료 페이지</button>
+        <button class="pill-btn" data-days="7" onclick="setPeriod(7,this)">1주</button>
+        <button class="pill-btn" data-days="30" onclick="setPeriod(30,this)">1개월</button>
+        <button class="pill-btn" data-days="365" onclick="setPeriod(365,this)">1년</button>
+      </div>
+    </div>
+
+    <!-- Account Currency -->
+    <div class="input-section">
+      <div class="input-label">스프레드는 매수 가격과 매도 가격의 차이입니다. XBRAND019X의 1차 수익입니다. 주식과 XBRAND025X의 수수료는 0%입니다. 스프레드만 지불하면 됩니다. 암호화폐 스프레드는 1%부터 시작됩니다. |분할| XBRAND019X는 암호화폐 구매 시 1% 스프레드를 청구합니다. 실제 암호화폐(XBRAND033X 아님)를 보유하는 데에는 익일 수수료가 없습니다. 외부 지갑으로 암호화폐를 전송하는 데에는 2%의 비용이 듭니다. 암호화폐 스프레드는 구매할 때와 판매할 때 청구됩니다. |분할| 암호화폐 |분할| 외환 |분할| 전체 XBRAND019X 스프레드 일정</div>
+      <div class="pill-group" id="currency-pills">
+        <button class="pill-btn active" data-cur="USD" onclick="setCurrency('USD',this)">USD</button>
+        <button class="pill-btn" data-cur="GBP" onclick="setCurrency('GBP',this)">GBP</button>
+        <button class="pill-btn" data-cur="EUR" onclick="setCurrency('EUR',this)">EUR</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="results-hero">
+        <div class="total-label">거래 금액의 0.15%</div>
+        <div class="total-value" id="total-value">$1.50</div>
+        <div class="total-pct low" id="total-pct">기타 암호화폐</div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid">
+        <div class="breakdown-card bc-spread">
+          <div class="bc-label">확산</div>
+          <div class="bc-value" id="bc-spread">$1.50</div>
+          <div class="bc-note">거래수수료</div>
+        </div>
+        <div class="breakdown-card bc-overnight">
+          <div class="bc-label">하룻밤 요금</div>
+          <div class="bc-value" id="bc-overnight">$0.00</div>
+          <div class="bc-note" id="bc-overnight-note">일반적인 스프레드</div>
+        </div>
+        <div class="breakdown-card bc-conversion">
+          <div class="bc-label">변환</div>
+          <div class="bc-value" id="bc-conversion">$0.00</div>
+          <div class="bc-note">통화 수수료</div>
+        </div>
+        <div class="breakdown-card bc-withdrawal">
+          <div class="bc-label">철수</div>
+          <div class="bc-value" id="bc-withdrawal">$5.00</div>
+          <div class="bc-note" id="bc-withdrawal-note">XBRAND019X는 출금 수수료를 부과합니까? |분할| XBRAND019X에서 암호화폐를 거래하는 데 비용이 얼마나 드나요? |분할| 예상 총 비용</div>
+        </div>
+      </div>
+
+      <div class="stacked-bar-wrap">
+        <div class="stacked-bar" id="stacked-bar"></div>
+        <div class="stacked-legend">
+          <span><span class="dot" style="background:var(--chart-1)"></span>확산</span>
+          <span><span class="dot" style="background:var(--chart-3)"></span>밤새</span>
+          <span><span class="dot" style="background:var(--purple)"></span>변환</span>
+          <span><span class="dot" style="background:#8A8E9B"></span>철수</span>
+        </div>
+      </div>
+
+      <div class="callout" id="callout">
+        <span class="callout-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span id="callout-text">이는 거래의 0.15%입니다. 비교를 위해 일반적인 은행 주식 거래의 수수료는 $10-$25입니다.</span>
+      </div>
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>데이터 정확성 면책조항</strong>
+      XBRAND019X에 숨겨진 수수료가 있습니까? |분할| 확산 |분할| 기타 수수료 <strong style="display:inline;font-size:inherit;">추정만</strong> 일반적인 정보 제공 및 교육 목적으로 사용됩니다. 재정적 결정을 내릴 때 이 정보에 의존해서는 안 됩니다.
+      <ul>
+        <li>수수료 데이터는 공개적으로 사용 가능한 eToro 정보에서 가져온 것이며 최신 요율, 특정 계정 계층 또는 실시간 시장 상황을 반영하지 않을 수 있습니다.</li>
+        <li>실제 거래 비용은 표시된 추정치와 다를 수 있습니다. 항상 수수료를 직접 확인하세요. <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:var(--info)">추정만</a> 전체 가이드 읽기 &rarr; |분할| $10,000당 ~$0.12/일 |분할| 0.75포인트 |분할| 데이터 정확성 면책조항</li>
+        <li>이 도구는 재정, 투자 또는 세금 관련 조언을 구성하지 않습니다. SocialTradingVlog와 그 저자는 금융 자문가가 아니며 이 계산기 사용으로 인해 발생하는 손실이나 손해에 대해 어떠한 책임도 지지 않습니다.</li>
+        <li>eToro는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- How Fees Work -->
+  <div class="explainer">
+    <h2>eToro 수수료 작동 방식</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3>스프레드</h3>
+        <p>스프레드는 매수 가격과 매도 가격의 차이입니다. eToro의 1차 수익입니다. 주식과 ETFs의 수수료는 0%입니다. 스프레드만 지불하면 됩니다. 암호화폐 스프레드는 1%부터 시작됩니다.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>하룻밤 요금</h3>
+        <p>영국 시간으로 22:00 이후에 개최된 CFD 포지션에는 일일 익일 수수료가 부과됩니다. 이는 시간이 지남에 따라 합산됩니다. 1년 동안 유지하는 비용은 일일 거래보다 훨씬 더 비쌉니다. 실제 암호화폐 및 주식 포지션은 면제됩니다.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a10 10 0 0110 10 10 10 0 01-10 10 10 10 0 01-10-10A10 10 0 0112 2z"/><path d="M2 12a15 15 0 014-10m0 20a15 15 0 01-4-10m20 0a15 15 0 01-4 10m0-20a15 15 0 014 10"/></svg>
+        </div>
+        <h3>기타 수수료</h3>
+        <p>자주 묻는 질문 |분할| XBRAND019X의 거래 수수료는 얼마입니까? |분할| USD 계좌 보유자는 인출 수수료 $5를 지불합니다(최소 인출 금액 $30). GBP 및 EUR 계좌 보유자는 무료로 인출할 수 있습니다. |분할| 거래 수수료 |분할| 거래금액 |분할| 하룻밤 |분할| XBRAND019X 수수료 작동 방식</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spread Table -->
+  <div class="spread-section">
+    <button class="spread-toggle" onclick="this.classList.toggle('open');document.getElementById('spread-wrap').classList.toggle('open')">
+      전체 eToro 스프레드 일정 <span class="chevron">&#9660;</span>
+    </button>
+    <div class="spread-table-wrap" id="spread-wrap">
+      <table class="spread-table">
+        <thead><tr><th>2026년 2월 업데이트됨 |분할| 45핍 |분할| 1주 |분할| 하룻밤 요금</th><th>원자재 |분할| 스프레드 |분할| 1핍 |분할| ~0.01%/일(XBRAND033X 전용)</th><th>수수료</th><th>하룻밤 요금</th></tr></thead>
+        <tbody>
+          <tr><td><strong>주식(미국) |분할| 철회하는 경우</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/일(CFD만 해당)</td></tr>
+          <tr><td><strong>주식(EU/영국)</strong></td><td>~0.15%</td><td>$1-$2</td><td>~0.01%/일(CFD만 해당)</td></tr>
+          <tr><td><strong>ETFs</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/일(CFD만 해당)</td></tr>
+          <tr><td><strong>Bitcoin</strong></td><td>1%</td><td>$0</td><td>없음(실제 암호화폐)</td></tr>
+          <tr><td><strong>Ethereum</strong></td><td>1%</td><td>$0</td><td>없음(실제 암호화폐)</td></tr>
+          <tr><td><strong>하룻밤 요금</strong></td><td>1-5%</td><td>$0</td><td>없음(실제 암호화폐)</td></tr>
+          <tr><td><strong>EUR/USD</strong></td><td>1핍</td><td>$0</td><td>자산 클래스 |분할| 귀하의 계정 통화</td></tr>
+          <tr><td><strong>GBP/USD</strong></td><td>이는 거래의 0.15%입니다. 비교를 위해 일반적인 은행 주식 거래의 수수료는 $10-$25입니다. |분할| 1년 |분할| 석유 |분할| 전환 |분할| 가이드 읽기 &rarr; |분할| XBRAND019X의 카피 트레이딩은 무료인가요? |분할| 출금 |분할| 예, XBRAND019X의 XBRAND005X 기능 사용에 대한 추가 비용은 없습니다. 귀하는 복사된 트레이더가 귀하를 대신하여 개설한 포지션에 대한 표준 거래 수수료만 지불합니다. 트레이더를 복사할 수 있는 최소 금액은 $200입니다. |분할| 수수료 계산기</td><td>$0</td><td>$10,000당 ~$0.10/일</td></tr>
+          <tr><td><strong>금</strong></td><td>45핍</td><td>$0</td><td>$10,000당 ~$0.12/일</td></tr>
+          <tr><td><strong>기름</strong></td><td>XBRAND019X는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다. |분할| 실제 거래 비용은 표시된 추정치와 다를 수 있습니다. 항상</td><td>$0</td><td>$10,000당 ~$0.12/일</td></tr>
+          <tr><td><strong>S&P 500</strong></td><td>0.75포인트</td><td>$0</td><td>$10,000당 ~$0.10/일</td></tr>
+          <tr><td><strong>NASDAQ 100</strong></td><td>에서 직접 수수료를 확인하세요. 지수 |분할| 일반적인 정보 제공 및 교육 목적으로 사용됩니다. 재정적 결정을 내릴 때 이 정보에 의존해서는 안 됩니다. |분할| 주식(EU/UK) |분할| 수수료</td><td>$0</td><td>$10,000당 ~$0.10/일</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">eToro의 거래 수수료는 얼마입니까? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>eToro는 주로 스프레드(구매 가격과 판매 가격의 차이)를 통해 수수료를 부과합니다. 주식 및 ETF 거래에는 수수료가 0%입니다. 암호화폐의 스프레드는 1%입니다. 외환은 1핍부터 시작합니다. 추가 비용에는 영국 시간으로 22:00 이후에 유지된 CFD 포지션에 대한 야간 수수료가 포함됩니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">데이 트레이드 <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>USD 계좌 보유자는 인출 수수료 $5를 지불합니다(최소 인출 금액 $30). GBP 및 EUR 계좌 보유자는 무료로 인출할 수 있습니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">eToro에 숨겨진 수수료가 있습니까? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>거래하기 전에 지불할 금액을 정확히 확인하세요. 아래에 거래 세부 정보를 입력하고 몇 초 만에 전체 비용 내역을 확인하세요. |분할| 수수료 데이터는 공개적으로 사용 가능한 XBRAND019X 정보에서 가져온 것이며 최신 요율, 특정 계정 계층 또는 실시간 시장 상황을 반영하지 않을 수 있습니다. |분할| 언제까지 버티실 겁니까? |분할| XBRAND019X는 주로 스프레드(구매 가격과 판매 가격의 차이)를 통해 수수료를 부과합니다. 주식 및 XBRAND034X 거래에는 수수료가 0%입니다. 암호화폐의 스프레드는 1%입니다. 외환은 1핍부터 시작합니다. 추가 비용에는 영국 시간으로 22:00 이후에 유지된 CFD 포지션에 대한 야간 수수료가 포함됩니다. |분할| XBRAND019X에 가입하여 주식, 암호화폐, 외환 및 카피 트레이딩에 액세스하세요. 최소 50달러부터 시작하세요. |분할| 관련 자료</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">eToro의 카피 트레이딩은 무료인가요? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>예, eToro의 CopyTrader 기능 사용에 대한 추가 비용은 없습니다. 귀하는 복사된 트레이더가 귀하를 대신하여 개설한 포지션에 대한 표준 거래 수수료만 지불합니다. 트레이더를 복사할 수 있는 최소 금액은 $200입니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">데이 트레이드 <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>eToro는 암호화폐 구매 시 1% 스프레드를 청구합니다. 실제 암호화폐(CFD 아님)를 보유하는 데에는 익일 수수료가 없습니다. 외부 지갑으로 암호화폐를 전송하는 데에는 2%의 비용이 듭니다. 암호화폐 스프레드는 구매할 때와 판매할 때 청구됩니다.</p></div>
+    </div>
+  </div>
+
+  <!-- Related Reading -->
+  <div style="margin:32px 0;">
+    <h2 style="font-size:22px;font-weight:700;text-align:center;margin-bottom:20px;">관련 독서</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3><a href="../../etoro-review/" style="color:var(--text-primary);text-decoration:none;">포트폴리오 규모, 위험 허용 범위 및 다각화 목표에 따라 거래자당 할당할 금액을 파악하십시오. |분할| 기타 등등</a></h3>
+        <p>Tom의 eToro 9년 실화사용 솔직후기 &mdash; 수수료, 카피 트레이딩, 누구에게 적합한지 다룹니다. |분할| 15개 이상의 기능 |분할| 인디언 크기</p>
+        <a href="../../etoro-review/" style="color:var(--info);font-weight:600;font-size:14px;">전체 리뷰 읽기 &rarr;</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3><a href="../../copy-trading-returns.html" style="color:var(--text-primary);text-decoration:none;">카피 트레이딩을 얼마나 할 수 있나요?</a></h3>
+        <p>실제 숫자, 실제 기대. 카피 트레이딩 수익은 어떻게 이루어지며 현실적으로 기대할 수 있는 것은 무엇인지 알아보세요.</p>
+        <a href="../../copy-trading-returns.html" style="color:var(--info);font-weight:600;font-size:14px;">전체 리뷰 읽기 &rarr;</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3><a href="../../copy-trading.html" style="color:var(--text-primary);text-decoration:none;">카피 트레이딩이란 무엇입니까? |분할| $10,000당 ~$0.08/일 |분할| 거래를 하기 전에. |분할| 이 계산기는</a></h3>
+        <p>1개월 |분할| 없음(실제 암호화폐)</p>
+        <a href="../../copy-trading.html" style="color:var(--info);font-weight:600;font-size:14px;">가이드 읽기 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>장점 &amp; 단점 |분할| 거래 |분할| 위치 크기 계산기</h2>
+    <p>eToro에 가입하여 주식, 암호화폐, 외환 및 카피 트레이딩에 액세스하세요. 최소 50달러부터 시작하세요.</p>
+    <a href="https://etoro.tw/40bkzhp" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'fee_calculator_ko'})">eToro 계정 개설 &rarr;</a>
+    <div class="risk-text">
+      <strong>카피 트레이딩 포트폴리오의 다양화, 위험 노출 및 예상 수익을 분석하세요. |분할| XBRAND026X에 대해 자세히 알아보십시오. |분할| 수수료 계산</strong>
+      돈을 잃을 위험이 높다는 것을 감수할 여유가 있는지 고려해야 합니다.
+      이것은 투자 조언이 아닙니다. 위험에 처한 자본. 제휴 링크 &mdash; Tom는 무료로 커미션을 받을 수 있습니다.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../">SocialTradingVlog.com</a> &middot;
+      <a href="../">모든 도구</a> &middot;
+      <a href="../../about/">실제 숫자, 실제 기대. 카피 트레이딩 수익은 어떻게 이루어지며 현실적으로 기대할 수 있는 것은 무엇인지 알아보세요. |분할| Tom의 9년만에 솔직한 후기&mdash; 카피 트레이딩, 수수료, 지원 및 적합한 대상에 대해 알아보세요. |분할| 도구 |분할| XBRAND019X 수수료 계산기</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      이 계산기는 정보 제공의 목적으로만 사용되며 재정적인 조언을 제공하지 않습니다. 수수료 견적은 부정확하거나 오래되었을 수 있습니다. 항상 eToro 공식 사이트에서 확인하세요.
+      SocialTradingVlog는 이 도구에 의존하여 발생하는 손실에 대해 책임을 지지 않습니다. eToro는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다.
+      이 공급자와 CFDs를 거래할 때 소매 투자자 계정의 51%가 돈을 잃습니다. |분할| 주요 "숨겨진" 비용은 XBRAND033X 포지션에 대한 익일 수수료와 계정 통화가 자산 거래 통화와 다를 경우의 통화 변환 수수료입니다. 또한 12개월 동안 로그인하지 않으면 월 10달러의 비활성 수수료가 부과됩니다. 이 계산기는 이러한 모든 비용을 미리 보여줍니다. |분할| 2핍 |분할| XBRAND026X의 초보자 친화적인 카피 트레이딩 가이드 &mdash; 작동 방식, 예상되는 내용, 귀하에게 적합한지 여부. |분할| 이 도구는 재정, 투자 또는 세금 관련 조언을 구성하지 않습니다. SocialTradingVlog와 그 저자는 금융 자문가가 아니며 이 계산기 사용으로 인해 발생하는 손실이나 손해에 대해 어떠한 책임도 지지 않습니다. |분할| 통화 수수료
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+const FEE_DATA = {
+  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: '주식 |분할| 계정 통화가 자산과 다른 경우 통화 변환이 적용됩니다. USD 계좌의 경우 인출 비용은 $5입니다(GBP/EUR의 경우 무료). 12개월 동안 로그인하지 않으면 월 10달러의 비활성 수수료가 부과됩니다. |분할| 5핍 |분할| 2.4점 |분할| 당신은 무엇을 거래하고 있나요? |분할| $10,000당 ~$0.10/일 |분할| 영국 시간으로 22:00 이후에 개최된 XBRAND033X 포지션에는 일일 익일 수수료가 부과됩니다. 이는 시간이 지남에 따라 합산됩니다. 1년 동안 유지하는 비용은 일일 거래보다 훨씬 더 비쌉니다. 실제 암호화폐 및 주식 포지션은 면제됩니다. |분할| 모든 도구', hasOvernight: true },
+  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: '암호화폐', hasOvernight: false },
+  forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
+  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: '금', hasOvernight: true },
+  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: '지수', hasOvernight: true },
+  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
+};
+const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+
+let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
+
+function setAsset(a, el) {
+  state.asset = a;
+  document.querySelectorAll('#asset-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setPeriod(d, el) {
+  state.days = d;
+  document.querySelectorAll('#period-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setCurrency(c, el) {
+  state.currency = c;
+  document.querySelectorAll('#currency-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function syncAmount(val) {
+  state.amount = parseInt(val) || 100;
+  document.getElementById('amount-input').value = state.amount.toLocaleString();
+  calculate();
+}
+function syncSlider(val) {
+  const n = parseInt(val.replace(/[^0-9]/g, '')) || 100;
+  state.amount = Math.min(Math.max(n, 100), 50000);
+  document.getElementById('amount-slider').value = state.amount;
+  calculate();
+}
+
+function fmt(n) {
+  if (n >= 1) return '$' + n.toFixed(2);
+  if (n >= 0.01) return '$' + n.toFixed(2);
+  return '$0.00';
+}
+
+function calculate() {
+  const fd = FEE_DATA[state.asset];
+  const spread = state.amount * (fd.spread_pct / 100);
+  const overnight = fd.hasOvernight ? state.amount * (fd.overnight_daily_pct / 100) * state.days : 0;
+  const conversion = state.amount * (CONVERSION[state.currency] / 100);
+  const withdrawal = WITHDRAWAL[state.currency];
+  const total = spread + overnight + conversion;
+  const totalWithWithdraw = total + withdrawal;
+  const pct = (total / state.amount * 100);
+
+  // Update values
+  document.getElementById('total-value').textContent = fmt(total);
+  const pctEl = document.getElementById('total-pct');
+  pctEl.textContent = pct.toFixed(2) + '거래의 %';
+  pctEl.className = 'total-pct ' + (pct < 0.5 ? 'low' : pct < 2 ? 'medium' : 'high');
+
+  document.getElementById('bc-spread').textContent = fmt(spread);
+  document.getElementById('bc-overnight').textContent = fmt(overnight);
+  document.getElementById('bc-overnight-note').textContent = state.days === 0 ? '일반적인 스프레드' : state.days + ' 낮' + (state.days > 1 ? ''  : '');
+  document.getElementById('bc-conversion').textContent = fmt(conversion);
+  document.getElementById('bc-withdrawal').textContent = fmt(withdrawal);
+  document.getElementById('bc-withdrawal-note').textContent = withdrawal === 0 ? '무료 ' + state.currency : 'XBRAND019X는 출금 수수료를 부과합니까? |분할| XBRAND019X에서 암호화폐를 거래하는 데 비용이 얼마나 드나요? |분할| 예상 총 비용';
+
+  // Stacked bar
+  const barTotal = Math.max(totalWithWithdraw, 0.01);
+  const bar = document.getElementById('stacked-bar');
+  bar.innerHTML = `
+    <div class="sb-spread" style="width:${(spread/barTotal*100)}%">${spread > barTotal*0.08 ? fmt(spread) : ''}</div>
+    <div class="sb-overnight" style="width:${(overnight/barTotal*100)}%">${overnight > barTotal*0.08 ? fmt(overnight) : ''}</div>
+    <div class="sb-conversion" style="width:${(conversion/barTotal*100)}%">${conversion > barTotal*0.08 ? fmt(conversion) : ''}</div>
+    <div class="sb-withdrawal" style="width:${(withdrawal/barTotal*100)}%">${withdrawal > barTotal*0.08 ? fmt(withdrawal) : ''}</div>
+  `;
+
+  // Callout
+  const calloutText = document.getElementById('callout-text');
+  if (pct < 0.3) {
+    calloutText.textContent = `이것은 단지 ${pct.toFixed(2)}거래의 %. eToro's ${fd.label.toLowerCase()} 수수료는 매우 경쟁력이 있습니다. 일반적인 은행에서는 주식 거래당 $10-$25를 청구합니다.`;
+  } else if (pct < 1) {
+    calloutText.textContent = `이것은 ${pct.toFixed(2)}거래의 %. ${state.days > 30 ? '이 비용의 대부분은 하룻밤 수수료에서 발생합니다. 비용을 줄이려면 보유 기간을 짧게 하는 것이 좋습니다.' : '이것은 in line with industry averages for ' + fd.label.toLowerCase() + ' 거래.'}`;
+  } else {
+    calloutText.textContent = `이것은 ${pct.toFixed(2)}거래의 %. ${state.asset === 'crypto' ? '암호화폐 스프레드는 주식/외환보다 높습니다. 이는 플랫폼 전반에 걸쳐 표준입니다.' : '장기 보유 기간에 걸쳐 야간 수수료가 합산됩니다. 기간을 단축하면 비용을 줄일 수 있는지 고려해보세요.'}`;
+  }
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// Initial calculation
+calculate();
+</script>
+</body>
+</html>

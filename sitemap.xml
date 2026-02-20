@@ -9,7 +9,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/about.html</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/an-al-mawqi/" />
@@ -592,7 +592,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/copy-trading.html</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/ma-huwa-naskh-al-tadawul/" />
@@ -1640,7 +1640,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/faq.html</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/al-asilah-al-shaaiah/" />
@@ -2160,6 +2160,166 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/video/why-do-most-etoro-traders-lose-money/" />
   </url>
   <url>
+    <loc>https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/it/calcolatori/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ko/계산기/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ko/계산기/수수료-계산기/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/수수료-계산기/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ko/계산기/수익률-계산기/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/수익률-계산기/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ko/계산기/포지션-크기/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/포지션-크기/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ko/계산기/플랫폼-비교/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/플랫폼-비교/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/nl/rekenmachines/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pl/kalkulatory/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/" />
+  </url>
+  <url>
     <loc>https://socialtradingvlog.com/popular-investor.html</loc>
     <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -2675,7 +2835,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/social-trading.html</loc>
-    <lastmod>2026-02-19</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/ma-huwa-al-tadawul-al-ijtimai/" />

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카피 트레이딩 ROI 계산기 2026 — 수익 예측 | SocialTradingVlog |분할| 무료 카피 트레이딩 ROI 계산기. 1~10년에 걸쳐 복리 수익을 통해 투자가 어떻게 성장할 수 있는지 알아보세요. 실제 카피 트레이딩 데이터를 기반으로 합니다. |분할| 카피 트레이딩 ROI 계산기 2026 — 수익 예측</title>
+<meta name="description" content="무료 카피 트레이딩 ROI 계산기. 시간이 지남에 따라 투자가 어떻게 증가할 수 있는지 알아보세요.">
+<link rel="canonical" href="https://socialtradingvlog.com/ko/계산기/수익률-계산기/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/계산기/수익률-계산기/">
+<meta property="og:title" content="카피 트레이딩 ROI 계산기 2026 — 수익 예측">
+<meta property="og:description" content="무료 카피 트레이딩 ROI 계산기. 시간이 지남에 따라 투자가 어떻게 증가할 수 있는지 알아보세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; }
+.tool-nav-back:hover { color: #fff; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--success-light); color: var(--success); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--success); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn { padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--text-secondary); transition: all .2s; font-family: 'Inter',sans-serif; }
+.pill-btn:hover { border-color: var(--success); color: var(--text-primary); }
+.pill-btn.active { background: var(--success); border-color: var(--success); color: #fff; }
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input { flex: 1; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: var(--border); outline: none; }
+.slider-input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--success); cursor: pointer; box-shadow: 0 2px 6px rgba(0,159,129,.35); }
+.amount-input { width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius); font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans',sans-serif; color: var(--text-primary); background: var(--bg-input); text-align: right; }
+.amount-input:focus { outline: none; border-color: var(--success); box-shadow: 0 0 0 3px rgba(0,159,129,.15); }
+
+/* Toggle switch */
+.toggle-row { display: flex; align-items: center; gap: 12px; }
+.toggle-switch { position: relative; width: 48px; height: 26px; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-track { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--border); border-radius: 13px; transition: background .3s; }
+.toggle-switch input:checked + .toggle-track { background: var(--success); }
+.toggle-dot { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .3s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-switch input:checked ~ .toggle-dot { transform: translateX(22px); }
+.toggle-label { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+
+/* Results */
+.results-hero { text-align: center; padding: 32px 0 24px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value { font-size: clamp(2.5rem,6vw,3.5rem); font-weight: 800; color: var(--success); font-family: 'Plus Jakarta Sans',sans-serif; line-height: 1.1; }
+.results-badges { display: flex; justify-content: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.result-badge { padding: 6px 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; }
+.badge-profit { background: var(--success-light); color: var(--success); }
+.badge-roi { background: var(--info-light); color: var(--info); }
+
+/* Chart */
+.chart-wrap { margin: 24px 0; height: 200px; position: relative; }
+.chart-wrap svg { width: 100%; height: 100%; }
+
+/* Comparison cards */
+.compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.compare-card { border-radius: var(--radius); padding: 20px; text-align: center; }
+.compare-card .cc-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.compare-card .cc-value { font-size: 24px; font-weight: 800; font-family: 'Plus Jakarta Sans',sans-serif; }
+.compare-card .cc-sub { font-size: 12px; margin-top: 2px; }
+.cc-compound { background: rgba(0,159,129,.08); color: var(--success); }
+.cc-simple { background: rgba(0,143,248,.08); color: var(--info); }
+
+/* Year table */
+.year-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.year-table th { text-align: left; padding: 10px 16px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.year-table td { padding: 10px 16px; font-size: 14px; border-bottom: 1px solid var(--border); }
+.year-table tr:hover { background: rgba(0,159,129,.03); }
+.year-table .positive { color: var(--success); font-weight: 600; }
+
+/* Context card */
+.context-card { background: linear-gradient(135deg, #F0FFF8 0%, #F0F8FF 100%); border: 1px solid #D0E8D0; border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; display: flex; align-items: flex-start; gap: 16px; }
+.context-card .cc-icon { font-size: 32px; flex-shrink: 0; }
+.context-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.context-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.context-card a { color: var(--info); font-weight: 600; text-decoration: none; }
+.context-card a:hover { text-decoration: underline; }
+
+/* Explainer */
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin: 24px 0; }
+.explainer-card { background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+.explainer-card .ec-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0; color: #fff; }
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700; background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans',sans-serif; }
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-warning-box { background: rgba(255,73,83,.06); border: 1px solid rgba(255,73,83,.15); border-radius: var(--radius); padding: 14px 18px; margin: 24px 0; font-size: 13px; color: var(--critical); line-height: 1.6; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .compare-row { grid-template-columns: 1fr; }
+  .chart-wrap { height: 160px; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "카피 트레이딩 ROI 계산기",
+  "description": "복합 및 단순 성장 계산을 통해 1~10년간의 카피 트레이딩 수익을 예측해 보세요.",
+  "url": "https://socialtradingvlog.com/ko/계산기/수익률-계산기/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "eToro에서 카피 트레이딩을 얼마나 할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "수익은 복사하는 거래자와 시장 상황에 따라 크게 달라집니다. 위험도가 낮은 카피 트레이더의 실제 연간 수익률은 10~25%입니다. 과거 성과는 미래 결과를 나타내지 않으며 eToro와 CFDs를 거래할 때 소매 투자자 계정의 51%가 돈을 잃습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카피 트레이딩은 복리를 사용하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "예. eToro에서 거래자를 복사하면 이익이 자동으로 해당 복사 관계에 재투자됩니다. 즉, 시간이 지남에 따라 수익이 복리로 계산됩니다. 이 계산기를 사용하면 복합 성장과 단순(비복합) 성장을 비교하여 차이를 확인할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카피 트레이딩의 현실적인 연간 수익률은 얼마입니까?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "보수적인 추정에 따르면 위험도가 낮은 거래자는 연간 5~10%를 차지합니다. 균형 잡힌 트레이더의 중간 수익은 약 15-20%입니다. 공격적인 전략은 30% 이상을 목표로 할 수 있지만 훨씬 더 높은 위험을 수반합니다. 세계 최고의 헤지펀드들은 연 평균 16~20%의 수익률을 냅니다."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/" },
+    { "@type": "ListItem", "position": 2, "name": "도구 및 계산기", "item": "https://socialtradingvlog.com/calculators/" },
+    { "@type": "ListItem", "position": 3, "name": "카피 트레이딩 ROI 계산기", "item": "https://socialtradingvlog.com/calculators/roi-calculator/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="tool-nav">
+  <a href="../../../ko/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../수수료-계산기/">리턴 미터</a>
+    <a href="../수익률-계산기/" class="active">리턴 미터</a>
+    <a href="../플랫폼-비교/">플랫폼 비교</a>
+    <a href="../포지션-크기/">이러한 도구는 정보 제공 및 교육 목적으로만 사용됩니다. 이는 재정적 조언을 구성하지 않습니다.
+    XBRAND002X는 이러한 도구 사용으로 인해 발생하는 모든 손실에 대해 책임을 지지 않습니다. 귀하의 자본이 위험에 처해 있습니다. |분할| XBRAND019X의 년</a>
+  </div>
+  <a href="../../../ko/" class="tool-nav-back">6가지 자산 클래스 |분할| 복리 수익을 통해 1~10년 동안 투자가 어떻게 성장할 수 있는지 예측해 보세요. 시나리오를 나란히 비교하세요.</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> 투자 예상</div>
+    <h1>데이터 정확성 &amp; 책임 면책조항 |분할| 복합 <span class="accent">ROI 계산기</span></h1>
+    <p>시간이 지남에 따라 투자가 어떻게 증가할 수 있는지 알아보세요. 포트폴리오 성장을 예측하려면 시작 금액, 예상 수익 및 기간을 입력하세요.</p>
+  </div>
+
+  <div class="calc-card">
+    <div class="input-section">
+      <div class="input-label">투자 시작</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="invest-slider" min="200" max="100000" step="100" value="1000" oninput="syncInvest(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="invest-input" value="1,000" oninput="syncInvestSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">예상 연간 수익률</div>
+      <div class="pill-group" id="return-pills">
+        <button class="pill-btn" onclick="setReturn(5,this)">보수적 (5%)</button>
+        <button class="pill-btn active" onclick="setReturn(15,this)">보통 (15%)</button>
+        <button class="pill-btn" onclick="setReturn(30,this)">보수적 (5%) |분열| XBRAND026X의 실제 카피 트레이딩 수익</button>
+        <button class="pill-btn" onclick="setReturn(-1,this)">저는 2016년부터 거의 10년 동안 XBRAND019X에서 카피 트레이딩을 해왔습니다. 나의 실제 수익, 내가 복사한 트레이더, 그리고 그 과정에서 배운 내용을 확인하세요. |분할| 중요: |분할| 5년 |분할| 이익 재투자(복합 성장)</button>
+      </div>
+      <div id="custom-return" style="display:none;margin-top:12px">
+        <div class="slider-row">
+          <input type="range" class="slider-input" id="return-slider" min="1" max="100" step="1" value="15" oninput="updateReturn(this.value)">
+          <div class="amount-input" style="width:80px;text-align:center" id="return-display">15%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">기간</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="years-slider" min="1" max="10" step="1" value="5" oninput="setYears(this.value)">
+        <div class="amount-input" style="width:100px;text-align:center" id="years-display">5년</div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="toggle-row">
+        <label class="toggle-switch">
+          <input type="checkbox" id="compound-toggle" checked onchange="calc()">
+          <span class="toggle-track"></span>
+          <span class="toggle-dot"></span>
+        </label>
+        <span class="toggle-label">이익 재투자(복합 성장)</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-hero">
+      <div class="total-label">예상 포트폴리오 가치</div>
+      <div class="total-value" id="total-value">$2,011</div>
+      <div class="results-badges">
+        <span class="result-badge badge-profit" id="badge-profit">이 계산기는 정보 제공의 목적으로만 사용되며 재정적인 조언을 제공하지 않습니다. 모든 예상은 가정적입니다. 실제 수익은 크게 다를 수 있습니다.
+      XBRAND002X는 이 도구에 의존하여 발생하는 손실에 대해 책임을 지지 않습니다. 과거 성과는 미래 결과를 나타내지 않습니다.
+      XBRAND019X는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다. 이 공급자와 XBRAND024X를 거래할 때 소매 투자자 계정의 51%가 돈을 잃습니다. |분할| 내 실제 반품 보기 &rarr; |분할| 카피 트레이딩은 투자 조언에 해당하지 않습니다. 돈을 잃을 위험이 높다는 것을 감수할 여유가 있는지 고려해야 합니다. |분할| XBRAND035X 계산기 |분할| 연도 |분할| 보통 (15%) |분할| 시간이 지남에 따라 투자가 어떻게 증가할 수 있는지 알아보세요. 포트폴리오 성장을 예측하려면 시작 금액, 예상 수익 및 기간을 입력하세요. |분할| 예상 포트폴리오 가치</span>
+        <span class="result-badge badge-roi" id="badge-roi">101% ROI</span>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap"></div>
+
+    <div class="compare-row">
+      <div class="compare-card cc-compound">
+        <div class="cc-label">컴파운딩 포함</div>
+        <div class="cc-value" id="cc-compound">$2,011</div>
+        <div class="cc-sub">이익 재투자</div>
+      </div>
+      <div class="compare-card cc-simple">
+        <div class="cc-label">합성하지 않고</div>
+        <div class="cc-value" id="cc-simple">$1,750</div>
+        <div class="cc-sub">오늘 카피 트레이딩을 시작하세요</div>
+      </div>
+    </div>
+
+    <table class="year-table" id="year-table">
+      <thead><tr><th>년도</th><th>시작</th><th>반품</th><th>최종 가치</th><th>총 이익</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="risk-warning-box">
+      <strong>중요한:</strong> 시작 |분할| 이익 재투자
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>데이터 정확성 &amp; 책임 면책 조항</strong>
+      예상 연간 수익률
+      <ul>
+        <li>모든 예상은 가정적이며 사용자가 선택한 반품률을 기준으로 합니다. 실제 카피 트레이딩 수익은 크게 달라질 수 있으며 자본 손실로 이어질 수 있습니다.</li>
+        <li>eToro에 대한 거래자의 과거 성과는 미래 결과를 나타내지 않습니다. 이 도구에 표시된 수익은 예측이나 보장이 아닌 수학적 예측입니다. |분할| eToro에 가입하여 성공한 트레이더를 복사하고 그들이 귀하를 위해 거래하도록 하세요. 200달러부터 시작해 보세요. |분할| +$1,011 이익 |분할| 이익실현</li>
+        <li>이 도구는 재정, 투자 또는 세금 관련 조언을 구성하지 않습니다. SocialTradingVlog와 그 저자는 금융 자문가가 아니며 이 계산기 사용으로 인해 발생하는 손실이나 손해에 대해 어떠한 책임도 지지 않습니다.</li>
+        <li>카피 트레이딩은 투자 조언에 해당하지 않습니다. 돈을 잃을 위험이 높다는 것을 감수할 여유가 있는지 고려해야 합니다.</li>
+        <li>eToro는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tom's real returns -->
+  <div class="context-card">
+    <div class="cc-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+    <div>
+      <h3>Tom의 실제 카피 트레이딩 수익</h3>
+      <p>저는 2016년부터 거의 10년 동안 eToro에서 카피 트레이딩을 해왔습니다. 나의 실제 수익, 내가 복사한 트레이더, 그리고 그 과정에서 배운 내용을 확인하세요.</p>
+      <a href="../../copy-trading-returns/">내 실제 반품 보기 &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Explainer -->
+  <h2 style="font-size:22px;font-weight:700;text-align:center;margin:32px 0 20px">카피 트레이딩 반품 작동 방식</h2>
+  <div class="explainer-grid">
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>트레이더 복사</h3>
+      <p>카피 트레이딩</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>복합 성장</h3>
+      <p>복리를 사용하면 이익이 재투자되므로 수익에 대한 수익을 얻을 수 있습니다. 장기간에 걸쳐 이는 기하급수적인 성장을 가져옵니다. 작은 수익이라도 5~10년에 걸쳐 크게 증가합니다. |분할| 맞춤 |분할| 이 계산기는 가상의 예측만을 보여줍니다. 과거 실적이 미래 결과를 보장하지 않습니다. 카피 트레이딩은 투자 조언에 해당하지 않습니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다. XBRAND024X를 XBRAND019X와 거래할 때 소매 투자자 계정의 51%가 돈을 잃습니다. |분할| 101% XBRAND035X |분할| 돌아가기 |분할| 수수료 계산하기 &rarr; |분할| 카피 트레이딩을 시도해보세요 &rarr; |분할| 거래하기 전에 스프레드, 익일 수수료, 통화 변환 등으로 지불할 금액을 정확히 확인하세요. |분할| 총 이익 |분할| 모든 예상은 가정적이며 사용자가 선택한 반품률을 기준으로 합니다. 실제 카피 트레이딩 수익은 크게 달라질 수 있으며 자본 손실로 이어질 수 있습니다. |분할| 돈을 잃을 위험이 높다는 것을 감수할 여유가 있는지 고려해야 합니다.
+      카피 트레이딩은 투자 조언에 해당하지 않습니다. 위험에 처한 자본. 제휴링크. |분할| 기간</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>XBRAND026X의 XBRAND019X 9년 실화사용 솔직후기 &mdash; 카피 트레이딩, 수수료, 그리고 누구에게 적합한지 다룹니다. |분할| 합성하지 않고</h3>
+      <p>기대수익률이 높을수록 위험도 높아집니다. 위험 점수가 낮은 카피 트레이더는 보다 일관된(그러나 낮은) 수익을 얻는 경향이 있습니다. 여러 거래자를 복사하여 다양화하세요. |분할| 실적, 위험 점수 및 거래 스타일을 기반으로 복사할 거래자를 선택하세요. 거래할 때 귀하의 계정은 자동으로 해당 위치를 비례적으로 반영합니다. |분할| 위험 문제</p>
+    </div>
+  </div>
+
+  <!-- Related Reading -->
+  <div style="margin:32px 0;">
+    <h2 style="font-size:22px;font-weight:700;text-align:center;margin-bottom:20px;">관련 독서</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3><a href="../../etoro-review/" style="color:var(--text-primary);text-decoration:none;">포트폴리오 규모, 위험 허용 범위 및 다각화 목표에 따라 거래자당 할당할 금액을 파악하십시오. |분할| 기타 등등</a></h3>
+        <p>최종 가치</p>
+        <a href="../../etoro-review/" style="color:var(--info);font-weight:600;font-size:14px;">전체 리뷰 읽기 &rarr;</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3><a href="../../copy-trading-returns.html" style="color:var(--text-primary);text-decoration:none;">카피 트레이딩을 얼마나 할 수 있나요?</a></h3>
+        <p>실제 숫자, 실제 기대. 카피 트레이딩 수익은 어떻게 이루어지며 현실적으로 기대할 수 있는 것은 무엇인지 알아보세요.</p>
+        <a href="../../copy-trading-returns.html" style="color:var(--info);font-weight:600;font-size:14px;">가이드 읽기 &rarr;</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3><a href="../fee-calculator/" style="color:var(--text-primary);text-decoration:none;">eToro 수수료 계산기</a></h3>
+        <p>거래하기 전에 스프레드, 익일 수수료, 통화 변환 등으로 지불할 금액을 정확히 확인하세요.</p>
+        <a href="../fee-calculator/" style="color:var(--info);font-weight:600;font-size:14px;">수수료 계산하기 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>오늘부터 카피 트레이딩을 시작해 보세요</h2>
+    <p>이 계산기는 일반적인 정보 제공 및 교육 목적으로만 사용됩니다. 투자 결정을 내릴 때 이 정보에 의존해서는 안 됩니다. |분할| 공격적 (30%) |분할| 투자 시작</p>
+    <a href="https://etoro.tw/4cuYCBg" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'roi_calculator_ko'})">카피 트레이딩을 시도해보세요 &rarr;</a>
+    <div class="risk-text">
+      <strong>카피 트레이딩 포트폴리오의 다양화, 위험 노출 및 예상 수익을 분석하세요. |분할| XBRAND026X에 대해 자세히 알아보십시오. |분할| 수수료 계산</strong>
+      돈을 잃을 위험이 높다는 것을 감수할 여유가 있는지 고려해야 합니다.
+      카피 트레이딩은 투자 조언에 해당하지 않습니다. 위험에 처한 자본. 제휴링크.
+    </div>
+  </div>
+
+  <div class="tool-footer">
+    <p><a href="../../">SocialTradingVlog.com</a> &middot; <a href="../">모든 도구</a> &middot; <a href="../../about/">실제 숫자, 실제 기대. 카피 트레이딩 수익은 어떻게 이루어지며 현실적으로 기대할 수 있는 것은 무엇인지 알아보세요. |분할| Tom의 9년만에 솔직한 후기&mdash; 카피 트레이딩, 수수료, 지원 및 적합한 대상에 대해 알아보세요. |분할| 도구 |분할| XBRAND019X 수수료 계산기</a></p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      이 계산기는 정보 제공의 목적으로만 사용되며 재정적인 조언을 제공하지 않습니다. 모든 예상은 가정적입니다. 실제 수익은 크게 다를 수 있습니다.
+      SocialTradingVlog는 이 도구에 의존하여 발생하는 손실에 대해 책임을 지지 않습니다. 과거 성과는 미래 결과를 나타내지 않습니다.
+      eToro는 멀티자산 투자 플랫폼입니다. 투자 가치는 올라갈 수도 있고 내려갈 수도 있습니다. 귀하의 자본이 위험에 처해 있습니다. 이 공급자와 CFDs를 거래할 때 소매 투자자 계정의 51%가 돈을 잃습니다.
+    </p>
+  </div>
+</div>
+
+<script>
+let state = { invest: 1000, returnPct: 15, years: 5, compound: true, customReturn: false };
+
+function syncInvest(v) { state.invest = parseInt(v)||200; document.getElementById('invest-input').value = state.invest.toLocaleString(); calc(); }
+function syncInvestSlider(v) { const n = parseInt(v.replace(/[^0-9]/g,''))||200; state.invest = Math.min(Math.max(n,200),100000); document.getElementById('invest-slider').value = state.invest; calc(); }
+function setReturn(pct, el) {
+  document.querySelectorAll('#return-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  if (pct === -1) { state.customReturn = true; document.getElementById('custom-return').style.display = 'block'; state.returnPct = parseInt(document.getElementById('return-slider').value); }
+  else { state.customReturn = false; document.getElementById('custom-return').style.display = 'none'; state.returnPct = pct; }
+  calc();
+}
+function updateReturn(v) { state.returnPct = parseInt(v); document.getElementById('return-display').textContent = v + '%'; calc(); }
+function setYears(v) { state.years = parseInt(v); document.getElementById('years-display').textContent = v + ' 년도' + (v>1?''  :''); calc(); }
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function calc() {
+  state.compound = document.getElementById('compound-toggle').checked;
+  const r = state.returnPct / 100;
+  const years = [];
+  let compoundVal = state.invest;
+  let simpleVal = state.invest;
+
+  for (let y = 1; y <= state.years; y++) {
+    const compReturn = compoundVal * r;
+    compoundVal += compReturn;
+    simpleVal = state.invest + (state.invest * r * y);
+    years.push({ year: y, start: compoundVal - compReturn, compReturn, compEnd: compoundVal, simpleEnd: simpleVal, profit: compoundVal - state.invest });
+  }
+
+  const finalVal = state.compound ? compoundVal : simpleVal;
+  const profit = finalVal - state.invest;
+  const roi = Math.round((profit / state.invest) * 100);
+
+  document.getElementById('total-value').textContent = fmt(finalVal);
+  document.getElementById('badge-profit').textContent = '+' + fmt(profit) + ' 이익';
+  document.getElementById('badge-roi').textContent = roi + '% ROI';
+  document.getElementById('cc-compound').textContent = fmt(compoundVal);
+  document.getElementById('cc-simple').textContent = fmt(simpleVal);
+
+  // Chart
+  const vals = [state.invest, ...years.map(y => state.compound ? y.compEnd : y.simpleEnd)];
+  const compVals = [state.invest, ...years.map(y => y.compEnd)];
+  const simpVals = [state.invest, ...years.map(y => y.simpleEnd)];
+  const maxV = Math.max(...compVals, ...simpVals, state.invest + 1);
+  const minV = state.invest * 0.95;
+  const range = maxV - minV || 1;
+  const w = 800, h = 180, pad = 8;
+  const stepX = (w - pad * 2) / state.years;
+
+  function pts(arr) { return arr.map((v, i) => `${pad + i * stepX},${h - pad - ((v - minV) / range) * (h - pad * 2)}`).join(' '); }
+  function area(arr) { return pts(arr) + ` ${pad + state.years * stepX},${h - pad} ${pad},${h - pad}`; }
+
+  const labels = Array.from({length: state.years + 1}, (_, i) => {
+    const x = pad + i * stepX;
+    return `<text x="${x}" y="${h}" fill="var(--text-muted)" font-size="11" text-anchor="middle" font-family="Inter">${i === 0 ? '지금' : '년' + i}</text>`;
+  }).join('');
+
+  document.getElementById('chart-wrap').innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polygon points="${area(compVals)}" fill="var(--success)" opacity="0.1"/>
+    <polyline points="${pts(compVals)}" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linejoin="round"/>
+    <polygon points="${area(simpVals)}" fill="var(--info)" opacity="0.06"/>
+    <polyline points="${pts(simpVals)}" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="6,4" stroke-linejoin="round"/>
+    ${compVals.map((v, i) => `<circle cx="${pad + i * stepX}" cy="${h - pad - ((v - minV) / range) * (h - pad * 2)}" r="4" fill="var(--success)"/>`).join('')}
+    ${labels}
+  </svg>`;
+
+  // Table
+  const tbody = document.getElementById('year-table').querySelector('tbody');
+  tbody.innerHTML = years.map(y => `<tr>
+    <td style="font-weight:600">Year ${y.year}</td>
+    <td>${fmt(y.start)}</td>
+    <td class="positive">+${fmt(y.compReturn)}</td>
+    <td style="font-weight:600">${fmt(state.compound ? y.compEnd : y.simpleEnd)}</td>
+    <td class="positive">+${fmt(state.compound ? y.profit : y.simpleEnd - state.invest)}</td>
+  </tr>`).join('');
+}
+
+calc();
+</script>
+</body>
+</html>

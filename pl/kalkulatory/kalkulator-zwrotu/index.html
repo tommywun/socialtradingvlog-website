@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copy Trading ROI Kalkulator 2026 — Projektuj swoje zwroty | SocialTradingVlog |PODZIAŁ| Darmowy kalkulator handlu kopiami ROI. Zobacz, jak Twoja inwestycja może wzrosnąć dzięki składanemu zwrotowi w ciągu 1–10 lat. Na podstawie prawdziwych danych dotyczących kopiowania transakcji. |PODZIEL| Copy Trading ROI Kalkulator 2026 — Projektuj swoje zwroty</title>
+<meta name="description" content="Darmowy kalkulator handlu kopiami ROI. Zobacz, jak Twoja inwestycja może rosnąć w czasie.">
+<link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<meta property="og:title" content="Kalkulator kopiowania handlu ROI 2026 — projektuj swoje zyski">
+<meta property="og:description" content="Darmowy kalkulator handlu kopiami ROI. Zobacz, jak Twoja inwestycja może rosnąć w czasie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; }
+.tool-nav-back:hover { color: #fff; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--success-light); color: var(--success); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--success); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn { padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--text-secondary); transition: all .2s; font-family: 'Inter',sans-serif; }
+.pill-btn:hover { border-color: var(--success); color: var(--text-primary); }
+.pill-btn.active { background: var(--success); border-color: var(--success); color: #fff; }
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input { flex: 1; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: var(--border); outline: none; }
+.slider-input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--success); cursor: pointer; box-shadow: 0 2px 6px rgba(0,159,129,.35); }
+.amount-input { width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius); font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans',sans-serif; color: var(--text-primary); background: var(--bg-input); text-align: right; }
+.amount-input:focus { outline: none; border-color: var(--success); box-shadow: 0 0 0 3px rgba(0,159,129,.15); }
+
+/* Toggle switch */
+.toggle-row { display: flex; align-items: center; gap: 12px; }
+.toggle-switch { position: relative; width: 48px; height: 26px; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-track { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--border); border-radius: 13px; transition: background .3s; }
+.toggle-switch input:checked + .toggle-track { background: var(--success); }
+.toggle-dot { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .3s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-switch input:checked ~ .toggle-dot { transform: translateX(22px); }
+.toggle-label { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+
+/* Results */
+.results-hero { text-align: center; padding: 32px 0 24px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value { font-size: clamp(2.5rem,6vw,3.5rem); font-weight: 800; color: var(--success); font-family: 'Plus Jakarta Sans',sans-serif; line-height: 1.1; }
+.results-badges { display: flex; justify-content: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.result-badge { padding: 6px 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; }
+.badge-profit { background: var(--success-light); color: var(--success); }
+.badge-roi { background: var(--info-light); color: var(--info); }
+
+/* Chart */
+.chart-wrap { margin: 24px 0; height: 200px; position: relative; }
+.chart-wrap svg { width: 100%; height: 100%; }
+
+/* Comparison cards */
+.compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.compare-card { border-radius: var(--radius); padding: 20px; text-align: center; }
+.compare-card .cc-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.compare-card .cc-value { font-size: 24px; font-weight: 800; font-family: 'Plus Jakarta Sans',sans-serif; }
+.compare-card .cc-sub { font-size: 12px; margin-top: 2px; }
+.cc-compound { background: rgba(0,159,129,.08); color: var(--success); }
+.cc-simple { background: rgba(0,143,248,.08); color: var(--info); }
+
+/* Year table */
+.year-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.year-table th { text-align: left; padding: 10px 16px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.year-table td { padding: 10px 16px; font-size: 14px; border-bottom: 1px solid var(--border); }
+.year-table tr:hover { background: rgba(0,159,129,.03); }
+.year-table .positive { color: var(--success); font-weight: 600; }
+
+/* Context card */
+.context-card { background: linear-gradient(135deg, #F0FFF8 0%, #F0F8FF 100%); border: 1px solid #D0E8D0; border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; display: flex; align-items: flex-start; gap: 16px; }
+.context-card .cc-icon { font-size: 32px; flex-shrink: 0; }
+.context-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.context-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.context-card a { color: var(--info); font-weight: 600; text-decoration: none; }
+.context-card a:hover { text-decoration: underline; }
+
+/* Explainer */
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin: 24px 0; }
+.explainer-card { background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+.explainer-card .ec-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0; color: #fff; }
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700; background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans',sans-serif; }
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-warning-box { background: rgba(255,73,83,.06); border: 1px solid rgba(255,73,83,.15); border-radius: var(--radius); padding: 14px 18px; margin: 24px 0; font-size: 13px; color: var(--critical); line-height: 1.6; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .compare-row { grid-template-columns: 1fr; }
+  .chart-wrap { height: 160px; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Kopiuj handel ROI Kalkulator",
+  "description": "Zaplanuj zwroty z kopiowania na przestrzeni 1–10 lat, korzystając ze złożonych i prostych obliczeń wzrostu.",
+  "url": "https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile możesz zarobić na kopiowaniu handlu na eToro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zwroty różnią się znacznie w zależności od kopiowanych traderów i warunków rynkowych. Realistyczne roczne zyski od traderów kopiujących o niższym ryzyku wahają się w granicach 10-25%. Wyniki historyczne nie wskazują na przyszłe wyniki, a 51% rachunków inwestorów detalicznych odnotowuje straty pieniężne w wyniku handlu CFDs z eToro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy w handlu kopiami stosowane są odsetki składane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Kiedy kopiujesz tradera na eToro, zyski są automatycznie ponownie inwestowane w tę relację kopiowania, co oznacza, że ​​Twoje zyski będą się zwiększać w czasie. Ten kalkulator umożliwia porównanie wzrostu złożonego ze wzrostem prostym (nieskładanym) i zobaczenie różnicy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jaki jest realistyczny roczny zwrot z handlu kopiami?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ostrożne szacunki sugerują, że 5-10% rocznie pochodzi od traderów niskiego ryzyka. Umiarkowane zwroty wynoszą około 15-20% u zrównoważonych traderów. Strategie agresywne mogą być ukierunkowane na ponad 30%, ale wiążą się ze znacznie większym ryzykiem. Najlepsze na świecie fundusze hedgingowe średnio 16-20% rocznie."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialtradingvlog.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Narzędzia i kalkulatory", "item": "https://socialtradingvlog.com/calculators/" },
+    { "@type": "ListItem", "position": 3, "name": "Kopiuj handel ROI Kalkulator", "item": "https://socialtradingvlog.com/calculators/roi-calculator/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="tool-nav">
+  <a href="../../../pl/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../kalkulator-oplat/">Narzędzia te zostały zbudowane przez XBRAND026X, który handluje i kopiuje transakcje na XBRAND019X od 2016 roku. Wszystko tutaj opiera się na prawdziwym doświadczeniu i rzeczywistych danych &mdash; nie jest kopią marketingową. |PODZIEL| Recenzja XBRAND019X 2026 |PODZIAŁ| Śledź i porównuj wyniki najpopularniejszych inwestorów XBRAND019X na przestrzeni czasu. |PODZIEL| 4 scenariusze |PODZIEL| Zbudowany przez prawdziwego tradera</a>
+    <a href="../kalkulator-zwrotu/" class="active">Kalkulator zwrotu</a>
+    <a href="../porownaj-platformy/">Porównaj platformę</a>
+    <a href="../rozmiar-pozycji/">pozycja Rozmiar</a>
+  </div>
+  <a href="../../../pl/" class="tool-nav-back">&larr; Powrót do strony</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Wyższe oczekiwane zyski wiążą się z większym ryzykiem. Kopiujący inwestorzy o niższych wynikach ryzyka mają zwykle bardziej spójne (ale niższe) zyski. Dywersyfikuj, kopiując wielu traderów. |PODZIEL| Skopiuj tradera</div>
+    <h1>Z łączeniem <span class="accent">Kalkulator ROI</span></h1>
+    <p>Zobacz, jak Twoja inwestycja może rosnąć w czasie. Wprowadź kwotę początkową, oczekiwane zyski i horyzont czasowy, aby prognozować rozwój swojego portfela.</p>
+  </div>
+
+  <div class="calc-card">
+    <div class="input-section">
+      <div class="input-label">Oczekiwany roczny zwrot</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="invest-slider" min="200" max="100000" step="100" value="1000" oninput="syncInvest(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="invest-input" value="1,000" oninput="syncInvestSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">Oczekiwany roczny zwrot</div>
+      <div class="pill-group" id="return-pills">
+        <button class="pill-btn" onclick="setReturn(5,this)">Konserwatywny (5%)</button>
+        <button class="pill-btn active" onclick="setReturn(15,this)">Umiarkowany (15%)</button>
+        <button class="pill-btn" onclick="setReturn(30,this)">Rozpocznij kopiowanie handlu już dziś</button>
+        <button class="pill-btn" onclick="setReturn(-1,this)">Reinwestuj zyski (wzrost złożony)</button>
+      </div>
+      <div id="custom-return" style="display:none;margin-top:12px">
+        <div class="slider-row">
+          <input type="range" class="slider-input" id="return-slider" min="1" max="100" step="1" value="15" oninput="updateReturn(this.value)">
+          <div class="amount-input" style="width:80px;text-align:center" id="return-display">15%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">Okres</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="years-slider" min="1" max="10" step="1" value="5" oninput="setYears(this.value)">
+        <div class="amount-input" style="width:100px;text-align:center" id="years-display">5 lat</div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="toggle-row">
+        <label class="toggle-switch">
+          <input type="checkbox" id="compound-toggle" checked onchange="calc()">
+          <span class="toggle-track"></span>
+          <span class="toggle-dot"></span>
+        </label>
+        <span class="toggle-label">Reinwestuj zyski (wzrost złożony)</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-hero">
+      <div class="total-label">Prognozowana wartość portfela</div>
+      <div class="total-value" id="total-value">$2,011</div>
+      <div class="results-badges">
+        <span class="result-badge badge-profit" id="badge-profit">Kalkulator ten służy wyłącznie do ogólnych celów informacyjnych i edukacyjnych. Nie należy na nim polegać przy podejmowaniu decyzji inwestycyjnych. |PODZIEL| Agresywny (30%)</span>
+        <span class="result-badge badge-roi" id="badge-roi">101% ROI</span>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap"></div>
+
+    <div class="compare-row">
+      <div class="compare-card cc-compound">
+        <div class="cc-label">Z mieszaniem</div>
+        <div class="cc-value" id="cc-compound">$2,011</div>
+        <div class="cc-sub">Jak działają zwroty z kopiowania transakcji</div>
+      </div>
+      <div class="compare-card cc-simple">
+        <div class="cc-label">Bez łączenia</div>
+        <div class="cc-value" id="cc-simple">$1,750</div>
+        <div class="cc-sub">Rozpoczęcie inwestycji</div>
+      </div>
+    </div>
+
+    <table class="year-table" id="year-table">
+      <thead><tr><th>Rok</th><th>Start</th><th>Powrót</th><th>Wartość końcowa</th><th>Całkowity zysk</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="risk-warning-box">
+      <strong>Ważny:</strong> Start
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>Dokładność danych i amp; Wyłączenie odpowiedzialności</strong>
+      Kalkulator ten służy wyłącznie celom informacyjnym i nie stanowi porady finansowej. Wszystkie przewidywania mają charakter hipotetyczny &mdash; rzeczywiste zyski mogą się znacznie różnić.
+      XBRAND002X nie ponosi żadnej odpowiedzialności za straty wynikające z polegania na tym narzędziu. Wyniki osiągnięte w przeszłości nie są wyznacznikiem przyszłych wyników.
+      XBRAND019X to platforma inwestycyjna obejmująca wiele aktywów. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony. 51% rachunków inwestorów detalicznych odnotowuje straty pieniężne podczas handlu XBRAND024X u tego dostawcy. |PODZIEL| Zobacz moje prawdziwe zyski &rarr; |PODZIEL| Kalkulator XBRAND035X |PODZIAŁ| Rok |PODZIAŁ| Umiarkowany (15%) |PODZIEL| Kopiowanie transakcji nie jest równoznaczne z poradą inwestycyjną. Powinieneś rozważyć, czy możesz sobie pozwolić na wysokie ryzyko utraty pieniędzy. |PODZIEL| Zobacz, jak Twoja inwestycja może rosnąć w czasie. Wprowadź kwotę początkową, oczekiwane zyski i horyzont czasowy, aby prognozować rozwój swojego portfela. |PODZIEL| Prognozowana wartość portfela
+      <ul>
+        <li>Wszystkie prognozy mają charakter hipotetyczny i opierają się na wybranych przez użytkownika stopach zwrotu. Rzeczywiste zyski z kopiowania będą się znacznie różnić i mogą skutkować utratą kapitału.</li>
+        <li>Dotychczasowe wyniki dowolnego inwestora na eToro nie wskazują na przyszłe wyniki. Zwroty pokazane w tym narzędziu są prognozami matematycznymi, a nie przewidywaniami czy gwarancjami. |PODZIEL| Dołącz do eToro, kopiuj odnoszących sukcesy traderów i pozwól im handlować za Ciebie. Zacznij już od 200 dolarów. |PODZIEL| +1011 USD zysku</li>
+        <li>Konwersja |PODZIEL| Przeczytaj przewodnik &rarr; |PODZIEL| Czy kopiowanie transakcji na XBRAND019X jest bezpłatne? |PODZIEL| Wypłata</li>
+        <li>Kopiowanie transakcji nie jest równoznaczne z poradą inwestycyjną. Powinieneś rozważyć, czy możesz sobie pozwolić na wysokie ryzyko utraty pieniędzy.</li>
+        <li>eToro to platforma inwestycyjna obejmująca wiele aktywów. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tom's real returns -->
+  <div class="context-card">
+    <div class="cc-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+    <div>
+      <h3>Prawdziwe zwroty z transakcji kopiowania Tom</h3>
+      <p>Zajmuję się kopiowaniem na eToro od 2016 roku — prawie 10 lat. Zobacz moje rzeczywiste zyski, traderów, których kopiuję i czego się nauczyłem po drodze. |PODZIEL| Reinwestycja zysków</p>
+      <a href="../../copy-trading-returns/">Zobacz moje prawdziwe zyski &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Explainer -->
+  <h2 style="font-size:22px;font-weight:700;text-align:center;margin:32px 0 20px">Prognoza inwestycyjna</h2>
+  <div class="explainer-grid">
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Kopiowanie handlu</h3>
+      <p>Szczera recenzja XBRAND026X na temat XBRAND019X po 9 latach używania prawdziwych pieniędzy &mdash; obejmujące handel kopiami, opłaty i to, dla kogo jest to odpowiednie. |PODZIEL| Bez łączenia</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Wzrost złożony</h3>
+      <p>Dzięki składaniu Twoje zyski są ponownie inwestowane, dzięki czemu uzyskujesz zwrot z zysków. W długich okresach powoduje to wykładniczy wzrost – nawet niewielkie zyski kumulują się znacząco w ciągu 5–10 lat. |PODZIEL| Niestandardowe |PODZIEL| Kalkulator ten pokazuje jedynie hipotetyczne prognozy. Wyniki osiągnięte w przeszłości nie gwarantują wyników w przyszłości. Kopiowanie transakcji nie jest równoznaczne z poradą inwestycyjną. Wartość Twoich inwestycji może rosnąć lub spadać. Twój kapitał jest zagrożony. 51% rachunków inwestorów detalicznych odnotowuje straty pieniężne podczas handlu XBRAND024X z XBRAND019X. |PODZIEL| 101% XBRAND035X |PODZIAŁ| Wróć |PODZIEL| Oblicz swoje opłaty &rarr; |PODZIEL| Wypróbuj kopiowanie handlu &rarr; |PODZIEL| Zanim dokonasz transakcji, zobacz dokładnie, ile zapłacisz w postaci spreadów, opłat jednodniowych i przeliczenia walut. |PODZIEL| Całkowity zysk |PODZIAŁ| Wszystkie prognozy mają charakter hipotetyczny i opierają się na wybranych przez użytkownika stopach zwrotu. Rzeczywiste zyski z kopiowania będą się znacznie różnić i mogą skutkować utratą kapitału. |PODZIEL| Powinieneś rozważyć, czy możesz sobie pozwolić na wysokie ryzyko utraty pieniędzy.
+      Kopiowanie transakcji nie jest równoznaczne z poradą inwestycyjną. Kapitał zagrożony. Link partnerski. |PODZIEL| Okres |PODZIEL| Ważne: |PODZIEL| 5 lat</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>Dokładność danych i amp; Wyłączenie odpowiedzialności</h3>
+      <p>Wybierz traderów, których chcesz kopiować, na podstawie ich historii, wyniku ryzyka i stylu handlu. Kiedy handlują, Twoje konto automatycznie odzwierciedla proporcjonalnie ich pozycje. |PODZIEL| Ryzyko ma znaczenie</p>
+    </div>
+  </div>
+
+  <!-- Related Reading -->
+  <div style="margin:32px 0;">
+    <h2 style="font-size:22px;font-weight:700;text-align:center;margin-bottom:20px;">Powiązane lektury</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3><a href="../../etoro-review/" style="color:var(--text-primary);text-decoration:none;">Narzędzia |PODZIEL| Wzrost złożony</a></h3>
+        <p>Wartość końcowa</p>
+        <a href="../../etoro-review/" style="color:var(--info);font-weight:600;font-size:14px;">Przeczytaj całą recenzję &rarr; |PODZIEL| Akcje (USA)</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3><a href="../../copy-trading-returns.html" style="color:var(--text-primary);text-decoration:none;">Ile możesz zarobić na kopiowaniu handlu?</a></h3>
+        <p>Prawdziwe liczby, prawdziwe oczekiwania. Jak działają zyski z kopiowania i czego możesz realistycznie oczekiwać.</p>
+        <a href="../../copy-trading-returns.html" style="color:var(--info);font-weight:600;font-size:14px;">Przeczytaj przewodnik &rarr;</a>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3><a href="../fee-calculator/" style="color:var(--text-primary);text-decoration:none;">Kalkulator opłat eToro</a></h3>
+        <p>Zanim dokonasz transakcji, zobacz dokładnie, ile zapłacisz w postaci spreadów, opłat jednodniowych i przeliczenia walut.</p>
+        <a href="../fee-calculator/" style="color:var(--info);font-weight:600;font-size:14px;">Oblicz swoje opłaty &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Zacznij kopiować handel już dziś</h2>
+    <p>Wycofanie zysków</p>
+    <a href="https://etoro.tw/4cuYCBg" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'roi_calculator_pl'})">Wypróbuj kopiowanie handlu &rarr;</a>
+    <div class="risk-text">
+      <strong>&larr; Powrót do strony</strong>
+      Powinieneś rozważyć, czy możesz sobie pozwolić na wysokie ryzyko utraty pieniędzy.
+      Kopiowanie transakcji nie jest równoznaczne z poradą inwestycyjną. Kapitał zagrożony. Link partnerski.
+    </div>
+  </div>
+
+  <div class="tool-footer">
+    <p><a href="../../">SocialTradingVlog.com</a> &middot; <a href="../">Wszystkie narzędzia</a> &middot; <a href="../../about/">O Tomie |PODZIEL| Zobacz dokładnie, ile zapłacisz w postaci spreadów, opłat jednodniowych, przeliczenia walut i opłat za wypłatę dla dowolnej transakcji. |PODZIEL| Filmy z YouTube |PODZIEL| Darmowe narzędzia |PODZIEL| Bezpłatne, interaktywne narzędzia, które pomogą Ci zrozumieć koszty handlu, zyski z projektów i porównać platformy przed inwestycją. |PODZIEL| 6 platform</a></p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Konserwatywny (5%)
+    </p>
+  </div>
+</div>
+
+<script>
+let state = { invest: 1000, returnPct: 15, years: 5, compound: true, customReturn: false };
+
+function syncInvest(v) { state.invest = parseInt(v)||200; document.getElementById('invest-input').value = state.invest.toLocaleString(); calc(); }
+function syncInvestSlider(v) { const n = parseInt(v.replace(/[^0-9]/g,''))||200; state.invest = Math.min(Math.max(n,200),100000); document.getElementById('invest-slider').value = state.invest; calc(); }
+function setReturn(pct, el) {
+  document.querySelectorAll('#return-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  if (pct === -1) { state.customReturn = true; document.getElementById('custom-return').style.display = 'block'; state.returnPct = parseInt(document.getElementById('return-slider').value); }
+  else { state.customReturn = false; document.getElementById('custom-return').style.display = 'none'; state.returnPct = pct; }
+  calc();
+}
+function updateReturn(v) { state.returnPct = parseInt(v); document.getElementById('return-display').textContent = v + '%'; calc(); }
+function setYears(v) { state.years = parseInt(v); document.getElementById('years-display').textContent = v + ' rok' + (v>1?'a'  :''); calc(); }
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function calc() {
+  state.compound = document.getElementById('compound-toggle').checked;
+  const r = state.returnPct / 100;
+  const years = [];
+  let compoundVal = state.invest;
+  let simpleVal = state.invest;
+
+  for (let y = 1; y <= state.years; y++) {
+    const compReturn = compoundVal * r;
+    compoundVal += compReturn;
+    simpleVal = state.invest + (state.invest * r * y);
+    years.push({ year: y, start: compoundVal - compReturn, compReturn, compEnd: compoundVal, simpleEnd: simpleVal, profit: compoundVal - state.invest });
+  }
+
+  const finalVal = state.compound ? compoundVal : simpleVal;
+  const profit = finalVal - state.invest;
+  const roi = Math.round((profit / state.invest) * 100);
+
+  document.getElementById('total-value').textContent = fmt(finalVal);
+  document.getElementById('badge-profit').textContent = '+' + fmt(profit) + ' zysk';
+  document.getElementById('badge-roi').textContent = roi + '% ROI';
+  document.getElementById('cc-compound').textContent = fmt(compoundVal);
+  document.getElementById('cc-simple').textContent = fmt(simpleVal);
+
+  // Chart
+  const vals = [state.invest, ...years.map(y => state.compound ? y.compEnd : y.simpleEnd)];
+  const compVals = [state.invest, ...years.map(y => y.compEnd)];
+  const simpVals = [state.invest, ...years.map(y => y.simpleEnd)];
+  const maxV = Math.max(...compVals, ...simpVals, state.invest + 1);
+  const minV = state.invest * 0.95;
+  const range = maxV - minV || 1;
+  const w = 800, h = 180, pad = 8;
+  const stepX = (w - pad * 2) / state.years;
+
+  function pts(arr) { return arr.map((v, i) => `${pad + i * stepX},${h - pad - ((v - minV) / range) * (h - pad * 2)}`).join(' '); }
+  function area(arr) { return pts(arr) + ` ${pad + state.years * stepX},${h - pad} ${pad},${h - pad}`; }
+
+  const labels = Array.from({length: state.years + 1}, (_, i) => {
+    const x = pad + i * stepX;
+    return `<text x="${x}" y="${h}" fill="var(--text-muted)" font-size="11" text-anchor="middle" font-family="Inter">${i === 0 ? 'Teraz' : 'R' + i}</text>`;
+  }).join('');
+
+  document.getElementById('chart-wrap').innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polygon points="${area(compVals)}" fill="var(--success)" opacity="0.1"/>
+    <polyline points="${pts(compVals)}" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linejoin="round"/>
+    <polygon points="${area(simpVals)}" fill="var(--info)" opacity="0.06"/>
+    <polyline points="${pts(simpVals)}" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="6,4" stroke-linejoin="round"/>
+    ${compVals.map((v, i) => `<circle cx="${pad + i * stepX}" cy="${h - pad - ((v - minV) / range) * (h - pad * 2)}" r="4" fill="var(--success)"/>`).join('')}
+    ${labels}
+  </svg>`;
+
+  // Table
+  const tbody = document.getElementById('year-table').querySelector('tbody');
+  tbody.innerHTML = years.map(y => `<tr>
+    <td style="font-weight:600">Year ${y.year}</td>
+    <td>${fmt(y.start)}</td>
+    <td class="positive">+${fmt(y.compReturn)}</td>
+    <td style="font-weight:600">${fmt(state.compound ? y.compEnd : y.simpleEnd)}</td>
+    <td class="positive">+${fmt(state.compound ? y.profit : y.simpleEnd - state.invest)}</td>
+  </tr>`).join('');
+}
+
+calc();
+</script>
+</body>
+</html>
