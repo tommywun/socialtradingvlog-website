@@ -2608,11 +2608,11 @@ tbody tr.clickable { cursor: pointer; }
   <!-- OVERVIEW -->
   <div id="overview" class="section active">
     <div id="system-alerts"></div>
-    <div id="system-health" style="margin-bottom:16px"></div>
     <div class="section-header"><h2>Overview</h2><p>Everything at a glance</p></div>
     <div class="stats-row" id="overview-stats"></div>
     <div class="section-header" style="margin-top:8px"><h2 style="font-size:18px">Content Pipeline</h2></div>
     <div class="pipeline-grid" id="overview-pipeline"></div>
+    <div id="system-health" style="margin-top:16px;margin-bottom:16px"></div>
     <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">Translation Coverage</h2></div>
     <div class="lang-grid" id="overview-translations"></div>
     <div class="two-col" style="margin-top:20px">
@@ -3071,6 +3071,21 @@ function toast(msg, type = 'success') {
   setTimeout(() => el.remove(), 3500);
 }
 
+function copyStatusText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.style.background = 'var(--success)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--success)';
+    setTimeout(() => {
+      btn.textContent = 'Copy for Claude';
+      btn.style.background = 'var(--bg-table-header)';
+      btn.style.color = 'var(--text-primary)';
+      btn.style.borderColor = 'var(--border-primary)';
+    }, 2000);
+  });
+}
+
 // ─── Charts (Semrush palette) ───
 const tooltip = document.getElementById('chart-tooltip');
 function drawChart(containerId, data, key, color) {
@@ -3216,13 +3231,20 @@ async function loadOverview() {
     return;
   }
 
-  let cardsHtml = actionItems.map(h => {
+  // Split: red errors at top (system-alerts), everything else below pipeline (system-health)
+  const errorCards = actionItems.filter(h => h.status === 'error');
+  const otherCards = actionItems.filter(h => h.status !== 'error');
+
+  const renderCard = (h) => {
     const cssClass = h.status === 'in_progress' ? 'status-in-progress' : `status-${h.status}`;
+    const stepsText = (h.fix || []).map((s, j) => `${j+1}. ${s}`).join('\\n');
+    const copyText = `${h.name}: ${h.detail}${stepsText ? '\\n' + stepsText : ''}`;
     const stepsHtml = h.fix && h.fix.length > 0
       ? `<ol class="status-steps">${h.fix.map(s => '<li>' + escapeHtml(s) + '</li>').join('')}</ol>`
       : '';
+    const copyBtn = `<button class="btn" style="margin-top:8px;height:30px;font-size:12px;padding:0 14px;background:var(--bg-table-header);color:var(--text-primary);border:1px solid var(--border-primary);" onclick="event.stopPropagation();copyStatusText(this, \`${copyText.replace(/`/g, '\\`')}\`)">Copy for Claude</button>`;
     const autoFixBtn = h.auto_fix
-      ? `<button class="btn btn-primary" style="margin-top:8px;height:30px;font-size:12px;padding:0 14px;" onclick="runAutoFix('${h.auto_fix}', this)">Fix It</button>`
+      ? ` <button class="btn btn-primary" style="margin-top:8px;height:30px;font-size:12px;padding:0 14px;" onclick="runAutoFix('${h.auto_fix}', this)">Fix It</button>`
       : '';
     return `<div class="status-card ${cssClass}">
       <div class="status-header">
@@ -3230,12 +3252,13 @@ async function loadOverview() {
         <span class="status-badge">${badgeLabels[h.status] || h.status}</span>
       </div>
       <div class="status-detail">${escapeHtml(h.detail)}</div>
-      ${stepsHtml}${autoFixBtn}
+      ${stepsHtml}
+      <div style="display:flex;gap:8px;">${copyBtn}${autoFixBtn}</div>
     </div>`;
-  }).join('');
+  };
 
-  document.getElementById('system-alerts').innerHTML = '';
-  document.getElementById('system-health').innerHTML = cardsHtml;
+  document.getElementById('system-alerts').innerHTML = errorCards.map(renderCard).join('');
+  document.getElementById('system-health').innerHTML = otherCards.map(renderCard).join('');
 
   // Translation coverage
   const langOrder = ['en', 'es', 'de', 'fr', 'pt', 'ar'];
