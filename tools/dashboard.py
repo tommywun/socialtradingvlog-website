@@ -1052,14 +1052,39 @@ def get_system_health():
         else:
             health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No pipeline log found", "fix": ["The transcription pipeline hasn\u2019t been run yet", "Ask Claude to run the transcription pipeline on the VPS"]})
 
+        # Check for status overrides (set by Claude when situations change)
+        overrides_file = PROJECT_DIR / "data" / "status-overrides.json"
+        overrides = {}
+        if overrides_file.exists():
+            try:
+                overrides = json.loads(overrides_file.read_text())
+            except Exception:
+                pass
+
         # Check subtitle uploads
         subtitle_log = PROJECT_DIR / "reports" / "subtitle-uploads.json"
-        if subtitle_log.exists():
+        if "Subtitle Uploads" in overrides:
+            o = overrides["Subtitle Uploads"]
+            health.append({"name": "Subtitle Uploads", "status": o.get("status", "warning"), "detail": o.get("detail", ""), "fix": o.get("fix", [])})
+        elif subtitle_log.exists():
             data = json.loads(subtitle_log.read_text())
             total_uploads = sum(len(v) for v in data.values())
             health.append({"name": "Subtitle Uploads", "status": "ok" if total_uploads > 0 else "warning", "detail": f"{total_uploads} tracks uploaded"})
         else:
-            health.append({"name": "Subtitle Uploads", "status": "warning", "detail": "Not started \u2014 needs YouTube re-auth", "fix": fix_guides.get("Subtitle Uploads", {}).get("steps", []), "auto_fix": "reauth_youtube"})
+            health.append({"name": "Subtitle Uploads", "status": "warning", "detail": "Not started", "fix": fix_guides.get("Subtitle Uploads", {}).get("steps", []), "auto_fix": "reauth_youtube"})
+
+        # Apply any additional status overrides
+        for override_name, o in overrides.items():
+            if override_name == "Subtitle Uploads":
+                continue
+            existing = [h for h in health if h["name"] == override_name]
+            if existing:
+                existing[0]["status"] = o.get("status", existing[0]["status"])
+                existing[0]["detail"] = o.get("detail", existing[0]["detail"])
+                if "fix" in o:
+                    existing[0]["fix"] = o["fix"]
+            else:
+                health.append({"name": override_name, "status": o.get("status", "info"), "detail": o.get("detail", "")})
 
         return health
     except Exception as e:
