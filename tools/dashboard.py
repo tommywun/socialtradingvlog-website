@@ -3208,11 +3208,16 @@ async function loadOverview() {
   const sorted = [...(health || [])].sort((a, b) => (statusOrder[a.status] ?? 5) - (statusOrder[b.status] ?? 5));
   const badgeLabels = {error: 'Stuck', in_progress: 'In Progress', warning: 'Needs Attention', info: 'Info', ok: 'OK'};
 
-  // Split into cards (non-ok) and compact ok items
-  const cardItems = sorted.filter(h => h.status !== 'ok');
-  const okItems = sorted.filter(h => h.status === 'ok');
+  // Only show items that need attention — hide OK items entirely
+  const actionItems = sorted.filter(h => h.status !== 'ok');
 
-  let cardsHtml = cardItems.map(h => {
+  if (actionItems.length === 0) {
+    document.getElementById('system-alerts').innerHTML = '';
+    document.getElementById('system-health').innerHTML = '';
+    return;
+  }
+
+  let cardsHtml = actionItems.map(h => {
     const cssClass = h.status === 'in_progress' ? 'status-in-progress' : `status-${h.status}`;
     const stepsHtml = h.fix && h.fix.length > 0
       ? `<ol class="status-steps">${h.fix.map(s => '<li>' + escapeHtml(s) + '</li>').join('')}</ol>`
@@ -3229,15 +3234,6 @@ async function loadOverview() {
       ${stepsHtml}${autoFixBtn}
     </div>`;
   }).join('');
-
-  // Compact row for OK items
-  if (okItems.length > 0) {
-    cardsHtml += `<div style="display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 4px;">`;
-    cardsHtml += okItems.map(h =>
-      `<div class="health-ok-row"><span class="health-ok-dot"></span><span class="health-ok-name">${escapeHtml(h.name)}</span><span class="health-ok-detail">${escapeHtml(h.detail)}</span></div>`
-    ).join('');
-    cardsHtml += `</div>`;
-  }
 
   document.getElementById('system-alerts').innerHTML = '';
   document.getElementById('system-health').innerHTML = cardsHtml;
