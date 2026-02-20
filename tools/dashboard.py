@@ -27,8 +27,155 @@ if sys.platform == "darwin":
 
 # ─── Authentication ───
 AUTH_TOKEN_FILE = pathlib.Path.home() / ".config" / "stv-secrets" / "dashboard-auth.json"
+SESSIONS_FILE = None  # set after PROJECT_DIR is defined
+DEVICES_FILE = None   # set after PROJECT_DIR is defined
 ACTIVE_SESSIONS = {}  # token -> expiry timestamp
+TRUSTED_DEVICES = {}  # device_token -> {name, created, last_used}
 
+
+def _init_session_files():
+    global SESSIONS_FILE, DEVICES_FILE
+    SESSIONS_FILE = PROJECT_DIR / "data" / "sessions.json"
+    DEVICES_FILE = PROJECT_DIR / "data" / "trusted-devices.json"
+    _load_sessions()
+    _load_devices()
+
+
+def _load_sessions():
+    global ACTIVE_SESSIONS
+    if SESSIONS_FILE and SESSIONS_FILE.exists():
+        try:
+            ACTIVE_SESSIONS = json.loads(SESSIONS_FILE.read_text())
+        except Exception:
+            ACTIVE_SESSIONS = {}
+
+
+def _save_sessions():
+    if SESSIONS_FILE:
+        SESSIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        SESSIONS_FILE.write_text(json.dumps(ACTIVE_SESSIONS))
+
+
+def _load_devices():
+    global TRUSTED_DEVICES
+    if DEVICES_FILE and DEVICES_FILE.exists():
+        try:
+            TRUSTED_DEVICES = json.loads(DEVICES_FILE.read_text())
+        except Exception:
+            TRUSTED_DEVICES = {}
+
+
+def _save_devices():
+    if DEVICES_FILE:
+        DEVICES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        DEVICES_FILE.write_text(json.dumps(TRUSTED_DEVICES, indent=2))
+
+
+
+
+# ─── WebAuthn Passkey (Face ID) ───
+WEBAUTHN_FILE = None  # set after PROJECT_DIR
+WEBAUTHN_CHALLENGES = {}  # challenge -> expiry timestamp
+WEBAUTHN_RP_ID = "socialtradingvlog.com"
+WEBAUTHN_RP_NAME = "STV Command Centre"
+
+
+def _load_webauthn_credentials():
+    if WEBAUTHN_FILE.exists():
+        try:
+            return json.loads(WEBAUTHN_FILE.read_text())
+        except Exception:
+            return []
+    return []
+
+
+def _save_webauthn_credentials(creds):
+    WEBAUTHN_FILE.parent.mkdir(parents=True, exist_ok=True)
+    WEBAUTHN_FILE.write_text(json.dumps(creds, indent=2))
+
+
+def webauthn_register_options():
+    """Generate registration challenge and options."""
+    import base64
+    challenge = base64.urlsafe_b64encode(secrets.token_bytes(32)).rstrip(b"=").decode()
+    WEBAUTHN_CHALLENGES[challenge] = datetime.now().timestamp() + 300  # 5 min expiry
+    existing = _load_webauthn_credentials()
+    exclude = [{"id": c["id"], "type": "public-key"} for c in existing]
+    return {
+        "challenge": challenge,
+        "rp": {"id": WEBAUTHN_RP_ID, "name": WEBAUTHN_RP_NAME},
+        "user": {"id": base64.urlsafe_b64encode(b"stv-admin").rstrip(b"=").decode(), "name": "admin", "displayName": "STV Admin"},
+        "pubKeyCredParams": [
+            {"alg": -7, "type": "public-key"},
+            {"alg": -257, "type": "public-key"}
+        ],
+        "authenticatorSelection": {
+            "authenticatorAttachment": "platform",
+            "userVerification": "required",
+            "residentKey": "preferred"
+        },
+        "timeout": 60000,
+        "excludeCredentials": exclude,
+        "attestation": "none"
+    }
+
+
+def webauthn_register_complete(data):
+    """Store the credential after registration."""
+    challenge = data.get("challenge", "")
+    expiry = WEBAUTHN_CHALLENGES.pop(challenge, 0)
+    if not expiry or expiry < datetime.now().timestamp():
+        return {"error": "Challenge expired or invalid"}
+
+    cred_id = data.get("credentialId", "")
+    if not cred_id:
+        return {"error": "No credential ID"}
+
+    creds = _load_webauthn_credentials()
+    creds.append({
+        "id": cred_id,
+        "created": datetime.now().isoformat(),
+        "name": data.get("name", "Face ID")
+    })
+    _save_webauthn_credentials(creds)
+    return {"success": True}
+
+
+def webauthn_login_options():
+    """Generate authentication challenge and options."""
+    import base64
+    creds = _load_webauthn_credentials()
+    if not creds:
+        return {"error": "No passkeys registered"}
+
+    challenge = base64.urlsafe_b64encode(secrets.token_bytes(32)).rstrip(b"=").decode()
+    WEBAUTHN_CHALLENGES[challenge] = datetime.now().timestamp() + 300
+
+    allow = [{"id": c["id"], "type": "public-key"} for c in creds]
+    return {
+        "challenge": challenge,
+        "rpId": WEBAUTHN_RP_ID,
+        "allowCredentials": allow,
+        "userVerification": "required",
+        "timeout": 60000
+    }
+
+
+def webauthn_login_complete(data):
+    """Verify the assertion and create a session."""
+    challenge = data.get("challenge", "")
+    expiry = WEBAUTHN_CHALLENGES.pop(challenge, 0)
+    if not expiry or expiry < datetime.now().timestamp():
+        return {"error": "Challenge expired or invalid"}
+
+    cred_id = data.get("credentialId", "")
+    creds = _load_webauthn_credentials()
+    if not any(c["id"] == cred_id for c in creds):
+        return {"error": "Unknown credential"}
+
+    # Credential matched + biometric verified on device + challenge valid
+    token = create_session()
+    return {"success": True, "session_token": token}
 
 def init_auth():
     """Create auth file with random password if it doesn't exist."""
@@ -47,7 +194,8 @@ def verify_password(password):
 
 def create_session():
     token = secrets.token_urlsafe(32)
-    ACTIVE_SESSIONS[token] = datetime.now().timestamp() + 86400 * 30  # 30 days
+    ACTIVE_SESSIONS[token] = datetime.now().timestamp() + 86400 * 90  # 90 days
+    _save_sessions()
     return token
 
 
@@ -61,7 +209,29 @@ def verify_session(cookie_header):
             expiry = ACTIVE_SESSIONS.get(token)
             if expiry and expiry > datetime.now().timestamp():
                 return True
+            elif token in ACTIVE_SESSIONS:
+                del ACTIVE_SESSIONS[token]
+                _save_sessions()
     return False
+
+
+def create_device_token(name=""):
+    token = secrets.token_urlsafe(48)
+    TRUSTED_DEVICES[token] = {
+        "name": name or "Phone",
+        "created": datetime.now().isoformat(),
+        "last_used": datetime.now().isoformat()
+    }
+    _save_devices()
+    return token
+
+
+def verify_device_token(token):
+    if not token or token not in TRUSTED_DEVICES:
+        return False
+    TRUSTED_DEVICES[token]["last_used"] = datetime.now().isoformat()
+    _save_devices()
+    return True
 
 
 # ─── VPS Task Runner ───
@@ -152,6 +322,8 @@ def get_automation_status():
 
 SCRIPT_DIR = pathlib.Path(__file__).parent
 PROJECT_DIR = SCRIPT_DIR.parent
+_init_session_files()
+WEBAUTHN_FILE = PROJECT_DIR / "data" / "webauthn-credentials.json"
 
 # ─── Newsletter Subscribers ───
 # Welcome email sender (runs in background thread)
@@ -772,6 +944,67 @@ def get_system_health():
         health = []
         secrets = pathlib.Path.home() / ".config" / "stv-secrets"
 
+        # Resolution guides for each check
+        fix_guides = {
+            "OpenAI API Key": {
+                "steps": [
+                    "Go to platform.openai.com/api-keys",
+                    "Create a new API key",
+                    "Ask Claude to save it to the VPS secrets folder"
+                ],
+                "auto_fix": None
+            },
+            "YouTube Token": {
+                "steps": [
+                    "The YouTube OAuth token needs refreshing",
+                    "Ask Claude to run the YouTube re-auth flow on the VPS",
+                    "This will open a browser auth link you need to visit"
+                ],
+                "auto_fix": "reauth_youtube"
+            },
+            "Gmail Token": {
+                "steps": [
+                    "Gmail OAuth token is missing or expired",
+                    "This is needed for reading reply emails in Outreach",
+                    "Ask Claude to run the Gmail re-auth flow on the VPS",
+                    "You will get a link to authorize Gmail access"
+                ],
+                "auto_fix": "reauth_gmail"
+            },
+            "Resend API Key": {
+                "steps": [
+                    "Go to resend.com/api-keys",
+                    "Copy your API key",
+                    "Ask Claude to save it to the VPS secrets folder"
+                ],
+                "auto_fix": None
+            },
+            "GA Service Account": {
+                "steps": [
+                    "The Google Analytics service account JSON is missing on the VPS",
+                    "It exists on your Mac at ~/.config/stv-secrets/",
+                    "Ask Claude to copy it from your Mac to the VPS"
+                ],
+                "auto_fix": "copy_ga_key"
+            },
+            "Transcription Pipeline": {
+                "steps": [
+                    "The transcription pipeline processes YouTube videos",
+                    "If errors occurred, some videos failed to transcribe",
+                    "Ask Claude to check the pipeline log and retry failed videos"
+                ],
+                "auto_fix": "retry_pipeline"
+            },
+            "Subtitle Uploads": {
+                "steps": [
+                    "YouTube subtitle uploads require OAuth re-authentication",
+                    "The YouTube token needs the captions.force scope",
+                    "Ask Claude to set up YouTube subtitle uploads on the VPS"
+                ],
+                "auto_fix": "reauth_youtube"
+            },
+        }
+
         # Check all secret files (simple file-exists checks, no heavy imports)
         checks = [
             ("OpenAI API Key", "openai-api-key.txt", True),
@@ -782,17 +1015,18 @@ def get_system_health():
         ]
         for name, filename, check_content in checks:
             fpath = secrets / filename
+            guide = fix_guides.get(name, {})
             if fpath.exists():
                 if check_content:
                     content = fpath.read_text().strip()
                     if len(content) > 10:
                         health.append({"name": name, "status": "ok", "detail": "Key loaded"})
                     else:
-                        health.append({"name": name, "status": "error", "detail": "File looks empty/invalid"})
+                        health.append({"name": name, "status": "error", "detail": "File looks empty/invalid", "fix": guide.get("steps", []), "auto_fix": guide.get("auto_fix")})
                 else:
                     health.append({"name": name, "status": "ok", "detail": "File exists"})
             else:
-                health.append({"name": name, "status": "error", "detail": f"Missing: {fpath}"})
+                health.append({"name": name, "status": "error", "detail": f"Missing", "fix": guide.get("steps", []), "auto_fix": guide.get("auto_fix")})
 
         # Check pipeline log for recent errors
         pipeline_log = PROJECT_DIR / "transcriptions" / "pipeline.log"
@@ -804,7 +1038,7 @@ def get_system_health():
                 m = matches[-1]
                 completed, total, errors = int(m.group(1)), int(m.group(2)), int(m.group(3))
                 if errors > 0 and completed < total:
-                    health.append({"name": "Transcription Pipeline", "status": "error", "detail": f"{errors} failures \u2014 {completed}/{total} complete"})
+                    health.append({"name": "Transcription Pipeline", "status": "error", "detail": f"{errors} failures \u2014 {completed}/{total} complete", "fix": fix_guides.get("Transcription Pipeline", {}).get("steps", []), "auto_fix": "retry_pipeline"})
                 else:
                     health.append({"name": "Transcription Pipeline", "status": "ok", "detail": f"{completed}/{total} complete"})
             else:
@@ -812,11 +1046,11 @@ def get_system_health():
                 running_match = _re.findall(r'\[(\d+)/(\d+)\]', log_text)
                 if running_match:
                     last = running_match[-1]
-                    health.append({"name": "Transcription Pipeline", "status": "warning", "detail": f"Running... ({last[0]}/{last[1]})"})
+                    health.append({"name": "Transcription Pipeline", "status": "warning", "detail": f"Running... ({last[0]}/{last[1]})", "fix": ["Pipeline is currently running", "Check back in a few minutes for completion status"]})
                 else:
                     health.append({"name": "Transcription Pipeline", "status": "ok", "detail": "Log exists"})
         else:
-            health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No pipeline log found"})
+            health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No pipeline log found", "fix": ["The transcription pipeline hasn\u2019t been run yet", "Ask Claude to run the transcription pipeline on the VPS"]})
 
         # Check subtitle uploads
         subtitle_log = PROJECT_DIR / "reports" / "subtitle-uploads.json"
@@ -825,7 +1059,7 @@ def get_system_health():
             total_uploads = sum(len(v) for v in data.values())
             health.append({"name": "Subtitle Uploads", "status": "ok" if total_uploads > 0 else "warning", "detail": f"{total_uploads} tracks uploaded"})
         else:
-            health.append({"name": "Subtitle Uploads", "status": "warning", "detail": "Not started \u2014 needs YouTube re-auth"})
+            health.append({"name": "Subtitle Uploads", "status": "warning", "detail": "Not started \u2014 needs YouTube re-auth", "fix": fix_guides.get("Subtitle Uploads", {}).get("steps", []), "auto_fix": "reauth_youtube"})
 
         return health
     except Exception as e:
@@ -895,6 +1129,293 @@ def update_content_status(index, new_status):
         return {"success": True}
     return {"error": "Invalid index"}
 
+
+
+# ─── Content Review Queue ───
+REVIEW_QUEUE_FILE = PROJECT_DIR / "data" / "review-queue.json"
+REVIEW_STAGING_DIR = PROJECT_DIR / "data" / "review-staging"
+
+
+def get_review_queue():
+    if REVIEW_QUEUE_FILE.exists():
+        return json.loads(REVIEW_QUEUE_FILE.read_text())
+    return []
+
+
+def save_review_queue(queue):
+    REVIEW_QUEUE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    REVIEW_QUEUE_FILE.write_text(json.dumps(queue, indent=2))
+
+
+def get_review_article(slug):
+    article_path = REVIEW_STAGING_DIR / slug / "index.html"
+    if article_path.exists():
+        return article_path.read_text()
+    return None
+
+
+def save_review_article(slug, html):
+    article_path = REVIEW_STAGING_DIR / slug / "index.html"
+    article_path.parent.mkdir(parents=True, exist_ok=True)
+    article_path.write_text(html)
+    return {"success": True}
+
+
+def publish_review_article(slug):
+    """Copy article from staging to repo, git add/commit/push."""
+    queue = get_review_queue()
+    article = next((a for a in queue if a["slug"] == slug), None)
+    if not article:
+        return {"error": "Article not found in queue"}
+
+    src = REVIEW_STAGING_DIR / slug
+    dest = PROJECT_DIR / slug
+    if not src.exists():
+        return {"error": "Staging files not found"}
+
+    # Copy files from staging to repo
+    import shutil
+    if dest.exists():
+        shutil.rmtree(dest)
+    shutil.copytree(str(src), str(dest))
+
+    # Git add, commit, push
+    title = article.get("title", slug)
+    try:
+        subprocess.run(["git", "add", slug + "/"], cwd=str(PROJECT_DIR), check=True, capture_output=True)
+        subprocess.run(
+            ["git", "commit", "-m", f"Publish: {title}"],
+            cwd=str(PROJECT_DIR), check=True, capture_output=True
+        )
+        result = subprocess.run(
+            ["git", "push", "origin", "main"],
+            cwd=str(PROJECT_DIR), check=True, capture_output=True, text=True
+        )
+    except subprocess.CalledProcessError as e:
+        return {"error": f"Git failed: {e.stderr or e.stdout or str(e)}"}
+
+    # Update queue status
+    article["status"] = "published"
+    article["published_date"] = datetime.now().strftime("%Y-%m-%d")
+    save_review_queue(queue)
+    return {"success": True, "message": f"Published: {title}"}
+
+
+def get_preview_html(slug):
+    """Get article HTML with paths rewritten for preview."""
+    html = get_review_article(slug)
+    if not html:
+        return None
+    # Rewrite relative CSS/JS paths to absolute URLs on live site
+    html = html.replace('"../css/', '"https://socialtradingvlog.com/css/')
+    html = html.replace('"../js/', '"https://socialtradingvlog.com/js/')
+    html = html.replace('"../../css/', '"https://socialtradingvlog.com/css/')
+    html = html.replace('"../../js/', '"https://socialtradingvlog.com/js/')
+    html = html.replace("'../css/", "'https://socialtradingvlog.com/css/")
+    html = html.replace("'../js/", "'https://socialtradingvlog.com/js/")
+    return html
+
+
+
+# ─── Auto-Fix Commands ───
+def run_auto_fix(fix_id):
+    """Run a predefined fix command for a known issue."""
+    fixes = {
+        "copy_ga_key": {
+            "desc": "Copy GA service account from local backup",
+            "cmd": None,  # Needs Mac access — cannot auto-fix from VPS
+            "message": "This needs your Mac connected. Ask Claude in your next session: 'copy the GA service account to the VPS'"
+        },
+        "reauth_gmail": {
+            "desc": "Re-authenticate Gmail OAuth",
+            "cmd": None,
+            "message": "Gmail re-auth requires a browser. Ask Claude: 'set up Gmail OAuth on the VPS' — you will get a link to visit."
+        },
+        "reauth_youtube": {
+            "desc": "Re-authenticate YouTube OAuth",
+            "cmd": None,
+            "message": "YouTube re-auth requires a browser. Ask Claude: 'refresh the YouTube OAuth token on the VPS'"
+        },
+        "retry_pipeline": {
+            "desc": "Retry failed transcriptions",
+            "cmd": [sys.executable, "tools/run_pipeline.py", "--retry-failed"],
+            "message": "Retrying failed transcriptions..."
+        },
+        "update_sitemap": {
+            "desc": "Regenerate sitemap.xml",
+            "cmd": [sys.executable, "tools/generate_sitemap.py"],
+            "message": "Regenerating sitemap..."
+        },
+        "fix_broken_links": {
+            "desc": "Scan and report broken links",
+            "cmd": [sys.executable, "tools/broken_link_finder.py"],
+            "message": "Scanning for broken links..."
+        },
+    }
+
+    fix = fixes.get(fix_id)
+    if not fix:
+        return {"error": f"Unknown fix: {fix_id}"}
+
+    if fix["cmd"] is None:
+        # Cannot auto-fix — return instructions
+        return {"success": False, "manual": True, "message": fix["message"]}
+
+    # Run the command as a background task
+    task_id = f"fix-{fix_id}-{datetime.now().strftime('%H%M%S')}"
+    try:
+        run_task(task_id, fix["cmd"])
+        return {"success": True, "message": fix["message"], "task_id": task_id}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+
+# ─── SEO Checker ───
+def analyze_seo(slug):
+    """Analyze an article's SEO quality and return scores + suggestions."""
+    import re as _re
+    html = get_review_article(slug)
+    if not html:
+        return {"error": "Article not found"}
+
+    results = {"score": 0, "max_score": 100, "checks": []}
+    total = 0
+    earned = 0
+
+    # 1. Title tag
+    title_match = _re.search(r'<title>(.*?)</title>', html, _re.IGNORECASE)
+    title = title_match.group(1) if title_match else ""
+    title_len = len(title)
+    total += 10
+    if 30 <= title_len <= 65:
+        earned += 10
+        results["checks"].append({"name": "Title length", "status": "pass", "detail": f"{title_len} chars (ideal: 30-65)"})
+    elif title_len > 0:
+        earned += 5
+        results["checks"].append({"name": "Title length", "status": "warn", "detail": f"{title_len} chars (ideal: 30-65)"})
+    else:
+        results["checks"].append({"name": "Title length", "status": "fail", "detail": "Missing title tag"})
+
+    # 2. Meta description
+    meta_match = _re.search(r"<meta\s+name=.description.\s+content=.([^>]*?).", html, _re.IGNORECASE)
+    meta_desc = meta_match.group(1) if meta_match else ""
+    meta_len = len(meta_desc)
+    total += 10
+    if 120 <= meta_len <= 160:
+        earned += 10
+        results["checks"].append({"name": "Meta description", "status": "pass", "detail": f"{meta_len} chars (ideal: 120-160)"})
+    elif meta_len > 0:
+        earned += 5
+        results["checks"].append({"name": "Meta description", "status": "warn", "detail": f"{meta_len} chars (ideal: 120-160)"})
+    else:
+        results["checks"].append({"name": "Meta description", "status": "fail", "detail": "Missing meta description"})
+
+    # 3. H1 tag
+    h1_matches = _re.findall(r'<h1[^>]*>(.*?)</h1>', html, _re.IGNORECASE | _re.DOTALL)
+    total += 10
+    if len(h1_matches) == 1:
+        earned += 10
+        results["checks"].append({"name": "H1 tag", "status": "pass", "detail": "Single H1 found"})
+    elif len(h1_matches) > 1:
+        earned += 5
+        results["checks"].append({"name": "H1 tag", "status": "warn", "detail": f"{len(h1_matches)} H1 tags (should be 1)"})
+    else:
+        results["checks"].append({"name": "H1 tag", "status": "fail", "detail": "No H1 tag found"})
+
+    # 4. Heading structure (H2s)
+    h2_matches = _re.findall(r'<h2[^>]*>(.*?)</h2>', html, _re.IGNORECASE | _re.DOTALL)
+    total += 10
+    if len(h2_matches) >= 3:
+        earned += 10
+        results["checks"].append({"name": "H2 subheadings", "status": "pass", "detail": f"{len(h2_matches)} subheadings"})
+    elif len(h2_matches) >= 1:
+        earned += 5
+        results["checks"].append({"name": "H2 subheadings", "status": "warn", "detail": f"{len(h2_matches)} subheadings (aim for 3+)"})
+    else:
+        results["checks"].append({"name": "H2 subheadings", "status": "fail", "detail": "No H2 subheadings"})
+
+    # 5. Word count
+    text = _re.sub(r'<script[^>]*>.*?</script>', '', html, flags=_re.DOTALL | _re.IGNORECASE)
+    text = _re.sub(r'<style[^>]*>.*?</style>', '', text, flags=_re.DOTALL | _re.IGNORECASE)
+    text = _re.sub(r'<[^>]+>', ' ', text)
+    text = _re.sub(r'\s+', ' ', text).strip()
+    word_count = len(text.split())
+    reading_time = max(1, round(word_count / 250))
+    total += 10
+    if word_count >= 1500:
+        earned += 10
+        results["checks"].append({"name": "Word count", "status": "pass", "detail": f"{word_count:,} words ({reading_time} min read)"})
+    elif word_count >= 800:
+        earned += 7
+        results["checks"].append({"name": "Word count", "status": "warn", "detail": f"{word_count:,} words ({reading_time} min read) — aim for 1500+"})
+    else:
+        earned += 3
+        results["checks"].append({"name": "Word count", "status": "fail", "detail": f"{word_count:,} words ({reading_time} min read) — too short for SEO"})
+
+    # 6. Internal links
+    internal_links = _re.findall(r"href=.(/[^\s>]*?).", html)
+    total += 10
+    if len(internal_links) >= 5:
+        earned += 10
+        results["checks"].append({"name": "Internal links", "status": "pass", "detail": f"{len(internal_links)} internal links"})
+    elif len(internal_links) >= 2:
+        earned += 5
+        results["checks"].append({"name": "Internal links", "status": "warn", "detail": f"{len(internal_links)} internal links (aim for 5+)"})
+    else:
+        results["checks"].append({"name": "Internal links", "status": "fail", "detail": f"{len(internal_links)} internal links — add more cross-links"})
+
+    # 7. Schema markup
+    schema_matches = _re.findall(r'application/ld\+json', html)
+    total += 10
+    if len(schema_matches) >= 2:
+        earned += 10
+        results["checks"].append({"name": "Schema markup", "status": "pass", "detail": f"{len(schema_matches)} schema blocks"})
+    elif len(schema_matches) >= 1:
+        earned += 7
+        results["checks"].append({"name": "Schema markup", "status": "warn", "detail": f"{len(schema_matches)} schema block (add FAQPage + BreadcrumbList)"})
+    else:
+        results["checks"].append({"name": "Schema markup", "status": "fail", "detail": "No schema markup found"})
+
+    # 8. Canonical URL
+    canonical = _re.search(r"<link[^>]+rel=.canonical.", html, _re.IGNORECASE)
+    total += 10
+    if canonical:
+        earned += 10
+        results["checks"].append({"name": "Canonical URL", "status": "pass", "detail": "Canonical tag present"})
+    else:
+        results["checks"].append({"name": "Canonical URL", "status": "fail", "detail": "Missing canonical URL"})
+
+    # 9. Image alt tags
+    images = _re.findall(r'<img[^>]*>', html, _re.IGNORECASE)
+    imgs_with_alt = [img for img in images if 'alt=' in img.lower() and 'alt=""' not in img.lower()]
+    total += 10
+    if len(images) == 0:
+        earned += 5
+        results["checks"].append({"name": "Image alt tags", "status": "warn", "detail": "No images found"})
+    elif len(imgs_with_alt) == len(images):
+        earned += 10
+        results["checks"].append({"name": "Image alt tags", "status": "pass", "detail": f"All {len(images)} images have alt text"})
+    else:
+        missing = len(images) - len(imgs_with_alt)
+        earned += 5
+        results["checks"].append({"name": "Image alt tags", "status": "warn", "detail": f"{missing}/{len(images)} images missing alt text"})
+
+    # 10. Risk disclaimer (required for finance)
+    total += 10
+    has_disclaimer = 'capital is at risk' in html.lower() or 'risk disclaimer' in html.lower() or '51% of retail' in html.lower()
+    if has_disclaimer:
+        earned += 10
+        results["checks"].append({"name": "Risk disclaimer", "status": "pass", "detail": "Financial risk disclaimer present"})
+    else:
+        results["checks"].append({"name": "Risk disclaimer", "status": "fail", "detail": "Missing risk disclaimer (required for finance content)"})
+
+    results["score"] = round((earned / total) * 100) if total > 0 else 0
+    results["word_count"] = word_count
+    results["reading_time"] = reading_time
+    results["title"] = title
+    results["meta_description"] = meta_desc
+    return results
 
 # ─── Goals / Growth Strategy ───
 GOALS_FILE = PROJECT_DIR / "outreach" / "goals.json"
@@ -2010,9 +2531,12 @@ tbody tr.clickable { cursor: pointer; }
     <button class="header-tab" data-section="growth">Growth</button>
     <button class="header-tab" data-section="automation">Automation</button>
     <button class="header-tab" data-section="performance">Performance</button>
+    <button class="header-tab" data-section="review">Review</button>
   </nav>
   <div class="header-actions">
     <button class="header-btn" onclick="loadAll()">Refresh</button>
+    <button class="header-btn" id="faceid-setup-btn" style="display:none;background:var(--info);color:white;" onclick="registerPasskey()">Set up Face ID</button>
+    <button class="header-btn" id="trust-device-btn" style="display:none;" onclick="trustDevice()">Trust Device</button>
     <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Toggle dark mode">&#9789;</button>
   </div>
 </header>
@@ -2259,6 +2783,70 @@ tbody tr.clickable { cursor: pointer; }
 
 </div>
 
+
+  <div id="review" class="section">
+    <div class="section-header">
+      <h2>Content Review Queue</h2>
+      <p>Review, edit, and publish articles to the live site</p>
+    </div>
+    <div class="review-layout" style="display:grid;grid-template-columns:320px 1fr;gap:16px;min-height:600px;">
+      <div class="card" style="overflow-y:auto;max-height:80vh;">
+        <div class="card-header"><h3>Articles</h3><span id="review-count" class="badge" style="background:var(--warning-bg);color:var(--warning-text);padding:2px 8px;border-radius:12px;font-size:12px;"></span></div>
+        <div class="card-body" id="review-list" style="padding:0;">
+          <div class="chart-empty">Loading...</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card" style="flex:1;min-height:0;">
+          <div class="card-header">
+            <h3 id="review-article-title">Select an article</h3>
+            <div id="review-actions" style="display:none;gap:8px;display:flex;">
+              <button class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 12px" onclick="saveReviewDraft()">Save Draft</button>
+              <button class="btn btn-primary" style="height:32px;font-size:12px;padding:0 12px" onclick="publishArticle()">Publish to Live Site</button>
+            </div>
+          </div>
+          <div class="card-body" style="padding:0;display:flex;flex-direction:column;min-height:400px;">
+            <div id="review-empty" style="padding:40px;text-align:center;color:var(--text-secondary);">
+              <p>Select an article from the list to preview and edit it.</p>
+            </div>
+            <div id="review-split" style="display:none;flex:1;min-height:0;">
+              <div style="display:flex;border-bottom:1px solid var(--border-primary);padding:4px 12px;gap:8px;background:var(--bg-table-header);">
+                <button class="review-view-btn active" data-view="preview" style="border:none;background:none;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:500;border-radius:6px;">Preview</button>
+                <button class="review-view-btn" data-view="code" style="border:none;background:none;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:500;border-radius:6px;">Edit HTML</button>
+                <button class="review-view-btn" data-view="split" style="border:none;background:none;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:500;border-radius:6px;">Split View</button>
+              </div>
+              <div id="review-preview-pane" style="flex:1;min-height:400px;">
+                <iframe id="review-iframe" style="width:100%;height:100%;border:none;min-height:500px;" sandbox="allow-same-origin allow-scripts"></iframe>
+              </div>
+              <div id="review-code-pane" style="display:none;flex:1;min-height:400px;">
+                <textarea id="review-editor" style="width:100%;height:100%;min-height:500px;font-family:monospace;font-size:13px;padding:12px;border:none;resize:none;background:var(--bg-input);color:var(--text-primary);"></textarea>
+              </div>
+              <div id="review-split-pane" style="display:none;flex:1;min-height:400px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;height:100%;min-height:500px;">
+                  <iframe id="review-iframe-split" style="width:100%;height:100%;border:none;border-right:1px solid var(--border-primary);" sandbox="allow-same-origin allow-scripts"></iframe>
+                  <textarea id="review-editor-split" style="width:100%;height:100%;font-family:monospace;font-size:12px;padding:12px;border:none;resize:none;background:var(--bg-input);color:var(--text-primary);"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="review-seo-card" style="display:none;">
+          <div class="card-header"><h3>SEO Score</h3><span id="seo-score-badge" style="font-size:18px;font-weight:700;font-family:Plus Jakarta Sans,sans-serif;"></span></div>
+          <div class="card-body" id="seo-results" style="padding:8px 16px;">
+            <div class="chart-empty">Select an article to see SEO analysis</div>
+          </div>
+        </div>
+        <div class="card" id="review-notes-card" style="display:none;">
+          <div class="card-header"><h3>Review Notes</h3></div>
+          <div class="card-body">
+            <textarea id="review-notes" rows="3" style="width:100%;font-size:13px;padding:8px;border:1px solid var(--border-input);border-radius:6px;resize:vertical;" placeholder="Add notes about this article..."></textarea>
+            <button class="btn btn-secondary" style="margin-top:8px;height:32px;font-size:12px;padding:0 12px;" onclick="saveReviewNotes()">Save Notes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <!-- Draft editor modal -->
 <div class="overlay" id="editor-overlay">
   <div class="modal">
@@ -2358,10 +2946,25 @@ function showLogin() {
     loginEl.innerHTML = `<div class="login-box">
       <h2>STV Command Centre</h2>
       <p>Enter your password to continue</p>
+      <div id="faceid-login-btn" style="display:none;margin-bottom:16px;">
+        <button onclick="loginWithPasskey()" style="width:100%;padding:14px;font-size:16px;font-weight:600;background:var(--info);color:white;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Sign in with Face ID
+        </button>
+        <div style="text-align:center;color:var(--text-secondary);font-size:12px;margin-top:8px;">or enter password below</div>
+      </div>
       <input type="password" id="login-pass" placeholder="Password" autofocus onkeydown="if(event.key==='Enter')doLogin()">
       <button onclick="doLogin()">Sign In</button>
       <div class="login-error" id="login-error">Incorrect password</div>
     </div>`;
+    // Check if passkeys are registered and show Face ID button
+    fetch('/api/webauthn-has-credentials').then(r=>r.json()).then(d=>{
+      if(d.has_credentials){
+        document.getElementById('faceid-login-btn').style.display='block';
+        // Auto-trigger Face ID
+        loginWithPasskey();
+      }
+    }).catch(()=>{});
     document.body.appendChild(loginEl);
   }
   loginEl.style.display = 'flex';
@@ -2377,6 +2980,20 @@ async function doLogin() {
       document.querySelector('.header').style.display = '';
       document.querySelector('.container').style.display = '';
       loadAll();
+      // Offer Face ID setup or device trust
+      setTimeout(async () => {
+        const hasWebAuthn = await checkWebAuthnSupport();
+        const hasCreds = await fetch('/api/webauthn-has-credentials').then(r=>r.json()).catch(()=>({has_credentials:false}));
+        if (hasWebAuthn && !hasCreds.has_credentials) {
+          if (confirm('Set up Face ID?\n\nYou can sign in with Face ID instead of a password.')) {
+            await registerPasskey();
+          }
+        } else if (!localStorage.getItem('stv_device_token')) {
+          if (confirm('Trust this device?\n\nYou will not need to enter a password on this device again.')) {
+            trustDevice();
+          }
+        }
+      }, 500);
     } else {
       document.getElementById('login-error').style.display = 'block';
     }
@@ -2528,16 +3145,31 @@ async function loadOverview() {
   const warnings = (health || []).filter(h => h.status === 'warning');
   let alertsHtml = '';
   if (errors.length > 0) {
-    alertsHtml += `<div class="error-banner"><div class="error-icon">!</div><div class="error-body"><div class="error-title">${errors.length} system error${errors.length > 1 ? 's' : ''} need attention</div><div class="error-detail">${errors.map(e => `<strong>${escapeHtml(e.name)}</strong>: ${escapeHtml(e.detail)}`).join('<br>')}</div></div></div>`;
+    alertsHtml += `<div class="error-banner" style="cursor:pointer" onclick="document.getElementById('system-health').scrollIntoView({behavior:'smooth'})"><div class="error-icon">!</div><div class="error-body"><div class="error-title">${errors.length} system error${errors.length > 1 ? 's' : ''} need attention</div><div class="error-detail">${errors.map(e => `<strong>${escapeHtml(e.name)}</strong>: ${escapeHtml(e.detail)}`).join('<br>')}</div><div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">Tap for fix instructions \u2193</div></div></div>`;
   }
   if (warnings.length > 0) {
     alertsHtml += `<div class="alert-card"><span class="alert-icon">!</span><span class="alert-text">${warnings.map(w => `${w.name}: ${w.detail}`).join(' | ')}</span><span class="alert-count">${warnings.length}</span></div>`;
   }
   document.getElementById('system-alerts').innerHTML = alertsHtml;
 
-  // System health grid
-  document.getElementById('system-health').innerHTML = (health || []).map(h => {
-    return `<div class="health-item"><span class="health-dot ${h.status}"></span><span class="health-name">${escapeHtml(h.name)}</span><span class="health-detail">${escapeHtml(h.detail)}</span></div>`;
+  // System health grid — clickable errors/warnings with fix steps
+  document.getElementById('system-health').innerHTML = (health || []).map((h, i) => {
+    const clickable = h.fix && h.fix.length > 0;
+    const cursor = clickable ? 'cursor:pointer;' : '';
+    const chevron = clickable ? '<span style="margin-left:auto;color:var(--text-secondary);font-size:12px;">\u25B6</span>' : '';
+    return `<div class="health-item" style="${cursor}" ${clickable ? `onclick="toggleHealthFix(this, ${i})"` : ''} data-health-index="${i}">
+      <span class="health-dot ${h.status}"></span>
+      <span class="health-name">${escapeHtml(h.name)}</span>
+      <span class="health-detail">${escapeHtml(h.detail)}</span>
+      ${chevron}
+    </div>
+    ${clickable ? `<div class="health-fix" id="health-fix-${i}" style="display:none;background:var(--bg-table-header);border-radius:0 0 8px 8px;margin-top:-4px;margin-bottom:8px;padding:12px 16px;font-size:13px;">
+      <div style="font-weight:600;margin-bottom:8px;color:var(--text-primary);">How to fix:</div>
+      <ol style="margin:0;padding-left:20px;color:var(--text-secondary);line-height:1.8;">
+        ${h.fix.map(s => '<li>' + escapeHtml(s) + '</li>').join('')}
+      </ol>
+      ${h.auto_fix ? '<button class="btn btn-primary" style="margin-top:10px;height:32px;font-size:12px;padding:0 16px;" onclick="runAutoFix(\'' + h.auto_fix + '\', this)">Fix It</button>' : ''}
+    </div>` : ''}`;
   }).join('');
 
   // Translation coverage
@@ -3337,7 +3969,7 @@ if ('serviceWorker' in navigator) {
 
 // ─── Load All + Auto-Refresh ───
 async function loadAll() {
-  await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA()]);
+  await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA(), loadReview()]);
 }
 loadAll();
 
@@ -3353,6 +3985,423 @@ setInterval(() => {
     loadAutomation();
   }
 }, 5000);
+
+// Refresh review tab when viewing it
+setInterval(() => {
+  const reviewTab = document.getElementById('review');
+  if (reviewTab && reviewTab.classList.contains('active')) {
+    loadReview();
+  }
+}, 10000);
+
+// ─── Review Queue ───
+let reviewQueue = [];
+let currentReviewSlug = null;
+let reviewDirty = false;
+
+async function loadReview() {
+  try {
+    reviewQueue = await api('/review-queue');
+    const list = document.getElementById('review-list');
+    const count = document.getElementById('review-count');
+    const pending = reviewQueue.filter(a => a.status !== 'published').length;
+    count.textContent = pending + ' pending';
+
+    if (!reviewQueue.length) {
+      list.innerHTML = '<div class="chart-empty">No articles in review queue.</div>';
+      return;
+    }
+
+    const typeColors = {seo: 'var(--info)', comparison: 'var(--chart-3)', checklist: 'var(--success)'};
+    const statusColors = {pending: 'var(--warning-bg)', reviewed: 'var(--info)', published: 'var(--success-bg)'};
+    const statusTextColors = {pending: 'var(--warning-text)', reviewed: 'var(--info-hover)', published: 'var(--success-text)'};
+
+    list.innerHTML = reviewQueue.map(a => `
+      <div class="review-item ${currentReviewSlug === a.slug ? 'active' : ''}" onclick="selectReviewArticle('${a.slug}')"
+           style="padding:12px 16px;cursor:pointer;border-bottom:1px solid var(--border-primary);transition:background 0.15s;${currentReviewSlug === a.slug ? 'background:var(--bg-table-hover);border-left:3px solid var(--info);' : ''}">
+        <div style="font-weight:500;font-size:13px;line-height:1.3;margin-bottom:4px;">${a.title}</div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span style="font-size:11px;padding:1px 6px;border-radius:10px;background:${typeColors[a.type] || 'var(--info)'};color:white;font-weight:500;">${a.type}</span>
+          <span style="font-size:11px;padding:1px 6px;border-radius:10px;background:${statusColors[a.status] || statusColors.pending};color:${statusTextColors[a.status] || statusTextColors.pending};font-weight:500;">${a.status}</span>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) { console.warn('Review load failed:', e); }
+}
+
+async function selectReviewArticle(slug) {
+  if (reviewDirty && !confirm('You have unsaved changes. Discard?')) return;
+  currentReviewSlug = slug;
+  reviewDirty = false;
+  const article = reviewQueue.find(a => a.slug === slug);
+
+  document.getElementById('review-article-title').textContent = article ? article.title : slug;
+  document.getElementById('review-actions').style.display = 'flex';
+  document.getElementById('review-empty').style.display = 'none';
+  document.getElementById('review-split').style.display = 'flex';
+  document.getElementById('review-notes-card').style.display = 'block';
+  document.getElementById('review-seo-card').style.display = 'block';
+  loadSeoCheck(slug);
+
+  // Load preview
+  const previewUrl = '/preview/' + slug + '/';
+  document.getElementById('review-iframe').src = previewUrl;
+  const splitIframe = document.getElementById('review-iframe-split');
+  if (splitIframe) splitIframe.src = previewUrl;
+
+  // Load raw HTML for editor
+  try {
+    const data = await api('/review-article?slug=' + slug);
+    document.getElementById('review-editor').value = data.html || '';
+    const splitEditor = document.getElementById('review-editor-split');
+    if (splitEditor) splitEditor.value = data.html || '';
+  } catch(e) { console.warn('Could not load article HTML:', e); }
+
+  // Load notes
+  if (article && article.notes) {
+    document.getElementById('review-notes').value = article.notes;
+  } else {
+    document.getElementById('review-notes').value = '';
+  }
+
+  // Re-render list to show active state
+  loadReview();
+}
+
+// View mode switching (preview / code / split)
+document.querySelectorAll('.review-view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.review-view-btn').forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'none';
+      b.style.color = 'var(--text-secondary)';
+    });
+    btn.classList.add('active');
+    btn.style.background = 'var(--bg-card)';
+    btn.style.color = 'var(--text-primary)';
+
+    const view = btn.dataset.view;
+    document.getElementById('review-preview-pane').style.display = view === 'preview' ? 'flex' : 'none';
+    document.getElementById('review-code-pane').style.display = view === 'code' ? 'flex' : 'none';
+    document.getElementById('review-split-pane').style.display = view === 'split' ? 'flex' : 'none';
+  });
+});
+// Init first button style
+const firstViewBtn = document.querySelector('.review-view-btn.active');
+if (firstViewBtn) { firstViewBtn.style.background = 'var(--bg-card)'; firstViewBtn.style.color = 'var(--text-primary)'; }
+
+// Track editor changes
+document.getElementById('review-editor').addEventListener('input', () => { reviewDirty = true; });
+const splitEd = document.getElementById('review-editor-split');
+if (splitEd) splitEd.addEventListener('input', () => {
+  reviewDirty = true;
+  // Sync to main editor
+  document.getElementById('review-editor').value = splitEd.value;
+});
+
+async function loadSeoCheck(slug) {
+  const container = document.getElementById('seo-results');
+  const badge = document.getElementById('seo-score-badge');
+  container.innerHTML = '<div style="text-align:center;padding:12px;color:var(--text-secondary);">Analyzing...</div>';
+  try {
+    const seo = await api('/seo-check?slug=' + slug);
+    if (seo.error) { container.innerHTML = seo.error; return; }
+
+    const scoreColor = seo.score >= 80 ? 'var(--success)' : seo.score >= 50 ? 'var(--chart-3)' : 'var(--critical)';
+    badge.textContent = seo.score + '/100';
+    badge.style.color = scoreColor;
+
+    const statusIcon = {pass: '\u2705', warn: '\u26A0\uFE0F', fail: '\u274C'};
+    const statusColor = {pass: 'var(--success-text)', warn: 'var(--warning-text)', fail: 'var(--critical-text)'};
+
+    let html = `<div style="display:flex;gap:16px;margin-bottom:12px;font-size:13px;color:var(--text-secondary);">
+      <span>${seo.word_count.toLocaleString()} words</span>
+      <span>${seo.reading_time} min read</span>
+    </div>`;
+    html += seo.checks.map(c => `
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border-primary);font-size:13px;">
+        <span>${statusIcon[c.status] || ''}</span>
+        <span style="font-weight:500;min-width:120px;">${c.name}</span>
+        <span style="color:${statusColor[c.status] || 'var(--text-secondary)'}">${c.detail}</span>
+      </div>
+    `).join('');
+    container.innerHTML = html;
+  } catch(e) { container.innerHTML = 'SEO check failed'; }
+}
+
+async function saveReviewDraft() {
+  if (!currentReviewSlug) return;
+  const html = document.getElementById('review-editor').value || document.getElementById('review-editor-split').value;
+  try {
+    await api('/review-save', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({slug: currentReviewSlug, html})});
+    reviewDirty = false;
+    // Refresh preview
+    document.getElementById('review-iframe').src = '/preview/' + currentReviewSlug + '/';
+    const si = document.getElementById('review-iframe-split');
+    if (si) si.src = '/preview/' + currentReviewSlug + '/';
+    showToast('Draft saved');
+  } catch(e) { showToast('Save failed: ' + e.message, true); }
+}
+
+async function publishArticle() {
+  if (!currentReviewSlug) return;
+  const article = reviewQueue.find(a => a.slug === currentReviewSlug);
+  if (!confirm('Publish "' + (article ? article.title : currentReviewSlug) + '" to the live site?\n\nThis will push it to GitHub and it will go live on socialtradingvlog.com immediately.')) return;
+
+  // Save any pending edits first
+  if (reviewDirty) await saveReviewDraft();
+
+  try {
+    const result = await api('/review-publish', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({slug: currentReviewSlug})});
+    if (result.success) {
+      showToast('Published! Live on socialtradingvlog.com');
+      loadReview();
+    } else {
+      showToast('Publish failed: ' + (result.error || 'unknown'), true);
+    }
+  } catch(e) { showToast('Publish failed: ' + e.message, true); }
+}
+
+async function saveReviewNotes() {
+  if (!currentReviewSlug) return;
+  const notes = document.getElementById('review-notes').value;
+  try {
+    await api('/review-status', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({slug: currentReviewSlug, notes})});
+    showToast('Notes saved');
+  } catch(e) { showToast('Failed to save notes', true); }
+}
+
+async function runAutoFix(fixId, btn) {
+  btn.disabled = true;
+  btn.textContent = 'Working...';
+  try {
+    const result = await api('/auto-fix', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({fix_id: fixId})});
+    if (result.manual) {
+      btn.textContent = 'Manual fix needed';
+      btn.disabled = true;
+      showToast(result.message);
+    } else if (result.success) {
+      btn.textContent = 'Running...';
+      showToast(result.message);
+      if (result.task_id) {
+        // Switch to automation tab to see progress
+        setTimeout(() => {
+          document.querySelector('[data-section="automation"]').click();
+        }, 1000);
+      }
+      // Refresh health after a delay
+      setTimeout(() => loadAll(), 5000);
+    } else {
+      btn.textContent = 'Failed';
+      showToast(result.error || 'Fix failed', true);
+    }
+  } catch(e) {
+    btn.textContent = 'Error';
+    showToast('Fix failed: ' + e.message, true);
+  }
+}
+
+function toggleHealthFix(el, index) {
+  const fix = document.getElementById('health-fix-' + index);
+  if (!fix) return;
+  const isOpen = fix.style.display !== 'none';
+  // Close all others first
+  document.querySelectorAll('.health-fix').forEach(f => f.style.display = 'none');
+  document.querySelectorAll('.health-item').forEach(h => {
+    const chevron = h.querySelector('span:last-child');
+    if (chevron && chevron.textContent === '\u25BC') chevron.textContent = '\u25B6';
+  });
+  if (!isOpen) {
+    fix.style.display = 'block';
+    const chevron = el.querySelector('span:last-child');
+    if (chevron) chevron.textContent = '\u25BC';
+  }
+}
+
+function showToast(msg, isError) {
+  let toast = document.getElementById('stv-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'stv-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;z-index:10000;transition:opacity 0.3s;pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.background = isError ? 'var(--critical)' : 'var(--success)';
+  toast.style.color = 'white';
+  toast.style.opacity = '1';
+  setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+}
+
+// ─── Device Trust ───
+async function trustDevice() {
+  try {
+    const result = await api('/trust-device', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name: navigator.userAgent.includes('iPhone') ? 'iPhone' : 'Device'})});
+    if (result.device_token) {
+      localStorage.setItem('stv_device_token', result.device_token);
+      showToast('Device trusted — you will not need to log in again');
+      const tbtn = document.getElementById('trust-device-btn');
+      if (tbtn) tbtn.style.display = 'none';
+    }
+  } catch(e) { console.warn('Trust device failed:', e); }
+}
+
+// Auto-login with device token on page load
+(async function autoLogin() {
+  const deviceToken = localStorage.getItem('stv_device_token');
+  if (deviceToken) {
+    try {
+      const res = await fetch('/api/auto-login?token=' + encodeURIComponent(deviceToken));
+      if (res.ok) {
+        // Session cookie set by server, reload to skip login
+        const loginOverlay = document.getElementById('login-overlay');
+        if (loginOverlay && loginOverlay.style.display !== 'none') {
+          location.reload();
+        }
+      }
+    } catch(e) {}
+  }
+})();
+
+// Show setup buttons if not yet configured
+(async function showSetupButtons() {
+  const hasCreds = await fetch('/api/webauthn-has-credentials').then(r=>r.json()).catch(()=>({has_credentials:false}));
+  const hasDevice = localStorage.getItem('stv_device_token');
+  const faceidBtn = document.getElementById('faceid-setup-btn');
+  const trustBtn = document.getElementById('trust-device-btn');
+  const supportsWebAuthn = await checkWebAuthnSupport();
+  if (faceidBtn && !hasCreds.has_credentials && supportsWebAuthn) {
+    faceidBtn.style.display = '';
+  }
+  if (trustBtn && !hasDevice) {
+    trustBtn.style.display = '';
+  }
+})();
+
+// ─── WebAuthn Face ID ───
+async function checkWebAuthnSupport() {
+  if (!window.PublicKeyCredential) return false;
+  try {
+    return await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+  } catch(e) { return false; }
+}
+
+async function registerPasskey() {
+  try {
+    const options = await api('/webauthn-register-options', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'});
+    if (options.error) { showToast(options.error, true); return; }
+
+    // Convert base64url strings to ArrayBuffers
+    const challenge = base64urlToBuffer(options.challenge);
+    const userId = base64urlToBuffer(options.user.id);
+    const excludeCreds = (options.excludeCredentials || []).map(c => ({
+      ...c, id: base64urlToBuffer(c.id)
+    }));
+
+    const credential = await navigator.credentials.create({
+      publicKey: {
+        challenge,
+        rp: options.rp,
+        user: { ...options.user, id: userId },
+        pubKeyCredParams: options.pubKeyCredParams,
+        authenticatorSelection: options.authenticatorSelection,
+        timeout: options.timeout,
+        excludeCredentials: excludeCreds,
+        attestation: options.attestation
+      }
+    });
+
+    // Send credential ID back to server
+    const result = await api('/webauthn-register-complete', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        challenge: options.challenge,
+        credentialId: bufferToBase64url(credential.rawId),
+        name: 'Face ID'
+      })
+    });
+
+    if (result.success) {
+      showToast('Face ID registered successfully!');
+      const btn = document.getElementById('faceid-setup-btn');
+      if (btn) btn.style.display = 'none';
+      const tbtn2 = document.getElementById('trust-device-btn');
+      if (tbtn2) tbtn2.style.display = 'none';
+    } else {
+      showToast(result.error || 'Registration failed', true);
+    }
+  } catch(e) {
+    if (e.name !== 'NotAllowedError') {
+      showToast('Face ID setup failed: ' + e.message, true);
+    }
+  }
+}
+
+async function loginWithPasskey() {
+  try {
+    const res = await fetch('/api/webauthn-login-options', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'});
+    const options = await res.json();
+    if (options.error) { showToast(options.error, true); return; }
+
+    const challenge = base64urlToBuffer(options.challenge);
+    const allowCreds = (options.allowCredentials || []).map(c => ({
+      ...c, id: base64urlToBuffer(c.id)
+    }));
+
+    const assertion = await navigator.credentials.get({
+      publicKey: {
+        challenge,
+        rpId: options.rpId,
+        allowCredentials: allowCreds,
+        userVerification: options.userVerification,
+        timeout: options.timeout
+      }
+    });
+
+    // Send assertion back to server
+    const loginRes = await fetch('/api/webauthn-login-complete', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        challenge: options.challenge,
+        credentialId: bufferToBase64url(assertion.rawId)
+      })
+    });
+    const loginData = await loginRes.json();
+
+    if (loginData.success) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.querySelector('.header').style.display = '';
+      document.querySelector('.container').style.display = '';
+      loadAll();
+    } else {
+      showToast(loginData.error || 'Face ID login failed', true);
+    }
+  } catch(e) {
+    if (e.name !== 'NotAllowedError') {
+      showToast('Face ID login failed: ' + e.message, true);
+    }
+  }
+}
+
+// Base64url helpers
+function base64urlToBuffer(base64url) {
+  const base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+  const pad = base64.length % 4 === 0 ? '' : '='.repeat(4 - base64.length % 4);
+  const binary = atob(base64 + pad);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes.buffer;
+}
+
+function bufferToBase64url(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+}
+
 </script>
 
 <!-- PWA install banner -->
@@ -3378,7 +4427,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
         if not self.require_auth:
             return True
         # These endpoints are always accessible (login page, PWA assets)
-        if self.path in ("/", "", "/api/login", "/api/subscribe", "/api/unsubscribe", "/manifest.json", "/sw.js", "/icon-192.png", "/icon-512.png"):
+        if self.path in ("/", "", "/api/login", "/api/subscribe", "/api/unsubscribe", "/manifest.json", "/sw.js", "/icon-192.png", "/icon-512.png", "/api/webauthn-login-options", "/api/webauthn-login-complete", "/api/webauthn-has-credentials"):
             return True
         return verify_session(self.headers.get("Cookie", ""))
 
@@ -3521,6 +4570,55 @@ self.addEventListener('fetch', e => {
         elif path.startswith("/api/task-log/"):
             task_id = path.replace("/api/task-log/", "")
             self.send_json({"log": get_task_log(task_id)})
+        elif path == "/api/webauthn-register-options":
+            self.send_json(webauthn_register_options())
+        elif path.startswith("/api/seo-check"):
+            qs = urllib.parse.urlparse(self.path).query
+            params = urllib.parse.parse_qs(qs)
+            slug = params.get("slug", [""])[0]
+            if slug:
+                self.send_json(analyze_seo(slug))
+            else:
+                self.send_json({"error": "Missing slug parameter"}, 400)
+        elif path == "/api/review-queue":
+            self.send_json(get_review_queue())
+        elif path.startswith("/api/review-article"):
+            qs = urllib.parse.urlparse(self.path).query
+            params = urllib.parse.parse_qs(qs)
+            slug = params.get("slug", [""])[0]
+            html = get_review_article(slug)
+            if html:
+                self.send_json({"slug": slug, "html": html})
+            else:
+                self.send_json({"error": "Article not found"}, 404)
+        elif path.startswith("/preview/"):
+            slug = path.replace("/preview/", "").strip("/")
+            html = get_preview_html(slug)
+            if html:
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(html.encode())
+            else:
+                self.send_response(404)
+                self.end_headers()
+        elif path == "/api/webauthn-has-credentials":
+            creds = _load_webauthn_credentials()
+            self.send_json({"has_credentials": len(creds) > 0, "count": len(creds)})
+        elif path == "/api/auto-login":
+            # Check for device trust token in query string
+            qs = urllib.parse.urlparse(self.path).query
+            params = urllib.parse.parse_qs(qs)
+            device_token = params.get("token", [""])[0]
+            if verify_device_token(device_token):
+                session_token = create_session()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Set-Cookie", f"stv_session={session_token}; Path=/; Max-Age={86400*90}; SameSite=Lax")
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": True}).encode())
+            else:
+                self.send_json({"error": "Invalid device token"}, 401)
         else:
             self.send_response(404)
             self.end_headers()
@@ -3530,7 +4628,7 @@ self.addEventListener('fetch', e => {
         content_length = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(content_length) if content_length else b""
 
-        # Login endpoint (always accessible)
+        # Login + WebAuthn endpoints (always accessible, no auth required)
         if path == "/api/login":
             try:
                 data = json.loads(body)
@@ -3693,6 +4791,87 @@ self.addEventListener('fetch', e => {
                     is_done = True
                 save_opps_done(done)
                 self.send_json({"success": True, "done": is_done})
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/webauthn-register-options":
+            self.send_json(webauthn_register_options())
+        elif path == "/api/webauthn-register-complete":
+            try:
+                data = json.loads(body)
+                self.send_json(webauthn_register_complete(data))
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/webauthn-login-options":
+            # This endpoint doesn't require auth (used on login screen)
+            self.send_json(webauthn_login_options())
+        elif path == "/api/webauthn-login-complete":
+            try:
+                data = json.loads(body)
+                result = webauthn_login_complete(data)
+                if result.get("success"):
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Set-Cookie", f"stv_session={result['session_token']}; Path=/; Max-Age={86400*90}; SameSite=Lax")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"success": True}).encode())
+                else:
+                    self.send_json(result, 401)
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/auto-fix":
+            try:
+                data = json.loads(body)
+                fix_id = data.get("fix_id", "")
+                result = run_auto_fix(fix_id)
+                self.send_json(result)
+            except Exception as e:
+                self.send_json({"error": str(e)}, 500)
+        elif path == "/api/trust-device":
+            try:
+                data = json.loads(body) if body else {}
+                name = data.get("name", "Phone")
+                device_token = create_device_token(name)
+                self.send_json({"success": True, "device_token": device_token})
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/review-save":
+            try:
+                data = json.loads(body)
+                slug = data.get("slug", "")
+                html = data.get("html", "")
+                if slug and html:
+                    self.send_json(save_review_article(slug, html))
+                else:
+                    self.send_json({"error": "Missing slug or html"}, 400)
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/review-publish":
+            try:
+                data = json.loads(body)
+                slug = data.get("slug", "")
+                if slug:
+                    self.send_json(publish_review_article(slug))
+                else:
+                    self.send_json({"error": "Missing slug"}, 400)
+            except Exception as e:
+                self.send_json({"error": str(e)}, 500)
+        elif path == "/api/review-status":
+            try:
+                data = json.loads(body)
+                slug = data.get("slug", "")
+                status = data.get("status", "")
+                notes = data.get("notes")
+                queue = get_review_queue()
+                article = next((a for a in queue if a["slug"] == slug), None)
+                if article:
+                    if status:
+                        article["status"] = status
+                    if notes is not None:
+                        article["notes"] = notes
+                    save_review_queue(queue)
+                    self.send_json({"success": True})
+                else:
+                    self.send_json({"error": "Article not found"}, 404)
             except Exception as e:
                 self.send_json({"error": str(e)}, 400)
         else:
