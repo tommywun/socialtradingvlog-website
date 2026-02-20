@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparer les plateformes de trading social 2026 — eToro vs Plus500 vs Trading 212 | SocialTradingVlog</title>
+<meta name="description" content="Comparez eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers et XTB côte à côte. Frais, fonctionnalités, régulation, copy trading et bien plus.">
+<meta name="keywords" content="eToro vs Plus500, eToro vs Trading 212, meilleure plateforme copy trading, comparaison trading social, alternatives eToro">
+<link rel="canonical" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<meta property="og:title" content="Comparer les plateformes de trading social 2026 — Comparaison côte à côte">
+<meta property="og:description" content="Comparaison interactive d'eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers et XTB.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+
+<!-- Schema: WebApplication + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Outil de comparaison des plateformes de trading social",
+      "url": "https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Comparez les plateformes de trading social et d'investissement côte à côte — frais, fonctionnalités, régulation et bien plus.",
+      "author": { "@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quelle est la meilleure plateforme de trading social en 2026 ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "eToro est la plateforme de trading social la plus populaire avec plus de 35 millions d'utilisateurs et la fonctionnalité de copy trading la plus développée. Cependant, la meilleure plateforme dépend de vos besoins — Trading 212 propose le trading d'actions sans commission, tandis qu'Interactive Brokers offre la plus large gamme d'actifs." }
+        },
+        {
+          "@type": "Question",
+          "name": "eToro est-il mieux que Plus500 ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "eToro et Plus500 répondent à des besoins différents. eToro propose la détention réelle d'actions, le copy trading et un fil social. Plus500 est exclusivement CFD, sans copy trading, mais avec des spreads plus serrés sur certains actifs. Si vous voulez du copy trading ou posséder de vraies actions, eToro est le meilleur choix." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle plateforme a les frais de trading les plus bas ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pour les actions, Trading 212 et DEGIRO proposent du trading sans commission ou à très faible coût. Pour le forex et les CFD, les spreads varient selon l'actif. eToro ne facture aucune commission sur les actions mais a des spreads plus larges sur les CFD. Interactive Brokers offre généralement les frais les plus bas pour les traders actifs." }
+        },
+        {
+          "@type": "Question",
+          "name": "Peut-on faire du copy trading sur d'autres plateformes qu'eToro ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "eToro possède le système de copy trading le plus développé. XTB propose une fonctionnalité de copy trading limitée. Plus500, Trading 212, DEGIRO et Interactive Brokers ne proposent pas de fonctionnalité de copy trading." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Layout ─── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--purple-light); color: var(--purple); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--purple); }
+.hero p { font-size: 17px; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
+
+/* ─── Platform Toggles ─── */
+.platform-toggles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px; }
+.plat-toggle { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-pill); cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-secondary); transition: all .2s; user-select: none; }
+.plat-toggle:hover { border-color: var(--text-muted); }
+.plat-toggle.active { border-color: var(--purple); background: var(--purple-light); color: var(--purple); }
+.plat-toggle .plat-dot { width: 10px; height: 10px; border-radius: 50%; }
+.plat-toggle .check-icon { width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: all .2s; font-size: 10px; }
+.plat-toggle.active .check-icon { background: var(--purple); border-color: var(--purple); color: #fff; }
+
+/* ─── Comparison Table ─── */
+.compare-wrap { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 32px; }
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td { padding: 14px 16px; text-align: center; font-size: 13px; border-bottom: 1px solid var(--border); }
+.compare-table thead th { background: #F4F5F9; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); position: sticky; top: 48px; z-index: 10; }
+.compare-table thead th.plat-header { font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--text-primary); min-width: 120px; }
+.compare-table thead th.plat-header.highlighted { background: rgba(139,92,246,.06); }
+.compare-table th.feature-label { text-align: left; font-weight: 600; color: var(--text-primary); font-size: 14px; min-width: 160px; }
+.compare-table td.feature-label { text-align: left; font-weight: 500; color: var(--text-primary); font-size: 14px; }
+.compare-table td.highlighted { background: rgba(139,92,246,.03); }
+.compare-table tr.category-row td { background: #F8F8FA; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); padding: 10px 16px; }
+.compare-table tbody tr:hover td { background: rgba(139,92,246,.02); }
+.compare-table tbody tr:hover td.highlighted { background: rgba(139,92,246,.06); }
+
+/* Rating badges */
+.rating { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; }
+.rating-good { background: var(--success-light); color: var(--success); }
+.rating-ok { background: var(--warning-light); color: #B8860B; }
+.rating-poor { background: var(--critical-light); color: var(--critical); }
+.rating-na { background: #F0F0F4; color: var(--text-muted); }
+
+/* Check / X icons */
+.feat-yes { color: var(--success); font-weight: 700; font-size: 16px; }
+.feat-no { color: var(--critical); font-weight: 700; font-size: 16px; }
+.feat-partial { color: var(--warning); font-weight: 700; font-size: 14px; }
+
+/* ─── Platform Cards ─── */
+.platform-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin: 40px 0; }
+.plat-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .2s; }
+.plat-card:hover { box-shadow: var(--shadow-hover); }
+.plat-card-header { padding: 20px 24px; display: flex; align-items: center; gap: 14px; cursor: pointer; }
+.plat-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #fff; }
+.plat-card-info h3 { font-size: 16px; font-weight: 700; }
+.plat-card-info p { font-size: 12px; color: var(--text-secondary); }
+.plat-card-toggle { margin-left: auto; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg-page); color: var(--text-muted); transition: transform .2s; }
+.plat-card.open .plat-card-toggle { transform: rotate(180deg); }
+.plat-card-body { display: none; padding: 0 24px 20px; }
+.plat-card.open .plat-card-body { display: block; }
+.plat-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.plat-pros h4, .plat-cons h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.plat-pros h4 { color: var(--success); }
+.plat-cons h4 { color: var(--critical); }
+.plat-pros li, .plat-cons li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.5; list-style: none; padding-left: 18px; position: relative; }
+.plat-pros li::before { content: "+"; position: absolute; left: 0; font-weight: 700; color: var(--success); }
+.plat-cons li::before { content: "\2212"; position: absolute; left: 2px; font-weight: 700; color: var(--critical); }
+
+/* ─── Tom's Pick ─── */
+.toms-pick { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin: 40px 0; display: flex; gap: 24px; align-items: flex-start; }
+.toms-pick-icon { width: 56px; height: 56px; min-width: 56px; background: var(--success-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.toms-pick h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.toms-pick p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── FAQ ─── */
+.faq-section { margin: 40px 0; }
+.faq-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; overflow: hidden; }
+.faq-q { padding: 16px 20px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q::after { content: "+"; font-size: 20px; color: var(--text-muted); transition: transform .2s; }
+.faq-q.open::after { content: "\2212"; }
+.faq-a { padding: 0 20px 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.7; display: none; }
+.faq-a.open { display: block; }
+
+/* ─── CTA ─── */
+.cta-section { background: #382E5E; border-radius: var(--radius-lg); padding: 48px 32px; text-align: center; margin: 40px 0; }
+.cta-section h2 { color: #fff; font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700; background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans',sans-serif; }
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+/* ─── Disclaimer ─── */
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 24px; }
+  .hero h1 { font-size: 1.5rem; }
+  .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare-table { min-width: 700px; }
+  .compare-table th, .compare-table td { padding: 10px 10px; font-size: 12px; }
+  .platform-cards { grid-template-columns: 1fr; }
+  .plat-pros-cons { grid-template-columns: 1fr; }
+  .toms-pick { flex-direction: column; }
+  .tool-nav { gap: 16px; overflow-x: auto; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../" class="tool-nav-brand"><div class="logo">ST</div><span>Outils</span></a>
+  <div class="tool-nav-links">
+    <a href="../calculateur-frais/">Calculateur de frais</a>
+    <a href="../calculateur-rendement/">Calculateur de rendement</a>
+    <a href="./" class="active">Comparer les plateformes</a>
+  </div>
+  <a href="../../fr/" class="tool-nav-back">&larr; Retour au site</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Comparaison interactive
+    </div>
+    <h1>Comparer les plateformes de <span class="accent">trading social</span></h1>
+    <p>Comparaison côte à côte des plateformes de trading les plus populaires. Activez ou désactivez les plateformes pour comparer ce qui compte pour vous.</p>
+  </div>
+
+  <!-- Platform Toggles -->
+  <div class="platform-toggles" id="platform-toggles"></div>
+
+  <!-- Comparison Table -->
+  <div class="compare-wrap">
+    <table class="compare-table" id="compare-table">
+      <thead id="table-head"></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <!-- Legal Disclaimer -->
+  <div class="legal-disclaimer">
+    <strong>Avis de non-responsabilité sur les données</strong>
+    Cette comparaison est fournie à des fins d'information et d'éducation générales uniquement. Elle ne doit pas être utilisée pour prendre des décisions d'investissement.
+    <ul>
+      <li>Les données, frais et fonctionnalités des plateformes proviennent d'informations publiquement disponibles et peuvent ne pas refléter les offres les plus récentes. Vérifiez toujours les détails directement sur le site officiel de chaque plateforme avant d'ouvrir un compte.</li>
+      <li>Les évaluations et appréciations sont subjectives et basées sur l'expérience personnelle et les recherches de l'auteur. Votre expérience peut différer.</li>
+      <li>Cet outil ne constitue pas un conseil financier, d'investissement ou fiscal. SocialTradingVlog et son auteur ne sont pas des conseillers financiers et déclinent toute responsabilité pour toute perte ou dommage résultant de l'utilisation de cet outil de comparaison.</li>
+      <li>Certains liens sur cette page sont des liens d'affiliation. Si vous vous inscrivez via ces liens, nous pouvons percevoir une commission sans frais supplémentaires pour vous. Cela n'affecte pas nos évaluations ou appréciations.</li>
+      <li>Les CFD sont des instruments complexes et présentent un risque élevé de perte rapide d'argent en raison de l'effet de levier. Votre capital est à risque.</li>
+    </ul>
+  </div>
+
+  <!-- Platform Detail Cards -->
+  <h2 style="font-size:24px;font-weight:800;margin-bottom:20px;">Détails des plateformes</h2>
+  <div class="platform-cards" id="platform-cards"></div>
+
+  <!-- Tom's Pick -->
+  <div class="toms-pick">
+    <div class="toms-pick-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div>
+      <h2>Pourquoi j'utilise eToro</h2>
+      <p>J'utilise eToro depuis 2016 &mdash; presque 10 ans. C'est la plateforme que je connais le mieux, et sa fonctionnalité de copy trading est véritablement unique. Je copie 8 à 10 traders et ça tourne en pilote automatique. Est-ce parfait ? Non &mdash; les spreads sur les cryptos sont élevés, et les frais de retrait étaient de 5 $ (désormais gratuits pour certaines devises). Mais pour le copy trading, rien d'autre ne s'en approche.</p>
+      <p style="margin-top:8px;">Cela dit, si vous achetez uniquement des actions et que le copy trading ne vous intéresse pas, Trading 212 ou DEGIRO pourraient vous faire économiser sur les frais. Et si vous êtes un trader actif qui a besoin de toutes les classes d'actifs, Interactive Brokers est difficile à battre. <strong>La meilleure plateforme dépend de vos besoins.</strong></p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Questions fréquemment posées</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quelle est la meilleure plateforme de trading social en 2026 ?</div>
+      <div class="faq-a">eToro est la plateforme de trading social la plus populaire avec plus de 35 millions d'utilisateurs dans le monde et le système de copy trading le plus complet. Cependant, la « meilleure » plateforme dépend de vos priorités. Si vous voulez du copy trading, eToro est le leader incontesté. Si vous cherchez le trading d'actions le moins cher, pensez à Trading 212 ou DEGIRO. Pour la plus large gamme d'actifs et les frais les plus bas pour les traders actifs, Interactive Brokers est en tête.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">eToro est-il mieux que Plus500 ?</div>
+      <div class="faq-a">Ils répondent à des besoins différents. eToro propose la détention réelle d'actions/ETF, le copy trading et un fil social où vous pouvez suivre d'autres traders. Plus500 est exclusivement CFD &mdash; vous ne possédez jamais l'actif sous-jacent. Plus500 n'a pas de fonctionnalité de copy trading. Si vous souhaitez posséder de vraies actions ou copier d'autres traders, eToro est le meilleur choix. Si vous ne tradez que des CFD et préférez une interface plus simple, Plus500 mérite d'être considéré.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quelle plateforme a les frais de trading les plus bas ?</div>
+      <div class="faq-a">Cela dépend de ce que vous tradez. Pour les actions, Trading 212 et eToro proposent tous deux le trading sans commission (bien qu'eToro se rémunère via le spread). DEGIRO offre des frais très bas sur les marchés européens. Pour le forex et les CFD, les spreads varient considérablement selon l'actif &mdash; Interactive Brokers propose généralement les spreads les plus serrés pour les traders actifs. Utilisez notre <a href="../calculateur-frais/" style="color:var(--info)">calculateur de frais</a> pour estimer les coûts spécifiques d'eToro pour vos transactions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Peut-on faire du copy trading sur d'autres plateformes qu'eToro ?</div>
+      <div class="faq-a">eToro possède le système de copy trading le plus complet, où vous allouez une partie de vos fonds pour reproduire automatiquement les positions d'un autre trader. XTB a récemment introduit une fonctionnalité de copy trading limitée. Plus500, Trading 212, DEGIRO et Interactive Brokers ne proposent pas actuellement de copy trading. Certains services tiers proposent du copy trading via des connexions API aux courtiers, mais ceux-ci sont plus complexes à mettre en place.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Ces plateformes sont-elles régulées et sûres ?</div>
+      <div class="faq-a">Les six plateformes comparées ici sont régulées par des autorités financières majeures. eToro est régulé par la FCA (Royaume-Uni), la CySEC (Chypre) et l'ASIC (Australie). Plus500 est régulé par la FCA, la CySEC et l'ASIC. Interactive Brokers est régulé par la SEC et la FINRA (États-Unis), ainsi que par la FCA. La régulation n'élimine pas le risque, mais elle signifie que vos fonds sont protégés jusqu'à certaines limites dans le cadre des systèmes d'indemnisation des investisseurs.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Prêt à commencer le trading ?</h2>
+    <p>Rejoignez eToro et accédez aux actions, aux cryptomonnaies, au forex et au copy trading &mdash; le tout sur une seule plateforme.</p>
+    <a href="https://etoro.tw/4tEsDF4" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'compare_platforms_fr'})">Ouvrir un compte eToro &rarr;</a>
+    <div class="risk-text">
+      <strong>51 % des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils négocient des CFD avec ce fournisseur.</strong>
+      Vous devez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent.
+      Ceci ne constitue pas un conseil en investissement. Capital à risque. Lien d'affiliation &mdash; Tom peut percevoir une commission sans frais supplémentaires pour vous.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../fr/">SocialTradingVlog.com</a> &middot;
+      <a href="../">Tous les outils</a> &middot;
+      <a href="../../about/">À propos de Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Cette comparaison est fournie à titre informatif uniquement et ne constitue pas un conseil financier. Les données des plateformes peuvent être inexactes ou obsolètes &mdash; vérifiez toujours sur le site officiel de chaque plateforme.
+      SocialTradingVlog décline toute responsabilité pour les pertes résultant de l'utilisation de cet outil. Les CFD sont des instruments complexes. Votre capital est à risque.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Platform Data ───
+const PLATFORMS = [
+  {
+    id: 'etoro', name: 'eToro', color: '#00C853', since: '2007', users: '35M+',
+    tagline: 'Pionnier du trading social avec copy trading',
+    pros: ['Meilleure fonctionnalité de copy trading disponible', 'Détention réelle d\'actions (0 % de commission)', 'Fil social avec analyses de traders', 'Interface conviviale', 'Compte démo avec 100 000 $ virtuels'],
+    cons: ['Spreads crypto plus élevés que la concurrence', 'Frais de retrait de 5 $ (comptes USD)', 'Types d\'ordres limités vs plateformes pro', 'Frais overnight sur les positions CFD', 'Frais de conversion pour les comptes non-USD'],
+    data: {
+      min_deposit: { value: '50 $', rating: 'good' },
+      stock_fee: { value: '0 % commission', rating: 'good', note: 'Se rémunère via le spread' },
+      crypto_fee: { value: '1 % de spread', rating: 'ok', note: 'Plus élevé que les exchanges' },
+      forex_fee: { value: 'À partir de 1 pip', rating: 'ok' },
+      copy_trading: { value: true },
+      social_features: { value: true },
+      real_stocks: { value: true },
+      demo_account: { value: true },
+      assets: { value: '3 000+', rating: 'good' },
+      regulation: { value: 'FCA, CySEC, ASIC', rating: 'good' },
+      mobile_app: { value: '4,4/5', rating: 'good' },
+      withdrawal_fee: { value: '5 $ (USD)', rating: 'ok', note: 'Gratuit pour GBP/EUR' },
+      deposit_methods: { value: 'Carte, Banque, PayPal, Skrill', rating: 'good' },
+      education: { value: 'eToro Academy', rating: 'good' },
+    }
+  },
+  {
+    id: 'plus500', name: 'Plus500', color: '#00B2E3', since: '2008', users: '25M+',
+    tagline: 'Plateforme axée CFD avec des spreads serrés',
+    pros: ['Spreads serrés sur de nombreux actifs', 'Interface simple et épurée', 'Stop-loss garanti gratuit', 'Société cotée en bourse (LSE)', 'Aucune commission sur les transactions'],
+    cons: ['CFD uniquement — pas de détention réelle d\'actions', 'Pas de fonctionnalité de copy trading', 'Contenu éducatif limité', 'Pas de fonctionnalités sociales/communautaires', 'Frais d\'inactivité après 3 mois'],
+    data: {
+      min_deposit: { value: '100 $', rating: 'good' },
+      stock_fee: { value: 'Spread CFD uniquement', rating: 'ok', note: 'Pas de détention réelle' },
+      crypto_fee: { value: '~0,3 % de spread', rating: 'good' },
+      forex_fee: { value: 'À partir de 0,6 pips', rating: 'good' },
+      copy_trading: { value: false },
+      social_features: { value: false },
+      real_stocks: { value: false },
+      demo_account: { value: true },
+      assets: { value: '2 800+', rating: 'good' },
+      regulation: { value: 'FCA, CySEC, ASIC', rating: 'good' },
+      mobile_app: { value: '4,3/5', rating: 'good' },
+      withdrawal_fee: { value: 'Gratuit', rating: 'good' },
+      deposit_methods: { value: 'Carte, Banque, PayPal, Skrill', rating: 'good' },
+      education: { value: 'Basique', rating: 'ok' },
+    }
+  },
+  {
+    id: 'trading212', name: 'Trading 212', color: '#1E40AF', since: '2004', users: '2M+',
+    tagline: 'Actions sans commission avec la fonctionnalité Pies',
+    pros: ['Trading d\'actions véritablement sans commission', 'Fractions d\'actions à partir de 1 $', 'Fonctionnalité AutoInvest « Pies »', 'Intérêts sur les liquidités non investies', 'Aucun frais de retrait ou de dépôt'],
+    cons: ['Pas de copy trading', 'Offre forex/CFD limitée', 'Gamme d\'actifs plus restreinte qu\'eToro', 'Service client parfois lent', 'Non disponible dans tous les pays'],
+    data: {
+      min_deposit: { value: '1 $', rating: 'good' },
+      stock_fee: { value: '0 % commission', rating: 'good', note: 'Véritablement gratuit' },
+      crypto_fee: { value: 'N/D', rating: 'na', note: 'Crypto limité' },
+      forex_fee: { value: 'À partir de 0,9 pips', rating: 'ok' },
+      copy_trading: { value: false },
+      social_features: { value: false },
+      real_stocks: { value: true },
+      demo_account: { value: true },
+      assets: { value: '12 000+', rating: 'good' },
+      regulation: { value: 'FCA, CySEC', rating: 'good' },
+      mobile_app: { value: '4,5/5', rating: 'good' },
+      withdrawal_fee: { value: 'Gratuit', rating: 'good' },
+      deposit_methods: { value: 'Carte, Banque, Google/Apple Pay', rating: 'good' },
+      education: { value: 'Forums communautaires', rating: 'ok' },
+    }
+  },
+  {
+    id: 'degiro', name: 'DEGIRO', color: '#00A4E4', since: '2013', users: '2,5M+',
+    tagline: 'Courtier européen à faible coût pour les investisseurs',
+    pros: ['Frais très bas sur tous les marchés', 'Large gamme de bourses européennes', 'Pas de frais d\'inactivité', 'Idéal pour l\'investissement long terme', 'Désormais partie de flatexDEGIRO (cotée)'],
+    cons: ['Pas de copy trading', 'Pas de trading forex ou crypto', 'Pas de fonctionnalités sociales', 'Plateforme parfois datée', 'Types d\'ordres limités'],
+    data: {
+      min_deposit: { value: '0 $', rating: 'good' },
+      stock_fee: { value: '0-2 \u20AC', rating: 'good', note: 'Par transaction' },
+      crypto_fee: { value: 'N/D', rating: 'na', note: 'Non disponible' },
+      forex_fee: { value: 'N/D', rating: 'na', note: 'Non disponible' },
+      copy_trading: { value: false },
+      social_features: { value: false },
+      real_stocks: { value: true },
+      demo_account: { value: false },
+      assets: { value: '30 000+', rating: 'good' },
+      regulation: { value: 'BaFin, DNB, AFM', rating: 'good' },
+      mobile_app: { value: '4,1/5', rating: 'ok' },
+      withdrawal_fee: { value: 'Gratuit', rating: 'good' },
+      deposit_methods: { value: 'Virement bancaire uniquement', rating: 'poor' },
+      education: { value: 'Académie basique', rating: 'ok' },
+    }
+  },
+  {
+    id: 'ibkr', name: 'Interactive Brokers', color: '#D41F27', since: '1978', users: '2,6M+',
+    tagline: 'Qualité professionnelle pour les traders sérieux',
+    pros: ['Frais les plus bas pour les traders actifs', 'Plus large gamme d\'actifs au monde', 'Outils et recherches de qualité professionnelle', 'Accès à plus de 150 marchés mondiaux', 'Taux de marge compétitifs'],
+    cons: ['Courbe d\'apprentissage plus raide', 'Interface pouvant intimider les débutants', 'Pas de copy trading', 'Structure tarifaire complexe', 'Support client variable selon le niveau'],
+    data: {
+      min_deposit: { value: '0 $', rating: 'good' },
+      stock_fee: { value: '0-0,005 $/action', rating: 'good', note: 'Paliers ou forfait' },
+      crypto_fee: { value: '0,12-0,18 %', rating: 'good' },
+      forex_fee: { value: 'À partir de 0,1 pips', rating: 'good' },
+      copy_trading: { value: false },
+      social_features: { value: false },
+      real_stocks: { value: true },
+      demo_account: { value: true },
+      assets: { value: '100 000+', rating: 'good' },
+      regulation: { value: 'SEC, FINRA, FCA', rating: 'good' },
+      mobile_app: { value: '4,2/5', rating: 'good' },
+      withdrawal_fee: { value: 'Gratuit (1/mois)', rating: 'good' },
+      deposit_methods: { value: 'Banque, Virement', rating: 'ok' },
+      education: { value: 'Traders Academy', rating: 'good' },
+    }
+  },
+  {
+    id: 'xtb', name: 'XTB', color: '#21A038', since: '2002', users: '1M+',
+    tagline: 'Courtier européen avec une offre en croissance',
+    pros: ['Actions sans commission (jusqu\'à 100 000 \u20AC/mois)', 'Excellente plateforme xStation', 'Bon contenu éducatif', 'Spreads forex bas', 'Fractions d\'actions récemment ajoutées'],
+    cons: ['Copy trading limité (nouvelle fonctionnalité)', 'Gamme plus restreinte qu\'IB/eToro', 'Frais plus élevés au-delà de 100 000 \u20AC de volume', 'Non disponible dans certains pays', 'Les spreads CFD peuvent s\'élargir'],
+    data: {
+      min_deposit: { value: '0 $', rating: 'good' },
+      stock_fee: { value: '0 % (jusqu\'à 100 000 \u20AC)', rating: 'good', note: '0,2 % au-delà de 100 000 \u20AC' },
+      crypto_fee: { value: 'CFD uniquement', rating: 'ok', note: 'Pas de vraie crypto' },
+      forex_fee: { value: 'À partir de 0,5 pips', rating: 'good' },
+      copy_trading: { value: 'partial', label: 'Limité' },
+      social_features: { value: false },
+      real_stocks: { value: true },
+      demo_account: { value: true },
+      assets: { value: '5 800+', rating: 'good' },
+      regulation: { value: 'FCA, KNF, CySEC', rating: 'good' },
+      mobile_app: { value: '4,5/5', rating: 'good' },
+      withdrawal_fee: { value: 'Gratuit (au-dessus de 100 \u20AC)', rating: 'good' },
+      deposit_methods: { value: 'Carte, Banque, PayPal', rating: 'good' },
+      education: { value: 'XTB Academy (excellent)', rating: 'good' },
+    }
+  }
+];
+
+// Feature rows config
+const FEATURES = [
+  { cat: 'Coûts' },
+  { key: 'min_deposit', label: 'Dépôt minimum' },
+  { key: 'stock_fee', label: 'Frais de trading actions' },
+  { key: 'crypto_fee', label: 'Frais crypto' },
+  { key: 'forex_fee', label: 'Frais forex' },
+  { key: 'withdrawal_fee', label: 'Frais de retrait' },
+  { cat: 'Fonctionnalités' },
+  { key: 'copy_trading', label: 'Copy trading', type: 'bool' },
+  { key: 'social_features', label: 'Fonctionnalités sociales', type: 'bool' },
+  { key: 'real_stocks', label: 'Détention réelle d\'actions', type: 'bool' },
+  { key: 'demo_account', label: 'Compte démo', type: 'bool' },
+  { cat: 'Plateforme' },
+  { key: 'assets', label: 'Actifs disponibles' },
+  { key: 'regulation', label: 'Régulation' },
+  { key: 'mobile_app', label: 'Note de l\'app mobile' },
+  { key: 'deposit_methods', label: 'Méthodes de dépôt' },
+  { key: 'education', label: 'Contenu éducatif' },
+];
+
+let activePlatforms = ['etoro', 'plus500', 'trading212', 'ibkr'];
+
+function renderToggles() {
+  const container = document.getElementById('platform-toggles');
+  container.innerHTML = PLATFORMS.map(p => `
+    <div class="plat-toggle ${activePlatforms.includes(p.id) ? 'active' : ''}" onclick="togglePlatform('${p.id}')">
+      <div class="check-icon">${activePlatforms.includes(p.id) ? '\u2713' : ''}</div>
+      ${p.name}
+    </div>
+  `).join('');
+}
+
+function togglePlatform(id) {
+  if (activePlatforms.includes(id)) {
+    if (activePlatforms.length <= 2) return; // Minimum 2 plateformes
+    activePlatforms = activePlatforms.filter(p => p !== id);
+  } else {
+    activePlatforms.push(id);
+  }
+  render();
+}
+
+function renderCell(data) {
+  if (!data) return '<span class="rating rating-na">N/D</span>';
+
+  if (typeof data.value === 'boolean') {
+    return data.value
+      ? '<span class="feat-yes">\u2713</span>'
+      : '<span class="feat-no">\u2717</span>';
+  }
+  if (data.value === 'partial') {
+    return `<span class="feat-partial">${data.label || '~'}</span>`;
+  }
+
+  const rating = data.rating || 'ok';
+  const ratingClass = rating === 'good' ? 'rating-good' : rating === 'poor' ? 'rating-poor' : rating === 'na' ? 'rating-na' : 'rating-ok';
+
+  let html = `<span class="rating ${ratingClass}">${data.value}</span>`;
+  if (data.note) {
+    html += `<div style="font-size:11px;color:var(--text-muted);margin-top:2px">${data.note}</div>`;
+  }
+  return html;
+}
+
+function renderTable() {
+  const active = PLATFORMS.filter(p => activePlatforms.includes(p.id));
+  const head = document.getElementById('table-head');
+  const body = document.getElementById('table-body');
+
+  // Header
+  head.innerHTML = `<tr>
+    <th class="feature-label">Fonctionnalité</th>
+    ${active.map(p => `<th class="plat-header ${p.id === 'etoro' ? 'highlighted' : ''}">${p.name}</th>`).join('')}
+  </tr>`;
+
+  // Body
+  let html = '';
+  for (const f of FEATURES) {
+    if (f.cat) {
+      html += `<tr class="category-row"><td colspan="${active.length + 1}">${f.cat}</td></tr>`;
+      continue;
+    }
+    html += `<tr>
+      <td class="feature-label">${f.label}</td>
+      ${active.map(p => `<td class="${p.id === 'etoro' ? 'highlighted' : ''}">${renderCell(p.data[f.key])}</td>`).join('')}
+    </tr>`;
+  }
+  body.innerHTML = html;
+}
+
+function renderCards() {
+  const container = document.getElementById('platform-cards');
+  container.innerHTML = PLATFORMS.map(p => `
+    <div class="plat-card" id="card-${p.id}">
+      <div class="plat-card-header" onclick="toggleCard('${p.id}')">
+        <div class="plat-card-icon" style="background:${p.color}">${p.name.charAt(0)}</div>
+        <div class="plat-card-info">
+          <h3>${p.name}</h3>
+          <p>Fondé en ${p.since} &middot; ${p.users} utilisateurs</p>
+        </div>
+        <div class="plat-card-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="plat-card-body">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">${p.tagline}</p>
+        <div class="plat-pros-cons">
+          <div class="plat-pros">
+            <h4>Avantages</h4>
+            <ul>${p.pros.map(pro => `<li>${pro}</li>`).join('')}</ul>
+          </div>
+          <div class="plat-cons">
+            <h4>Inconvénients</h4>
+            <ul>${p.cons.map(con => `<li>${con}</li>`).join('')}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCard(id) {
+  document.getElementById('card-' + id).classList.toggle('open');
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+function render() {
+  renderToggles();
+  renderTable();
+}
+
+// Initial render
+render();
+renderCards();
+</script>
+</body>
+</html>

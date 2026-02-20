@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur de rendement du copy trading 2026 — Projetez vos gains | SocialTradingVlog</title>
+<meta name="description" content="Calculateur de rendement du copy trading gratuit. Découvrez comment votre investissement pourrait croître grâce aux rendements composés sur 1 à 10 ans. Basé sur des données réelles de copy trading.">
+<link rel="canonical" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<meta property="og:title" content="Calculateur de rendement du copy trading 2026 — Projetez vos gains">
+<meta property="og:description" content="Calculateur de rendement du copy trading gratuit. Découvrez comment votre investissement pourrait croître au fil du temps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; }
+.tool-nav-back:hover { color: #fff; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--success-light); color: var(--success); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--success); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn { padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--text-secondary); transition: all .2s; font-family: 'Inter',sans-serif; }
+.pill-btn:hover { border-color: var(--success); color: var(--text-primary); }
+.pill-btn.active { background: var(--success); border-color: var(--success); color: #fff; }
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input { flex: 1; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: var(--border); outline: none; }
+.slider-input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--success); cursor: pointer; box-shadow: 0 2px 6px rgba(0,159,129,.35); }
+.amount-input { width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius); font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans',sans-serif; color: var(--text-primary); background: var(--bg-input); text-align: right; }
+.amount-input:focus { outline: none; border-color: var(--success); box-shadow: 0 0 0 3px rgba(0,159,129,.15); }
+
+/* Toggle switch */
+.toggle-row { display: flex; align-items: center; gap: 12px; }
+.toggle-switch { position: relative; width: 48px; height: 26px; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-track { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--border); border-radius: 13px; transition: background .3s; }
+.toggle-switch input:checked + .toggle-track { background: var(--success); }
+.toggle-dot { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .3s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-switch input:checked ~ .toggle-dot { transform: translateX(22px); }
+.toggle-label { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+
+/* Results */
+.results-hero { text-align: center; padding: 32px 0 24px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value { font-size: clamp(2.5rem,6vw,3.5rem); font-weight: 800; color: var(--success); font-family: 'Plus Jakarta Sans',sans-serif; line-height: 1.1; }
+.results-badges { display: flex; justify-content: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.result-badge { padding: 6px 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; }
+.badge-profit { background: var(--success-light); color: var(--success); }
+.badge-roi { background: var(--info-light); color: var(--info); }
+
+/* Chart */
+.chart-wrap { margin: 24px 0; height: 200px; position: relative; }
+.chart-wrap svg { width: 100%; height: 100%; }
+
+/* Comparison cards */
+.compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.compare-card { border-radius: var(--radius); padding: 20px; text-align: center; }
+.compare-card .cc-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.compare-card .cc-value { font-size: 24px; font-weight: 800; font-family: 'Plus Jakarta Sans',sans-serif; }
+.compare-card .cc-sub { font-size: 12px; margin-top: 2px; }
+.cc-compound { background: rgba(0,159,129,.08); color: var(--success); }
+.cc-simple { background: rgba(0,143,248,.08); color: var(--info); }
+
+/* Year table */
+.year-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.year-table th { text-align: left; padding: 10px 16px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.year-table td { padding: 10px 16px; font-size: 14px; border-bottom: 1px solid var(--border); }
+.year-table tr:hover { background: rgba(0,159,129,.03); }
+.year-table .positive { color: var(--success); font-weight: 600; }
+
+/* Context card */
+.context-card { background: linear-gradient(135deg, #F0FFF8 0%, #F0F8FF 100%); border: 1px solid #D0E8D0; border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; display: flex; align-items: flex-start; gap: 16px; }
+.context-card .cc-icon { font-size: 32px; flex-shrink: 0; }
+.context-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.context-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.context-card a { color: var(--info); font-weight: 600; text-decoration: none; }
+.context-card a:hover { text-decoration: underline; }
+
+/* Explainer */
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin: 24px 0; }
+.explainer-card { background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+.explainer-card .ec-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0; color: #fff; }
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700; background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans',sans-serif; }
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-warning-box { background: rgba(255,73,83,.06); border: 1px solid rgba(255,73,83,.15); border-radius: var(--radius); padding: 14px 18px; margin: 24px 0; font-size: 13px; color: var(--critical); line-height: 1.6; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .compare-row { grid-template-columns: 1fr; }
+  .chart-wrap { height: 160px; }
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de rendement du copy trading","description":"Projetez vos rendements de copy trading sur 1 à 10 ans avec des calculs de croissance composée et simple.","url":"https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Tom","url":"https://socialtradingvlog.com/about/"}}
+</script>
+</head>
+<body>
+
+<nav class="tool-nav">
+  <a href="../../fr/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../calculateur-frais/">Calculateur de frais</a>
+    <a href="../calculateur-rendement/" class="active">Calculateur de rendement</a>
+    <a href="../comparer-plateformes/">Comparer les plateformes</a>
+  </div>
+  <a href="../../fr/" class="tool-nav-back">&larr; Retour au site</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Projection d'investissement</div>
+    <h1>Copy Trading <span class="accent">Calculateur de rendement</span></h1>
+    <p>Découvrez comment votre investissement pourrait croître au fil du temps. Entrez votre montant de départ, le rendement attendu et votre horizon temporel pour projeter la croissance de votre portefeuille.</p>
+  </div>
+
+  <div class="calc-card">
+    <div class="input-section">
+      <div class="input-label">Investissement initial</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="invest-slider" min="200" max="100000" step="100" value="1000" oninput="syncInvest(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="invest-input" value="1,000" oninput="syncInvestSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">Rendement annuel attendu</div>
+      <div class="pill-group" id="return-pills">
+        <button class="pill-btn" onclick="setReturn(5,this)">Prudent (5 %)</button>
+        <button class="pill-btn active" onclick="setReturn(15,this)">Modéré (15 %)</button>
+        <button class="pill-btn" onclick="setReturn(30,this)">Agressif (30 %)</button>
+        <button class="pill-btn" onclick="setReturn(-1,this)">Personnalisé</button>
+      </div>
+      <div id="custom-return" style="display:none;margin-top:12px">
+        <div class="slider-row">
+          <input type="range" class="slider-input" id="return-slider" min="1" max="100" step="1" value="15" oninput="updateReturn(this.value)">
+          <div class="amount-input" style="width:80px;text-align:center" id="return-display">15 %</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">Durée</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="years-slider" min="1" max="10" step="1" value="5" oninput="setYears(this.value)">
+        <div class="amount-input" style="width:100px;text-align:center" id="years-display">5 ans</div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="toggle-row">
+        <label class="toggle-switch">
+          <input type="checkbox" id="compound-toggle" checked onchange="calc()">
+          <span class="toggle-track"></span>
+          <span class="toggle-dot"></span>
+        </label>
+        <span class="toggle-label">Réinvestir les profits (croissance composée)</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-hero">
+      <div class="total-label">Valeur projetée du portefeuille</div>
+      <div class="total-value" id="total-value">$2,011</div>
+      <div class="results-badges">
+        <span class="result-badge badge-profit" id="badge-profit">+$1,011 de profit</span>
+        <span class="result-badge badge-roi" id="badge-roi">101 % de ROI</span>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap"></div>
+
+    <div class="compare-row">
+      <div class="compare-card cc-compound">
+        <div class="cc-label">Avec intérêts composés</div>
+        <div class="cc-value" id="cc-compound">$2,011</div>
+        <div class="cc-sub">Réinvestissement des profits</div>
+      </div>
+      <div class="compare-card cc-simple">
+        <div class="cc-label">Sans intérêts composés</div>
+        <div class="cc-value" id="cc-simple">$1,750</div>
+        <div class="cc-sub">Retrait des profits</div>
+      </div>
+    </div>
+
+    <table class="year-table" id="year-table">
+      <thead><tr><th>Année</th><th>Début</th><th>Rendement</th><th>Valeur finale</th><th>Profit total</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="risk-warning-box">
+      <strong>Important :</strong> Ce calculateur présente uniquement des projections hypothétiques. Les performances passées ne garantissent pas les résultats futurs. Le copy trading ne constitue pas un conseil en investissement. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. 51 % des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils négocient des CFD avec eToro.
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>Avis de non-responsabilité sur les données</strong>
+      Ce calculateur est fourni à des fins d'information et d'éducation générales uniquement. Il ne doit pas être utilisé pour prendre des décisions d'investissement.
+      <ul>
+        <li>Toutes les projections sont hypothétiques et basées sur les taux de rendement choisis par l'utilisateur. Les rendements réels du copy trading varieront considérablement et peuvent entraîner une perte de capital.</li>
+        <li>Les performances passées d'un trader sur eToro ne sont pas indicatives des résultats futurs. Les rendements affichés dans cet outil sont des projections mathématiques, pas des prédictions ni des garanties.</li>
+        <li>Cet outil ne constitue pas un conseil financier, d'investissement ou fiscal. SocialTradingVlog et son auteur ne sont pas des conseillers financiers et déclinent toute responsabilité pour toute perte ou dommage résultant de l'utilisation de ce calculateur.</li>
+        <li>Le copy trading ne constitue pas un conseil en investissement. Vous devez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent.</li>
+        <li>eToro est une plateforme d'investissement multi-actifs. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tom's real returns -->
+  <div class="context-card">
+    <div class="cc-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+    <div>
+      <h3>Les vrais rendements de Tom en copy trading</h3>
+      <p>Je fais du copy trading sur eToro depuis 2016 — presque 10 ans. Découvrez mes rendements réels, les traders que je copie et ce que j'ai appris en cours de route.</p>
+      <a href="../../copy-trading-returns/">Voir mes rendements réels &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Explainer -->
+  <h2 style="font-size:22px;font-weight:700;text-align:center;margin:32px 0 20px">Comment fonctionnent les rendements du copy trading</h2>
+  <div class="explainer-grid">
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(0,159,129,.12);color:var(--success)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Copier un trader</h3>
+      <p>Choisissez des traders à copier en fonction de leur historique de performance, leur score de risque et leur style de trading. Lorsqu'ils tradent, votre compte reproduit automatiquement leurs positions de manière proportionnelle.</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Croissance composée</h3>
+      <p>Avec les intérêts composés, vos profits sont réinvestis, ce qui vous permet de générer des rendements sur vos rendements. Sur de longues périodes, cela crée une croissance exponentielle — même de petits rendements se composent de manière significative sur 5 à 10 ans.</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>Le risque compte</h3>
+      <p>Des rendements attendus plus élevés s'accompagnent d'un risque plus élevé. Les traders copiés avec des scores de risque plus bas ont tendance à avoir des rendements plus réguliers (mais plus faibles). Diversifiez en copiant plusieurs traders.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Commencez le copy trading dès aujourd'hui</h2>
+    <p>Rejoignez eToro, copiez des traders performants et laissez-les trader pour vous. Commencez avec seulement 200 $.</p>
+    <a href="https://etoro.tw/4cuYCBg" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'roi_calculator_fr'})">Essayer le copy trading &rarr;</a>
+    <div class="risk-text">
+      <strong>51 % des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils négocient des CFD avec ce fournisseur.</strong>
+      Vous devez vous demander si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent.
+      Le copy trading ne constitue pas un conseil en investissement. Capital à risque. Lien d'affiliation.
+    </div>
+  </div>
+
+  <div class="tool-footer">
+    <p><a href="../../fr/">SocialTradingVlog.com</a> &middot; <a href="../">Tous les outils</a> &middot; <a href="../../about/">À propos de Tom</a></p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Ce calculateur est fourni à titre informatif uniquement et ne constitue pas un conseil financier. Toutes les projections sont hypothétiques &mdash; les rendements réels peuvent différer considérablement.
+      SocialTradingVlog décline toute responsabilité pour les pertes résultant de l'utilisation de cet outil. Les performances passées ne sont pas indicatives des résultats futurs.
+      eToro est une plateforme d'investissement multi-actifs. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque. 51 % des comptes d'investisseurs particuliers perdent de l'argent lorsqu'ils négocient des CFD avec ce fournisseur.
+    </p>
+  </div>
+</div>
+
+<script>
+let state = { invest: 1000, returnPct: 15, years: 5, compound: true, customReturn: false };
+
+function syncInvest(v) { state.invest = parseInt(v)||200; document.getElementById('invest-input').value = state.invest.toLocaleString(); calc(); }
+function syncInvestSlider(v) { const n = parseInt(v.replace(/[^0-9]/g,''))||200; state.invest = Math.min(Math.max(n,200),100000); document.getElementById('invest-slider').value = state.invest; calc(); }
+function setReturn(pct, el) {
+  document.querySelectorAll('#return-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  if (pct === -1) { state.customReturn = true; document.getElementById('custom-return').style.display = 'block'; state.returnPct = parseInt(document.getElementById('return-slider').value); }
+  else { state.customReturn = false; document.getElementById('custom-return').style.display = 'none'; state.returnPct = pct; }
+  calc();
+}
+function updateReturn(v) { state.returnPct = parseInt(v); document.getElementById('return-display').textContent = v + ' %'; calc(); }
+function setYears(v) { state.years = parseInt(v); document.getElementById('years-display').textContent = v + ' an' + (v>1?'s':''); calc(); }
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function calc() {
+  state.compound = document.getElementById('compound-toggle').checked;
+  const r = state.returnPct / 100;
+  const years = [];
+  let compoundVal = state.invest;
+  let simpleVal = state.invest;
+
+  for (let y = 1; y <= state.years; y++) {
+    const compReturn = compoundVal * r;
+    compoundVal += compReturn;
+    simpleVal = state.invest + (state.invest * r * y);
+    years.push({ year: y, start: compoundVal - compReturn, compReturn, compEnd: compoundVal, simpleEnd: simpleVal, profit: compoundVal - state.invest });
+  }
+
+  const finalVal = state.compound ? compoundVal : simpleVal;
+  const profit = finalVal - state.invest;
+  const roi = Math.round((profit / state.invest) * 100);
+
+  document.getElementById('total-value').textContent = fmt(finalVal);
+  document.getElementById('badge-profit').textContent = '+' + fmt(profit) + ' de profit';
+  document.getElementById('badge-roi').textContent = roi + ' % de ROI';
+  document.getElementById('cc-compound').textContent = fmt(compoundVal);
+  document.getElementById('cc-simple').textContent = fmt(simpleVal);
+
+  // Chart
+  const vals = [state.invest, ...years.map(y => state.compound ? y.compEnd : y.simpleEnd)];
+  const compVals = [state.invest, ...years.map(y => y.compEnd)];
+  const simpVals = [state.invest, ...years.map(y => y.simpleEnd)];
+  const maxV = Math.max(...compVals, ...simpVals, state.invest + 1);
+  const minV = state.invest * 0.95;
+  const range = maxV - minV || 1;
+  const w = 800, h = 180, pad = 8;
+  const stepX = (w - pad * 2) / state.years;
+
+  function pts(arr) { return arr.map((v, i) => `${pad + i * stepX},${h - pad - ((v - minV) / range) * (h - pad * 2)}`).join(' '); }
+  function area(arr) { return pts(arr) + ` ${pad + state.years * stepX},${h - pad} ${pad},${h - pad}`; }
+
+  const labels = Array.from({length: state.years + 1}, (_, i) => {
+    const x = pad + i * stepX;
+    return `<text x="${x}" y="${h}" fill="var(--text-muted)" font-size="11" text-anchor="middle" font-family="Inter">${i === 0 ? 'Auj.' : 'A' + i}</text>`;
+  }).join('');
+
+  document.getElementById('chart-wrap').innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polygon points="${area(compVals)}" fill="var(--success)" opacity="0.1"/>
+    <polyline points="${pts(compVals)}" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linejoin="round"/>
+    <polygon points="${area(simpVals)}" fill="var(--info)" opacity="0.06"/>
+    <polyline points="${pts(simpVals)}" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="6,4" stroke-linejoin="round"/>
+    ${compVals.map((v, i) => `<circle cx="${pad + i * stepX}" cy="${h - pad - ((v - minV) / range) * (h - pad * 2)}" r="4" fill="var(--success)"/>`).join('')}
+    ${labels}
+  </svg>`;
+
+  // Table
+  const tbody = document.getElementById('year-table').querySelector('tbody');
+  tbody.innerHTML = years.map(y => `<tr>
+    <td style="font-weight:600">Année ${y.year}</td>
+    <td>${fmt(y.start)}</td>
+    <td class="positive">+${fmt(y.compReturn)}</td>
+    <td style="font-weight:600">${fmt(state.compound ? y.compEnd : y.simpleEnd)}</td>
+    <td class="positive">+${fmt(state.compound ? y.profit : y.simpleEnd - state.invest)}</td>
+  </tr>`).join('');
+}
+
+calc();
+</script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Taxas do eToro 2026 — Calcule Seus Custos de Trading | SocialTradingVlog</title>
+<meta name="description" content="Calculadora de taxas do eToro gratuita. Veja exatamente quanto voc&ecirc; vai pagar em spreads, taxas overnight, taxas de saque e convers&atilde;o de moeda. Atualizada para 2026.">
+<meta name="keywords" content="calculadora taxas eToro, custos eToro, spread eToro calculadora, calculadora custos eToro, taxa saque eToro">
+<link rel="canonical" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<meta property="og:title" content="Calculadora de Taxas do eToro 2026 — Calcule Seus Custos de Trading">
+<meta property="og:description" content="Calculadora de taxas do eToro gratuita. Veja exatamente quanto voc&ecirc; vai pagar em spreads, taxas overnight e muito mais.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Container ─── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero ─── */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+/* ─── Calculator Card ─── */
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.calc-card:hover { box-shadow: var(--shadow-hover); }
+
+/* ─── Input Groups ─── */
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn {
+  padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.pill-btn:hover { border-color: var(--info); color: var(--text-primary); }
+.pill-btn.active { background: var(--info); border-color: var(--info); color: #fff; }
+.pill-btn.active.stocks { background: var(--chart-1); border-color: var(--chart-1); }
+.pill-btn.active.crypto { background: var(--chart-3); border-color: var(--chart-3); }
+.pill-btn.active.forex { background: var(--chart-2); border-color: var(--chart-2); }
+.pill-btn.active.commodities { background: var(--warning); border-color: var(--warning); color: var(--text-primary); }
+.pill-btn.active.indices { background: var(--purple); border-color: var(--purple); }
+.pill-btn.active.etfs { background: var(--success); border-color: var(--success); }
+
+/* Slider */
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 6px; border-radius: 3px; background: var(--border);
+  outline: none; transition: background .2s;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--info); cursor: pointer; box-shadow: 0 2px 6px rgba(0,143,248,.35);
+  transition: transform .15s;
+}
+.slider-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.amount-input {
+  width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: right;
+  transition: border-color .2s, box-shadow .2s;
+}
+.amount-input:focus { outline: none; border-color: var(--info); box-shadow: 0 0 0 3px rgba(0,143,248,.15); }
+
+/* ─── Results ─── */
+.results { padding: 32px 0 16px; }
+.results-hero { text-align: center; margin-bottom: 32px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.1; transition: color .3s;
+}
+.results-hero .total-pct {
+  display: inline-flex; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+}
+.results-hero .total-pct.low { background: var(--success-light); color: var(--success); }
+.results-hero .total-pct.medium { background: var(--warning-light); color: #B8860B; }
+.results-hero .total-pct.high { background: var(--critical-light); color: var(--critical); }
+
+/* Breakdown cards */
+.breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.breakdown-card {
+  border-radius: var(--radius); padding: 18px; text-align: center;
+  transition: transform .2s;
+}
+.breakdown-card:hover { transform: translateY(-2px); }
+.breakdown-card .bc-label { font-size: 12px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+.breakdown-card .bc-value { font-size: 22px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+.breakdown-card .bc-note { font-size: 11px; opacity: .6; margin-top: 2px; }
+.bc-spread { background: rgba(43,179,255,.1); color: #0077CC; }
+.bc-overnight { background: rgba(255,100,45,.1); color: #C33909; }
+.bc-conversion { background: rgba(139,92,246,.1); color: #7C3AED; }
+.bc-withdrawal { background: rgba(108,110,121,.1); color: var(--text-secondary); }
+
+/* Stacked bar */
+.stacked-bar-wrap { margin-bottom: 16px; }
+.stacked-bar { display: flex; height: 28px; border-radius: 14px; overflow: hidden; }
+.stacked-bar div { height: 100%; transition: width .5s ease; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; }
+.sb-spread { background: var(--chart-1); }
+.sb-overnight { background: var(--chart-3); }
+.sb-conversion { background: var(--purple); }
+.sb-withdrawal { background: #8A8E9B; }
+.stacked-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 10px; }
+.stacked-legend span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.stacked-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Context callout */
+.callout {
+  background: linear-gradient(135deg, #F0F8FF 0%, #F5F0FF 100%);
+  border: 1px solid #E8E0F0;
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
+  font-size: 14px; color: var(--text-primary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── Explainer Section ─── */
+.explainer { padding: 40px 0; }
+.explainer h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.explainer-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+}
+.explainer-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.explainer-card .ec-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Spread Table ─── */
+.spread-section { margin-bottom: 32px; }
+.spread-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px;
+  cursor: pointer; box-shadow: var(--shadow); transition: all .2s; border: none;
+  width: 100%; text-align: left; font-family: inherit; font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+}
+.spread-toggle:hover { box-shadow: var(--shadow-hover); }
+.spread-toggle .chevron { transition: transform .3s; font-size: 12px; color: var(--text-muted); }
+.spread-toggle.open .chevron { transform: rotate(180deg); }
+.spread-table-wrap {
+  max-height: 0; overflow: hidden; transition: max-height .4s ease;
+  background: var(--bg-card); border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 2px 4px rgba(25,27,35,.08);
+}
+.spread-table-wrap.open { max-height: 600px; }
+.spread-table { width: 100%; border-collapse: collapse; }
+.spread-table th { text-align: left; padding: 12px 20px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.spread-table td { padding: 10px 20px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+.spread-table tr:last-child td { border-bottom: none; }
+.spread-table tr:hover { background: rgba(0,143,248,.03); }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 32px 0; }
+.faq-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .15s; }
+.faq-q:hover { background: rgba(0,143,248,.03); }
+.faq-q .chevron { font-size: 12px; color: var(--text-muted); transition: transform .3s; }
+.faq-q.open .chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.faq-a.open { max-height: 300px; padding: 0 20px 16px; }
+.faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%);
+  border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0;
+  color: #fff;
+}
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700;
+  background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer;
+  transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-text-light { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: center; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+.tool-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .pill-group { gap: 6px; }
+  .pill-btn { padding: 7px 14px; font-size: 12px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  .explainer-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .pill-btn { padding: 6px 12px; font-size: 11px; }
+}
+</style>
+
+<!-- Schema: WebApplication + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Taxas do eToro",
+  "description": "Calcule seus custos exatos de trading no eToro, incluindo spreads, taxas overnight, taxas de saque e conversao de moeda.",
+  "url": "https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Quais sao as taxas de trading do eToro?", "acceptedAnswer": {"@type": "Answer", "text": "O eToro cobra taxas principalmente por meio de spreads (a diferenca entre o preco de compra e venda). Operacoes com acoes e ETFs tem 0% de comissao. Criptomoedas tem um spread de 1%. Forex comeca em 1 pip. Custos adicionais incluem taxas overnight para posicoes CFD mantidas apos as 22:00 (horario do Reino Unido)."}},
+    {"@type": "Question", "name": "O eToro cobra taxa de saque?", "acceptedAnswer": {"@type": "Answer", "text": "Titulares de contas em USD pagam uma taxa de saque de $5 (saque minimo de $30). Titulares de contas em GBP e EUR podem sacar gratuitamente."}},
+    {"@type": "Question", "name": "Existem taxas ocultas no eToro?", "acceptedAnswer": {"@type": "Answer", "text": "Os principais custos 'ocultos' sao taxas overnight em posicoes CFD e taxas de conversao de moeda se a moeda da sua conta for diferente da moeda do ativo. Tambem existe uma taxa de inatividade de $10/mes apos 12 meses sem login."}},
+    {"@type": "Question", "name": "O copy trading no eToro e gratuito?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, nao existem taxas adicionais para usar o recurso CopyTrader do eToro. Voce paga apenas as taxas de trading padrao pelas posicoes que o trader copiado abre em seu nome."}},
+    {"@type": "Question", "name": "Quanto custa negociar criptomoedas no eToro?", "acceptedAnswer": {"@type": "Answer", "text": "O eToro cobra um spread de 1% na compra de criptomoedas. Nao existem taxas overnight para manter criptomoedas reais (nao-CFD). Transferir criptomoedas para uma carteira externa custa 2%."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../../" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../calculadora-taxas/" class="active">Calculadora de Taxas</a>
+    <a href="../calculadora-retorno/">Calculadora de Retorno</a>
+    <a href="../comparar-plataformas/">Comparar Plataformas</a>
+  </div>
+  <a href="../../" class="tool-nav-back">&larr; Voltar ao site</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Atualizado em fevereiro de 2026</div>
+    <h1>Calculadora de <span class="accent">Taxas do eToro</span></h1>
+    <p>Veja exatamente quanto voc&ecirc; vai pagar antes de negociar. Insira os detalhes da sua opera&ccedil;&atilde;o abaixo e obtenha uma an&aacute;lise completa dos custos em segundos.</p>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calc-card">
+
+    <!-- Asset Class -->
+    <div class="input-section">
+      <div class="input-label">O que voc&ecirc; vai negociar?</div>
+      <div class="pill-group" id="asset-pills">
+        <button class="pill-btn active stocks" data-asset="stocks" onclick="setAsset('stocks',this)">A&ccedil;&otilde;es</button>
+        <button class="pill-btn crypto" data-asset="crypto" onclick="setAsset('crypto',this)">Criptomoedas</button>
+        <button class="pill-btn forex" data-asset="forex" onclick="setAsset('forex',this)">Forex</button>
+        <button class="pill-btn commodities" data-asset="commodities" onclick="setAsset('commodities',this)">Commodities</button>
+        <button class="pill-btn indices" data-asset="indices" onclick="setAsset('indices',this)">&Iacute;ndices</button>
+        <button class="pill-btn etfs" data-asset="etfs" onclick="setAsset('etfs',this)">ETFs</button>
+      </div>
+    </div>
+
+    <!-- Trade Amount -->
+    <div class="input-section">
+      <div class="input-label">Valor da opera&ccedil;&atilde;o</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="amount-slider" min="100" max="50000" step="100" value="1000" oninput="syncAmount(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="amount-input" value="1,000" oninput="syncSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Holding Period -->
+    <div class="input-section">
+      <div class="input-label">Por quanto tempo vai manter?</div>
+      <div class="pill-group" id="period-pills">
+        <button class="pill-btn active" data-days="0" onclick="setPeriod(0,this)">Day Trade</button>
+        <button class="pill-btn" data-days="7" onclick="setPeriod(7,this)">1 Semana</button>
+        <button class="pill-btn" data-days="30" onclick="setPeriod(30,this)">1 M&ecirc;s</button>
+        <button class="pill-btn" data-days="365" onclick="setPeriod(365,this)">1 Ano</button>
+      </div>
+    </div>
+
+    <!-- Account Currency -->
+    <div class="input-section">
+      <div class="input-label">Moeda da sua conta</div>
+      <div class="pill-group" id="currency-pills">
+        <button class="pill-btn active" data-cur="USD" onclick="setCurrency('USD',this)">USD</button>
+        <button class="pill-btn" data-cur="GBP" onclick="setCurrency('GBP',this)">GBP</button>
+        <button class="pill-btn" data-cur="EUR" onclick="setCurrency('EUR',this)">EUR</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="results-hero">
+        <div class="total-label">Custo total estimado</div>
+        <div class="total-value" id="total-value">$1.50</div>
+        <div class="total-pct low" id="total-pct">0.15% da sua opera&ccedil;&atilde;o</div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid">
+        <div class="breakdown-card bc-spread">
+          <div class="bc-label">Spread</div>
+          <div class="bc-value" id="bc-spread">$1.50</div>
+          <div class="bc-note">Taxa de negocia&ccedil;&atilde;o</div>
+        </div>
+        <div class="breakdown-card bc-overnight">
+          <div class="bc-label">Taxas Overnight</div>
+          <div class="bc-value" id="bc-overnight">$0.00</div>
+          <div class="bc-note" id="bc-overnight-note">Day trade</div>
+        </div>
+        <div class="breakdown-card bc-conversion">
+          <div class="bc-label">Convers&atilde;o</div>
+          <div class="bc-value" id="bc-conversion">$0.00</div>
+          <div class="bc-note">Taxa cambial</div>
+        </div>
+        <div class="breakdown-card bc-withdrawal">
+          <div class="bc-label">Saque</div>
+          <div class="bc-value" id="bc-withdrawal">$5.00</div>
+          <div class="bc-note" id="bc-withdrawal-note">Se voc&ecirc; sacar</div>
+        </div>
+      </div>
+
+      <div class="stacked-bar-wrap">
+        <div class="stacked-bar" id="stacked-bar"></div>
+        <div class="stacked-legend">
+          <span><span class="dot" style="background:var(--chart-1)"></span>Spread</span>
+          <span><span class="dot" style="background:var(--chart-3)"></span>Overnight</span>
+          <span><span class="dot" style="background:var(--purple)"></span>Convers&atilde;o</span>
+          <span><span class="dot" style="background:#8A8E9B"></span>Saque</span>
+        </div>
+      </div>
+
+      <div class="callout" id="callout">
+        <span class="callout-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span id="callout-text">Isso representa 0.15% da sua opera&ccedil;&atilde;o. Para compara&ccedil;&atilde;o, uma opera&ccedil;&atilde;o t&iacute;pica com a&ccedil;&otilde;es em um banco custa de $10 a $25 em comiss&otilde;es.</span>
+      </div>
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>Aviso sobre Precis&atilde;o dos Dados</strong>
+      Esta calculadora fornece <strong style="display:inline;font-size:inherit;">apenas estimativas</strong> e destina-se a fins informativos e educacionais gerais. N&atilde;o deve ser usada para tomar decis&otilde;es financeiras.
+      <ul>
+        <li>Os dados de taxas s&atilde;o obtidos de informa&ccedil;&otilde;es p&uacute;blicas do eToro e podem n&atilde;o refletir as taxas mais recentes, o n&iacute;vel espec&iacute;fico da sua conta ou as condi&ccedil;&otilde;es de mercado em tempo real.</li>
+        <li>Os custos reais de negocia&ccedil;&atilde;o podem diferir das estimativas apresentadas. Sempre verifique as taxas diretamente na <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:var(--info)">p&aacute;gina oficial de taxas do eToro</a> antes de realizar opera&ccedil;&otilde;es.</li>
+        <li>Esta ferramenta n&atilde;o constitui aconselhamento financeiro, de investimento ou tribut&aacute;rio. O SocialTradingVlog e seu autor n&atilde;o s&atilde;o consultores financeiros e n&atilde;o se responsabilizam por perdas ou danos decorrentes do uso desta calculadora.</li>
+        <li>O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- How Fees Work -->
+  <div class="explainer">
+    <h2>Como Funcionam as Taxas do eToro</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3>Spreads</h3>
+        <p>O spread &eacute; a diferen&ccedil;a entre o pre&ccedil;o de compra e o de venda. &Eacute; a principal fonte de receita do eToro. A&ccedil;&otilde;es e ETFs t&ecirc;m comiss&atilde;o de 0% &mdash; voc&ecirc; paga apenas o spread. Spreads de criptomoedas come&ccedil;am em 1%.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Taxas Overnight</h3>
+        <p>Posi&ccedil;&otilde;es CFD mantidas ap&oacute;s as 22:00 (hor&aacute;rio do Reino Unido) geram taxas overnight di&aacute;rias. Elas se acumulam ao longo do tempo &mdash; uma posi&ccedil;&atilde;o mantida por um ano custa significativamente mais do que um day trade. Posi&ccedil;&otilde;es reais em criptomoedas e a&ccedil;&otilde;es s&atilde;o isentas.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a10 10 0 0110 10 10 10 0 01-10 10 10 10 0 01-10-10A10 10 0 0112 2z"/><path d="M2 12a15 15 0 014-10m0 20a15 15 0 01-4-10m20 0a15 15 0 01-4 10m0-20a15 15 0 014 10"/></svg>
+        </div>
+        <h3>Outras Taxas</h3>
+        <p>A convers&atilde;o de moeda se aplica quando a moeda da sua conta &eacute; diferente da do ativo. O saque custa $5 para contas em USD (gratuito para GBP/EUR). H&aacute; uma taxa de inatividade de $10/m&ecirc;s ap&oacute;s 12 meses sem login.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spread Table -->
+  <div class="spread-section">
+    <button class="spread-toggle" onclick="this.classList.toggle('open');document.getElementById('spread-wrap').classList.toggle('open')">
+      Tabela Completa de Spreads do eToro <span class="chevron">&#9660;</span>
+    </button>
+    <div class="spread-table-wrap" id="spread-wrap">
+      <table class="spread-table">
+        <thead><tr><th>Classe de Ativo</th><th>Spread T&iacute;pico</th><th>Comiss&atilde;o</th><th>Taxa Overnight</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A&ccedil;&otilde;es (EUA)</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/dia (apenas CFD)</td></tr>
+          <tr><td><strong>A&ccedil;&otilde;es (UE/RU)</strong></td><td>~0.15%</td><td>$1-$2</td><td>~0.01%/dia (apenas CFD)</td></tr>
+          <tr><td><strong>ETFs</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/dia (apenas CFD)</td></tr>
+          <tr><td><strong>Bitcoin</strong></td><td>1%</td><td>$0</td><td>Nenhuma (cripto real)</td></tr>
+          <tr><td><strong>Ethereum</strong></td><td>1%</td><td>$0</td><td>Nenhuma (cripto real)</td></tr>
+          <tr><td><strong>Outras Criptomoedas</strong></td><td>1-5%</td><td>$0</td><td>Nenhuma (cripto real)</td></tr>
+          <tr><td><strong>EUR/USD</strong></td><td>1 pip</td><td>$0</td><td>~$0.08/dia por $10K</td></tr>
+          <tr><td><strong>GBP/USD</strong></td><td>2 pips</td><td>$0</td><td>~$0.10/dia por $10K</td></tr>
+          <tr><td><strong>Ouro</strong></td><td>45 pips</td><td>$0</td><td>~$0.12/dia por $10K</td></tr>
+          <tr><td><strong>Petr&oacute;leo</strong></td><td>5 pips</td><td>$0</td><td>~$0.12/dia por $10K</td></tr>
+          <tr><td><strong>S&P 500</strong></td><td>0.75 pts</td><td>$0</td><td>~$0.10/dia por $10K</td></tr>
+          <tr><td><strong>NASDAQ 100</strong></td><td>2.4 pts</td><td>$0</td><td>~$0.10/dia por $10K</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quais s&atilde;o as taxas de trading do eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>O eToro cobra taxas principalmente por meio de spreads (a diferen&ccedil;a entre o pre&ccedil;o de compra e venda). Opera&ccedil;&otilde;es com a&ccedil;&otilde;es e ETFs t&ecirc;m comiss&atilde;o de 0%. Criptomoedas t&ecirc;m um spread de 1%. Forex come&ccedil;a em 1 pip. Custos adicionais incluem taxas overnight para posi&ccedil;&otilde;es CFD mantidas ap&oacute;s as 22:00 (hor&aacute;rio do Reino Unido).</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">O eToro cobra taxa de saque? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Titulares de contas em USD pagam uma taxa de saque de $5 (saque m&iacute;nimo de $30). Titulares de contas em GBP e EUR podem sacar gratuitamente.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Existem taxas ocultas no eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Os principais custos &ldquo;ocultos&rdquo; s&atilde;o as taxas overnight em posi&ccedil;&otilde;es CFD e as taxas de convers&atilde;o de moeda se a moeda da sua conta for diferente da moeda de negocia&ccedil;&atilde;o do ativo. Tamb&eacute;m existe uma taxa de inatividade de $10/m&ecirc;s ap&oacute;s 12 meses sem login. Esta calculadora mostra todos esses custos antecipadamente.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">O copy trading no eToro &eacute; gratuito? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>Sim, n&atilde;o existem taxas adicionais para usar o recurso CopyTrader do eToro. Voc&ecirc; paga apenas as taxas de negocia&ccedil;&atilde;o padr&atilde;o pelas posi&ccedil;&otilde;es que o trader copiado abre em seu nome. O valor m&iacute;nimo para copiar um trader &eacute; de $200.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quanto custa negociar criptomoedas no eToro? <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>O eToro cobra um spread de 1% na compra de criptomoedas. N&atilde;o existem taxas overnight para manter criptomoedas reais (n&atilde;o-CFD). Transferir criptomoedas para uma carteira externa custa 2%. O spread de criptomoedas &eacute; cobrado tanto na compra quanto na venda.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Pronto para come&ccedil;ar a investir?</h2>
+    <p>Entre no eToro e tenha acesso a a&ccedil;&otilde;es, criptomoedas, forex e copy trading. Comece com apenas $50.</p>
+    <a href="https://etoro.tw/40bkzhp" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'fee_calculator'})">Abrir Conta no eToro &rarr;</a>
+    <div class="risk-text">
+      <strong>51% das contas de investidores de varejo perdem dinheiro ao negociar CFDs com este provedor.</strong>
+      Voc&ecirc; deve considerar se pode arcar com o alto risco de perder o seu dinheiro.
+      Isto n&atilde;o constitui aconselhamento financeiro. Capital em risco. Link de afiliado &mdash; o Tom pode receber uma comiss&atilde;o sem nenhum custo para voc&ecirc;.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../">SocialTradingVlog.com</a> &middot;
+      <a href="../">Todas as Ferramentas</a> &middot;
+      <a href="../../sobre/">Sobre o Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Esta calculadora &eacute; apenas para fins informativos e n&atilde;o constitui aconselhamento financeiro. As estimativas de taxas podem ser imprecisas ou estar desatualizadas &mdash; sempre verifique no site oficial do eToro.
+      O SocialTradingVlog n&atilde;o se responsabiliza por perdas decorrentes do uso desta ferramenta. O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.
+      51% das contas de investidores de varejo perdem dinheiro ao negociar CFDs com este provedor.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+const FEE_DATA = {
+  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Acoes', hasOvernight: true },
+  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Criptomoedas', hasOvernight: false },
+  forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
+  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: 'Commodities', hasOvernight: true },
+  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Indices', hasOvernight: true },
+  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
+};
+const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+
+let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
+
+function setAsset(a, el) {
+  state.asset = a;
+  document.querySelectorAll('#asset-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setPeriod(d, el) {
+  state.days = d;
+  document.querySelectorAll('#period-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setCurrency(c, el) {
+  state.currency = c;
+  document.querySelectorAll('#currency-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function syncAmount(val) {
+  state.amount = parseInt(val) || 100;
+  document.getElementById('amount-input').value = state.amount.toLocaleString();
+  calculate();
+}
+function syncSlider(val) {
+  const n = parseInt(val.replace(/[^0-9]/g, '')) || 100;
+  state.amount = Math.min(Math.max(n, 100), 50000);
+  document.getElementById('amount-slider').value = state.amount;
+  calculate();
+}
+
+function fmt(n) {
+  if (n >= 1) return '$' + n.toFixed(2);
+  if (n >= 0.01) return '$' + n.toFixed(2);
+  return '$0.00';
+}
+
+function calculate() {
+  const fd = FEE_DATA[state.asset];
+  const spread = state.amount * (fd.spread_pct / 100);
+  const overnight = fd.hasOvernight ? state.amount * (fd.overnight_daily_pct / 100) * state.days : 0;
+  const conversion = state.amount * (CONVERSION[state.currency] / 100);
+  const withdrawal = WITHDRAWAL[state.currency];
+  const total = spread + overnight + conversion;
+  const totalWithWithdraw = total + withdrawal;
+  const pct = (total / state.amount * 100);
+
+  // Update values
+  document.getElementById('total-value').textContent = fmt(total);
+  const pctEl = document.getElementById('total-pct');
+  pctEl.textContent = pct.toFixed(2) + '% da sua operacao';
+  pctEl.className = 'total-pct ' + (pct < 0.5 ? 'low' : pct < 2 ? 'medium' : 'high');
+
+  document.getElementById('bc-spread').textContent = fmt(spread);
+  document.getElementById('bc-overnight').textContent = fmt(overnight);
+  document.getElementById('bc-overnight-note').textContent = state.days === 0 ? 'Day trade' : state.days + ' dia' + (state.days > 1 ? 's' : '');
+  document.getElementById('bc-conversion').textContent = fmt(conversion);
+  document.getElementById('bc-withdrawal').textContent = fmt(withdrawal);
+  document.getElementById('bc-withdrawal-note').textContent = withdrawal === 0 ? 'Gratuito para ' + state.currency : 'Se voce sacar';
+
+  // Stacked bar
+  const barTotal = Math.max(totalWithWithdraw, 0.01);
+  const bar = document.getElementById('stacked-bar');
+  bar.innerHTML = `
+    <div class="sb-spread" style="width:${(spread/barTotal*100)}%">${spread > barTotal*0.08 ? fmt(spread) : ''}</div>
+    <div class="sb-overnight" style="width:${(overnight/barTotal*100)}%">${overnight > barTotal*0.08 ? fmt(overnight) : ''}</div>
+    <div class="sb-conversion" style="width:${(conversion/barTotal*100)}%">${conversion > barTotal*0.08 ? fmt(conversion) : ''}</div>
+    <div class="sb-withdrawal" style="width:${(withdrawal/barTotal*100)}%">${withdrawal > barTotal*0.08 ? fmt(withdrawal) : ''}</div>
+  `;
+
+  // Callout
+  const calloutText = document.getElementById('callout-text');
+  if (pct < 0.3) {
+    calloutText.textContent = `Isso representa apenas ${pct.toFixed(2)}% da sua operacao. As taxas de ${fd.label.toLowerCase()} do eToro sao muito competitivas — um banco convencional cobra de $10 a $25 por operacao com acoes.`;
+  } else if (pct < 1) {
+    calloutText.textContent = `Isso representa ${pct.toFixed(2)}% da sua operacao. ${state.days > 30 ? 'A maior parte desse custo vem das taxas overnight — considere periodos de manutencao mais curtos para reduzir custos.' : 'Isso esta dentro da media do mercado para negociacao de ' + fd.label.toLowerCase() + '.'}`;
+  } else {
+    calloutText.textContent = `Isso representa ${pct.toFixed(2)}% da sua operacao. ${state.asset === 'crypto' ? 'Os spreads de criptomoedas sao mais altos do que em acoes/forex — isso e padrao em todas as plataformas.' : 'As taxas overnight se acumulam ao longo de periodos longos. Considere se um prazo mais curto poderia reduzir seus custos.'}`;
+  }
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// Initial calculation
+calculate();
+</script>
+</body>
+</html>

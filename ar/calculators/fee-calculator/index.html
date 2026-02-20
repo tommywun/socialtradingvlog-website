@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة رسوم eToro 2026 — احسب تكاليف التداول | SocialTradingVlog</title>
+<meta name="description" content="حاسبة رسوم eToro المجانية. اعرف بالضبط ما ستدفعه من فروقات أسعار ورسوم تبييت ورسوم سحب وتحويل عملات. محدّثة لعام 2026.">
+<meta name="keywords" content="رسوم eToro, رسوم تداول eToro, حاسبة فروقات eToro, حاسبة تكاليف eToro, رسوم سحب eToro">
+<link rel="canonical" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<meta property="og:title" content="حاسبة رسوم eToro 2026 — احسب تكاليف التداول">
+<meta property="og:description" content="حاسبة رسوم eToro المجانية. اعرف بالضبط ما ستدفعه من فروقات أسعار ورسوم تبييت والمزيد.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --chart-1: #2BB3FF; --chart-2: #59DDAA; --chart-3: #FF642D; --chart-4: #8B5CF6;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; direction: rtl; text-align: right; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* ─── Tool Nav ─── */
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-right: auto; margin-left: 0; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+/* ─── Container ─── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero ─── */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+/* ─── Calculator Card ─── */
+.calc-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.calc-card:hover { box-shadow: var(--shadow-hover); }
+
+/* ─── Input Groups ─── */
+.input-section { margin-bottom: 28px; }
+.input-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-btn {
+  padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: all .2s; font-family: 'Inter', sans-serif;
+}
+.pill-btn:hover { border-color: var(--info); color: var(--text-primary); }
+.pill-btn.active { background: var(--info); border-color: var(--info); color: #fff; }
+.pill-btn.active.stocks { background: var(--chart-1); border-color: var(--chart-1); }
+.pill-btn.active.crypto { background: var(--chart-3); border-color: var(--chart-3); }
+.pill-btn.active.forex { background: var(--chart-2); border-color: var(--chart-2); }
+.pill-btn.active.commodities { background: var(--warning); border-color: var(--warning); color: var(--text-primary); }
+.pill-btn.active.indices { background: var(--purple); border-color: var(--purple); }
+.pill-btn.active.etfs { background: var(--success); border-color: var(--success); }
+
+/* Slider */
+.slider-row { display: flex; align-items: center; gap: 16px; }
+.slider-input {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 6px; border-radius: 3px; background: var(--border);
+  outline: none; transition: background .2s;
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--info); cursor: pointer; box-shadow: 0 2px 6px rgba(0,143,248,.35);
+  transition: transform .15s;
+}
+.slider-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.amount-input {
+  width: 130px; padding: 10px 14px; border: 1.5px solid var(--border-input); border-radius: var(--radius);
+  font-size: 16px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary); background: var(--bg-input); text-align: left;
+  transition: border-color .2s, box-shadow .2s;
+}
+.amount-input:focus { outline: none; border-color: var(--info); box-shadow: 0 0 0 3px rgba(0,143,248,.15); }
+
+/* ─── Results ─── */
+.results { padding: 32px 0 16px; }
+.results-hero { text-align: center; margin-bottom: 32px; }
+.results-hero .total-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 4px; }
+.results-hero .total-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.1; transition: color .3s;
+}
+.results-hero .total-pct {
+  display: inline-flex; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+}
+.results-hero .total-pct.low { background: var(--success-light); color: var(--success); }
+.results-hero .total-pct.medium { background: var(--warning-light); color: #B8860B; }
+.results-hero .total-pct.high { background: var(--critical-light); color: var(--critical); }
+
+/* Breakdown cards */
+.breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.breakdown-card {
+  border-radius: var(--radius); padding: 18px; text-align: center;
+  transition: transform .2s;
+}
+.breakdown-card:hover { transform: translateY(-2px); }
+.breakdown-card .bc-label { font-size: 12px; font-weight: 600; opacity: .8; margin-bottom: 4px; }
+.breakdown-card .bc-value { font-size: 22px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+.breakdown-card .bc-note { font-size: 11px; opacity: .6; margin-top: 2px; }
+.bc-spread { background: rgba(43,179,255,.1); color: #0077CC; }
+.bc-overnight { background: rgba(255,100,45,.1); color: #C33909; }
+.bc-conversion { background: rgba(139,92,246,.1); color: #7C3AED; }
+.bc-withdrawal { background: rgba(108,110,121,.1); color: var(--text-secondary); }
+
+/* Stacked bar */
+.stacked-bar-wrap { margin-bottom: 16px; }
+.stacked-bar { display: flex; height: 28px; border-radius: 14px; overflow: hidden; }
+.stacked-bar div { height: 100%; transition: width .5s ease; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; }
+.sb-spread { background: var(--chart-1); }
+.sb-overnight { background: var(--chart-3); }
+.sb-conversion { background: var(--purple); }
+.sb-withdrawal { background: #8A8E9B; }
+.stacked-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 10px; }
+.stacked-legend span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.stacked-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Context callout */
+.callout {
+  background: linear-gradient(135deg, #F0F8FF 0%, #F5F0FF 100%);
+  border: 1px solid #E8E0F0;
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
+  font-size: 14px; color: var(--text-primary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── Explainer Section ─── */
+.explainer { padding: 40px 0; }
+.explainer h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.explainer-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+}
+.explainer-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.explainer-card .ec-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.explainer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.explainer-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Spread Table ─── */
+.spread-section { margin-bottom: 32px; }
+.spread-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px;
+  cursor: pointer; box-shadow: var(--shadow); transition: all .2s; border: none;
+  width: 100%; text-align: right; font-family: inherit; font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+}
+.spread-toggle:hover { box-shadow: var(--shadow-hover); }
+.spread-toggle .chevron { transition: transform .3s; font-size: 12px; color: var(--text-muted); }
+.spread-toggle.open .chevron { transform: rotate(180deg); }
+.spread-table-wrap {
+  max-height: 0; overflow: hidden; transition: max-height .4s ease;
+  background: var(--bg-card); border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 2px 4px rgba(25,27,35,.08);
+}
+.spread-table-wrap.open { max-height: 600px; }
+.spread-table { width: 100%; border-collapse: collapse; }
+.spread-table th { text-align: right; padding: 12px 20px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; background: var(--bg-page); border-bottom: 1px solid var(--border); }
+.spread-table td { padding: 10px 20px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+.spread-table tr:last-child td { border-bottom: none; }
+.spread-table tr:hover { background: rgba(0,143,248,.03); }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 32px 0; }
+.faq-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .15s; }
+.faq-q:hover { background: rgba(0,143,248,.03); }
+.faq-q .chevron { font-size: 12px; color: var(--text-muted); transition: transform .3s; }
+.faq-q.open .chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.faq-a.open { max-height: 300px; padding: 0 20px 16px; }
+.faq-a p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(135deg, #382E5E 0%, #1a1640 100%);
+  border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 32px 0;
+  color: #fff;
+}
+.cta-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-pill); font-size: 16px; font-weight: 700;
+  background: var(--brand); color: #fff; text-decoration: none; border: none; cursor: pointer;
+  transition: background .2s, transform .15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.cta-btn:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.risk-text { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 14px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.risk-text-light { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; text-align: center; }
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 0; padding-right: 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+/* ─── Footer ─── */
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+.tool-footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .tool-nav { padding: 0 16px; gap: 16px; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 28px; }
+  .calc-card { padding: 20px; }
+  .pill-group { gap: 6px; }
+  .pill-btn { padding: 7px 14px; font-size: 12px; }
+  .slider-row { flex-wrap: wrap; }
+  .amount-input { width: 100%; }
+  .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  .explainer-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .pill-btn { padding: 6px 12px; font-size: 11px; }
+}
+</style>
+
+<!-- Schema: WebApplication + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "حاسبة رسوم eToro",
+  "description": "احسب تكاليف التداول الدقيقة على eToro بما في ذلك فروقات الأسعار والرسوم الليلية ورسوم السحب وتحويل العملات.",
+  "url": "https://socialtradingvlog.com/ar/calculators/fee-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Tom", "url": "https://socialtradingvlog.com/about/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "ما هي رسوم التداول على eToro؟", "acceptedAnswer": {"@type": "Answer", "text": "تفرض eToro رسومًا بشكل أساسي من خلال فروقات الأسعار (الفرق بين سعر الشراء والبيع). تداول الأسهم وصناديق الاستثمار المتداولة بعمولة 0%. العملات الرقمية بفارق سعر 1%. الفوركس يبدأ من 1 نقطة. تشمل التكاليف الإضافية رسومًا ليلية لمراكز عقود الفروقات المحتفظ بها بعد الساعة 22:00 بتوقيت المملكة المتحدة."}},
+    {"@type": "Question", "name": "هل تفرض eToro رسوم سحب؟", "acceptedAnswer": {"@type": "Answer", "text": "يدفع أصحاب حسابات الدولار الأمريكي رسوم سحب بقيمة 5 دولارات (الحد الأدنى للسحب 30 دولارًا). يمكن لأصحاب حسابات الجنيه الإسترليني واليورو السحب مجانًا."}},
+    {"@type": "Question", "name": "هل هناك رسوم مخفية على eToro؟", "acceptedAnswer": {"@type": "Answer", "text": "التكاليف 'المخفية' الرئيسية هي الرسوم الليلية على مراكز عقود الفروقات ورسوم تحويل العملات إذا اختلفت عملة حسابك عن عملة الأصل. هناك أيضًا رسوم عدم نشاط بقيمة 10 دولارات شهريًا بعد 12 شهرًا من عدم تسجيل الدخول."}},
+    {"@type": "Question", "name": "هل التداول بالنسخ على eToro مجاني؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم، لا توجد رسوم إضافية لاستخدام ميزة CopyTrader على eToro. أنت تدفع فقط رسوم التداول القياسية للمراكز التي يفتحها المتداول المنسوخ نيابة عنك."}},
+    {"@type": "Question", "name": "كم تكلفة تداول العملات الرقمية على eToro؟", "acceptedAnswer": {"@type": "Answer", "text": "تفرض eToro فارق سعر بنسبة 1% على شراء العملات الرقمية. لا توجد رسوم ليلية للاحتفاظ بالعملات الرقمية الحقيقية (غير عقود الفروقات). تحويل العملات الرقمية إلى محفظة خارجية يكلف 2%."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="tool-nav">
+  <a href="../../ar/" class="tool-nav-brand"><div class="logo">S</div><span>SocialTradingVlog</span></a>
+  <div class="tool-nav-links">
+    <a href="../fee-calculator/" class="active">حاسبة الرسوم</a>
+    <a href="../roi-calculator/">حاسبة العائد</a>
+    <a href="../compare-platforms/">مقارنة المنصات</a>
+  </div>
+  <a href="../../ar/" class="tool-nav-back">العودة إلى الموقع &rarr;</a>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> محدّثة فبراير 2026</div>
+    <h1>حاسبة <span class="accent">رسوم eToro</span></h1>
+    <p>اعرف بالضبط ما ستدفعه قبل أن تتداول. أدخل تفاصيل صفقتك أدناه واحصل على تفصيل كامل للتكاليف في ثوانٍ.</p>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calc-card">
+
+    <!-- Asset Class -->
+    <div class="input-section">
+      <div class="input-label">ماذا تتداول؟</div>
+      <div class="pill-group" id="asset-pills">
+        <button class="pill-btn active stocks" data-asset="stocks" onclick="setAsset('stocks',this)">أسهم</button>
+        <button class="pill-btn crypto" data-asset="crypto" onclick="setAsset('crypto',this)">عملات رقمية</button>
+        <button class="pill-btn forex" data-asset="forex" onclick="setAsset('forex',this)">فوركس</button>
+        <button class="pill-btn commodities" data-asset="commodities" onclick="setAsset('commodities',this)">سلع</button>
+        <button class="pill-btn indices" data-asset="indices" onclick="setAsset('indices',this)">مؤشرات</button>
+        <button class="pill-btn etfs" data-asset="etfs" onclick="setAsset('etfs',this)">صناديق ETF</button>
+      </div>
+    </div>
+
+    <!-- Trade Amount -->
+    <div class="input-section">
+      <div class="input-label">مبلغ الصفقة</div>
+      <div class="slider-row">
+        <input type="range" class="slider-input" id="amount-slider" min="100" max="50000" step="100" value="1000" oninput="syncAmount(this.value)">
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:16px;font-weight:600;color:var(--text-secondary)">$</span>
+          <input type="text" class="amount-input" id="amount-input" value="1,000" oninput="syncSlider(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Holding Period -->
+    <div class="input-section">
+      <div class="input-label">ما مدة الاحتفاظ بالصفقة؟</div>
+      <div class="pill-group" id="period-pills">
+        <button class="pill-btn active" data-days="0" onclick="setPeriod(0,this)">تداول يومي</button>
+        <button class="pill-btn" data-days="7" onclick="setPeriod(7,this)">أسبوع واحد</button>
+        <button class="pill-btn" data-days="30" onclick="setPeriod(30,this)">شهر واحد</button>
+        <button class="pill-btn" data-days="365" onclick="setPeriod(365,this)">سنة واحدة</button>
+      </div>
+    </div>
+
+    <!-- Account Currency -->
+    <div class="input-section">
+      <div class="input-label">عملة حسابك</div>
+      <div class="pill-group" id="currency-pills">
+        <button class="pill-btn active" data-cur="USD" onclick="setCurrency('USD',this)">USD</button>
+        <button class="pill-btn" data-cur="GBP" onclick="setCurrency('GBP',this)">GBP</button>
+        <button class="pill-btn" data-cur="EUR" onclick="setCurrency('EUR',this)">EUR</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="results-hero">
+        <div class="total-label">التكلفة الإجمالية المقدرة</div>
+        <div class="total-value" id="total-value">$1.50</div>
+        <div class="total-pct low" id="total-pct">0.15% من صفقتك</div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid">
+        <div class="breakdown-card bc-spread">
+          <div class="bc-label">فرق السعر</div>
+          <div class="bc-value" id="bc-spread">$1.50</div>
+          <div class="bc-note">رسوم التداول</div>
+        </div>
+        <div class="breakdown-card bc-overnight">
+          <div class="bc-label">رسوم التبييت</div>
+          <div class="bc-value" id="bc-overnight">$0.00</div>
+          <div class="bc-note" id="bc-overnight-note">تداول يومي</div>
+        </div>
+        <div class="breakdown-card bc-conversion">
+          <div class="bc-label">تحويل العملة</div>
+          <div class="bc-value" id="bc-conversion">$0.00</div>
+          <div class="bc-note">رسوم العملة</div>
+        </div>
+        <div class="breakdown-card bc-withdrawal">
+          <div class="bc-label">السحب</div>
+          <div class="bc-value" id="bc-withdrawal">$5.00</div>
+          <div class="bc-note" id="bc-withdrawal-note">في حال السحب</div>
+        </div>
+      </div>
+
+      <div class="stacked-bar-wrap">
+        <div class="stacked-bar" id="stacked-bar"></div>
+        <div class="stacked-legend">
+          <span><span class="dot" style="background:var(--chart-1)"></span>فرق السعر</span>
+          <span><span class="dot" style="background:var(--chart-3)"></span>رسوم التبييت</span>
+          <span><span class="dot" style="background:var(--purple)"></span>تحويل العملة</span>
+          <span><span class="dot" style="background:#8A8E9B"></span>السحب</span>
+        </div>
+      </div>
+
+      <div class="callout" id="callout">
+        <span class="callout-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span id="callout-text">هذا يمثل 0.15% من صفقتك. للمقارنة، تكلفة صفقة أسهم نموذجية في بنك تتراوح بين 10 و25 دولارًا كعمولة.</span>
+      </div>
+    </div>
+
+    <div class="legal-disclaimer">
+      <strong>إخلاء مسؤولية دقة البيانات</strong>
+      توفر هذه الحاسبة <strong style="display:inline;font-size:inherit;">تقديرات فقط</strong> وهي مخصصة لأغراض تعليمية ومعلوماتية عامة. لا ينبغي الاعتماد عليها لاتخاذ قرارات مالية.
+      <ul>
+        <li>بيانات الرسوم مستمدة من معلومات eToro المتاحة للعامة وقد لا تعكس أحدث الأسعار أو مستوى حسابك المحدد أو ظروف السوق الحالية.</li>
+        <li>قد تختلف تكاليف التداول الفعلية عن التقديرات المعروضة. تحقق دائمًا من الرسوم مباشرة على <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:var(--info)">صفحة رسوم eToro الرسمية</a> قبل إجراء الصفقات.</li>
+        <li>لا تشكل هذه الأداة نصيحة مالية أو استثمارية أو ضريبية. SocialTradingVlog ومؤلفها ليسوا مستشارين ماليين ولا يتحملون أي مسؤولية عن أي خسارة أو ضرر ناتج عن استخدام هذه الحاسبة.</li>
+        <li>eToro هي منصة استثمار متعددة الأصول. قد ترتفع أو تنخفض قيمة استثماراتك. رأس مالك معرض للخطر.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- How Fees Work -->
+  <div class="explainer">
+    <h2>كيف تعمل رسوم eToro</h2>
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(43,179,255,.12);color:var(--chart-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        </div>
+        <h3>فروقات الأسعار (السبريد)</h3>
+        <p>فرق السعر هو الفرق بين سعر الشراء والبيع. وهو مصدر الإيرادات الرئيسي لـ eToro. تداول الأسهم وصناديق ETF بعمولة 0% — أنت تدفع فقط فرق السعر. فروقات العملات الرقمية تبدأ من 1%.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(255,100,45,.12);color:var(--chart-3)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>رسوم التبييت</h3>
+        <p>مراكز عقود الفروقات المحتفظ بها بعد الساعة 22:00 بتوقيت المملكة المتحدة تتحمل رسوم تبييت يومية. تتراكم هذه الرسوم بمرور الوقت — المركز المحتفظ به لمدة سنة يكلف أكثر بكثير من التداول اليومي. المراكز الحقيقية للعملات الرقمية والأسهم معفاة.</p>
+      </div>
+      <div class="explainer-card">
+        <div class="ec-icon" style="background:rgba(139,92,246,.12);color:var(--purple)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a10 10 0 0110 10 10 10 0 01-10 10 10 10 0 01-10-10A10 10 0 0112 2z"/><path d="M2 12a15 15 0 014-10m0 20a15 15 0 01-4-10m20 0a15 15 0 01-4 10m0-20a15 15 0 014 10"/></svg>
+        </div>
+        <h3>رسوم أخرى</h3>
+        <p>يُطبق تحويل العملات إذا اختلفت عملة حسابك عن عملة الأصل. رسوم السحب 5 دولارات لحسابات USD (مجانًا لـ GBP/EUR). هناك أيضًا رسوم عدم نشاط 10 دولارات شهريًا بعد 12 شهرًا من عدم تسجيل الدخول.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spread Table -->
+  <div class="spread-section">
+    <button class="spread-toggle" onclick="this.classList.toggle('open');document.getElementById('spread-wrap').classList.toggle('open')">
+      جدول فروقات الأسعار الكامل في eToro <span class="chevron">&#9660;</span>
+    </button>
+    <div class="spread-table-wrap" id="spread-wrap">
+      <table class="spread-table">
+        <thead><tr><th>فئة الأصل</th><th>فرق السعر النموذجي</th><th>العمولة</th><th>رسوم التبييت</th></tr></thead>
+        <tbody>
+          <tr><td><strong>الأسهم (أمريكية)</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/يوم (CFD فقط)</td></tr>
+          <tr><td><strong>الأسهم (أوروبية/بريطانية)</strong></td><td>~0.15%</td><td>$1-$2</td><td>~0.01%/يوم (CFD فقط)</td></tr>
+          <tr><td><strong>صناديق ETF</strong></td><td>~0.15%</td><td>$0</td><td>~0.01%/يوم (CFD فقط)</td></tr>
+          <tr><td><strong>بيتكوين</strong></td><td>1%</td><td>$0</td><td>لا يوجد (عملات رقمية حقيقية)</td></tr>
+          <tr><td><strong>إيثريوم</strong></td><td>1%</td><td>$0</td><td>لا يوجد (عملات رقمية حقيقية)</td></tr>
+          <tr><td><strong>عملات رقمية أخرى</strong></td><td>1-5%</td><td>$0</td><td>لا يوجد (عملات رقمية حقيقية)</td></tr>
+          <tr><td><strong>EUR/USD</strong></td><td>1 نقطة</td><td>$0</td><td>~$0.08/يوم لكل $10K</td></tr>
+          <tr><td><strong>GBP/USD</strong></td><td>2 نقطة</td><td>$0</td><td>~$0.10/يوم لكل $10K</td></tr>
+          <tr><td><strong>الذهب</strong></td><td>45 نقطة</td><td>$0</td><td>~$0.12/يوم لكل $10K</td></tr>
+          <tr><td><strong>النفط</strong></td><td>5 نقاط</td><td>$0</td><td>~$0.12/يوم لكل $10K</td></tr>
+          <tr><td><strong>S&P 500</strong></td><td>0.75 نقطة</td><td>$0</td><td>~$0.10/يوم لكل $10K</td></tr>
+          <tr><td><strong>NASDAQ 100</strong></td><td>2.4 نقطة</td><td>$0</td><td>~$0.10/يوم لكل $10K</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>الأسئلة الشائعة</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">ما هي رسوم التداول على eToro؟ <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>تفرض eToro رسومًا بشكل أساسي من خلال فروقات الأسعار (الفرق بين سعر الشراء والبيع). تداول الأسهم وصناديق ETF بعمولة 0%. العملات الرقمية بفارق سعر 1%. الفوركس يبدأ من 1 نقطة. تشمل التكاليف الإضافية رسوم تبييت لمراكز عقود الفروقات المحتفظ بها بعد الساعة 22:00 بتوقيت المملكة المتحدة.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">هل تفرض eToro رسوم سحب؟ <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>يدفع أصحاب حسابات الدولار الأمريكي رسوم سحب بقيمة 5 دولارات (الحد الأدنى للسحب 30 دولارًا). يمكن لأصحاب حسابات الجنيه الإسترليني واليورو السحب مجانًا.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">هل هناك رسوم مخفية على eToro؟ <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>التكاليف "المخفية" الرئيسية هي رسوم التبييت على مراكز عقود الفروقات ورسوم تحويل العملات إذا اختلفت عملة حسابك عن عملة تداول الأصل. هناك أيضًا رسوم عدم نشاط بقيمة 10 دولارات شهريًا بعد 12 شهرًا من عدم تسجيل الدخول. تُظهر هذه الحاسبة جميع هذه التكاليف مقدمًا.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">هل التداول بالنسخ على eToro مجاني؟ <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>نعم، لا توجد رسوم إضافية لاستخدام ميزة CopyTrader على eToro. أنت تدفع فقط رسوم التداول القياسية للمراكز التي يفتحها المتداول المنسوخ نيابة عنك. الحد الأدنى لنسخ متداول هو 200 دولار.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">كم تكلفة تداول العملات الرقمية على eToro؟ <span class="chevron">&#9660;</span></div>
+      <div class="faq-a"><p>تفرض eToro فارق سعر بنسبة 1% على شراء العملات الرقمية. لا توجد رسوم تبييت للاحتفاظ بالعملات الرقمية الحقيقية (غير عقود الفروقات). تحويل العملات الرقمية إلى محفظة خارجية يكلف 2%. يُحتسب فارق السعر عند الشراء وعند البيع.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>هل أنت مستعد لبدء التداول؟</h2>
+    <p>انضم إلى eToro واحصل على إمكانية الوصول إلى الأسهم والعملات الرقمية والفوركس والتداول بالنسخ. ابدأ بمبلغ 50 دولارًا فقط.</p>
+    <a href="https://etoro.tw/40bkzhp" target="_blank" rel="noopener sponsored" class="cta-btn" onclick="gtag('event','cta_click',{event_category:'calculator',event_label:'fee_calculator'})">افتح حساب eToro &larr;</a>
+    <div class="risk-text">
+      <strong>51% من حسابات المستثمرين الأفراد تخسر أموالها عند تداول عقود الفروقات مع هذا المزود.</strong>
+      يجب أن تفكر فيما إذا كنت تستطيع تحمل المخاطرة العالية بخسارة أموالك.
+      هذا ليس نصيحة استثمارية. رأس المال معرض للخطر. رابط تابع &mdash; قد يحصل Tom على عمولة دون أي تكلفة عليك.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../ar/">SocialTradingVlog.com</a> &middot;
+      <a href="../">جميع الأدوات</a> &middot;
+      <a href="../../about/">عن Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      هذه الحاسبة لأغراض معلوماتية فقط ولا تشكل نصيحة مالية. قد تكون تقديرات الرسوم غير دقيقة أو قديمة &mdash; تحقق دائمًا من موقع eToro الرسمي.
+      لا يتحمل SocialTradingVlog أي مسؤولية عن الخسائر الناتجة عن الاعتماد على هذه الأداة. eToro هي منصة استثمار متعددة الأصول. قد ترتفع أو تنخفض قيمة استثماراتك. رأس مالك معرض للخطر.
+      51% من حسابات المستثمرين الأفراد تخسر أموالها عند تداول عقود الفروقات مع هذا المزود.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+const FEE_DATA = {
+  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'الأسهم', hasOvernight: true },
+  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'العملات الرقمية', hasOvernight: false },
+  forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'الفوركس', hasOvernight: true },
+  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: 'السلع', hasOvernight: true },
+  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'المؤشرات', hasOvernight: true },
+  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'صناديق ETF', hasOvernight: true },
+};
+const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+
+let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
+
+function setAsset(a, el) {
+  state.asset = a;
+  document.querySelectorAll('#asset-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setPeriod(d, el) {
+  state.days = d;
+  document.querySelectorAll('#period-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function setCurrency(c, el) {
+  state.currency = c;
+  document.querySelectorAll('#currency-pills .pill-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  calculate();
+}
+function syncAmount(val) {
+  state.amount = parseInt(val) || 100;
+  document.getElementById('amount-input').value = state.amount.toLocaleString();
+  calculate();
+}
+function syncSlider(val) {
+  const n = parseInt(val.replace(/[^0-9]/g, '')) || 100;
+  state.amount = Math.min(Math.max(n, 100), 50000);
+  document.getElementById('amount-slider').value = state.amount;
+  calculate();
+}
+
+function fmt(n) {
+  if (n >= 1) return '$' + n.toFixed(2);
+  if (n >= 0.01) return '$' + n.toFixed(2);
+  return '$0.00';
+}
+
+function calculate() {
+  const fd = FEE_DATA[state.asset];
+  const spread = state.amount * (fd.spread_pct / 100);
+  const overnight = fd.hasOvernight ? state.amount * (fd.overnight_daily_pct / 100) * state.days : 0;
+  const conversion = state.amount * (CONVERSION[state.currency] / 100);
+  const withdrawal = WITHDRAWAL[state.currency];
+  const total = spread + overnight + conversion;
+  const totalWithWithdraw = total + withdrawal;
+  const pct = (total / state.amount * 100);
+
+  // Update values
+  document.getElementById('total-value').textContent = fmt(total);
+  const pctEl = document.getElementById('total-pct');
+  pctEl.textContent = pct.toFixed(2) + '% من صفقتك';
+  pctEl.className = 'total-pct ' + (pct < 0.5 ? 'low' : pct < 2 ? 'medium' : 'high');
+
+  document.getElementById('bc-spread').textContent = fmt(spread);
+  document.getElementById('bc-overnight').textContent = fmt(overnight);
+  document.getElementById('bc-overnight-note').textContent = state.days === 0 ? 'تداول يومي' : state.days + ' يوم';
+  document.getElementById('bc-conversion').textContent = fmt(conversion);
+  document.getElementById('bc-withdrawal').textContent = fmt(withdrawal);
+  document.getElementById('bc-withdrawal-note').textContent = withdrawal === 0 ? 'مجاني لـ ' + state.currency : 'في حال السحب';
+
+  // Stacked bar
+  const barTotal = Math.max(totalWithWithdraw, 0.01);
+  const bar = document.getElementById('stacked-bar');
+  bar.innerHTML = `
+    <div class="sb-spread" style="width:${(spread/barTotal*100)}%">${spread > barTotal*0.08 ? fmt(spread) : ''}</div>
+    <div class="sb-overnight" style="width:${(overnight/barTotal*100)}%">${overnight > barTotal*0.08 ? fmt(overnight) : ''}</div>
+    <div class="sb-conversion" style="width:${(conversion/barTotal*100)}%">${conversion > barTotal*0.08 ? fmt(conversion) : ''}</div>
+    <div class="sb-withdrawal" style="width:${(withdrawal/barTotal*100)}%">${withdrawal > barTotal*0.08 ? fmt(withdrawal) : ''}</div>
+  `;
+
+  // Callout
+  const calloutText = document.getElementById('callout-text');
+  if (pct < 0.3) {
+    calloutText.textContent = `هذا يمثل فقط ${pct.toFixed(2)}% من صفقتك. رسوم ${fd.label} على eToro تنافسية جدًا — البنك النموذجي يتقاضى 10-25 دولارًا لكل صفقة أسهم.`;
+  } else if (pct < 1) {
+    calloutText.textContent = `هذا يمثل ${pct.toFixed(2)}% من صفقتك. ${state.days > 30 ? 'معظم هذه التكلفة يأتي من رسوم التبييت — فكر في فترات احتفاظ أقصر لتقليل التكاليف.' : 'هذا يتماشى مع متوسطات الصناعة لتداول ' + fd.label + '.'}`;
+  } else {
+    calloutText.textContent = `هذا يمثل ${pct.toFixed(2)}% من صفقتك. ${state.asset === 'crypto' ? 'فروقات أسعار العملات الرقمية أعلى من الأسهم/الفوركس — وهذا أمر معتاد عبر المنصات.' : 'رسوم التبييت تتراكم على فترات الاحتفاظ الطويلة. فكر فيما إذا كان الإطار الزمني الأقصر يمكن أن يقلل تكاليفك.'}`;
+  }
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// Initial calculation
+calculate();
+</script>
+</body>
+</html>
