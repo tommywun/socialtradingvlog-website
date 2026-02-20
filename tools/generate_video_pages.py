@@ -178,6 +178,7 @@ VIDEO_CTA_MAP = {
 KEYWORD_MAP = {
     # ── Tier 1: Low competition, high intent ──────────────────────────────────
     "daMK1Y54M-E": {
+        "approved": True,
         "slug": "why-do-most-etoro-traders-lose-money",
         "keyphrase": "Why Do Most eToro Traders Lose Money?",
         "h1": "Why Do 76% of eToro Traders Lose Money?",
