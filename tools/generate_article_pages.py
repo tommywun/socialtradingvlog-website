@@ -75,6 +75,7 @@ ARTICLES = [
 
     # ── 1. eToro Review ────────────────────────────────────────────────────────
     {
+        "approved":    True,     # Tom-approved — live on site
         "slug":        "etoro-review",
         "h1":          "eToro Review 2026 — An Honest Take After 9 Years",
         "tag":         "Platform review",
@@ -1025,14 +1026,8 @@ def generate_page(article: dict) -> str:
           <h4>More guides</h4>
           <ul>
             <li><a href="{P}/etoro-review/">eToro Review 2026</a></li>
-            <li><a href="{P}/etoro-fees/">eToro Fees Explained</a></li>
-            <li><a href="{P}/how-to-choose-copy-traders-etoro/">How to Choose Copy Traders</a></li>
-            <li><a href="{P}/etoro-risk-score-explained/">Risk Score Explained</a></li>
-            <li><a href="{P}/is-copy-trading-passive-income/">Is Copy Trading Passive?</a></li>
-            <li><a href="{P}/how-many-traders-to-copy-etoro/">How Many Traders to Copy</a></li>
-            <li><a href="{P}/etoro-vs-trading-212/">eToro vs Trading 212</a></li>
-            <li><a href="{P}/etoro-tax-uk/">eToro Tax UK</a></li>
             <li><a href="{P}/copy-trading.html">What is Copy Trading?</a></li>
+            <li><a href="{P}/copy-trading-returns.html">How Much Can You Make?</a></li>
             <li><a href="{P}/etoro-scam.html">Is eToro a Scam?</a></li>
             <li><a href="{P}/videos.html">All Videos</a></li>
           </ul>
@@ -1111,6 +1106,13 @@ def main():
     skipped = 0
     for article in articles:
         slug = article["slug"]
+
+        # Only generate articles that Tom has approved for publication
+        if not article.get("approved"):
+            print(f"  skip  {slug}/  (pending review — not yet approved)")
+            skipped += 1
+            continue
+
         out_dir = BASE_DIR / slug
         out_file = out_dir / "index.html"
 

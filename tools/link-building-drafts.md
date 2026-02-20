@@ -74,7 +74,7 @@ That said, copy trading IS a genuinely useful tool for beginners because you get
 
 I wrote a full guide on what copy trading actually is and how to approach it sensibly: https://socialtradingvlog.com/copy-trading.html
 
-And if you want to see real results (good and bad), I've been documenting my portfolio on YouTube for 6 years: youtube.com/@SocialTradingVlog
+And if you want to see real results (good and bad), I've been documenting my portfolio on YouTube for 6 years: youtube.com/socialtrading
 
 ---
 
@@ -189,7 +189,7 @@ Over 9 years I've had years where my portfolio grew 20-30%, and years where it d
 
 I've written about realistic return expectations here: https://socialtradingvlog.com/copy-trading-returns.html
 
-And I've been documenting my real results (the good, the bad, and the ugly) on YouTube for 6+ years: youtube.com/@SocialTradingVlog
+And I've been documenting my real results (the good, the bad, and the ugly) on YouTube for 6+ years: youtube.com/socialtrading
 
 ---
 
@@ -352,4 +352,4 @@ Happy to adapt to whatever fits your audience best. Let me know if you're intere
 
 Tom
 SocialTradingVlog.com
-youtube.com/@SocialTradingVlog
+youtube.com/socialtrading

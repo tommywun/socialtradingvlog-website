@@ -28,6 +28,12 @@ FFMPEG = "/opt/homebrew/bin/ffmpeg"
 
 os.environ["PATH"] = f"/opt/homebrew/bin:{os.environ.get('PATH', '')}"
 
+# Load OpenAI API key from secrets file if not already in environment
+if not os.environ.get("OPENAI_API_KEY"):
+    key_file = pathlib.Path.home() / ".config" / "stv-secrets" / "openai-api-key.txt"
+    if key_file.exists():
+        os.environ["OPENAI_API_KEY"] = key_file.read_text().strip()
+
 
 def download_audio(video_id, output_dir):
     url = f"https://www.youtube.com/watch?v={video_id}"

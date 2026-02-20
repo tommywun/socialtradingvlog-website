@@ -3,7 +3,8 @@
 ## At the start of each session
 - Check the latest GA report: `cat reports/latest.txt`
 - Check pipeline progress: `tail -20 transcriptions/pipeline.log`
-- Share key insights and any notable changes with Tom
+- Check for fix requests from the command centre: `ssh stv@89.167.73.64 "cat ~/socialtradingvlog-website/data/fix-queue.json 2>/dev/null || echo '[]'"`
+- Share key insights, any notable changes, and any pending fix requests with Tom
 
 ## Secrets location
 All API keys and credentials are stored in `~/.config/stv-secrets/` (NOT in the repo).
@@ -73,3 +74,17 @@ eToro review has Review schema with itemReviewed.
 ## Internal linking
 13 SEO articles have "You might also like" sections with contextually relevant cross-links.
 Calculator pages link to each other via nav bar.
+
+## Working rules
+- Run session start checks (GA report, pipeline status, fix queue) as a matter of course at the start of every session without being asked.
+- **Deep debugging standard**: When anything fails, apply maximum rigour before concluding. This means:
+  1. Read the actual error output first (don't trust summary messages — find the real traceback/log)
+  2. Check the code thoroughly — look for swallowed errors, missing env vars, incorrect logic, silent failures
+  3. Ask questions from every angle: Is the key loaded? Is the env inherited? Does the path resolve? Is the process context different (e.g. launchd vs terminal)?
+  4. Test components in isolation to pinpoint exactly where the failure occurs
+  5. Cross-check assumptions with data (e.g. "credits ran out" — actually calculate the spend before assuming)
+  6. Only rule out code issues after concrete evidence — never assume it's an external/billing/network problem without proof
+  7. If error messages are unhelpful, improve the logging as part of the fix
+  8. Don't stop at the first plausible explanation — verify it matches ALL the evidence
+- **Dual environment**: When fixing files locally, ALWAYS apply the same fix on the VPS immediately. The site runs from two locations — local Mac and VPS (89.167.73.64). Never assume a local fix is sufficient.
+- **Check before bulk actions**: Before removing, unpublishing, or modifying content in bulk, always cross-reference each item against existing approvals, live status, schema references, and CLAUDE.md notes. Never assume all items in a group have the same status — check individually. Ask: "Has Tom already reviewed/approved any of these?"

@@ -37,6 +37,7 @@ LANGUAGES = {
     "pl": "Polish",
     "ru": "Russian",
     "ja": "Japanese",
+    "ko": "Korean",
     "zh-CN": "Chinese (Simplified)",
     "ar": "Arabic",
 }

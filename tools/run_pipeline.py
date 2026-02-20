@@ -50,16 +50,15 @@ LOG_PATH    = TRANS_DIR / "pipeline.log"
 MODEL = "api"
 
 LANGUAGES = [
-    "zh-CN",  # Chinese (Simplified)
-    "es",     # Spanish
-    "hi",     # Hindi
-    "ar",     # Arabic
-    "pt",     # Portuguese
-    "fr",     # French
-    "ru",     # Russian
-    "de",     # German
-    "ja",     # Japanese
-    "ko",     # Korean
+    "es",     # Spanish — Spain, Latin America (eToro available)
+    "de",     # German — Germany, Austria, Switzerland (major eToro market)
+    "fr",     # French — France (eToro available)
+    "it",     # Italian — Italy (one of eToro's biggest markets)
+    "pt",     # Portuguese — Portugal, Brazil (eToro available)
+    "ar",     # Arabic — UAE, Saudi, Kuwait (eToro available)
+    "pl",     # Polish — Poland (eToro available, strong Central EU market)
+    "nl",     # Dutch — Netherlands (eToro available)
+    "ko",     # Korean — South Korea (eToro available)
 ]
 
 
@@ -127,10 +126,13 @@ def main():
             log(f"  transcribing with {MODEL} model...")
             r = subprocess.run(
                 [PYTHON, str(TRANSCRIBE), "--model", MODEL, vid_id],
-                capture_output=False,
+                capture_output=True, text=True,
             )
             if r.returncode != 0 or not srt_en.exists():
-                log(f"  ERROR: transcription failed")
+                err_detail = (r.stderr or r.stdout or "no output").strip().split('\n')[-3:]
+                log(f"  ERROR: transcription failed (exit {r.returncode})")
+                for line in err_detail:
+                    log(f"    {line.strip()}")
                 errors.append(vid_id)
                 continue
 
