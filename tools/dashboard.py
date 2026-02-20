@@ -2182,26 +2182,63 @@ tbody tr.clickable { cursor: pointer; }
 .lang-card .lc-name { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
 .lang-card .lc-count { font-size: 13px; font-weight: 600; color: var(--info); margin-top: 6px; }
 
-/* ─── Alert Card ─── */
-.alert-card { background: var(--warning-bg); border-radius: var(--radius-md); padding: 14px 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-.alert-card .alert-icon { font-size: 20px; }
-.alert-card .alert-text { font-size: 13px; color: var(--warning-text); font-weight: 500; }
-.alert-card .alert-count { font-size: 20px; font-weight: 700; color: var(--warning-text); font-family: 'Plus Jakarta Sans', sans-serif; margin-left: auto; }
-.health-item { background: var(--bg-card); border-radius: var(--radius-md); padding: 12px 16px; box-shadow: var(--shadow-card); display: flex; align-items: center; gap: 10px; }
-.health-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.health-dot.ok { background: var(--success); }
-.health-dot.warning { background: #F59E0B; }
-.health-dot.error { background: #EF4444; }
-.health-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-.health-detail { font-size: 12px; color: var(--text-secondary); margin-left: auto; }
-.error-banner { background: #FEE2E2; border: 1px solid #FECACA; border-radius: var(--radius-md); padding: 14px 20px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; }
-.error-banner .error-icon { font-size: 18px; color: #EF4444; font-weight: 700; flex-shrink: 0; }
-.error-banner .error-body { flex: 1; }
-.error-banner .error-title { font-size: 14px; font-weight: 700; color: #991B1B; margin-bottom: 4px; }
-.error-banner .error-detail { font-size: 12px; color: #B91C1C; line-height: 1.5; }
-[data-theme="dark"] .error-banner { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); }
-[data-theme="dark"] .error-banner .error-title { color: #FCA5A5; }
-[data-theme="dark"] .error-banner .error-detail { color: #FCA5A5; }
+/* ─── Status Cards (traffic light system) ─── */
+.status-card { border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 10px; }
+.status-card .status-header { display: flex; align-items: center; gap: 10px; }
+.status-card .status-name { font-size: 14px; font-weight: 700; }
+.status-card .status-badge { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 12px; margin-left: auto; white-space: nowrap; }
+.status-card .status-detail { font-size: 13px; margin-top: 6px; line-height: 1.5; }
+.status-card .status-steps { font-size: 12px; margin-top: 8px; line-height: 1.7; padding-left: 18px; }
+.status-card .status-steps li { margin-bottom: 2px; }
+/* Error — red, stuck, needs attention */
+.status-card.status-error { background: #FEE2E2; border: 2px solid #EF4444; }
+.status-card.status-error .status-name { color: #991B1B; }
+.status-card.status-error .status-badge { background: #EF4444; color: #fff; }
+.status-card.status-error .status-detail { color: #B91C1C; }
+.status-card.status-error .status-steps { color: #991B1B; }
+[data-theme="dark"] .status-card.status-error { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.4); }
+[data-theme="dark"] .status-card.status-error .status-name { color: #FCA5A5; }
+[data-theme="dark"] .status-card.status-error .status-badge { background: #DC2626; }
+[data-theme="dark"] .status-card.status-error .status-detail { color: #FCA5A5; }
+[data-theme="dark"] .status-card.status-error .status-steps { color: #FCA5A5; }
+/* In progress — green border, fix underway */
+.status-card.status-in-progress { background: #F0FDF4; border: 2px solid #22C55E; }
+.status-card.status-in-progress .status-name { color: #166534; }
+.status-card.status-in-progress .status-badge { background: #22C55E; color: #fff; }
+.status-card.status-in-progress .status-detail { color: #15803D; }
+.status-card.status-in-progress .status-steps { color: #166534; }
+[data-theme="dark"] .status-card.status-in-progress { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.4); }
+[data-theme="dark"] .status-card.status-in-progress .status-name { color: #86EFAC; }
+[data-theme="dark"] .status-card.status-in-progress .status-badge { background: #16A34A; }
+[data-theme="dark"] .status-card.status-in-progress .status-detail { color: #86EFAC; }
+[data-theme="dark"] .status-card.status-in-progress .status-steps { color: #86EFAC; }
+/* Warning — amber, needs review */
+.status-card.status-warning { background: #FFFBEB; border: 2px solid #F59E0B; }
+.status-card.status-warning .status-name { color: #92400E; }
+.status-card.status-warning .status-badge { background: #F59E0B; color: #fff; }
+.status-card.status-warning .status-detail { color: #B45309; }
+.status-card.status-warning .status-steps { color: #92400E; }
+[data-theme="dark"] .status-card.status-warning { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.4); }
+[data-theme="dark"] .status-card.status-warning .status-name { color: #FCD34D; }
+[data-theme="dark"] .status-card.status-warning .status-badge { background: #D97706; }
+[data-theme="dark"] .status-card.status-warning .status-detail { color: #FCD34D; }
+[data-theme="dark"] .status-card.status-warning .status-steps { color: #FCD34D; }
+/* Info — blue, informational status */
+.status-card.status-info { background: #EFF6FF; border: 2px solid #3B82F6; }
+.status-card.status-info .status-name { color: #1E40AF; }
+.status-card.status-info .status-badge { background: #3B82F6; color: #fff; }
+.status-card.status-info .status-detail { color: #1D4ED8; }
+.status-card.status-info .status-steps { color: #1E40AF; }
+[data-theme="dark"] .status-card.status-info { background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.4); }
+[data-theme="dark"] .status-card.status-info .status-name { color: #93C5FD; }
+[data-theme="dark"] .status-card.status-info .status-badge { background: #2563EB; }
+[data-theme="dark"] .status-card.status-info .status-detail { color: #93C5FD; }
+[data-theme="dark"] .status-card.status-info .status-steps { color: #93C5FD; }
+/* OK items — compact row */
+.health-ok-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+.health-ok-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); flex-shrink: 0; }
+.health-ok-name { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+.health-ok-detail { font-size: 11px; color: var(--text-secondary); margin-left: auto; }
 
 /* ─── Content Tracker ─── */
 .content-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-primary); }
@@ -2574,9 +2611,9 @@ tbody tr.clickable { cursor: pointer; }
     <div class="stats-row" id="overview-stats"></div>
     <div class="section-header" style="margin-top:8px"><h2 style="font-size:18px">Content Pipeline</h2></div>
     <div class="pipeline-grid" id="overview-pipeline"></div>
-    <div id="system-alerts" style="margin-top:16px"></div>
-    <div class="section-header" style="margin-top:8px"><h2 style="font-size:18px">System Health</h2></div>
-    <div id="system-health" class="pipeline-grid" style="margin-bottom:16px"></div>
+    <div class="section-header" style="margin-top:16px"><h2 style="font-size:18px">Status</h2></div>
+    <div id="system-alerts"></div>
+    <div id="system-health" style="margin-bottom:16px"></div>
     <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">Translation Coverage</h2></div>
     <div class="lang-grid" id="overview-translations"></div>
     <div class="two-col" style="margin-top:20px">
@@ -3165,37 +3202,45 @@ async function loadOverview() {
     pipelineBar('Article Pages', p.article_pages || 0, 50, '#FF642D') +
     pipelineBar('YouTube Descriptions', p.video_pages || 0, total, '#8B5CF6');
 
-  // System alerts — show error banners for anything broken
-  const errors = (health || []).filter(h => h.status === 'error');
-  const warnings = (health || []).filter(h => h.status === 'warning');
-  let alertsHtml = '';
-  if (errors.length > 0) {
-    alertsHtml += `<div class="error-banner" style="cursor:pointer" onclick="document.getElementById('system-health').scrollIntoView({behavior:'smooth'})"><div class="error-icon">!</div><div class="error-body"><div class="error-title">${errors.length} system error${errors.length > 1 ? 's' : ''} need attention</div><div class="error-detail">${errors.map(e => `<strong>${escapeHtml(e.name)}</strong>: ${escapeHtml(e.detail)}`).join('<br>')}</div><div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">Tap for fix instructions \u2193</div></div></div>`;
-  }
-  if (warnings.length > 0) {
-    alertsHtml += `<div class="alert-card"><span class="alert-icon">!</span><span class="alert-text">${warnings.map(w => `${w.name}: ${w.detail}`).join(' | ')}</span><span class="alert-count">${warnings.length}</span></div>`;
-  }
-  document.getElementById('system-alerts').innerHTML = alertsHtml;
+  // Status section — traffic light system
+  // Sort: errors first, then in_progress, then warnings, then info, then ok
+  const statusOrder = {error: 0, in_progress: 1, warning: 2, info: 3, ok: 4};
+  const sorted = [...(health || [])].sort((a, b) => (statusOrder[a.status] ?? 5) - (statusOrder[b.status] ?? 5));
+  const badgeLabels = {error: 'Stuck', in_progress: 'In Progress', warning: 'Needs Attention', info: 'Info', ok: 'OK'};
 
-  // System health grid — clickable errors/warnings with fix steps
-  document.getElementById('system-health').innerHTML = (health || []).map((h, i) => {
-    const clickable = h.fix && h.fix.length > 0;
-    const cursor = clickable ? 'cursor:pointer;' : '';
-    const chevron = clickable ? '<span style="margin-left:auto;color:var(--text-secondary);font-size:12px;">\u25B6</span>' : '';
-    return `<div class="health-item" style="${cursor}" ${clickable ? `onclick="toggleHealthFix(this, ${i})"` : ''} data-health-index="${i}">
-      <span class="health-dot ${h.status}"></span>
-      <span class="health-name">${escapeHtml(h.name)}</span>
-      <span class="health-detail">${escapeHtml(h.detail)}</span>
-      ${chevron}
-    </div>
-    ${clickable ? `<div class="health-fix" id="health-fix-${i}" style="display:none;background:var(--bg-table-header);border-radius:0 0 8px 8px;margin-top:-4px;margin-bottom:8px;padding:12px 16px;font-size:13px;">
-      <div style="font-weight:600;margin-bottom:8px;color:var(--text-primary);">How to fix:</div>
-      <ol style="margin:0;padding-left:20px;color:var(--text-secondary);line-height:1.8;">
-        ${h.fix.map(s => '<li>' + escapeHtml(s) + '</li>').join('')}
-      </ol>
-      ${h.auto_fix ? '<button class="btn btn-primary" style="margin-top:10px;height:32px;font-size:12px;padding:0 16px;" onclick="runAutoFix(\'' + h.auto_fix + '\', this)">Fix It</button>' : ''}
-    </div>` : ''}`;
+  // Split into cards (non-ok) and compact ok items
+  const cardItems = sorted.filter(h => h.status !== 'ok');
+  const okItems = sorted.filter(h => h.status === 'ok');
+
+  let cardsHtml = cardItems.map(h => {
+    const cssClass = h.status === 'in_progress' ? 'status-in-progress' : `status-${h.status}`;
+    const stepsHtml = h.fix && h.fix.length > 0
+      ? `<ol class="status-steps">${h.fix.map(s => '<li>' + escapeHtml(s) + '</li>').join('')}</ol>`
+      : '';
+    const autoFixBtn = h.auto_fix
+      ? `<button class="btn btn-primary" style="margin-top:8px;height:30px;font-size:12px;padding:0 14px;" onclick="runAutoFix('${h.auto_fix}', this)">Fix It</button>`
+      : '';
+    return `<div class="status-card ${cssClass}">
+      <div class="status-header">
+        <span class="status-name">${escapeHtml(h.name)}</span>
+        <span class="status-badge">${badgeLabels[h.status] || h.status}</span>
+      </div>
+      <div class="status-detail">${escapeHtml(h.detail)}</div>
+      ${stepsHtml}${autoFixBtn}
+    </div>`;
   }).join('');
+
+  // Compact row for OK items
+  if (okItems.length > 0) {
+    cardsHtml += `<div style="display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 4px;">`;
+    cardsHtml += okItems.map(h =>
+      `<div class="health-ok-row"><span class="health-ok-dot"></span><span class="health-ok-name">${escapeHtml(h.name)}</span><span class="health-ok-detail">${escapeHtml(h.detail)}</span></div>`
+    ).join('');
+    cardsHtml += `</div>`;
+  }
+
+  document.getElementById('system-alerts').innerHTML = '';
+  document.getElementById('system-health').innerHTML = cardsHtml;
 
   // Translation coverage
   const langOrder = ['en', 'es', 'de', 'fr', 'pt', 'ar'];
