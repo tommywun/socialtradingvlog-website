@@ -84,6 +84,7 @@ Calculator pages link to each other via nav bar.
 
 ## Working rules
 - **Learn and document immediately**: Whenever something goes wrong, a mistake is made, a workaround is discovered, or a non-obvious pattern emerges — immediately add it to this file as a rule with the most efficient protocol to follow next time. Don't wait to be asked. Don't rely on memory across sessions. If it could come up again, write it down now with a clear, actionable procedure. This is the single most important rule — every other rule in this section exists because of it.
+- **Advocate for the optimal approach**: Always state the most efficient strategy with reasoning, even if Tom suggests something different. Don't defer just to be agreeable — Tom values logical pushback and a second perspective. If you think a different approach is better, say so clearly and explain why. Wasted exchanges from passive agreement cost more than one confident recommendation. Give your honest assessment first, then let Tom decide.
 - Run session start checks (GA report, pipeline status, fix queue) as a matter of course at the start of every session without being asked.
 - **Deep debugging standard**: When anything fails, apply maximum rigour before concluding. This means:
   1. Read the actual error output first (don't trust summary messages — find the real traceback/log)
