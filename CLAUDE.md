@@ -95,6 +95,7 @@ Calculator pages link to each other via nav bar.
   6. Only rule out code issues after concrete evidence — never assume it's an external/billing/network problem without proof
   7. If error messages are unhelpful, improve the logging as part of the fix
   8. Don't stop at the first plausible explanation — verify it matches ALL the evidence
+  9. Before proposing a fix, check what already exists. Don't assume something needs creating when it might just need copying or enabling. `ls` before you build.
 - **Dual environment**: The site runs from two locations — local Mac and VPS (89.167.73.64). ALWAYS edit locally first, then sync to VPS. Never patch VPS directly — rsync --delete will overwrite VPS-only changes with the local version. The flow is: edit local → commit → rsync to VPS. Never the other way around.
 - **MANDATORY pre-deletion audit**: Before ANY bulk removal or unpublishing, you MUST complete this checklist and show it to Tom BEFORE executing:
   1. List every item that will be affected
