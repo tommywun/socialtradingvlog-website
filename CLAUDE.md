@@ -44,7 +44,6 @@ Latest is always at `reports/latest.txt`.
 - Position Size Calculator — allocation per copied trader with risk profiles
 
 Translated to 5 languages: ES (`/es/calculadoras/`), DE (`/de/rechner/`), FR (`/fr/calculateurs/`), PT (`/pt/calculadoras/`), AR (`/ar/calculators/`)
-- German and Arabic are missing compare-platforms translations (hit rate limit)
 
 ## Content review queue (20 articles)
 Articles in `data/review-staging/` on VPS. Review/publish via command centre Review tab.
