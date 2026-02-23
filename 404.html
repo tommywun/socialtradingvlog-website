@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | SocialTradingVlog</title>
+  <link rel="stylesheet" href="/css/style.css">
+<script>
+// Redirect map for old WordPress URLs
+(function() {
+  var path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+  var redirects = {
+    '/etoro-popular-investor-program': '/popular-investor.html',
+    '/taking-profits-from-copytrading': '/taking-profits.html',
+    '/how-much-money-will-i-make-copytrading-on-etoro': '/copy-trading-returns.html',
+    '/is-etoro-a-scam': '/etoro-scam.html',
+    '/copy-trading': '/copy-trading.html',
+    '/social-trading': '/social-trading.html',
+    '/about': '/about.html',
+    '/contact': '/contact.html',
+    '/faq': '/faq.html',
+    '/etorocopytrading': '/videos.html',
+    '/etorocopytrading/page/2': '/videos.html',
+    '/author/mrtjwest': '/about.html',
+    '/tag/etoro': '/'
+  };
+  // Exact match
+  if (redirects[path]) {
+    window.location.replace(redirects[path]);
+    return;
+  }
+  // Old update posts: /copy-trading-update-etoro-DD-month-YYYY/
+  var updateMatch = path.match(/^\/copy-trading-update-etoro-(\d{2})-(\w+)-(\d{4})$/);
+  if (updateMatch) {
+    var day = updateMatch[1];
+    var month = updateMatch[2].toLowerCase();
+    var year = updateMatch[3];
+    var monthMap = {
+      'january':'jan','february':'feb','march':'mar','april':'apr',
+      'may':'may','june':'jun','july':'jul','august':'aug',
+      'september':'sep','october':'oct','november':'nov','december':'dec',
+      'jan':'jan','feb':'feb','mar':'mar','apr':'apr',
+      'jun':'jun','jul':'jul','aug':'aug','sep':'sep','oct':'oct','nov':'nov','dec':'dec'
+    };
+    var short = monthMap[month] || month.substring(0, 3);
+    window.location.replace('/updates/copy-trading-update-' + day + '-' + short + '-' + year + '.html');
+    return;
+  }
+})();
+</script>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/index.html" class="nav-logo">Social<span>Trading</span>Vlog</a>
+      <ul class="nav-links">
+        <li><a href="/social-trading.html">Social Trading</a></li>
+        <li><a href="/copy-trading.html">Copy Trading</a></li>
+        <li><a href="/updates.html">Updates</a></li>
+        <li><a href="/videos.html">Videos</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/calculators/">Tools</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="article-hero">
+    <div class="container">
+      <h1>Page Not Found</h1>
+      <p class="article-meta">The page you're looking for has moved or no longer exists.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="article-body">
+      <article class="article-content" style="max-width:640px;margin:2rem auto;text-align:center;">
+        <p>This site was recently redesigned and some URLs have changed.</p>
+        <p>Try one of these instead:</p>
+        <ul style="text-align:left;display:inline-block;margin:1.5rem auto;">
+          <li><a href="/copy-trading.html">What is Copy Trading?</a></li>
+          <li><a href="/popular-investor.html">eToro Popular Investor Program</a></li>
+          <li><a href="/etoro-scam.html">Is eToro a Scam?</a></li>
+          <li><a href="/copy-trading-returns.html">How Much Can You Make?</a></li>
+          <li><a href="/updates.html">All Copy Trading Updates</a></li>
+          <li><a href="/videos.html">All Videos</a></li>
+          <li><a href="/calculators/">Calculators &amp; Tools</a></li>
+        </ul>
+        <p><a href="/">Go to homepage &rarr;</a></p>
+      </article>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 SocialTradingVlog.com</p>
+        <p class="footer-disclaimer">Your capital is at risk. 51% of retail investor accounts lose money when trading CFDs with eToro.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+</body>
+</html>
