@@ -1052,7 +1052,7 @@ footer {
   padding: 0;
   margin: 10px 0 0;
   counter-reset: toc-counter;
-  max-height: 240px;
+  max-height: 160px;
   overflow-y: auto;
   transition: max-height 0.25s ease, margin 0.25s ease, opacity 0.2s ease;
 }
