@@ -1566,6 +1566,143 @@ footer {
   flex-shrink: 0;
 }
 
+/* — Leverage comparison visual — */
+.review-leverage-demo {
+  margin: 28px 0;
+  padding: 24px;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.review-leverage-demo h4 {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.leverage-scenarios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.leverage-scenario {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.leverage-scenario.safe {
+  background: linear-gradient(135deg, #e6f7f2 0%, #d0f0e8 100%);
+  border-color: rgba(0, 137, 107, 0.2);
+}
+.leverage-scenario.danger {
+  background: linear-gradient(135deg, #fef0f0 0%, #fde4e4 100%);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+[data-theme="dark"] .leverage-scenario.safe {
+  background: linear-gradient(135deg, #0d2e24 0%, #143d32 100%);
+  border-color: rgba(0, 200, 150, 0.15);
+}
+[data-theme="dark"] .leverage-scenario.danger {
+  background: linear-gradient(135deg, #2e0d0d 0%, #3d1414 100%);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+.leverage-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.leverage-amount {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.leverage-scenario.safe .leverage-amount { color: var(--accent); }
+.leverage-scenario.danger .leverage-amount { color: #DC2626; }
+.leverage-detail {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.leverage-result {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.leverage-scenario.safe .leverage-result {
+  background: rgba(0, 137, 107, 0.1);
+  color: var(--accent);
+}
+.leverage-scenario.danger .leverage-result {
+  background: rgba(220, 38, 38, 0.1);
+  color: #DC2626;
+}
+
+/* — Returns reality bar chart — */
+.review-returns-chart {
+  margin: 28px 0;
+  padding: 24px;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.review-returns-chart h4 {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.returns-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.returns-bar-label {
+  flex: 0 0 140px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+.returns-bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--bg3);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.returns-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  transition: width 0.6s ease;
+}
+.returns-bar-fill.bar-green { background: linear-gradient(90deg, var(--accent), #2E7D32); }
+.returns-bar-fill.bar-blue { background: linear-gradient(90deg, #3B82F6, #1D4ED8); }
+.returns-bar-fill.bar-amber { background: linear-gradient(90deg, #F59E0B, #D97706); }
+.returns-bar-fill.bar-red { background: linear-gradient(90deg, #EF4444, #DC2626); }
+
+@media (max-width: 600px) {
+  .leverage-scenarios { grid-template-columns: 1fr; }
+  .returns-bar-label { flex: 0 0 100px; font-size: 0.78rem; }
+}
+
 /* — Review infographic mobile — */
 @media (max-width: 600px) {
   .review-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; }
