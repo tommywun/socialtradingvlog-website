@@ -132,7 +132,9 @@ def log_to_dashboard(alert_type, message, level="info", details=None):
         "timestamp": datetime.now().isoformat(),
     })
 
-    # Keep last 500 alerts
+    # Auto-expire alerts older than 7 days and keep max 500
+    cutoff = (datetime.now() - timedelta(days=7)).isoformat()
+    alerts = [a for a in alerts if a.get("timestamp", "") > cutoff]
     alerts = alerts[-500:]
 
     ALERT_LOG.parent.mkdir(parents=True, exist_ok=True)

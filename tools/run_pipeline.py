@@ -47,6 +47,7 @@ TRANSLATE   = TOOLS_DIR / "translate_subtitles.py"
 FETCH_CAPS  = TOOLS_DIR / "fetch_captions.py"
 UPLOAD_SUBS = TOOLS_DIR / "upload_subtitles.py"
 LOG_PATH    = TRANS_DIR / "pipeline.log"
+LOCK_FILE   = pathlib.Path("/tmp/stv-pipeline.lock")
 
 MODEL = "api"
 
@@ -245,6 +246,33 @@ def send_summary(ok, total, errors, uploads, mode):
         log(f"  Warning: could not send Telegram summary: {e}")
 
 
+def acquire_lock():
+    """Prevent duplicate pipeline instances. Returns True if lock acquired."""
+    if LOCK_FILE.exists():
+        try:
+            pid = int(LOCK_FILE.read_text().strip())
+            # Check if process is still running
+            os.kill(pid, 0)
+            print(f"Pipeline already running (PID {pid}). Exiting.")
+            return False
+        except (ValueError, ProcessLookupError, PermissionError):
+            # Stale lock — process no longer exists
+            pass
+    LOCK_FILE.write_text(str(os.getpid()))
+    return True
+
+
+def release_lock():
+    """Remove lock file on exit."""
+    try:
+        if LOCK_FILE.exists():
+            pid = int(LOCK_FILE.read_text().strip())
+            if pid == os.getpid():
+                LOCK_FILE.unlink()
+    except Exception:
+        pass
+
+
 def main():
     parser = argparse.ArgumentParser(description="Transcription + translation pipeline")
     parser.add_argument("--translate-only", action="store_true",
@@ -252,6 +280,12 @@ def main():
     parser.add_argument("--vps-auto", action="store_true",
                         help="VPS mode: fetch captions via API, translate, upload to YouTube")
     args = parser.parse_args()
+
+    if not acquire_lock():
+        sys.exit(1)
+
+    import atexit
+    atexit.register(release_lock)
 
     TRANS_DIR.mkdir(exist_ok=True)
     ids = get_all_video_ids()
