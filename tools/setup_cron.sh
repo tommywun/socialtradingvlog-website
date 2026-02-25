@@ -58,6 +58,10 @@ CRON_ENTRIES=$(cat <<'CRONTAB'
 
 # ── Platform Data ───────────────────────────────────────── #STV
 
+# Weekly eToro risk percentage check (Mondays 1:30am, before fee scraper)
+# If percentage changed, update all HTML files and commit
+30 1 * * 1 PYTHON_PATH PROJECT_PATH/tools/scrape_etoro_risk.py >> LOG_PATH/scrape-risk.log 2>&1 && PYTHON_PATH PROJECT_PATH/tools/update_risk_warnings.py >> LOG_PATH/scrape-risk.log 2>&1 #STV
+
 # Weekly platform fee scrape via Playwright + update verified date (Mondays 2am)
 # Chain update_fee_pages.py to commit the updated JSON after scraping
 0 2 * * 1 PYTHON_PATH PROJECT_PATH/tools/scrape_platform_fees.py >> LOG_PATH/scrape-fees.log 2>&1 && PYTHON_PATH PROJECT_PATH/tools/update_fee_pages.py >> LOG_PATH/scrape-fees.log 2>&1 #STV
