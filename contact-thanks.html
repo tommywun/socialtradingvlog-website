@@ -10,6 +10,14 @@
   /* Anti-flash theme detection — runs before paint */
   (function(){var t;try{t=localStorage.getItem('stv-theme')}catch(e){}if(!t){if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches){t='dark'}else{t=window.innerWidth<=768?'dark':'light'}}document.documentElement.setAttribute('data-theme',t)})();
   </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PBGDJ951LL');
+</script>
 </head>
 <body>
 
