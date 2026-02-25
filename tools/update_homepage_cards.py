@@ -3,7 +3,7 @@
 Update the 'From the blog' section on the homepage with the 3 latest updates.
 
 Scans the updates/ directory, picks the 3 most recent by date, and replaces
-the cards-grid in index.html. Includes bright gradient image placeholders.
+the cards-grid in index.html. Downloads YouTube thumbnails for each update.
 
 Idempotent — safe to re-run. Also updates translated homepages.
 
@@ -15,17 +15,10 @@ Usage:
 import pathlib
 import re
 import argparse
+import urllib.request
 from datetime import datetime
 
 PROJECT_DIR = pathlib.Path(__file__).parent.parent
-
-GRADIENTS = [
-    "linear-gradient(135deg, #0ea5e9, #06b6d4)",   # blue-cyan
-    "linear-gradient(135deg, #8b5cf6, #a78bfa)",   # purple
-    "linear-gradient(135deg, #10b981, #34d399)",   # green
-]
-
-EMOJIS = ["&#128200;", "&#128176;", "&#128640;"]  # chart, money, rocket
 
 
 def parse_date_from_filename(name):
@@ -55,6 +48,40 @@ def parse_date_from_filename(name):
             return datetime(int(year), month_num, 1)
 
     return None
+
+
+def get_youtube_id(filepath):
+    """Extract the first YouTube video ID from an update HTML file."""
+    try:
+        content = filepath.read_text(encoding="utf-8")
+    except Exception:
+        return None
+    m = re.search(r'youtube\.com/embed/([a-zA-Z0-9_-]+)', content)
+    return m.group(1) if m else None
+
+
+def ensure_thumbnail(filepath, images_dir):
+    """Download YouTube thumbnail for an update, return the image filename."""
+    date = parse_date_from_filename(filepath.name)
+    if not date:
+        return None
+    thumb_name = f"thumb-{filepath.name.replace('copy-trading-update-', '').replace('.html', '.jpg')}"
+    thumb_path = images_dir / thumb_name
+    if thumb_path.exists():
+        return thumb_name
+
+    video_id = get_youtube_id(filepath)
+    if not video_id:
+        return None
+
+    url = f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg"
+    try:
+        urllib.request.urlretrieve(url, thumb_path)
+        print(f"  Downloaded thumbnail: {thumb_name}")
+    except Exception as e:
+        print(f"  Failed to download thumbnail for {filepath.name}: {e}")
+        return None
+    return thumb_name
 
 
 def get_description(filepath):
@@ -96,21 +123,23 @@ def find_latest_updates(updates_dir, count=3):
     return updates[:count]
 
 
-def build_cards_html(updates):
+def build_cards_html(updates, images_dir):
     """Build the cards-grid HTML for the latest updates."""
     cards = []
     for i, (date, filepath) in enumerate(updates):
-        gradient = GRADIENTS[i % len(GRADIENTS)]
-        emoji = EMOJIS[i % len(EMOJIS)]
         tag = date.strftime("%b %Y")
         title = get_title(filepath)
         desc = get_description(filepath)
         href = f"updates/{filepath.name}"
+        thumb = ensure_thumbnail(filepath, images_dir)
+
+        if thumb:
+            img_html = f'<a href="{href}"><img class="card-img" src="images/{thumb}" alt="{title}" loading="lazy"></a>'
+        else:
+            img_html = f'<div class="card-img-placeholder"><span></span></div>'
 
         card = f"""        <div class="card">
-          <div class="card-img-placeholder" style="background: {gradient};">
-            <span>{emoji}</span>
-          </div>
+          {img_html}
           <div class="card-body">
             <div class="card-tag">{tag}</div>
             <h3><a href="{href}">{title}</a></h3>
@@ -163,13 +192,14 @@ def main():
     args = parser.parse_args()
 
     updates_dir = PROJECT_DIR / "updates"
+    images_dir = PROJECT_DIR / "images"
     latest = find_latest_updates(updates_dir, count=3)
 
     if not latest:
         print("No updates found")
         return
 
-    cards_html = build_cards_html(latest)
+    cards_html = build_cards_html(latest, images_dir)
 
     if args.dry_run:
         print("Would update with:")

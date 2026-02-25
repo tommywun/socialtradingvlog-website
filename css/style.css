@@ -72,6 +72,8 @@ nav {
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.5px;
+  margin-right: 32px;
+  flex-shrink: 0;
 }
 
 .nav-logo span { color: var(--accent); }
