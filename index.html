@@ -125,40 +125,130 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1100px;margin:0 auto;">
 
-        <a href="calculators/fee-calculator/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseover="this.style.borderColor='#00c896';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
-          <div style="width:44px;height:44px;border-radius:10px;background:rgba(43,179,255,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2BB3FF" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20M8 15h8M8 12h4"/></svg>
+        <!-- Fee Calculator -->
+        <a href="calculators/fee-calculator/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:0;text-decoration:none;transition:border-color .2s,transform .2s;overflow:hidden;" onmouseover="this.style.borderColor='#2BB3FF';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
+          <div style="background:linear-gradient(135deg,#0d1f3c 0%,#132d54 50%,#0f2444 100%);padding:20px 20px 16px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(43,179,255,.08) 0%,transparent 70%);"></div>
+            <div style="background:rgba(43,179,255,.08);border:1px solid rgba(43,179,255,.15);border-radius:8px;padding:12px 14px;">
+              <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:8px;">
+                <span style="font-size:24px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;">$2.50</span>
+                <span style="font-size:11px;color:rgba(43,179,255,.7);font-weight:600;">estimated cost</span>
+              </div>
+              <div style="display:flex;gap:4px;height:6px;border-radius:3px;overflow:hidden;">
+                <div style="flex:3;background:#2BB3FF;border-radius:3px;"></div>
+                <div style="flex:2;background:#00c896;border-radius:3px;"></div>
+                <div style="flex:1;background:#FDC23C;border-radius:3px;"></div>
+              </div>
+              <div style="display:flex;gap:12px;margin-top:6px;">
+                <span style="font-size:9px;color:#8b949e;display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#2BB3FF;display:inline-block;"></span>Spread</span>
+                <span style="font-size:9px;color:#8b949e;display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#00c896;display:inline-block;"></span>FX fee</span>
+                <span style="font-size:9px;color:#8b949e;display:flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:50%;background:#FDC23C;display:inline-block;"></span>Overnight</span>
+              </div>
+            </div>
           </div>
-          <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Fee Calculator</h3>
-          <p style="font-size:13px;color:#8b949e;line-height:1.55;">See exactly what you'll pay in spreads, overnight fees, FX conversion and withdrawal fees for any trade.</p>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#2BB3FF;margin-top:10px;">Calculate fees <span>&rarr;</span></span>
+          <div style="padding:16px 20px 20px;">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Fee Calculator</h3>
+            <p style="font-size:13px;color:#8b949e;line-height:1.55;">See exactly what you'll pay in spreads, overnight fees, FX conversion and withdrawal fees for any trade.</p>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#2BB3FF;margin-top:10px;">Calculate fees <span>&rarr;</span></span>
+          </div>
         </a>
 
-        <a href="calculators/trade-comparison/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseover="this.style.borderColor='#00c896';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
-          <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,200,150,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00c896" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        <!-- Compare Trade Fees -->
+        <a href="calculators/trade-comparison/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:0;text-decoration:none;transition:border-color .2s,transform .2s;overflow:hidden;" onmouseover="this.style.borderColor='#00c896';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
+          <div style="background:linear-gradient(135deg,#071f17 0%,#0a3327 50%,#07261c 100%);padding:20px 20px 16px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,200,150,.08) 0%,transparent 70%);"></div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:10px;color:#8b949e;width:52px;text-align:right;flex-shrink:0;">eToro</span>
+                <div style="flex:1;height:16px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.04);position:relative;">
+                  <div style="width:15%;height:100%;background:linear-gradient(90deg,#00c896,#00e6ac);border-radius:4px;"></div>
+                </div>
+                <span style="font-size:11px;font-weight:700;color:#00c896;width:36px;">$0</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:10px;color:#8b949e;width:52px;text-align:right;flex-shrink:0;">IBKR</span>
+                <div style="flex:1;height:16px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.04);position:relative;">
+                  <div style="width:35%;height:100%;background:linear-gradient(90deg,#2BB3FF,#5bc4ff);border-radius:4px;"></div>
+                </div>
+                <span style="font-size:11px;font-weight:600;color:#8b949e;width:36px;">$1.20</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:10px;color:#8b949e;width:52px;text-align:right;flex-shrink:0;">Plus500</span>
+                <div style="flex:1;height:16px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.04);position:relative;">
+                  <div style="width:75%;height:100%;background:linear-gradient(90deg,#FDC23C,#ffe082);border-radius:4px;"></div>
+                </div>
+                <span style="font-size:11px;font-weight:600;color:#8b949e;width:36px;">$8.50</span>
+              </div>
+            </div>
+            <div style="margin-top:6px;display:flex;justify-content:flex-start;">
+              <span style="font-size:8px;font-weight:800;color:#00c896;background:rgba(0,200,150,.12);padding:2px 8px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;">CHEAPEST</span>
+            </div>
           </div>
-          <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Compare Trade Fees</h3>
-          <p style="font-size:13px;color:#8b949e;line-height:1.55;">Compare the exact same trade across 20+ platforms. See which broker is cheapest for your country and asset class.</p>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#00c896;margin-top:10px;">Compare platforms <span>&rarr;</span></span>
+          <div style="padding:16px 20px 20px;">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Compare Trade Fees</h3>
+            <p style="font-size:13px;color:#8b949e;line-height:1.55;">Compare the exact same trade across 20+ platforms. See which broker is cheapest for your country and asset class.</p>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#00c896;margin-top:10px;">Compare platforms <span>&rarr;</span></span>
+          </div>
         </a>
 
-        <a href="calculators/roi-calculator/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseover="this.style.borderColor='#00c896';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
-          <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,159,129,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#009F81" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <!-- ROI Calculator -->
+        <a href="calculators/roi-calculator/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:0;text-decoration:none;transition:border-color .2s,transform .2s;overflow:hidden;" onmouseover="this.style.borderColor='#009F81';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
+          <div style="background:linear-gradient(135deg,#071e1a 0%,#0a2e28 50%,#07231e 100%);padding:20px 20px 16px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,159,129,.08) 0%,transparent 70%);"></div>
+            <svg width="100%" height="72" viewBox="0 0 220 72" fill="none" preserveAspectRatio="none" style="display:block;">
+              <defs>
+                <linearGradient id="roiFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#009F81" stop-opacity=".25"/><stop offset="100%" stop-color="#009F81" stop-opacity="0"/></linearGradient>
+              </defs>
+              <path d="M0 65 Q30 62 55 55 T110 35 T165 15 L165 72 L0 72Z" fill="url(#roiFill)"/>
+              <path d="M0 65 Q30 62 55 55 T110 35 T165 15" stroke="#009F81" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <line x1="165" y1="15" x2="215" y2="5" stroke="#009F81" stroke-width="1.5" stroke-dasharray="4 3" opacity=".5"/>
+              <circle cx="165" cy="15" r="4" fill="#009F81"/>
+              <circle cx="165" cy="15" r="2" fill="#0a2e28"/>
+            </svg>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+              <span style="font-size:10px;color:#8b949e;">$5,000 invested</span>
+              <span style="font-size:16px;font-weight:800;color:#00e6ac;font-family:'Plus Jakarta Sans',sans-serif;">+32%</span>
+            </div>
           </div>
-          <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">ROI Calculator</h3>
-          <p style="font-size:13px;color:#8b949e;line-height:1.55;">Project how your copy trading investment could grow over 1&ndash;10 years with compound returns.</p>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#009F81;margin-top:10px;">Project returns <span>&rarr;</span></span>
+          <div style="padding:16px 20px 20px;">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">ROI Calculator</h3>
+            <p style="font-size:13px;color:#8b949e;line-height:1.55;">Project how your copy trading investment could grow over 1&ndash;10 years with compound returns.</p>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#009F81;margin-top:10px;">Project returns <span>&rarr;</span></span>
+          </div>
         </a>
 
-        <a href="calculators/compare-platforms/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s;" onmouseover="this.style.borderColor='#00c896';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
-          <div style="width:44px;height:44px;border-radius:10px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <!-- Platform Comparison -->
+        <a href="calculators/compare-platforms/" style="display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:0;text-decoration:none;transition:border-color .2s,transform .2s;overflow:hidden;" onmouseover="this.style.borderColor='#8B5CF6';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#30363d';this.style.transform='none'">
+          <div style="background:linear-gradient(135deg,#140f28 0%,#1e1640 50%,#170f30 100%);padding:20px 20px 16px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(139,92,246,.08) 0%,transparent 70%);"></div>
+            <div style="display:flex;gap:8px;">
+              <div style="flex:1;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:6px;padding:10px 8px;">
+                <div style="width:28px;height:28px;border-radius:6px;background:#00C853;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+                  <span style="font-size:10px;font-weight:800;color:#fff;">eT</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#00c896" opacity=".2"/><path d="M5 8l2 2 4-4" stroke="#00c896" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9px;color:#8b949e;">Copy trading</span></div>
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#00c896" opacity=".2"/><path d="M5 8l2 2 4-4" stroke="#00c896" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9px;color:#8b949e;">0% commission</span></div>
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#FF4953" opacity=".2"/><path d="M5 5l6 6M11 5l-6 6" stroke="#FF4953" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span style="font-size:9px;color:#8b949e;">No ISA</span></div>
+                </div>
+              </div>
+              <div style="flex:1;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:6px;padding:10px 8px;">
+                <div style="width:28px;height:28px;border-radius:6px;background:#0050FF;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+                  <span style="font-size:10px;font-weight:800;color:#fff;">IB</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#FF4953" opacity=".2"/><path d="M5 5l6 6M11 5l-6 6" stroke="#FF4953" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span style="font-size:9px;color:#8b949e;">No copy trading</span></div>
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#00c896" opacity=".2"/><path d="M5 8l2 2 4-4" stroke="#00c896" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9px;color:#8b949e;">Lowest fees</span></div>
+                  <div style="display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#00c896" opacity=".2"/><path d="M5 8l2 2 4-4" stroke="#00c896" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9px;color:#8b949e;">ISA available</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Platform Comparison</h3>
-          <p style="font-size:13px;color:#8b949e;line-height:1.55;">Side-by-side comparison of eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers and XTB.</p>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#8B5CF6;margin-top:10px;">Compare now <span>&rarr;</span></span>
+          <div style="padding:16px 20px 20px;">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin-bottom:6px;">Platform Comparison</h3>
+            <p style="font-size:13px;color:#8b949e;line-height:1.55;">Side-by-side comparison of eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers and XTB.</p>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:#8B5CF6;margin-top:10px;">Compare now <span>&rarr;</span></span>
+          </div>
         </a>
 
       </div>
