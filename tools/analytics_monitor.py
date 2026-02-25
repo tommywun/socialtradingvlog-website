@@ -28,9 +28,8 @@ DATA_DIR = PROJECT_DIR / "data"
 SECRETS_DIR = pathlib.Path.home() / ".config" / "stv-secrets"
 ANALYTICS_FILE = DATA_DIR / "analytics-report.json"
 AB_TESTS_FILE = DATA_DIR / "ab-tests.json"
-# IMPORTANT: This must be the numeric Property ID from GA Admin > Property Settings,
-# NOT the Measurement ID (G-XXXXXXX). Tom needs to look this up and replace it.
-GA_PROPERTY_ID = "G-PBGDJ951LL"
+# Numeric Property ID from GA Admin > Property Settings
+GA_PROPERTY_ID = "525085627"
 
 # ─── Google Analytics Data API ────────────────────────────────────────────
 

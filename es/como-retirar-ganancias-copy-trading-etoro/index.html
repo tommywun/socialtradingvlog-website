@@ -37,7 +37,13 @@
     "description": "Cómo retirar ganancias del copy trading en eToro — cuándo se reinvierten automáticamente los beneficios, cómo pausar una copia, retirar fondos y hacer un retiro. Guía práctica."
 }
   </script>
-  <!-- Google tag (gtag.js) -->
+  <script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_personalization':'denied','wait_for_update':500});
+var c;try{c=JSON.parse(localStorage.getItem('stv-consent'))}catch(e){}
+if(c&&c.accepted){gtag('consent','update',{'analytics_storage':'granted'})}
+</script>
+<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -260,6 +266,9 @@
             <li><a href="../../about.html">Sobre nosotros</a></li>
             <li><a href="../../faq.html">Preguntas frecuentes</a></li>
             <li><a href="../../contact.html">Contacto</a></li>
+          
+            <li><a href="../../privacy.html">Privacy Policy</a></li>
+            <li><a href="#" id="manage-cookies">Manage cookies</a></li>
           </ul>
         </div>
       </div>
@@ -288,5 +297,8 @@
     }
   });
   </script>
+
+  <script src="../../js/consent.js"></script>
+  <script src="../../js/analytics.js"></script>
 </body>
 </html>
