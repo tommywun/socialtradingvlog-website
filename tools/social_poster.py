@@ -36,6 +36,25 @@ from html.parser import HTMLParser
 PROJECT_DIR = pathlib.Path(__file__).parent.parent
 DATA_DIR = PROJECT_DIR / "data"
 SECRETS_DIR = pathlib.Path.home() / ".config" / "stv-secrets"
+BACKUP_PASSPHRASE = SECRETS_DIR / "backup-passphrase.txt"
+
+
+def load_secret(name):
+    """Load a secret, decrypting GPG-encrypted files if needed."""
+    gpg_file = SECRETS_DIR / f"{name}.gpg"
+    plain_file = SECRETS_DIR / name
+    if gpg_file.exists() and BACKUP_PASSPHRASE.exists():
+        import subprocess
+        result = subprocess.run(
+            ["gpg", "--batch", "--yes", "--passphrase-file", str(BACKUP_PASSPHRASE),
+             "--decrypt", str(gpg_file)],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    if plain_file.exists():
+        return plain_file.read_text().strip()
+    return None
 POST_LOG = DATA_DIR / "social-post-log.json"
 SITE_URL = "https://socialtradingvlog.com"
 
@@ -205,12 +224,12 @@ def make_post_text(article, max_length=280, hashtag_count=2):
 
 def post_to_pinterest(article, dry_run=False):
     """Create a Pin via Pinterest API v5."""
-    creds_file = SECRETS_DIR / "pinterest-credentials.json"
-    if not creds_file.exists():
+    creds_raw = load_secret("pinterest-credentials.json")
+    if not creds_raw:
         print(f"    [pinterest] Credentials not found")
         return None
 
-    creds = json.loads(creds_file.read_text())
+    creds = json.loads(creds_raw)
     access_token = creds.get("access_token", "")
     board_id = creds.get("board_id", "")
 
@@ -260,12 +279,12 @@ def post_to_pinterest(article, dry_run=False):
 
 def post_to_twitter(article, dry_run=False):
     """Post to X/Twitter via API v2 (free tier)."""
-    creds_file = SECRETS_DIR / "twitter-credentials.json"
-    if not creds_file.exists():
+    creds_raw = load_secret("twitter-credentials.json")
+    if not creds_raw:
         print(f"    [twitter] Credentials not found")
         return None
 
-    creds = json.loads(creds_file.read_text())
+    creds = json.loads(creds_raw)
     bearer_token = creds.get("bearer_token", "")
     # For posting, need OAuth 1.0a user context
     api_key = creds.get("api_key", "")
@@ -341,14 +360,12 @@ def post_to_twitter(article, dry_run=False):
 
 def post_to_mastodon(article, dry_run=False):
     """Post to Mastodon via REST API."""
-    token_file = SECRETS_DIR / "mastodon-token.txt"
-    instance_file = SECRETS_DIR / "mastodon-instance.txt"
-    if not token_file.exists():
+    token = load_secret("mastodon-token.txt")
+    if not token:
         print(f"    [mastodon] Token not found")
         return None
 
-    token = token_file.read_text().strip()
-    instance = instance_file.read_text().strip() if instance_file.exists() else "mastodon.social"
+    instance = load_secret("mastodon-instance.txt") or "mastodon.social"
 
     text = make_post_text(article, max_length=500, hashtag_count=3)
 
@@ -375,12 +392,12 @@ def post_to_mastodon(article, dry_run=False):
 
 def post_to_bluesky(article, dry_run=False):
     """Post to Bluesky via AT Protocol."""
-    creds_file = SECRETS_DIR / "bluesky-credentials.json"
-    if not creds_file.exists():
+    creds_raw = load_secret("bluesky-credentials.json")
+    if not creds_raw:
         print(f"    [bluesky] Credentials not found")
         return None
 
-    creds = json.loads(creds_file.read_text())
+    creds = json.loads(creds_raw)
     handle = creds.get("handle", "")
     app_password = creds.get("app_password", "")
 
@@ -456,14 +473,12 @@ def post_to_bluesky(article, dry_run=False):
 
 def post_to_facebook(article, dry_run=False):
     """Post to Facebook Page via Graph API."""
-    token_file = SECRETS_DIR / "facebook-page-token.txt"
-    page_id_file = SECRETS_DIR / "facebook-page-id.txt"
-    if not token_file.exists():
+    token = load_secret("facebook-page-token.txt")
+    if not token:
         print(f"    [facebook] Page token not found")
         return None
 
-    token = token_file.read_text().strip()
-    page_id = page_id_file.read_text().strip() if page_id_file.exists() else "me"
+    page_id = load_secret("facebook-page-id.txt") or "me"
 
     text = make_post_text(article, max_length=500, hashtag_count=3)
 
@@ -493,14 +508,12 @@ def post_to_facebook(article, dry_run=False):
 
 def post_to_threads(article, dry_run=False):
     """Post to Threads via Meta Threads API."""
-    token_file = SECRETS_DIR / "threads-token.txt"
-    user_id_file = SECRETS_DIR / "threads-user-id.txt"
-    if not token_file.exists():
+    token = load_secret("threads-token.txt")
+    if not token:
         print(f"    [threads] Token not found")
         return None
 
-    token = token_file.read_text().strip()
-    user_id = user_id_file.read_text().strip() if user_id_file.exists() else "me"
+    user_id = load_secret("threads-user-id.txt") or "me"
 
     # Threads: 500 chars, 1 hashtag
     lang = article["language"]
@@ -552,14 +565,12 @@ def post_to_threads(article, dry_run=False):
 
 def post_to_telegram(article, dry_run=False):
     """Post to Telegram public channel via Bot API."""
-    token_file = SECRETS_DIR / "telegram-bot-token.txt"
-    channel_file = SECRETS_DIR / "telegram-channel-id.txt"
-    if not token_file.exists():
+    bot_token = load_secret("telegram-bot-token.txt")
+    if not bot_token:
         print(f"    [telegram] Bot token not found")
         return None
 
-    bot_token = token_file.read_text().strip()
-    channel_id = channel_file.read_text().strip() if channel_file.exists() else ""
+    channel_id = load_secret("telegram-channel-id.txt") or ""
 
     if not channel_id:
         print(f"    [telegram] Channel ID not found")
