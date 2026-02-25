@@ -20,7 +20,8 @@ import argparse
 import pathlib
 from datetime import datetime, timedelta
 
-sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
+if sys.platform == "darwin":
+    sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)

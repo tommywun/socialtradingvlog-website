@@ -1,90 +1,101 @@
 ============================================================
-  DAILY REPORT — socialtradingvlog.com — 2026-02-20
+  DAILY REPORT — socialtradingvlog.com — 2026-02-24
 ============================================================
 
 ── LAST 7 DAYS ─────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 13 Feb 2026 → 20 Feb 2026 (7 days)
+Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           27
-  Users:              25
-  Page views:         31
-  Avg session:        1m 3s
-  Bounce rate:        85.2%
+  Sessions:           118
+  Users:              111
+  Page views:         139
+  Avg session:        0m 23s
+  Bounce rate:        88.1%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                      16     16   0m 16s
+  /                                                      49     49   0m 10s
+  /copy-trading.html                                      6      4   0m 49s
+  /videos.html                                            6      4   1m 58s
+  /social-trading.html                                    5      5   0m 11s
+  /about.html                                             4      3   0m 31s
+  /calculators/                                           3      3   0m 21s
+  /copy-trading-returns.html                              3      3    0m 0s
+  /etoro-review/                                          3      3    0m 0s
+  /how-to-choose-copy-traders-etoro/                      3      3   0m 12s
   /about                                                  2      1   1m 18s
-  /copy-trading-returns.html                              2      2    0m 0s
-  /index.html                                             2      2    5m 3s
-  /videos.html                                            2      2   5m 34s
-  /calculators/                                           1      1    0m 0s
-  /checklist/                                             1      1    0m 0s
-  /etoro-review/                                          1      1    0m 0s
-  /faq.html                                               1      1    0m 0s
-  /popular-investor.html                                  1      1    0m 0s
-  /social-trading.html                                    1      1    0m 0s
-  /video/why-do-most-etoro-traders-lose-money/            1      1    0m 0s
+  /best-traders-to-copy-etoro/                            2      2    0m 0s
+  /etoro-copy-trading-fees/                               2      2    0m 0s
+  /etoro-copy-trading-review/                             2      2    0m 0s
+  /etoro-fees/                                            2      2    0m 0s
+  /etoro-minimum-deposit/                                 2      2    0m 0s
+  /etoro-risk-score-explained/                            2      2    0m 0s
+  /etoro-scam.html                                        2      2    0m 0s
+  /etoro-spread-fees/                                     2      2    0m 0s
+  /etoro-tax-uk/                                          2      2    0m 0s
+  /etoro-vs-degiro/                                       2      2    0m 0s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Direct                                 24         23
+  Direct                                104        101
+  Organic Search                          5          4
+  Referral                                5          5
+  Organic Video                           4          2
   Unassigned                              2          2
-  Organic Search                          1          1
-  Organic Video                           1          1
-  Referral                                1          1
 
 ============================================================
   TOP REFERRERS
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  (direct)                                         24
+  (direct)                                        104
+  google                                            5
+  youtube.com                                       4
   (not set)                                         2
   app.sedric.ai                                     1
-  google                                            1
-  youtube.com                                       1
+  jabse.com                                         1
+  recipebridge.com                                  1
+  redz.com                                          1
+  webnocular.com                                    1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Singapore                               6          6
-                                          5          5
-  China                                   5          5
-  Malta                                   3          3
+  Singapore                              40         40
+  China                                  34         34
+  United States                          17         17
+  Malta                                   7          6
+  (not set)                               6          6
+  New Zealand                             3          1
+  Romania                                 3          1
   India                                   2          1
   Netherlands                             2          1
-  United States                           2          2
-  New Zealand                             1          1
-  Romania                                 1          1
+  Argentina                               1          1
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  desktop                      18         16
-  mobile                        9          9
+  desktop                     103         98
+  mobile                       15         13
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
 ============================================================
-  Page                                                 Clicks
-  -------------------------------------------------- --------
-  /                                                         1
+  No CTA clicks recorded yet (tracking was just added)
 
 ============================================================
   Report complete.
@@ -94,86 +105,97 @@ Period: 13 Feb 2026 → 20 Feb 2026 (7 days)
 ── LAST 30 DAYS ────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 21 Jan 2026 → 20 Feb 2026 (30 days)
+Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           27
-  Users:              25
-  Page views:         31
-  Avg session:        1m 3s
-  Bounce rate:        85.2%
+  Sessions:           118
+  Users:              111
+  Page views:         139
+  Avg session:        0m 23s
+  Bounce rate:        88.1%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                      16     16   0m 16s
+  /                                                      49     49   0m 10s
+  /copy-trading.html                                      6      4   0m 49s
+  /videos.html                                            6      4   1m 58s
+  /social-trading.html                                    5      5   0m 11s
+  /about.html                                             4      3   0m 31s
+  /calculators/                                           3      3   0m 21s
+  /copy-trading-returns.html                              3      3    0m 0s
+  /etoro-review/                                          3      3    0m 0s
+  /how-to-choose-copy-traders-etoro/                      3      3   0m 12s
   /about                                                  2      1   1m 18s
-  /copy-trading-returns.html                              2      2    0m 0s
-  /index.html                                             2      2    5m 3s
-  /videos.html                                            2      2   5m 34s
-  /calculators/                                           1      1    0m 0s
-  /checklist/                                             1      1    0m 0s
-  /etoro-review/                                          1      1    0m 0s
-  /faq.html                                               1      1    0m 0s
-  /popular-investor.html                                  1      1    0m 0s
-  /social-trading.html                                    1      1    0m 0s
-  /video/why-do-most-etoro-traders-lose-money/            1      1    0m 0s
+  /best-traders-to-copy-etoro/                            2      2    0m 0s
+  /etoro-copy-trading-fees/                               2      2    0m 0s
+  /etoro-copy-trading-review/                             2      2    0m 0s
+  /etoro-fees/                                            2      2    0m 0s
+  /etoro-minimum-deposit/                                 2      2    0m 0s
+  /etoro-risk-score-explained/                            2      2    0m 0s
+  /etoro-scam.html                                        2      2    0m 0s
+  /etoro-spread-fees/                                     2      2    0m 0s
+  /etoro-tax-uk/                                          2      2    0m 0s
+  /etoro-vs-degiro/                                       2      2    0m 0s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Direct                                 24         23
+  Direct                                104        101
+  Organic Search                          5          4
+  Referral                                5          5
+  Organic Video                           4          2
   Unassigned                              2          2
-  Organic Search                          1          1
-  Organic Video                           1          1
-  Referral                                1          1
 
 ============================================================
   TOP REFERRERS
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  (direct)                                         24
+  (direct)                                        104
+  google                                            5
+  youtube.com                                       4
   (not set)                                         2
   app.sedric.ai                                     1
-  google                                            1
-  youtube.com                                       1
+  jabse.com                                         1
+  recipebridge.com                                  1
+  redz.com                                          1
+  webnocular.com                                    1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Singapore                               6          6
-                                          5          5
-  China                                   5          5
-  Malta                                   3          3
+  Singapore                              40         40
+  China                                  34         34
+  United States                          17         17
+  Malta                                   7          6
+  (not set)                               6          6
+  New Zealand                             3          1
+  Romania                                 3          1
   India                                   2          1
   Netherlands                             2          1
-  United States                           2          2
-  New Zealand                             1          1
-  Romania                                 1          1
+  Argentina                               1          1
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  desktop                      18         16
-  mobile                        9          9
+  desktop                     103         98
+  mobile                       15         13
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
 ============================================================
-  Page                                                 Clicks
-  -------------------------------------------------- --------
-  /                                                         1
+  No CTA clicks recorded yet (tracking was just added)
 
 ============================================================
   Report complete.
@@ -181,17 +203,17 @@ Period: 21 Jan 2026 → 20 Feb 2026 (30 days)
 
 
 ── PIPELINE STATUS ─────────────────────────────────────────
-  Transcriptions:  31 completed
-  Video pages:     30 generated
-  Article pages:   23 generated
+  Transcriptions:  132 completed
+  Video pages:     1 generated
+  Article pages:   19 generated
 
   Last pipeline activity:
-    [04:55:15]   ERROR: transcription failed
-    [04:55:15] === Pipeline finished 2026-02-20T04:55:15.860516 ===
-    [04:55:15] Completed: 29/333 | Errors: 304
-    [04:55:15] Failed video IDs: 64YEt3i7kFo, -bIQja3gEm4, A1iTColkAck, n3ulZJxYDxA, v6Dd5LUh1_4, iw0xvpejt98, yXyQ0tgx--I, MjzXbe8lz40, mbaSu_VQ9bY, FN-LEQo5n50, KU56yDvug8g, tCXC6E2RrBI, PQz66EBS83o, kHuERm35vzM, C601NAtmHM8, SZvU0u3SpKU, W9KcllRB5Ng, Gbhfgkhb90s, 4_EiZBcUT1U, 93I4ENG_-0c, 6ff45NaA9_g, b1mBEXpDgy8, d_7RopG_bOc, n-d5djk0pfY, zoylfSiK38k, cx3Kc3M2Jxg, kP68l37HwiY, x1JnVWJ-vKA, hzJx-KPvgu8, LH-v_ZghQGM, mf-WNVDzf-0, rO60YB0ax-g, qePnF1kFG7E, FEel7OxVfKc, ZMxyrNTvC9Y, C2IW-Q9tnbs, vxe1RZccgA4, tHNtskWEV0c, EKnBxgPfIIw, SGZ4OPqH3Uk, 41vNc40_4I4, P_JLPCBAsd4, X3Br64efBQE, Fx2PW0EK1FY, cHDwP6JJSUo, HChUarY2jBk, 9nVG2sl1akk, vRlsI9yEZvQ, hZHME680AAA, p-XX2BAtBxg, AO8VfMjKiq4, o1I59KnvPok, yFew7U4CLYI, 1BnXCYESEpc, qgyNkT5mmP4, ku6_hkdWu2Y, Jy7Bp9YR6fo, Ye8BD9FUC3U, 0suGWBsTk0g, z3alVw7Zd5Q, kbZEU4S70Qc, wkBNNsJoIfA, 7SSefThSYTQ, wiNOakDCjiA, Xb_td5gZCCg, OZExivHralM, M1aMdjFhH2w, KiKm4qqcOxI, sEgyYZ4_QRA, aJDuxuazRBM, oUV0ti-nqCs, pcjiT6ad55g, JrIa_ojeabs, xMDUCd3jxTs, IRt1W6da1zg, 0gyrWmP_FP4, lKfEBGLrGm8, mtFGidaEgWE, w0Irtnuj9Cw, cJjnIJTMVhU, e2IcAHWSjvY, VX_3y76ZjAE, G4Rlme8sA1A, -drsvFO2m00, eDAz3kJ3iLY, AfV2qDeX4Jk, bgSLxA1tFeU, Gx1x01n8i8A, cAkJLavVCOY, -x60w6N_UmM, 4e0Dobo5Qzo, _TkvRBl4-7k, IVSjyCr_VcQ, jkxqz2BMqhg, 069hi-kCFC8, IdT4HV4xrY4, DZrV7Sr4YiM, HZ92d_TrWDw, AmDLdY38ZUA, IJrlxQve4l4, E7LalBgFf6c, GaEKw54prhc, cbk-BCrkIQI, soG2T6J3be8, c4AB-B3lx78, _dNVNS3K5Kw, JiHlmRwDd-M, 7SCtjv1EP7Y, 38yLH7MmOIU, npqywBaoXV0, -1pegi21Wj4, nzdRdcW13ZQ, ygcHO_Iqt5k, y8Qkn2GjhE8, QBG2gtw4Flw, bkVVasNwJ8E, mzyVzmyC8mw, ZBpqtRkejx4, rTEtcI1xcv8, IUP9ipZecbI, d4U0qEAvAHI, l83O5o6Tbls, T9bk-PedQyA, ZtvrgvIqxKw, MPCY5ddORbc, wtwviuyvQOs, Hcb8p7u18jE, dwD72otV92c, VYO5WBinYQs, RfGtiGLI2Cc, TJuK18DxSrE, FEAQOYcKktA, lWKyCN2sCbU, dcQJ3OGrFEQ, xxmCr497PQQ, _Zj15JypCD0, xRpUv4_QdrQ, bbt5xvuZJpE, 02W-AxXCMNY, O_zXRsqj97E, 0KHXPAyfMAU, 5KinSVZeYmM, JDFhH4bPiug, ZHotk2iYxM4, Pt6F9-yJBCY, rnGos4x3-Lw, bEUTRcdYzVE, FMHMJ8TJmQw, FoDhv-Rj1JM, AD_oFg82Bds, hcWHSuCgn6k, pM02EAjRQqk, 99P412nPokI, 78WZZsS6Z1k, ky3giVL9hYA, m7aySWjAw2s, XSEB3yNHP_Q, zauEs36xNxI, NhT5aELgvBk, 9W60r4_Tb2c, dI7HLbCOZN4, XXDAW-3RkSE, nWrtQz4enmI, ORuhmeJUhYs, 2bBr40eJs5c, O5j7PnKCoX4, PCICeBJBs24, _DRpZ4MtoFg, sMSYL2-qWMM, db4ec1bfvGI, r5MPLPNYAAQ, 7-Zgzi_f_ac, edSfN2nQkKU, evPQ0eGh9_o, hdee2I47f00, OmHQhHGrR2I, Gg03eqPGjaw, m3DrEXz2E1s, C9RZkFKFH3k, p5Zu0fuN5W4, R_VDW_Rvj18, qEf2Zf-Lgdo, 6-mRmhzYc-0, XnYWYLklUCU, McmMZ1_8ozA, NhqJlVEf4Hk, kyY1sSUHghQ, dKRy6nUbUY4, Bn7clqkE5iI, MNgQk9HipKs, QrLvVsWN6PU, I5vtckM0UAE, nBZupr8r9r0, XP00lHIlIes, _ZoR5zOUowg, Y1oCgpW2Z48, dhTAU-aA21g, BOuVLIvsDMc, rWOcvFA_dcE, IiHVdEMuNfc, RnXnJz6EAtw, Wgb8JRQi_v4, Q4trE8mXqng, Ey6SxbFwXuY, UXev8teYQlQ, sJ14gF_2sC8, QcixYq06cxI, jGDuqEN859k, spVRF1nw-8Y, S1Yc8gy_reM, J1md5zp7EvY, TuHpLSmH32U, Q_CW1vdEPUM, fkyJdQ7BXPQ, j_XLeXqbXB4, FDS2qPIxCeI, XMENj8UO5XU, -k5UqELjDug, bD3J2G5GEUU, QWXsIaxnb4w, XAzRZb7_8G4, BwaLAO7VcpQ, 4snHBKnbZgE, meMvW7IZvS8, iaYLsbXie5c, GsU2VvBpzfY, LGTFCsNOprw, __w-ceIVsGQ, fCsZUgbG5Nk, JGZR3SPn5Us, MUm0qyXma5o, IYqiKsI6BCk, MelwOce5BMk, qhRsvEFBnxk, PIRRrsSeXsI, WUgFaTKH0Ec, od5Ik7YhZk0, 9B12bG43heE, 40JQ5LXSaVE, 7iXsRYFMLOc, _HGW4Rcj_A4, J6r71TdqiJc, _cnPyB0_FqM, C54P35jI1O0, N0KuRYdM2Ow, I6MPmZCe4EY, DeO2oAAdGCc, p_K1gWWzBY8, BDMPeX46OoY, WWD6jTqXgr4, apDCBo12874, W_99Y09z1xw, GMcjb7LIrR8, Mbw71A3CwqE, u4TVW7zS_go, BaGYBcGodKI, h2bFXJuDsGY, _qXnIvCnoME, EmxmkWY4lLM, agPGjEV9HOI, rR6usEEAwOk, jcLbLi14iOM, IFQ0VWdnPLY, oomIgsN8Wsk, KcM0w5ecww0, 5VMVXKCGTR4, zp7gLSLwWgU, 5bqj3fY5_b4, hTq-aUJWP0o, 2bHJtinggIk, BD8Bc_x4Kmk, jT63Z8j0FVY, TztwVJEEna8, yKRnqrbCNrQ, lS4INF2d2Bg, sjKsVzMK3uM, DOMqLMWmldE, igXrznqnw7Y, TBfbDXRxvT8, zwUlhEnuPUE, HHFMWKOBXrE, T5yZaW5Fbmg, Wr8YiZI9LoY, -Cs61K1HPLY, 9bBPQta-yos, W5a2AxZuv8A, HjigJgQ5U-8, L3QBEVWL-hc, vnIHRSVHi2I, JCwdKqqaOek, o0cckYWmv4A, rsMHvE6cu1Q, 3-LDctgrBfc, EmI-IxgXw2w, nPXonJRpU3U, e6ON4_8CgEw, kwVw5vbqdF8, lyOEfZzKMOc, 33ueN_plnc0, 2u2v23Xmekg, 6PsA-CR8x7E, PbgkmUxt1Aw, Ii2qN_7hIfQ, gDTQYw7Bh9w
-    [04:55:15] Failed video IDs: 64YEt3i7kFo, -bIQja3gEm4, A1iTColkAck, n3ulZJxYDxA, v6Dd5LUh1_4, iw0xvpejt98, yXyQ0tgx--I, MjzXbe8lz40, mbaSu_VQ9bY, FN-LEQo5n50, KU56yDvug8g, tCXC6E2RrBI, PQz66EBS83o, kHuERm35vzM, C601NAtmHM8, SZvU0u3SpKU, W9KcllRB5Ng, Gbhfgkhb90s, 4_EiZBcUT1U, 93I4ENG_-0c, 6ff45NaA9_g, b1mBEXpDgy8, d_7RopG_bOc, n-d5djk0pfY, zoylfSiK38k, cx3Kc3M2Jxg, kP68l37HwiY, x1JnVWJ-vKA, hzJx-KPvgu8, LH-v_ZghQGM, mf-WNVDzf-0, rO60YB0ax-g, qePnF1kFG7E, FEel7OxVfKc, ZMxyrNTvC9Y, C2IW-Q9tnbs, vxe1RZccgA4, tHNtskWEV0c, EKnBxgPfIIw, SGZ4OPqH3Uk, 41vNc40_4I4, P_JLPCBAsd4, X3Br64efBQE, Fx2PW0EK1FY, cHDwP6JJSUo, HChUarY2jBk, 9nVG2sl1akk, vRlsI9yEZvQ, hZHME680AAA, p-XX2BAtBxg, AO8VfMjKiq4, o1I59KnvPok, yFew7U4CLYI, 1BnXCYESEpc, qgyNkT5mmP4, ku6_hkdWu2Y, Jy7Bp9YR6fo, Ye8BD9FUC3U, 0suGWBsTk0g, z3alVw7Zd5Q, kbZEU4S70Qc, wkBNNsJoIfA, 7SSefThSYTQ, wiNOakDCjiA, Xb_td5gZCCg, OZExivHralM, M1aMdjFhH2w, KiKm4qqcOxI, sEgyYZ4_QRA, aJDuxuazRBM, oUV0ti-nqCs, pcjiT6ad55g, JrIa_ojeabs, xMDUCd3jxTs, IRt1W6da1zg, 0gyrWmP_FP4, lKfEBGLrGm8, mtFGidaEgWE, w0Irtnuj9Cw, cJjnIJTMVhU, e2IcAHWSjvY, VX_3y76ZjAE, G4Rlme8sA1A, -drsvFO2m00, eDAz3kJ3iLY, AfV2qDeX4Jk, bgSLxA1tFeU, Gx1x01n8i8A, cAkJLavVCOY, -x60w6N_UmM, 4e0Dobo5Qzo, _TkvRBl4-7k, IVSjyCr_VcQ, jkxqz2BMqhg, 069hi-kCFC8, IdT4HV4xrY4, DZrV7Sr4YiM, HZ92d_TrWDw, AmDLdY38ZUA, IJrlxQve4l4, E7LalBgFf6c, GaEKw54prhc, cbk-BCrkIQI, soG2T6J3be8, c4AB-B3lx78, _dNVNS3K5Kw, JiHlmRwDd-M, 7SCtjv1EP7Y, 38yLH7MmOIU, npqywBaoXV0, -1pegi21Wj4, nzdRdcW13ZQ, ygcHO_Iqt5k, y8Qkn2GjhE8, QBG2gtw4Flw, bkVVasNwJ8E, mzyVzmyC8mw, ZBpqtRkejx4, rTEtcI1xcv8, IUP9ipZecbI, d4U0qEAvAHI, l83O5o6Tbls, T9bk-PedQyA, ZtvrgvIqxKw, MPCY5ddORbc, wtwviuyvQOs, Hcb8p7u18jE, dwD72otV92c, VYO5WBinYQs, RfGtiGLI2Cc, TJuK18DxSrE, FEAQOYcKktA, lWKyCN2sCbU, dcQJ3OGrFEQ, xxmCr497PQQ, _Zj15JypCD0, xRpUv4_QdrQ, bbt5xvuZJpE, 02W-AxXCMNY, O_zXRsqj97E, 0KHXPAyfMAU, 5KinSVZeYmM, JDFhH4bPiug, ZHotk2iYxM4, Pt6F9-yJBCY, rnGos4x3-Lw, bEUTRcdYzVE, FMHMJ8TJmQw, FoDhv-Rj1JM, AD_oFg82Bds, hcWHSuCgn6k, pM02EAjRQqk, 99P412nPokI, 78WZZsS6Z1k, ky3giVL9hYA, m7aySWjAw2s, XSEB3yNHP_Q, zauEs36xNxI, NhT5aELgvBk, 9W60r4_Tb2c, dI7HLbCOZN4, XXDAW-3RkSE, nWrtQz4enmI, ORuhmeJUhYs, 2bBr40eJs5c, O5j7PnKCoX4, PCICeBJBs24, _DRpZ4MtoFg, sMSYL2-qWMM, db4ec1bfvGI, r5MPLPNYAAQ, 7-Zgzi_f_ac, edSfN2nQkKU, evPQ0eGh9_o, hdee2I47f00, OmHQhHGrR2I, Gg03eqPGjaw, m3DrEXz2E1s, C9RZkFKFH3k, p5Zu0fuN5W4, R_VDW_Rvj18, qEf2Zf-Lgdo, 6-mRmhzYc-0, XnYWYLklUCU, McmMZ1_8ozA, NhqJlVEf4Hk, kyY1sSUHghQ, dKRy6nUbUY4, Bn7clqkE5iI, MNgQk9HipKs, QrLvVsWN6PU, I5vtckM0UAE, nBZupr8r9r0, XP00lHIlIes, _ZoR5zOUowg, Y1oCgpW2Z48, dhTAU-aA21g, BOuVLIvsDMc, rWOcvFA_dcE, IiHVdEMuNfc, RnXnJz6EAtw, Wgb8JRQi_v4, Q4trE8mXqng, Ey6SxbFwXuY, UXev8teYQlQ, sJ14gF_2sC8, QcixYq06cxI, jGDuqEN859k, spVRF1nw-8Y, S1Yc8gy_reM, J1md5zp7EvY, TuHpLSmH32U, Q_CW1vdEPUM, fkyJdQ7BXPQ, j_XLeXqbXB4, FDS2qPIxCeI, XMENj8UO5XU, -k5UqELjDug, bD3J2G5GEUU, QWXsIaxnb4w, XAzRZb7_8G4, BwaLAO7VcpQ, 4snHBKnbZgE, meMvW7IZvS8, iaYLsbXie5c, GsU2VvBpzfY, LGTFCsNOprw, __w-ceIVsGQ, fCsZUgbG5Nk, JGZR3SPn5Us, MUm0qyXma5o, IYqiKsI6BCk, MelwOce5BMk, qhRsvEFBnxk, PIRRrsSeXsI, WUgFaTKH0Ec, od5Ik7YhZk0, 9B12bG43heE, 40JQ5LXSaVE, 7iXsRYFMLOc, _HGW4Rcj_A4, J6r71TdqiJc, _cnPyB0_FqM, C54P35jI1O0, N0KuRYdM2Ow, I6MPmZCe4EY, DeO2oAAdGCc, p_K1gWWzBY8, BDMPeX46OoY, WWD6jTqXgr4, apDCBo12874, W_99Y09z1xw, GMcjb7LIrR8, Mbw71A3CwqE, u4TVW7zS_go, BaGYBcGodKI, h2bFXJuDsGY, _qXnIvCnoME, EmxmkWY4lLM, agPGjEV9HOI, rR6usEEAwOk, jcLbLi14iOM, IFQ0VWdnPLY, oomIgsN8Wsk, KcM0w5ecww0, 5VMVXKCGTR4, zp7gLSLwWgU, 5bqj3fY5_b4, hTq-aUJWP0o, 2bHJtinggIk, BD8Bc_x4Kmk, jT63Z8j0FVY, TztwVJEEna8, yKRnqrbCNrQ, lS4INF2d2Bg, sjKsVzMK3uM, DOMqLMWmldE, igXrznqnw7Y, TBfbDXRxvT8, zwUlhEnuPUE, HHFMWKOBXrE, T5yZaW5Fbmg, Wr8YiZI9LoY, -Cs61K1HPLY, 9bBPQta-yos, W5a2AxZuv8A, HjigJgQ5U-8, L3QBEVWL-hc, vnIHRSVHi2I, JCwdKqqaOek, o0cckYWmv4A, rsMHvE6cu1Q, 3-LDctgrBfc, EmI-IxgXw2w, nPXonJRpU3U, e6ON4_8CgEw, kwVw5vbqdF8, lyOEfZzKMOc, 33ueN_plnc0, 2u2v23Xmekg, 6PsA-CR8x7E, PbgkmUxt1Aw, Ii2qN_7hIfQ, gDTQYw7Bh9w
+    [07:42:37] [88/333] 0suGWBsTk0g —————————————————
+    [07:42:37]   transcription already exists
+    [07:42:37]   translating to 9 languages: es de fr it pt ar pl nl ko
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
 
 ============================================================
-  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-20.txt
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-24.txt
 ============================================================

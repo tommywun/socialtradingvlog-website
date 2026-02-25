@@ -489,6 +489,79 @@ KEYWORD_MAP = {
             {"q": "Is copy trading on eToro worth it?", "a": "For most people, copy trading on eToro is worth it as a long-term investment strategy if you invest an amount you can afford to lose, copy lower-risk traders, and treat it as a supplement to your income rather than a replacement. It's not a route to quick wealth."},
             {"q": "How much do I need to start copy trading on eToro?", "a": "The minimum to copy a trader on eToro is $200. However, with small amounts the percentage returns translate to very small absolute gains. Tom recommends investing only money you can genuinely afford to leave invested for several years."},
         ],
+        "article_sections": [
+            {
+                "h2": "The Short Answer: It Depends on Two Things",
+                "paragraphs": [
+                    "I get asked this question more than almost any other. \"How much money will I make copy trading on eToro?\" And I get why people ask it \u2014 it's the first thing you want to know before putting your money anywhere.",
+                    "The answer comes down to two things: the trader you copy, and the amount of money you put in. That's it. Those two variables determine everything.",
+                    "Different traders make different returns in different months. Some might make 4% in August, others might make 12%, and others might lose 2%. You can't predict what any given trader will make in any given month. What you can do is look at their track record and find traders who consistently make money over time.",
+                ]
+            },
+            {
+                "h2": "Why You Need to Think in Percentages",
+                "paragraphs": [
+                    "This is the thing that clicks for everyone eventually, but the sooner you get it, the better off you'll be. In copy trading, you need to think in percentages, not in cash amounts.",
+                    "Let's say a trader you're copying makes 4% in a month. Here's what that means for different starting amounts:",
+                    {"type": "note", "text": "$100 invested \u2192 $4 profit\n$1,000 invested \u2192 $40 profit\n$10,000 invested \u2192 $400 profit\n$25,000 invested \u2192 $1,000 profit"},
+                    "Same trader. Same month. Same 4%. The person with $100 and the person with $25,000 have both done absolutely nothing different \u2014 the trader they're copying did all the work. But the results look completely different because the starting amounts are different.",
+                    "This is fundamentally how trading works, and it's different from a regular job. In a job, your time earns money \u2014 you work 8 hours at $10/hour, you make $80. In trading, your capital earns money. The more money you have working for you, the more you make. Your time isn't really a factor, especially with copy trading where someone else is doing the actual trading.",
+                ]
+            },
+            {
+                "h2": "The Maths That Surprises Everyone",
+                "paragraphs": [
+                    "So let's say you want to make $1,000 a month from copy trading. You've found a good trader who averages around 4\u20135% per month (which is genuinely good, by the way). How much money do you need to invest?",
+                    "At 4% monthly returns, you'd need about $25,000 invested to make $1,000 in a month. At 5%, you'd need $20,000.",
+                    "That number shocks most people. They expected to put in $500 and somehow make $1,000. But the maths just doesn't work that way. To make $1,000 from $500, the trader would need to make 200% in a month \u2014 which is essentially impossible without extreme risk that would almost certainly blow the account eventually.",
+                    {"type": "h3", "text": "This Is How the Rich Get Richer"},
+                    "I always think about this: imagine the billionaires making 4% on their money. 4% on a billion dollars is $40 million. Same percentage as everyone else. Same effort (zero, if they're copy trading). But the result is wildly different because of the capital involved.",
+                    "It's not about working harder or being smarter \u2014 in copy trading, it's about having more capital at work. That's the uncomfortable truth, but understanding it early saves you from making bad decisions.",
+                ]
+            },
+            {
+                "h2": "What Good Traders Actually Make",
+                "paragraphs": [
+                    "When you look at traders on eToro, you'll see all sorts of numbers. Some have made 290% in the last 12 months. Others have made 40%. Some are sitting at 7%. What should you look for?",
+                    "The ones making 290% are exciting, but they're usually taking massive risks. The traders I've found to be the most reliable over time are those making somewhere between 15\u201350% per year consistently \u2014 and crucially, when they have losing months, the losses are small.",
+                    {"type": "h3", "text": "Consistency Over Fireworks"},
+                    "Look at a trader's monthly breakdown. What you want to see is mostly green months, and when there's a red month, it's small \u2014 maybe 1\u20132% loss. What you don't want to see is a trader who makes 14% one month and loses 12% the next. That rollercoaster style tends to end badly.",
+                    "When I look at a trader like the ones I've copied over the years, what impresses me isn't the size of their gains \u2014 it's how small their losses are. That tells me they have good risk management. They know when to cut a trade. They're not gambling.",
+                    "You can check all of this on their profile page. eToro shows you monthly returns going back years, plus their risk score and maximum drawdown. Use that data. It's all there for a reason.",
+                ]
+            },
+            {
+                "h2": "Why You Should Leave Your Profits In",
+                "paragraphs": [
+                    "Here's something you work out pretty quickly once you start: withdrawing your profits every month is one of the worst things you can do. And I almost didn't mention this in the original video, but had to come back and add it because it's really important.",
+                    "When you copy someone and they make money, that profit stays in the copy. So your position grows. If you started copying with $1,000 and they made 5%, you now have $1,050 working for you. Next month, that 5% is on $1,050, not $1,000. That's compound growth \u2014 and over time, it makes an enormous difference.",
+                    {"type": "note", "text": "Quick example of compound growth:\n$10,000 at 4% monthly, withdrawing profits each month = $14,800 after a year\n$10,000 at 4% monthly, reinvesting profits = $16,010 after a year\nThat's over $1,200 difference \u2014 just from leaving the money alone."},
+                    "If you're going to withdraw anything, withdraw a fraction of what you're making and let the rest compound. Your future self will thank you. Every dollar you leave in there is another dollar earning percentages for you.",
+                ]
+            },
+            {
+                "h2": "The Risk Side of the Equation",
+                "paragraphs": [
+                    "Everything I've said about \"the more you put in, the more you make\" works in reverse too. The more you put in, the more you can lose.",
+                    "If you have $10,000 invested and your trader has a bad month \u2014 say a 10% loss \u2014 you've just lost $1,000. If you had $1,000 invested, the same bad month costs you $100. Both are 10%, but one stings a lot more.",
+                    {"type": "h3", "text": "Would I Put All My Savings In?"},
+                    "No. Honestly, no. I've been using eToro for years now, and I still wouldn't put all my money into it. I trust the platform, I believe you can make money, but I would never put all my eggs in one basket.",
+                    "I've built up my positions gradually over time. Started small, gained confidence, added more. That's the approach I'd suggest. Don't put in more than you can genuinely afford to lose, especially in the beginning when you're still learning which traders to trust.",
+                    {"type": "h3", "text": "The Protection Question"},
+                    "One thing people ask about is protection \u2014 what happens if eToro goes bust? In Europe, accounts are protected up to \u20AC20,000 under the investor compensation scheme, and in the UK it's up to \u00A385,000 under the FSCS. It's worth checking which entity your account is with and what protection applies to you.",
+                ]
+            },
+            {
+                "h2": "Tom's Realistic Take",
+                "paragraphs": [
+                    "Here's how I'd sum it up, honestly. Copy trading on eToro can make you money. I believe that, and my experience backs it up. But how much you make depends almost entirely on how much you invest and who you copy.",
+                    "If you're starting with $200\u2013$500, be realistic: you might make $20\u2013$50 in a good month. That's genuinely excellent in percentage terms. But if you came here expecting to make a living off that amount, the maths just isn't there.",
+                    "The people who do well on eToro are the ones who invest a meaningful amount (relative to their own finances), choose consistent lower-risk traders, leave their profits to compound, and think in years rather than weeks.",
+                    {"type": "note", "text": "Copy trading is not a get-rich-quick scheme. It's closer to a make-some-money-slowly scheme. The sooner you accept that, the sooner you start making the decisions that actually lead to consistent returns."},
+                    "If you want to play around with the numbers yourself, try my free ROI calculator \u2014 you can plug in your starting amount, expected monthly return, and time horizon to see what compound growth actually looks like over 1, 3, or 5 years.",
+                ],
+            },
+        ],
     },
     "z9M1eB-DTMI": {
         "slug": "etoro-leverage-trading-beginners",

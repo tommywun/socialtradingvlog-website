@@ -38,11 +38,14 @@ LANG_MAP = {
     "fr": "fr",
     "pt": "pt",
     "ar": "ar",
+    "nl": "nl",
+    "pl": "pl",
     "zh-CN": "zh-Hans",
     "ru": "ru",
     "ja": "ja",
     "hi": "hi",
     "ko": "ko",
+    "it": "it",
 }
 
 LANG_NAMES = {
@@ -50,8 +53,11 @@ LANG_NAMES = {
     "es": "Spanish",
     "de": "German",
     "fr": "French",
+    "it": "Italian",
     "pt": "Portuguese",
     "ar": "Arabic",
+    "nl": "Dutch",
+    "pl": "Polish",
     "zh-CN": "Chinese (Simplified)",
     "ru": "Russian",
     "ja": "Japanese",
@@ -60,10 +66,25 @@ LANG_NAMES = {
 }
 
 
+def _alert_auth_failure(message):
+    """Send Telegram alert about auth failure with scp command."""
+    try:
+        sys.path.insert(0, str(PROJECT_DIR / "tools"))
+        from security_lib import send_telegram
+        scp_cmd = "scp ~/.config/stv-secrets/youtube-token.pickle stv:~/.config/stv-secrets/"
+        body = f"{message}\n\nTo fix, re-auth on Mac and copy token:\n  {scp_cmd}"
+        send_telegram("YouTube Auth Failed", body, emoji="🔑", dedupe_key="yt-auth-fail")
+    except Exception as e:
+        print(f"  Could not send auth alert: {e}")
+
+
 def get_youtube_credentials():
-    """Load and refresh YouTube API credentials."""
+    """Load and refresh YouTube API credentials.
+
+    On VPS (headless): refreshes token if possible, alerts via Telegram if not.
+    On Mac: opens browser for re-auth if needed.
+    """
     from google.auth.transport.requests import Request
-    from google_auth_oauthlib.flow import InstalledAppFlow
 
     creds = None
     if YOUTUBE_TOKEN.exists():
@@ -77,13 +98,30 @@ def get_youtube_credentials():
     if creds and hasattr(creds, 'scopes') and creds.scopes:
         if required_scope not in creds.scopes:
             print(f"Token missing required scope: {required_scope}")
-            print(f"Current scopes: {creds.scopes}")
             needs_reauth = True
 
     if not creds or not creds.valid or needs_reauth:
         if creds and creds.expired and creds.refresh_token and not needs_reauth:
-            creds.refresh(Request())
-        else:
+            try:
+                creds.refresh(Request())
+                with open(YOUTUBE_TOKEN, "wb") as f:
+                    pickle.dump(creds, f)
+                print("  Token refreshed successfully")
+                return creds
+            except Exception as e:
+                print(f"  Token refresh failed: {e}")
+                needs_reauth = True
+
+        if needs_reauth or not creds or not creds.valid:
+            # On VPS (headless) — can't open browser, alert and exit
+            if sys.platform != "darwin":
+                msg = "YouTube token expired and cannot re-auth on headless VPS."
+                print(f"ERROR: {msg}")
+                _alert_auth_failure(msg)
+                sys.exit(1)
+
+            # On Mac — open browser for re-auth
+            from google_auth_oauthlib.flow import InstalledAppFlow
             if not YOUTUBE_OAUTH.exists():
                 print(f"ERROR: YouTube OAuth credentials not found at {YOUTUBE_OAUTH}")
                 sys.exit(1)
@@ -92,8 +130,8 @@ def get_youtube_credentials():
                 scopes=[required_scope],
             )
             creds = flow.run_local_server(port=0)
-        with open(YOUTUBE_TOKEN, "wb") as f:
-            pickle.dump(creds, f)
+            with open(YOUTUBE_TOKEN, "wb") as f:
+                pickle.dump(creds, f)
 
     return creds
 
@@ -205,7 +243,7 @@ def main():
         target_langs = set(args.languages.split(","))
 
     # Default: skip English (YouTube auto-generates it and our English SRT may conflict)
-    if args.skip_english is None:
+    if not args.skip_english:
         args.skip_english = True
 
     # Count totals

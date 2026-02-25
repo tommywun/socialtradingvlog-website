@@ -1477,6 +1477,30 @@ def toggle_goal_task(goal_id, task_index):
     return {"error": "Invalid goal or task"}
 
 
+# ─── Roadmap ───
+ROADMAP_FILE = PROJECT_DIR / "data" / "roadmap.json"
+
+
+def get_roadmap():
+    if ROADMAP_FILE.exists():
+        return json.loads(ROADMAP_FILE.read_text())
+    return {"phases": []}
+
+
+def update_roadmap_node(node_id, updates):
+    roadmap = get_roadmap()
+    for phase in roadmap.get("phases", []):
+        for node in phase.get("nodes", []):
+            if node["id"] == node_id:
+                for k, v in updates.items():
+                    if k in ("status", "detail", "metric", "metric_current", "metric_total"):
+                        node[k] = v
+                ROADMAP_FILE.parent.mkdir(parents=True, exist_ok=True)
+                ROADMAP_FILE.write_text(json.dumps(roadmap, indent=2))
+                return {"success": True}
+    return {"error": "Node not found"}
+
+
 # ─── CTA A/B Testing ───
 AB_TESTS_FILE = PROJECT_DIR / "outreach" / "ab-tests.json"
 
@@ -2432,6 +2456,42 @@ tbody tr.clickable { cursor: pointer; }
 .goal-filter-btn.active { background: var(--info); color: #fff; border-color: var(--info); }
 .goal-summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
 
+/* ─── Roadmap Dependency Graph ─── */
+.roadmap-graph { display: flex; flex-direction: column; align-items: center; padding: 8px 0; }
+.roadmap-phase { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.roadmap-phase-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.roadmap-nodes { display: flex; justify-content: center; gap: 16px; width: 100%; max-width: 700px; }
+.roadmap-node {
+  flex: 1; max-width: 320px; min-width: 200px;
+  background: var(--bg-card); border: 2px solid var(--border-primary); border-radius: var(--radius-md);
+  padding: 14px 16px; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s; position: relative;
+}
+.roadmap-node:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.roadmap-node.rm-completed { border-color: var(--success); }
+.roadmap-node.rm-in_progress { border-color: var(--info); }
+.roadmap-node.rm-blocked { border-color: var(--border-primary); opacity: 0.6; }
+.roadmap-node.rm-not_started { border-color: var(--border-primary); opacity: 0.45; }
+.roadmap-node::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+.roadmap-node.cat-content::before { background: #2BB3FF; }
+.roadmap-node.cat-seo::before { background: #59DDAA; }
+.roadmap-node.cat-distribution::before { background: #FF642D; }
+.roadmap-node.cat-monetization::before { background: #8B5CF6; }
+.roadmap-node-title { font-size: 14px; font-weight: 700; color: var(--text-primary); font-family: 'Plus Jakarta Sans','Inter',sans-serif; margin-bottom: 4px; padding-left: 8px; }
+.roadmap-node-meta { display: flex; align-items: center; gap: 8px; padding-left: 8px; }
+.roadmap-node-metric { font-size: 12px; color: var(--text-secondary); flex: 1; }
+.roadmap-node .goal-status-badge { font-size: 10px; padding: 2px 8px; }
+.roadmap-mini-bar { height: 4px; background: var(--border-primary); border-radius: 2px; overflow: hidden; margin: 8px 8px 0 8px; }
+.roadmap-mini-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
+.roadmap-node-detail { display: none; margin-top: 10px; padding: 10px 8px 0 8px; border-top: 1px solid var(--border-primary); font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.roadmap-node.expanded .roadmap-node-detail { display: block; }
+.roadmap-status-select { margin-top: 8px; padding: 4px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border-input); background: var(--bg-input); color: var(--text-primary); font-size: 12px; font-family: 'Inter',sans-serif; }
+.roadmap-connector { display: flex; justify-content: center; padding: 4px 0; }
+.roadmap-connector svg { display: block; }
+@media (max-width: 600px) { .roadmap-nodes { flex-direction: column; align-items: center; } .roadmap-node { max-width: 100%; min-width: unset; } }
+
 /* ─── CTA A/B Testing ─── */
 .ab-test-card {
   background: var(--bg-card);
@@ -2613,11 +2673,23 @@ tbody tr.clickable { cursor: pointer; }
     <div class="section-header" style="margin-top:8px"><h2 style="font-size:18px">Content Pipeline</h2></div>
     <div class="pipeline-grid" id="overview-pipeline"></div>
     <div id="system-health" style="margin-top:16px;margin-bottom:16px"></div>
+    <div id="pinned-review-section" style="display:none;margin-top:16px;margin-bottom:16px">
+      <div class="card">
+        <div class="card-header"><h3>Pinned Comment Review</h3><span class="auto-badge" id="pinned-count">0</span></div>
+        <div class="card-body" id="pinned-review-list" style="max-height:400px;overflow-y:auto">
+          Loading...
+        </div>
+      </div>
+    </div>
     <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">Translation Coverage</h2></div>
     <div class="lang-grid" id="overview-translations"></div>
     <div class="two-col" style="margin-top:20px">
       <div class="card"><div class="card-header"><h3>Activity Feed</h3></div><div class="card-body"><div id="overview-activity">Loading...</div></div></div>
       <div class="card"><div class="card-header"><h3>CTA Clicks</h3></div><div class="card-body"><div id="overview-cta">Loading...</div></div></div>
+    </div>
+    <div class="card" style="margin-top:16px" id="roadmap-section">
+      <div class="card-header"><h3>Roadmap</h3><span style="font-size:12px;color:var(--text-secondary)">What needs to happen before what</span></div>
+      <div class="card-body" id="roadmap-container"><div class="roadmap-graph" id="roadmap-graph">Loading...</div></div>
     </div>
     <div class="card" style="margin-top:4px"><div class="card-header"><h3>Latest Analytics Report</h3></div><div class="card-body"><pre id="overview-ga">Loading...</pre></div></div>
   </div>
@@ -3267,6 +3339,77 @@ async function loadOverview() {
     const l = trans[code] || {name: code, count: 0};
     return `<div class="lang-card"><div class="lc-code" style="color:${langColors[code] || 'var(--text-primary)'}">${code}</div><div class="lc-name">${escapeHtml(l.name)}</div><div class="lc-count">${l.count} pages</div></div>`;
   }).join('');
+
+  // Load pinned comment queue
+  loadPinnedQueue();
+}
+
+const PINNED_TEMPLATES = {
+  calculator: {label: 'Free Tools (Calculators)', icon: '📊'},
+  comparison: {label: 'Platform Comparison', icon: '⚖️'},
+  'how-much': {label: 'How Much Will I Make?', icon: '💰'}
+};
+
+async function loadPinnedQueue() {
+  try {
+    const queue = await api('/pinned-queue');
+    const items = Object.entries(queue).filter(([vid, d]) => !d.decision);
+    const sec = document.getElementById('pinned-review-section');
+    const countEl = document.getElementById('pinned-count');
+    if (items.length === 0) { sec.style.display = 'none'; return; }
+    sec.style.display = 'block';
+    countEl.textContent = items.length;
+    const list = document.getElementById('pinned-review-list');
+    list.innerHTML = items.map(([vid, d]) => {
+      const pinnedSnippet = escapeHtml((d.pinned_text || '').substring(0, 120)) + (d.pinned_text && d.pinned_text.length > 120 ? '...' : '');
+      const author = escapeHtml(d.pinned_author || 'Unknown');
+      return `<div class="pinned-item" id="pinned-${vid}" style="padding:12px;border-bottom:1px solid var(--border-primary);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <a href="https://youtube.com/watch?v=${vid}" target="_blank" style="color:var(--info);font-size:13px;font-family:monospace;">${vid}</a>
+          <span style="color:var(--text-muted);font-size:12px;">pinned by ${author}</span>
+        </div>
+        <div style="background:var(--bg-table-header);padding:8px 10px;border-radius:6px;font-size:13px;color:var(--text-secondary);margin-bottom:8px;line-height:1.4;">"${pinnedSnippet}"</div>
+        <div class="pinned-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn" style="height:30px;font-size:12px;padding:0 14px;background:var(--bg-table-header);color:var(--text-primary);border:1px solid var(--border-primary);" onclick="pinnedDecision('${vid}','leave')">Leave As Is</button>
+          <button class="btn btn-primary" style="height:30px;font-size:12px;padding:0 14px;" onclick="showTemplateChoice('${vid}')">Change →</button>
+        </div>
+        <div id="tpl-${vid}" style="display:none;margin-top:8px;display:none;">
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Replace with:</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            ${Object.entries(PINNED_TEMPLATES).map(([k,v]) =>
+              `<button class="btn" style="height:28px;font-size:11px;padding:0 12px;background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border-primary);" onclick="pinnedDecision('${vid}','change','${k}')">${v.icon} ${v.label}</button>`
+            ).join('')}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) { console.error('Pinned queue error:', e); }
+}
+
+function showTemplateChoice(vid) {
+  const el = document.getElementById('tpl-' + vid);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+async function pinnedDecision(vid, decision, template) {
+  const body = {video_id: vid, decision: decision};
+  if (template) body.template = template;
+  const res = await api('/pinned-decision', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+  if (res.success) {
+    const item = document.getElementById('pinned-' + vid);
+    if (item) {
+      item.style.opacity = '0.4';
+      item.innerHTML = `<div style="padding:8px;color:var(--text-muted);font-size:13px;">✓ ${decision === 'leave' ? 'Keeping existing comment' : 'Will replace with: ' + (PINNED_TEMPLATES[template]||{}).label}</div>`;
+    }
+    // Update count
+    const countEl = document.getElementById('pinned-count');
+    const current = parseInt(countEl.textContent) || 0;
+    if (current > 1) countEl.textContent = current - 1;
+    else document.getElementById('pinned-review-section').style.display = 'none';
+    toast(decision === 'leave' ? 'Marked as keep' : 'Will replace comment');
+  } else {
+    toast(res.error || 'Failed', 'error');
+  }
 }
 
 function calcChange(current, previous) {
@@ -3797,6 +3940,75 @@ async function loadGrowth() {
   renderGoals();
 }
 
+// ─── Roadmap ───
+let roadmapData = null;
+const rmCatColors = {content:'#2BB3FF', seo:'#59DDAA', distribution:'#FF642D', monetization:'#8B5CF6'};
+
+function renderRoadmap() {
+  const container = document.getElementById('roadmap-graph');
+  if (!roadmapData || !roadmapData.phases || roadmapData.phases.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-secondary);font-size:13px;text-align:center;padding:20px 0;">No roadmap data</div>';
+    return;
+  }
+  const phases = roadmapData.phases.sort((a, b) => a.order - b.order);
+  let html = '';
+  phases.forEach((phase, idx) => {
+    html += '<div class="roadmap-phase">';
+    html += `<div class="roadmap-phase-label">${escapeHtml(phase.label)}</div>`;
+    html += '<div class="roadmap-nodes">';
+    for (const node of phase.nodes) {
+      const catColor = rmCatColors[node.category] || '#6C6E79';
+      const hasProg = node.metric_current !== null && node.metric_current !== undefined && node.metric_total > 0;
+      const pct = hasProg ? Math.round((node.metric_current / node.metric_total) * 100) : 0;
+      html += `<div class="roadmap-node rm-${node.status} cat-${node.category}" id="rn-${node.id}" onclick="toggleRoadmapNode('${node.id}')">
+        <div class="roadmap-node-title">${escapeHtml(node.title)}</div>
+        <div class="roadmap-node-meta">
+          <span class="roadmap-node-metric">${escapeHtml(node.metric || '')}</span>
+          <span class="goal-status-badge ${node.status}">${node.status.replace(/_/g, ' ')}</span>
+        </div>
+        ${hasProg ? `<div class="roadmap-mini-bar"><div class="roadmap-mini-bar-fill" style="width:${pct}%;background:${catColor}"></div></div>` : ''}
+        <div class="roadmap-node-detail">
+          <div>${escapeHtml(node.detail || '')}</div>
+          <select class="roadmap-status-select" onchange="updateRoadmapStatus('${node.id}',this.value)" onclick="event.stopPropagation()">
+            <option value="not_started" ${node.status==='not_started'?'selected':''}>Not Started</option>
+            <option value="in_progress" ${node.status==='in_progress'?'selected':''}>In Progress</option>
+            <option value="blocked" ${node.status==='blocked'?'selected':''}>Blocked</option>
+            <option value="completed" ${node.status==='completed'?'selected':''}>Completed</option>
+          </select>
+        </div>
+      </div>`;
+    }
+    html += '</div></div>';
+    if (idx < phases.length - 1) {
+      html += `<div class="roadmap-connector"><svg width="2" height="28" viewBox="0 0 2 28"><line x1="1" y1="0" x2="1" y2="20" stroke="var(--text-secondary)" stroke-width="2" stroke-dasharray="4,3" opacity="0.4"/><polygon points="-1,20 3,20 1,27" fill="var(--text-secondary)" opacity="0.4"/></svg></div>`;
+    }
+  });
+  container.innerHTML = html;
+}
+
+function toggleRoadmapNode(nodeId) {
+  const el = document.getElementById('rn-' + nodeId);
+  if (el) el.classList.toggle('expanded');
+}
+
+async function updateRoadmapStatus(nodeId, status) {
+  const res = await api('/roadmap-update', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({node_id: nodeId, status: status})});
+  if (res.success) {
+    for (const phase of roadmapData.phases) {
+      for (const node of phase.nodes) {
+        if (node.id === nodeId) node.status = status;
+      }
+    }
+    renderRoadmap();
+    toast('Roadmap updated');
+  }
+}
+
+async function loadRoadmap() {
+  roadmapData = await api('/roadmap');
+  renderRoadmap();
+}
+
 // ─── Performance Tab ───
 function gaugeArc(score, color) {
   const r = 32, cx = 40, cy = 40;
@@ -4057,7 +4269,7 @@ if ('serviceWorker' in navigator) {
 
 // ─── Load All + Auto-Refresh ───
 async function loadAll() {
-  await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA(), loadReview()]);
+  await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA(), loadReview(), loadRoadmap()]);
 }
 loadAll();
 
@@ -4630,6 +4842,8 @@ self.addEventListener('fetch', e => {
             self.send_json(get_broken_links())
         elif path == "/api/goals":
             self.send_json(get_goals())
+        elif path == "/api/roadmap":
+            self.send_json(get_roadmap())
         elif path == "/api/health":
             self.send_json(get_system_health())
         elif path == "/api/pagespeed":
@@ -4655,6 +4869,12 @@ self.addEventListener('fetch', e => {
             self.send_json(get_subscriber_stats())
         elif path == "/api/automation-status":
             self.send_json(get_automation_status())
+        elif path == "/api/pinned-queue":
+            pq_file = PROJECT_DIR / "data" / "pinned-comment-queue.json"
+            if pq_file.exists():
+                self.send_json(json.loads(pq_file.read_text()))
+            else:
+                self.send_json({})
         elif path.startswith("/api/task-log/"):
             task_id = path.replace("/api/task-log/", "")
             self.send_json({"log": get_task_log(task_id)})
@@ -4768,7 +4988,7 @@ self.addEventListener('fetch', e => {
 
                 TASK_COMMANDS = {
                     "translate-pipeline": [python, str(SCRIPT_DIR / "run_pipeline.py"), "--translate-only"],
-                    "transcribe-batch": [python, str(SCRIPT_DIR / "run_pipeline.py")],
+                    "transcribe-batch": [python, str(SCRIPT_DIR / "run_pipeline.py"), "--translate-only"],
                     "scan-opps": [python, str(SCRIPT_DIR / "opportunity_scanner.py")],
                     "ga-report": [python, str(SCRIPT_DIR / "ga_report.py"), "--days", "7"],
                     "sync-from-mac": "echo 'Sync must be triggered from Mac (run tools/sync_to_vps.sh)'",
@@ -4960,6 +5180,38 @@ self.addEventListener('fetch', e => {
                     self.send_json({"success": True})
                 else:
                     self.send_json({"error": "Article not found"}, 404)
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/pinned-decision":
+            try:
+                data = json.loads(body)
+                vid = data.get("video_id", "")
+                decision = data.get("decision", "")
+                template = data.get("template")
+                if not vid or decision not in ("leave", "change"):
+                    self.send_json({"error": "Invalid video_id or decision"}, 400)
+                    return
+                pq_file = PROJECT_DIR / "data" / "pinned-comment-queue.json"
+                pq = json.loads(pq_file.read_text()) if pq_file.exists() else {}
+                if vid not in pq:
+                    self.send_json({"error": "Video not in queue"}, 404)
+                    return
+                pq[vid]["decision"] = decision
+                pq[vid]["template"] = template if decision == "change" else None
+                pq[vid]["decided_at"] = datetime.now().isoformat()
+                pq_file.parent.mkdir(parents=True, exist_ok=True)
+                pq_file.write_text(json.dumps(pq, indent=2))
+                self.send_json({"success": True})
+            except Exception as e:
+                self.send_json({"error": str(e)}, 400)
+        elif path == "/api/roadmap-update":
+            try:
+                data = json.loads(body)
+                node_id = data.get("node_id", "")
+                if not node_id:
+                    self.send_json({"error": "Missing node_id"}, 400)
+                    return
+                self.send_json(update_roadmap_node(node_id, data))
             except Exception as e:
                 self.send_json({"error": str(e)}, 400)
         else:

@@ -24,7 +24,7 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 
 BASE_URL = "https://socialtradingvlog.com"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-LANGUAGES = ["en", "es", "de", "fr", "pt", "ar"]
+LANGUAGES = ["en", "es", "de", "fr", "pt", "ar", "it", "ko", "nl", "pl", "us"]
 
 # Directories to exclude entirely (relative to project root)
 EXCLUDED_DIRS = {
@@ -103,7 +103,7 @@ def classify_page(rel_path: str):
         others = monthly
     """
     parts = Path(rel_path).parts
-    lang_prefixes = {"es", "de", "fr", "pt", "ar"}
+    lang_prefixes = {"es", "de", "fr", "pt", "ar", "it", "ko", "nl", "pl", "us"}
 
     # Homepage
     if rel_path == "index.html":
@@ -124,7 +124,8 @@ def classify_page(rel_path: str):
     # Not present in the current structure, but handle just in case
 
     # Calculators (English or translated)
-    calculator_dirs = {"calculators", "calculadoras", "rechner", "calculateurs", "calculadoras"}
+    calculator_dirs = {"calculators", "calculadoras", "rechner", "calculateurs",
+                       "calcolatori", "계산기", "kalkulatory"}
     if len(inner_parts) > 0 and inner_parts[0] in calculator_dirs:
         return (0.5 if is_translated else 0.8), "monthly"
 
@@ -283,7 +284,7 @@ def generate_sitemap(root: Path) -> str:
         # Categorize for summary
         count_total += 1
         parts = Path(rel_path).parts
-        lang_prefixes = {"es", "de", "fr", "pt", "ar"}
+        lang_prefixes = {"es", "de", "fr", "pt", "ar", "it", "ko", "nl", "pl", "us"}
         is_translated = len(parts) > 0 and parts[0] in lang_prefixes
 
         if rel_path == "index.html":

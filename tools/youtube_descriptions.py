@@ -22,7 +22,8 @@ import pathlib
 import argparse
 import pickle
 
-sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
+if sys.platform == "darwin":
+    sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request

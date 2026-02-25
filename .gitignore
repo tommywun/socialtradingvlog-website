@@ -2,3 +2,9 @@
 transcriptions/
 *.pyc
 __pycache__/
+backups/
+logs/
+data/
+.env
+venv/
+node_modules/

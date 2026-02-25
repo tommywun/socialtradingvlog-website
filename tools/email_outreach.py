@@ -31,7 +31,8 @@ from email.mime.text import MIMEText
 import base64
 import re
 
-sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
+if sys.platform == "darwin":
+    sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 
 SECRETS_DIR = pathlib.Path.home() / ".config" / "stv-secrets"
 RESEND_KEY_FILE = SECRETS_DIR / "resend-api-key.txt"

@@ -21,12 +21,17 @@ import subprocess
 import pathlib
 import argparse
 
-sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
+if sys.platform == "darwin":
+    sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 
-YDLP = os.path.expanduser("~/Library/Python/3.9/bin/yt-dlp")
-FFMPEG = "/opt/homebrew/bin/ffmpeg"
+import shutil
+_venv_bin = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "venv", "bin")
+_venv_ytdlp = os.path.join(_venv_bin, "yt-dlp")
+YDLP = shutil.which("yt-dlp") or (_venv_ytdlp if os.path.exists(_venv_ytdlp) else os.path.expanduser("~/Library/Python/3.9/bin/yt-dlp"))
+FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
 
-os.environ["PATH"] = f"/opt/homebrew/bin:{os.environ.get('PATH', '')}"
+if sys.platform == "darwin":
+    os.environ["PATH"] = f"/opt/homebrew/bin:{os.environ.get('PATH', '')}"
 
 # Load OpenAI API key from secrets file if not already in environment
 if not os.environ.get("OPENAI_API_KEY"):

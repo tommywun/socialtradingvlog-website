@@ -1,0 +1,39 @@
+# STV Locked Dependencies — Verified 2026-02-22
+# Install with: pip install --require-hashes -r requirements.txt
+# NEVER install packages without hash verification.
+# To update: run tools/verify_dependencies.py --update
+
+# ── Direct Dependencies ──────────────────────────────────
+
+beautifulsoup4==4.14.3 \
+    --hash=sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb
+
+deep-translator==1.11.4 \
+    --hash=sha256:d635df037e23fa35d12fd42dab72a0b55c9dd19e6292009ee7207e3f30b9e60a
+
+google-analytics-data==0.20.0 \
+    --hash=sha256:2b2e7fd1e801897073b8501127c7fb5f12df69fc2c0fb46c264813a51292ea78
+
+google-api-python-client==2.190.0 \
+    --hash=sha256:d9b5266758f96c39b8c21d9bbfeb4e58c14dbfba3c931f7c5a8d7fdcd292dd57
+
+google-auth==2.48.0 \
+    --hash=sha256:2e2a537873d449434252a9632c28bfc268b0adb1e53f9fb62afc5333a975903f
+
+google-auth-httplib2==0.3.0 \
+    --hash=sha256:426167e5df066e3f5a0fc7ea18768c08e7296046594ce4c8c409c2457dd1f776
+
+google-auth-oauthlib==1.2.4 \
+    --hash=sha256:0e922eea5f2baacaf8867febb782e46e7b153236c21592ed76ab3ddb77ffd772
+
+resend==2.22.0 \
+    --hash=sha256:f3c7c6f23492eaed012ff6ba046dc595a4420d4d614ba6abd2ddd62e0ba810b4
+
+# ── Installed on VPS, need hash verification ───────────
+# Run: python3 tools/verify_dependencies.py --update
+# to add hashes for these packages.
+#
+# openai          — Whisper API + GPT-4o-mini translations
+# yt-dlp          — YouTube audio download (Mac only)
+# PyYAML          — YAML config parsing
+# Flask           — Dashboard web server
