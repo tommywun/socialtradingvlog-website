@@ -664,8 +664,29 @@ def main():
     new_count = save_prospects(all_prospects, dry_run=args.dry_run)
     print(f"\nTotal prospects found: {len(all_prospects)} ({new_count} new)")
 
-    # Generate and send outreach emails
-    generate_and_send_outreach(all_prospects, dry_run=args.dry_run)
+    # Outreach emails disabled — prospect-only mode.
+    # Prospects are logged to data/link-prospects.json for review.
+    # To reactivate email outreach, uncomment the line below:
+    # generate_and_send_outreach(all_prospects, dry_run=args.dry_run)
+
+    # Send Telegram summary of new prospects
+    if new_count > 0:
+        try:
+            sys.path.insert(0, str(pathlib.Path(__file__).parent))
+            from security_lib import send_telegram
+            type_counts = {}
+            for p in all_prospects:
+                t = p.get("type", "unknown")
+                type_counts[t] = type_counts.get(t, 0) + 1
+            breakdown = ", ".join(f"{v} {k}" for k, v in type_counts.items())
+            send_telegram(
+                f"Link Prospector: {new_count} new opportunities",
+                f"Found {len(all_prospects)} total ({new_count} new)\n{breakdown}\n\nReview: data/link-prospects.json",
+                emoji="🔗",
+                dedupe_key="link-prospector",
+            )
+        except Exception:
+            pass
 
     # Try to alert via autopilot
     if new_count > 0:

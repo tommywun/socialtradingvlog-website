@@ -1,28 +1,28 @@
 ============================================================
-  DAILY REPORT — socialtradingvlog.com — 2026-02-24
+  DAILY REPORT — socialtradingvlog.com — 2026-02-25
 ============================================================
 
 ── LAST 7 DAYS ─────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
+Period: 18 Feb 2026 → 25 Feb 2026 (7 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           118
-  Users:              111
-  Page views:         139
+  Sessions:           126
+  Users:              117
+  Page views:         150
   Avg session:        0m 23s
-  Bounce rate:        88.1%
+  Bounce rate:        87.3%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                      49     49   0m 10s
-  /copy-trading.html                                      6      4   0m 49s
+  /                                                      55     54    0m 9s
+  /copy-trading.html                                      7      4   0m 43s
   /videos.html                                            6      4   1m 58s
   /social-trading.html                                    5      5   0m 11s
   /about.html                                             4      3   0m 31s
@@ -30,6 +30,8 @@ Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
   /copy-trading-returns.html                              3      3    0m 0s
   /etoro-review/                                          3      3    0m 0s
   /how-to-choose-copy-traders-etoro/                      3      3   0m 12s
+  /popular-investor.html                                  3      3    0m 0s
+  /updates.html                                           3      2   0m 11s
   /about                                                  2      1   1m 18s
   /best-traders-to-copy-etoro/                            2      2    0m 0s
   /etoro-copy-trading-fees/                               2      2    0m 0s
@@ -37,18 +39,16 @@ Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
   /etoro-fees/                                            2      2    0m 0s
   /etoro-minimum-deposit/                                 2      2    0m 0s
   /etoro-risk-score-explained/                            2      2    0m 0s
-  /etoro-scam.html                                        2      2    0m 0s
+  /etoro-scam.html                                        2      2   0m 27s
   /etoro-spread-fees/                                     2      2    0m 0s
-  /etoro-tax-uk/                                          2      2    0m 0s
-  /etoro-vs-degiro/                                       2      2    0m 0s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Direct                                104        101
-  Organic Search                          5          4
+  Direct                                110        106
+  Organic Search                          6          4
   Referral                                5          5
   Organic Video                           4          2
   Unassigned                              2          2
@@ -58,8 +58,8 @@ Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  (direct)                                        104
-  google                                            5
+  (direct)                                        110
+  google                                            6
   youtube.com                                       4
   (not set)                                         2
   app.sedric.ai                                     1
@@ -73,24 +73,24 @@ Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Singapore                              40         40
-  China                                  34         34
-  United States                          17         17
-  Malta                                   7          6
+  Singapore                              41         41
+  China                                  36         36
+  United States                          18         18
+  Malta                                   9          6
   (not set)                               6          6
   New Zealand                             3          1
   Romania                                 3          1
   India                                   2          1
   Netherlands                             2          1
-  Argentina                               1          1
+  United Kingdom                          2          2
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  desktop                     103         98
-  mobile                       15         13
+  desktop                     110        104
+  mobile                       16         13
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
@@ -105,24 +105,24 @@ Period: 17 Feb 2026 → 24 Feb 2026 (7 days)
 ── LAST 30 DAYS ────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
+Period: 26 Jan 2026 → 25 Feb 2026 (30 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           118
-  Users:              111
-  Page views:         139
+  Sessions:           126
+  Users:              117
+  Page views:         150
   Avg session:        0m 23s
-  Bounce rate:        88.1%
+  Bounce rate:        87.3%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                      49     49   0m 10s
-  /copy-trading.html                                      6      4   0m 49s
+  /                                                      55     54    0m 9s
+  /copy-trading.html                                      7      4   0m 43s
   /videos.html                                            6      4   1m 58s
   /social-trading.html                                    5      5   0m 11s
   /about.html                                             4      3   0m 31s
@@ -130,6 +130,8 @@ Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
   /copy-trading-returns.html                              3      3    0m 0s
   /etoro-review/                                          3      3    0m 0s
   /how-to-choose-copy-traders-etoro/                      3      3   0m 12s
+  /popular-investor.html                                  3      3    0m 0s
+  /updates.html                                           3      2   0m 11s
   /about                                                  2      1   1m 18s
   /best-traders-to-copy-etoro/                            2      2    0m 0s
   /etoro-copy-trading-fees/                               2      2    0m 0s
@@ -137,18 +139,16 @@ Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
   /etoro-fees/                                            2      2    0m 0s
   /etoro-minimum-deposit/                                 2      2    0m 0s
   /etoro-risk-score-explained/                            2      2    0m 0s
-  /etoro-scam.html                                        2      2    0m 0s
+  /etoro-scam.html                                        2      2   0m 27s
   /etoro-spread-fees/                                     2      2    0m 0s
-  /etoro-tax-uk/                                          2      2    0m 0s
-  /etoro-vs-degiro/                                       2      2    0m 0s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Direct                                104        101
-  Organic Search                          5          4
+  Direct                                110        106
+  Organic Search                          6          4
   Referral                                5          5
   Organic Video                           4          2
   Unassigned                              2          2
@@ -158,8 +158,8 @@ Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  (direct)                                        104
-  google                                            5
+  (direct)                                        110
+  google                                            6
   youtube.com                                       4
   (not set)                                         2
   app.sedric.ai                                     1
@@ -173,24 +173,24 @@ Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Singapore                              40         40
-  China                                  34         34
-  United States                          17         17
-  Malta                                   7          6
+  Singapore                              41         41
+  China                                  36         36
+  United States                          18         18
+  Malta                                   9          6
   (not set)                               6          6
   New Zealand                             3          1
   Romania                                 3          1
   India                                   2          1
   Netherlands                             2          1
-  Argentina                               1          1
+  United Kingdom                          2          2
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  desktop                     103         98
-  mobile                       15         13
+  desktop                     110        104
+  mobile                       16         13
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
@@ -208,12 +208,12 @@ Period: 25 Jan 2026 → 24 Feb 2026 (30 days)
   Article pages:   19 generated
 
   Last pipeline activity:
-    [07:42:37] [88/333] 0suGWBsTk0g —————————————————
-    [07:42:37]   transcription already exists
-    [07:42:37]   translating to 9 languages: es de fr it pt ar pl nl ko
+    [07:31:21] [97/333] KiKm4qqcOxI —————————————————
+    [07:31:21]   English SRT already exists
+    [07:31:21]   translating to 9 languages [deep-translator]: es de fr it pt ar pl nl ko
     /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
       warnings.warn(
 
 ============================================================
-  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-24.txt
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-25.txt
 ============================================================

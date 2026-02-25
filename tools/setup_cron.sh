@@ -76,8 +76,27 @@ CRON_ENTRIES=$(cat <<'CRONTAB'
 
 # ── Link Building ───────────────────────────────────────── #STV
 
-# Weekly link prospecting on Wednesdays at 6am (max 5 outreach emails/run)
+# Weekly link prospecting on Wednesdays at 6am (prospect-only, no outreach emails)
 0 6 * * 3 PYTHON_PATH PROJECT_PATH/tools/link_prospector.py >> LOG_PATH/link-prospector.log 2>&1 #STV
+
+# ── Content Syndication ────────────────────────────────── #STV
+
+# Regenerate RSS feeds weekly (Mondays 1am)
+0 1 * * 1 PYTHON_PATH PROJECT_PATH/tools/rss_generator.py >> LOG_PATH/rss.log 2>&1 #STV
+
+# Cross-post articles daily at 7am (1 per platform, rationed across 36+ days)
+0 7 * * * PYTHON_PATH PROJECT_PATH/tools/content_syndicator.py >> LOG_PATH/syndication.log 2>&1 #STV
+
+# Social media posting 3x daily (8am, 1pm, 6pm — different platforms per slot)
+0 8 * * * PYTHON_PATH PROJECT_PATH/tools/social_poster.py --slot morning >> LOG_PATH/social.log 2>&1 #STV
+0 13 * * * PYTHON_PATH PROJECT_PATH/tools/social_poster.py --slot afternoon >> LOG_PATH/social.log 2>&1 #STV
+0 18 * * * PYTHON_PATH PROJECT_PATH/tools/social_poster.py --slot evening >> LOG_PATH/social.log 2>&1 #STV
+
+# Directory submission retry weekly (Thursdays 3am)
+0 3 * * 4 PYTHON_PATH PROJECT_PATH/tools/directory_submitter.py >> LOG_PATH/directories.log 2>&1 #STV
+
+# Schema markup update weekly (Sundays 2am)
+0 2 * * 0 PYTHON_PATH PROJECT_PATH/tools/schema_generator.py >> LOG_PATH/schema.log 2>&1 #STV
 
 # ── Analytics & Optimization ─────────────────────────────── #STV
 
