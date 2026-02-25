@@ -49,7 +49,7 @@ UPLOAD_SUBS = TOOLS_DIR / "upload_subtitles.py"
 LOG_PATH    = TRANS_DIR / "pipeline.log"
 LOCK_FILE   = pathlib.Path("/tmp/stv-pipeline.lock")
 
-MODEL = "api"
+MODEL = "local-large"
 
 # Max VIDEO uploads per pipeline run (YouTube quota: 10,000 units/day,
 # caption insert = ~400 units each, 9 languages per video = ~3,600 units/video,

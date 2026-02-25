@@ -35,7 +35,7 @@
     banner.innerHTML =
       '<div class="consent-inner">' +
         '<p class="consent-text">' +
-          'We use analytics to understand how visitors use this site. No advertising tracking. ' +
+          'We use basic analytics to understand how visitors use this site. <strong>ZERO advertising tracking.</strong> ' +
           '<a href="/privacy.html">Privacy policy</a>' +
         '</p>' +
         '<div class="consent-buttons">' +

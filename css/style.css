@@ -1159,6 +1159,421 @@ footer {
 }
 
 /* =====================
+   REVIEW INFOGRAPHICS
+   ===================== */
+
+/* — Float variants for side-by-side layout — */
+.review-float-right {
+  float: right;
+  width: 48%;
+  margin: 4px 0 20px 28px;
+  clear: right;
+}
+.review-float-left {
+  float: left;
+  width: 48%;
+  margin: 4px 28px 20px 0;
+  clear: left;
+}
+.review-clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (max-width: 600px) {
+  .review-float-right, .review-float-left {
+    float: none;
+    width: 100%;
+    margin: 24px 0;
+  }
+}
+
+/* — At a Glance stats grid — */
+.review-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 28px 0;
+  padding: 20px;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.review-float-right .review-stats-grid,
+.review-float-left .review-stats-grid {
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+}
+.review-stat {
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #e6f7f2 0%, #d0f0e8 100%);
+  border: 1px solid rgba(0, 137, 107, 0.15);
+}
+[data-theme="dark"] .review-stat {
+  background: linear-gradient(135deg, #0d2e24 0%, #143d32 100%);
+  border-color: rgba(0, 200, 150, 0.15);
+}
+.review-stat:nth-child(2) {
+  background: linear-gradient(135deg, #e8f0fe 0%, #d4e4fc 100%);
+  border-color: rgba(66, 133, 244, 0.15);
+}
+.review-stat:nth-child(2) .review-stat-value { color: #4285F4; }
+[data-theme="dark"] .review-stat:nth-child(2) {
+  background: linear-gradient(135deg, #0d1f3c 0%, #142d52 100%);
+  border-color: rgba(66, 133, 244, 0.2);
+}
+.review-stat:nth-child(3) {
+  background: linear-gradient(135deg, #fef3e6 0%, #fde8cc 100%);
+  border-color: rgba(230, 126, 34, 0.15);
+}
+.review-stat:nth-child(3) .review-stat-value { color: #E67E22; }
+[data-theme="dark"] .review-stat:nth-child(3) {
+  background: linear-gradient(135deg, #2e1f0d 0%, #3d2a14 100%);
+  border-color: rgba(230, 126, 34, 0.2);
+}
+.review-stat:nth-child(4) {
+  background: linear-gradient(135deg, #f3e8fd 0%, #e6d4fa 100%);
+  border-color: rgba(142, 68, 173, 0.15);
+}
+.review-stat:nth-child(4) .review-stat-value { color: #8E44AD; }
+[data-theme="dark"] .review-stat:nth-child(4) {
+  background: linear-gradient(135deg, #1f0d2e 0%, #2d143d 100%);
+  border-color: rgba(142, 68, 173, 0.2);
+}
+.review-stat-value {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.review-stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* — How Copy Trading Works — 3-step flow — */
+.review-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 28px 0;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #e6f7f2 0%, #d4e4fc 50%, #f3e8fd 100%);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+[data-theme="dark"] .review-steps {
+  background: linear-gradient(135deg, #0d2e24 0%, #0d1f3c 50%, #1f0d2e 100%);
+}
+.review-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 16px 12px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+}
+[data-theme="dark"] .review-step {
+  background: rgba(0,0,0,0.25);
+}
+.review-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 137, 107, 0.3);
+}
+.review-step:nth-child(3) .review-step-num { background: #4285F4; box-shadow: 0 4px 12px rgba(66,133,244,0.3); }
+.review-step:nth-child(5) .review-step-num { background: #8E44AD; box-shadow: 0 4px 12px rgba(142,68,173,0.3); }
+.review-step-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.review-step-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.review-step-arrow {
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* — Trader scorecard checklist — */
+.review-checklist {
+  margin: 28px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #e6f7f2 0%, #d4e4fc 50%, #f3e8fd 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 137, 107, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 137, 107, 0.1);
+}
+[data-theme="dark"] .review-checklist {
+  background: linear-gradient(135deg, #0d2e24 0%, #0d1f3c 50%, #1f0d2e 100%);
+  border-color: rgba(0, 200, 150, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 200, 150, 0.08);
+}
+.review-checklist h4 {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+.review-checklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.review-float-left .review-checklist ul,
+.review-float-right .review-checklist ul {
+  grid-template-columns: 1fr;
+}
+.review-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.review-checklist li::before {
+  content: "\2713";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* — Fee breakdown grid — */
+.review-fee-grid {
+  margin: 28px 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.review-fee-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.review-fee-row:last-child { border-bottom: none; }
+.review-fee-row:nth-child(odd) { background: var(--bg2); }
+.review-fee-row:nth-child(even) { background: var(--bg); }
+.review-fee-asset {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.review-fee-cost {
+  flex: 1;
+  text-align: right;
+  font-size: 0.92rem;
+}
+.fee-free {
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(0, 137, 107, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+.fee-low {
+  color: #2E7D32;
+  font-weight: 600;
+}
+.fee-mid {
+  color: #E67E22;
+  font-weight: 600;
+}
+.fee-note {
+  color: var(--muted);
+  font-weight: 400;
+}
+.review-fee-header {
+  background: linear-gradient(135deg, var(--accent) 0%, #4285F4 100%) !important;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.review-fee-header .review-fee-asset,
+.review-fee-header .review-fee-cost {
+  color: #fff;
+}
+
+/* — eToro Club tier ladder — */
+.review-tier-ladder {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  margin: 28px 0;
+  padding: 24px 16px 20px;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.review-tier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.review-tier-bar {
+  width: 100%;
+  border-radius: 8px 8px 4px 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #fff;
+  min-height: 40px;
+}
+.review-tier-bar.tier-silver   { background: linear-gradient(180deg, #D4D4D8, #A1A1AA); min-height: 50px; box-shadow: 0 4px 12px rgba(161,161,170,0.3); }
+.review-tier-bar.tier-gold     { background: linear-gradient(180deg, #FFD700, #F59E0B); min-height: 70px; box-shadow: 0 4px 12px rgba(245,158,11,0.35); }
+.review-tier-bar.tier-platinum { background: linear-gradient(180deg, #60A5FA, #3B82F6); min-height: 90px; box-shadow: 0 4px 12px rgba(59,130,246,0.35); }
+.review-tier-bar.tier-platplus { background: linear-gradient(180deg, #A78BFA, #7C3AED); min-height: 110px; box-shadow: 0 4px 12px rgba(124,58,237,0.35); }
+.review-tier-bar.tier-diamond  { background: linear-gradient(180deg, #475569, #1E293B); min-height: 130px; box-shadow: 0 4px 12px rgba(30,41,59,0.4); }
+.review-tier-name {
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+.review-tier-min {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.review-tier-perk {
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-top: 4px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* — Pros & Cons card — */
+.review-pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0;
+}
+.review-pros, .review-cons {
+  padding: 20px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.review-pros {
+  background: linear-gradient(135deg, var(--bg2) 0%, #e6f7f2 100%);
+  border-left: 4px solid var(--accent);
+}
+.review-cons {
+  background: linear-gradient(135deg, var(--bg2) 0%, #fef3e6 100%);
+  border-left: 4px solid #E67E22;
+}
+[data-theme="dark"] .review-pros {
+  background: linear-gradient(135deg, var(--bg2) 0%, #0d2e24 100%);
+}
+[data-theme="dark"] .review-cons {
+  background: linear-gradient(135deg, var(--bg2) 0%, #2e1f0d 100%);
+}
+.review-pros h4, .review-cons h4 {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.review-pros h4 { color: var(--accent); }
+.review-cons h4 { color: #E67E22; }
+.review-pros ul, .review-cons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.review-pros li, .review-cons li {
+  padding: 5px 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.5;
+}
+.review-pros li::before {
+  content: "+";
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.review-cons li::before {
+  content: "\2212";
+  color: #E67E22;
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* — Review infographic mobile — */
+@media (max-width: 600px) {
+  .review-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; }
+  .review-stat-value { font-size: 1.3rem; }
+  .review-steps { flex-direction: column; gap: 4px; padding: 20px 16px; }
+  .review-step-arrow { transform: rotate(90deg); flex: 0 0 30px; padding-top: 0; }
+  .review-checklist ul { grid-template-columns: 1fr; }
+  .review-tier-ladder { flex-direction: row; overflow-x: auto; gap: 4px; }
+  .review-tier-bar { min-height: 40px !important; }
+  .review-tier-bar.tier-silver   { min-height: 40px !important; }
+  .review-tier-bar.tier-gold     { min-height: 50px !important; }
+  .review-tier-bar.tier-platinum { min-height: 60px !important; }
+  .review-tier-bar.tier-platplus { min-height: 70px !important; }
+  .review-tier-bar.tier-diamond  { min-height: 80px !important; }
+  .review-tier-name { font-size: 0.7rem; }
+  .review-pros-cons { grid-template-columns: 1fr; }
+}
+
+/* =====================
    LANGUAGE SWITCHER
    ===================== */
 .lang-switcher {
