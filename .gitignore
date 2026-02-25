@@ -4,7 +4,8 @@ transcriptions/
 __pycache__/
 backups/
 logs/
-data/
+data/*
+!data/platform-fees.json
 .env
 venv/
 node_modules/

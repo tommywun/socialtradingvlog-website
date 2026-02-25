@@ -1,0 +1,846 @@
+{
+  "_version": "2.0",
+  "_last_updated": "2026-02-21",
+  "_note": "Fee data verified from official platform pages. Updated weekly by Playwright scraper.",
+  "platforms": {
+    "etoro": {
+      "name": "eToro",
+      "url": "https://www.etoro.com",
+      "fees_url": "https://www.etoro.com/trading/fees/",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL", "AU", "US"],
+      "color": "#00C853",
+      "stocks": {
+        "commission_pct": 0,
+        "commission_flat": 0,
+        "spread_pct": 0.0009,
+        "fx_fee_pct": 0.005,
+        "fx_free_currencies": ["USD"],
+        "min_trade": 10,
+        "fractional": true,
+        "real_ownership": true,
+        "note": "0% commission, earns from spread. 0.5% FX conversion for non-USD."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "spread_pct": 0.0009,
+        "fx_fee_pct": 0.005,
+        "fx_free_currencies": ["USD"],
+        "note": "Same as stocks — 0% commission."
+      },
+      "crypto": {
+        "spread_pct": 0.01,
+        "note": "1% spread on buy and sell. Real ownership (can transfer to eToro Money wallet)."
+      },
+      "forex": {
+        "typical_spread_pips": 1.0,
+        "pair": "EUR/USD",
+        "note": "From 1 pip on EUR/USD. CFD-based."
+      },
+      "commodities": {
+        "spread_pct": 0.0045,
+        "note": "CFD only. Spreads vary by commodity. Gold ~45 pips."
+      },
+      "other_fees": {
+        "withdrawal": "$5 (USD accounts), free for GBP/EUR",
+        "inactivity": "$10/month after 12 months",
+        "deposit": "Free",
+        "min_deposit": "$50"
+      }
+    },
+    "plus500": {
+      "name": "Plus500",
+      "url": "https://www.plus500.com",
+      "fees_url": "https://www.plus500.com/en/help/feescharges",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL", "AU"],
+      "color": "#00B2E3",
+      "stocks": {
+        "commission_pct": 0,
+        "spread_pct": 0.002,
+        "cfd_only": true,
+        "real_ownership": false,
+        "note": "CFD only — no real stock ownership. Zero commission, spread-based."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "spread_pct": 0.002,
+        "cfd_only": true,
+        "note": "CFD only."
+      },
+      "crypto": {
+        "spread_pct": 0.003,
+        "cfd_only": true,
+        "note": "CFD only. ~0.3% dynamic spread."
+      },
+      "forex": {
+        "typical_spread_pips": 0.6,
+        "pair": "EUR/USD",
+        "note": "From 0.6 pips on EUR/USD. CFD-based."
+      },
+      "commodities": {
+        "spread_pct": 0.003,
+        "cfd_only": true,
+        "note": "CFD only. Tight spreads on gold/oil."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "$10/month after 3 months",
+        "deposit": "Free",
+        "min_deposit": "$100"
+      }
+    },
+    "trading212": {
+      "name": "Trading 212",
+      "url": "https://www.trading212.com",
+      "fees_url": "https://www.trading212.com/trading-fees",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL"],
+      "color": "#1E40AF",
+      "stocks": {
+        "commission_pct": 0,
+        "commission_flat": 0,
+        "fx_fee_pct": 0.0015,
+        "fx_free_currencies": ["GBP", "EUR"],
+        "min_trade": 1,
+        "fractional": true,
+        "real_ownership": true,
+        "note": "Truly commission-free. 0.15% FX fee for foreign currency stocks."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "fx_fee_pct": 0.0015,
+        "note": "Same as stocks — truly free."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Limited crypto availability."
+      },
+      "forex": {
+        "typical_spread_pips": 0.9,
+        "pair": "EUR/USD",
+        "note": "CFD account only. From 0.9 pips."
+      },
+      "commodities": {
+        "spread_pct": 0.003,
+        "cfd_only": true,
+        "note": "CFD account only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$1"
+      }
+    },
+    "degiro": {
+      "name": "DEGIRO",
+      "url": "https://www.degiro.com",
+      "fees_url": "https://www.degiro.com/fees",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL"],
+      "color": "#00A4E4",
+      "stocks": {
+        "commission_pct": 0,
+        "handling_fee": 1.0,
+        "us_commission_flat": 1.0,
+        "fx_fee_pct": 0.0025,
+        "fx_note": "Auto FX 0.25% or manual FX (cheaper but complex)",
+        "real_ownership": true,
+        "note": "€1 handling fee + exchange-specific cost (e.g. $1 for US/CA). 0.25% FX."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "handling_fee": 1.0,
+        "note": "Core Selection: €1 handling only. Others: €3. 0.25% FX."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity ETFs only, not direct."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free (bank transfer)",
+        "min_deposit": "$0"
+      }
+    },
+    "ibkr": {
+      "name": "Interactive Brokers",
+      "url": "https://www.interactivebrokers.com",
+      "fees_url": "https://www.interactivebrokers.com/en/trading/commissions-stocks.php",
+      "countries": ["UK", "US", "DE", "FR", "ES", "IT", "NL", "PL", "AU"],
+      "color": "#D41F27",
+      "stocks": {
+        "commission_type": "per_share",
+        "rate_per_share": 0.005,
+        "min_commission": 1.0,
+        "max_pct": 0.01,
+        "fx_fee_pct": 0.00002,
+        "real_ownership": true,
+        "note": "Tiered: $0.0035/share (vol-based). Fixed: $0.005/share, $1 min. Very low FX."
+      },
+      "etfs": {
+        "commission_type": "per_share",
+        "rate_per_share": 0.005,
+        "min_commission": 1.0,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "spread_pct": 0.0015,
+        "min_fee": 1.75,
+        "note": "0.12%-0.18% tiered. Real ownership."
+      },
+      "forex": {
+        "typical_spread_pips": 0.1,
+        "pair": "EUR/USD",
+        "commission_per_trade": 2.0,
+        "note": "0.1 pip spread + $2 min commission. Best for active traders."
+      },
+      "commodities": {
+        "commission_flat": 0.85,
+        "note": "Futures from $0.85/contract. Widest range available."
+      },
+      "other_fees": {
+        "withdrawal": "Free (1/month)",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "xtb": {
+      "name": "XTB",
+      "url": "https://www.xtb.com",
+      "fees_url": "https://www.xtb.com/en/fees",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "PL"],
+      "color": "#21A038",
+      "stocks": {
+        "commission_pct": 0,
+        "commission_above_100k_pct": 0.002,
+        "commission_above_100k_min": 10,
+        "volume_limit": 100000,
+        "volume_period": "month",
+        "fx_fee_pct": 0.005,
+        "real_ownership": true,
+        "note": "0% commission up to €100K/month. 0.2% (min £10) above. 0.5% FX fee."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "commission_above_100k_pct": 0.002,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Crypto no longer offered on XTB."
+      },
+      "forex": {
+        "typical_spread_pips": 0.5,
+        "pair": "EUR/USD",
+        "note": "From 0.5 pips on EUR/USD. Competitive."
+      },
+      "commodities": {
+        "spread_pct": 0.003,
+        "cfd_only": true,
+        "note": "CFD only. Good gold/oil spreads."
+      },
+      "other_fees": {
+        "withdrawal": "Free (above €100)",
+        "inactivity": "€10/month after 12 months",
+        "deposit": "Free",
+        "min_deposit": "€0"
+      }
+    },
+    "ig": {
+      "name": "IG",
+      "url": "https://www.ig.com",
+      "fees_url": "https://www.ig.com/uk/charges",
+      "countries": ["UK", "AU", "DE", "FR", "ES", "IT"],
+      "color": "#EC1843",
+      "stocks": {
+        "commission_flat": 8.0,
+        "commission_frequent": 3.0,
+        "frequency_threshold": 3,
+        "real_ownership": true,
+        "note": "£8/trade (£3 if 3+ trades/month). ISA & SIPP available."
+      },
+      "etfs": {
+        "commission_flat": 8.0,
+        "commission_frequent": 3.0,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "spread_pct": 0.004,
+        "cfd_only": true,
+        "note": "CFD only. Spread-based."
+      },
+      "forex": {
+        "typical_spread_pips": 0.6,
+        "pair": "EUR/USD",
+        "note": "From 0.6 pips. One of the longest-established forex brokers."
+      },
+      "commodities": {
+        "spread_pct": 0.003,
+        "note": "CFD and spread betting. Good range."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "£12/month after 2 years",
+        "deposit": "Free",
+        "min_deposit": "£250"
+      }
+    },
+    "saxo": {
+      "name": "Saxo Bank",
+      "url": "https://www.home.saxo",
+      "fees_url": "https://www.home.saxo/en-gb/rates-and-conditions/stocks/commissions",
+      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "AU"],
+      "color": "#0B2D71",
+      "stocks": {
+        "commission_pct": 0.001,
+        "min_commission": 1.0,
+        "real_ownership": true,
+        "note": "0.08% on US stocks ($1 min). Varies by market. Premium features."
+      },
+      "etfs": {
+        "commission_pct": 0.001,
+        "min_commission": 1.0,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "spread_pct": 0.005,
+        "note": "Available via ETPs. Limited direct crypto."
+      },
+      "forex": {
+        "typical_spread_pips": 0.4,
+        "pair": "EUR/USD",
+        "note": "From 0.4 pips. Professional-grade tools."
+      },
+      "commodities": {
+        "commission_flat": 2.0,
+        "note": "Futures and CFDs. From $2/contract."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None (tiered custody fees)",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "hl": {
+      "name": "Hargreaves Lansdown",
+      "url": "https://www.hl.co.uk",
+      "fees_url": "https://www.hl.co.uk/charges",
+      "countries": ["UK"],
+      "color": "#003D6A",
+      "stocks": {
+        "commission_flat": 6.95,
+        "real_ownership": true,
+        "note": "£6.95/trade (reduced from £11.95, effective March 2026). UK's largest platform."
+      },
+      "etfs": {
+        "commission_flat": 6.95,
+        "note": "Same as stocks. £6.95/trade."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available directly. Crypto ETPs only."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity funds/ETFs only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "£1",
+        "platform_fee": "0.35% (capped at £150/year for shares, reduced from 0.45%)"
+      }
+    },
+    "ajbell": {
+      "name": "AJ Bell",
+      "url": "https://www.ajbell.co.uk",
+      "fees_url": "https://www.ajbell.co.uk/charges",
+      "countries": ["UK"],
+      "color": "#8B1A4A",
+      "stocks": {
+        "commission_flat": 5.0,
+        "commission_frequent": 3.50,
+        "frequency_threshold": 10,
+        "real_ownership": true,
+        "note": "£5/trade online (£3.50 for 10+/month). Good mid-range UK broker."
+      },
+      "etfs": {
+        "commission_flat": 5.0,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity funds only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "£0",
+        "platform_fee": "0.25%"
+      }
+    },
+    "freetrade": {
+      "name": "Freetrade",
+      "url": "https://freetrade.io",
+      "fees_url": "https://freetrade.io/compare-plans",
+      "countries": ["UK"],
+      "color": "#6B4EFF",
+      "stocks": {
+        "commission_pct": 0,
+        "fx_fee_pct": 0.0059,
+        "fx_fee_plus_pct": 0.0039,
+        "fx_fee_basic_pct": 0.0099,
+        "real_ownership": true,
+        "fractional": true,
+        "note": "Commission-free. FX fee: 0.99% (Basic), 0.59% (Standard), 0.39% (Plus)."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "note": "Commission-free on all plans. Mutual funds & gilts on free tier since Jan 2026."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "£2",
+        "subscription": "Free / £4.99 (Standard) / £11.99 (Plus). SIPP free since Jan 2026."
+      }
+    },
+    "investengine": {
+      "name": "InvestEngine",
+      "url": "https://investengine.com",
+      "fees_url": "https://investengine.com/pricing/",
+      "countries": ["UK"],
+      "color": "#1B3A4B",
+      "stocks": {
+        "available": false,
+        "note": "ETFs only — no individual stocks."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "platform_fee_pct": 0,
+        "note": "0% platform fee for DIY. 0.25% for managed portfolios. ETF-only."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity ETFs only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "£100"
+      }
+    },
+    "robinhood": {
+      "name": "Robinhood",
+      "url": "https://robinhood.com",
+      "fees_url": "https://robinhood.com/us/en/about/fees/",
+      "countries": ["US"],
+      "color": "#00C805",
+      "stocks": {
+        "commission_pct": 0,
+        "fractional": true,
+        "real_ownership": true,
+        "note": "Commission-free. Earns from payment for order flow (PFOF)."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "note": "Commission-free."
+      },
+      "crypto": {
+        "spread_pct": 0.004,
+        "note": "Commission-free but spread-based. Real ownership."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available directly. Commodity ETFs only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "schwab": {
+      "name": "Charles Schwab",
+      "url": "https://www.schwab.com",
+      "fees_url": "https://www.schwab.com/pricing",
+      "countries": ["US", "UK"],
+      "color": "#00A0DF",
+      "stocks": {
+        "commission_pct": 0,
+        "real_ownership": true,
+        "fractional": true,
+        "note": "Commission-free US stocks and ETFs."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "note": "Commission-free."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Crypto-related ETFs only. No direct crypto."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available for retail. Institutional only."
+      },
+      "commodities": {
+        "commission_flat": 2.25,
+        "note": "Futures: $2.25/contract. Options: $0.65/contract."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "fidelity": {
+      "name": "Fidelity",
+      "url": "https://www.fidelity.com",
+      "fees_url": "https://www.fidelity.com/trading/commissions-margin-rates",
+      "countries": ["US"],
+      "color": "#4E8542",
+      "stocks": {
+        "commission_pct": 0,
+        "real_ownership": true,
+        "fractional": true,
+        "note": "Commission-free US stocks and ETFs. Strong research tools."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "note": "Commission-free."
+      },
+      "crypto": {
+        "spread_pct": 0.01,
+        "note": "Via Fidelity Crypto. 1% spread."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity funds only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "webull": {
+      "name": "Webull",
+      "url": "https://www.webull.com",
+      "fees_url": "https://www.webull.com/pricing",
+      "countries": ["US"],
+      "color": "#FF5000",
+      "stocks": {
+        "commission_pct": 0,
+        "real_ownership": true,
+        "fractional": true,
+        "note": "Commission-free. Extended hours trading available."
+      },
+      "etfs": {
+        "commission_pct": 0,
+        "note": "Commission-free."
+      },
+      "crypto": {
+        "spread_pct": 0.01,
+        "note": "1% spread markup. Real ownership."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "$0"
+      }
+    },
+    "scalable": {
+      "name": "Scalable Capital",
+      "url": "https://www.scalable.capital",
+      "fees_url": "https://www.scalable.capital/en/broker-pricing",
+      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "color": "#1E293B",
+      "stocks": {
+        "commission_flat": 0.99,
+        "commission_prime": 0,
+        "subscription": 4.99,
+        "real_ownership": true,
+        "note": "€0.99/trade (FREE plan) or €0 with PRIME+ (€4.99/mo). €3.99 on Xetra."
+      },
+      "etfs": {
+        "commission_flat": 0.99,
+        "commission_prime": 0,
+        "note": "€0.99 or free with PRIME+. PRIME ETFs free from €250. Savings plans free."
+      },
+      "crypto": {
+        "spread_pct": 0.0075,
+        "note": "Available via savings plans. ~0.75% spread."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity ETFs/ETCs only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "€1",
+        "interest_on_cash": "2.0%"
+      }
+    },
+    "traderepublic": {
+      "name": "Trade Republic",
+      "url": "https://traderepublic.com",
+      "fees_url": "https://traderepublic.com/en-de/pricing",
+      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "color": "#1A1A2E",
+      "stocks": {
+        "commission_flat": 1.0,
+        "real_ownership": true,
+        "fractional": true,
+        "note": "€1 flat fee per trade. Savings plans free."
+      },
+      "etfs": {
+        "commission_flat": 1.0,
+        "note": "€1/trade. Savings plans free."
+      },
+      "crypto": {
+        "spread_pct": 0.01,
+        "commission_flat": 1.0,
+        "note": "€1 fee + ~1% spread. Real ownership."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Commodity ETCs only."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "€1",
+        "interest_on_cash": "2.0%"
+      }
+    },
+    "bux": {
+      "name": "BUX",
+      "url": "https://bux.com",
+      "fees_url": "https://bux.com/fees/",
+      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "color": "#00D09C",
+      "stocks": {
+        "commission_flat": 0,
+        "commission_market_order": 1.99,
+        "us_commission": 0.99,
+        "fx_fee_pct": 0.0025,
+        "real_ownership": true,
+        "note": "EU stocks free (Zero Order), €1.99 market/limit. US stocks €0.99. 0.25% FX."
+      },
+      "etfs": {
+        "commission_flat": 0,
+        "commission_market_order": 1.99,
+        "note": "Same as stocks. Free via Zero Order."
+      },
+      "crypto": {
+        "spread_pct": 0.005,
+        "note": "0.5% commission per trade. Free with 1,000+ BUX tokens."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "€0"
+      }
+    },
+    "commsec": {
+      "name": "CommSec",
+      "url": "https://www.commsec.com.au",
+      "fees_url": "https://www.commsec.com.au/support/rates-and-fees.html",
+      "countries": ["AU"],
+      "color": "#FFD100",
+      "stocks": {
+        "commission_flat": 5.0,
+        "commission_brackets": [
+          {"up_to": 1000, "fee": 5.0},
+          {"above": 1000, "pct": 0.002}
+        ],
+        "real_ownership": true,
+        "note": "AU$5 for trades up to $1,000. 0.20% for trades above $1,000."
+      },
+      "etfs": {
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "AU$0"
+      }
+    },
+    "selfwealth": {
+      "name": "SelfWealth",
+      "url": "https://www.selfwealth.com.au",
+      "fees_url": "https://www.selfwealth.com.au/pricing/",
+      "countries": ["AU"],
+      "color": "#FF6B35",
+      "stocks": {
+        "commission_flat": 9.50,
+        "us_commission_flat": 0,
+        "us_fx_fee_pct": 0.006,
+        "real_ownership": true,
+        "note": "AU$9.50 flat for ASX. $0 for US stocks (0.6% FX fee applies)."
+      },
+      "etfs": {
+        "commission_flat": 9.50,
+        "note": "Same as stocks."
+      },
+      "crypto": {
+        "available": false,
+        "note": "Not available."
+      },
+      "forex": {
+        "available": false,
+        "note": "Not available."
+      },
+      "commodities": {
+        "available": false,
+        "note": "Not available."
+      },
+      "other_fees": {
+        "withdrawal": "Free",
+        "inactivity": "None",
+        "deposit": "Free",
+        "min_deposit": "AU$0"
+      }
+    }
+  },
+  "savings_rates": {
+    "_note": "Best savings account rates by country. Updated weekly.",
+    "UK": [
+      {"bank": "Trading 212", "rate": 5.1, "type": "Easy access", "note": "Cash ISA or general account", "url": "https://www.trading212.com"},
+      {"bank": "Chip", "rate": 4.84, "type": "Easy access", "note": "App-based savings", "url": "https://www.getchip.uk"},
+      {"bank": "Chase", "rate": 3.5, "type": "Easy access", "note": "Linked saver. Free debit card.", "url": "https://www.chase.co.uk"},
+      {"bank": "Nationwide", "rate": 4.25, "type": "Easy access ISA", "note": "Online only", "url": "https://www.nationwide.co.uk"},
+      {"bank": "Marcus (Goldman Sachs)", "rate": 4.25, "type": "Easy access", "note": "No minimum", "url": "https://www.marcus.co.uk"},
+      {"bank": "Monzo", "rate": 3.6, "type": "Easy access", "note": "Instant Pots", "url": "https://monzo.com"}
+    ],
+    "US": [
+      {"bank": "Wealthfront", "rate": 4.25, "type": "High-yield savings", "note": "FDIC insured", "url": "https://www.wealthfront.com"},
+      {"bank": "Marcus (Goldman Sachs)", "rate": 4.0, "type": "High-yield savings", "note": "No min, no fees", "url": "https://www.marcus.com"},
+      {"bank": "Ally Bank", "rate": 4.0, "type": "High-yield savings", "note": "No minimums", "url": "https://www.ally.com"},
+      {"bank": "SoFi", "rate": 3.8, "type": "High-yield savings", "note": "With direct deposit", "url": "https://www.sofi.com"},
+      {"bank": "Discover", "rate": 3.75, "type": "Online savings", "note": "No fees", "url": "https://www.discover.com"},
+      {"bank": "Capital One", "rate": 3.7, "type": "360 Performance Savings", "note": "No minimums", "url": "https://www.capitalone.com"}
+    ],
+    "DE": [
+      {"bank": "Trade Republic", "rate": 3.25, "type": "Tagesgeld", "note": "On uninvested cash", "url": "https://traderepublic.com"},
+      {"bank": "Scalable Capital", "rate": 2.6, "type": "Tagesgeld", "note": "PRIME+ plan", "url": "https://www.scalable.capital"},
+      {"bank": "ING", "rate": 3.3, "type": "Extra-Konto", "note": "6 months intro", "url": "https://www.ing.de"},
+      {"bank": "DKB", "rate": 2.05, "type": "Tagesgeld", "note": "No minimum", "url": "https://www.dkb.de"}
+    ],
+    "AU": [
+      {"bank": "ING", "rate": 5.5, "type": "Savings Maximiser", "note": "Conditions apply", "url": "https://www.ing.com.au"},
+      {"bank": "Ubank", "rate": 5.0, "type": "USaver", "note": "High interest", "url": "https://www.ubank.com.au"},
+      {"bank": "Macquarie", "rate": 4.75, "type": "Savings Account", "note": "4 months intro", "url": "https://www.macquarie.com.au"}
+    ]
+  },
+  "countries": {
+    "UK": {"currency": "GBP", "symbol": "£", "name": "United Kingdom"},
+    "US": {"currency": "USD", "symbol": "$", "name": "United States"},
+    "DE": {"currency": "EUR", "symbol": "€", "name": "Germany"},
+    "FR": {"currency": "EUR", "symbol": "€", "name": "France"},
+    "ES": {"currency": "EUR", "symbol": "€", "name": "Spain"},
+    "IT": {"currency": "EUR", "symbol": "€", "name": "Italy"},
+    "NL": {"currency": "EUR", "symbol": "€", "name": "Netherlands"},
+    "PL": {"currency": "PLN", "symbol": "zł", "name": "Poland"},
+    "AU": {"currency": "AUD", "symbol": "A$", "name": "Australia"}
+  }
+}
