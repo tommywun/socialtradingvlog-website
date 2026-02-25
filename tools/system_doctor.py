@@ -110,6 +110,11 @@ def _is_benign(line):
         return True
     if "caption fetch failed" in line:
         return True  # Handled by pipeline — quota or transient
+    # Summary lines that mention CRITICAL/ERROR as a count, not an actual error
+    if re.search(r'CRITICAL:\s*\d+', line):
+        return True
+    if re.search(r'ERROR:\s*\d+', line):
+        return True
     return False
 
 
@@ -146,8 +151,13 @@ def scan_logs():
                 if line_ts:
                     last_known_ts = line_ts
 
-                # Skip lines older than cutoff
-                if last_known_ts and last_known_ts < cutoff:
+                # Skip lines older than cutoff.
+                # Lines WITHOUT a timestamp are only included if the most
+                # recent timestamped line before them is within the window.
+                # If no timestamp has been seen yet, skip (don't assume recent).
+                if last_known_ts is None:
+                    continue
+                if last_known_ts < cutoff:
                     continue
 
                 if any(pat in line for pat in ERROR_PATTERNS):
