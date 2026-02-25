@@ -28,3 +28,18 @@
     }
   });
 }());
+
+/* TOC collapse/expand in sidebar */
+(function () {
+  document.querySelectorAll('.toc h4').forEach(function (h4) {
+    var toc = h4.closest('.toc');
+    if (!toc) return;
+    // Start collapsed in sidebar (sticky context) to save space
+    if (toc.closest('.article-sidebar')) {
+      toc.classList.add('collapsed');
+    }
+    h4.addEventListener('click', function () {
+      toc.classList.toggle('collapsed');
+    });
+  });
+}());

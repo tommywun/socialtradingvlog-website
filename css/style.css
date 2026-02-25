@@ -1027,16 +1027,40 @@ footer {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+.toc h4::after {
+  content: "\25BC";
+  font-size: 0.6rem;
+  transition: transform 0.2s;
+}
+.toc.collapsed h4 {
+  margin-bottom: 0;
+}
+.toc.collapsed h4::after {
+  transform: rotate(-90deg);
 }
 
 .toc ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 10px 0 0;
   counter-reset: toc-counter;
   max-height: 240px;
   overflow-y: auto;
+  transition: max-height 0.25s ease, margin 0.25s ease, opacity 0.2s ease;
+}
+.toc.collapsed ul {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .toc ul li {
