@@ -23,10 +23,10 @@ mkdir -p "$REPORT_DIR"
 
     # GA report (last 7 days + last 30 days)
     echo "── LAST 7 DAYS ─────────────────────────────────────────────"
-    $PYTHON "$SITE_DIR/tools/ga_report.py" --days 7 2>/dev/null
+    $PYTHON "$SITE_DIR/tools/ga_report.py" --days 7 2>>"$REPORT_DIR/daily-errors.log"
     echo ""
     echo "── LAST 30 DAYS ────────────────────────────────────────────"
-    $PYTHON "$SITE_DIR/tools/ga_report.py" --days 30 2>/dev/null
+    $PYTHON "$SITE_DIR/tools/ga_report.py" --days 30 2>>"$REPORT_DIR/daily-errors.log"
     echo ""
 
     # Pipeline status

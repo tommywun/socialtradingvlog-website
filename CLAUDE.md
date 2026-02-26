@@ -178,7 +178,7 @@ Security of the entire system (VPS, laptop, secrets, Telegram bot, all tools) is
 ### Secrets management
 - **Location**: `~/.config/stv-secrets/` — NEVER in the repo
 - **Required permissions**: Directory = `700`, all files = `600`
-- **Files**: telegram-bot-token.txt, telegram-chat-id.txt, resend-api-key.txt, email-alerts.json, ga-service-account.json, gmail-oauth.json, gmail-token.pickle, openai-api-key.txt, youtube-oauth.json, youtube-token.pickle, yt-data-api-key.txt, search-console-service-account.json
+- **Files**: telegram-bot-token.txt, telegram-chat-id.txt, resend-api-key.txt, email-alerts.json, ga-service-account.json, gmail-oauth.json, gmail-token.pickle, openai-api-key.txt, youtube-oauth.json, youtube-token.pickle, cloudflare-api-token.txt
 - **Rule**: If any secret file is found with permissions wider than 600, fix immediately and alert Tom
 - **Rule**: NEVER log, print, or echo secret values. NEVER pass secrets as CLI arguments (visible in `ps`). Use files or environment variables only.
 

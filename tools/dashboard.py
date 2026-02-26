@@ -1577,6 +1577,151 @@ def run_pagespeed_check():
     return data
 
 
+# ─── Search Console ───
+GSC_CACHE = PROJECT_DIR / "reports" / "gsc-cache.json"
+
+
+def get_gsc_data():
+    """Return cached GSC data (1h TTL) or latest snapshot."""
+    import time as _time
+    if GSC_CACHE.exists():
+        data = json.loads(GSC_CACHE.read_text())
+        if _time.time() - data.get("timestamp", 0) < 3600:
+            return data
+    snapshots = sorted(PROJECT_DIR.glob("reports/gsc-*.json"))
+    if snapshots:
+        data = json.loads(snapshots[-1].read_text())
+        data["source"] = "snapshot"
+        return data
+    return {"error": "No GSC data. Click Refresh to fetch."}
+
+
+def fetch_gsc_data():
+    """Live-fetch GSC data via service account API."""
+    import time as _time
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+    from datetime import datetime, timedelta
+
+    key_file = pathlib.Path.home() / ".config" / "stv-secrets" / "ga-service-account.json"
+    creds = service_account.Credentials.from_service_account_file(
+        str(key_file), scopes=["https://www.googleapis.com/auth/webmasters"])
+    svc = build("searchconsole", "v1", credentials=creds)
+
+    site_url = None
+    for s in svc.sites().list().execute().get("siteEntry", []):
+        if "socialtradingvlog" in s["siteUrl"]:
+            site_url = s["siteUrl"]
+            break
+    if not site_url:
+        return {"error": "Site not found in GSC"}
+
+    end = datetime.now().strftime("%Y-%m-%d")
+    start = (datetime.now() - timedelta(days=28)).strftime("%Y-%m-%d")
+
+    overview = svc.searchanalytics().query(siteUrl=site_url, body={
+        "startDate": start, "endDate": end, "dimensions": [], "rowLimit": 1
+    }).execute()
+    queries = svc.searchanalytics().query(siteUrl=site_url, body={
+        "startDate": start, "endDate": end, "dimensions": ["query"], "rowLimit": 20
+    }).execute()
+    pages = svc.searchanalytics().query(siteUrl=site_url, body={
+        "startDate": start, "endDate": end, "dimensions": ["page"], "rowLimit": 15
+    }).execute()
+
+    ov = overview.get("rows", [{}])[0] if overview.get("rows") else {}
+    result = {
+        "timestamp": _time.time(),
+        "period": {"start": start, "end": end},
+        "overview": {
+            "clicks": ov.get("clicks", 0),
+            "impressions": ov.get("impressions", 0),
+            "ctr": round(ov.get("ctr", 0), 4),
+            "position": round(ov.get("position", 0), 1),
+        },
+        "queries": [{"query": r["keys"][0], "clicks": r["clicks"],
+                     "impressions": r["impressions"], "position": round(r["position"], 1)}
+                    for r in queries.get("rows", [])],
+        "pages": [{"page": r["keys"][0].replace("https://socialtradingvlog.com", ""),
+                   "clicks": r["clicks"], "impressions": r["impressions"],
+                   "position": round(r["position"], 1)}
+                  for r in pages.get("rows", [])],
+    }
+    GSC_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    GSC_CACHE.write_text(json.dumps(result, indent=2))
+    return result
+
+
+# ─── YouTube Stats ───
+YT_STATS_CACHE = PROJECT_DIR / "reports" / "youtube-stats-cache.json"
+
+
+def get_youtube_stats():
+    """Return cached YouTube channel stats (1h TTL) or view counts fallback."""
+    import time as _time
+    if YT_STATS_CACHE.exists():
+        data = json.loads(YT_STATS_CACHE.read_text())
+        if _time.time() - data.get("timestamp", 0) < 3600:
+            return data
+    vc = PROJECT_DIR / "data" / "video-view-counts.json"
+    if vc.exists():
+        counts = json.loads(vc.read_text())
+        return {"source": "view-counts-cache", "total_videos": len(counts.get("counts", {})),
+                "updated": counts.get("updated", ""), "top_videos": sorted(
+                    counts.get("counts", {}).items(), key=lambda x: x[1], reverse=True)[:5]}
+    return {"error": "No YouTube data. Click Refresh to fetch."}
+
+
+def fetch_youtube_stats():
+    """Live-fetch YouTube channel + recent video stats."""
+    import time as _time
+    import pickle
+    from google.auth.transport.requests import Request
+    from googleapiclient.discovery import build
+
+    token_path = pathlib.Path.home() / ".config" / "stv-secrets" / "youtube-token.pickle"
+    with open(token_path, "rb") as f:
+        creds = pickle.load(f)
+    if creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        with open(token_path, "wb") as f:
+            pickle.dump(creds, f)
+
+    yt = build("youtube", "v3", credentials=creds)
+
+    ch = yt.channels().list(part="statistics,snippet", mine=True).execute()
+    channel = ch.get("items", [{}])[0] if ch.get("items") else {}
+    stats = channel.get("statistics", {})
+    snippet = channel.get("snippet", {})
+
+    search = yt.search().list(part="snippet", forMine=True, type="video",
+                               maxResults=5, order="date").execute()
+    video_ids = [item["id"]["videoId"] for item in search.get("items", [])]
+    videos = []
+    if video_ids:
+        vids = yt.videos().list(part="statistics,snippet",
+                                 id=",".join(video_ids)).execute()
+        for v in vids.get("items", []):
+            videos.append({
+                "title": v["snippet"]["title"][:60],
+                "views": int(v["statistics"].get("viewCount", 0)),
+                "likes": int(v["statistics"].get("likeCount", 0)),
+                "published": v["snippet"]["publishedAt"][:10],
+            })
+
+    result = {
+        "timestamp": _time.time(),
+        "channel": snippet.get("title", "SocialTradingVlog"),
+        "subscribers": int(stats.get("subscriberCount", 0)),
+        "total_views": int(stats.get("viewCount", 0)),
+        "total_videos": int(stats.get("videoCount", 0)),
+        "recent_videos": videos,
+    }
+    YT_STATS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    YT_STATS_CACHE.write_text(json.dumps(result, indent=2))
+    return result
+
+
 # ─── Activity Feed ───
 ACTIVITY_LOG = PROJECT_DIR / "outreach" / "activity-log.json"
 
@@ -2896,20 +3041,18 @@ tbody tr.clickable { cursor: pointer; }
       <div class="card">
         <div class="card-header"><h3>YouTube Stats</h3></div>
         <div class="card-body"><div id="perf-youtube">
-          <div class="config-placeholder">
-            <h4>YouTube Integration</h4>
-            <p>YouTube OAuth credentials detected. Needs API quota to fetch channel stats.<br>Shows: subscribers, views, latest video performance.</p>
-          </div>
-        </div></div>
+          <div class="chart-empty">Loading YouTube stats...</div>
+        </div>
+        <button class="btn btn-sm" onclick="refreshYouTube()" style="margin-top:8px">Refresh</button>
+        </div>
       </div>
       <div class="card">
         <div class="card-header"><h3>Search Console</h3></div>
         <div class="card-body"><div id="perf-gsc">
-          <div class="config-placeholder">
-            <h4>Search Console — Not Configured</h4>
-            <p>Gmail credentials have <code>gmail.readonly</code> scope only.<br>To enable, add <code>webmasters.readonly</code> scope to your OAuth consent screen and re-authenticate.</p>
-          </div>
-        </div></div>
+          <div class="chart-empty">Loading Search Console data...</div>
+        </div>
+        <button class="btn btn-sm" onclick="refreshGSC()" style="margin-top:8px">Refresh</button>
+        </div>
       </div>
     </div>
   </div>
@@ -4056,8 +4199,12 @@ async function runPageSpeed() {
 }
 
 async function loadPerformance() {
-  const [speed, ctaStats] = await Promise.all([api('/pagespeed'), api('/cta-stats')]);
+  const [speed, ctaStats, yt, gsc] = await Promise.all([
+    api('/pagespeed'), api('/cta-stats'), api('/youtube-stats'), api('/gsc-data')
+  ]);
   renderPageSpeed(speed);
+  renderYouTubeStats(yt);
+  renderGSCData(gsc);
 
   // CTA click trend chart
   if (ctaStats && ctaStats.length > 0 && ctaStats.some(d => d.clicks > 0)) {
@@ -4082,6 +4229,67 @@ async function loadPerformance() {
       sparkEl.innerHTML = `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:80px" preserveAspectRatio="none"><polygon points="${pts} ${pad + (vals.length-1)*stepX},${h-pad} ${pad},${h-pad}" fill="var(--tag-green-bg)" opacity="0.5"/><polyline points="${pts}" fill="none" stroke="var(--success)" stroke-width="2" stroke-linejoin="round"/></svg>`;
     }
   }
+}
+
+function renderYouTubeStats(data) {
+  const el = document.getElementById('perf-youtube');
+  if (!data || data.error) { el.innerHTML = '<div class="chart-empty">No YouTube data. Click Refresh.</div>'; return; }
+  let html = '<div class="stat-grid">';
+  if (data.subscribers !== undefined) {
+    html += '<div class="stat"><span class="stat-value">' + Number(data.subscribers).toLocaleString() + '</span><span class="stat-label">Subscribers</span></div>';
+    html += '<div class="stat"><span class="stat-value">' + Number(data.total_views).toLocaleString() + '</span><span class="stat-label">Total Views</span></div>';
+    html += '<div class="stat"><span class="stat-value">' + data.total_videos + '</span><span class="stat-label">Videos</span></div>';
+  }
+  html += '</div>';
+  if (data.recent_videos && data.recent_videos.length > 0) {
+    html += '<h4 style="margin:12px 0 6px">Recent Videos</h4><table class="mini-table"><tr><th>Title</th><th>Views</th><th>Likes</th></tr>';
+    data.recent_videos.forEach(function(v) { html += '<tr><td>' + escapeHtml(v.title) + '</td><td>' + Number(v.views).toLocaleString() + '</td><td>' + v.likes + '</td></tr>'; });
+    html += '</table>';
+  }
+  if (data.source === 'view-counts-cache' && data.top_videos) {
+    html += '<div class="stat-grid"><div class="stat"><span class="stat-value">' + data.total_videos + '</span><span class="stat-label">Videos Tracked</span></div></div>';
+    html += '<h4 style="margin:12px 0 6px">Top Videos by Views</h4><table class="mini-table"><tr><th>Video ID</th><th>Views</th></tr>';
+    data.top_videos.forEach(function(v) { html += '<tr><td><a href="https://youtube.com/watch?v=' + v[0] + '" target="_blank">' + v[0] + '</a></td><td>' + Number(v[1]).toLocaleString() + '</td></tr>'; });
+    html += '</table>';
+  }
+  el.innerHTML = html;
+}
+
+function renderGSCData(data) {
+  const el = document.getElementById('perf-gsc');
+  if (!data || data.error) { el.innerHTML = '<div class="chart-empty">No GSC data. Click Refresh.</div>'; return; }
+  const ov = data.overview || {};
+  let html = '<div class="stat-grid">';
+  html += '<div class="stat"><span class="stat-value">' + Number(ov.clicks||0).toLocaleString() + '</span><span class="stat-label">Clicks (28d)</span></div>';
+  html += '<div class="stat"><span class="stat-value">' + Number(ov.impressions||0).toLocaleString() + '</span><span class="stat-label">Impressions</span></div>';
+  html += '<div class="stat"><span class="stat-value">' + ((ov.ctr||0)*100).toFixed(1) + '%</span><span class="stat-label">CTR</span></div>';
+  html += '<div class="stat"><span class="stat-value">' + (ov.position||0).toFixed(1) + '</span><span class="stat-label">Avg Position</span></div>';
+  html += '</div>';
+  if (data.queries && data.queries.length > 0) {
+    html += '<h4 style="margin:12px 0 6px">Top Queries</h4><table class="mini-table"><tr><th>Query</th><th>Clicks</th><th>Impr.</th><th>Pos.</th></tr>';
+    data.queries.slice(0,10).forEach(function(q) { html += '<tr><td>' + escapeHtml(q.query) + '</td><td>' + q.clicks + '</td><td>' + q.impressions + '</td><td>' + q.position + '</td></tr>'; });
+    html += '</table>';
+  }
+  if (data.pages && data.pages.length > 0) {
+    html += '<h4 style="margin:12px 0 6px">Top Pages</h4><table class="mini-table"><tr><th>Page</th><th>Clicks</th><th>Pos.</th></tr>';
+    data.pages.slice(0,8).forEach(function(p) { html += '<tr><td>' + escapeHtml(p.page) + '</td><td>' + p.clicks + '</td><td>' + p.position + '</td></tr>'; });
+    html += '</table>';
+  }
+  el.innerHTML = html;
+}
+
+async function refreshYouTube() {
+  document.getElementById('perf-youtube').innerHTML = '<div class="chart-empty">Fetching from YouTube API...</div>';
+  const data = await api('/youtube-refresh', {method:'POST'});
+  renderYouTubeStats(data);
+  toast('YouTube stats refreshed');
+}
+
+async function refreshGSC() {
+  document.getElementById('perf-gsc').innerHTML = '<div class="chart-empty">Fetching from Search Console API...</div>';
+  const data = await api('/gsc-refresh', {method:'POST'});
+  renderGSCData(data);
+  toast('Search Console data refreshed');
 }
 
 // ─── Activity Feed + CTA for Overview ───
@@ -4850,6 +5058,10 @@ self.addEventListener('fetch', e => {
             self.send_json(get_pagespeed())
         elif path == "/api/cta-stats":
             self.send_json(get_cta_stats())
+        elif path == "/api/youtube-stats":
+            self.send_json(get_youtube_stats())
+        elif path == "/api/gsc-data":
+            self.send_json(get_gsc_data())
         elif path == "/api/activity-feed":
             self.send_json(get_activity_feed())
         elif path.startswith("/api/reply/"):
@@ -5084,6 +5296,16 @@ self.addEventListener('fetch', e => {
         elif path == "/api/pagespeed-scan":
             try:
                 self.send_json(run_pagespeed_check())
+            except Exception as e:
+                self.send_json({"error": str(e)}, 500)
+        elif path == "/api/youtube-refresh":
+            try:
+                self.send_json(fetch_youtube_stats())
+            except Exception as e:
+                self.send_json({"error": str(e)}, 500)
+        elif path == "/api/gsc-refresh":
+            try:
+                self.send_json(fetch_gsc_data())
             except Exception as e:
                 self.send_json({"error": str(e)}, 500)
         elif path == "/api/opportunity-done":

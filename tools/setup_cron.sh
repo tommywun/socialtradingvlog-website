@@ -103,6 +103,9 @@ CRON_ENTRIES=$(cat <<'CRONTAB'
 # Weekly analytics report + A/B test results + optimization suggestions (Mondays 4am)
 0 4 * * 1 PYTHON_PATH PROJECT_PATH/tools/analytics_monitor.py --report weekly >> LOG_PATH/analytics.log 2>&1 #STV
 
+# Daily GSC snapshot for position tracking (6:30am)
+30 6 * * * PYTHON_PATH PROJECT_PATH/tools/gsc_snapshot.py >> LOG_PATH/gsc-snapshot.log 2>&1 #STV
+
 # Suggest new tools monthly (1st of month) based on analytics
 0 5 1 * * PYTHON_PATH PROJECT_PATH/tools/proposal_manager.py --suggest >> LOG_PATH/proposals.log 2>&1 #STV
 
