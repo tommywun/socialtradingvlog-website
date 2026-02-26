@@ -423,6 +423,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div class="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin:20px 0;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Fee data last verified:</strong> <span id="last-verified">Loading...</span> — We check eToro's fees weekly. Always verify on <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">eToro's fee page</a> before trading.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Data Accuracy Disclaimer</strong>
       This calculator provides <strong style="display:inline;font-size:inherit;">estimates only</strong> and is intended for general informational and educational purposes. It should not be relied upon for making financial decisions.
@@ -678,6 +683,7 @@ function toggleFaq(el) {
 calculate();
 </script>
 
+  <script>fetch('../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Unknown'}).catch(()=>{document.getElementById('last-verified').textContent='Unable to load'});</script>
   <script src="../../js/consent.js"></script>
   <script src="../../js/analytics.js"></script>
 </body>
