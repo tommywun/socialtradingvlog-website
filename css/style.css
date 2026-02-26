@@ -674,8 +674,26 @@ footer {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 24px;
+  padding: 0;
+  overflow: hidden;
   transition: border-color 0.2s, transform 0.2s;
+}
+.update-card > :not(.update-thumb) {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.update-card > .update-date { padding-top: 16px; }
+.update-card > .card-link { padding-bottom: 20px; }
+
+.update-thumb {
+  display: block;
+  line-height: 0;
+}
+.update-thumb img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 .update-card:hover {
