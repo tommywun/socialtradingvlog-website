@@ -66,6 +66,13 @@ The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one
 
 **YouTube API quota:** 10,000 units/day. Caption insert = ~400 units. 2 full videos (18 tracks) per day is safe. Tom has applied for quota increase.
 
+**Quota budget per API call:**
+- `captions.list`: ~50 units per video
+- `captions.download`: ~200 units per video
+- `captions.insert` (upload): ~400 units per language track
+- 9 languages × 400 = 3,600 units to upload subtitles for 1 video
+- Can fetch captions for ~30-40 videos per day before quota runs out
+
 ## Newsletter
 - Provider: Resend API
 - Verified domain: `send.socialtradingvlog.com` (NOT socialtradingvlog.com)
@@ -133,6 +140,7 @@ Calculator pages link to each other via nav bar.
   9. Before proposing a fix, check what already exists. Don't assume something needs creating when it might just need copying or enabling. `ls` before you build.
   10. Don't take command output at face value. When a script reports "success" or "X/Y complete, 0 errors", ask: what do those numbers actually mean? Does "complete" mean fully processed or just "didn't crash"? Does "0 errors" mean real progress or just that failures were silently skipped? Cross-check reported numbers against the known ground truth (e.g. 35/333 transcribed) before reporting them to Tom. This rule exists because a translate-only run reported "333/333 complete, 0 errors" when it had actually skipped 295 untranscribed videos — and that misleading output was reported as a success.
 - **Before fixing anything, check if it was already fixed**: When an error appears on CC or in logs, the FIRST step is NOT to investigate from scratch. Instead: (1) Search this file and session history for prior fixes to the same system. (2) Check if the code on VPS matches the local code — if it doesn't, rsync likely overwrote a VPS-only patch. (3) If a prior fix exists, the problem is that the fix wasn't applied locally and got overwritten by rsync. Re-apply it locally and sync. This rule exists because the same error (pipeline running full transcription on VPS) was fixed THREE times in one session — each time the VPS-only fix was overwritten by rsync, and each time the earlier fix was forgotten and a new (sometimes wrong) solution was proposed instead.
+  Specifically for quota/pipeline errors, check: (1) Is pipeline in "vps-auto" mode? (log shows "(vps-auto)" vs "(full)") (2) Stale cron entries? (`crontab -l | grep run_pipeline`) (3) Lock file blocking? (`cat /tmp/stv-pipeline.lock`)
 - **Dual environment**: The site runs from two locations — local Mac and VPS (89.167.73.64). ALWAYS edit locally first, then sync to VPS. Never patch VPS directly — rsync --delete will overwrite VPS-only changes with the local version. The flow is: edit local → commit → rsync to VPS. Never the other way around.
 - **MANDATORY pre-deletion audit**: Before ANY bulk removal or unpublishing, you MUST complete this checklist and show it to Tom BEFORE executing:
   1. List every item that will be affected

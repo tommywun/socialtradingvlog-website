@@ -589,6 +589,32 @@ footer {
 
 .article-content strong { color: var(--text); }
 
+.article-content img {
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.article-content .img-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.article-content .img-grid img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0;
+}
+.article-content .img-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.article-content .img-grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 600px) {
+  .article-content .img-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .article-content .img-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
 .article-content .highlight-box {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -1122,8 +1148,15 @@ footer {
 .faq-section > h2 {
   font-size: 1.4rem;
   font-weight: 800;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   letter-spacing: -0.3px;
+}
+
+.faq-disclaimer {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .faq-item {

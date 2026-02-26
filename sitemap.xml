@@ -3,15 +3,16 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://socialtradingvlog.com/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/404.html</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/about.html</loc>
@@ -25,12 +26,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/a-propos/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/sobre/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/about.html" />
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/about/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/an-al-mawqi/</loc>
@@ -87,7 +82,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/hal-etoro-ihtial/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/hal-etoro-ihtial/" />
@@ -97,6 +92,19 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/etoro-est-il-une-arnaque/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/etoro-e-golpe/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-scam.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ar/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/ittisal/</loc>
@@ -110,6 +118,24 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/contact/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/contato/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/contact.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ar/jamia-al-fidyuhat/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-fidyuhat/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ar/jamia-al-tahdithat/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-tahdithat/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/kam-min-al-mal-yumkin-an-tarbah-min-naskh-al-tadawul/</loc>
@@ -165,7 +191,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -175,6 +201,15 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/avis-etoro-2026-retour-honnete-apres-9-ans/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/etoro-review-analise-completa-apos-9-anos/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-review/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/ar/siyasat-al-khususiyya/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/siyasat-al-khususiyya/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-01-maris-2019/</loc>
@@ -541,12 +576,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/video/why-do-most-etoro-traders-lose-money/" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/author/mrtjwest/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/calculators/compare-platforms/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -583,12 +612,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/contact-thanks.html</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/contact.html</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -602,14 +625,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/contact.html" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/contact/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/copy-trading-returns.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/kam-min-al-mal-yumkin-an-tarbah-min-naskh-al-tadawul/" />
@@ -621,38 +638,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/copy-trading-returns.html" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/copy-trading-update-etoro-02-aug-2019/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/copy-trading-update-etoro-07-may-2019/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/copy-trading-update-etoro-16-april-2019/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/copy-trading-update-etoro-23-april-2019/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/copy-trading-update-etoro-30-april-2019/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/copy-trading.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/ma-huwa-naskh-al-tadawul/" />
@@ -664,14 +651,47 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/copy-trading.html" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/copy-trading/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://socialtradingvlog.com/de/alle-updates/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-tahdeethat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-updates/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todas-las-actualizaciones/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-mises-a-jour/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todas-as-atualizacoes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/de/alle-videos/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-fidyuhat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-videos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todos-los-videos/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-videos/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todos-os-videos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/de/datenschutz/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/siyasat-al-khususiyya/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/datenschutz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/politica-de-privacidad/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/politique-de-confidentialite/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/politica-de-privacidade/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/de/etoro-erfahrungen-2026-ehrlicher-testbericht/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -694,6 +714,19 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/comment-retirer-ses-gains-du-copy-trading-etoro/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/como-retirar-lucros-do-copy-trading-etoro/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/taking-profits.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/de/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/de/ist-etoro-betrug/</loc>
@@ -1271,7 +1304,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/es/etoro-opinion-sincera-despues-de-9-anos/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -1281,6 +1314,28 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/avis-etoro-2026-retour-honnete-apres-9-ans/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/etoro-review-analise-completa-apos-9-anos/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-review/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/es/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/es/politica-de-privacidad/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/politica-de-privacidad/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/es/que-es-el-copy-trading/</loc>
@@ -1320,6 +1375,24 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/a-propos/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/sobre/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/about.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/es/todas-las-actualizaciones/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todas-las-actualizaciones/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/es/todos-los-videos/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todos-los-videos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/es/updates/actualizacion-copy-trading-01-mar-2019/</loc>
@@ -1686,14 +1759,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/video/why-do-most-etoro-traders-lose-money/" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/etoro-popular-investor-program/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/etoro-review/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -1706,7 +1773,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/etoro-scam.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/hal-etoro-ihtial/" />
@@ -1716,18 +1783,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/etoro-est-il-une-arnaque/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/etoro-e-golpe/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-scam.html" />
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/etorocopytrading/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/etorocopytrading/page/2/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/fr/a-propos/</loc>
@@ -1744,7 +1799,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/fr/avis-etoro-2026-retour-honnete-apres-9-ans/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -1848,6 +1903,32 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-scam.html" />
   </url>
   <url>
+    <loc>https://socialtradingvlog.com/fr/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/fr/politique-de-confidentialite/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/siyasat-al-khususiyya/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/datenschutz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/politica-de-privacidad/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/politique-de-confidentialite/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/politica-de-privacidade/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
+  </url>
+  <url>
     <loc>https://socialtradingvlog.com/fr/quest-ce-que-le-copy-trading/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -1872,6 +1953,32 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/quest-ce-que-le-trading-social/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/o-que-e-trading-social/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/social-trading.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/fr/toutes-les-mises-a-jour/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-tahdithat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-updates/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todas-las-actualizaciones/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-mises-a-jour/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todas-as-atualizacoes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/fr/toutes-les-videos/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-fidyuhat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-videos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todos-los-videos/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-videos/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todos-os-videos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/fr/updates/mise-a-jour-copy-trading-01-mars-2019/</loc>
@@ -2238,18 +2345,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/video/why-do-most-etoro-traders-lose-money/" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/how-much-money-will-i-make-copytrading-on-etoro/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/is-etoro-a-scam/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -2411,15 +2506,22 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/popular-investor.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/privacy.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/siyasat-al-khususiyya/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/datenschutz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/politica-de-privacidad/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/politique-de-confidentialite/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/politica-de-privacidade/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/</loc>
@@ -2502,7 +2604,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/pt/etoro-review-analise-completa-apos-9-anos/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/murajaet-etoro-tajrubati-baed-9-sanawat/" />
@@ -2512,6 +2614,19 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/avis-etoro-2026-retour-honnete-apres-9-ans/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/etoro-review-analise-completa-apos-9-anos/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/etoro-review/" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pt/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/pt/o-que-e-copy-trading/</loc>
@@ -2540,6 +2655,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/social-trading.html" />
   </url>
   <url>
+    <loc>https://socialtradingvlog.com/pt/politica-de-privacidade/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/politica-de-privacidade/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/privacy.html" />
+  </url>
+  <url>
     <loc>https://socialtradingvlog.com/pt/quanto-dinheiro-pode-ganhar-com-copy-trading/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -2564,6 +2688,24 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/a-propos/" />
     <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/sobre/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/about.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pt/todas-as-atualizacoes/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todas-as-atualizacoes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
+  </url>
+  <url>
+    <loc>https://socialtradingvlog.com/pt/todos-os-videos/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todos-os-videos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/pt/updates/atualizacao-copy-trading-01-mar-2019/</loc>
@@ -2931,7 +3073,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/social-trading.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/ma-huwa-al-tadawul-al-ijtimai/" />
@@ -2943,26 +3085,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/social-trading.html" />
   </url>
   <url>
-    <loc>https://socialtradingvlog.com/social-trading/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/tag/etoro/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://socialtradingvlog.com/taking-profits-from-copytrading/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://socialtradingvlog.com/taking-profits.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/kifa-tashab-al-arbah-min-naskh-al-tadawul-etoro/" />
@@ -2975,13 +3099,20 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-tahdithat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-updates/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/updates.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todas-las-actualizaciones/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-mises-a-jour/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todas-as-atualizacoes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/updates.html" />
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-01-mar-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-01-maris-2019/" />
@@ -2994,13 +3125,13 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-01-sep-2025.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-02-aug-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-02-aghustus-2019/" />
@@ -3013,7 +3144,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-03-feb-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-03-fibrayir-2019/" />
@@ -3026,7 +3157,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-04-apr-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-04-abril-2019/" />
@@ -3039,7 +3170,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-04-jun-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-04-yunyu-2019/" />
@@ -3052,7 +3183,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-07-feb-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-07-fibrayir-2019/" />
@@ -3065,7 +3196,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-07-may-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-07-mayu-2019/" />
@@ -3078,13 +3209,13 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-11-dec-2025.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-11-jan-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-11-yanayir-2019/" />
@@ -3097,7 +3228,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-13-jan-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-13-yanayir-2019/" />
@@ -3110,7 +3241,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-13-mar-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-13-maris-2019/" />
@@ -3123,7 +3254,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-14-dec-2018.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-14-disambir-2018/" />
@@ -3136,7 +3267,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-14-feb-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-14-fibrayir-2019/" />
@@ -3162,7 +3293,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-16-apr-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-16-abril-2019/" />
@@ -3188,7 +3319,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-20-feb-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-20-fibrayir-2019/" />
@@ -3201,7 +3332,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-23-apr-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-23-abril-2019/" />
@@ -3214,7 +3345,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-23-aug-2018.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-23-aghustus-2018/" />
@@ -3227,7 +3358,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-23-jul-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/" />
@@ -3253,7 +3384,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-25-nov-2018.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-25-nufambir-2018/" />
@@ -3266,7 +3397,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-26-mar-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-26-maris-2019/" />
@@ -3279,7 +3410,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-28-nov-2017.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-28-nufambir-2017/" />
@@ -3292,13 +3423,13 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-29-dec-2025.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-29-jan-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-29-yanayir-2019/" />
@@ -3311,7 +3442,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-30-apr-2019.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-30-abril-2019/" />
@@ -3324,7 +3455,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/copy-trading-update-jul-2018.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-yulyu-2018/" />
@@ -3337,7 +3468,7 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/updates/social-trading-update-jun-2017.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/updates/tahdith-naskh-al-tadawul-yunyu-2017/" />
@@ -3371,8 +3502,15 @@
   </url>
   <url>
     <loc>https://socialtradingvlog.com/videos.html</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/jamia-al-fidyuhat/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/alle-videos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/videos.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/todos-los-videos/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/toutes-les-videos/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/todos-os-videos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/videos.html" />
   </url>
 </urlset>

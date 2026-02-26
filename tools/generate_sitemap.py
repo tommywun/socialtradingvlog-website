@@ -177,6 +177,40 @@ def extract_hreflang_alternates(filepath: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 
+def should_exclude_by_content(filepath: Path) -> bool:
+    """Check if a page should be excluded based on its HTML content.
+
+    Excludes:
+    - Meta-refresh redirect pages (old WordPress URL stubs)
+    - Pages with noindex robots meta
+    - 404 error pages
+    """
+    filename = filepath.name
+    rel = filepath.name
+
+    # Exclude 404.html
+    if filename == "404.html":
+        return True
+
+    try:
+        # Only read the first 2KB — all meta tags are in <head>
+        with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+            head = f.read(2048)
+
+        # Exclude meta-refresh redirect pages
+        if 'http-equiv="refresh"' in head or "http-equiv='refresh'" in head:
+            return True
+
+        # Exclude noindex pages
+        if 'name="robots" content="noindex"' in head or "name='robots' content='noindex'" in head:
+            return True
+
+    except Exception:
+        pass
+
+    return False
+
+
 def find_all_pages(root: Path) -> list:
     """Find all publishable HTML pages in the project.
 
@@ -210,6 +244,11 @@ def find_all_pages(root: Path) -> list:
                 continue
 
             abs_path = Path(dirpath) / filename
+
+            # Skip redirect stubs, noindex pages, and 404
+            if should_exclude_by_content(abs_path):
+                continue
+
             pages.append((rel_path, abs_path))
 
     return pages

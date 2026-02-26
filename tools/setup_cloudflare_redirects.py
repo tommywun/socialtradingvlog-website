@@ -1,0 +1,406 @@
+#!/usr/bin/env python3
+"""
+Set up Cloudflare Worker-based 301 redirects for old WordPress URLs.
+
+Deploys a lightweight Cloudflare Worker that intercepts requests to old
+WordPress URL paths and returns proper HTTP 301 redirects. The Worker
+sits in front of GitHub Pages via Cloudflare's edge network.
+
+Uses Workers instead of Bulk Redirects because the free plan limits
+Bulk Redirects to 20 items (we have 31).
+
+Prerequisites:
+    - Cloudflare API token at ~/.config/stv-secrets/cloudflare-api-token.txt
+    - Token permissions: Account Workers Scripts (Edit), Zone Workers Routes (Edit),
+      Zone (Edit)
+    - Zone scope: socialtradingvlog.com
+
+Usage:
+    python3 tools/setup_cloudflare_redirects.py           # Deploy worker + routes
+    python3 tools/setup_cloudflare_redirects.py --verify   # Verify redirects work
+    python3 tools/setup_cloudflare_redirects.py --dry-run  # Show what would be created
+    python3 tools/setup_cloudflare_redirects.py --remove   # Remove worker + routes
+"""
+
+import json
+import pathlib
+import sys
+import time
+import urllib.request
+import urllib.error
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+
+DOMAIN = "socialtradingvlog.com"
+BASE_URL = f"https://{DOMAIN}"
+API_BASE = "https://api.cloudflare.com/client/v4"
+TOKEN_PATH = pathlib.Path.home() / ".config" / "stv-secrets" / "cloudflare-api-token.txt"
+WORKER_NAME = "stv-redirects"
+
+# Complete mapping of old URLs -> new URLs (31 entries)
+REDIRECTS = [
+    # Site restructuring: directory -> flat HTML
+    ("/about/", "/about.html"),
+    ("/contact/", "/contact.html"),
+    ("/copy-trading/", "/copy-trading.html"),
+    ("/social-trading/", "/social-trading.html"),
+    ("/is-etoro-a-scam/", "/etoro-scam.html"),
+    ("/etoro-popular-investor-program/", "/popular-investor.html"),
+    ("/taking-profits-from-copytrading/", "/taking-profits.html"),
+    ("/how-much-money-will-i-make-copytrading-on-etoro/", "/copy-trading-returns.html"),
+
+    # Removed pages -> homepage
+    ("/faq/", "/"),
+    ("/faq.html", "/"),
+    ("/tag/etoro/", "/"),
+
+    # Author/channel pages -> about/videos
+    ("/author/mrtjwest/", "/about.html"),
+    ("/etorocopytrading/", "/videos.html"),
+    ("/etorocopytrading/page/2/", "/videos.html"),
+
+    # Old update slugs -> new update paths
+    ("/copy-trading-update-etoro-16-april-2019/", "/updates/copy-trading-update-16-apr-2019.html"),
+    ("/copy-trading-update-etoro-23-april-2019/", "/updates/copy-trading-update-23-apr-2019.html"),
+    ("/copy-trading-update-etoro-30-april-2019/", "/updates/copy-trading-update-30-apr-2019.html"),
+    ("/copy-trading-update-etoro-07-may-2019/", "/updates/copy-trading-update-07-may-2019.html"),
+    ("/copy-trading-update-etoro-02-aug-2019/", "/updates/copy-trading-update-02-aug-2019.html"),
+
+    # Articles folder -> root HTML files
+    ("/articles/social-trading.html", "/social-trading.html"),
+    ("/articles/what-is-social-trading.html", "/social-trading.html"),
+    ("/articles/copy-trading.html", "/copy-trading.html"),
+    ("/articles/taking-profits.html", "/taking-profits.html"),
+    ("/articles/is-etoro-a-scam.html", "/etoro-scam.html"),
+    ("/articles/how-much-money-will-i-make.html", "/copy-trading-returns.html"),
+    ("/articles/popular-investor-program.html", "/popular-investor.html"),
+
+    # Translated FAQ pages -> language homepages
+    ("/es/preguntas-frecuentes/", "/es/"),
+    ("/fr/questions-frequentes/", "/fr/"),
+    ("/de/haeufig-gestellte-fragen/", "/de/"),
+    ("/pt/perguntas-frequentes/", "/pt/"),
+    ("/ar/al-asilah-al-shaaiah/", "/ar/"),
+]
+
+# Worker route patterns — grouped to minimise route count
+# Each pattern triggers the Worker; the Worker checks the exact path
+ROUTE_PATTERNS = [
+    f"*{DOMAIN}/about/*",
+    f"*{DOMAIN}/contact/*",
+    f"*{DOMAIN}/copy-trading/*",
+    f"*{DOMAIN}/social-trading/*",
+    f"*{DOMAIN}/is-etoro-a-scam/*",
+    f"*{DOMAIN}/etoro-popular-investor-program/*",
+    f"*{DOMAIN}/taking-profits-from-copytrading/*",
+    f"*{DOMAIN}/how-much-money-will-i-make-copytrading-on-etoro/*",
+    f"*{DOMAIN}/faq/*",
+    f"*{DOMAIN}/faq.html",
+    f"*{DOMAIN}/tag/*",
+    f"*{DOMAIN}/author/*",
+    f"*{DOMAIN}/etorocopytrading/*",
+    f"*{DOMAIN}/copy-trading-update-etoro-*",
+    f"*{DOMAIN}/articles/*",
+    f"*{DOMAIN}/es/preguntas-frecuentes/*",
+    f"*{DOMAIN}/fr/questions-frequentes/*",
+    f"*{DOMAIN}/de/haeufig-gestellte-fragen/*",
+    f"*{DOMAIN}/pt/perguntas-frequentes/*",
+    f"*{DOMAIN}/ar/al-asilah-al-shaaiah/*",
+]
+
+
+def generate_worker_script():
+    """Generate the Cloudflare Worker JavaScript."""
+    # Build the redirect map as a JS object
+    entries = []
+    for source, target in REDIRECTS:
+        entries.append(f'  "{source}": "{target}"')
+    redirect_map = ",\n".join(entries)
+
+    return f"""// Cloudflare Worker: 301 redirects for old WordPress URLs
+// Auto-generated by tools/setup_cloudflare_redirects.py
+// {len(REDIRECTS)} redirect entries
+
+const REDIRECTS = {{
+{redirect_map}
+}};
+
+const BASE = "https://{DOMAIN}";
+
+addEventListener("fetch", (event) => {{
+  event.respondWith(handleRequest(event.request));
+}});
+
+async function handleRequest(request) {{
+  const url = new URL(request.url);
+  const path = url.pathname;
+
+  // Check for exact path match
+  const target = REDIRECTS[path];
+  if (target) {{
+    return Response.redirect(BASE + target, 301);
+  }}
+
+  // No match — pass through to origin (GitHub Pages)
+  return fetch(request);
+}}
+"""
+
+
+# ---------------------------------------------------------------------------
+# API helpers
+# ---------------------------------------------------------------------------
+
+def load_token():
+    """Load the Cloudflare API token from disk."""
+    if not TOKEN_PATH.exists():
+        print(f"ERROR: Token not found at {TOKEN_PATH}")
+        print("Create a Cloudflare API token and save it to that file.")
+        sys.exit(1)
+    return TOKEN_PATH.read_text().strip()
+
+
+def cf_request(method, path, token, data=None, content_type="application/json",
+               raw_body=None):
+    """Make a Cloudflare API request. Returns parsed JSON response."""
+    url = f"{API_BASE}{path}"
+    if raw_body is not None:
+        body = raw_body
+    elif data is not None:
+        body = json.dumps(data).encode()
+    else:
+        body = None
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": content_type,
+    }
+
+    req = urllib.request.Request(url, data=body, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode()
+        try:
+            error_json = json.loads(error_body)
+            errors = error_json.get("errors", [])
+            for err in errors:
+                print(f"  API error: {err.get('message', 'unknown')}")
+        except json.JSONDecodeError:
+            print(f"  HTTP {e.code}: {error_body[:500]}")
+        raise
+
+
+def get_zone_and_account(token):
+    """Look up zone ID and account ID for the domain."""
+    resp = cf_request("GET", f"/zones?name={DOMAIN}", token)
+    zones = resp.get("result", [])
+    if not zones:
+        print(f"ERROR: Zone '{DOMAIN}' not found. Check token permissions.")
+        sys.exit(1)
+    zone = zones[0]
+    return zone["id"], zone["account"]["id"]
+
+
+# ---------------------------------------------------------------------------
+# Worker deployment
+# ---------------------------------------------------------------------------
+
+def upload_worker(token, account_id):
+    """Upload the Worker script to Cloudflare."""
+    script = generate_worker_script()
+
+    # Workers API expects the script as application/javascript
+    resp = cf_request(
+        "PUT",
+        f"/accounts/{account_id}/workers/scripts/{WORKER_NAME}",
+        token,
+        content_type="application/javascript",
+        raw_body=script.encode("utf-8"),
+    )
+    print(f"  Worker '{WORKER_NAME}' deployed")
+    return resp
+
+
+def get_existing_routes(token, zone_id):
+    """Get all existing Worker routes for this zone."""
+    resp = cf_request("GET", f"/zones/{zone_id}/workers/routes", token)
+    return resp.get("result", [])
+
+
+def setup_routes(token, zone_id):
+    """Create Worker routes for all redirect URL patterns."""
+    existing = get_existing_routes(token, zone_id)
+    existing_patterns = {r["pattern"] for r in existing}
+
+    created = 0
+    skipped = 0
+    for pattern in ROUTE_PATTERNS:
+        if pattern in existing_patterns:
+            skipped += 1
+            continue
+        cf_request("POST", f"/zones/{zone_id}/workers/routes", token, {
+            "pattern": pattern,
+            "script": WORKER_NAME,
+        })
+        created += 1
+
+    print(f"  Routes: {created} created, {skipped} already existed")
+    return created
+
+
+def remove_worker(token, account_id, zone_id):
+    """Remove the Worker and all its routes."""
+    # Remove routes first
+    existing = get_existing_routes(token, zone_id)
+    removed = 0
+    for route in existing:
+        if route.get("script") == WORKER_NAME:
+            cf_request("DELETE", f"/zones/{zone_id}/workers/routes/{route['id']}", token)
+            removed += 1
+    print(f"  Removed {removed} routes")
+
+    # Remove worker script
+    try:
+        cf_request("DELETE", f"/accounts/{account_id}/workers/scripts/{WORKER_NAME}", token)
+        print(f"  Removed worker '{WORKER_NAME}'")
+    except urllib.error.HTTPError:
+        print(f"  Worker '{WORKER_NAME}' not found (already removed?)")
+
+
+# ---------------------------------------------------------------------------
+# Verify
+# ---------------------------------------------------------------------------
+
+def verify_redirects():
+    """Test a sample of redirects to confirm 301 status codes."""
+    test_urls = [
+        f"{BASE_URL}/etoro-popular-investor-program/",
+        f"{BASE_URL}/about/",
+        f"{BASE_URL}/articles/social-trading.html",
+        f"{BASE_URL}/es/preguntas-frecuentes/",
+        f"{BASE_URL}/faq.html",
+    ]
+
+    print(f"\n{'='*60}")
+    print("  VERIFYING REDIRECTS")
+    print(f"{'='*60}")
+
+    all_ok = True
+    for url in test_urls:
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            req.add_header("User-Agent", "STV-Redirect-Check/1.0")
+
+            class NoRedirect(urllib.request.HTTPRedirectHandler):
+                def redirect_request(self, req, fp, code, msg, headers, newurl):
+                    return None
+            opener = urllib.request.build_opener(NoRedirect)
+            try:
+                resp = opener.open(req)
+                code = resp.status
+                location = resp.headers.get("Location", "")
+            except urllib.error.HTTPError as e:
+                code = e.code
+                location = e.headers.get("Location", "")
+
+            short_url = url.replace(BASE_URL, "")
+            if code == 301:
+                short_loc = location.replace(BASE_URL, "")
+                print(f"  OK   {short_url} -> {short_loc} (301)")
+            else:
+                print(f"  FAIL {short_url} -> HTTP {code}")
+                all_ok = False
+        except Exception as e:
+            print(f"  ERROR {url}: {e}")
+            all_ok = False
+
+    if all_ok:
+        print(f"\n  All {len(test_urls)} test redirects returning 301!")
+    else:
+        print(f"\n  Some redirects not working yet. May need a few minutes to propagate.")
+
+    return all_ok
+
+
+def dry_run():
+    """Show what would be created without making any API calls."""
+    print(f"\n{'='*60}")
+    print("  DRY RUN — Worker Redirect Mapping")
+    print(f"{'='*60}")
+    print(f"\n  Worker name: {WORKER_NAME}")
+    print(f"  Route patterns: {len(ROUTE_PATTERNS)}")
+    print(f"  Total redirects: {len(REDIRECTS)}")
+    print(f"\n  {'Source':<55} {'Target'}")
+    print(f"  {'-'*55} {'-'*35}")
+    for source, target in REDIRECTS:
+        print(f"  {source:<55} {target}")
+    print(f"\n  All redirects will be HTTP 301 (permanent).")
+    print(f"\n  Route patterns:")
+    for p in ROUTE_PATTERNS:
+        print(f"    {p}")
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Set up Cloudflare Worker 301 redirects")
+    parser.add_argument("--verify", action="store_true", help="Verify redirects are working")
+    parser.add_argument("--dry-run", action="store_true", help="Show mapping without changes")
+    parser.add_argument("--remove", action="store_true", help="Remove worker and routes")
+    args = parser.parse_args()
+
+    if args.dry_run:
+        dry_run()
+        return
+
+    if args.verify:
+        verify_redirects()
+        return
+
+    token = load_token()
+
+    print("Setting up Cloudflare Worker redirects for socialtradingvlog.com")
+    print()
+
+    print("[1/4] Looking up zone and account IDs...")
+    zone_id, account_id = get_zone_and_account(token)
+    print(f"  Zone ID: {zone_id}")
+    print(f"  Account ID: {account_id}")
+
+    if args.remove:
+        print(f"\n[2/2] Removing worker and routes...")
+        remove_worker(token, account_id, zone_id)
+        print("\n  Done. Worker and routes removed.")
+        return
+
+    print(f"\n[2/4] Uploading worker script '{WORKER_NAME}'...")
+    upload_worker(token, account_id)
+
+    print(f"\n[3/4] Setting up {len(ROUTE_PATTERNS)} route patterns...")
+    setup_routes(token, zone_id)
+
+    print(f"\n[4/4] Waiting for deployment to propagate...")
+    time.sleep(3)
+
+    print(f"\n{'='*60}")
+    print("  SETUP COMPLETE")
+    print(f"{'='*60}")
+    print(f"  {len(REDIRECTS)} redirects via Cloudflare Worker '{WORKER_NAME}'")
+    print(f"  {len(ROUTE_PATTERNS)} route patterns active")
+    print(f"\n  Verify with:")
+    print(f"    python3 tools/setup_cloudflare_redirects.py --verify")
+    print(f"  Or manually:")
+    print(f"    curl -sI https://{DOMAIN}/etoro-popular-investor-program/ | head -5")
+    print(f"\n  To remove:")
+    print(f"    python3 tools/setup_cloudflare_redirects.py --remove")
+
+
+if __name__ == "__main__":
+    main()
