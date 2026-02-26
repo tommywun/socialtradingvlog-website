@@ -13,6 +13,7 @@
         "commission_pct": 0,
         "commission_flat": 0,
         "spread_pct": 0.0009,
+        "overnight_daily_pct": 0.0001,
         "fx_fee_pct": 0.005,
         "fx_free_currencies": ["USD"],
         "min_trade": 10,
@@ -23,22 +24,32 @@
       "etfs": {
         "commission_pct": 0,
         "spread_pct": 0.0009,
+        "overnight_daily_pct": 0.0001,
         "fx_fee_pct": 0.005,
         "fx_free_currencies": ["USD"],
         "note": "Same as stocks — 0% commission."
       },
       "crypto": {
         "spread_pct": 0.01,
+        "overnight_daily_pct": 0,
         "note": "1% spread on buy and sell. Real ownership (can transfer to eToro Money wallet)."
       },
       "forex": {
         "typical_spread_pips": 1.0,
+        "overnight_daily_pct": 0.00008,
         "pair": "EUR/USD",
         "note": "From 1 pip on EUR/USD. CFD-based."
       },
       "commodities": {
         "spread_pct": 0.0045,
+        "overnight_daily_pct": 0.00012,
         "note": "CFD only. Spreads vary by commodity. Gold ~45 pips."
+      },
+      "indices": {
+        "spread_pct": 0.004,
+        "overnight_daily_pct": 0.0001,
+        "cfd_only": true,
+        "note": "CFD only. Spreads vary by index."
       },
       "other_fees": {
         "withdrawal": "$5 (USD accounts), free for GBP/EUR",

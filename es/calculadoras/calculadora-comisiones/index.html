@@ -373,6 +373,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
     <p>Descubre exactamente lo que pagarás antes de operar. Introduce los detalles de tu operación y obtén un desglose completo de costes en segundos.</p>
   </div>
 
+  <div class="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin:20px 0;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Datos verificados por última vez:</strong> <span id="last-verified">Cargando...</span> — Comprobamos las tarifas de eToro semanalmente. Verifica siempre en la <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">página oficial de tarifas</a> antes de operar.</span>
+  </div>
+
   <!-- Calculator -->
   <div class="calc-card">
 
@@ -591,16 +596,47 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
 
 <script>
 // ─── Fee Data ───
-const FEE_DATA = {
-  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Acciones', hasOvernight: true },
-  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Criptomonedas', hasOvernight: false },
+const FALLBACK_FEES = {
+  stocks:      { spread_pct: 0.09, overnight_daily_pct: 0.01, commission: 0, label: 'Acciones', hasOvernight: true },
+  crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Cripto', hasOvernight: false },
   forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
-  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: 'Materias primas', hasOvernight: true },
-  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Índices', hasOvernight: true },
-  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
+  commodities: { spread_pct: 0.45, overnight_daily_pct: 0.012, commission: 0, label: 'Materias Primas', hasOvernight: true },
+  indices:     { spread_pct: 0.40, overnight_daily_pct: 0.01,  commission: 0, label: 'Índices', hasOvernight: true },
+  etfs:        { spread_pct: 0.09, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
 };
-const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
-const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+const ASSET_LABELS = { stocks: 'Acciones', crypto: 'Cripto', forex: 'Forex', commodities: 'Materias Primas', indices: 'Índices', etfs: 'ETFs' };
+let FEE_DATA = FALLBACK_FEES;
+let WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+let CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    const etoro = data.platforms.etoro;
+    document.getElementById('last-verified').textContent = data._last_updated || 'Desconocido';
+    FEE_DATA = {};
+    for (const [asset, label] of Object.entries(ASSET_LABELS)) {
+      const src = etoro[asset];
+      if (src) {
+        const spreadPct = src.spread_pct ? src.spread_pct * 100
+          : src.typical_spread_pips ? src.typical_spread_pips * 0.01 : 0;
+        const overnightPct = src.overnight_daily_pct ? src.overnight_daily_pct * 100 : 0;
+        FEE_DATA[asset] = { spread_pct: spreadPct, overnight_daily_pct: overnightPct, commission: 0, label: label, hasOvernight: overnightPct > 0 };
+      } else {
+        FEE_DATA[asset] = FALLBACK_FEES[asset];
+      }
+    }
+    if (etoro.stocks && etoro.stocks.fx_fee_pct) {
+      const fxPct = etoro.stocks.fx_fee_pct * 100;
+      CONVERSION = { USD: 0, GBP: fxPct, EUR: fxPct };
+    }
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = 'No disponible';
+  }
+  calculate();
+}
 
 let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
 
@@ -690,7 +726,7 @@ function toggleFaq(el) {
 }
 
 // Initial calculation
-calculate();
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

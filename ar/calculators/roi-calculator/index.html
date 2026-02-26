@@ -238,6 +238,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
     <p>شاهد كيف يمكن أن ينمو استثمارك عبر الزمن. أدخل مبلغك الأولي والعوائد المتوقعة والأفق الزمني لتوقع نمو محفظتك.</p>
   </div>
 
+  <div class="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin:20px 0;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>آخر تحقق من البيانات:</strong> <span id="last-verified">جاري التحميل...</span> — نتحقق من الرسوم أسبوعياً. تحقق دائماً من الموقع الرسمي للمنصة قبل التداول.</span>
+  </div>
+
   <div class="calc-card">
     <div class="input-section">
       <div class="input-label">الاستثمار الأولي</div>
@@ -477,6 +482,7 @@ function calc() {
 calc();
 </script>
 
+<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'غير معروف'}).catch(()=>{document.getElementById('last-verified').textContent='غير متاح'});</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

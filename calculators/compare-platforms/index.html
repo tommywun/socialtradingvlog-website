@@ -249,7 +249,7 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
     <p>Side-by-side comparison of the most popular trading platforms. Toggle platforms on and off to compare what matters to you.</p>
   </div>
 
-  <div id="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin-bottom:20px;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span><strong>Data verified:</strong> 21 February 2026 — All platform fees and features checked against official sources.</span></div>
+  <div id="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin-bottom:20px;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span><strong>Data verified:</strong> <span id="last-verified">Loading...</span> — All platform fees and features checked weekly against official sources.</span></div>
 
   <!-- Platform Toggles -->
   <div class="platform-toggles" id="platform-toggles"></div>
@@ -637,9 +637,78 @@ function render() {
   renderTable();
 }
 
-// Initial render
+// ─── Load live fee data from JSON ───
+function formatStockFee(p) {
+  if (!p.stocks) return null;
+  if (p.stocks.cfd_only) return { value: 'CFD spread only', rating: 'ok', note: 'No real ownership' };
+  if (p.stocks.commission_pct === 0) return { value: '0% commission', rating: 'good', note: p.stocks.note || 'Earns from spread' };
+  if (p.stocks.commission_type === 'per_share') return { value: '$' + p.stocks.rate_per_share + '/share', rating: 'good', note: p.stocks.note || '' };
+  if (p.stocks.commission_flat !== undefined && p.stocks.commission_flat > 0) return { value: '€' + p.stocks.commission_flat, rating: 'good', note: 'Per transaction' };
+  return null;
+}
+function formatCryptoFee(p) {
+  if (!p.crypto || p.crypto.available === false) return { value: 'N/A', rating: 'na', note: 'Not available' };
+  if (p.crypto.cfd_only) return { value: 'CFD only', rating: 'ok', note: 'No real crypto' };
+  if (p.crypto.spread_pct) {
+    const pct = p.crypto.spread_pct * 100;
+    return { value: (pct < 1 ? '~' + pct.toFixed(1) : pct.toFixed(0)) + '% spread', rating: pct <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatForexFee(p) {
+  if (!p.forex || p.forex.available === false) return { value: 'N/A', rating: 'na', note: 'Not available' };
+  if (p.forex.typical_spread_pips !== undefined) {
+    return { value: 'From ' + p.forex.typical_spread_pips + ' pip' + (p.forex.typical_spread_pips !== 1 ? 's' : ''), rating: p.forex.typical_spread_pips <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatWithdrawalFee(p) {
+  if (p.other_fees && p.other_fees.withdrawal) {
+    const w = p.other_fees.withdrawal;
+    const isFree = /free/i.test(w) && !/\$/.test(w);
+    return { value: isFree ? 'Free' : w.split(',')[0].trim(), rating: isFree ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatMinDeposit(p) {
+  if (p.other_fees && p.other_fees.min_deposit) {
+    const d = p.other_fees.min_deposit;
+    const val = parseInt(d.replace(/[^0-9]/g, '')) || 0;
+    return { value: d, rating: val <= 50 ? 'good' : 'ok' };
+  }
+  return null;
+}
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../data/platform-fees.json');
+    const data = await resp.json();
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    for (const plat of PLATFORMS) {
+      const jsonPlat = data.platforms[plat.id];
+      if (!jsonPlat) continue;
+      const stock = formatStockFee(jsonPlat);
+      if (stock) plat.data.stock_fee = stock;
+      const crypto = formatCryptoFee(jsonPlat);
+      if (crypto) plat.data.crypto_fee = crypto;
+      const forex = formatForexFee(jsonPlat);
+      if (forex) plat.data.forex_fee = forex;
+      const withdrawal = formatWithdrawalFee(jsonPlat);
+      if (withdrawal) plat.data.withdrawal_fee = withdrawal;
+      const minDeposit = formatMinDeposit(jsonPlat);
+      if (minDeposit) plat.data.min_deposit = minDeposit;
+    }
+    render();
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = 'Unable to load';
+  }
+}
+
+// Initial render with fallback data, then overlay live data
 render();
 renderCards();
+loadFeeData();
 </script>
 
   <script src="../../js/consent.js"></script>

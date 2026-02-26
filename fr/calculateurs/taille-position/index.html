@@ -382,6 +382,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
     <p>Calculez exactement combien allouer par trader copié sur eToro. Entrez les détails de votre portefeuille et obtenez un plan d'allocation personnalisé.</p>
   </div>
 
+  <div class="verified-banner" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 20px;margin:20px 0;font-size:13px;color:#2E7D32;display:flex;align-items:center;gap:8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Données vérifiées le :</strong> <span id="last-verified">Chargement...</span> — Nous vérifions les frais chaque semaine. Vérifiez toujours sur le site officiel de la plateforme avant de trader.</span>
+  </div>
+
   <!-- Calculator -->
   <div class="calc-card">
 
@@ -858,6 +863,7 @@ function toggleFaq(el) {
 calculate();
 </script>
 
+<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Inconnu'}).catch(()=>{document.getElementById('last-verified').textContent='Non disponible'});</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

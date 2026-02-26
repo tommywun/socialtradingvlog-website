@@ -580,17 +580,48 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
 </div>
 
 <script>
-// ─── Fee Data ───
-const FEE_DATA = {
-  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Stocks', hasOvernight: true },
+// ─── Fee Data — loaded dynamically from platform-fees.json ───
+const FALLBACK_FEES = {
+  stocks:      { spread_pct: 0.09, overnight_daily_pct: 0.01, commission: 0, label: 'Stocks', hasOvernight: true },
   crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Crypto', hasOvernight: false },
   forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
-  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: 'Commodities', hasOvernight: true },
-  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Indices', hasOvernight: true },
-  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
+  commodities: { spread_pct: 0.45, overnight_daily_pct: 0.012, commission: 0, label: 'Commodities', hasOvernight: true },
+  indices:     { spread_pct: 0.40, overnight_daily_pct: 0.01,  commission: 0, label: 'Indices', hasOvernight: true },
+  etfs:        { spread_pct: 0.09, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
 };
-const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
-const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
+const ASSET_LABELS = { stocks: 'Stocks', crypto: 'Crypto', forex: 'Forex', commodities: 'Commodities', indices: 'Indices', etfs: 'ETFs' };
+let FEE_DATA = FALLBACK_FEES;
+let WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+let CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../data/platform-fees.json');
+    const data = await resp.json();
+    const etoro = data.platforms.etoro;
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    FEE_DATA = {};
+    for (const [asset, label] of Object.entries(ASSET_LABELS)) {
+      const src = etoro[asset];
+      if (src) {
+        const spreadPct = src.spread_pct ? src.spread_pct * 100
+          : src.typical_spread_pips ? src.typical_spread_pips * 0.01 : 0;
+        const overnightPct = src.overnight_daily_pct ? src.overnight_daily_pct * 100 : 0;
+        FEE_DATA[asset] = { spread_pct: spreadPct, overnight_daily_pct: overnightPct, commission: 0, label: label, hasOvernight: overnightPct > 0 };
+      } else {
+        FEE_DATA[asset] = FALLBACK_FEES[asset];
+      }
+    }
+    if (etoro.stocks && etoro.stocks.fx_fee_pct) {
+      const fxPct = etoro.stocks.fx_fee_pct * 100;
+      CONVERSION = { USD: 0, GBP: fxPct, EUR: fxPct };
+    }
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = 'Unable to load';
+  }
+  calculate();
+}
 
 let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
 
@@ -679,11 +710,9 @@ function toggleFaq(el) {
   el.nextElementSibling.classList.toggle('open');
 }
 
-// Initial calculation
-calculate();
+// Load live fee data then calculate
+loadFeeData();
 </script>
-
-  <script>fetch('../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Unknown'}).catch(()=>{document.getElementById('last-verified').textContent='Unable to load'});</script>
   <script src="../../js/consent.js"></script>
   <script src="../../js/analytics.js"></script>
 </body>
