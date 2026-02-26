@@ -59,8 +59,8 @@ def main():
         print("ERROR: data/platform-fees.json not found. Run scrape_platform_fees.py first.")
         sys.exit(1)
 
-    # Check if the fee data has actually changed since last commit
-    diff = run_git("diff", "--name-only", "data/platform-fees.json")
+    # Check if any fee data files have changed since last commit
+    diff = run_git("diff", "--name-only", "data/platform-fees.json", "data/platform-verified.json")
     if not diff.stdout.strip():
         print("Fee data unchanged — nothing to update.")
         return
@@ -73,11 +73,11 @@ def main():
 
     if args.dry_run:
         print("Dry run — would commit and push.")
-        print(f"  Changed lines: {len(diff.stdout.strip().splitlines())}")
+        print(f"  Changed files: {diff.stdout.strip()}")
         return
 
-    # Stage the file
-    stage = run_git("add", "data/platform-fees.json")
+    # Stage the files
+    stage = run_git("add", "data/platform-fees.json", "data/platform-verified.json")
     if stage.returncode != 0:
         print(f"ERROR: git add failed: {stage.stderr}")
         sys.exit(1)
