@@ -1,0 +1,213 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-02-21
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 14 Feb 2026 → 21 Feb 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           88
+  Users:              83
+  Page views:         108
+  Avg session:        0m 33s
+  Bounce rate:        93.2%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                      28     29   0m 12s
+  /copy-trading.html                                      5      4   0m 26s
+  /videos.html                                            5      4   2m 14s
+  /social-trading.html                                    4      4   0m 30s
+  /about.html                                             3      2    1m 7s
+  /copy-trading-returns.html                              3      3    0m 0s
+  /etoro-review/                                          3      3    0m 0s
+  /how-to-choose-copy-traders-etoro/                      3      3    0m 7s
+  /about                                                  2      1   1m 18s
+  /best-traders-to-copy-etoro/                            2      2    0m 0s
+  /calculators/                                           2      2   1m 32s
+  /etoro-copy-trading-fees/                               2      2    0m 0s
+  /etoro-fees/                                            2      2    0m 0s
+  /etoro-minimum-deposit/                                 2      2    0m 0s
+  /etoro-risk-score-explained/                            2      2    0m 0s
+  /etoro-spread-fees/                                     2      2    0m 0s
+  /etoro-tax-uk/                                          2      2    0m 0s
+  /etoro-vs-interactive-brokers/                          2      2    0m 0s
+  /etoro-vs-plus500/                                      2      2    0m 0s
+  /etoro-vs-trading-212/                                  2      2    0m 0s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                 79         77
+  Unassigned                              7          6
+  Organic Search                          3          2
+  Referral                                3          3
+  Organic Video                           2          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                         79
+  (not set)                                         7
+  google                                            3
+  youtube.com                                       2
+  app.sedric.ai                                     1
+  recipebridge.com                                  1
+  webnocular.com                                    1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Singapore                              33         33
+  China                                  26         26
+  United States                           8          8
+  Malta                                   7          6
+  (not set)                               6          6
+  India                                   2          1
+  Netherlands                             2          1
+  New Zealand                             2          1
+  Romania                                 2          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                      75         71
+  mobile                       13         12
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 22 Jan 2026 → 21 Feb 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           88
+  Users:              83
+  Page views:         108
+  Avg session:        0m 33s
+  Bounce rate:        93.2%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                      28     29   0m 12s
+  /copy-trading.html                                      5      4   0m 26s
+  /videos.html                                            5      4   2m 14s
+  /social-trading.html                                    4      4   0m 30s
+  /about.html                                             3      2    1m 7s
+  /copy-trading-returns.html                              3      3    0m 0s
+  /etoro-review/                                          3      3    0m 0s
+  /how-to-choose-copy-traders-etoro/                      3      3    0m 7s
+  /about                                                  2      1   1m 18s
+  /best-traders-to-copy-etoro/                            2      2    0m 0s
+  /calculators/                                           2      2   1m 32s
+  /etoro-copy-trading-fees/                               2      2    0m 0s
+  /etoro-fees/                                            2      2    0m 0s
+  /etoro-minimum-deposit/                                 2      2    0m 0s
+  /etoro-risk-score-explained/                            2      2    0m 0s
+  /etoro-spread-fees/                                     2      2    0m 0s
+  /etoro-tax-uk/                                          2      2    0m 0s
+  /etoro-vs-interactive-brokers/                          2      2    0m 0s
+  /etoro-vs-plus500/                                      2      2    0m 0s
+  /etoro-vs-trading-212/                                  2      2    0m 0s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                 79         77
+  Unassigned                              7          6
+  Organic Search                          3          2
+  Referral                                3          3
+  Organic Video                           2          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                         79
+  (not set)                                         7
+  google                                            3
+  youtube.com                                       2
+  app.sedric.ai                                     1
+  recipebridge.com                                  1
+  webnocular.com                                    1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Singapore                              33         33
+  China                                  26         26
+  United States                           8          8
+  Malta                                   7          6
+  (not set)                               6          6
+  India                                   2          1
+  Netherlands                             2          1
+  New Zealand                             2          1
+  Romania                                 2          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                      75         71
+  mobile                       13         12
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  35 completed
+  Video pages:     1 generated
+  Article pages:   4 generated
+
+  Last pipeline activity:
+    [07:17:27] [33/333] n3ulZJxYDxA —————————————————
+    [07:17:27]   transcription already exists
+    [07:17:27]   translating to 9 languages: es de fr it pt ar pl nl ko
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-02-21.txt
+============================================================
