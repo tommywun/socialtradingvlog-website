@@ -1234,6 +1234,7 @@ footer {
   color: var(--muted);
   line-height: 1.75;
   font-style: italic;
+  clear: both;
 }
 .toms-note::before {
   content: "Tom:";

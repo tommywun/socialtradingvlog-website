@@ -301,16 +301,12 @@ def get_automation_status():
             pipeline_status["running"] = True
         if finishes:
             pipeline_status["last_run"] = finishes[-1].group(1)
-        # Get progress from last completion line
-        m_list = list(_re.finditer(r'Completed:\s+(\d+)/(\d+)', text))
-        if m_list:
-            m = m_list[-1]
-            pipeline_status["progress"] = f"{m.group(1)}/{m.group(2)} videos"
-
-    # Count transcription/translation stats
+    # Count transcription/translation stats from actual files on disk
     trans_dir = PROJECT_DIR / "transcriptions"
     en_count = len(list(trans_dir.glob("*/subtitles.en.srt"))) if trans_dir.exists() else 0
     all_srt = len(list(trans_dir.glob("*/subtitles.*.srt"))) if trans_dir.exists() else 0
+    total_folders = len([d for d in trans_dir.iterdir() if d.is_dir()]) if trans_dir.exists() else 0
+    pipeline_status["progress"] = f"{en_count}/{total_folders} videos"
 
     return {
         "pipeline": pipeline_status,
@@ -1028,29 +1024,19 @@ def get_system_health():
             else:
                 health.append({"name": name, "status": "error", "detail": f"Missing", "fix": guide.get("steps", []), "auto_fix": guide.get("auto_fix")})
 
-        # Check pipeline log for recent errors
-        pipeline_log = PROJECT_DIR / "transcriptions" / "pipeline.log"
-        if pipeline_log.exists():
-            log_text = pipeline_log.read_text()
-            # Find the LAST completion line (most recent run)
-            matches = list(_re.finditer(r'Completed:\s+(\d+)/(\d+)\s*\|\s*Errors:\s+(\d+)', log_text))
-            if matches:
-                m = matches[-1]
-                completed, total, errors = int(m.group(1)), int(m.group(2)), int(m.group(3))
-                if errors > 0 and completed < total:
-                    health.append({"name": "Transcription Pipeline", "status": "error", "detail": f"{errors} failures \u2014 {completed}/{total} complete", "fix": fix_guides.get("Transcription Pipeline", {}).get("steps", []), "auto_fix": "retry_pipeline"})
-                else:
-                    health.append({"name": "Transcription Pipeline", "status": "ok", "detail": f"{completed}/{total} complete"})
+        # Check pipeline status from actual files on disk
+        trans_dir = PROJECT_DIR / "transcriptions"
+        if trans_dir.exists():
+            en_count = len(list(trans_dir.glob("*/subtitles.en.srt")))
+            total_folders = len([d for d in trans_dir.iterdir() if d.is_dir()])
+            if en_count >= total_folders and total_folders > 0:
+                health.append({"name": "Transcription Pipeline", "status": "ok", "detail": f"{en_count}/{total_folders} complete"})
+            elif en_count > 0:
+                health.append({"name": "Transcription Pipeline", "status": "ok", "detail": f"{en_count}/{total_folders} complete ({total_folders - en_count} remaining)"})
             else:
-                # Pipeline might be running (no completion line yet)
-                running_match = _re.findall(r'\[(\d+)/(\d+)\]', log_text)
-                if running_match:
-                    last = running_match[-1]
-                    health.append({"name": "Transcription Pipeline", "status": "warning", "detail": f"Running... ({last[0]}/{last[1]})", "fix": ["Pipeline is currently running", "Check back in a few minutes for completion status"]})
-                else:
-                    health.append({"name": "Transcription Pipeline", "status": "ok", "detail": "Log exists"})
+                health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No transcriptions yet", "fix": ["Run the transcription pipeline on the VPS"]})
         else:
-            health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No pipeline log found", "fix": ["The transcription pipeline hasn\u2019t been run yet", "Ask Claude to run the transcription pipeline on the VPS"]})
+            health.append({"name": "Transcription Pipeline", "status": "warning", "detail": "No transcriptions directory", "fix": ["The transcription pipeline hasn\u2019t been run yet"]})
 
         # Check for status overrides (set by Claude when situations change)
         overrides_file = PROJECT_DIR / "data" / "status-overrides.json"
@@ -2801,7 +2787,7 @@ tbody tr.clickable { cursor: pointer; }
     <button class="header-tab" data-section="review">Review</button>
   </nav>
   <div class="header-actions">
-    <button class="header-btn" onclick="loadAll()">Refresh</button>
+    <button class="header-btn" onclick="_manualRefresh=true;loadAll()">Refresh</button>
     <button class="header-btn" id="faceid-setup-btn" style="display:none;background:var(--info);color:white;" onclick="registerPasskey()">Set up Face ID</button>
     <button class="header-btn" id="trust-device-btn" style="display:none;" onclick="trustDevice()">Trust Device</button>
     <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Toggle dark mode">&#9789;</button>
@@ -2877,10 +2863,10 @@ tbody tr.clickable { cursor: pointer; }
 
   <!-- SEO -->
   <div id="seo" class="section">
-    <div class="section-header"><h2>SEO & Link Building</h2><p>Opportunities and competitive analysis</p></div>
+    <div class="section-header"><h2>SEO & Links</h2><p>Automated outreach progress and link tracking</p></div>
     <div class="stats-row" id="opps-stats"></div>
-    <div id="opps-sections"></div>
-    <div class="two-col" style="margin-top:16px">
+    <div class="card" style="margin-top:8px"><div class="card-header"><h3>Outreach Emails</h3></div><div class="card-body"><div id="seo-outreach">Loading...</div></div></div>
+    <div class="two-col" style="margin-top:8px">
       <div class="card"><div class="card-header"><h3>Backlinks</h3><button class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 12px" onclick="openAddBacklink()">+ Add</button></div><div class="card-body"><div id="seo-backlinks">No backlinks tracked yet</div></div></div>
       <div class="card"><div class="card-header"><h3>Content Tracker</h3><button class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 12px" onclick="openAddContent()">+ Add</button></div><div class="card-body"><div id="seo-content">Loading...</div></div></div>
     </div>
@@ -3237,8 +3223,6 @@ function showLogin() {
     fetch('/api/webauthn-has-credentials').then(r=>r.json()).then(d=>{
       if(d.has_credentials){
         document.getElementById('faceid-login-btn').style.display='block';
-        // Auto-trigger Face ID
-        loginWithPasskey();
       }
     }).catch(()=>{});
     document.body.appendChild(loginEl);
@@ -3256,20 +3240,19 @@ async function doLogin() {
       document.querySelector('.header').style.display = '';
       document.querySelector('.container').style.display = '';
       loadAll();
-      // Offer Face ID setup or device trust
-      setTimeout(async () => {
-        const hasWebAuthn = await checkWebAuthnSupport();
-        const hasCreds = await fetch('/api/webauthn-has-credentials').then(r=>r.json()).catch(()=>({has_credentials:false}));
-        if (hasWebAuthn && !hasCreds.has_credentials) {
-          if (confirm('Set up Face ID?\n\nYou can sign in with Face ID instead of a password.')) {
-            await registerPasskey();
-          }
-        } else if (!localStorage.getItem('stv_device_token')) {
-          if (confirm('Trust this device?\n\nYou will not need to enter a password on this device again.')) {
-            trustDevice();
-          }
+      // Show Face ID / Trust Device buttons if applicable
+      checkWebAuthnSupport().then(supported => {
+        const faceidBtn = document.getElementById('faceid-setup-btn');
+        if (faceidBtn && supported) {
+          fetch('/api/webauthn-has-credentials').then(r=>r.json()).then(d=>{
+            if (!d.has_credentials) faceidBtn.style.display = '';
+          }).catch(()=>{});
         }
-      }, 500);
+        const trustBtn = document.getElementById('trust-device-btn');
+        if (trustBtn && !localStorage.getItem('stv_device_token')) {
+          trustBtn.style.display = '';
+        }
+      });
     } else {
       document.getElementById('login-error').style.display = 'block';
     }
@@ -3762,7 +3745,7 @@ function cycleContentStatus(idx) {
 }
 
 async function loadSEO() {
-  const [parsed, broken, backlinks, content] = await Promise.all([api('/opportunities-parsed'), api('/broken-links'), api('/backlinks'), api('/content-tracker')]);
+  const [outreach, broken, backlinks, content, drafts] = await Promise.all([api('/outreach'), api('/broken-links'), api('/backlinks'), api('/content-tracker'), api('/drafts')]);
   document.getElementById('seo-broken-links').textContent = broken.raw;
 
   // Backlinks
@@ -3785,102 +3768,30 @@ async function loadSEO() {
       content.map((c, i) => `<div class="content-item"><span class="content-status ${c.status}" onclick="cycleContentStatus(${i})" title="Click to advance status">${c.status}</span><span class="content-title">${escapeHtml(c.title)}</span><span class="content-type">${c.type}</span></div>`).join('');
   }
 
-  const remaining = parsed.total - parsed.total_done;
+  // Outreach stats
+  const emails = outreach.sent || [];
+  const replied = emails.filter(e => e.reply_received).length;
+  const pending = emails.length - replied;
+  const draftCount = Array.isArray(drafts) ? drafts.filter(d => !d._sent).length : 0;
   document.getElementById('opps-stats').innerHTML = `
-    <div class="stat-card"><div class="label">Opportunities Found</div><div class="value blue">${parsed.total}</div></div>
-    <div class="stat-card"><div class="label">Completed</div><div class="value green">${parsed.total_done}</div></div>
-    <div class="stat-card"><div class="label">Remaining</div><div class="value orange">${remaining}</div></div>
-    <div class="stat-card"><div class="label">Last Scan</div><div class="value" style="font-size:14px;font-weight:500">${parsed.date || 'N/A'}</div></div>
+    <div class="stat-card"><div class="label">Emails Sent</div><div class="value blue">${emails.length}</div></div>
+    <div class="stat-card"><div class="label">Replies</div><div class="value green">${replied}</div></div>
+    <div class="stat-card"><div class="label">Awaiting Reply</div><div class="value orange">${pending}</div></div>
+    <div class="stat-card"><div class="label">Drafts Ready</div><div class="value">${draftCount}</div></div>
   `;
 
-  const colors = {
-    'Reddit': '#FF4953',
-    'Stack Exchange': '#008FF8',
-    'Hacker News': '#FF642D',
-    'Manual Checks': '#8B5CF6',
-    'Engagement Rules': '#009F81',
-  };
-  function getColor(name) {
-    for (const [key, c] of Object.entries(colors)) { if (name.includes(key)) return c; }
-    return '#6C6E79';
+  // Outreach email list
+  if (emails.length === 0) {
+    document.getElementById('seo-outreach').innerHTML = '<div class="chart-empty">No outreach emails sent yet</div>';
+  } else {
+    document.getElementById('seo-outreach').innerHTML = '<table class="mini-table"><tr><th>To</th><th>Subject</th><th>Sent</th><th>Reply</th></tr>' +
+      emails.map(e => {
+        const domain = e.to.split('@')[1] || e.to;
+        const date = e.sent_at ? e.sent_at.split('T')[0] : '';
+        const status = e.reply_received ? '<span style="color:var(--green)">Yes</span>' : '<span style="color:var(--text-tertiary)">Pending</span>';
+        return '<tr><td>' + escapeHtml(domain) + '</td><td>' + escapeHtml(e.subject || '').substring(0, 50) + '</td><td>' + date + '</td><td>' + status + '</td></tr>';
+      }).join('') + '</table>';
   }
-
-  let html = '';
-  for (const sec of parsed.sections) {
-    const color = getColor(sec.name);
-
-    if (sec.type === 'opportunities' || sec.type === 'empty') {
-      const done = sec.done_count || 0;
-      const total = sec.count || 0;
-      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-
-      html += `<div class="opps-section${total === 0 ? ' collapsed' : ''}" style="border-left-color:${color}">
-        <div class="opps-section-header" onclick="this.parentElement.classList.toggle('collapsed')">
-          <h3><span class="source-dot" style="background:${color}"></span>${escapeHtml(sec.name)}</h3>
-          <div class="opps-count-badge">
-            ${total > 0 ? `<span class="done-count">${done}</span><span class="total-count">/ ${total}</span>
-            <div class="opps-progress"><div class="opps-progress-fill" style="width:${pct}%;background:${color}"></div></div>` : '<span class="total-count">No items</span>'}
-            <span class="opps-chevron">&#9660;</span>
-          </div>
-        </div>
-        <div class="opps-items">`;
-
-      for (const item of sec.items) {
-        html += `<div class="opp-item ${item.done ? 'done' : ''}">
-          <div class="opp-check ${item.done ? 'checked' : ''}" onclick="toggleOppDone('${item.id}', this)" title="Mark as done">${item.done ? '&#10003;' : ''}</div>
-          <div class="opp-content">
-            <div class="opp-title">${escapeHtml(item.title)}</div>
-            <div class="opp-meta">
-              ${item.subreddit ? `<span class="tag tag-red">${escapeHtml(item.subreddit)}</span>` : ''}
-              ${item.comments ? `<span class="tag tag-gray">${item.comments} comments</span>` : ''}
-            </div>
-            ${item.snippet ? `<div class="opp-snippet">${escapeHtml(item.snippet)}</div>` : ''}
-            ${item.angle ? `<div class="opp-angle">${escapeHtml(item.angle)}</div>` : ''}
-          </div>
-          ${item.link ? `<a class="opp-link-btn" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">Open &rarr;</a>` : ''}
-        </div>`;
-      }
-      html += '</div></div>';
-    }
-    else if (sec.type === 'manual') {
-      html += `<div class="opps-section" style="border-left-color:${color}">
-        <div class="opps-section-header" onclick="this.parentElement.classList.toggle('collapsed')">
-          <h3><span class="source-dot" style="background:${color}"></span>${escapeHtml(sec.name)}</h3>
-          <div class="opps-count-badge">
-            <span class="total-count">${sec.count} platforms</span>
-            <span class="opps-chevron">&#9660;</span>
-          </div>
-        </div>
-        <div class="opps-items">`;
-      for (const sub of sec.items) {
-        html += `<div class="manual-sub">
-          <h4>${escapeHtml(sub.name)}</h4>
-          ${sub.note ? `<div class="note">${escapeHtml(sub.note)}</div>` : ''}
-          <div class="manual-links">
-            ${sub.links.map(l => `<a class="manual-link" href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`).join('')}
-          </div>
-        </div>`;
-      }
-      html += '</div></div>';
-    }
-    else if (sec.type === 'rules') {
-      html += `<div class="opps-section" style="border-left-color:${color}">
-        <div class="opps-section-header" onclick="this.parentElement.classList.toggle('collapsed')">
-          <h3><span class="source-dot" style="background:${color}"></span>${escapeHtml(sec.name)}</h3>
-          <div class="opps-count-badge">
-            <span class="total-count">${sec.count} rules</span>
-            <span class="opps-chevron">&#9660;</span>
-          </div>
-        </div>
-        <div class="opps-items">
-          <ol class="rules-list">
-            ${sec.items.map((r, i) => `<li data-num="${i+1}.">${escapeHtml(r.text)}</li>`).join('')}
-          </ol>
-        </div>
-      </div>`;
-    }
-  }
-  document.getElementById('opps-sections').innerHTML = html;
 }
 
 // ─── Reply Viewer ───
@@ -4476,8 +4387,17 @@ if ('serviceWorker' in navigator) {
 }
 
 // ─── Load All + Auto-Refresh ───
+let _manualRefresh = false;
 async function loadAll() {
-  await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA(), loadReview(), loadRoadmap()]);
+  const btn = document.querySelector('.header-actions .header-btn');
+  if (_manualRefresh && btn) { btn.textContent = 'Refreshing...'; btn.disabled = true; }
+  try {
+    await Promise.all([loadOverview(), loadTraffic(), loadOutreach(), loadSEO(), loadGrowth(), loadAutomation(), loadPerformance(), loadActivityFeed(), loadOverviewCTA(), loadReview(), loadRoadmap()]);
+    if (_manualRefresh) showToast('Dashboard refreshed');
+  } finally {
+    if (btn) { btn.textContent = 'Refresh'; btn.disabled = false; }
+    _manualRefresh = false;
+  }
 }
 loadAll();
 
@@ -4840,7 +4760,9 @@ async function registerPasskey() {
       showToast(result.error || 'Registration failed', true);
     }
   } catch(e) {
-    if (e.name !== 'NotAllowedError') {
+    if (e.name === 'NotAllowedError') {
+      showToast('Face ID was cancelled or not available', true);
+    } else {
       showToast('Face ID setup failed: ' + e.message, true);
     }
   }
@@ -4887,7 +4809,9 @@ async function loginWithPasskey() {
       showToast(loginData.error || 'Face ID login failed', true);
     }
   } catch(e) {
-    if (e.name !== 'NotAllowedError') {
+    if (e.name === 'NotAllowedError') {
+      showToast('Face ID was cancelled — use password instead', true);
+    } else {
       showToast('Face ID login failed: ' + e.message, true);
     }
   }
@@ -4949,6 +4873,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def send_html(self, html):
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
         self.end_headers()
         self.wfile.write(html.encode())
 
@@ -4981,12 +4906,15 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/javascript")
             self.send_header("Cache-Control", "no-cache")
             self.end_headers()
-            sw = """const CACHE = 'stv-v1';
+            sw = """// Self-destructing: clears caches, unregisters, reloads page
 self.addEventListener('install', e => { self.skipWaiting(); });
-self.addEventListener('activate', e => { e.waitUntil(clients.claim()); });
-self.addEventListener('fetch', e => {
-  if (e.request.url.includes('/api/')) return;
-  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(ns => Promise.all(ns.map(n => caches.delete(n))))
+    .then(() => self.registration.unregister())
+    .then(() => self.clients.matchAll())
+    .then(cls => cls.forEach(c => c.navigate(c.url)))
+  );
 });"""
             self.wfile.write(sw.encode())
             return
