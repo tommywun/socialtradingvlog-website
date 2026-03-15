@@ -10,8 +10,17 @@
 <meta name="description" content="Calculateur gratuit de taille de position pour le copy trading. Découvrez combien investir par trader sur eToro en fonction de la taille de votre portefeuille, de votre tolérance au risque et de vos objectifs de diversification.">
 <meta name="keywords" content="taille de position copy trading, combien investir par trader etoro, allocation copy trading eToro, dimensionnement position copy trading, allocation portefeuille eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
 <link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="Calculateur de taille de position eToro — Combien allouer par trader copié">
 <meta property="og:description" content="Calculateur gratuit de taille de position pour le copy trading. Découvrez combien investir par trader sur eToro.">
 <meta property="og:type" content="website">
@@ -495,11 +504,14 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Avis de non-responsabilité</strong>
       Ce calculateur fournit des <strong style="display:inline;font-size:inherit;">indications générales uniquement</strong> et est destiné à des fins d'information et d'éducation. Il ne doit pas être utilisé pour prendre des décisions financières.
       <ul style="margin:8px 0 0 18px;">
+        <li>Vérifiez toujours les détails directement sur le site officiel de chaque plateforme avant de prendre toute décision financière.</li>
         <li>Les suggestions d'allocation reposent sur des principes généraux de diversification et peuvent ne pas convenir à votre situation personnelle, vos objectifs financiers ou votre appétit pour le risque.</li>
         <li>Les performances passées des traders copiés ne sont pas indicatives des résultats futurs. Effectuez toujours votre propre analyse avant de copier un trader.</li>
         <li>Cet outil ne constitue pas un conseil financier, d'investissement ou fiscal. SocialTradingVlog et son auteur ne sont pas des conseillers financiers et déclinent toute responsabilité pour toute perte ou dommage résultant de l'utilisation de ce calculateur.</li>
         <li>eToro est une plateforme d'investissement multi-actifs. La valeur de vos investissements peut augmenter ou diminuer. Votre capital est à risque.</li>
-      </ul>
+                      <li>Certains liens sur cette page sont des liens d'affiliation. Si vous vous inscrivez via ces liens, nous pouvons percevoir une commission sans frais supplémentaires pour vous. Cela n'affecte pas nos évaluations ou appréciations.</li>
+<li>Les CFD sont des instruments complexes et présentent un risque élevé de perte rapide d'argent en raison de l'effet de levier. Votre capital est à risque.</li>
+        </ul>
     </div>
 
   </div>
@@ -863,7 +875,26 @@ function toggleFaq(el) {
 calculate();
 </script>
 
-<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Inconnu'}).catch(()=>{document.getElementById('last-verified').textContent='Non disponible'});</script>
+<script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // Vérifier la fraîcheur des données
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Les données sont peut-être obsolètes</strong> (dernière mise à jour il y a ' + daysSince + ' jours). Veuillez vérifier les frais directement sur le site de chaque plateforme.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Non disponible'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

@@ -9,8 +9,17 @@
 <title>Calcolatrice Copy Trading ROI 2026 — Proietta i tuoi rendimenti | SocialTradingVlog</title>
 <meta name="description" content="Calcolatrice ROI per copy trading gratuita. Scopri come il tuo investimento potrebbe crescere con rendimenti composti in un periodo da 1 a 10 anni. Basato su dati reali di copy trading.">
 <link rel="canonical" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
 <link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Calcolatrice Copy Trading ROI 2026 — Proietta i tuoi rendimenti">
 <meta property="og:description" content="Calcolatrice ROI per copy trading gratuita. Scopri come il tuo investimento potrebbe crescere nel tempo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -373,6 +382,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <strong>Importante:</strong> Questa calcolatrice mostra solo proiezioni ipotetiche. Le performance passate non garantiscono risultati futuri. Il copy trading non equivale a un consiglio di investimento. Il valore dei tuoi investimenti può aumentare o diminuire. Il tuo capitale è a rischio. Il 50% dei conti degli investitori al dettaglio perde denaro quando scambia CFDs con eToro.
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dati verificati:</strong> <span id="last-verified">Caricamento...</span> — Controlliamo le commissioni settimanalmente. Verifica sempre su <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">il sito di eToro</a> prima di operare.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Precisione dei dati e Esonero di responsabilità</strong>
       Questa calcolatrice è solo a scopo informativo generale ed educativo. Non si dovrebbe fare affidamento su di esso per prendere decisioni di investimento.
@@ -555,6 +569,28 @@ function calc() {
 }
 
 calc();
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    document.getElementById('last-verified').textContent = data._last_updated || 'Sconosciuto';
+    var lastUpdated = new Date(data._last_updated);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 I dati potrebbero essere obsoleti</strong> (ultimo aggiornamento ' + daysSince + ' giorni fa). Verifica le commissioni direttamente sul sito di ciascuna piattaforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+  } catch(e) { console.warn('Fee data fetch failed:', e); }
+}
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

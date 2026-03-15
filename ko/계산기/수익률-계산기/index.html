@@ -9,7 +9,16 @@
 <title>카피 트레이딩 수익률 계산기 2026 — 수익 예측 | SocialTradingVlog</title>
 <meta name="description" content="무료 카피 트레이딩 수익률 계산기. 1~10년간 복리 수익으로 투자금이 어떻게 성장하는지 확인하세요. 실제 카피 트레이딩 데이터 기반.">
 <link rel="canonical" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
 <link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="카피 트레이딩 수익률 계산기 2026 — 수익 예측">
 <meta property="og:description" content="무료 카피 트레이딩 수익률 계산기. 시간에 따른 투자 성장을 확인하세요.">
@@ -365,6 +374,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <strong>중요:</strong> 이 계산기는 가상의 예측만 보여줍니다. 과거 성과가 미래 결과를 보장하지 않습니다. 카피 트레이딩은 투자 조언에 해당하지 않습니다. 투자 가치는 오르거나 내릴 수 있습니다. 귀하의 자본이 위험에 처해 있습니다. eToro로 CFD를 거래할 때 개인 투자자 계정의 50%가 손실을 봅니다.
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>데이터 확인일:</strong> <span id="last-verified">로딩 중...</span> — 매주 수수료를 확인합니다. 거래 전 항상 <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">eToro 공식 사이트</a>에서 확인하세요.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>데이터 정확성 및 책임 면책</strong>
       이 계산기는 일반적인 정보 제공 및 교육 목적으로만 제공됩니다. 투자 결정을 내리는 데 이 자료에 의존해서는 안 됩니다.
@@ -547,6 +561,26 @@ function calc() {
 calc();
 </script>
 
+  <script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || '알 수 없음';
+    // Check data freshness
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 데이터가 오래되었을 수 있습니다</strong> (마지막 업데이트 ' + daysSince + '일 전). 각 플랫폼 웹사이트에서 직접 수수료를 확인하세요.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='로드 실패'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

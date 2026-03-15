@@ -270,7 +270,8 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <li>"Commission-free" doesn't mean "cost-free" — there are always some costs in trading, even if they're not explicit fees.</li>
       <li>CFD trading means you don't own the underlying asset. CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. Your capital is at risk.</li>
       <li>This tool does not constitute financial advice. SocialTradingVlog accepts no liability for any loss arising from use of this tool.</li>
-    </ul>
+          <li>Some links on this page are affiliate links. If you sign up through these links, we may earn a commission at no extra cost to you. This does not affect our ratings or assessments.</li>
+      </ul>
   </div>
 
   <!-- FAQ -->
@@ -328,6 +329,21 @@ async function loadFeeData() {
     const resp = await fetch('../../data/platform-fees.json');
     PLATFORM_DATA = await resp.json();
     document.getElementById('last-verified').textContent = PLATFORM_DATA._last_updated || 'Unknown';
+    // Check data freshness
+    var lastUpdated = new Date(PLATFORM_DATA._last_updated || PLATFORM_DATA['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = PLATFORM_DATA._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Data may be outdated</strong> (last updated ' + daysSince + ' days ago). Please verify fees directly on each platform\'s website.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
     // Auto-calculate on load
     calculateFees();
     renderSavings();

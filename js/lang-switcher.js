@@ -5,7 +5,11 @@
     de: 'Deutsch',
     fr: 'Français',
     pt: 'Português',
-    ar: 'العربية'
+    ar: 'العربية',
+    it: 'Italiano',
+    nl: 'Nederlands',
+    pl: 'Polski',
+    ko: '한국어'
   };
 
   // Read hreflang tags from <head>

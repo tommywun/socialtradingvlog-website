@@ -549,6 +549,77 @@ def check_pipeline_progress():
         log(f"Pipeline progress check failed: {e}", "ERROR")
 
 
+def check_fee_data_freshness(dry_run):
+    """Check if platform fee data and scraper heartbeat are stale."""
+    stale_days = 10
+    all_fresh = True
+
+    # Check platform-fees.json freshness
+    fees_file = DATA_DIR / "platform-fees.json"
+    if fees_file.exists():
+        try:
+            fees = json.loads(fees_file.read_text())
+            last_updated = fees.get("_last_updated")
+            if last_updated:
+                updated_date = datetime.strptime(last_updated, "%Y-%m-%d")
+                age_days = (datetime.now() - updated_date).days
+                log(f"Fee data age: {age_days} days (last updated {last_updated})")
+                if age_days > stale_days:
+                    all_fresh = False
+                    log(f"Fee data is {age_days} days old — stale!", "WARN")
+                    if not dry_run:
+                        send_telegram(
+                            "Fee Data Stale",
+                            f"Fee data is {age_days} days old — scraper may have failed. Check scrape-fees.log.",
+                            emoji="⚠️",
+                            dedupe_key="fee-data-stale",
+                        )
+            else:
+                log("Fee data: no _last_updated field found", "WARN")
+        except Exception as e:
+            log(f"Fee data freshness check failed: {e}", "ERROR")
+            all_fresh = False
+    else:
+        log("Fee data file not found", "WARN")
+        all_fresh = False
+
+    # Check scraper heartbeat
+    heartbeat_file = DATA_DIR / "scraper-heartbeat.json"
+    if heartbeat_file.exists():
+        try:
+            heartbeat = json.loads(heartbeat_file.read_text())
+            last_run = heartbeat.get("last_run")
+            if last_run:
+                run_date = datetime.fromisoformat(last_run)
+                age_days = (datetime.now() - run_date).days
+                log(f"Scraper heartbeat age: {age_days} days")
+                if age_days > stale_days:
+                    all_fresh = False
+                    log(f"Scraper heartbeat is {age_days} days old — scraper may not be running!", "WARN")
+                    if not dry_run:
+                        send_telegram(
+                            "Fee Scraper Heartbeat Stale",
+                            f"Scraper heartbeat is {age_days} days old — scraper may not be running. Check cron and scrape-fees.log.",
+                            emoji="⚠️",
+                            dedupe_key="scraper-heartbeat-stale",
+                        )
+        except Exception as e:
+            log(f"Scraper heartbeat check failed: {e}", "ERROR")
+            all_fresh = False
+    else:
+        log("Scraper heartbeat file not found — scraper may never have run", "WARN")
+        if not dry_run:
+            send_telegram(
+                "Fee Scraper Heartbeat Missing",
+                "No scraper-heartbeat.json found — fee scraper may never have run successfully.",
+                emoji="⚠️",
+                dedupe_key="scraper-heartbeat-missing",
+            )
+        all_fresh = False
+
+    return all_fresh
+
+
 # ── Error Pattern Matching ────────────────────────────────────────────
 
 
@@ -619,6 +690,7 @@ def main():
     check_services(args.dry_run)
     check_oauth_token(args.dry_run)
     check_pipeline_progress()
+    check_fee_data_freshness(args.dry_run)
 
     # 4. Alert for unfixed errors (batch into one message)
     if unfixed:

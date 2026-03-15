@@ -9,8 +9,17 @@
 <title>Calculadora de rentabilidad del copy trading 2026 — Proyecta tus ganancias | SocialTradingVlog</title>
 <meta name="description" content="Calculadora de rentabilidad del copy trading gratuita. Descubre cómo podría crecer tu inversión con rendimientos compuestos a lo largo de 1 a 10 años. Basada en datos reales de copy trading.">
 <link rel="canonical" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Calculadora de rentabilidad del copy trading 2026 — Proyecta tus ganancias">
 <meta property="og:description" content="Calculadora de rentabilidad del copy trading gratuita. Descubre cómo podría crecer tu inversión a lo largo del tiempo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -333,6 +342,9 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
         <li>Esta herramienta no constituye asesoramiento financiero, de inversión ni fiscal. SocialTradingVlog y su autor no son asesores financieros y no aceptan responsabilidad alguna por pérdidas o daños derivados del uso de esta calculadora.</li>
         <li>El copy trading no constituye asesoramiento de inversión. Debes considerar si puedes permitirte asumir el alto riesgo de perder tu dinero.</li>
         <li>eToro es una plataforma de inversión multiactivos. El valor de tus inversiones puede subir o bajar. Tu capital está en riesgo.</li>
+            <li>Verifica siempre los detalles directamente en el sitio web oficial de cada plataforma antes de tomar cualquier decisión financiera.</li>
+              <li>Algunos enlaces de esta página son enlaces de afiliado. Si te registras a través de ellos, podemos recibir una comisión sin coste adicional para ti. Esto no afecta a nuestras valoraciones ni evaluaciones.</li>
+<li>Los CFD son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. Tu capital está en riesgo.</li>
       </ul>
     </div>
   </div>
@@ -477,7 +489,26 @@ function calc() {
 calc();
 </script>
 
-<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Desconocido'}).catch(()=>{document.getElementById('last-verified').textContent='No disponible'});</script>
+<script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // Comprobar actualidad de los datos
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Los datos pueden estar desactualizados</strong> (última actualización hace ' + daysSince + ' días). Verifica las comisiones directamente en el sitio web de cada plataforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='No disponible'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

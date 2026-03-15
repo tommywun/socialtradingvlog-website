@@ -10,6 +10,17 @@
 <meta name="description" content="Free copy trading position size calculator. Find out how much to invest per trader on eToro based on your portfolio size, risk tolerance, and diversification goals.">
 <meta name="keywords" content="copy trading position size, how much to invest per trader etoro, eToro copy trading allocation, position sizing copy trading, eToro portfolio allocation">
 <link rel="canonical" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="eToro Position Size Calculator — How Much to Allocate Per Copy Trader">
 <meta property="og:description" content="Free copy trading position size calculator. Find out how much to invest per trader on eToro.">
 <meta property="og:type" content="website">
@@ -441,7 +452,10 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
         <li>Past performance of copy traders is not indicative of future results. Always conduct your own due diligence before copying any trader.</li>
         <li>This tool does not constitute financial, investment, or tax advice. SocialTradingVlog and its author are not financial advisers and accept no liability for any loss or damage arising from use of this calculator.</li>
         <li>eToro is a multi-asset investment platform. The value of your investments may go up or down. Your capital is at risk.</li>
-      </ul>
+              <li>Always verify details directly on each platform's official website before making any financial decisions.</li>
+              <li>Some links on this page are affiliate links. If you sign up through these links, we may earn a commission at no extra cost to you. This does not affect our ratings or assessments.</li>
+<li>CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. Your capital is at risk.</li>
+        </ul>
     </div>
 
   </div>
@@ -800,7 +814,26 @@ function toggleFaq(el) {
 calculate();
 </script>
 
-  <script>fetch('../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Unknown'}).catch(()=>{document.getElementById('last-verified').textContent='Unable to load'});</script>
+  <script>
+fetch('../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // Check data freshness
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Data may be outdated</strong> (last updated ' + daysSince + ' days ago). Please verify fees directly on each platform\'s website.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Unable to load'});
+</script>
   <script src="../../js/consent.js"></script>
   <script src="../../js/analytics.js"></script>
 </body>

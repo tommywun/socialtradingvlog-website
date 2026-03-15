@@ -10,8 +10,17 @@
 <meta name="description" content="Calcolatore gratuito delle dimensioni della posizione di trading. Scopri quanto investire per trader su eToro in base alle dimensioni del tuo portafoglio, alla tolleranza al rischio e agli obiettivi di diversificazione.">
 <meta name="keywords" content="copia dimensione della posizione di trading, quanto investire per trader eToro, allocazione del copy trading eToro, dimensionamento della posizione copy trading, allocazione del portafoglio eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
 <link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="eToro Calcolatore della dimensione della posizione: quanto allocare per copia Trader">
 <meta property="og:description" content="Calcolatore gratuito delle dimensioni della posizione di trading. Scopri quanto investire per trader su eToro.">
 <meta property="og:type" content="website">
@@ -486,6 +495,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dati verificati:</strong> <span id="last-verified">Caricamento...</span> — Controlliamo le commissioni settimanalmente. Verifica sempre su <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">il sito di eToro</a> prima di operare.</span>
+    </div>
+
     <div class="legal-disclaimer" style="background:#F8F8FA;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:24px 0 0;font-size:12px;color:var(--text-secondary);line-height:1.8;">
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Dichiarazione di non responsabilità</strong>
       Questa calcolatrice fornisce <strong style="display:inline;font-size:inherit;">solo indicazioni generali</strong> ed è destinato a scopi informativi ed educativi. Non si dovrebbe fare affidamento su di esso per prendere decisioni finanziarie.
@@ -851,6 +865,28 @@ function toggleFaq(el) {
 
 // Initial calculation
 calculate();
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    document.getElementById('last-verified').textContent = data._last_updated || 'Sconosciuto';
+    var lastUpdated = new Date(data._last_updated);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 I dati potrebbero essere obsoleti</strong> (ultimo aggiornamento ' + daysSince + ' giorni fa). Verifica le commissioni direttamente sul sito di ciascuna piattaforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+  } catch(e) { console.warn('Fee data fetch failed:', e); }
+}
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

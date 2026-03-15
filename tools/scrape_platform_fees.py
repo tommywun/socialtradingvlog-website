@@ -500,6 +500,17 @@ def main():
     # Alert on changes
     send_change_alerts(results, fee_updates)
 
+    # Write scraper heartbeat
+    heartbeat_path = DATA_DIR / "scraper-heartbeat.json"
+    heartbeat_path.write_text(json.dumps({
+        "last_run": datetime.now().isoformat(),
+        "status": "ok",
+        "platforms_checked": checked,
+        "platforms_with_changes": with_changes,
+        "fee_updates": len(fee_updates) if fee_updates else 0,
+    }, indent=2))
+    print(f"  Heartbeat written to {heartbeat_path}")
+
 
 if __name__ == "__main__":
     main()

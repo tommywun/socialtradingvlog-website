@@ -10,8 +10,17 @@
 <meta name="description" content="حاسبة حجم المركز المجانية للتداول بالنسخ. اعرف كم تستثمر لكل متداول على eToro بناءً على حجم محفظتك ومستوى تحملك للمخاطر وأهداف التنويع.">
 <meta name="keywords" content="حجم مركز التداول بالنسخ, كم تستثمر لكل متداول eToro, تخصيص محفظة eToro, حجم المركز التداول بالنسخ, توزيع محفظة eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
 <link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="حاسبة حجم المركز في eToro — كم تخصص لكل متداول منسوخ">
 <meta property="og:description" content="حاسبة حجم المركز المجانية للتداول بالنسخ. اعرف كم تستثمر لكل متداول على eToro.">
 <meta property="og:type" content="website">
@@ -499,11 +508,14 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">إخلاء المسؤولية</strong>
       توفر هذه الحاسبة <strong style="display:inline;font-size:inherit;">إرشادات عامة فقط</strong> وهي مخصصة لأغراض معلوماتية وتعليمية. لا ينبغي الاعتماد عليها لاتخاذ قرارات مالية.
       <ul>
+        <li>تحقق دائمًا من التفاصيل مباشرة على الموقع الرسمي لكل منصة قبل اتخاذ أي قرارات مالية.</li>
         <li>تستند اقتراحات التوزيع إلى مبادئ التنويع العامة وقد لا تناسب ظروفك الفردية أو أهدافك المالية أو مستوى تحملك للمخاطر.</li>
         <li>الأداء السابق للمتداولين المنسوخين لا يعد مؤشرًا على النتائج المستقبلية. قم دائمًا بإجراء بحثك الخاص قبل نسخ أي متداول.</li>
         <li>لا تشكل هذه الأداة نصيحة مالية أو استثمارية أو ضريبية. SocialTradingVlog ومؤلفها ليسوا مستشارين ماليين ولا يتحملون أي مسؤولية عن أي خسارة أو ضرر ناتج عن استخدام هذه الحاسبة.</li>
         <li>eToro هي منصة استثمار متعددة الأصول. قد ترتفع أو تنخفض قيمة استثماراتك. رأس مالك معرض للخطر.</li>
-      </ul>
+              <li>بعض الروابط في هذه الصفحة هي روابط تابعة. إذا سجلت من خلال هذه الروابط، قد نحصل على عمولة دون أي تكلفة إضافية عليك. هذا لا يؤثر على تقييماتنا أو تصنيفاتنا.</li>
+        <li>عقود الفروقات هي أدوات معقدة وتنطوي على مخاطر عالية لخسارة الأموال بسرعة بسبب الرافعة المالية. رأس مالك معرض للخطر.</li>
+        </ul>
     </div>
 
   </div>
@@ -862,7 +874,26 @@ function toggleFaq(el) {
 calculate();
 </script>
 
-<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'غير معروف'}).catch(()=>{document.getElementById('last-verified').textContent='غير متاح'});</script>
+<script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // التحقق من حداثة البيانات
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 قد تكون البيانات قديمة</strong> (آخر تحديث منذ ' + daysSince + ' يومًا). يرجى التحقق من الرسوم مباشرة على موقع كل منصة.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='غير متاح'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

@@ -10,8 +10,17 @@
 <meta name="description" content="Gratis kopie handelspositiegroottecalculator. Ontdek hoeveel u per handelaar op eToro kunt investeren op basis van uw portefeuilleomvang, risicotolerantie en diversificatiedoelen.">
 <meta name="keywords" content="grootte van kopieerhandelspositie, hoeveel te investeren per handelaar etoro, eToro kopieerhandelstoewijzing, positiegrootte kopieerhandel, eToro portefeuilletoewijzing">
 <link rel="canonical" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
 <link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="eToro Positiegroottecalculator - Hoeveel toe te wijzen per kopiehandelaar">
 <meta property="og:description" content="Gratis kopie handelspositiegroottecalculator. Ontdek hoeveel u per handelaar kunt investeren op eToro.">
 <meta property="og:type" content="website">
@@ -486,6 +495,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Gegevens geverifieerd:</strong> <span id="last-verified">Laden...</span> — We controleren de kosten wekelijks. Controleer altijd op <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">de website van eToro</a> voordat u handelt.</span>
+    </div>
+
     <div class="legal-disclaimer" style="background:#F8F8FA;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:24px 0 0;font-size:12px;color:var(--text-secondary);line-height:1.8;">
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Disclaimer</strong>
       Deze rekenmachine biedt <strong style="display:inline;font-size:inherit;">alleen algemene richtlijnen</strong> en is bedoeld voor informatieve en educatieve doeleinden. Er mag niet op worden vertrouwd bij het nemen van financiële beslissingen.
@@ -851,6 +865,38 @@ function toggleFaq(el) {
 
 // Initial calculation
 calculate();
+
+// ─── Load fee data for verified date ───
+(function() {
+  fetch('../../../data/platform-fees.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var lastUpdated = data._last_updated || '';
+      var verifiedEl = document.getElementById('last-verified');
+      if (lastUpdated && verifiedEl) {
+        var d = new Date(lastUpdated);
+        verifiedEl.textContent = d.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        var now = new Date();
+        var daysSince = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+        var banner = verifiedEl.closest('div');
+        if (daysSince > 14) {
+          banner.style.background = '#FFF3E0';
+          banner.style.color = '#E65100';
+          banner.querySelector('svg').setAttribute('stroke', '#E65100');
+          verifiedEl.parentElement.innerHTML = '<strong>\u26A0 Gegevens mogelijk verouderd</strong> (laatst bijgewerkt ' + daysSince + ' dagen geleden). Controleer de kosten rechtstreeks op de website van elk platform.';
+        } else if (daysSince > 7) {
+          banner.style.background = '#FFF8E1';
+          banner.style.color = '#F9A825';
+          banner.querySelector('svg').setAttribute('stroke', '#F9A825');
+        }
+      }
+    })
+    .catch(function() {
+      var verifiedEl = document.getElementById('last-verified');
+      if (verifiedEl) verifiedEl.textContent = 'Niet beschikbaar';
+    });
+})();
 </script>
 
   <script src="../../../js/consent.js"></script>

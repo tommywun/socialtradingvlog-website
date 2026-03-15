@@ -10,8 +10,17 @@
 <meta name="description" content="Porównaj eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers i XTB obok siebie. Opłaty, funkcje, regulacje, kopiowanie transakcji i więcej.">
 <meta name="keywords" content="eToro vs Plus500, eToro vs Trading 212, najlepsza platforma do kopiowania transakcji, porównanie social tradingu, alternatywy dla eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/compare-platforms/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/plattformen-vergleichen/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/compare-platforms/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/">
 <link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%B9%84%EA%B5%90/">
 <meta property="og:title" content="Porównaj platformy social tradingu 2026 — Porównanie obok siebie">
 <meta property="og:description" content="Interaktywne porównanie eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers i XTB.">
 <meta property="og:type" content="website">
@@ -318,6 +327,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
     </table>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Dane zweryfikowane:</strong> <span id="last-verified">Ładowanie...</span> — Sprawdzamy opłaty co tydzień. Zawsze sprawdzaj na <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">stronie eToro</a> przed handlem.</span>
   </div>
 
   <!-- Legal Disclaimer -->
@@ -698,6 +712,24 @@ render();
 renderCards();
 </script>
 
+  <script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Dane mogą być nieaktualne</strong> (ostatnia aktualizacja ' + daysSince + ' dni temu). Sprawdź opłaty bezpośrednio na stronie każdej platformy.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Nie udało się załadować'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

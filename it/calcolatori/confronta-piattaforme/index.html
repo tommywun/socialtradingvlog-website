@@ -10,8 +10,17 @@
 <meta name="description" content="Confronta eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers e XTB fianco a fianco. Commissioni, funzionalità, regolamentazione, copy trading e altro ancora.">
 <meta name="keywords" content="eToro vs Plus500, eToro vs Trading 212, migliore piattaforma di copy trading, confronto tra social trading, alternative eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/compare-platforms/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/plattformen-vergleichen/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/compare-platforms/">
 <link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%B9%84%EA%B5%90/">
 <meta property="og:title" content="Confronta le piattaforme di social trading 2026 — Confronto affiancato">
 <meta property="og:description" content="Confronto interattivo di eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers e XTB.">
 <meta property="og:type" content="website">
@@ -318,6 +327,12 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
     </table>
   </div>
 
+  <!-- Verified Banner -->
+  <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:0 0 20px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Dati verificati:</strong> <span id="last-verified">Caricamento...</span> — Controlliamo le commissioni settimanalmente. Verifica sempre su <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">il sito di eToro</a> prima di operare.</span>
+  </div>
+
   <!-- Legal Disclaimer -->
   <div class="legal-disclaimer">
     <strong>Precisione dei dati e Esonero di responsabilità</strong>
@@ -580,6 +595,28 @@ const FEATURES = [
 
 let activePlatforms = ['etoro', 'plus500', 'trading212', 'ibkr'];
 
+// ─── Verified Data (loaded async) ───
+let platformVerifiedData = {};
+
+function formatVerifiedDate(isoStr) {
+  const d = new Date(isoStr);
+  return d.toLocaleDateString('it-IT', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function getVerifiedHtml(platformId) {
+  const label = 'Commissioni verificate:';
+  const entry = platformVerifiedData[platformId];
+  if (!entry || !entry.last_verified) {
+    return '<div class="platform-verified-date" style="color:#999;">Non ancora verificato</div>';
+  }
+  const dateStr = formatVerifiedDate(entry.last_verified);
+  const daysSince = Math.floor((Date.now() - new Date(entry.last_verified).getTime()) / 86400000);
+  let color = '#666';
+  if (daysSince > 30) color = '#dc3545';
+  else if (daysSince > 14) color = '#e6a817';
+  return '<div class="platform-verified-date" style="color:' + color + ';">' + label + ' ' + dateStr + '</div>';
+}
+
 function renderToggles() {
   const container = document.getElementById('platform-toggles');
   container.innerHTML = PLATFORMS.map(p => `
@@ -630,7 +667,7 @@ function renderTable() {
   // Header
   head.innerHTML = `<tr>
     <th class="feature-label">Feature</th>
-    ${active.map(p => `<th class="plat-header ${p.id === 'etoro' ? 'highlighted' : ''}">${p.name}</th>`).join('')}
+    ${active.map(p => `<th class="plat-header ${p.id === 'etoro' ? 'highlighted' : ''}">${p.name}${getVerifiedHtml(p.id)}</th>`).join('')}
   </tr>`;
 
   // Body
@@ -693,9 +730,99 @@ function render() {
   renderTable();
 }
 
-// Initial render
+// ─── Load live fee data from JSON ───
+function formatStockFee(p) {
+  if (!p.stocks) return null;
+  if (p.stocks.cfd_only) return { value: 'Solo spread CFD', rating: 'ok', note: 'Nessuna proprietà reale' };
+  if (p.stocks.commission_pct === 0) return { value: 'Commissione 0%', rating: 'good', note: p.stocks.note || 'Guadagna dallo spread' };
+  if (p.stocks.commission_type === 'per_share') return { value: '$' + p.stocks.rate_per_share + '/azione', rating: 'good', note: p.stocks.note || '' };
+  if (p.stocks.commission_flat !== undefined && p.stocks.commission_flat > 0) return { value: '\u20ac' + p.stocks.commission_flat, rating: 'good', note: 'Per transazione' };
+  return null;
+}
+function formatCryptoFee(p) {
+  if (!p.crypto || p.crypto.available === false) return { value: 'N/A', rating: 'na', note: 'Non disponibile' };
+  if (p.crypto.cfd_only) return { value: 'Solo CFD', rating: 'ok', note: 'Nessuna vera criptovaluta' };
+  if (p.crypto.spread_pct) {
+    const pct = p.crypto.spread_pct * 100;
+    return { value: (pct < 1 ? '~' + pct.toFixed(1) : pct.toFixed(0)) + '% spread', rating: pct <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatForexFee(p) {
+  if (!p.forex || p.forex.available === false) return { value: 'N/A', rating: 'na', note: 'Non disponibile' };
+  if (p.forex.typical_spread_pips !== undefined) {
+    return { value: 'Da ' + p.forex.typical_spread_pips + ' pip' + (p.forex.typical_spread_pips !== 1 ? 's' : ''), rating: p.forex.typical_spread_pips <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatWithdrawalFee(p) {
+  if (p.other_fees && p.other_fees.withdrawal) {
+    const w = p.other_fees.withdrawal;
+    const isFree = /free/i.test(w) && !/\$/.test(w);
+    return { value: isFree ? 'Gratuito' : w.split(',')[0].trim(), rating: isFree ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatMinDeposit(p) {
+  if (p.other_fees && p.other_fees.min_deposit) {
+    const d = p.other_fees.min_deposit;
+    const val = parseInt(d.replace(/[^0-9]/g, '')) || 0;
+    return { value: d, rating: val <= 50 ? 'good' : 'ok' };
+  }
+  return null;
+}
+
+async function loadFeeData() {
+  try {
+    const [resp, verifiedResp] = await Promise.all([
+      fetch('../../../data/platform-fees.json'),
+      fetch('../../../data/platform-verified.json').catch(() => null)
+    ]);
+    const data = await resp.json();
+    if (verifiedResp && verifiedResp.ok) {
+      try { platformVerifiedData = await verifiedResp.json(); } catch(e) {}
+    }
+    document.getElementById('last-verified').textContent = data._last_updated || 'Sconosciuto';
+    // Check data freshness
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 I dati potrebbero essere obsoleti</strong> (ultimo aggiornamento ' + daysSince + ' giorni fa). Verifica le commissioni direttamente sul sito di ciascuna piattaforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    for (const plat of PLATFORMS) {
+      const jsonPlat = data.platforms[plat.id];
+      if (!jsonPlat) continue;
+      const stock = formatStockFee(jsonPlat);
+      if (stock) plat.data.stock_fee = stock;
+      const crypto = formatCryptoFee(jsonPlat);
+      if (crypto) plat.data.crypto_fee = crypto;
+      const forex = formatForexFee(jsonPlat);
+      if (forex) plat.data.forex_fee = forex;
+      const withdrawal = formatWithdrawalFee(jsonPlat);
+      if (withdrawal) plat.data.withdrawal_fee = withdrawal;
+      const minDeposit = formatMinDeposit(jsonPlat);
+      if (minDeposit) plat.data.min_deposit = minDeposit;
+    }
+    render();
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = 'Impossibile caricare';
+  }
+}
+
+// Initial render with fallback data, then overlay live data
 render();
 renderCards();
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

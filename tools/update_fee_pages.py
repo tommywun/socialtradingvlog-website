@@ -59,17 +59,31 @@ def main():
         print("ERROR: data/platform-fees.json not found. Run scrape_platform_fees.py first.")
         sys.exit(1)
 
-    # Check if any fee data files have changed since last commit
-    diff = run_git("diff", "--name-only", "data/platform-fees.json", "data/platform-verified.json")
-    if not diff.stdout.strip():
-        print("Fee data unchanged — nothing to update.")
-        return
-
-    # Data has changed
     data = json.loads(FEES_FILE.read_text())
     updated = data.get("_last_updated", "unknown")
     platform_count = len(data.get("platforms", {}))
     print(f"Fee data updated: {updated} ({platform_count} platforms)")
+
+    # Check if we're in a git repo — VPS copy is NOT a git repo (synced via rsync)
+    is_git = run_git("rev-parse", "--git-dir").returncode == 0
+
+    if not is_git:
+        # VPS environment — just alert Tom that data was updated
+        print("Not a git repo (VPS) — sending Telegram alert only.")
+        if not args.dry_run:
+            send_telegram(
+                "Fee Data Updated on VPS",
+                f"Platform fees scraped and JSON updated on VPS.\n"
+                f"Date: {updated}\nPlatforms: {platform_count}\n\n"
+                f"Data will go live next time local repo is synced and pushed."
+            )
+        return
+
+    # Git repo (local Mac) — check for changes and commit
+    diff = run_git("diff", "--name-only", "data/platform-fees.json", "data/platform-verified.json")
+    if not diff.stdout.strip():
+        print("Fee data unchanged — nothing to update.")
+        return
 
     if args.dry_run:
         print("Dry run — would commit and push.")
@@ -100,16 +114,12 @@ def main():
             f"Date: {updated}\nPlatforms: {platform_count}"
         )
     else:
-        # Push failed — likely no deploy key on VPS
-        print(f"Push failed (expected on VPS without deploy key): {push.stderr.strip()}")
+        print(f"Push failed: {push.stderr.strip()}")
         send_telegram(
             "Fee Data Updated — Push Needed",
             f"Platform fees have been verified and committed locally.\n"
             f"Date: {updated}\nPlatforms: {platform_count}\n\n"
-            f"Run on Mac:\n"
-            f"  cd ~/socialtradingvlog-website\n"
-            f"  git pull stv:~/socialtradingvlog-website\n"
-            f"  git push"
+            f"Run: cd ~/socialtradingvlog-website && git push"
         )
 
 if __name__ == "__main__":

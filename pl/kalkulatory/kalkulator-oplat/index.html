@@ -10,8 +10,17 @@
 <meta name="description" content="Darmowy kalkulator opłat eToro. Sprawdź dokładnie, ile zapłacisz za spready, opłaty overnight, opłaty za wypłatę i przewalutowanie. Zaktualizowany na 2026 rok.">
 <meta name="keywords" content="opłaty eToro, opłaty transakcyjne eToro, kalkulator spreadów eToro, kalkulator kosztów eToro, opłata za wypłatę eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/fee-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-comisiones/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/gebuehrenrechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-frais/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/">
 <link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%88%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Kalkulator opłat eToro 2026 — Oblicz swoje koszty handlowe">
 <meta property="og:description" content="Darmowy kalkulator opłat eToro. Sprawdź dokładnie, ile zapłacisz za spready, opłaty overnight i więcej.">
 <meta property="og:type" content="website">
@@ -391,6 +400,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dane zweryfikowane:</strong> <span id="last-verified">Ładowanie...</span> — Sprawdzamy opłaty co tydzień. Zawsze sprawdzaj na <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">stronie eToro</a> przed handlem.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Zastrzeżenie dotyczące dokładności danych</strong>
       Ten kalkulator dostarcza <strong style="display:inline;font-size:inherit;">wyłącznie szacunki</strong> i jest przeznaczony do ogólnych celów informacyjnych i edukacyjnych. Nie należy na nim polegać przy podejmowaniu decyzji finansowych.
@@ -543,8 +557,8 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
 </div>
 
 <script>
-// ─── Fee Data ───
-const FEE_DATA = {
+// ─── Fee Data — loaded dynamically from platform-fees.json ───
+const FALLBACK_FEES = {
   stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Akcje', hasOvernight: true },
   crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Kryptowaluty', hasOvernight: false },
   forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
@@ -552,8 +566,52 @@ const FEE_DATA = {
   indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Indeksy', hasOvernight: true },
   etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
 };
-const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
-const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+const ASSET_LABELS = { stocks: 'Akcje', crypto: 'Kryptowaluty', forex: 'Forex', commodities: 'Surowce', indices: 'Indeksy', etfs: 'ETFs' };
+let FEE_DATA = FALLBACK_FEES;
+let WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+let CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    const etoro = data.platforms.etoro;
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Dane mogą być nieaktualne</strong> (ostatnia aktualizacja ' + daysSince + ' dni temu). Sprawdź opłaty bezpośrednio na stronie każdej platformy.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    FEE_DATA = {};
+    for (const [asset, label] of Object.entries(ASSET_LABELS)) {
+      const src = etoro[asset];
+      if (src) {
+        const spreadPct = src.spread_pct ? src.spread_pct * 100
+          : src.typical_spread_pips ? src.typical_spread_pips * 0.01 : 0;
+        const overnightPct = src.overnight_daily_pct ? src.overnight_daily_pct * 100 : 0;
+        FEE_DATA[asset] = { spread_pct: spreadPct, overnight_daily_pct: overnightPct, commission: 0, label: label, hasOvernight: overnightPct > 0 };
+      } else {
+        FEE_DATA[asset] = FALLBACK_FEES[asset];
+      }
+    }
+    if (etoro.stocks && etoro.stocks.fx_fee_pct) {
+      const fxPct = etoro.stocks.fx_fee_pct * 100;
+      CONVERSION = { USD: 0, GBP: fxPct, EUR: fxPct };
+    }
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = 'Nie udało się załadować';
+  }
+  calculate();
+}
 
 let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
 
@@ -639,7 +697,7 @@ function toggleFaq(el) {
   el.nextElementSibling.classList.toggle('open');
 }
 
-calculate();
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

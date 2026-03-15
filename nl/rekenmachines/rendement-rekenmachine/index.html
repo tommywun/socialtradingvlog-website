@@ -9,8 +9,17 @@
 <title>Copy Trading ROI Calculator 2026 - Projecteer uw rendement | SocialTradingVlog</title>
 <meta name="description" content="Gratis ROI-calculator voor het verhandelen van kopieën. Ontdek hoe uw belegging kan groeien met een samengesteld rendement over een periode van 1 tot 10 jaar. Gebaseerd op echte kopieerhandelsgegevens.">
 <link rel="canonical" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
 <link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Copy Trading ROI Calculator 2026 — Projecteer uw rendement">
 <meta property="og:description" content="Gratis ROI-calculator voor het verhandelen van kopieën. Bekijk hoe uw investering in de loop van de tijd kan groeien.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -373,6 +382,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <strong>Belangrijk:</strong> Deze rekenmachine toont alleen hypothetische projecties. In het verleden behaalde resultaten bieden geen garantie voor toekomstige resultaten. Copy trading is geen beleggingsadvies. De waarde van uw beleggingen kan stijgen of dalen. Uw kapitaal loopt gevaar. 50% van de rekeningen van particuliere beleggers verliest geld bij het handelen in CFDs met eToro.
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Gegevens geverifieerd:</strong> <span id="last-verified">Laden...</span> — We controleren de kosten wekelijks. Controleer altijd op <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">de website van eToro</a> voordat u handelt.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Gegevensnauwkeurigheid &amp; Uitsluiting van aansprakelijkheid</strong>
       Deze rekenmachine is uitsluitend bedoeld voor algemene informatieve en educatieve doeleinden. Er mag niet op worden vertrouwd bij het nemen van investeringsbeslissingen.
@@ -555,6 +569,38 @@ function calc() {
 }
 
 calc();
+
+// ─── Load fee data for verified date ───
+(function() {
+  fetch('../../../data/platform-fees.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var lastUpdated = data._last_updated || '';
+      var verifiedEl = document.getElementById('last-verified');
+      if (lastUpdated && verifiedEl) {
+        var d = new Date(lastUpdated);
+        verifiedEl.textContent = d.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        var now = new Date();
+        var daysSince = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+        var banner = verifiedEl.closest('div');
+        if (daysSince > 14) {
+          banner.style.background = '#FFF3E0';
+          banner.style.color = '#E65100';
+          banner.querySelector('svg').setAttribute('stroke', '#E65100');
+          verifiedEl.parentElement.innerHTML = '<strong>\u26A0 Gegevens mogelijk verouderd</strong> (laatst bijgewerkt ' + daysSince + ' dagen geleden). Controleer de kosten rechtstreeks op de website van elk platform.';
+        } else if (daysSince > 7) {
+          banner.style.background = '#FFF8E1';
+          banner.style.color = '#F9A825';
+          banner.querySelector('svg').setAttribute('stroke', '#F9A825');
+        }
+      }
+    })
+    .catch(function() {
+      var verifiedEl = document.getElementById('last-verified');
+      if (verifiedEl) verifiedEl.textContent = 'Niet beschikbaar';
+    });
+})();
 </script>
 
   <script src="../../../js/consent.js"></script>

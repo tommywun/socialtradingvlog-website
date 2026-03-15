@@ -10,7 +10,16 @@
 <meta name="description" content="무료 eToro 수수료 계산기. 스프레드, 오버나이트 수수료, 출금 수수료, 환전 수수료를 정확히 확인하세요. 2026년 최신 정보.">
 <meta name="keywords" content="eToro 수수료, eToro 거래 수수료, eToro 스프레드 계산기, eToro 비용 계산기, eToro 출금 수수료">
 <link rel="canonical" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%88%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/fee-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-comisiones/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/gebuehrenrechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-frais/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
 <link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%88%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="eToro 수수료 계산기 2026 — 거래 비용 계산">
 <meta property="og:description" content="무료 eToro 수수료 계산기. 스프레드, 오버나이트 수수료 등을 정확히 확인하세요.">
@@ -400,6 +409,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>데이터 확인일:</strong> <span id="last-verified">로딩 중...</span> — 매주 수수료를 확인합니다. 거래 전 항상 <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">eToro 공식 사이트</a>에서 확인하세요.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>데이터 정확성 면책</strong>
       이 계산기는 <strong style="display:inline;font-size:inherit;">추정치만</strong> 제공하며 일반적인 정보 제공 및 교육 목적으로만 사용됩니다. 금융 결정을 내리는 데 이 자료에 의존해서는 안 됩니다.
@@ -552,17 +566,63 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
 </div>
 
 <script>
-// ─── Fee Data ───
-const FEE_DATA = {
-  stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: '주식', hasOvernight: true },
+// ─── Fee Data — loaded dynamically from platform-fees.json ───
+const FALLBACK_FEES = {
+  stocks:      { spread_pct: 0.09, overnight_daily_pct: 0.01, commission: 0, label: '주식', hasOvernight: true },
   crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: '암호화폐', hasOvernight: false },
   forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: '외환', hasOvernight: true },
-  commodities: { spread_pct: 0.04, overnight_daily_pct: 0.012, commission: 0, label: '원자재', hasOvernight: true },
-  indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: '지수', hasOvernight: true },
-  etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETF', hasOvernight: true },
+  commodities: { spread_pct: 0.45, overnight_daily_pct: 0.012, commission: 0, label: '원자재', hasOvernight: true },
+  indices:     { spread_pct: 0.40, overnight_daily_pct: 0.01,  commission: 0, label: '지수', hasOvernight: true },
+  etfs:        { spread_pct: 0.09, overnight_daily_pct: 0.01,  commission: 0, label: 'ETF', hasOvernight: true },
 };
-const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
-const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+const ASSET_LABELS = { stocks: '주식', crypto: '암호화폐', forex: '외환', commodities: '원자재', indices: '지수', etfs: 'ETF' };
+let FEE_DATA = FALLBACK_FEES;
+let WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
+let CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 };
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    const etoro = data.platforms.etoro;
+    document.getElementById('last-verified').textContent = data._last_updated || '알 수 없음';
+    // Check data freshness
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 데이터가 오래되었을 수 있습니다</strong> (마지막 업데이트 ' + daysSince + '일 전). 각 플랫폼 웹사이트에서 직접 수수료를 확인하세요.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    FEE_DATA = {};
+    for (const [asset, label] of Object.entries(ASSET_LABELS)) {
+      const src = etoro[asset];
+      if (src) {
+        const spreadPct = src.spread_pct ? src.spread_pct * 100
+          : src.typical_spread_pips ? src.typical_spread_pips * 0.01 : 0;
+        const overnightPct = src.overnight_daily_pct ? src.overnight_daily_pct * 100 : 0;
+        FEE_DATA[asset] = { spread_pct: spreadPct, overnight_daily_pct: overnightPct, commission: 0, label: label, hasOvernight: overnightPct > 0 };
+      } else {
+        FEE_DATA[asset] = FALLBACK_FEES[asset];
+      }
+    }
+    if (etoro.stocks && etoro.stocks.fx_fee_pct) {
+      const fxPct = etoro.stocks.fx_fee_pct * 100;
+      CONVERSION = { USD: 0, GBP: fxPct, EUR: fxPct };
+    }
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = '로드 실패';
+  }
+  calculate();
+}
 
 let state = { asset: 'stocks', amount: 1000, days: 0, currency: 'USD' };
 
@@ -648,7 +708,8 @@ function toggleFaq(el) {
   el.nextElementSibling.classList.toggle('open');
 }
 
-calculate();
+// Load live fee data then calculate
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

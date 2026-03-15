@@ -10,8 +10,17 @@
 <meta name="description" content="Calcolatore tariffario eToro gratuito. Scopri esattamente cosa pagherai in spread, commissioni overnight, commissioni di prelievo e conversione di valuta. Aggiornato per il 2026.">
 <meta name="keywords" content="Commissioni eToro, commissioni di negoziazione eToro, calcolatore dello spread eToro, calcolatore dei costi eToro, commissione di prelievo eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/fee-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-comisiones/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/gebuehrenrechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-frais/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
 <link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%88%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="eToro Calcolatore delle commissioni 2026 — Calcola i tuoi costi di trading">
 <meta property="og:description" content="Calcolatore tariffario eToro gratuito. Scopri esattamente cosa pagherai in spread, commissioni overnight e altro ancora.">
 <meta property="og:type" content="website">
@@ -481,6 +490,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dati verificati:</strong> <span id="last-verified">Caricamento...</span> — Controlliamo le commissioni settimanalmente. Verifica sempre su <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">il sito di eToro</a> prima di operare.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Dichiarazione di non responsabilità sull'accuratezza dei dati</strong>
       Questa calcolatrice fornisce <strong style="display:inline;font-size:inherit;">solo stime</strong> ed è destinato a scopi informativi ed educativi generali. Non si dovrebbe fare affidamento su di esso per prendere decisioni finanziarie.
@@ -634,7 +648,7 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
 
 <script>
 // ─── Fee Data ───
-const FEE_DATA = {
+const FALLBACK_FEES = {
   stocks:      { spread_pct: 0.15, overnight_daily_pct: 0.01, commission: 0, label: 'Azioni', hasOvernight: true },
   crypto:      { spread_pct: 1.0,  overnight_daily_pct: 0,    commission: 0, label: 'Criptovaluta', hasOvernight: false },
   forex:       { spread_pct: 0.01, overnight_daily_pct: 0.008, commission: 0, label: 'Forex', hasOvernight: true },
@@ -642,6 +656,7 @@ const FEE_DATA = {
   indices:     { spread_pct: 0.04, overnight_daily_pct: 0.01,  commission: 0, label: 'Indici', hasOvernight: true },
   etfs:        { spread_pct: 0.15, overnight_daily_pct: 0.01,  commission: 0, label: 'ETFs', hasOvernight: true },
 };
+let FEE_DATA = FALLBACK_FEES;
 const WITHDRAWAL = { USD: 5, GBP: 0, EUR: 0 };
 const CONVERSION = { USD: 0, GBP: 0.5, EUR: 0.5 }; // percentage
 
@@ -734,6 +749,42 @@ function toggleFaq(el) {
 
 // Initial calculation
 calculate();
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    const etoro = data.platforms.etoro;
+    document.getElementById('last-verified').textContent = data._last_updated || 'Sconosciuto';
+    var lastUpdated = new Date(data._last_updated);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 I dati potrebbero essere obsoleti</strong> (ultimo aggiornamento ' + daysSince + ' giorni fa). Verifica le commissioni direttamente sul sito di ciascuna piattaforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    if (etoro) {
+      FEE_DATA = {
+        stocks: { spread_pct: etoro.stocks?.spread_pct ?? 0.15, overnight_daily_pct: etoro.stocks?.overnight_pct ?? 0.01, commission: 0, label: 'Azioni', hasOvernight: true },
+        crypto: { spread_pct: etoro.crypto?.spread_pct ?? 1.0, overnight_daily_pct: 0, commission: 0, label: 'Criptovaluta', hasOvernight: false },
+        forex: { spread_pct: etoro.forex?.spread_pct ?? 0.01, overnight_daily_pct: etoro.forex?.overnight_pct ?? 0.008, commission: 0, label: 'Forex', hasOvernight: true },
+        commodities: { spread_pct: etoro.commodities?.spread_pct ?? 0.04, overnight_daily_pct: etoro.commodities?.overnight_pct ?? 0.012, commission: 0, label: 'Materie prime', hasOvernight: true },
+        indices: { spread_pct: etoro.indices?.spread_pct ?? 0.04, overnight_daily_pct: etoro.indices?.overnight_pct ?? 0.01, commission: 0, label: 'Indici', hasOvernight: true },
+        etfs: { spread_pct: etoro.etfs?.spread_pct ?? 0.15, overnight_daily_pct: etoro.etfs?.overnight_pct ?? 0.01, commission: 0, label: 'ETFs', hasOvernight: true },
+      };
+      if (etoro.withdrawal_fee !== undefined) WITHDRAWAL.USD = etoro.withdrawal_fee;
+      if (etoro.conversion_fee_pct !== undefined) { CONVERSION.GBP = etoro.conversion_fee_pct; CONVERSION.EUR = etoro.conversion_fee_pct; }
+    }
+    calculate();
+  } catch(e) { console.warn('Fee data fetch failed, using fallback:', e); }
+}
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

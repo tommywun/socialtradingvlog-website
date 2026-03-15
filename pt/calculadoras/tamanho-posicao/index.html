@@ -10,8 +10,17 @@
 <meta name="description" content="Calculadora gratuita de tamanho de posi&ccedil;&atilde;o para copy trading. Descubra quanto investir por trader no eToro com base no tamanho do seu portf&oacute;lio, toler&acirc;ncia ao risco e objetivos de diversifica&ccedil;&atilde;o.">
 <meta name="keywords" content="tamanho posi&ccedil;&atilde;o copy trading, quanto investir por trader eToro, aloca&ccedil;&atilde;o copy trading eToro, dimensionamento posi&ccedil;&atilde;o copy trading, aloca&ccedil;&atilde;o portf&oacute;lio eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
 <link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="Calculadora de Tamanho de Posi&ccedil;&atilde;o do eToro &mdash; Quanto Alocar por Copy Trader">
 <meta property="og:description" content="Calculadora gratuita de tamanho de posi&ccedil;&atilde;o para copy trading. Descubra quanto investir por trader no eToro.">
 <meta property="og:type" content="website">
@@ -495,11 +504,14 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Aviso Legal</strong>
       Esta calculadora fornece <strong style="display:inline;font-size:inherit;">apenas orienta&ccedil;&otilde;es gerais</strong> e destina-se a fins informativos e educacionais. N&atilde;o deve ser usada para tomar decis&otilde;es financeiras.
       <ul style="margin:8px 0 0 18px;">
+        <li>Sempre verifique os detalhes diretamente no site oficial de cada plataforma antes de tomar qualquer decisão financeira.</li>
         <li>As sugest&otilde;es de aloca&ccedil;&atilde;o s&atilde;o baseadas em princ&iacute;pios gerais de diversifica&ccedil;&atilde;o e podem n&atilde;o ser adequadas &agrave;s suas circunst&acirc;ncias individuais, objetivos financeiros ou apetite por risco.</li>
         <li>O desempenho passado dos copy traders n&atilde;o &eacute; indicativo de resultados futuros. Sempre fa&ccedil;a sua pr&oacute;pria an&aacute;lise antes de copiar qualquer trader.</li>
         <li>Esta ferramenta n&atilde;o constitui aconselhamento financeiro, de investimento ou tribut&aacute;rio. O SocialTradingVlog e seu autor n&atilde;o s&atilde;o consultores financeiros e n&atilde;o se responsabilizam por perdas ou danos decorrentes do uso desta calculadora.</li>
         <li>O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.</li>
-      </ul>
+                      <li>Alguns links nesta página são links de afiliados. Se você se cadastrar através desses links, podemos receber uma comissão sem custo adicional para você. Isso não afeta nossas avaliações ou classificações.</li>
+<li>CFDs são instrumentos complexos e apresentam alto risco de perda rápida de dinheiro devido à alavancagem. Seu capital está em risco.</li>
+        </ul>
     </div>
 
   </div>
@@ -858,7 +870,26 @@ function toggleFaq(el) {
 calculate();
 </script>
 
-<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Desconhecido'}).catch(()=>{document.getElementById('last-verified').textContent='Indisponível'});</script>
+<script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // Verificar atualidade dos dados
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Os dados podem estar desatualizados</strong> (última atualização há ' + daysSince + ' dias). Verifique as taxas diretamente no site de cada plataforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Indisponível'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

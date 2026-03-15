@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handelsgebühren vergleichen — Was würde dieser Trade kosten? | SocialTradingVlog</title>
+<meta name="description" content="Gib einen Trade ein und sieh sofort, was er auf jeder großen Plattform in deinem Land kosten würde. Aktien, Krypto, Forex, ETFs — Seite an Seite.">
+<meta name="keywords" content="Handelsgebühren Vergleich, günstigster Broker, Trading-Kosten vergleichen, Aktiengebühren, Krypto-Gebühren, beste Plattform für Anfänger">
+<link rel="canonical" href="https://socialtradingvlog.com/de/rechner/handelsvergleich/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/trade-comparison/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparacion-de-operaciones/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/handelsvergleich/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparaison-de-trades/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparacao-de-operacoes/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/trade-comparison/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/trade-comparison/">
+<meta property="og:title" content="Handelsgebühren vergleichen — Was würde dieser Trade kosten?">
+<meta property="og:description" content="Gib einen Trade ein und sieh die Gebühren auf jeder großen Plattform. Aktien, Krypto, ETFs, Forex.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/de/rechner/handelsvergleich/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_personalization':'denied','wait_for_update':500});
+var c;try{c=JSON.parse(localStorage.getItem('stv-consent'))}catch(e){}
+if(c&&c.accepted){gtag('consent','update',{'analytics_storage':'granted'})}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Handelsgebühren-Vergleichsrechner",
+      "url": "https://socialtradingvlog.com/de/rechner/handelsvergleich/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Vergleiche Handelsgebühren auf allen großen Plattformen. Gib einen Trade ein und sieh die Kosten bei jedem Broker.",
+      "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Welche Handelsplattform hat die niedrigsten Gebühren?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Das hängt davon ab, was du handelst und wo du lebst. Für britische Aktien sind Trading 212 und Freetrade provisionsfrei. Für US-Aktien berechnen Robinhood, Schwab und Fidelity 0 $. Für Krypto hat Interactive Brokers mit 0,12–0,18 % einige der niedrigsten Gebühren." }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind provisionsfreie Plattformen wirklich kostenlos?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Provisionsfreie Plattformen verdienen trotzdem Geld durch Spreads (die Differenz zwischen Kauf- und Verkaufspreis), Währungsumrechnungsgebühren bei ausländischen Aktien und Zinsen auf nicht investiertes Kapital. Die Gesamtkosten eines Trades können höher sein, als die Provision allein vermuten lässt." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 32px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 17px; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
+
+.input-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.input-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+.input-group { flex: 1; min-width: 160px; }
+.input-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 6px; }
+.input-group select, .input-group input { width: 100%; padding: 10px 14px; border: 2px solid var(--border-input); border-radius: var(--radius); font-size: 15px; font-family: inherit; background: var(--bg-input); color: var(--text-primary); transition: border-color .2s; }
+.input-group select:focus, .input-group input:focus { outline: none; border-color: var(--info); }
+.btn-compare { padding: 10px 28px; border-radius: var(--radius); font-size: 15px; font-weight: 700; background: var(--info); color: #fff; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans',sans-serif; transition: background .2s, transform .15s; white-space: nowrap; }
+.btn-compare:hover { background: #006DC7; transform: translateY(-1px); }
+
+.results-section { margin-bottom: 32px; }
+.results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.results-header h2 { font-size: 20px; font-weight: 800; }
+.results-header .trade-desc { font-size: 14px; color: var(--text-secondary); }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.result-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow .2s; position: relative; }
+.result-card:hover { box-shadow: var(--shadow-hover); }
+.result-card.cheapest { border: 2px solid var(--success); }
+.result-card.cheapest::after { content: 'AM GÜNSTIGSTEN'; position: absolute; top: -10px; right: 16px; background: var(--success); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-pill); letter-spacing: 0.5px; }
+.result-card.unavailable { opacity: 0.45; }
+.result-card-head { display: flex; align-items: center; gap: 12px; }
+.result-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0; }
+.result-name { font-size: 15px; font-weight: 700; }
+.result-name small { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+.result-fee { font-size: 28px; font-weight: 800; font-family: 'Plus Jakarta Sans',sans-serif; }
+.result-fee.free { color: var(--success); }
+.result-breakdown { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+.result-breakdown .fee-line { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #f0f0f4; }
+.result-note { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: auto; }
+.result-cfd-badge { display: inline-block; padding: 2px 8px; background: var(--warning-light); color: #B8860B; font-size: 10px; font-weight: 700; border-radius: var(--radius-pill); }
+
+.savings-section { margin: 40px 0; }
+.savings-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; text-align: center; }
+.savings-section > p { text-align: center; color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; }
+.savings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.savings-card { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+.savings-card.best { border-left: 4px solid var(--success); }
+.savings-info h4 { font-size: 14px; font-weight: 700; }
+.savings-info p { font-size: 12px; color: var(--text-secondary); }
+.savings-rate { font-size: 24px; font-weight: 800; color: var(--success); font-family: 'Plus Jakarta Sans',sans-serif; }
+
+.faq-section { margin: 40px 0; }
+.faq-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; overflow: hidden; }
+.faq-q { padding: 16px 20px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q::after { content: "+"; font-size: 20px; color: var(--text-muted); transition: transform .2s; }
+.faq-q.open::after { content: "\2212"; }
+.faq-a { padding: 0 20px 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.7; display: none; }
+.faq-a.open { display: block; }
+
+.verified-banner { background: #E8F5E9; border: 1px solid #A5D6A7; border-radius: 8px; padding: 12px 20px; margin-bottom: 20px; font-size: 13px; color: #2E7D32; display: flex; align-items: center; gap: 8px; }
+
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 24px; }
+  .hero h1 { font-size: 1.5rem; }
+  .input-row { flex-direction: column; }
+  .input-group { min-width: 100%; }
+  .results-grid { grid-template-columns: 1fr; }
+  .tool-nav { gap: 16px; overflow-x: auto; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="tool-nav">
+  <a href="../" class="tool-nav-brand"><div class="logo">ST</div><span>Tools</span></a>
+  <div class="tool-nav-links">
+    <a href="../gebuehrenrechner/">Gebührenrechner</a>
+    <a href="../renditerechner/">Renditerechner</a>
+    <a href="../plattformen-vergleichen/">Plattformen vergleichen</a>
+    <a href="./" class="active">Handelsvergleich</a>
+    <a href="../positionsgroesse/">Positionsgröße</a>
+  </div>
+  <a href="../../../de/" class="tool-nav-back">&larr; Zurück zur Seite</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Multiplattform-Gebührenrechner
+    </div>
+    <h1>Was würde dieser <span class="accent">Trade kosten</span>?</h1>
+    <p>Gib einen Trade ein und sieh sofort die geschätzten Gebühren auf jeder Plattform, die in deinem Land verfügbar ist. Kein Rätselraten.</p>
+  </div>
+
+  <div class="verified-banner" id="verified-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Gebührendaten zuletzt überprüft:</strong> <span id="last-verified">Wird geladen...</span> — Wir überprüfen alle Plattformen wöchentlich. Überprüfe immer auf der Plattform-Website, bevor du handelst.</span>
+  </div>
+
+  <!-- Eingabe -->
+  <div class="input-card">
+    <div class="input-row">
+      <div class="input-group">
+        <label>Dein Land</label>
+        <select id="country-select" onchange="onCountryChange()">
+          <option value="UK">Vereinigtes Königreich</option>
+          <option value="US">Vereinigte Staaten</option>
+          <option value="DE">Deutschland</option>
+          <option value="FR">Frankreich</option>
+          <option value="ES">Spanien</option>
+          <option value="IT">Italien</option>
+          <option value="NL">Niederlande</option>
+          <option value="PL">Polen</option>
+          <option value="AU">Australien</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Anlageklasse</label>
+        <select id="asset-select" onchange="onAssetChange()">
+          <option value="stocks">Aktien</option>
+          <option value="etfs">ETFs</option>
+          <option value="crypto">Kryptowährung</option>
+          <option value="forex">Forex</option>
+          <option value="commodities">Rohstoffe</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Handelsbetrag</label>
+        <input type="number" id="amount-input" value="1000" min="1" step="100" placeholder="z. B. 1000">
+      </div>
+      <div class="input-group" id="price-group" style="display:none">
+        <label>Aktienkurs (für Gebühren pro Aktie)</label>
+        <input type="number" id="price-input" value="150" min="0.01" step="1" placeholder="z. B. 150">
+      </div>
+      <button class="btn-compare" onclick="calculateFees()">Gebühren vergleichen &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Ergebnisse -->
+  <div class="results-section" id="results-section" style="display:none">
+    <div class="results-header">
+      <h2>Gebührenvergleich</h2>
+      <span class="trade-desc" id="trade-desc"></span>
+    </div>
+    <div class="results-grid" id="results-grid"></div>
+  </div>
+
+  <!-- Sparzinsen -->
+  <div class="savings-section" id="savings-section" style="display:none">
+    <h2>Beste Sparzinsen in <span id="savings-country">deinem Land</span></h2>
+    <p>Noch nicht bereit zu investieren? Hier sind die besten Zinssätze, die dir gerade zur Verfügung stehen.</p>
+    <div class="savings-grid" id="savings-grid"></div>
+  </div>
+
+  <!-- Haftungsausschluss -->
+  <div class="legal-disclaimer">
+    <strong>Wichtig: Gebührenschätzungen &amp; Haftungsausschluss</strong>
+    Wir tun unser Bestes, um diese Daten aktuell zu halten, aber Gebühren ändern sich häufig. Dies sind Schätzungen basierend auf öffentlich verfügbaren Informationen.
+    <ul>
+      <li><strong>Überprüfe Gebühren immer direkt auf der offiziellen Website jeder Plattform, bevor du handelst.</strong> Wir prüfen wöchentlich, können aber keine Echtzeit-Genauigkeit garantieren.</li>
+      <li>Die tatsächlichen Kosten können aufgrund von Spreads, Marktbedingungen, Tageszeit und deinem Kontotyp/-level abweichen.</li>
+      <li>Währungsumrechnungsgebühren sind geschätzt und hängen von deiner Basiswährung und der Währung des gehandelten Vermögenswerts ab.</li>
+      <li>Einige Plattformen verdienen am Spread (Differenz zwischen Kauf- und Verkaufspreis), auch wenn sie „Null Provision" bewerben.</li>
+      <li>„Provisionsfrei" bedeutet nicht „kostenfrei" — beim Trading gibt es immer Kosten, auch wenn sie keine expliziten Gebühren sind.</li>
+      <li>CFD-Handel bedeutet, dass du den zugrunde liegenden Vermögenswert nicht besitzt. CFDs sind komplexe Instrumente und bergen ein hohes Risiko, aufgrund von Hebelwirkung schnell Geld zu verlieren. Dein Kapital ist gefährdet.</li>
+      <li>Dieses Tool stellt keine Finanzberatung dar. SocialTradingVlog übernimmt keine Haftung für Verluste, die durch die Nutzung dieses Tools entstehen.</li>
+          <li>Einige Links auf dieser Seite sind Affiliate-Links. Wenn Sie sich über diese Links anmelden, erhalten wir möglicherweise eine Provision, ohne dass Ihnen zusätzliche Kosten entstehen. Dies beeinflusst unsere Bewertungen oder Einschätzungen nicht.</li>
+      </ul>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Häufig gestellte Fragen</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Welche Plattform hat die niedrigsten Handelsgebühren?</div>
+      <div class="faq-a">Das hängt davon ab, was du handelst, wie viel und wo du lebst. Bei Aktien bieten viele Plattformen mittlerweile provisionsfreien Handel an (eToro, Trading 212, Robinhood, Freetrade). Diese Plattformen können jedoch Währungsumrechnungsgebühren für ausländische Aktien erheben oder am Spread verdienen. Für aktive Trader hat Interactive Brokers in der Regel die niedrigsten Gesamtkosten. Nutze den Rechner oben mit deinem konkreten Trade, um die günstigste Option für dich zu finden.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Sind „provisionsfreie" Plattformen wirklich kostenlos?</div>
+      <div class="faq-a">Keine Plattform ist wirklich „kostenlos". Provisionsfreie Plattformen verdienen Geld durch: (1) den Spread — die Differenz zwischen Kauf- und Verkaufspreisen; (2) Währungsumrechnungsgebühren beim Kauf von Vermögenswerten in einer Fremdwährung; (3) Zinsen auf dein nicht investiertes Bargeld; (4) Premium-Abonnements; (5) Payment for Order Flow (PFOF), bei dem sie deine Auftragsdaten an Market Maker verkaufen. Die Gesamtkosten eines Trades sind mehr als nur die Provision.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Was ist der Unterschied zwischen echtem Aktienbesitz und CFDs?</div>
+      <div class="faq-a">Wenn du echte Aktien kaufst, besitzt du einen Anteil am Unternehmen — du kannst Dividenden erhalten und sie unbegrenzt halten. Bei CFDs (Contracts for Difference) wettest du auf die Kursbewegung, ohne den Vermögenswert zu besitzen. CFDs ermöglichen Hebelwirkung (Handeln mit geliehenem Geld), die sowohl Gewinne als auch Verluste verstärkt. Die meisten Privatanleger verlieren Geld beim CFD-Handel. Wenn du Anfänger bist, bleib beim echten Aktienbesitz.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Warum variieren die Gebühren je nach Land?</div>
+      <div class="faq-a">Verschiedene Plattformen sind in verschiedenen Ländern zugelassen und können aufgrund lokaler Vorschriften, Währungsumrechnungskosten und Börsenzugangsgebühren unterschiedliche Gebührenstrukturen pro Region haben. Zum Beispiel erhalten britische Anleger steuerbefreite ISA-Konten, die anderswo nicht verfügbar sind, und EU-Anleger profitieren von günstigem Zugang zu europäischen Börsen über DEGIRO.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Sollte ich die günstigste Plattform wählen?</div>
+      <div class="faq-a">Nicht unbedingt. Gebühren sind wichtig, aber nicht alles. Bedenke: (1) Welche Vermögenswerte möchtest du handeln? Nicht alle Plattformen bieten alles an. (2) Möchtest du Copy Trading oder soziale Funktionen? Nur eToro und XTB bieten das an. (3) Ist die Plattform in deinem Land reguliert? (4) Wie gut ist die App und der Kundenservice? (5) Bietet sie steuereffiziente Konten an? Nutze unser Tool <a href="../plattformen-vergleichen/" style="color:var(--info)">Plattformen vergleichen</a> für das vollständige Bild.</div>
+    </div>
+  </div>
+
+  <!-- Fußzeile -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../../de/">SocialTradingVlog.com</a> &middot;
+      <a href="../">Alle Tools</a> &middot;
+      <a href="../plattformen-vergleichen/">Plattformen vergleichen</a> &middot;
+      <a href="../../../de/ueber-uns/">Über Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Gebührendaten werden wöchentlich mit offiziellen Plattformquellen überprüft. Schätzungen spiegeln möglicherweise nicht die Echtzeit-Gebühren, Spreads oder Werbeangebote wider.
+      Überprüfe immer auf der offiziellen Website jeder Plattform. Dieses Tool ist keine Finanzberatung. Dein Kapital ist gefährdet.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+let PLATFORM_DATA = null;
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    PLATFORM_DATA = await resp.json();
+    document.getElementById('last-verified').textContent = PLATFORM_DATA._last_updated || 'Unbekannt';
+    // Datenaktualität prüfen
+    var lastUpdated = new Date(PLATFORM_DATA._last_updated || PLATFORM_DATA['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = PLATFORM_DATA._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Daten möglicherweise veraltet</strong> (letzte Aktualisierung vor ' + daysSince + ' Tagen). Bitte überprüfen Sie die Gebühren direkt auf der Website jeder Plattform.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    calculateFees();
+    renderSavings();
+  } catch (e) {
+    console.error('Fehler beim Laden der Gebührendaten:', e);
+    document.getElementById('last-verified').textContent = 'Fehler beim Laden der Daten';
+  }
+}
+
+function onCountryChange() {
+  calculateFees();
+  renderSavings();
+}
+function onAssetChange() {
+  const asset = document.getElementById('asset-select').value;
+  document.getElementById('price-group').style.display = asset === 'stocks' ? '' : 'none';
+  calculateFees();
+}
+
+function calculateFees() {
+  if (!PLATFORM_DATA) return;
+
+  const country = document.getElementById('country-select').value;
+  const asset = document.getElementById('asset-select').value;
+  const amount = parseFloat(document.getElementById('amount-input').value) || 1000;
+  const sharePrice = parseFloat(document.getElementById('price-input').value) || 150;
+  const countryInfo = PLATFORM_DATA.countries[country] || { currency: 'USD', symbol: '$' };
+  const sym = countryInfo.symbol;
+  const localCurrency = countryInfo.currency;
+
+  const results = [];
+
+  for (const [id, plat] of Object.entries(PLATFORM_DATA.platforms)) {
+    if (!plat.countries.includes(country)) continue;
+
+    const assetData = plat[asset];
+    if (!assetData) continue;
+
+    const result = {
+      id,
+      name: plat.name,
+      color: plat.color,
+      url: plat.url,
+      fees_url: plat.fees_url,
+    };
+
+    if (assetData.available === false) {
+      result.available = false;
+      result.total = Infinity;
+      result.note = assetData.note || 'Auf dieser Plattform nicht verfügbar.';
+      results.push(result);
+      continue;
+    }
+
+    result.available = true;
+    result.cfd_only = assetData.cfd_only || false;
+    result.real_ownership = assetData.real_ownership || false;
+    result.note = assetData.note || '';
+
+    let commission = 0;
+    let fxFee = 0;
+    let spread = 0;
+    let otherFees = 0;
+    const breakdown = [];
+
+    if (assetData.commission_pct !== undefined) {
+      commission = amount * assetData.commission_pct;
+      if (commission === 0) {
+        breakdown.push({ label: 'Provision', value: 'Kostenlos' });
+      } else {
+        breakdown.push({ label: 'Provision', value: formatMoney(commission, sym) });
+      }
+    } else if (assetData.commission_flat !== undefined) {
+      commission = assetData.commission_flat;
+      if (commission === 0) {
+        breakdown.push({ label: 'Provision', value: 'Kostenlos' });
+      } else {
+        breakdown.push({ label: 'Provision', value: formatMoney(commission, sym) });
+      }
+    } else if (assetData.commission_type === 'per_share') {
+      const shares = amount / sharePrice;
+      commission = Math.max(shares * assetData.rate_per_share, assetData.min_commission || 0);
+      if (assetData.max_pct) {
+        commission = Math.min(commission, amount * assetData.max_pct);
+      }
+      breakdown.push({ label: 'Provision', value: formatMoney(commission, sym) + ' (' + Math.round(shares) + ' Aktien)' });
+    } else if (assetData.commission_brackets) {
+      for (const bracket of assetData.commission_brackets) {
+        if (bracket.up_to && amount <= bracket.up_to) {
+          commission = bracket.fee;
+          break;
+        } else if (bracket.above && amount > bracket.above) {
+          commission = amount * bracket.pct;
+          break;
+        }
+      }
+      if (!commission && assetData.commission_brackets.length > 0) {
+        const last = assetData.commission_brackets[assetData.commission_brackets.length - 1];
+        commission = last.pct ? amount * last.pct : last.fee || 0;
+      }
+      breakdown.push({ label: 'Provision', value: formatMoney(commission, sym) });
+    }
+
+    if (assetData.commission_above_100k_pct && assetData.volume_limit) {
+      breakdown.push({ label: 'Hinweis', value: 'Kostenlos bis ' + formatMoney(assetData.volume_limit, '€') + '/Monat' });
+    }
+
+    if (assetData.spread_pct) {
+      spread = amount * assetData.spread_pct;
+      breakdown.push({ label: 'Gesch. Spread-Kosten', value: '~' + formatMoney(spread, sym) });
+    }
+    if (assetData.typical_spread_pips !== undefined) {
+      const pipCost = assetData.typical_spread_pips * (amount / 100000) * 10;
+      spread = pipCost;
+      breakdown.push({ label: 'Spread (' + assetData.typical_spread_pips + ' Pips)', value: '~' + formatMoney(spread, sym) });
+    }
+
+    if (assetData.fx_fee_pct) {
+      const fxFreeCurrencies = assetData.fx_free_currencies || [];
+      if (!fxFreeCurrencies.includes(localCurrency)) {
+        fxFee = amount * assetData.fx_fee_pct;
+        breakdown.push({ label: 'Währungsumrechnung', value: formatMoney(fxFee, sym) + ' (' + (assetData.fx_fee_pct * 100).toFixed(2) + '%)' });
+      } else {
+        breakdown.push({ label: 'Währungsumrechnung', value: 'Kostenlos (lokale Währung)' });
+      }
+    }
+
+    if (assetData.connectivity_fee) {
+      breakdown.push({ label: 'Börsenzugang', value: formatMoney(assetData.connectivity_fee, '€') + '/Jahr' });
+    }
+
+    if (assetData.min_fee && (commission + spread) < assetData.min_fee) {
+      const old = commission + spread;
+      commission = assetData.min_fee - spread;
+      breakdown.push({ label: 'Mindestgebühr greift', value: formatMoney(assetData.min_fee, sym) });
+    }
+
+    result.commission = commission;
+    result.fxFee = fxFee;
+    result.spread = spread;
+    result.total = commission + fxFee + spread;
+    result.breakdown = breakdown;
+
+    if (assetData.subscription) {
+      result.subscriptionNote = 'Kostenlos mit ' + formatMoney(assetData.subscription, '€') + '/Monat-Abo';
+    }
+
+    results.push(result);
+  }
+
+  results.sort((a, b) => {
+    if (a.available && !b.available) return -1;
+    if (!a.available && b.available) return 1;
+    return a.total - b.total;
+  });
+
+  const cheapest = results.find(r => r.available);
+  if (cheapest) cheapest.isCheapest = true;
+
+  renderResults(results, amount, asset, sym);
+}
+
+function formatMoney(val, symbol) {
+  if (val === 0) return symbol + '0';
+  if (val < 0.01) return '<' + symbol + '0,01';
+  if (val < 1) return symbol + val.toFixed(2);
+  if (val >= 1000) return symbol + val.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return symbol + val.toFixed(2);
+}
+
+function renderResults(results, amount, asset, sym) {
+  const section = document.getElementById('results-section');
+  const grid = document.getElementById('results-grid');
+  const desc = document.getElementById('trade-desc');
+
+  const assetLabels = { stocks: 'Aktien', etfs: 'ETF', crypto: 'Krypto', forex: 'Forex', commodities: 'Rohstoffe' };
+  desc.textContent = assetLabels[asset] + '-Trade über ' + sym + amount.toLocaleString();
+
+  let html = '';
+  for (const r of results) {
+    const cardClass = !r.available ? 'result-card unavailable'
+      : r.isCheapest ? 'result-card cheapest' : 'result-card';
+
+    html += '<div class="' + cardClass + '">';
+    html += '<div class="result-card-head">';
+    html += '<div class="result-icon" style="background:' + r.color + '">' + r.name.charAt(0) + '</div>';
+    html += '<div class="result-name">' + r.name;
+    if (r.cfd_only) html += ' <span class="result-cfd-badge">NUR CFD</span>';
+    html += '<small><a href="' + r.fees_url + '" target="_blank" rel="noopener" style="color:var(--info);text-decoration:none;">Gebühren ansehen &rarr;</a></small>';
+    html += '</div></div>';
+
+    if (!r.available) {
+      html += '<div class="result-fee" style="font-size:16px;color:var(--text-muted)">Nicht verfügbar</div>';
+      html += '<div class="result-note">' + r.note + '</div>';
+    } else {
+      if (r.total === 0) {
+        html += '<div class="result-fee free">' + sym + '0 <span style="font-size:14px;font-weight:500">kostenlos</span></div>';
+      } else {
+        html += '<div class="result-fee">' + formatMoney(r.total, sym) + '</div>';
+      }
+
+      if (r.breakdown && r.breakdown.length > 0) {
+        html += '<div class="result-breakdown">';
+        for (const line of r.breakdown) {
+          html += '<div class="fee-line"><span>' + line.label + '</span><span>' + line.value + '</span></div>';
+        }
+        html += '</div>';
+      }
+
+      if (r.note) {
+        html += '<div class="result-note">' + r.note + '</div>';
+      }
+    }
+
+    html += '</div>';
+  }
+
+  grid.innerHTML = html;
+  section.style.display = '';
+
+  gtag('event', 'trade_comparison', { event_category: 'calculator', event_label: asset, value: amount });
+}
+
+function renderSavings() {
+  if (!PLATFORM_DATA || !PLATFORM_DATA.savings_rates) return;
+  const country = document.getElementById('country-select').value;
+  const rates = PLATFORM_DATA.savings_rates[country];
+  const section = document.getElementById('savings-section');
+  const grid = document.getElementById('savings-grid');
+
+  document.getElementById('savings-country').textContent =
+    (PLATFORM_DATA.countries[country] || {}).name || country;
+
+  if (!rates || rates.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  rates.sort((a, b) => b.rate - a.rate);
+
+  let html = '';
+  rates.forEach((s, i) => {
+    html += '<div class="savings-card' + (i === 0 ? ' best' : '') + '">';
+    html += '<div class="savings-info">';
+    html += '<h4>' + s.bank + '</h4>';
+    html += '<p>' + s.type + (s.note ? ' — ' + s.note : '') + '</p>';
+    html += '</div>';
+    html += '<div class="savings-rate">' + s.rate.toFixed(1) + '%</div>';
+    html += '</div>';
+  });
+
+  grid.innerHTML = html;
+  section.style.display = '';
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+loadFeeData();
+</script>
+
+  <script src="../../../js/consent.js"></script>
+  <script src="../../../js/analytics.js"></script>
+</body>
+</html>

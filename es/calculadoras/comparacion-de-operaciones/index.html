@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compara comisiones de trading — ¿Cuánto costaría esta operación? | SocialTradingVlog</title>
+<meta name="description" content="Introduce una operación y compara al instante las comisiones en todas las plataformas principales de tu país. Acciones, cripto, forex, ETFs — lado a lado.">
+<meta name="keywords" content="comparar comisiones trading, bróker más barato, comparar costes trading, comisiones acciones, comisiones cripto, mejor plataforma para principiantes">
+<link rel="canonical" href="https://socialtradingvlog.com/es/calculadoras/comparacion-de-operaciones/">
+<link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/trade-comparison/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparacion-de-operaciones/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/handelsvergleich/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparaison-de-trades/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparacao-de-operacoes/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/trade-comparison/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/trade-comparison/">
+<meta property="og:title" content="Compara comisiones de trading — ¿Cuánto costaría esta operación?">
+<meta property="og:description" content="Introduce una operación y compara las comisiones en todas las plataformas principales. Acciones, cripto, ETFs, forex.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://socialtradingvlog.com/es/calculadoras/comparacion-de-operaciones/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_personalization':'denied','wait_for_update':500});
+var c;try{c=JSON.parse(localStorage.getItem('stv-consent'))}catch(e){}
+if(c&&c.accepted){gtag('consent','update',{'analytics_storage':'granted'})}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBGDJ951LL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PBGDJ951LL');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de comparación de comisiones de trading",
+      "url": "https://socialtradingvlog.com/es/calculadoras/comparacion-de-operaciones/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Compara las comisiones de trading en todas las plataformas principales. Introduce una operación y consulta el coste en cada bróker.",
+      "author": { "@type": "Person", "name": "Tom West", "url": "https://socialtradingvlog.com/about/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué plataforma de trading tiene las comisiones más bajas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende de lo que operes y dónde vivas. Para acciones del Reino Unido, Trading 212 y Freetrade no cobran comisión. Para acciones de EE. UU., Robinhood, Schwab y Fidelity cobran 0 $. Para cripto, Interactive Brokers tiene algunas de las comisiones más bajas, entre el 0,12 % y el 0,18 %." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las plataformas sin comisión son realmente gratuitas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Las plataformas sin comisión siguen ganando dinero a través de los spreads (la diferencia entre el precio de compra y venta), las comisiones por conversión de divisas en acciones extranjeras y los intereses sobre el efectivo no invertido. El coste total de una operación puede ser mayor de lo que la comisión por sí sola sugiere." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg-page: #F4F5F9; --bg-card: #FFFFFF; --bg-input: #FFFFFF;
+  --border: #E0E1E9; --border-input: #C4C7CF;
+  --text-primary: #191B23; --text-secondary: #6C6E79; --text-muted: #8A8E9B;
+  --brand: #FF642D; --brand-hover: #C33909;
+  --info: #008FF8; --info-light: #D0EEFF;
+  --success: #009F81; --success-light: #CFF1EA;
+  --warning: #FDC23C; --warning-light: #FEF3D0;
+  --critical: #FF4953; --critical-light: #FFCEDC;
+  --purple: #8B5CF6; --purple-light: #EDE9FE;
+  --shadow: 0 0 1px rgba(25,27,35,.16), 0 1px 2px rgba(25,27,35,.12);
+  --shadow-hover: 0 4px 20px rgba(25,27,35,.12);
+  --radius: 8px; --radius-lg: 16px; --radius-pill: 24px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
+
+.tool-nav { background: #382E5E; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 48px; position: sticky; top: 0; z-index: 100; }
+.tool-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.tool-nav-brand .logo { width: 28px; height: 28px; background: var(--brand); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; }
+.tool-nav-brand span { font-size: 14px; font-weight: 600; color: #fff; }
+.tool-nav-links { display: flex; gap: 0; height: 100%; }
+.tool-nav-links a { padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 2px solid transparent; transition: all .2s; }
+.tool-nav-links a:hover { color: rgba(255,255,255,.85); }
+.tool-nav-links a.active { color: #fff; border-bottom-color: #fff; }
+.tool-nav-back { margin-left: auto; font-size: 13px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.tool-nav-back:hover { color: #fff; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 48px 0 32px; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: var(--info-light); color: var(--info); border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(1.75rem,4vw,2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+.hero h1 .accent { color: var(--info); }
+.hero p { font-size: 17px; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
+
+.input-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 32px; margin-bottom: 32px; }
+.input-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+.input-group { flex: 1; min-width: 160px; }
+.input-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 6px; }
+.input-group select, .input-group input { width: 100%; padding: 10px 14px; border: 2px solid var(--border-input); border-radius: var(--radius); font-size: 15px; font-family: inherit; background: var(--bg-input); color: var(--text-primary); transition: border-color .2s; }
+.input-group select:focus, .input-group input:focus { outline: none; border-color: var(--info); }
+.btn-compare { padding: 10px 28px; border-radius: var(--radius); font-size: 15px; font-weight: 700; background: var(--info); color: #fff; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans',sans-serif; transition: background .2s, transform .15s; white-space: nowrap; }
+.btn-compare:hover { background: #006DC7; transform: translateY(-1px); }
+
+.results-section { margin-bottom: 32px; }
+.results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.results-header h2 { font-size: 20px; font-weight: 800; }
+.results-header .trade-desc { font-size: 14px; color: var(--text-secondary); }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.result-card { background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow .2s; position: relative; }
+.result-card:hover { box-shadow: var(--shadow-hover); }
+.result-card.cheapest { border: 2px solid var(--success); }
+.result-card.cheapest::after { content: 'MÁS BARATO'; position: absolute; top: -10px; right: 16px; background: var(--success); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-pill); letter-spacing: 0.5px; }
+.result-card.unavailable { opacity: 0.45; }
+.result-card-head { display: flex; align-items: center; gap: 12px; }
+.result-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0; }
+.result-name { font-size: 15px; font-weight: 700; }
+.result-name small { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+.result-fee { font-size: 28px; font-weight: 800; font-family: 'Plus Jakarta Sans',sans-serif; }
+.result-fee.free { color: var(--success); }
+.result-breakdown { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+.result-breakdown .fee-line { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #f0f0f4; }
+.result-note { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: auto; }
+.result-cfd-badge { display: inline-block; padding: 2px 8px; background: var(--warning-light); color: #B8860B; font-size: 10px; font-weight: 700; border-radius: var(--radius-pill); }
+
+.savings-section { margin: 40px 0; }
+.savings-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; text-align: center; }
+.savings-section > p { text-align: center; color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; }
+.savings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.savings-card { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+.savings-card.best { border-left: 4px solid var(--success); }
+.savings-info h4 { font-size: 14px; font-weight: 700; }
+.savings-info p { font-size: 12px; color: var(--text-secondary); }
+.savings-rate { font-size: 24px; font-weight: 800; color: var(--success); font-family: 'Plus Jakarta Sans',sans-serif; }
+
+.faq-section { margin: 40px 0; }
+.faq-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center; }
+.faq-item { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; overflow: hidden; }
+.faq-q { padding: 16px 20px; font-weight: 600; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q::after { content: "+"; font-size: 20px; color: var(--text-muted); transition: transform .2s; }
+.faq-q.open::after { content: "\2212"; }
+.faq-a { padding: 0 20px 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.7; display: none; }
+.faq-a.open { display: block; }
+
+.verified-banner { background: #E8F5E9; border: 1px solid #A5D6A7; border-radius: 8px; padding: 12px 20px; margin-bottom: 20px; font-size: 13px; color: #2E7D32; display: flex; align-items: center; gap: 8px; }
+
+.legal-disclaimer { background: #F8F8FA; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+.legal-disclaimer strong { color: var(--text-primary); font-size: 13px; display: block; margin-bottom: 6px; }
+.legal-disclaimer ul { margin: 8px 0 0 18px; }
+.legal-disclaimer ul li { margin-bottom: 4px; }
+
+.tool-footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 32px; }
+.tool-footer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.tool-footer a { color: var(--info); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 32px 0 24px; }
+  .hero h1 { font-size: 1.5rem; }
+  .input-row { flex-direction: column; }
+  .input-group { min-width: 100%; }
+  .results-grid { grid-template-columns: 1fr; }
+  .tool-nav { gap: 16px; overflow-x: auto; }
+  .tool-nav-links a { padding: 0 10px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="tool-nav">
+  <a href="../" class="tool-nav-brand"><div class="logo">ST</div><span>Herramientas</span></a>
+  <div class="tool-nav-links">
+    <a href="../calculadora-comisiones/">Calculadora de comisiones</a>
+    <a href="../calculadora-rentabilidad/">Calculadora de rentabilidad</a>
+    <a href="../comparar-plataformas/">Comparar plataformas</a>
+    <a href="./" class="active">Comparación de operaciones</a>
+    <a href="../tamano-posicion/">Tamaño de posición</a>
+  </div>
+  <a href="../../../es/" class="tool-nav-back">&larr; Volver al sitio</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Calculadora de comisiones multiplataforma
+    </div>
+    <h1>¿Cuánto costaría esta <span class="accent">operación</span>?</h1>
+    <p>Introduce una operación y compara al instante las comisiones estimadas en todas las plataformas disponibles en tu país. Sin conjeturas.</p>
+  </div>
+
+  <div class="verified-banner" id="verified-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Datos de comisiones verificados por última vez:</strong> <span id="last-verified">Cargando...</span> — Revisamos todas las plataformas semanalmente. Verifica siempre en el sitio de la plataforma antes de operar.</span>
+  </div>
+
+  <!-- Entrada -->
+  <div class="input-card">
+    <div class="input-row">
+      <div class="input-group">
+        <label>Tu país</label>
+        <select id="country-select" onchange="onCountryChange()">
+          <option value="UK">Reino Unido</option>
+          <option value="US">Estados Unidos</option>
+          <option value="DE">Alemania</option>
+          <option value="FR">Francia</option>
+          <option value="ES">España</option>
+          <option value="IT">Italia</option>
+          <option value="NL">Países Bajos</option>
+          <option value="PL">Polonia</option>
+          <option value="AU">Australia</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Clase de activo</label>
+        <select id="asset-select" onchange="onAssetChange()">
+          <option value="stocks">Acciones</option>
+          <option value="etfs">ETFs</option>
+          <option value="crypto">Criptomonedas</option>
+          <option value="forex">Forex</option>
+          <option value="commodities">Materias primas</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Importe de la operación</label>
+        <input type="number" id="amount-input" value="1000" min="1" step="100" placeholder="ej. 1000">
+      </div>
+      <div class="input-group" id="price-group" style="display:none">
+        <label>Precio de la acción (para comisiones por acción)</label>
+        <input type="number" id="price-input" value="150" min="0.01" step="1" placeholder="ej. 150">
+      </div>
+      <button class="btn-compare" onclick="calculateFees()">Comparar comisiones &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <div class="results-section" id="results-section" style="display:none">
+    <div class="results-header">
+      <h2>Comparación de comisiones</h2>
+      <span class="trade-desc" id="trade-desc"></span>
+    </div>
+    <div class="results-grid" id="results-grid"></div>
+  </div>
+
+  <!-- Tasas de ahorro -->
+  <div class="savings-section" id="savings-section" style="display:none">
+    <h2>Mejores tasas de ahorro en <span id="savings-country">tu país</span></h2>
+    <p>¿Aún no estás listo para invertir? Aquí tienes los mejores tipos de interés disponibles para ti ahora mismo.</p>
+    <div class="savings-grid" id="savings-grid"></div>
+  </div>
+
+  <!-- Aviso legal -->
+  <div class="legal-disclaimer">
+    <strong>Importante: Estimaciones de comisiones y aviso legal</strong>
+    Hacemos todo lo posible por mantener estos datos actualizados, pero las comisiones cambian con frecuencia. Se trata de estimaciones basadas en información disponible públicamente.
+    <ul>
+      <li><strong>Verifica siempre las comisiones directamente en el sitio web oficial de cada plataforma antes de operar.</strong> Revisamos semanalmente, pero no podemos garantizar la exactitud en tiempo real.</li>
+      <li>Los costes reales pueden variar debido a los spreads, las condiciones del mercado, la hora del día y tu tipo/nivel de cuenta.</li>
+      <li>Las comisiones por conversión de divisas son estimadas y dependen de tu divisa base y la divisa del activo que operas.</li>
+      <li>Algunas plataformas obtienen beneficios del spread (diferencia entre el precio de compra y venta) incluso cuando anuncian "cero comisiones".</li>
+      <li>"Sin comisión" no significa "sin coste" — siempre hay costes al operar, aunque no sean comisiones explícitas.</li>
+      <li>Operar con CFDs significa que no posees el activo subyacente. Los CFDs son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. Tu capital está en riesgo.</li>
+      <li>Esta herramienta no constituye asesoramiento financiero. SocialTradingVlog no acepta ninguna responsabilidad por las pérdidas derivadas del uso de esta herramienta.</li>
+          <li>Algunos enlaces de esta página son enlaces de afiliado. Si te registras a través de ellos, podemos recibir una comisión sin coste adicional para ti. Esto no afecta a nuestras valoraciones ni evaluaciones.</li>
+      <li>Los CFD son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. Tu capital está en riesgo.</li>
+      </ul>
+  </div>
+
+  <!-- Preguntas frecuentes -->
+  <div class="faq-section">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Qué plataforma tiene las comisiones de trading más bajas?</div>
+      <div class="faq-a">Depende de lo que operes, cuánto y dónde vivas. Para acciones, muchas plataformas ofrecen ya operaciones sin comisión (eToro, Trading 212, Robinhood, Freetrade). Sin embargo, estas plataformas pueden cobrar comisiones por conversión de divisas en acciones extranjeras, o ganar dinero con el spread. Para traders activos, Interactive Brokers suele tener los costes totales más bajos. Usa la calculadora de arriba con tu operación específica para encontrar la opción más barata.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Las plataformas "sin comisión" son realmente gratuitas?</div>
+      <div class="faq-a">Ninguna plataforma es realmente "gratuita". Las plataformas sin comisión ganan dinero a través de: (1) el spread — la diferencia entre los precios de compra y venta; (2) comisiones por conversión de divisas al comprar activos en moneda extranjera; (3) intereses sobre tu efectivo no invertido; (4) suscripciones premium; (5) pago por flujo de órdenes (PFOF), donde venden tus datos de órdenes a creadores de mercado. El coste total de una operación es más que solo la comisión.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Cuál es la diferencia entre la propiedad real de acciones y los CFDs?</div>
+      <div class="faq-a">Cuando compras acciones reales, posees una parte de la empresa — puedes recibir dividendos y mantenerlas indefinidamente. Con los CFDs (Contratos por Diferencia), apuestas sobre el movimiento del precio sin poseer el activo. Los CFDs permiten apalancamiento (operar con dinero prestado), lo que amplifica tanto las ganancias como las pérdidas. La mayoría de los traders minoristas pierden dinero operando con CFDs. Si eres principiante, quédate con la propiedad real de acciones.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Por qué varían las comisiones según el país?</div>
+      <div class="faq-a">Diferentes plataformas están autorizadas para operar en diferentes países, y pueden tener estructuras de comisiones distintas por región debido a regulaciones locales, costes de conversión de divisas y tarifas de acceso al mercado. Por ejemplo, los inversores del Reino Unido disponen de cuentas ISA con ventajas fiscales que no están disponibles en otros países, y los inversores de la UE se benefician del acceso de bajo coste a bolsas europeas a través de DEGIRO.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Debería elegir la plataforma más barata?</div>
+      <div class="faq-a">No necesariamente. Las comisiones son importantes, pero no lo son todo. Considera: (1) ¿Qué activos quieres operar? No todas las plataformas ofrecen todo. (2) ¿Quieres copy trading o funciones sociales? Solo eToro y XTB ofrecen esto. (3) ¿Está la plataforma regulada en tu país? (4) ¿Qué tal es la app y el servicio de atención al cliente? (5) ¿Ofrece cuentas con ventajas fiscales? Usa nuestra herramienta <a href="../comparar-plataformas/" style="color:var(--info)">Comparar plataformas</a> para ver el panorama completo.</div>
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <div class="tool-footer">
+    <p>
+      <a href="../../../es/">SocialTradingVlog.com</a> &middot;
+      <a href="../">Todas las herramientas</a> &middot;
+      <a href="../comparar-plataformas/">Comparar plataformas</a> &middot;
+      <a href="../../../es/sobre-nosotros/">Sobre Tom</a>
+    </p>
+    <p style="margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">
+      Los datos de comisiones se verifican semanalmente con fuentes oficiales de las plataformas. Las estimaciones pueden no reflejar las comisiones, spreads u ofertas promocionales en tiempo real.
+      Verifica siempre en el sitio oficial de cada plataforma. Esta herramienta no es asesoramiento financiero. Tu capital está en riesgo.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// ─── Fee Data ───
+let PLATFORM_DATA = null;
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    PLATFORM_DATA = await resp.json();
+    document.getElementById('last-verified').textContent = PLATFORM_DATA._last_updated || 'Desconocido';
+    // Comprobar actualidad de los datos
+    var lastUpdated = new Date(PLATFORM_DATA._last_updated || PLATFORM_DATA['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = PLATFORM_DATA._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Los datos pueden estar desactualizados</strong> (última actualización hace ' + daysSince + ' días). Verifica las comisiones directamente en el sitio web de cada plataforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    calculateFees();
+    renderSavings();
+  } catch (e) {
+    console.error('Error al cargar datos de comisiones:', e);
+    document.getElementById('last-verified').textContent = 'Error al cargar datos';
+  }
+}
+
+function onCountryChange() {
+  calculateFees();
+  renderSavings();
+}
+function onAssetChange() {
+  const asset = document.getElementById('asset-select').value;
+  document.getElementById('price-group').style.display = asset === 'stocks' ? '' : 'none';
+  calculateFees();
+}
+
+function calculateFees() {
+  if (!PLATFORM_DATA) return;
+
+  const country = document.getElementById('country-select').value;
+  const asset = document.getElementById('asset-select').value;
+  const amount = parseFloat(document.getElementById('amount-input').value) || 1000;
+  const sharePrice = parseFloat(document.getElementById('price-input').value) || 150;
+  const countryInfo = PLATFORM_DATA.countries[country] || { currency: 'USD', symbol: '$' };
+  const sym = countryInfo.symbol;
+  const localCurrency = countryInfo.currency;
+
+  const results = [];
+
+  for (const [id, plat] of Object.entries(PLATFORM_DATA.platforms)) {
+    if (!plat.countries.includes(country)) continue;
+
+    const assetData = plat[asset];
+    if (!assetData) continue;
+
+    const result = {
+      id,
+      name: plat.name,
+      color: plat.color,
+      url: plat.url,
+      fees_url: plat.fees_url,
+    };
+
+    if (assetData.available === false) {
+      result.available = false;
+      result.total = Infinity;
+      result.note = assetData.note || 'No disponible en esta plataforma.';
+      results.push(result);
+      continue;
+    }
+
+    result.available = true;
+    result.cfd_only = assetData.cfd_only || false;
+    result.real_ownership = assetData.real_ownership || false;
+    result.note = assetData.note || '';
+
+    let commission = 0;
+    let fxFee = 0;
+    let spread = 0;
+    let otherFees = 0;
+    const breakdown = [];
+
+    if (assetData.commission_pct !== undefined) {
+      commission = amount * assetData.commission_pct;
+      if (commission === 0) {
+        breakdown.push({ label: 'Comisión', value: 'Gratis' });
+      } else {
+        breakdown.push({ label: 'Comisión', value: formatMoney(commission, sym) });
+      }
+    } else if (assetData.commission_flat !== undefined) {
+      commission = assetData.commission_flat;
+      if (commission === 0) {
+        breakdown.push({ label: 'Comisión', value: 'Gratis' });
+      } else {
+        breakdown.push({ label: 'Comisión', value: formatMoney(commission, sym) });
+      }
+    } else if (assetData.commission_type === 'per_share') {
+      const shares = amount / sharePrice;
+      commission = Math.max(shares * assetData.rate_per_share, assetData.min_commission || 0);
+      if (assetData.max_pct) {
+        commission = Math.min(commission, amount * assetData.max_pct);
+      }
+      breakdown.push({ label: 'Comisión', value: formatMoney(commission, sym) + ' (' + Math.round(shares) + ' acciones)' });
+    } else if (assetData.commission_brackets) {
+      for (const bracket of assetData.commission_brackets) {
+        if (bracket.up_to && amount <= bracket.up_to) {
+          commission = bracket.fee;
+          break;
+        } else if (bracket.above && amount > bracket.above) {
+          commission = amount * bracket.pct;
+          break;
+        }
+      }
+      if (!commission && assetData.commission_brackets.length > 0) {
+        const last = assetData.commission_brackets[assetData.commission_brackets.length - 1];
+        commission = last.pct ? amount * last.pct : last.fee || 0;
+      }
+      breakdown.push({ label: 'Comisión', value: formatMoney(commission, sym) });
+    }
+
+    if (assetData.commission_above_100k_pct && assetData.volume_limit) {
+      breakdown.push({ label: 'Nota', value: 'Gratis hasta ' + formatMoney(assetData.volume_limit, '€') + '/mes' });
+    }
+
+    if (assetData.spread_pct) {
+      spread = amount * assetData.spread_pct;
+      breakdown.push({ label: 'Coste est. de spread', value: '~' + formatMoney(spread, sym) });
+    }
+    if (assetData.typical_spread_pips !== undefined) {
+      const pipCost = assetData.typical_spread_pips * (amount / 100000) * 10;
+      spread = pipCost;
+      breakdown.push({ label: 'Spread (' + assetData.typical_spread_pips + ' pips)', value: '~' + formatMoney(spread, sym) });
+    }
+
+    if (assetData.fx_fee_pct) {
+      const fxFreeCurrencies = assetData.fx_free_currencies || [];
+      if (!fxFreeCurrencies.includes(localCurrency)) {
+        fxFee = amount * assetData.fx_fee_pct;
+        breakdown.push({ label: 'Conversión de divisas', value: formatMoney(fxFee, sym) + ' (' + (assetData.fx_fee_pct * 100).toFixed(2) + '%)' });
+      } else {
+        breakdown.push({ label: 'Conversión de divisas', value: 'Gratis (moneda local)' });
+      }
+    }
+
+    if (assetData.connectivity_fee) {
+      breakdown.push({ label: 'Acceso a la bolsa', value: formatMoney(assetData.connectivity_fee, '€') + '/año' });
+    }
+
+    if (assetData.min_fee && (commission + spread) < assetData.min_fee) {
+      const old = commission + spread;
+      commission = assetData.min_fee - spread;
+      breakdown.push({ label: 'Se aplica comisión mínima', value: formatMoney(assetData.min_fee, sym) });
+    }
+
+    result.commission = commission;
+    result.fxFee = fxFee;
+    result.spread = spread;
+    result.total = commission + fxFee + spread;
+    result.breakdown = breakdown;
+
+    if (assetData.subscription) {
+      result.subscriptionNote = 'Gratis con plan de ' + formatMoney(assetData.subscription, '€') + '/mes';
+    }
+
+    results.push(result);
+  }
+
+  results.sort((a, b) => {
+    if (a.available && !b.available) return -1;
+    if (!a.available && b.available) return 1;
+    return a.total - b.total;
+  });
+
+  const cheapest = results.find(r => r.available);
+  if (cheapest) cheapest.isCheapest = true;
+
+  renderResults(results, amount, asset, sym);
+}
+
+function formatMoney(val, symbol) {
+  if (val === 0) return symbol + '0';
+  if (val < 0.01) return '<' + symbol + '0,01';
+  if (val < 1) return symbol + val.toFixed(2);
+  if (val >= 1000) return symbol + val.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return symbol + val.toFixed(2);
+}
+
+function renderResults(results, amount, asset, sym) {
+  const section = document.getElementById('results-section');
+  const grid = document.getElementById('results-grid');
+  const desc = document.getElementById('trade-desc');
+
+  const assetLabels = { stocks: 'Acciones', etfs: 'ETF', crypto: 'Cripto', forex: 'Forex', commodities: 'Materias primas' };
+  desc.textContent = 'Operación de ' + assetLabels[asset] + ' de ' + sym + amount.toLocaleString();
+
+  let html = '';
+  for (const r of results) {
+    const cardClass = !r.available ? 'result-card unavailable'
+      : r.isCheapest ? 'result-card cheapest' : 'result-card';
+
+    html += '<div class="' + cardClass + '">';
+    html += '<div class="result-card-head">';
+    html += '<div class="result-icon" style="background:' + r.color + '">' + r.name.charAt(0) + '</div>';
+    html += '<div class="result-name">' + r.name;
+    if (r.cfd_only) html += ' <span class="result-cfd-badge">SOLO CFD</span>';
+    html += '<small><a href="' + r.fees_url + '" target="_blank" rel="noopener" style="color:var(--info);text-decoration:none;">Ver comisiones &rarr;</a></small>';
+    html += '</div></div>';
+
+    if (!r.available) {
+      html += '<div class="result-fee" style="font-size:16px;color:var(--text-muted)">No disponible</div>';
+      html += '<div class="result-note">' + r.note + '</div>';
+    } else {
+      if (r.total === 0) {
+        html += '<div class="result-fee free">' + sym + '0 <span style="font-size:14px;font-weight:500">gratis</span></div>';
+      } else {
+        html += '<div class="result-fee">' + formatMoney(r.total, sym) + '</div>';
+      }
+
+      if (r.breakdown && r.breakdown.length > 0) {
+        html += '<div class="result-breakdown">';
+        for (const line of r.breakdown) {
+          html += '<div class="fee-line"><span>' + line.label + '</span><span>' + line.value + '</span></div>';
+        }
+        html += '</div>';
+      }
+
+      if (r.note) {
+        html += '<div class="result-note">' + r.note + '</div>';
+      }
+    }
+
+    html += '</div>';
+  }
+
+  grid.innerHTML = html;
+  section.style.display = '';
+
+  gtag('event', 'trade_comparison', { event_category: 'calculator', event_label: asset, value: amount });
+}
+
+function renderSavings() {
+  if (!PLATFORM_DATA || !PLATFORM_DATA.savings_rates) return;
+  const country = document.getElementById('country-select').value;
+  const rates = PLATFORM_DATA.savings_rates[country];
+  const section = document.getElementById('savings-section');
+  const grid = document.getElementById('savings-grid');
+
+  document.getElementById('savings-country').textContent =
+    (PLATFORM_DATA.countries[country] || {}).name || country;
+
+  if (!rates || rates.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  rates.sort((a, b) => b.rate - a.rate);
+
+  let html = '';
+  rates.forEach((s, i) => {
+    html += '<div class="savings-card' + (i === 0 ? ' best' : '') + '">';
+    html += '<div class="savings-info">';
+    html += '<h4>' + s.bank + '</h4>';
+    html += '<p>' + s.type + (s.note ? ' — ' + s.note : '') + '</p>';
+    html += '</div>';
+    html += '<div class="savings-rate">' + s.rate.toFixed(1) + '%</div>';
+    html += '</div>';
+  });
+
+  grid.innerHTML = html;
+  section.style.display = '';
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+loadFeeData();
+</script>
+
+  <script src="../../../js/consent.js"></script>
+  <script src="../../../js/analytics.js"></script>
+</body>
+</html>

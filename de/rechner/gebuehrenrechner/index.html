@@ -10,8 +10,17 @@
 <meta name="description" content="Kostenloser eToro Gebührenrechner. Sehen Sie genau, was Sie an Spreads, Übernachtgebühren, Auszahlungsgebühren und Währungsumrechnung zahlen. Aktualisiert für 2026.">
 <meta name="keywords" content="eToro Gebühren, eToro Kosten, eToro Gebührenrechner, eToro Spread-Rechner, eToro Auszahlungsgebühr, eToro Kostenrechner">
 <link rel="canonical" href="https://socialtradingvlog.com/de/rechner/gebuehrenrechner/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/fee-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/fee-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-comisiones/">
 <link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/gebuehrenrechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-frais/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-taxas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/fee-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-commissioni/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/kostenrekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-oplat/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%88%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="eToro Gebührenrechner 2026 — Berechnen Sie Ihre Trading-Kosten">
 <meta property="og:description" content="Kostenloser eToro Gebührenrechner. Sehen Sie genau, was Sie an Spreads, Übernachtgebühren und mehr zahlen.">
 <meta property="og:type" content="website">
@@ -615,6 +624,21 @@ async function loadFeeData() {
     const data = await resp.json();
     const etoro = data.platforms.etoro;
     document.getElementById('last-verified').textContent = data._last_updated || 'Unbekannt';
+    // Datenaktualität prüfen
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Daten möglicherweise veraltet</strong> (letzte Aktualisierung vor ' + daysSince + ' Tagen). Bitte überprüfen Sie die Gebühren direkt auf der Website jeder Plattform.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
     FEE_DATA = {};
     for (const [asset, label] of Object.entries(ASSET_LABELS)) {
       const src = etoro[asset];

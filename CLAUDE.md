@@ -4,7 +4,9 @@
 - Check the latest GA report: `cat reports/latest.txt`
 - Check pipeline progress: `tail -20 transcriptions/pipeline.log`
 - Check for fix requests from the command centre: `ssh stv@89.167.73.64 "cat ~/socialtradingvlog-website/data/fix-queue.json 2>/dev/null || echo '[]'"`
-- Share key insights, any notable changes, and any pending fix requests with Tom
+- Check fee data freshness: `python3 -c "import json; d=json.load(open('data/platform-fees.json')); print(f'Fee data last updated: {d[\"_last_updated\"]}')"` — if >7 days old, alert Tom and check VPS scraper status
+- If fee data is stale (>7 days): `ssh stv@89.167.73.64 "tail -10 ~/socialtradingvlog-website/logs/scrape-fees.log"` — check if scraper is running, offer to run manually
+- Share key insights, any notable changes, any pending fix requests, and fee data freshness with Tom
 
 ## Secrets location
 All API keys and credentials are stored in `~/.config/stv-secrets/` (NOT in the repo).
@@ -26,6 +28,21 @@ Latest is always at `reports/latest.txt`.
 - `python3 tools/upload_subtitles.py --dry-run` — preview YouTube subtitle uploads
 - `python3 tools/system_doctor.py` — self-healing: scan logs, fix known errors, check system health
 - `python3 tools/generate_sitemap.py` — regenerate sitemap.xml (hreflang)
+
+## Site architecture
+- **Main site** (`socialtradingvlog.com`) is served from **GitHub Pages** — deploy by `git push` to origin
+- **Dashboard** (`app.socialtradingvlog.com`) is served from the **VPS** via Caddy → Flask — deploy with rsync + restart
+- Cloudflare sits in front of both (DNS + proxying)
+- **Cloudflare Zone ID**: `5fb9d48f310faea50fd4b8dca8e5380c`
+- **Cloudflare Account ID**: `8258a1fdf539f95d62ce9f567a16f858`
+- **Cloudflare Worker** `stv-redirects` handles 31 legacy WordPress 301 redirects (`tools/setup_cloudflare_redirects.py`)
+
+### Rsync to VPS (dashboard only)
+```bash
+rsync -avz --delete --exclude='.git' --exclude='reports/' --exclude='data/' --exclude='venv/' --exclude='docs/' \
+  ~/socialtradingvlog-website/ stv@89.167.73.64:/home/stv/socialtradingvlog-website/
+```
+**Critical:** Always exclude `venv/` — the VPS has its own virtualenv used by the systemd service. Rsync `--delete` without this exclude wipes the venv and breaks the dashboard.
 
 ## VPS (Command Centre)
 - **Host**: 89.167.73.64, user `stv`
@@ -64,14 +81,14 @@ The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one
 - Write heartbeat → dead man's switch alerts if stale (every 12h)
 - Alert Tom only for unknown/unfixable errors
 
-**YouTube API quota:** 10,000 units/day. Caption insert = ~400 units. 2 full videos (18 tracks) per day is safe. Tom has applied for quota increase.
+**YouTube API quota:** 60,000 units/day (increased from 10,000 on 2026-03-14). Caption insert = ~400 units. 8 full videos (9 langs × 400 = 3,600 units/video) per day is safe.
 
 **Quota budget per API call:**
 - `captions.list`: ~50 units per video
 - `captions.download`: ~200 units per video
 - `captions.insert` (upload): ~400 units per language track
 - 9 languages × 400 = 3,600 units to upload subtitles for 1 video
-- Can fetch captions for ~30-40 videos per day before quota runs out
+- ~16 full videos per day with headroom for list/fetch operations
 
 ## Newsletter
 - Provider: Resend API

@@ -10,8 +10,17 @@
 <meta name="description" content="Darmowy kalkulator rozmiaru pozycji. Dowiedz si&#281;, ile zainwestowa&#263; na tradera na eToro w oparciu o wielko&#347;&#263; portfela, tolerancj&#281; ryzyka i cele dywersyfikacji.">
 <meta name="keywords" content="rozmiar pozycji kopiowanie transakcji, ile zainwestowa&#263; na tradera eToro, alokacja kopiowania transakcji eToro, rozmiar pozycji kopiowanie, alokacja portfela eToro">
 <link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/position-size/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/position-size/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/tamano-posicion/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/positionsgroesse/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/taille-position/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/tamanho-posicao/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/position-size/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/dimensione-posizione/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/positiegrootte/">
 <link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/rozmiar-pozycji/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%8F%AC%EC%A7%80%EC%85%98-%ED%81%AC%EA%B8%B0/">
 <meta property="og:title" content="Kalkulator rozmiaru pozycji eToro — Ile przydzieli&#263; na kopiowanego tradera">
 <meta property="og:description" content="Darmowy kalkulator rozmiaru pozycji. Dowiedz si&#281;, ile zainwestowa&#263; na tradera na eToro.">
 <meta property="og:type" content="website">
@@ -486,6 +495,11 @@ h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dane zweryfikowane:</strong> <span id="last-verified">Ładowanie...</span> — Sprawdzamy opłaty co tydzień. Zawsze sprawdzaj na <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">stronie eToro</a> przed handlem.</span>
+    </div>
+
     <div class="legal-disclaimer" style="background:#F8F8FA;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:24px 0 0;font-size:12px;color:var(--text-secondary);line-height:1.8;">
       <strong style="color:var(--text-primary);font-size:13px;display:block;margin-bottom:6px;">Zastrze&#380;enie</strong>
       Ten kalkulator dostarcza <strong style="display:inline;font-size:inherit;">jedynie og&oacute;lnych wskaz&oacute;wek</strong> i s&#322;u&#380;y celom informacyjnym i edukacyjnym. Nie nale&#380;y na nim polega&#263; przy podejmowaniu decyzji finansowych.
@@ -834,6 +848,24 @@ function toggleFaq(el) {
 calculate();
 </script>
 
+  <script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Dane mogą być nieaktualne</strong> (ostatnia aktualizacja ' + daysSince + ' dni temu). Sprawdź opłaty bezpośrednio na stronie każdej platformy.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Nie udało się załadować'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

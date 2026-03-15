@@ -1,13 +1,23 @@
 {
   "_version": "2.0",
-  "_last_updated": "2026-02-21",
+  "_last_updated": "2026-03-09",
   "_note": "Fee data verified from official platform pages. Updated weekly by Playwright scraper.",
   "platforms": {
     "etoro": {
       "name": "eToro",
       "url": "https://www.etoro.com",
       "fees_url": "https://www.etoro.com/trading/fees/",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL", "AU", "US"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "PL",
+        "AU",
+        "US"
+      ],
       "color": "#00C853",
       "stocks": {
         "commission_pct": 0,
@@ -15,7 +25,9 @@
         "spread_pct": 0.0009,
         "overnight_daily_pct": 0.0001,
         "fx_fee_pct": 0.005,
-        "fx_free_currencies": ["USD"],
+        "fx_free_currencies": [
+          "USD"
+        ],
         "min_trade": 10,
         "fractional": true,
         "real_ownership": true,
@@ -26,17 +38,19 @@
         "spread_pct": 0.0009,
         "overnight_daily_pct": 0.0001,
         "fx_fee_pct": 0.005,
-        "fx_free_currencies": ["USD"],
-        "note": "Same as stocks — 0% commission."
+        "fx_free_currencies": [
+          "USD"
+        ],
+        "note": "Same as stocks \u2014 0% commission."
       },
       "crypto": {
-        "spread_pct": 0.01,
+        "spread_pct": 0.02,
         "overnight_daily_pct": 0,
         "note": "1% spread on buy and sell. Real ownership (can transfer to eToro Money wallet)."
       },
       "forex": {
         "typical_spread_pips": 1.0,
-        "overnight_daily_pct": 0.00008,
+        "overnight_daily_pct": 8e-05,
         "pair": "EUR/USD",
         "note": "From 1 pip on EUR/USD. CFD-based."
       },
@@ -62,14 +76,23 @@
       "name": "Plus500",
       "url": "https://www.plus500.com",
       "fees_url": "https://www.plus500.com/en/help/feescharges",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL", "AU"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "PL",
+        "AU"
+      ],
       "color": "#00B2E3",
       "stocks": {
         "commission_pct": 0,
         "spread_pct": 0.002,
         "cfd_only": true,
         "real_ownership": false,
-        "note": "CFD only — no real stock ownership. Zero commission, spread-based."
+        "note": "CFD only \u2014 no real stock ownership. Zero commission, spread-based."
       },
       "etfs": {
         "commission_pct": 0,
@@ -103,13 +126,24 @@
       "name": "Trading 212",
       "url": "https://www.trading212.com",
       "fees_url": "https://www.trading212.com/trading-fees",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "PL"
+      ],
       "color": "#1E40AF",
       "stocks": {
         "commission_pct": 0,
         "commission_flat": 0,
         "fx_fee_pct": 0.0015,
-        "fx_free_currencies": ["GBP", "EUR"],
+        "fx_free_currencies": [
+          "GBP",
+          "EUR"
+        ],
         "min_trade": 1,
         "fractional": true,
         "real_ownership": true,
@@ -118,7 +152,7 @@
       "etfs": {
         "commission_pct": 0,
         "fx_fee_pct": 0.0015,
-        "note": "Same as stocks — truly free."
+        "note": "Same as stocks \u2014 truly free."
       },
       "crypto": {
         "available": false,
@@ -145,7 +179,15 @@
       "name": "DEGIRO",
       "url": "https://www.degiro.com",
       "fees_url": "https://www.degiro.com/fees",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "PL"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "PL"
+      ],
       "color": "#00A4E4",
       "stocks": {
         "commission_pct": 0,
@@ -154,12 +196,13 @@
         "fx_fee_pct": 0.0025,
         "fx_note": "Auto FX 0.25% or manual FX (cheaper but complex)",
         "real_ownership": true,
-        "note": "€1 handling fee + exchange-specific cost (e.g. $1 for US/CA). 0.25% FX."
+        "note": "\u20ac1 handling fee + exchange-specific cost (e.g. $1 for US/CA). 0.25% FX.",
+        "connectivity_fee": 5.0
       },
       "etfs": {
         "commission_pct": 0,
         "handling_fee": 1.0,
-        "note": "Core Selection: €1 handling only. Others: €3. 0.25% FX."
+        "note": "Core Selection: \u20ac1 handling only. Others: \u20ac3. 0.25% FX."
       },
       "crypto": {
         "available": false,
@@ -184,14 +227,24 @@
       "name": "Interactive Brokers",
       "url": "https://www.interactivebrokers.com",
       "fees_url": "https://www.interactivebrokers.com/en/trading/commissions-stocks.php",
-      "countries": ["UK", "US", "DE", "FR", "ES", "IT", "NL", "PL", "AU"],
+      "countries": [
+        "UK",
+        "US",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "PL",
+        "AU"
+      ],
       "color": "#D41F27",
       "stocks": {
         "commission_type": "per_share",
         "rate_per_share": 0.005,
         "min_commission": 1.0,
         "max_pct": 0.01,
-        "fx_fee_pct": 0.00002,
+        "fx_fee_pct": 2e-05,
         "real_ownership": true,
         "note": "Tiered: $0.0035/share (vol-based). Fixed: $0.005/share, $1 min. Very low FX."
       },
@@ -227,7 +280,14 @@
       "name": "XTB",
       "url": "https://www.xtb.com",
       "fees_url": "https://www.xtb.com/en/fees",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "PL"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "PL"
+      ],
       "color": "#21A038",
       "stocks": {
         "commission_pct": 0,
@@ -237,7 +297,7 @@
         "volume_period": "month",
         "fx_fee_pct": 0.005,
         "real_ownership": true,
-        "note": "0% commission up to €100K/month. 0.2% (min £10) above. 0.5% FX fee."
+        "note": "0% commission up to \u20ac100K/month. 0.2% (min \u00a310) above. 0.5% FX fee."
       },
       "etfs": {
         "commission_pct": 0,
@@ -259,24 +319,31 @@
         "note": "CFD only. Good gold/oil spreads."
       },
       "other_fees": {
-        "withdrawal": "Free (above €100)",
-        "inactivity": "€10/month after 12 months",
+        "withdrawal": "Free (above \u20ac100)",
+        "inactivity": "\u20ac10/month after 12 months",
         "deposit": "Free",
-        "min_deposit": "€0"
+        "min_deposit": "\u20ac0"
       }
     },
     "ig": {
       "name": "IG",
       "url": "https://www.ig.com",
       "fees_url": "https://www.ig.com/uk/charges",
-      "countries": ["UK", "AU", "DE", "FR", "ES", "IT"],
+      "countries": [
+        "UK",
+        "AU",
+        "DE",
+        "FR",
+        "ES",
+        "IT"
+      ],
       "color": "#EC1843",
       "stocks": {
         "commission_flat": 8.0,
         "commission_frequent": 3.0,
         "frequency_threshold": 3,
         "real_ownership": true,
-        "note": "£8/trade (£3 if 3+ trades/month). ISA & SIPP available."
+        "note": "\u00a38/trade (\u00a33 if 3+ trades/month). ISA & SIPP available."
       },
       "etfs": {
         "commission_flat": 8.0,
@@ -299,16 +366,24 @@
       },
       "other_fees": {
         "withdrawal": "Free",
-        "inactivity": "£12/month after 2 years",
+        "inactivity": "\u00a312/month after 2 years",
         "deposit": "Free",
-        "min_deposit": "£250"
+        "min_deposit": "\u00a3250"
       }
     },
     "saxo": {
       "name": "Saxo Bank",
       "url": "https://www.home.saxo",
       "fees_url": "https://www.home.saxo/en-gb/rates-and-conditions/stocks/commissions",
-      "countries": ["UK", "DE", "FR", "ES", "IT", "NL", "AU"],
+      "countries": [
+        "UK",
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL",
+        "AU"
+      ],
       "color": "#0B2D71",
       "stocks": {
         "commission_pct": 0.001,
@@ -345,16 +420,18 @@
       "name": "Hargreaves Lansdown",
       "url": "https://www.hl.co.uk",
       "fees_url": "https://www.hl.co.uk/charges",
-      "countries": ["UK"],
+      "countries": [
+        "UK"
+      ],
       "color": "#003D6A",
       "stocks": {
         "commission_flat": 6.95,
         "real_ownership": true,
-        "note": "£6.95/trade (reduced from £11.95, effective March 2026). UK's largest platform."
+        "note": "\u00a36.95/trade (reduced from \u00a311.95, effective March 2026). UK's largest platform."
       },
       "etfs": {
         "commission_flat": 6.95,
-        "note": "Same as stocks. £6.95/trade."
+        "note": "Same as stocks. \u00a36.95/trade."
       },
       "crypto": {
         "available": false,
@@ -372,22 +449,24 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "£1",
-        "platform_fee": "0.35% (capped at £150/year for shares, reduced from 0.45%)"
+        "min_deposit": "\u00a31",
+        "platform_fee": "0.35% (capped at \u00a3150/year for shares, reduced from 0.45%)"
       }
     },
     "ajbell": {
       "name": "AJ Bell",
       "url": "https://www.ajbell.co.uk",
       "fees_url": "https://www.ajbell.co.uk/charges",
-      "countries": ["UK"],
+      "countries": [
+        "UK"
+      ],
       "color": "#8B1A4A",
       "stocks": {
         "commission_flat": 5.0,
-        "commission_frequent": 3.50,
+        "commission_frequent": 3.5,
         "frequency_threshold": 10,
         "real_ownership": true,
-        "note": "£5/trade online (£3.50 for 10+/month). Good mid-range UK broker."
+        "note": "\u00a35/trade online (\u00a33.50 for 10+/month). Good mid-range UK broker."
       },
       "etfs": {
         "commission_flat": 5.0,
@@ -409,7 +488,7 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "£0",
+        "min_deposit": "\u00a30",
         "platform_fee": "0.25%"
       }
     },
@@ -417,7 +496,9 @@
       "name": "Freetrade",
       "url": "https://freetrade.io",
       "fees_url": "https://freetrade.io/compare-plans",
-      "countries": ["UK"],
+      "countries": [
+        "UK"
+      ],
       "color": "#6B4EFF",
       "stocks": {
         "commission_pct": 0,
@@ -448,19 +529,21 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "£2",
-        "subscription": "Free / £4.99 (Standard) / £11.99 (Plus). SIPP free since Jan 2026."
+        "min_deposit": "\u00a32",
+        "subscription": "Free / \u00a34.99 (Standard) / \u00a311.99 (Plus). SIPP free since Jan 2026."
       }
     },
     "investengine": {
       "name": "InvestEngine",
       "url": "https://investengine.com",
       "fees_url": "https://investengine.com/pricing/",
-      "countries": ["UK"],
+      "countries": [
+        "UK"
+      ],
       "color": "#1B3A4B",
       "stocks": {
         "available": false,
-        "note": "ETFs only — no individual stocks."
+        "note": "ETFs only \u2014 no individual stocks."
       },
       "etfs": {
         "commission_pct": 0,
@@ -483,14 +566,16 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "£100"
+        "min_deposit": "\u00a3100"
       }
     },
     "robinhood": {
       "name": "Robinhood",
       "url": "https://robinhood.com",
       "fees_url": "https://robinhood.com/us/en/about/fees/",
-      "countries": ["US"],
+      "countries": [
+        "US"
+      ],
       "color": "#00C805",
       "stocks": {
         "commission_pct": 0,
@@ -525,7 +610,10 @@
       "name": "Charles Schwab",
       "url": "https://www.schwab.com",
       "fees_url": "https://www.schwab.com/pricing",
-      "countries": ["US", "UK"],
+      "countries": [
+        "US",
+        "UK"
+      ],
       "color": "#00A0DF",
       "stocks": {
         "commission_pct": 0,
@@ -560,7 +648,9 @@
       "name": "Fidelity",
       "url": "https://www.fidelity.com",
       "fees_url": "https://www.fidelity.com/trading/commissions-margin-rates",
-      "countries": ["US"],
+      "countries": [
+        "US"
+      ],
       "color": "#4E8542",
       "stocks": {
         "commission_pct": 0,
@@ -595,7 +685,9 @@
       "name": "Webull",
       "url": "https://www.webull.com",
       "fees_url": "https://www.webull.com/pricing",
-      "countries": ["US"],
+      "countries": [
+        "US"
+      ],
       "color": "#FF5000",
       "stocks": {
         "commission_pct": 0,
@@ -630,19 +722,25 @@
       "name": "Scalable Capital",
       "url": "https://www.scalable.capital",
       "fees_url": "https://www.scalable.capital/en/broker-pricing",
-      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "countries": [
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL"
+      ],
       "color": "#1E293B",
       "stocks": {
         "commission_flat": 0.99,
         "commission_prime": 0,
         "subscription": 4.99,
         "real_ownership": true,
-        "note": "€0.99/trade (FREE plan) or €0 with PRIME+ (€4.99/mo). €3.99 on Xetra."
+        "note": "\u20ac0.99/trade (FREE plan) or \u20ac0 with PRIME+ (\u20ac4.99/mo). \u20ac3.99 on Xetra."
       },
       "etfs": {
         "commission_flat": 0.99,
         "commission_prime": 0,
-        "note": "€0.99 or free with PRIME+. PRIME ETFs free from €250. Savings plans free."
+        "note": "\u20ac0.99 or free with PRIME+. PRIME ETFs free from \u20ac250. Savings plans free."
       },
       "crypto": {
         "spread_pct": 0.0075,
@@ -660,7 +758,7 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "€1",
+        "min_deposit": "\u20ac1",
         "interest_on_cash": "2.0%"
       }
     },
@@ -668,22 +766,28 @@
       "name": "Trade Republic",
       "url": "https://traderepublic.com",
       "fees_url": "https://traderepublic.com/en-de/pricing",
-      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "countries": [
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL"
+      ],
       "color": "#1A1A2E",
       "stocks": {
         "commission_flat": 1.0,
         "real_ownership": true,
         "fractional": true,
-        "note": "€1 flat fee per trade. Savings plans free."
+        "note": "\u20ac1 flat fee per trade. Savings plans free."
       },
       "etfs": {
         "commission_flat": 1.0,
-        "note": "€1/trade. Savings plans free."
+        "note": "\u20ac1/trade. Savings plans free."
       },
       "crypto": {
         "spread_pct": 0.01,
         "commission_flat": 1.0,
-        "note": "€1 fee + ~1% spread. Real ownership."
+        "note": "\u20ac1 fee + ~1% spread. Real ownership."
       },
       "forex": {
         "available": false,
@@ -697,7 +801,7 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "€1",
+        "min_deposit": "\u20ac1",
         "interest_on_cash": "2.0%"
       }
     },
@@ -705,7 +809,13 @@
       "name": "BUX",
       "url": "https://bux.com",
       "fees_url": "https://bux.com/fees/",
-      "countries": ["DE", "FR", "ES", "IT", "NL"],
+      "countries": [
+        "DE",
+        "FR",
+        "ES",
+        "IT",
+        "NL"
+      ],
       "color": "#00D09C",
       "stocks": {
         "commission_flat": 0,
@@ -713,7 +823,7 @@
         "us_commission": 0.99,
         "fx_fee_pct": 0.0025,
         "real_ownership": true,
-        "note": "EU stocks free (Zero Order), €1.99 market/limit. US stocks €0.99. 0.25% FX."
+        "note": "EU stocks free (Zero Order), \u20ac1.99 market/limit. US stocks \u20ac0.99. 0.25% FX."
       },
       "etfs": {
         "commission_flat": 0,
@@ -736,20 +846,28 @@
         "withdrawal": "Free",
         "inactivity": "None",
         "deposit": "Free",
-        "min_deposit": "€0"
+        "min_deposit": "\u20ac0"
       }
     },
     "commsec": {
       "name": "CommSec",
       "url": "https://www.commsec.com.au",
       "fees_url": "https://www.commsec.com.au/support/rates-and-fees.html",
-      "countries": ["AU"],
+      "countries": [
+        "AU"
+      ],
       "color": "#FFD100",
       "stocks": {
         "commission_flat": 5.0,
         "commission_brackets": [
-          {"up_to": 1000, "fee": 5.0},
-          {"above": 1000, "pct": 0.002}
+          {
+            "up_to": 1000,
+            "fee": 5.0
+          },
+          {
+            "above": 1000,
+            "pct": 0.002
+          }
         ],
         "real_ownership": true,
         "note": "AU$5 for trades up to $1,000. 0.20% for trades above $1,000."
@@ -780,17 +898,19 @@
       "name": "SelfWealth",
       "url": "https://www.selfwealth.com.au",
       "fees_url": "https://www.selfwealth.com.au/pricing/",
-      "countries": ["AU"],
+      "countries": [
+        "AU"
+      ],
       "color": "#FF6B35",
       "stocks": {
-        "commission_flat": 9.50,
+        "commission_flat": 9.5,
         "us_commission_flat": 0,
         "us_fx_fee_pct": 0.006,
         "real_ownership": true,
         "note": "AU$9.50 flat for ASX. $0 for US stocks (0.6% FX fee applies)."
       },
       "etfs": {
-        "commission_flat": 9.50,
+        "commission_flat": 9.5,
         "note": "Same as stocks."
       },
       "crypto": {
@@ -816,42 +936,192 @@
   "savings_rates": {
     "_note": "Best savings account rates by country. Updated weekly.",
     "UK": [
-      {"bank": "Trading 212", "rate": 5.1, "type": "Easy access", "note": "Cash ISA or general account", "url": "https://www.trading212.com"},
-      {"bank": "Chip", "rate": 4.84, "type": "Easy access", "note": "App-based savings", "url": "https://www.getchip.uk"},
-      {"bank": "Chase", "rate": 3.5, "type": "Easy access", "note": "Linked saver. Free debit card.", "url": "https://www.chase.co.uk"},
-      {"bank": "Nationwide", "rate": 4.25, "type": "Easy access ISA", "note": "Online only", "url": "https://www.nationwide.co.uk"},
-      {"bank": "Marcus (Goldman Sachs)", "rate": 4.25, "type": "Easy access", "note": "No minimum", "url": "https://www.marcus.co.uk"},
-      {"bank": "Monzo", "rate": 3.6, "type": "Easy access", "note": "Instant Pots", "url": "https://monzo.com"}
+      {
+        "bank": "Trading 212",
+        "rate": 5.1,
+        "type": "Easy access",
+        "note": "Cash ISA or general account",
+        "url": "https://www.trading212.com"
+      },
+      {
+        "bank": "Chip",
+        "rate": 4.84,
+        "type": "Easy access",
+        "note": "App-based savings",
+        "url": "https://www.getchip.uk"
+      },
+      {
+        "bank": "Chase",
+        "rate": 3.5,
+        "type": "Easy access",
+        "note": "Linked saver. Free debit card.",
+        "url": "https://www.chase.co.uk"
+      },
+      {
+        "bank": "Nationwide",
+        "rate": 4.25,
+        "type": "Easy access ISA",
+        "note": "Online only",
+        "url": "https://www.nationwide.co.uk"
+      },
+      {
+        "bank": "Marcus (Goldman Sachs)",
+        "rate": 4.25,
+        "type": "Easy access",
+        "note": "No minimum",
+        "url": "https://www.marcus.co.uk"
+      },
+      {
+        "bank": "Monzo",
+        "rate": 3.6,
+        "type": "Easy access",
+        "note": "Instant Pots",
+        "url": "https://monzo.com"
+      }
     ],
     "US": [
-      {"bank": "Wealthfront", "rate": 4.25, "type": "High-yield savings", "note": "FDIC insured", "url": "https://www.wealthfront.com"},
-      {"bank": "Marcus (Goldman Sachs)", "rate": 4.0, "type": "High-yield savings", "note": "No min, no fees", "url": "https://www.marcus.com"},
-      {"bank": "Ally Bank", "rate": 4.0, "type": "High-yield savings", "note": "No minimums", "url": "https://www.ally.com"},
-      {"bank": "SoFi", "rate": 3.8, "type": "High-yield savings", "note": "With direct deposit", "url": "https://www.sofi.com"},
-      {"bank": "Discover", "rate": 3.75, "type": "Online savings", "note": "No fees", "url": "https://www.discover.com"},
-      {"bank": "Capital One", "rate": 3.7, "type": "360 Performance Savings", "note": "No minimums", "url": "https://www.capitalone.com"}
+      {
+        "bank": "Wealthfront",
+        "rate": 4.25,
+        "type": "High-yield savings",
+        "note": "FDIC insured",
+        "url": "https://www.wealthfront.com"
+      },
+      {
+        "bank": "Marcus (Goldman Sachs)",
+        "rate": 4.0,
+        "type": "High-yield savings",
+        "note": "No min, no fees",
+        "url": "https://www.marcus.com"
+      },
+      {
+        "bank": "Ally Bank",
+        "rate": 4.0,
+        "type": "High-yield savings",
+        "note": "No minimums",
+        "url": "https://www.ally.com"
+      },
+      {
+        "bank": "SoFi",
+        "rate": 3.8,
+        "type": "High-yield savings",
+        "note": "With direct deposit",
+        "url": "https://www.sofi.com"
+      },
+      {
+        "bank": "Discover",
+        "rate": 3.75,
+        "type": "Online savings",
+        "note": "No fees",
+        "url": "https://www.discover.com"
+      },
+      {
+        "bank": "Capital One",
+        "rate": 3.7,
+        "type": "360 Performance Savings",
+        "note": "No minimums",
+        "url": "https://www.capitalone.com"
+      }
     ],
     "DE": [
-      {"bank": "Trade Republic", "rate": 3.25, "type": "Tagesgeld", "note": "On uninvested cash", "url": "https://traderepublic.com"},
-      {"bank": "Scalable Capital", "rate": 2.6, "type": "Tagesgeld", "note": "PRIME+ plan", "url": "https://www.scalable.capital"},
-      {"bank": "ING", "rate": 3.3, "type": "Extra-Konto", "note": "6 months intro", "url": "https://www.ing.de"},
-      {"bank": "DKB", "rate": 2.05, "type": "Tagesgeld", "note": "No minimum", "url": "https://www.dkb.de"}
+      {
+        "bank": "Trade Republic",
+        "rate": 3.25,
+        "type": "Tagesgeld",
+        "note": "On uninvested cash",
+        "url": "https://traderepublic.com"
+      },
+      {
+        "bank": "Scalable Capital",
+        "rate": 2.6,
+        "type": "Tagesgeld",
+        "note": "PRIME+ plan",
+        "url": "https://www.scalable.capital"
+      },
+      {
+        "bank": "ING",
+        "rate": 3.3,
+        "type": "Extra-Konto",
+        "note": "6 months intro",
+        "url": "https://www.ing.de"
+      },
+      {
+        "bank": "DKB",
+        "rate": 2.05,
+        "type": "Tagesgeld",
+        "note": "No minimum",
+        "url": "https://www.dkb.de"
+      }
     ],
     "AU": [
-      {"bank": "ING", "rate": 5.5, "type": "Savings Maximiser", "note": "Conditions apply", "url": "https://www.ing.com.au"},
-      {"bank": "Ubank", "rate": 5.0, "type": "USaver", "note": "High interest", "url": "https://www.ubank.com.au"},
-      {"bank": "Macquarie", "rate": 4.75, "type": "Savings Account", "note": "4 months intro", "url": "https://www.macquarie.com.au"}
+      {
+        "bank": "ING",
+        "rate": 5.5,
+        "type": "Savings Maximiser",
+        "note": "Conditions apply",
+        "url": "https://www.ing.com.au"
+      },
+      {
+        "bank": "Ubank",
+        "rate": 5.0,
+        "type": "USaver",
+        "note": "High interest",
+        "url": "https://www.ubank.com.au"
+      },
+      {
+        "bank": "Macquarie",
+        "rate": 4.75,
+        "type": "Savings Account",
+        "note": "4 months intro",
+        "url": "https://www.macquarie.com.au"
+      }
     ]
   },
   "countries": {
-    "UK": {"currency": "GBP", "symbol": "£", "name": "United Kingdom"},
-    "US": {"currency": "USD", "symbol": "$", "name": "United States"},
-    "DE": {"currency": "EUR", "symbol": "€", "name": "Germany"},
-    "FR": {"currency": "EUR", "symbol": "€", "name": "France"},
-    "ES": {"currency": "EUR", "symbol": "€", "name": "Spain"},
-    "IT": {"currency": "EUR", "symbol": "€", "name": "Italy"},
-    "NL": {"currency": "EUR", "symbol": "€", "name": "Netherlands"},
-    "PL": {"currency": "PLN", "symbol": "zł", "name": "Poland"},
-    "AU": {"currency": "AUD", "symbol": "A$", "name": "Australia"}
+    "UK": {
+      "currency": "GBP",
+      "symbol": "\u00a3",
+      "name": "United Kingdom"
+    },
+    "US": {
+      "currency": "USD",
+      "symbol": "$",
+      "name": "United States"
+    },
+    "DE": {
+      "currency": "EUR",
+      "symbol": "\u20ac",
+      "name": "Germany"
+    },
+    "FR": {
+      "currency": "EUR",
+      "symbol": "\u20ac",
+      "name": "France"
+    },
+    "ES": {
+      "currency": "EUR",
+      "symbol": "\u20ac",
+      "name": "Spain"
+    },
+    "IT": {
+      "currency": "EUR",
+      "symbol": "\u20ac",
+      "name": "Italy"
+    },
+    "NL": {
+      "currency": "EUR",
+      "symbol": "\u20ac",
+      "name": "Netherlands"
+    },
+    "PL": {
+      "currency": "PLN",
+      "symbol": "z\u0142",
+      "name": "Poland"
+    },
+    "AU": {
+      "currency": "AUD",
+      "symbol": "A$",
+      "name": "Australia"
+    }
   }
 }

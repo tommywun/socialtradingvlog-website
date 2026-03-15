@@ -9,8 +9,17 @@
 <title>Kalkulator zwrotu z kopiowania transakcji 2026 — Prognozuj swoje zyski | SocialTradingVlog</title>
 <meta name="description" content="Darmowy kalkulator zwrotu z kopiowania transakcji. Zobacz, jak Twoja inwestycja mo&#380;e rosn&#261;&#263; dzi&#281;ki procentowi sk&#322;adanemu w ci&#261;gu 1-10 lat. Oparty na prawdziwych danych.">
 <link rel="canonical" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
 <link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Kalkulator zwrotu z kopiowania transakcji 2026 — Prognozuj swoje zyski">
 <meta property="og:description" content="Darmowy kalkulator zwrotu z kopiowania transakcji. Zobacz, jak Twoja inwestycja mo&#380;e rosn&#261;&#263; w czasie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -373,6 +382,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <strong>Wa&#380;ne:</strong> Ten kalkulator przedstawia wy&#322;&#261;cznie hipotetyczne prognozy. Wyniki historyczne nie gwarantuj&#261; przysz&#322;ych rezultat&oacute;w. Kopiowanie transakcji nie stanowi porady inwestycyjnej. Warto&#347;&#263; Twoich inwestycji mo&#380;e rosn&#261;&#263; lub male&#263;. Tw&oacute;j kapita&#322; jest zagro&#380;ony. 50% kont inwestor&oacute;w detalicznych traci pieni&#261;dze podczas handlu kontraktami CFD z eToro.
     </div>
 
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span><strong>Dane zweryfikowane:</strong> <span id="last-verified">Ładowanie...</span> — Sprawdzamy opłaty co tydzień. Zawsze sprawdzaj na <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">stronie eToro</a> przed handlem.</span>
+    </div>
+
     <div class="legal-disclaimer">
       <strong>Dok&#322;adno&#347;&#263; danych i wy&#322;&#261;czenie odpowiedzialno&#347;ci</strong>
       Ten kalkulator s&#322;u&#380;y wy&#322;&#261;cznie celom informacyjnym i edukacyjnym. Nie nale&#380;y na nim polega&#263; przy podejmowaniu decyzji inwestycyjnych.
@@ -562,6 +576,24 @@ function calc() {
 calc();
 </script>
 
+  <script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Dane mogą być nieaktualne</strong> (ostatnia aktualizacja ' + daysSince + ' dni temu). Sprawdź opłaty bezpośrednio na stronie każdej platformy.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Nie udało się załadować'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>

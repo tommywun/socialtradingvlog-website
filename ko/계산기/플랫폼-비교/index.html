@@ -10,7 +10,16 @@
 <meta name="description" content="eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers, XTB를 나란히 비교하세요. 수수료, 기능, 규제, 카피 트레이딩 등을 한눈에 확인하세요.">
 <meta name="keywords" content="eToro vs Plus500, eToro vs Trading 212, 최고의 카피 트레이딩 플랫폼, 소셜 트레이딩 비교, eToro 대안">
 <link rel="canonical" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%B9%84%EA%B5%90/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/compare-platforms/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/plattformen-vergleichen/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/compare-platforms/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/">
 <link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%B9%84%EA%B5%90/">
 <meta property="og:title" content="소셜 트레이딩 플랫폼 비교 2026 — 나란히 비교">
 <meta property="og:description" content="eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers, XTB의 인터랙티브 비교.">
@@ -316,6 +325,11 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
     </table>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>데이터 확인일:</strong> <span id="last-verified">로딩 중...</span> — 매주 수수료를 확인합니다. 거래 전 항상 <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">eToro 공식 사이트</a>에서 확인하세요.</span>
   </div>
 
   <!-- Legal Disclaimer -->
@@ -691,9 +705,93 @@ function render() {
   renderTable();
 }
 
-// Initial render
+function formatStockFee(p) {
+  if (!p.stocks) return null;
+  if (p.stocks.cfd_only) return { value: 'CFD spread only', rating: 'ok', note: '실제 소유 없음' };
+  if (p.stocks.commission_pct === 0) return { value: '0% commission', rating: 'good', note: p.stocks.note || '스프레드에서 수익' };
+  if (p.stocks.commission_type === 'per_share') return { value: '$' + p.stocks.rate_per_share + '/share', rating: 'good', note: p.stocks.note || '' };
+  if (p.stocks.commission_flat !== undefined && p.stocks.commission_flat > 0) return { value: '\u20ac' + p.stocks.commission_flat, rating: 'good', note: '거래 당' };
+  return null;
+}
+function formatCryptoFee(p) {
+  if (!p.crypto || p.crypto.available === false) return { value: 'N/A', rating: 'na', note: '\uc774\uc6a9 \ubd88\uac00' };
+  if (p.crypto.cfd_only) return { value: 'CFD only', rating: 'ok', note: '\uc2e4\uc81c \uc554\ud638\ud654\ud3d0 \uc5c6\uc74c' };
+  if (p.crypto.spread_pct) {
+    var pct = p.crypto.spread_pct * 100;
+    return { value: (pct < 1 ? '~' + pct.toFixed(1) : pct.toFixed(0)) + '% spread', rating: pct <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatForexFee(p) {
+  if (!p.forex || p.forex.available === false) return { value: 'N/A', rating: 'na', note: '\uc774\uc6a9 \ubd88\uac00' };
+  if (p.forex.typical_spread_pips !== undefined) {
+    return { value: 'From ' + p.forex.typical_spread_pips + ' pip' + (p.forex.typical_spread_pips !== 1 ? 's' : ''), rating: p.forex.typical_spread_pips <= 0.5 ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatWithdrawalFee(p) {
+  if (p.other_fees && p.other_fees.withdrawal) {
+    var w = p.other_fees.withdrawal;
+    var isFree = /free/i.test(w) && !/\$/.test(w);
+    return { value: isFree ? '\ubb34\ub8cc' : w.split(',')[0].trim(), rating: isFree ? 'good' : 'ok' };
+  }
+  return null;
+}
+function formatMinDeposit(p) {
+  if (p.other_fees && p.other_fees.min_deposit) {
+    var d = p.other_fees.min_deposit;
+    var val = parseInt(d.replace(/[^0-9]/g, '')) || 0;
+    return { value: d, rating: val <= 50 ? 'good' : 'ok' };
+  }
+  return null;
+}
+
+async function loadFeeData() {
+  try {
+    const resp = await fetch('../../../data/platform-fees.json');
+    const data = await resp.json();
+    document.getElementById('last-verified').textContent = data._last_updated || '\uc54c \uc218 \uc5c6\uc74c';
+    // Check data freshness
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 \ub370\uc774\ud130\uac00 \uc624\ub798\ub418\uc5c8\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4</strong> (\ub9c8\uc9c0\ub9c9 \uc5c5\ub370\uc774\ud2b8 ' + daysSince + '\uc77c \uc804). \uac01 \ud50c\ub7ab\ud3fc \uc6f9\uc0ac\uc774\ud2b8\uc5d0\uc11c \uc9c1\uc811 \uc218\uc218\ub8cc\ub97c \ud655\uc778\ud558\uc138\uc694.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+    for (var i = 0; i < PLATFORMS.length; i++) {
+      var plat = PLATFORMS[i];
+      var jsonPlat = data.platforms[plat.id];
+      if (!jsonPlat) continue;
+      var stock = formatStockFee(jsonPlat);
+      if (stock) plat.data.stock_fee = stock;
+      var crypto = formatCryptoFee(jsonPlat);
+      if (crypto) plat.data.crypto_fee = crypto;
+      var forex = formatForexFee(jsonPlat);
+      if (forex) plat.data.forex_fee = forex;
+      var withdrawal = formatWithdrawalFee(jsonPlat);
+      if (withdrawal) plat.data.withdrawal_fee = withdrawal;
+      var minDeposit = formatMinDeposit(jsonPlat);
+      if (minDeposit) plat.data.min_deposit = minDeposit;
+    }
+    render();
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    document.getElementById('last-verified').textContent = '\ub85c\ub4dc \uc2e4\ud328';
+  }
+}
+
+// Initial render with fallback data, then overlay live data
 render();
 renderCards();
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

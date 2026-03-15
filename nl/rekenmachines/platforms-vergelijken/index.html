@@ -10,8 +10,17 @@
 <meta name="description" content="Vergelijk eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers en XTB naast elkaar. Kosten, functies, regelgeving, copy trading en meer.">
 <meta name="keywords" content="eToro versus Plus500, eToro versus Trading 212, beste copy-handelsplatform, sociale handelsvergelijking, eToro-alternatieven">
 <link rel="canonical" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/compare-platforms/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/compare-platforms/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/plattformen-vergleichen/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/comparer-plateformes/">
+<link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/comparar-plataformas/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/compare-platforms/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/confronta-piattaforme/">
 <link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/platforms-vergelijken/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/porownaj-platformy/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%B9%84%EA%B5%90/">
 <meta property="og:title" content="Vergelijk sociale handelsplatforms 2026 — Vergelijking zij aan zij">
 <meta property="og:description" content="Interactieve vergelijking van eToro, Plus500, Trading 212, DEGIRO, Interactive Brokers en XTB.">
 <meta property="og:type" content="website">
@@ -316,6 +325,12 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
     </table>
+  </div>
+
+  <!-- Data Verified Banner -->
+  <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#E8F5E9;border-radius:8px;font-size:13px;color:#2E7D32;margin:24px 0 0;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span><strong>Gegevens geverifieerd:</strong> <span id="last-verified">Laden...</span> — We controleren de kosten wekelijks. Controleer altijd op <a href="https://www.etoro.com/trading/fees/" target="_blank" rel="noopener" style="color:#2E7D32">de website van eToro</a> voordat u handelt.</span>
   </div>
 
   <!-- Legal Disclaimer -->
@@ -696,6 +711,38 @@ function render() {
 // Initial render
 render();
 renderCards();
+
+// ─── Load fee data for verified date ───
+(function() {
+  fetch('../../../data/platform-fees.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var lastUpdated = data._last_updated || '';
+      var verifiedEl = document.getElementById('last-verified');
+      if (lastUpdated && verifiedEl) {
+        var d = new Date(lastUpdated);
+        verifiedEl.textContent = d.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        var now = new Date();
+        var daysSince = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+        var banner = verifiedEl.closest('div');
+        if (daysSince > 14) {
+          banner.style.background = '#FFF3E0';
+          banner.style.color = '#E65100';
+          banner.querySelector('svg').setAttribute('stroke', '#E65100');
+          verifiedEl.parentElement.innerHTML = '<strong>\u26A0 Gegevens mogelijk verouderd</strong> (laatst bijgewerkt ' + daysSince + ' dagen geleden). Controleer de kosten rechtstreeks op de website van elk platform.';
+        } else if (daysSince > 7) {
+          banner.style.background = '#FFF8E1';
+          banner.style.color = '#F9A825';
+          banner.querySelector('svg').setAttribute('stroke', '#F9A825');
+        }
+      }
+    })
+    .catch(function() {
+      var verifiedEl = document.getElementById('last-verified');
+      if (verifiedEl) verifiedEl.textContent = 'Niet beschikbaar';
+    });
+})();
 </script>
 
   <script src="../../../js/consent.js"></script>

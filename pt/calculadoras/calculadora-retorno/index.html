@@ -9,8 +9,17 @@
 <title>Calculadora de Retorno de Copy Trading 2026 — Projete Seus Rendimentos | SocialTradingVlog</title>
 <meta name="description" content="Calculadora de retorno de copy trading gratuita. Veja como seu investimento pode crescer com rendimentos compostos ao longo de 1 a 10 anos. Baseada em dados reais de copy trading.">
 <link rel="canonical" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="x-default" href="https://socialtradingvlog.com/calculators/roi-calculator/">
 <link rel="alternate" hreflang="en" href="https://socialtradingvlog.com/calculators/roi-calculator/">
+<link rel="alternate" hreflang="es" href="https://socialtradingvlog.com/es/calculadoras/calculadora-rentabilidad/">
+<link rel="alternate" hreflang="de" href="https://socialtradingvlog.com/de/rechner/renditerechner/">
+<link rel="alternate" hreflang="fr" href="https://socialtradingvlog.com/fr/calculateurs/calculateur-rendement/">
 <link rel="alternate" hreflang="pt" href="https://socialtradingvlog.com/pt/calculadoras/calculadora-retorno/">
+<link rel="alternate" hreflang="ar" href="https://socialtradingvlog.com/ar/calculators/roi-calculator/">
+<link rel="alternate" hreflang="it" href="https://socialtradingvlog.com/it/calcolatori/calcolatore-rendimento/">
+<link rel="alternate" hreflang="nl" href="https://socialtradingvlog.com/nl/rekenmachines/rendement-rekenmachine/">
+<link rel="alternate" hreflang="pl" href="https://socialtradingvlog.com/pl/kalkulatory/kalkulator-zwrotu/">
+<link rel="alternate" hreflang="ko" href="https://socialtradingvlog.com/ko/%EA%B3%84%EC%82%B0%EA%B8%B0/%EC%88%98%EC%9D%B5%EB%A5%A0-%EA%B3%84%EC%82%B0%EA%B8%B0/">
 <meta property="og:title" content="Calculadora de Retorno de Copy Trading 2026 — Projete Seus Rendimentos">
 <meta property="og:description" content="Calculadora de retorno de copy trading gratuita. Veja como seu investimento pode crescer ao longo do tempo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -328,11 +337,14 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
       <strong>Aviso sobre Precis&atilde;o dos Dados e Responsabilidade</strong>
       Esta calculadora &eacute; apenas para fins informativos e educacionais gerais. N&atilde;o deve ser usada para tomar decis&otilde;es de investimento.
       <ul>
+        <li>Sempre verifique os detalhes diretamente no site oficial de cada plataforma antes de tomar qualquer decisão financeira.</li>
         <li>Todas as proje&ccedil;&otilde;es s&atilde;o hipot&eacute;ticas e baseadas em taxas de retorno selecionadas pelo usu&aacute;rio. Os retornos reais de copy trading variam significativamente e podem resultar em perda de capital.</li>
         <li>O desempenho passado de qualquer trader no eToro n&atilde;o &eacute; indicativo de resultados futuros. Os retornos apresentados nesta ferramenta s&atilde;o proje&ccedil;&otilde;es matem&aacute;ticas, n&atilde;o previs&otilde;es ou garantias.</li>
         <li>Esta ferramenta n&atilde;o constitui aconselhamento financeiro, de investimento ou tribut&aacute;rio. O SocialTradingVlog e seu autor n&atilde;o s&atilde;o consultores financeiros e n&atilde;o se responsabilizam por perdas ou danos decorrentes do uso desta calculadora.</li>
         <li>O copy trading n&atilde;o constitui aconselhamento de investimento. Voc&ecirc; deve considerar se pode arcar com o alto risco de perder o seu dinheiro.</li>
         <li>O eToro &eacute; uma plataforma de investimento multi-ativos. O valor dos seus investimentos pode subir ou descer. Seu capital est&aacute; em risco.</li>
+                    <li>Alguns links nesta página são links de afiliados. Se você se cadastrar através desses links, podemos receber uma comissão sem custo adicional para você. Isso não afeta nossas avaliações ou classificações.</li>
+<li>CFDs são instrumentos complexos e apresentam alto risco de perda rápida de dinheiro devido à alavancagem. Seu capital está em risco.</li>
       </ul>
     </div>
   </div>
@@ -477,7 +489,26 @@ function calc() {
 calc();
 </script>
 
-<script>fetch('../../../data/platform-fees.json').then(r=>r.json()).then(d=>{document.getElementById('last-verified').textContent=d._last_updated||'Desconhecido'}).catch(()=>{document.getElementById('last-verified').textContent='Indisponível'});</script>
+<script>
+fetch('../../../data/platform-fees.json').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('last-verified').textContent = data._last_updated || 'Unknown';
+    // Verificar atualidade dos dados
+    var lastUpdated = new Date(data._last_updated || data['_last_updated']);
+    var daysSince = Math.floor((Date.now() - lastUpdated.getTime()) / 86400000);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) {
+      verifiedEl.textContent = data._last_updated;
+      if (daysSince > 14) {
+        verifiedEl.parentElement.style.background = '#dc3545';
+        verifiedEl.parentElement.style.color = '#fff';
+        verifiedEl.parentElement.innerHTML = '<strong>\u26a0 Os dados podem estar desatualizados</strong> (última atualização há ' + daysSince + ' dias). Verifique as taxas diretamente no site de cada plataforma.';
+      } else if (daysSince > 7) {
+        verifiedEl.parentElement.style.background = '#ffc107';
+        verifiedEl.parentElement.style.color = '#333';
+      }
+    }
+}).catch(function(){document.getElementById('last-verified').textContent='Indisponível'});
+</script>
   <script src="../../../js/consent.js"></script>
   <script src="../../../js/analytics.js"></script>
 </body>
