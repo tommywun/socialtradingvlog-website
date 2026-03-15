@@ -436,6 +436,28 @@ h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans','Inter',sans-serif; }
 </div>
 
 <script>
+// ─── Verified Data (loaded async) ───
+let platformVerifiedData = {};
+
+function formatVerifiedDate(isoStr) {
+  const d = new Date(isoStr);
+  return d.toLocaleDateString('nl-NL', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function getVerifiedHtml(platformId) {
+  const label = 'Geverifieerd:';
+  const entry = platformVerifiedData[platformId];
+  if (!entry || !entry.last_verified) {
+    return '<div class="platform-verified-date" style="color:#999;">Nog niet geverifieerd</div>';
+  }
+  const dateStr = formatVerifiedDate(entry.last_verified);
+  const daysSince = Math.floor((Date.now() - new Date(entry.last_verified).getTime()) / 86400000);
+  let color = '#666';
+  if (daysSince > 30) color = '#dc3545';
+  else if (daysSince > 14) color = '#e6a817';
+  return '<div class="platform-verified-date" style="color:' + color + ';">' + label + ' ' + dateStr + '</div>';
+}
+
 // ─── Platform Data ───
 const PLATFORMS = [
   {
@@ -645,7 +667,7 @@ function renderTable() {
   // Header
   head.innerHTML = `<tr>
     <th class="feature-label">Feature</th>
-    ${active.map(p => `<th class="plat-header ${p.id === 'etoro' ? 'highlighted' : ''}">${p.name}</th>`).join('')}
+    ${active.map(p => `<th class="plat-header ${p.id === 'etoro' ? 'highlighted' : ''}">${p.name}${getVerifiedHtml(p.id)}</th>`).join('')}
   </tr>`;
 
   // Body
@@ -713,36 +735,44 @@ render();
 renderCards();
 
 // ─── Load fee data for verified date ───
-(function() {
-  fetch('../../../data/platform-fees.json')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var lastUpdated = data._last_updated || '';
-      var verifiedEl = document.getElementById('last-verified');
-      if (lastUpdated && verifiedEl) {
-        var d = new Date(lastUpdated);
-        verifiedEl.textContent = d.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
+async function loadFeeData() {
+  try {
+    const [resp, verifiedResp] = await Promise.all([
+      fetch('../../../data/platform-fees.json'),
+      fetch('../../../data/platform-verified.json').catch(() => null)
+    ]);
+    const data = await resp.json();
+    if (verifiedResp && verifiedResp.ok) {
+      try { platformVerifiedData = await verifiedResp.json(); } catch(e) {}
+    }
+    var lastUpdated = data._last_updated || '';
+    var verifiedEl = document.getElementById('last-verified');
+    if (lastUpdated && verifiedEl) {
+      var d = new Date(lastUpdated);
+      verifiedEl.textContent = d.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
 
-        var now = new Date();
-        var daysSince = Math.floor((now - d) / (1000 * 60 * 60 * 24));
-        var banner = verifiedEl.closest('div');
-        if (daysSince > 14) {
-          banner.style.background = '#FFF3E0';
-          banner.style.color = '#E65100';
-          banner.querySelector('svg').setAttribute('stroke', '#E65100');
-          verifiedEl.parentElement.innerHTML = '<strong>\u26A0 Gegevens mogelijk verouderd</strong> (laatst bijgewerkt ' + daysSince + ' dagen geleden). Controleer de kosten rechtstreeks op de website van elk platform.';
-        } else if (daysSince > 7) {
-          banner.style.background = '#FFF8E1';
-          banner.style.color = '#F9A825';
-          banner.querySelector('svg').setAttribute('stroke', '#F9A825');
-        }
+      var now = new Date();
+      var daysSince = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+      var banner = verifiedEl.closest('div');
+      if (daysSince > 14) {
+        banner.style.background = '#FFF3E0';
+        banner.style.color = '#E65100';
+        banner.querySelector('svg').setAttribute('stroke', '#E65100');
+        verifiedEl.parentElement.innerHTML = '<strong>\u26A0 Gegevens mogelijk verouderd</strong> (laatst bijgewerkt ' + daysSince + ' dagen geleden). Controleer de kosten rechtstreeks op de website van elk platform.';
+      } else if (daysSince > 7) {
+        banner.style.background = '#FFF8E1';
+        banner.style.color = '#F9A825';
+        banner.querySelector('svg').setAttribute('stroke', '#F9A825');
       }
-    })
-    .catch(function() {
-      var verifiedEl = document.getElementById('last-verified');
-      if (verifiedEl) verifiedEl.textContent = 'Niet beschikbaar';
-    });
-})();
+    }
+    render();
+  } catch(e) {
+    console.warn('Fee data load failed, using defaults:', e);
+    var verifiedEl = document.getElementById('last-verified');
+    if (verifiedEl) verifiedEl.textContent = 'Niet beschikbaar';
+  }
+}
+loadFeeData();
 </script>
 
   <script src="../../../js/consent.js"></script>

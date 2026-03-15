@@ -818,9 +818,9 @@ function calculate() {
   if (belowMin > 0) {
     warningCard.classList.remove('hidden');
     if (belowMin === state.traders) {
-      warningText.textContent = 'All ' + state.traders + ' allocations (' + fmt(allocations[0]) + ' each) are below eToro\'s $200 minimo per commerciante di copie. Hai bisogno di un portafoglio più ampio o di meno trader.';
+      warningText.textContent = 'Tutte le ' + state.traders + ' allocazioni (' + fmt(allocations[0]) + ' ciascuna) sono inferiori al minimo di $200 per trader copiato su eToro. Hai bisogno di un portafoglio più ampio o di meno trader.';
     } else {
-      warningText.textContent = belowMin + ' of ' + state.traders + ' le assegnazioni sono riportate di seguito eToro\'s $200 minimo per commerciante di copie. Considera la possibilità di ridurre il numero di trader o aumentare le dimensioni del tuo portafoglio.';
+      warningText.textContent = belowMin + ' di ' + state.traders + ' allocazioni sono inferiori al minimo di $200 per trader copiato su eToro. Considera la possibilità di ridurre il numero di trader o aumentare le dimensioni del tuo portafoglio.';
     }
   } else {
     warningCard.classList.add('hidden');
