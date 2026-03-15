@@ -1,0 +1,196 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-03-06
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 27 Feb 2026 → 06 Mar 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           25
+  Users:              25
+  Page views:         26
+  Avg session:        0m 26s
+  Bounce rate:        16.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /popular-investor.html                                 10     10   0m 28s
+  /es/que-es-el-copy-trading/                             4      4   0m 31s
+  /es/todas-las-actualizaciones/                          4      4    0m 7s
+  /copy-trading.html                                      3      3   0m 30s
+  /etoro-scam.html                                        2      2   0m 31s
+  /index.html                                             1      1    0m 6s
+  /taking-profits.html                                    1      1    1m 4s
+  /video/why-do-most-etoro-traders-lose-money/            1      1    0m 1s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Social                         23         23
+  Unassigned                              3          3
+  Organic Search                          2          2
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  m.facebook.com                                   12
+  facebook.com                                     11
+  (not set)                                         3
+  google                                            2
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                          22         22
+  Ireland                                 1          1
+  Malta                                   1          1
+  United Kingdom                          1          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  mobile                       13         13
+  desktop                      12         12
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 04 Feb 2026 → 06 Mar 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           170
+  Users:              148
+  Page views:         370
+  Avg session:        1m 42s
+  Bounce rate:        68.8%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                     120     57   0m 55s
+  /video/why-do-most-etoro-traders-lose-money/           38      2  21m 42s
+  /copy-trading.html                                     30      7    1m 7s
+  /social-trading.html                                   27      6   3m 10s
+  /popular-investor.html                                 13     13   0m 21s
+  /etoro-review/                                         11      4   0m 32s
+  /calculators/                                           9      3   3m 29s
+  /etoro-scam.html                                        9      5    1m 6s
+  /copy-trading-returns.html                              7      7   0m 19s
+  /index.html                                             7      3   2m 37s
+  /updates.html                                           7      3   1m 31s
+  /calculators/compare-platforms/                         6      1   1m 58s
+  /videos.html                                            6      4   1m 58s
+  /about.html                                             5      4   0m 27s
+  /calculators/trade-comparison/                          4      1   1m 35s
+  /es/que-es-el-copy-trading/                             4      4   0m 31s
+  /es/todas-las-actualizaciones/                          4      4    0m 7s
+  /faq.html                                               4      3   0m 58s
+  /calculators/fee-calculator/                            3      1   0m 19s
+  /how-to-choose-copy-traders-etoro/                      3      3   0m 12s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                117        111
+  Organic Social                         26         26
+  Organic Search                         18          5
+  Referral                                5          5
+  Organic Video                           4          2
+  Unassigned                              3          3
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                        117
+  google                                           18
+  facebook.com                                     14
+  m.facebook.com                                   12
+  youtube.com                                       4
+  (not set)                                         3
+  app.sedric.ai                                     1
+  jabse.com                                         1
+  recipebridge.com                                  1
+  redz.com                                          1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                          42         42
+  Singapore                              41         41
+  China                                  39         39
+  Malta                                  22          6
+  (not set)                               6          6
+  New Zealand                             3          1
+  Romania                                 3          1
+  United Kingdom                          3          3
+  India                                   2          1
+  Netherlands                             2          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                     139        122
+  mobile                       31         26
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  233 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [12:49:00] [230/333] RnXnJz6EAtw —————————————————
+    [12:49:00]   transcribing with local-large model...
+    [13:11:31]   translating to 9 languages [deep-translator]: es de fr it pt ar pl nl ko
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-03-06.txt
+============================================================

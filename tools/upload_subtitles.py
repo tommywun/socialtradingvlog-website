@@ -40,12 +40,16 @@ LANG_MAP = {
     "ar": "ar",
     "nl": "nl",
     "pl": "pl",
-    "zh-CN": "zh-Hans",
-    "ru": "ru",
-    "ja": "ja",
-    "hi": "hi",
     "ko": "ko",
     "it": "it",
+    "th": "th",
+    "id": "id",
+    "ms": "ms",
+    "vi": "vi",
+    "sv": "sv",
+    "da": "da",
+    "el": "el",
+    "cs": "cs",
 }
 
 LANG_NAMES = {
@@ -58,11 +62,15 @@ LANG_NAMES = {
     "ar": "Arabic",
     "nl": "Dutch",
     "pl": "Polish",
-    "zh-CN": "Chinese (Simplified)",
-    "ru": "Russian",
-    "ja": "Japanese",
-    "hi": "Hindi",
     "ko": "Korean",
+    "th": "Thai",
+    "id": "Indonesian",
+    "ms": "Malay",
+    "vi": "Vietnamese",
+    "sv": "Swedish",
+    "da": "Danish",
+    "el": "Greek",
+    "cs": "Czech",
 }
 
 

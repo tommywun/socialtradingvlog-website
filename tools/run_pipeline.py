@@ -51,10 +51,10 @@ LOCK_FILE   = pathlib.Path("/tmp/stv-pipeline.lock")
 
 MODEL = "local-large"
 
-# Max VIDEO uploads per pipeline run (YouTube quota: 10,000 units/day,
-# caption insert = ~400 units each, 9 languages per video = ~3,600 units/video,
-# so 2 full videos per day is safe with headroom for list/fetch operations)
-MAX_VIDEO_UPLOADS_PER_RUN = 2
+# Max VIDEO uploads per pipeline run (YouTube quota: 60,000 units/day,
+# caption insert = ~400 units each, 17 languages per video = ~6,850 units/video,
+# so 8 full videos per day is safe with headroom for list/fetch operations)
+MAX_VIDEO_UPLOADS_PER_RUN = 8
 
 LANGUAGES = [
     "es",     # Spanish — Spain, Latin America (eToro available)
@@ -65,7 +65,15 @@ LANGUAGES = [
     "ar",     # Arabic — UAE, Saudi, Kuwait (eToro available)
     "pl",     # Polish — Poland (eToro available, strong Central EU market)
     "nl",     # Dutch — Netherlands (eToro available)
-    "ko",     # Korean — South Korea (eToro available)
+    "ko",     # Korean — South Korea
+    "th",     # Thai — Thailand (eToro available)
+    "id",     # Indonesian — Indonesia (eToro available)
+    "ms",     # Malay — Malaysia (eToro available)
+    "vi",     # Vietnamese — Vietnam
+    "sv",     # Swedish — Sweden (Nordic, eToro available)
+    "da",     # Danish — Denmark (Nordic, eToro available)
+    "el",     # Greek — Greece (CySEC home market)
+    "cs",     # Czech — Czech Republic (EU, eToro available)
 ]
 
 VIEW_COUNTS_FILE = DATA_DIR / "video-view-counts.json"

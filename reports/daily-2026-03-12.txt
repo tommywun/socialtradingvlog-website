@@ -1,0 +1,105 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-03-12
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 05 Mar 2026 → 12 Mar 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           33
+  Users:              33
+  Page views:         31
+  Avg session:        0m 26s
+  Bounce rate:        18.2%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /es/es-etoro-una-estafa/                                8      8   0m 31s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /                                                       4      4   0m 27s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /es/todas-las-actualizaciones/                          4      4   0m 27s
+  /es/todos-los-videos/                                   4      5   0m 16s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 10 Feb 2026 → 12 Mar 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           199
+  Users:              177
+  Page views:         397
+  Avg session:        1m 31s
+  Bounce rate:        59.8%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                     124     61   0m 53s
+  /video/why-do-most-etoro-traders-lose-money/           38      2  21m 42s
+  /copy-trading.html                                     30      7    1m 7s
+  /social-trading.html                                   27      6   3m 10s
+  /popular-investor.html                                 13     13   0m 21s
+  /etoro-review/                                         11      4   0m 32s
+  /calculators/                                           9      3   3m 29s
+  /etoro-scam.html                                        9      5    1m 6s
+  /es/es-etoro-una-estafa/                                8      8   0m 31s
+  /copy-trading-returns.html                              7      7   0m 19s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /index.html                                             7      3   2m 37s
+  /updates.html                                           7      3   1m 31s
+  /calculators/compare-platforms/                         6      1   1m 58s
+  /videos.html                                            6      4   1m 58s
+  /about.html                                             5      4   0m 27s
+  /calculators/trade-comparison/                          4      1   1m 35s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /es/que-es-el-copy-trading/                             4      4   0m 31s
+  /es/todas-las-actualizaciones/                          4      4   0m 27s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                117        111
+  Organic Social                         53         53
+  Organic Search                         18          5
+  Referral                                5          5
+  Organic Video                           4          2
+  Unassigned                              4          4
+
+============================================================
+  TOP REFERRERS
+============================================================
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  276 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [07:09:59] [274/333] N0KuRYdM2Ow —————————————————
+    [07:09:59]   transcribing with local-large model...
+    [07:29:15]   translating to 9 languages [deep-translator]: es de fr it pt ar pl nl ko
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-03-12.txt
+============================================================

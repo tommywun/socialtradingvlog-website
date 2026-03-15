@@ -5,6 +5,8 @@ Used by: run_pipeline.py, translate_subtitles.py, upload_subtitles.py
 """
 
 # The 9 languages we translate to (ordered by market priority)
+# NOTE: eToro is BLOCKED in Russia, Japan, India, China, Turkey — those
+# languages excluded.
 PIPELINE_LANGUAGES = [
     "es",   # Spanish — Spain, Latin America
     "de",   # German — Germany, Austria, Switzerland
@@ -29,10 +31,6 @@ LANGUAGE_NAMES = {
     "nl": "Dutch",
     "pl": "Polish",
     "ko": "Korean",
-    "ru": "Russian",
-    "ja": "Japanese",
-    "zh-CN": "Chinese (Simplified)",
-    "hi": "Hindi",
 }
 
 # SRT language code → YouTube API language code
@@ -45,10 +43,6 @@ YOUTUBE_LANG_MAP = {
     "ar": "ar",
     "nl": "nl",
     "pl": "pl",
-    "zh-CN": "zh-Hans",
-    "ru": "ru",
-    "ja": "ja",
-    "hi": "hi",
     "ko": "ko",
     "it": "it",
 }

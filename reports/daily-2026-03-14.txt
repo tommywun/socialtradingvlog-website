@@ -1,0 +1,208 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-03-14
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 07 Mar 2026 → 14 Mar 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           26
+  Users:              26
+  Page views:         54
+  Avg session:        1m 43s
+  Bounce rate:        11.5%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /                                                       5      5   0m 41s
+  /es/todos-los-videos/                                   5      5   0m 28s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            3      1   1m 20s
+  /etoro-review/                                          3      1   1m 46s
+  /es/es-etoro-una-estafa/                                2      1    2m 1s
+  /es/mensaje-enviado/                                    2      2   0m 30s
+  /es/que-es-el-trading-social/                           2      2   0m 15s
+  /fr/etoro-est-il-une-arnaque/                           2      1   3m 15s
+  /ar/hal-etoro-ihtial/                                   1      1    0m 3s
+  /ar/jamia-al-tahdithat/                                 1      1    0m 6s
+  /ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/      1      1   1m 41s
+  /copy-trading-returns.html                              1      1   0m 50s
+  /de/ist-etoro-betrug/                                   1      1   0m 43s
+  /de/updates/copy-trading-update-30-april-2019/          1      1   2m 35s
+  /es/calculadoras/                                       1      1    1m 9s
+  /es/updates/actualizacion-copy-trading-24-ago-2019/      1      1   1m 34s
+  /es/updates/actualizacion-copy-trading-jul-2018/        1      1   1m 11s
+  /etoro-scam.html                                        1      1    0m 8s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Social                         24         24
+  Unassigned                              2          2
+  Referral                                1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  m.facebook.com                                   19
+  facebook.com                                      5
+  (not set)                                         2
+  app.sedric.ai                                     1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                          20         20
+  Ireland                                 3          3
+  Sweden                                  2          2
+  Netherlands                             1          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  mobile                       19         19
+  desktop                       7          7
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 12 Feb 2026 → 14 Mar 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           204
+  Users:              182
+  Page views:         432
+  Avg session:        1m 39s
+  Bounce rate:        56.9%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                     125     62   0m 54s
+  /video/why-do-most-etoro-traders-lose-money/           38      2  21m 42s
+  /copy-trading.html                                     30      7    1m 7s
+  /social-trading.html                                   27      6   3m 10s
+  /etoro-review/                                         14      5   0m 43s
+  /popular-investor.html                                 14     14   0m 27s
+  /es/es-etoro-una-estafa/                               10      9   0m 41s
+  /etoro-scam.html                                       10      6   0m 59s
+  /calculators/                                           9      3   3m 29s
+  /copy-trading-returns.html                              8      8   0m 23s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /index.html                                             7      3   2m 37s
+  /updates.html                                           7      3   1m 31s
+  /calculators/compare-platforms/                         6      1   1m 58s
+  /videos.html                                            6      4   1m 58s
+  /about.html                                             5      4   0m 27s
+  /es/todos-los-videos/                                   5      5   0m 28s
+  /calculators/trade-comparison/                          4      1   1m 35s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /es/que-es-el-copy-trading/                             4      4   0m 31s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                117        111
+  Organic Social                         58         58
+  Organic Search                         18          5
+  Referral                                6          6
+  Organic Video                           4          2
+  Unassigned                              2          2
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                        117
+  m.facebook.com                                   35
+  facebook.com                                     23
+  google                                           18
+  youtube.com                                       4
+  (not set)                                         2
+  app.sedric.ai                                     2
+  jabse.com                                         1
+  recipebridge.com                                  1
+  redz.com                                          1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                          68         68
+  Singapore                              41         41
+  China                                  39         39
+  Malta                                  22          6
+  (not set)                               6          6
+  Ireland                                 6          6
+  Sweden                                  4          4
+  Netherlands                             3          2
+  New Zealand                             3          1
+  Romania                                 3          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                     150        133
+  mobile                       54         49
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  286 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [07:08:20] [284/333] u4TVW7zS_go —————————————————
+    [07:08:20]   transcribing with local-large model...
+    [07:38:40]   translating to 9 languages [deep-translator]: es de fr it pt ar pl nl ko
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-03-14.txt
+============================================================

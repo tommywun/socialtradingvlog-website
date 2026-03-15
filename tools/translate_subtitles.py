@@ -44,10 +44,14 @@ LANGUAGES = {
     "pl": "Polish",
     "ar": "Arabic",
     "ko": "Korean",
-    "ru": "Russian",
-    "ja": "Japanese",
-    "zh-CN": "Chinese (Simplified)",
-    "hi": "Hindi",
+    "th": "Thai",
+    "id": "Indonesian",
+    "ms": "Malay",
+    "vi": "Vietnamese",
+    "sv": "Swedish",
+    "da": "Danish",
+    "el": "Greek",
+    "cs": "Czech",
 }
 
 # Character-set validators for non-Latin scripts.
@@ -56,12 +60,9 @@ LANGUAGES = {
 CHAR_CHECKS = {
     "ar": lambda t: any(0x0600 <= ord(c) <= 0x06FF for c in t),
     "ko": lambda t: any(0xAC00 <= ord(c) <= 0xD7AF for c in t),
-    "zh-CN": lambda t: any(0x4E00 <= ord(c) <= 0x9FFF for c in t),
-    "ja": lambda t: any(
-        0x3040 <= ord(c) <= 0x30FF or 0x4E00 <= ord(c) <= 0x9FFF for c in t
-    ),
-    "ru": lambda t: any(0x0400 <= ord(c) <= 0x04FF for c in t),
-    "hi": lambda t: any(0x0900 <= ord(c) <= 0x097F for c in t),
+    "th": lambda t: any(0x0E00 <= ord(c) <= 0x0E7F for c in t),
+    "el": lambda t: any(0x0370 <= ord(c) <= 0x03FF for c in t),
+    "vi": lambda t: any(ord(c) > 127 for c in t),  # Vietnamese uses Latin + diacritics
 }
 
 
