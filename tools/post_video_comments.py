@@ -45,25 +45,21 @@ PINNED_QUEUE = PROJECT_DIR / "data" / "pinned-comment-queue.json"
 # Each has an id, label (shown in CC), and the full comment text.
 
 COMMENT_TEMPLATES = {
-    "calculator": {
-        "label": "Free Tools (Calculators)",
+    "etoro-review": {
+        "label": "eToro Review",
         "message": (
-            "Try my free eToro tools \u2014 built from years of experience on the platform:\n\n"
-            "\ud83d\udcca Fee Calculator \u2014 see exactly what you'll pay in spreads, overnight & withdrawal fees\n"
-            "\ud83d\udcc8 ROI Calculator \u2014 project your copy trading returns over time\n"
-            "\ud83d\udccf Position Size Calculator \u2014 work out how much to allocate per trader\n\n"
-            "\u27a1\ufe0f https://www.socialtradingvlog.com/calculators/"
+            "I\u2019ve been using eToro for 9+ years \u2014 here\u2019s my honest review covering "
+            "fees, copy trading, withdrawals, and who it\u2019s actually good for:\n\n"
+            "\u27a1\ufe0f https://www.socialtradingvlog.com/etoro-review/"
         ),
     },
     "comparison": {
         "label": "Platform Comparison",
         "message": (
             "Thinking about which trading platform is best for you?\n\n"
-            "I've compared eToro vs Trading 212, Interactive Brokers & more \u2014 "
+            "I\u2019ve compared eToro vs Trading 212, Interactive Brokers & more \u2014 "
             "fees, features, pros and cons side by side:\n\n"
-            "\u27a1\ufe0f https://www.socialtradingvlog.com/compare-trading-platforms\n\n"
-            "Free tools: Fee Calculator, ROI Calculator, Position Sizer\n"
-            "\u27a1\ufe0f https://www.socialtradingvlog.com/calculators/"
+            "\u27a1\ufe0f https://www.socialtradingvlog.com/compare-trading-platforms"
         ),
     },
     "how-much": {
@@ -72,15 +68,13 @@ COMMENT_TEMPLATES = {
             "Want to know how much you can realistically make copy trading?\n\n"
             "I break down the maths \u2014 what good traders actually return, "
             "why your starting amount matters more than you think, and how compound growth works:\n\n"
-            "\u27a1\ufe0f https://www.socialtradingvlog.com/video/how-much-money-can-i-make-copy-trading-etoro\n\n"
-            "Try the ROI Calculator to see your projected returns:\n"
-            "\u27a1\ufe0f https://www.socialtradingvlog.com/calculators/"
+            "\u27a1\ufe0f https://www.socialtradingvlog.com/video/how-much-money-can-i-make-copy-trading-etoro"
         ),
     },
 }
 
 # Default template for videos with no existing pinned comment
-DEFAULT_TEMPLATE = "calculator"
+DEFAULT_TEMPLATE = "etoro-review"
 
 QUOTA_PER_LIST = 1
 QUOTA_PER_INSERT = 50

@@ -303,7 +303,7 @@ def check_package_integrity():
 def check_ssl_certificate():
     """Check SSL certificate validity for main site and dashboard."""
     issues = []
-    domains = ["socialtradingvlog.com", "app.socialtradingvlog.com"]
+    domains = ["socialtradingvlog.com"]  # app.socialtradingvlog.com decommissioned 2026-05-10
 
     for domain in domains:
         try:
@@ -333,9 +333,8 @@ def check_dns_integrity():
     """Verify DNS records haven't been tampered with."""
     issues = []
     expected_records = {
-        # Main site goes through Cloudflare — don't check VPS IP
-        # Only the dashboard subdomain should point to VPS
-        "app.socialtradingvlog.com": "89.167.73.64",
+        # app.socialtradingvlog.com decommissioned 2026-05-10 — DNS entry removed intentionally
+        # Main site goes through Cloudflare — VPS IP not used for main domain
     }
 
     for domain, expected_ip in expected_records.items():

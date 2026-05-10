@@ -38,7 +38,7 @@ SEND_LOG = PROJECT_DIR / "data" / "send-log.json"
 FROM_EMAIL = "Tom <tom@send.socialtradingvlog.com>"
 TOM_EMAIL = "tradertommalta@gmail.com"
 SITE_URL = "https://socialtradingvlog.com"
-UNSUBSCRIBE_URL = "https://app.socialtradingvlog.com/api/unsubscribe"
+UNSUBSCRIBE_URL = "https://socialtradingvlog.com/contact/"  # dashboard decommissioned 2026-05-10
 
 # ─── Init Resend ───
 def init_resend():
