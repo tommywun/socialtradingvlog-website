@@ -160,29 +160,9 @@ def generate_optimization_suggestions(popularity, cta_data):
     """Generate actionable optimization suggestions."""
     suggestions = []
 
-    # Tool-specific suggestions based on popularity
-    if popularity.get("pages"):
-        top_pages = popularity["pages"][:5]
-        tool_pages = [p for p in top_pages if "/calculators/" in str(p.get("pagePath", ""))]
-
-        if tool_pages:
-            most_popular = tool_pages[0]
-            suggestions.append({
-                "type": "insight",
-                "message": f"Most popular tool: {most_popular.get('pagePath', 'unknown')} "
-                           f"with {most_popular.get('sessions', '?')} sessions this week.",
-            })
-
     # CTA suggestions
     if cta_data.get("suggestions"):
         suggestions.extend(cta_data["suggestions"])
-
-    # General suggestions
-    suggestions.append({
-        "type": "suggestion",
-        "message": "Consider adding the Trade Comparison calculator link to the homepage "
-                   "hero section if it's driving traffic.",
-    })
 
     return suggestions
 
