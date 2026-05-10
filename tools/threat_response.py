@@ -117,7 +117,7 @@ def kill_suspicious_process(pattern):
 
     # Safelist: never kill these
     safelist = ["sshd", "nginx", "python3", "bash", "systemd", "cron",
-                "fail2ban", "crowdsec", "ufw", "stv-dashboard"]
+                "fail2ban", "crowdsec", "ufw"]
     if pattern.lower() in safelist:
         log(f"REFUSED to kill safelisted process: {pattern}", "ERROR")
         return False
@@ -266,22 +266,13 @@ def emergency_lockdown():
         subprocess.run(["ufw", "allow", "22/tcp"], timeout=10)
         subprocess.run(["ufw", "--force", "enable"], timeout=10)
 
-        # Stop the dashboard (reduces attack surface)
-        subprocess.run(
-            ["systemctl", "stop", "stv-dashboard"],
-            timeout=10, capture_output=True,
-        )
-
-        log("LOCKDOWN ACTIVE: Only SSH (port 22) accessible. Web/dashboard DOWN.")
+        log("LOCKDOWN ACTIVE: Only SSH (port 22) accessible.")
         alert_tom(
             "EMERGENCY LOCKDOWN ACTIVE",
             "All services except SSH have been shut down.\n"
-            "Only port 22 is open.\n"
-            "Web site and dashboard are DOWN.\n\n"
+            "Only port 22 is open.\n\n"
             "To restore: `python3 tools/threat_response.py --unlock`\n"
-            "Or manually:\n"
-            "  `ufw allow 80/tcp && ufw allow 443/tcp && ufw allow 8080/tcp`\n"
-            "  `systemctl start stv-dashboard`"
+            "Or manually: `ufw allow 80/tcp && ufw allow 443/tcp`"
         )
         return True
 
@@ -331,21 +322,13 @@ def unlock():
             log("No pre-lockdown state found — restoring standard rules")
             subprocess.run(["ufw", "allow", "80/tcp"], timeout=10)
             subprocess.run(["ufw", "allow", "443/tcp"], timeout=10)
-            subprocess.run(["ufw", "allow", "8080/tcp"], timeout=10)
             subprocess.run(["ufw", "limit", "ssh/tcp"], timeout=10)
-
-        # Restart dashboard
-        subprocess.run(
-            ["systemctl", "start", "stv-dashboard"],
-            timeout=10, capture_output=True,
-        )
 
         log("LOCKDOWN LIFTED: All services restored.")
         alert_tom(
             "Lockdown lifted",
             "All services restored.\n"
-            "Ports 22, 80, 443, 8080 are open.\n"
-            "Dashboard is running."
+            "Ports 22, 80, and 443 are open."
         )
         return True
 

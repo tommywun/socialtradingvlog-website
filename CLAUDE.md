@@ -3,8 +3,7 @@
 ## At the start of each session
 - Check the latest GA report: `cat reports/latest.txt`
 - Check pipeline progress: `tail -20 transcriptions/pipeline.log`
-- Check for fix requests from the command centre: `ssh stv@89.167.73.64 "cat ~/socialtradingvlog-website/data/fix-queue.json 2>/dev/null || echo '[]'"`
-- Share key insights, any notable changes, and any pending fix requests with Tom
+- Share key insights and any notable changes with Tom
 
 ## Secrets location
 All API keys and credentials are stored in `~/.config/stv-secrets/` (NOT in the repo).
@@ -29,11 +28,10 @@ Latest is always at `reports/latest.txt`.
 
 ## Site architecture
 - **Main site** (`socialtradingvlog.com`) is served from **GitHub Pages** — deploy by `git push` to origin
-- **Dashboard** (`app.socialtradingvlog.com`) is served from the **VPS** via Caddy → Flask — deploy with rsync + restart
-- Cloudflare sits in front of both (DNS + proxying)
+- Cloudflare sits in front (DNS + proxying)
 - **Cloudflare Zone ID**: `5fb9d48f310faea50fd4b8dca8e5380c`
 - **Cloudflare Account ID**: `8258a1fdf539f95d62ce9f567a16f858`
-- **Cloudflare Worker** `stv-redirects` handles 31 legacy WordPress 301 redirects (`tools/setup_cloudflare_redirects.py`)
+- **Cloudflare Worker** `stv-redirects` handles 83 legacy WordPress 301 redirects (`tools/setup_cloudflare_redirects.py`)
 
 ### Rsync to VPS
 ```bash
@@ -45,13 +43,8 @@ rsync -avz --delete \
 ```
 **Critical:** Always exclude `venv/`, `data/`, `logs/`, and `backups/` — these are VPS-generated and must never be wiped by rsync.
 
-## VPS (Command Centre)
+## VPS
 - **Host**: 89.167.73.64, user `stv`
-- **Dashboard**: app.socialtradingvlog.com (tools/dashboard.py, port 8080)
-- **Service**: `sudo systemctl restart stv-dashboard`
-- **Sessions**: Persisted to `data/sessions.json` (90-day expiry)
-- **WebAuthn**: Face ID credentials in `data/webauthn-credentials.json`, RP ID = `socialtradingvlog.com`
-- **Review queue**: 20 articles in `data/review-staging/`, metadata in `data/review-queue.json`
 - **Cron**: `setup_cron.sh` installs all #STV cron jobs (pipeline, security, doctor, backups)
 - **GA key**: `~/.config/stv-secrets/ga-service-account.json` (copied from Mac)
 
@@ -105,25 +98,6 @@ Pipeline: transcribe video → extract key points → rewrite as SEO article tar
 - Old transcript-dump pages have been purged (30 EN + 5 translated = 35 pages removed, Feb 2025)
 - Transcriptions in `transcriptions/` are preserved (used for subtitles and as source material for rewriting)
 
-## Content review queue (20 articles)
-Articles in `data/review-staging/` on VPS. Review/publish via command centre Review tab.
-- 14 SEO articles, 5 comparison articles, 1 checklist
-- Checklist was unpublished from live site (removed from git)
-
-## Dashboard features
-- Persistent sessions (no logout on restart)
-- WebAuthn Face ID login (browser passkey)
-- Content review queue (preview, edit, publish to git)
-- SEO checker (10-point analysis per article)
-- Clickable error resolution with fix guides and "Fix It" buttons
-- Auto-fix system for common issues
-- Health monitoring with actionable steps
-
-## SSH/VPS editing pattern
-When editing dashboard.py on VPS, avoid SSH heredocs for Python code containing regex
-or quote characters. Instead: write a Python script to /tmp locally, scp it to VPS,
-then run it remotely. This avoids quote mangling through SSH.
-
 ## Schema markup
 All pages have proper JSON-LD: Article/Review + FAQPage + BreadcrumbList.
 Author name: "Tom West". Publisher: "SocialTradingVlog".
@@ -132,12 +106,10 @@ eToro review has Review schema with itemReviewed.
 
 ## Internal linking
 13 SEO articles have "You might also like" sections with contextually relevant cross-links.
-Calculator pages link to each other via nav bar.
-
 ## Working rules
 - **Learn and document immediately**: Whenever something goes wrong, a mistake is made, a workaround is discovered, or a non-obvious pattern emerges — immediately add it to this file as a rule with the most efficient protocol to follow next time. Don't wait to be asked. Don't rely on memory across sessions. If it could come up again, write it down now with a clear, actionable procedure. This is the single most important rule — every other rule in this section exists because of it.
 - **Advocate for the optimal approach**: Always state the most efficient strategy with reasoning, even if Tom suggests something different. Don't defer just to be agreeable — Tom values logical pushback and a second perspective. If you think a different approach is better, say so clearly and explain why. Wasted exchanges from passive agreement cost more than one confident recommendation. Give your honest assessment first, then let Tom decide.
-- Run session start checks (GA report, pipeline status, fix queue) as a matter of course at the start of every session without being asked.
+- Run session start checks (GA report, pipeline status) as a matter of course at the start of every session without being asked.
 - **VPS access: ALWAYS use `stv@89.167.73.64`** — never `root@`, never `socialtradingvlog.com`. The domain goes through Cloudflare which only proxies HTTP (ports 80/443), not SSH (port 22). Using the domain for SSH will fail with "No route to host". This applies to all SSH, rsync, and scp commands.
 - **Deep debugging standard**: When anything fails, apply maximum rigour before concluding. This means:
   1. Read the actual error output first (don't trust summary messages — find the real traceback/log)
@@ -162,7 +134,6 @@ Calculator pages link to each other via nav bar.
   6. Present the audit to Tom: "These X items will be removed. These Y items appear to be approved/hand-written and will be KEPT: [list]"
   7. Only proceed after Tom confirms
   This rule exists because bulk deletions have destroyed approved content TWICE (etoro-review, why-do-most-etoro-traders-lose-money). The fix is to audit first, act second — never the other way around.
-- **Update CC immediately when status changes**: Whenever a task is completed, a situation changes, or progress is made on any tracked item (pipeline, subtitles, video pages, articles, etc.), immediately update `data/status-overrides.json` on VPS to reflect the current state. The command centre is Tom's window into what's happening — stale or inaccurate statuses are misleading. Use: `ssh stv@89.167.73.64 "cat > ~/socialtradingvlog-website/data/status-overrides.json << 'EOF' ... EOF"`
 - **VPS rsync excludes**: When syncing to VPS with rsync --delete, ALWAYS exclude: `.git`, `transcriptions`, `node_modules`, `data`, `.env`, `venv`, `logs`, `backups`, `tools/__pycache__`. Logs and backups are generated on VPS by cron jobs and don't exist locally — rsync --delete will wipe them. This is what caused the backup cron to silently fail for 76 days (Feb–May 2026). The __pycache__ is VPS-specific. The venv must not be deleted.
 - **After adding new pages, regenerate sitemap**: Run `python3 tools/generate_sitemap.py` after creating new pages or translations. The sitemap includes hreflang links — missing pages mean missing SEO signals. This was missed when 5 scam page translations were created (Feb 2026).
 - **Always check CLAUDE.md before asking Tom**: When something fails or you need project info (VPS credentials, tool paths, architecture, prior fixes), check this file FIRST. Don't ask Tom questions that are already answered here.
@@ -272,7 +243,7 @@ When the scanner detects a threat, it automatically takes safe, reversible actio
 - **Safelist protection**: Never kills sshd, nginx, python3, bash, systemd, cron, fail2ban
 
 **Manual Telegram commands (for Tom only):**
-- Emergency lockdown: shuts all ports except SSH, stops dashboard
+- Emergency lockdown: shuts all ports except SSH
 - Unlock: restores all services from lockdown
 - Block specific IP: `python3 tools/threat_response.py --block-ip X.X.X.X`
 
@@ -425,7 +396,7 @@ Weekly security and quality scan of all STV code:
 - **VPS project path**: `/home/stv/socialtradingvlog-website/` (NOT `/var/www/`)
 - **Cron setup**: `setup_cron.sh` auto-detects project path — no hardcoded paths
 - **Venv**: ALL tools run from `./venv/bin/python3` (crons use venv python, not system python)
-- **Web server**: Caddy (not nginx) — auto-TLS, reverse proxy to dashboard on port 8080
+- **Web server**: Caddy (not nginx) — auto-TLS, Caddy handles TLS termination
 - **Docker**: Running on VPS (containerd + docker services active)
 - **Expected ports**: 22 (SSH), 53 (DNS resolver, localhost only), 80 (HTTP→HTTPS redirect), 443 (HTTPS)
 
