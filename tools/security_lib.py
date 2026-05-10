@@ -91,15 +91,17 @@ def _save_state(state):
         pass
 
 
-def send_telegram(subject, body, emoji="🔴", dedupe_key=None):
+def send_telegram(subject, body, emoji="🔴", dedupe_key=None, dedupe_hours=0.5):
     """Send Telegram alert with rate limiting and deduplication.
 
     Args:
         subject: Alert subject line
         body: Alert body text
         emoji: Emoji prefix for the message
-        dedupe_key: Optional key for deduplication. If the same key was
-                    sent in the last 30 minutes, the alert is skipped.
+        dedupe_key: Optional key for deduplication.
+        dedupe_hours: How many hours to suppress duplicate alerts with the
+                      same key. Default 0.5 (30 min). Pass 24 for daily
+                      cron alerts that should fire at most once per day.
 
     Returns:
         True if alert was sent, False if skipped/failed.
@@ -108,8 +110,9 @@ def send_telegram(subject, body, emoji="🔴", dedupe_key=None):
     now = datetime.now()
     now_iso = now.isoformat()
 
-    # Clean old alerts (keep last hour only)
-    cutoff = (now.timestamp() - 3600)
+    # Clean old alerts — keep enough history for the longest dedup window
+    retention = max(3600, dedupe_hours * 3600)
+    cutoff = now.timestamp() - retention
     state["recent_alerts"] = [
         a for a in state.get("recent_alerts", [])
         if _parse_ts(a.get("time", "")) > cutoff
@@ -121,9 +124,9 @@ def send_telegram(subject, body, emoji="🔴", dedupe_key=None):
         _save_state(state)
         return False
 
-    # Deduplication (same key within 30 minutes)
+    # Deduplication (same key within dedupe_hours)
     if dedupe_key:
-        dedupe_cutoff = now.timestamp() - 1800
+        dedupe_cutoff = now.timestamp() - (dedupe_hours * 3600)
         for a in state["recent_alerts"]:
             if a.get("key") == dedupe_key and _parse_ts(a.get("time", "")) > dedupe_cutoff:
                 log(f"Alert deduplicated (key={dedupe_key})", "INFO")

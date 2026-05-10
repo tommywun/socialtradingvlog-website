@@ -51,9 +51,11 @@ def log(msg, level="INFO"):
 
 
 def send_alert(subject, body):
-    """Send threat alert via Telegram."""
+    """Send threat alert via Telegram. Deduped per 24h so daily cron
+    scans don't re-send the same alert on consecutive days."""
     send_telegram(subject, body, emoji="🔴 THREAT ALERT",
-                  dedupe_key=f"threat:{subject[:50]}")
+                  dedupe_key=f"threat:{subject[:50]}",
+                  dedupe_hours=24)
 
 
 def load_threat_data():
@@ -142,13 +144,21 @@ def check_cve_advisories():
     return issues
 
 
-def check_web_server_attack_patterns():
-    """Analyze web server access logs for attack patterns (Caddy or nginx)."""
+def check_web_server_attack_patterns(log_path=None):
+    """Analyze web server access logs for attack patterns (Caddy or nginx).
+
+    Args:
+        log_path: Optional path override for testing. Defaults to the live
+                  Caddy log (/var/log/caddy/access.log) or nginx fallback.
+    """
     issues = []
-    # Try Caddy first, then nginx
-    access_log = pathlib.Path("/var/log/caddy/access.log")
-    if not access_log.exists():
-        access_log = pathlib.Path("/var/log/nginx/access.log")
+    if log_path is not None:
+        access_log = pathlib.Path(log_path)
+    else:
+        # Try Caddy first, then nginx
+        access_log = pathlib.Path("/var/log/caddy/access.log")
+        if not access_log.exists():
+            access_log = pathlib.Path("/var/log/nginx/access.log")
     if not access_log.exists():
         return issues
 
@@ -157,6 +167,11 @@ def check_web_server_attack_patterns():
             ["tail", "-5000", str(access_log)],
             capture_output=True, text=True, timeout=10,
         )
+
+        # Only count entries from the last 25 hours — prevents stale log
+        # entries from re-triggering daily alerts indefinitely.
+        import time as _time
+        log_cutoff = _time.time() - (25 * 3600)
 
         attack_patterns = {
             r"\.\.\/": "path traversal",
@@ -185,6 +200,11 @@ def check_web_server_attack_patterns():
             if is_caddy_json:
                 try:
                     entry = json.loads(line)
+                    # Skip entries older than 25h — prevents stale log entries
+                    # from re-triggering the alert on every daily scan run.
+                    entry_ts = float(entry.get("ts", 0))
+                    if entry_ts > 0 and entry_ts < log_cutoff:
+                        continue
                     req = entry.get("request", {})
                     request_uri = req.get("uri", "")
                     client_ip = req.get("remote_ip", entry.get("request", {}).get("remote_addr", "").split(":")[0])
@@ -431,7 +451,7 @@ def check_new_users_and_sudoers():
                     shell = parts[6]
                     # Flag unexpected users with login shells and UIDs >= 1000
                     if uid >= 1000 and shell not in ("/usr/sbin/nologin", "/bin/false", ""):
-                        if username not in ("stv", "nobody", "ubuntu"):
+                        if username not in ("stv", "tws", "nobody", "ubuntu"):
                             issues.append(
                                 f"Unexpected user with login shell: {username} "
                                 f"(uid={uid}, shell={shell})"

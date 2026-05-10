@@ -1,0 +1,133 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-03-21
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 14 Mar 2026 → 21 Mar 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           3
+  Users:              3
+  Page views:         10
+  Avg session:        21m 15s
+  Bounce rate:        0.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /es/                                                    5      1   6m 37s
+  /                                                       1      1    8m 0s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            1      1    5m 5s
+  /de/                                                    1      1   0m 29s
+  /de/nachricht-gesendet/                                 1      1   0m 29s
+  /pt/etoro-e-golpe/                                      1      1  11m 55s
+  /de/etoro-erfahrungen-2026-ehrlicher-testbericht/       0      1   31m 8s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Search                          2          2
+  Organic Social                          1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  google                                            2
+  facebook.com                                      1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Germany                                 1          1
+  Malta                                   1          1
+  United States                           1          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                       2          2
+  mobile                        1          1
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 19 Feb 2026 → 21 Mar 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           198
+  Users:              176
+  Page views:         430
+  Avg session:        1m 54s
+  Bounce rate:        55.1%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                     119     55    1m 5s
+  /video/why-do-most-etoro-traders-lose-money/           38      2  21m 42s
+  /copy-trading.html                                     30      7    1m 7s
+  /social-trading.html                                   27      6   3m 10s
+  /etoro-review/                                         14      5   0m 43s
+  /popular-investor.html                                 14     14   0m 27s
+  /es/es-etoro-una-estafa/                               10      9   0m 41s
+  /etoro-scam.html                                       10      6   0m 59s
+  /calculators/                                           9      3   3m 29s
+  /copy-trading-returns.html                              8      8   0m 23s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /updates.html                                           7      3   1m 31s
+  /calculators/compare-platforms/                         6      1   1m 58s
+  /about.html                                             5      4   0m 27s
+  /es/                                                    5      1   6m 37s
+  /es/todos-los-videos/                                   5      5   0m 28s
+  /index.html                                             5      1   1m 24s
+  /videos.html                                            5      3   0m 10s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            4      2   3m 12s
+  /calculators/trade-comparison/                          4      1   1m 35s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  333 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [07:25:15] [40/333] KU56yDvug8g —————————————————
+    [07:25:15]   English SRT already exists
+    [07:25:15]   translating to 8 languages [deep-translator]: th id ms vi sv da el cs
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-03-21.txt
+============================================================

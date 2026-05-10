@@ -1,53 +1,57 @@
 ============================================================
-  DAILY REPORT — socialtradingvlog.com — 2026-05-10
+  DAILY REPORT — socialtradingvlog.com — 2026-04-07
 ============================================================
 
 ── LAST 7 DAYS ─────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 03 May 2026 → 10 May 2026 (7 days)
+Period: 31 Mar 2026 → 07 Apr 2026 (7 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           3
+  Sessions:           4
   Users:              3
-  Page views:         3
-  Avg session:        6m 46s
-  Bounce rate:        0.0%
+  Page views:         6
+  Avg session:        4m 29s
+  Bounce rate:        75.0%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                       1      1   0m 10s
-  /es/cuanto-dinero-puedes-ganar-copy-trading/            1      1   0m 17s
-  /pt/quanto-dinheiro-pode-ganhar-com-copy-trading/       1      1  19m 52s
+  /copy-trading-returns.html                              3      1   3m 48s
+  /                                                       1      1   0m 12s
+  /etoro-review/                                          1      1   8m 52s
+  /social-trading.html                                    1      1   1m 14s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            0      1    0m 0s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Organic Search                          2          2
+  Organic Video                           2          1
   Referral                                1          1
+  Unassigned                              1          1
 
 ============================================================
   TOP REFERRERS
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  google                                            2
-  multisearching.com                                1
+  youtube.com                                       2
+  (not set)                                         1
+  fresheye.com                                      1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Spain                                   1          1
-  Switzerland                             1          1
+  United Kingdom                          2          1
+  Chile                                   1          1
   United States                           1          1
 
 ============================================================
@@ -55,7 +59,7 @@ Period: 03 May 2026 → 10 May 2026 (7 days)
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  mobile                        2          2
+  mobile                        3          2
   desktop                       1          1
 
 ============================================================
@@ -71,69 +75,90 @@ Period: 03 May 2026 → 10 May 2026 (7 days)
 ── LAST 30 DAYS ────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 10 Apr 2026 → 10 May 2026 (30 days)
+Period: 08 Mar 2026 → 07 Apr 2026 (30 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           14
-  Users:              12
-  Page views:         26
-  Avg session:        4m 9s
-  Bounce rate:        7.1%
+  Sessions:           42
+  Users:              35
+  Page views:         76
+  Avg session:        9m 29s
+  Bounce rate:        16.7%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                       8      3   0m 43s
-  /calculators/compare-platforms/                         6      1   1m 29s
-  /es/cuanto-dinero-puedes-ganar-copy-trading/            4      4   2m 22s
-  /fr/combien-peut-on-gagner-avec-le-copy-trading/        3      1   0m 46s
-  /taking-profits.html                                    2      1   9m 40s
-  /es/es-etoro-una-estafa/                                1      1  10m 34s
-  /es/programa-inversor-popular/                          1      1    1m 4s
-  /pt/quanto-dinheiro-pode-ganhar-com-copy-trading/       1      1  19m 52s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            9     11   0m 45s
+  /                                                       7      7   1m 39s
+  /es/                                                    5      1   3m 18s
+  /es/todos-los-videos/                                   5      5   0m 28s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            4      2    2m 8s
+  /copy-trading-returns.html                              4      2   2m 48s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /etoro-review/                                          4      2   5m 19s
+  /pt/etoro-review-analise-completa-apos-9-anos/          4      1  53m 22s
+  /es/es-etoro-una-estafa/                                2      1    2m 1s
+  /es/mensaje-enviado/                                    2      2   0m 30s
+  /es/que-es-el-trading-social/                           2      2   0m 31s
+  /fr/etoro-est-il-une-arnaque/                           2      1   3m 15s
+  /pt/etoro-e-golpe/                                      2      2   4m 38s
+  /ar/hal-etoro-ihtial/                                   1      1    0m 3s
+  /ar/jamia-al-tahdithat/                                 1      1    0m 6s
+  /ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/      1      1   1m 41s
+  /de/                                                    1      1   0m 29s
+  /de/ist-etoro-betrug/                                   1      1   0m 43s
+  /de/nachricht-gesendet/                                 1      1   0m 29s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Organic Search                         11          9
+  Organic Social                         25         25
+  Organic Search                         11          5
+  Organic Video                           2          1
   Referral                                2          2
-  Direct                                  1          1
+  Unassigned                              2          2
 
 ============================================================
   TOP REFERRERS
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
+  m.facebook.com                                   19
   google                                           11
-  (direct)                                          1
-  multisearching.com                                1
-  rediff.com                                        1
+  facebook.com                                      6
+  (not set)                                         2
+  youtube.com                                       2
+  app.sedric.ai                                     1
+  fresheye.com                                      1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Spain                                   5          4
-  Switzerland                             3          2
-  United States                           3          3
-  Malta                                   1          1
-  Norway                                  1          1
-  Peru                                    1          1
+  United States                          22         22
+  United Kingdom                          7          2
+  Ireland                                 3          3
+  Malta                                   3          1
+  Sweden                                  2          2
+  Chile                                   1          1
+  Colombia                                1          1
+  Germany                                 1          1
+  Mexico                                  1          1
+  Netherlands                             1          1
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  mobile                       10          9
-  desktop                       4          3
+  mobile                       29         24
+  desktop                      13         11
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
@@ -151,12 +176,12 @@ Period: 10 Apr 2026 → 10 May 2026 (30 days)
   Article pages:   9 generated
 
   Last pipeline activity:
-    [04:00:05]   translating to 8 languages [deep-translator]: es de fr it pt ar pl nl
-    [05:19:53]   WARNING: translation had errors (continuing)
-    [05:19:53]   done in 79m 47s
-    [05:19:53] === Pipeline finished 2026-05-10T05:19:53.077402 ===
-    [05:19:53] Completed: 333/333 | Errors: 0 | Videos uploaded: 0
+    [06:58:50] [176/333] bEUTRcdYzVE —————————————————
+    [06:58:50]   English SRT already exists
+    [06:58:50]   translating to 8 languages [deep-translator]: th id ms vi sv da el cs
+    /Users/thomaswest/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+      warnings.warn(
 
 ============================================================
-  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-05-10.txt
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-04-07.txt
 ============================================================

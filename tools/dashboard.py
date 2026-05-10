@@ -185,6 +185,29 @@ def fetch_gsc_data():
     return result
 
 
+def get_gsc_history():
+    """Read all GSC snapshots and build position history per query."""
+    snapshots = sorted(PROJECT_DIR.glob("reports/gsc-*.json"))
+    history = {}
+    for snap_path in snapshots:
+        try:
+            data = json.loads(snap_path.read_text())
+            date = data.get("date", snap_path.stem.replace("gsc-", ""))
+            for q in data.get("queries", []):
+                query = q["query"]
+                if query not in history:
+                    history[query] = []
+                history[query].append({
+                    "date": date,
+                    "position": q["position"],
+                    "clicks": q.get("clicks", 0),
+                    "impressions": q.get("impressions", 0),
+                })
+        except Exception:
+            continue
+    return history
+
+
 # ─── HTML UI ───
 
 DASHBOARD_HTML = r"""<!DOCTYPE html>
@@ -196,70 +219,110 @@ DASHBOARD_HTML = r"""<!DOCTYPE html>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  background:#0f1117;color:#e1e4e8;min-height:100vh}
-a{color:#58a6ff;text-decoration:none}
+  background:#f6f8fa;color:#1f2328;min-height:100vh}
+a{color:#0969da;text-decoration:none}
 
 /* Login */
 .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh}
-.login-box{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:2.5rem;
-  width:100%;max-width:380px;text-align:center}
-.login-box h1{font-size:1.4rem;margin-bottom:1.5rem;color:#f0f6fc}
-.login-box input{width:100%;padding:.75rem 1rem;background:#0d1117;border:1px solid #30363d;
-  border-radius:8px;color:#e1e4e8;font-size:1rem;margin-bottom:1rem;outline:none}
-.login-box input:focus{border-color:#58a6ff}
-.login-box button{width:100%;padding:.75rem;background:#238636;border:none;border-radius:8px;
+.login-box{background:#fff;border:1px solid #d0d7de;border-radius:12px;padding:2.5rem;
+  width:100%;max-width:380px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.login-box h1{font-size:1.4rem;margin-bottom:1.5rem;color:#1f2328}
+.login-box input{width:100%;padding:.75rem 1rem;background:#fff;border:1px solid #d0d7de;
+  border-radius:8px;color:#1f2328;font-size:1rem;margin-bottom:1rem;outline:none}
+.login-box input:focus{border-color:#0969da;box-shadow:0 0 0 3px rgba(9,105,218,.15)}
+.login-box button{width:100%;padding:.75rem;background:#1a7f37;border:none;border-radius:8px;
   color:#fff;font-size:1rem;font-weight:600;cursor:pointer}
-.login-box button:hover{background:#2ea043}
-.login-error{color:#f85149;font-size:.9rem;margin-bottom:1rem;display:none}
+.login-box button:hover{background:#116329}
+.login-error{color:#cf222e;font-size:.9rem;margin-bottom:1rem;display:none}
 
 /* Dashboard */
-.dashboard{display:none;max-width:1100px;margin:0 auto;padding:1.5rem}
+.dashboard{display:none;max-width:1200px;margin:0 auto;padding:1.5rem}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;
-  flex-wrap:wrap;gap:.75rem}
-header h1{font-size:1.5rem;color:#f0f6fc}
+  flex-wrap:wrap;gap:.75rem;padding-bottom:1rem;border-bottom:1px solid #d0d7de}
+header h1{font-size:1.4rem;color:#1f2328;font-weight:600}
 .header-actions{display:flex;gap:.75rem;align-items:center}
-.btn{padding:.5rem 1rem;border:none;border-radius:8px;font-size:.85rem;font-weight:600;
-  cursor:pointer;transition:background .15s}
-.btn-refresh{background:#1f6feb;color:#fff}
-.btn-refresh:hover{background:#388bfd}
-.btn-logout{background:#21262d;color:#c9d1d9;border:1px solid #30363d}
-.btn-logout:hover{background:#30363d}
-.meta{color:#8b949e;font-size:.8rem;margin-bottom:1.5rem}
+.btn{padding:.45rem 1rem;border:1px solid #d0d7de;border-radius:8px;font-size:.85rem;
+  font-weight:500;cursor:pointer;transition:background .15s;background:#fff;color:#1f2328}
+.btn:hover{background:#f3f4f6;border-color:#adb5bd}
+.btn-refresh{background:#0969da;color:#fff;border-color:#0969da}
+.btn-refresh:hover{background:#0860ca;border-color:#0860ca}
+.meta{color:#656d76;font-size:.8rem;margin-bottom:1.5rem}
 
 /* Cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;
   margin-bottom:2rem}
-.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:1.25rem}
-.card-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#8b949e;
+.card{background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:1.25rem;
+  box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:#656d76;
   margin-bottom:.35rem}
-.card-value{font-size:1.6rem;font-weight:700;color:#f0f6fc}
+.card-value{font-size:1.7rem;font-weight:700;color:#1f2328}
 
 /* Tables */
 .section{margin-bottom:2rem}
-.section h2{font-size:1.1rem;color:#f0f6fc;margin-bottom:.75rem}
-.table-wrap{overflow-x:auto;border:1px solid #30363d;border-radius:10px}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-th{background:#161b22;color:#8b949e;text-transform:uppercase;font-size:.7rem;
+.section-header{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.75rem;gap:1rem;flex-wrap:wrap}
+.section-header h2{font-size:1rem;color:#1f2328;font-weight:600;white-space:nowrap}
+.filter-input{background:#fff;border:1px solid #d0d7de;border-radius:8px;
+  color:#1f2328;font-size:.85rem;padding:.4rem .85rem;outline:none;width:220px}
+.filter-input:focus{border-color:#0969da;box-shadow:0 0 0 3px rgba(9,105,218,.1)}
+.filter-input::placeholder{color:#adb5bd}
+.table-wrap{overflow-x:auto;border:1px solid #d0d7de;border-radius:10px;
+  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{background:#f6f8fa;color:#656d76;text-transform:uppercase;font-size:.68rem;
   letter-spacing:.05em;padding:.65rem 1rem;text-align:left;cursor:pointer;
-  user-select:none;white-space:nowrap}
-th:hover{color:#c9d1d9}
+  user-select:none;white-space:nowrap;border-bottom:1px solid #d0d7de}
+th.cb-col{width:36px;cursor:default}
+th:hover{color:#1f2328}
+th.cb-col:hover{color:#656d76}
 th.sorted-asc::after{content:" \25B2";font-size:.6rem}
 th.sorted-desc::after{content:" \25BC";font-size:.6rem}
-td{padding:.6rem 1rem;border-top:1px solid #21262d;color:#c9d1d9}
-tr:hover td{background:#161b22}
+td{padding:.65rem 1rem;border-top:1px solid #eaeef2;color:#1f2328}
+td.cb-col{padding:.4rem .5rem .4rem 1rem}
+tr:hover td{background:#f6f8fa}
+tr.kw-checked td{background:#ddf4ff}
 .num{text-align:right;font-variant-numeric:tabular-nums}
 
+/* Position badge */
+.pos-badge{display:inline-block;font-size:.75rem;font-weight:700;padding:.15rem .55rem;
+  border-radius:20px;color:#fff;min-width:32px;text-align:center}
+.pos-1-3{background:#1a7f37}
+.pos-4-10{background:#0969da}
+.pos-11-20{background:#9a6700}
+.pos-21plus{background:#adb5bd;color:#fff}
+
+/* Delta */
+.delta{font-size:.75rem;font-weight:600;white-space:nowrap}
+.delta-up{color:#1a7f37}
+.delta-dn{color:#cf222e}
+.delta-eq{color:#adb5bd}
+
+/* Checkbox */
+input[type=checkbox]{width:14px;height:14px;accent-color:#0969da;cursor:pointer}
+
 /* Spinner */
-.spinner{display:none;width:18px;height:18px;border:2px solid #30363d;
-  border-top-color:#58a6ff;border-radius:50%;animation:spin .6s linear infinite}
+.spinner{display:none;width:18px;height:18px;border:2px solid #d0d7de;
+  border-top-color:#0969da;border-radius:50%;animation:spin .6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* Chart */
+.chart-section{margin-bottom:2rem}
+.chart-section h2{font-size:1rem;color:#1f2328;font-weight:600;margin-bottom:.75rem}
+.chart-wrap{background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:1.5rem;
+  box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.chart-legend{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;margin-bottom:1rem}
+.legend-item{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:#1f2328}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.chart-hint{font-size:.75rem;color:#656d76;margin-top:.75rem}
 
 @media(max-width:600px){
   .cards{grid-template-columns:repeat(2,1fr)}
   header h1{font-size:1.2rem}
   td,th{padding:.5rem .6rem;font-size:.8rem}
+  .filter-input{width:100%}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -287,29 +350,48 @@ tr:hover td{background:#161b22}
 
   <div class="cards" id="cards"></div>
 
+  <!-- Position History Chart -->
+  <div class="chart-section" id="chartSection">
+    <h2>Position History</h2>
+    <div class="chart-wrap">
+      <div class="chart-legend" id="chartLegend"></div>
+      <canvas id="rankChart" height="110"></canvas>
+      <div class="chart-hint">Tick keywords below to compare. Y-axis: lower position = higher ranking.</div>
+    </div>
+  </div>
+
+  <!-- Keywords Table -->
   <div class="section">
-    <h2>Top Keywords</h2>
+    <div class="section-header">
+      <h2>Top Keywords</h2>
+      <input class="filter-input" id="kwFilter" placeholder="Filter keywords…" oninput="filterKeywords(this.value)">
+    </div>
     <div class="table-wrap">
       <table id="keywordsTable">
         <thead><tr>
+          <th class="cb-col"></th>
           <th data-key="query">Keyword</th>
           <th data-key="clicks" class="num">Clicks</th>
-          <th data-key="impressions" class="num">Impressions</th>
+          <th data-key="impressions" class="num">Impr.</th>
           <th data-key="position" class="num">Position</th>
+          <th class="num">Change</th>
         </tr></thead>
         <tbody></tbody>
       </table>
     </div>
   </div>
 
+  <!-- Pages Table -->
   <div class="section">
-    <h2>Top Pages</h2>
+    <div class="section-header">
+      <h2>Top Pages</h2>
+    </div>
     <div class="table-wrap">
       <table id="pagesTable">
         <thead><tr>
           <th data-key="page">Page</th>
           <th data-key="clicks" class="num">Clicks</th>
-          <th data-key="impressions" class="num">Impressions</th>
+          <th data-key="impressions" class="num">Impr.</th>
           <th data-key="position" class="num">Position</th>
         </tr></thead>
         <tbody></tbody>
@@ -320,6 +402,13 @@ tr:hover td{background:#161b22}
 
 <script>
 const $ = s => document.querySelector(s);
+
+let gscHistory = {};
+let rankChart = null;
+let checkedKeywords = [];
+let allKeywords = [];
+const CHART_COLORS = ['#58a6ff','#3fb950','#d29922','#f78166','#bc8cff'];
+const MAX_CHART_KW = 5;
 
 // Check if already logged in
 fetch('/api/gsc-data').then(r => {
@@ -362,14 +451,20 @@ function doLogout() {
 }
 
 function loadData() {
-  fetch('/api/gsc-data').then(r => {
-    if (r.status === 401) {
-      $('#dashboard').style.display = 'none';
-      $('#loginScreen').style.display = 'flex';
-      return;
-    }
-    return r.json();
-  }).then(d => { if (d) showDashboard(d); });
+  Promise.all([
+    fetch('/api/gsc-data').then(r => {
+      if (r.status === 401) {
+        $('#dashboard').style.display = 'none';
+        $('#loginScreen').style.display = 'flex';
+        return null;
+      }
+      return r.json();
+    }),
+    fetch('/api/gsc-history').then(r => r.ok ? r.json() : {})
+  ]).then(([data, history]) => {
+    gscHistory = history || {};
+    if (data) { showDashboard(data); renderChart(); }
+  });
 }
 
 function doRefresh() {
@@ -384,27 +479,162 @@ function showDashboard(data) {
   $('#loginScreen').style.display = 'none';
   $('#dashboard').style.display = 'block';
 
-  if (data.error) {
-    $('#meta').textContent = data.error;
-    return;
-  }
+  if (data.error) { $('#meta').textContent = data.error; return; }
 
   const ov = data.overview || {};
   const ts = data.timestamp ? new Date(data.timestamp * 1000).toLocaleString() : 'Unknown';
-  const period = data.period ? data.period.start + ' to ' + data.period.end : '';
+  const period = data.period ? data.period.start + ' — ' + data.period.end : '';
   $('#meta').textContent = 'Last updated: ' + ts + (period ? ' | ' + period : '');
 
   $('#cards').innerHTML = [
     card('Total Clicks', fmt(ov.clicks)),
     card('Total Impressions', fmt(ov.impressions)),
-    card('Avg CTR', (ov.ctr * 100).toFixed(1) + '%'),
+    card('Avg CTR', ((ov.ctr||0) * 100).toFixed(1) + '%'),
     card('Avg Position', ov.position || '-')
   ].join('');
 
-  fillTable('keywordsTable', data.queries || [], ['query','clicks','impressions','position']);
+  // Compute deltas from history, sort by clicks desc (most valuable first)
+  const queries = (data.queries || []).map(q => {
+    const hist = gscHistory[q.query] || [];
+    const prev = hist.length >= 2 ? hist[hist.length - 2].position : null;
+    const delta = prev !== null ? Math.round((prev - q.position) * 10) / 10 : null;
+    return {...q, delta};
+  }).sort((a, b) => b.clicks - a.clicks);
+  allKeywords = queries;
+
+  // Auto-select top keyword for chart
+  checkedKeywords = [];
+  if (queries.length > 0) checkedKeywords = [queries[0].query];
+
+  fillKeywordsTable(queries);
+  setupSort('keywordsTable', queries);
   fillTable('pagesTable', data.pages || [], ['page','clicks','impressions','position']);
-  setupSort('keywordsTable', data.queries || [], ['query','clicks','impressions','position']);
   setupSort('pagesTable', data.pages || [], ['page','clicks','impressions','position']);
+}
+
+function posBadge(pos) {
+  let cls = 'pos-21plus';
+  if (pos <= 3) cls = 'pos-1-3';
+  else if (pos <= 10) cls = 'pos-4-10';
+  else if (pos <= 20) cls = 'pos-11-20';
+  return '<span class="pos-badge ' + cls + '">' + pos + '</span>';
+}
+
+function deltaHtml(delta) {
+  if (delta === null) return '<span class="delta delta-eq">—</span>';
+  if (delta > 0) return '<span class="delta delta-up">&#9650; ' + delta + '</span>';
+  if (delta < 0) return '<span class="delta delta-dn">&#9660; ' + Math.abs(delta) + '</span>';
+  return '<span class="delta delta-eq">—</span>';
+}
+
+function fillKeywordsTable(rows) {
+  const tbody = document.querySelector('#keywordsTable tbody');
+  tbody.innerHTML = rows.map(r => {
+    const checked = checkedKeywords.includes(r.query);
+    const colorIdx = checkedKeywords.indexOf(r.query);
+    const dotStyle = checked ? 'display:inline-block;width:8px;height:8px;border-radius:50%;background:' + CHART_COLORS[colorIdx] + ';margin-right:4px' : 'display:none';
+    return '<tr class="' + (checked ? 'kw-checked' : '') + '" data-query="' + esc(r.query) + '">' +
+      '<td class="cb-col"><input type="checkbox" ' + (checked ? 'checked' : '') + ' onchange="toggleKeyword(\'' + esc(r.query).replace(/'/g,"&#39;") + '\',this.checked)"></td>' +
+      '<td><span style="' + dotStyle + '"></span>' + esc(r.query) + '</td>' +
+      '<td class="num">' + fmt(r.clicks) + '</td>' +
+      '<td class="num">' + fmt(r.impressions) + '</td>' +
+      '<td class="num">' + posBadge(r.position) + '</td>' +
+      '<td class="num">' + deltaHtml(r.delta) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function filterKeywords(text) {
+  const q = text.toLowerCase();
+  const filtered = q ? allKeywords.filter(r => r.query.toLowerCase().includes(q)) : allKeywords;
+  fillKeywordsTable(filtered);
+}
+
+function toggleKeyword(query, checked) {
+  if (checked) {
+    if (checkedKeywords.length >= MAX_CHART_KW) {
+      // Uncheck the checkbox visually
+      event.target.checked = false;
+      return;
+    }
+    checkedKeywords.push(query);
+  } else {
+    checkedKeywords = checkedKeywords.filter(k => k !== query);
+  }
+  // Re-render table to update dot colours
+  filterKeywords($('#kwFilter').value);
+  renderChart();
+}
+
+function renderChart() {
+  const section = $('#chartSection');
+  if (checkedKeywords.length === 0) {
+    section.style.display = 'none';
+    if (rankChart) { rankChart.destroy(); rankChart = null; }
+    return;
+  }
+
+  section.style.display = 'block';
+
+  // Build unified date labels across all selected keywords
+  const dateSet = new Set();
+  checkedKeywords.forEach(kw => {
+    (gscHistory[kw] || []).forEach(h => dateSet.add(h.date));
+  });
+  const labels = Array.from(dateSet).sort();
+
+  const datasets = checkedKeywords.map((kw, i) => {
+    const hist = gscHistory[kw] || [];
+    const byDate = {};
+    hist.forEach(h => { byDate[h.date] = h.position; });
+    return {
+      label: kw,
+      data: labels.map(d => byDate[d] != null ? byDate[d] : null),
+      borderColor: CHART_COLORS[i],
+      backgroundColor: CHART_COLORS[i] + '18',
+      tension: 0.3,
+      pointRadius: 5,
+      pointHoverRadius: 7,
+      spanGaps: true,
+      fill: false,
+    };
+  });
+
+  // Legend
+  $('#chartLegend').innerHTML = checkedKeywords.map((kw, i) =>
+    '<div class="legend-item"><span class="legend-dot" style="background:' + CHART_COLORS[i] + '"></span>' + esc(kw) + '</div>'
+  ).join('');
+
+  if (rankChart) rankChart.destroy();
+  rankChart = new Chart($('#rankChart'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.dataset.label + ': #' + ctx.parsed.y
+          }
+        }
+      },
+      scales: {
+        y: {
+          reverse: true,
+          min: 1,
+          title: { display: true, text: 'Position', color: '#8b949e', font: {size:11} },
+          ticks: { color: '#8b949e', stepSize: 1 },
+          grid: { color: '#21262d' },
+        },
+        x: {
+          ticks: { color: '#8b949e', maxRotation: 30 },
+          grid: { color: '#21262d' },
+        }
+      }
+    }
+  });
 }
 
 function card(label, value) {
@@ -421,26 +651,33 @@ function fillTable(id, rows, keys) {
   tbody.innerHTML = rows.map(r =>
     '<tr>' + keys.map(k =>
       '<td' + (k !== keys[0] ? ' class="num"' : '') + '>' +
-      (k === 'position' ? r[k] : (typeof r[k] === 'number' ? fmt(r[k]) : esc(r[k]))) +
+      (k === 'position' ? posBadge(r[k]) : (typeof r[k] === 'number' ? fmt(r[k]) : esc(r[k]))) +
       '</td>'
     ).join('') + '</tr>'
   ).join('');
 }
 
 function setupSort(tableId, rows, keys) {
-  const ths = document.querySelectorAll('#' + tableId + ' th');
+  const isKeywords = tableId === 'keywordsTable';
+  const ths = document.querySelectorAll('#' + tableId + ' th[data-key]');
   ths.forEach(th => {
     th.addEventListener('click', () => {
       const key = th.dataset.key;
+      if (!key) return;
       const asc = !th.classList.contains('sorted-asc');
-      ths.forEach(t => { t.classList.remove('sorted-asc','sorted-desc'); });
+      document.querySelectorAll('#' + tableId + ' th').forEach(t => t.classList.remove('sorted-asc','sorted-desc'));
       th.classList.add(asc ? 'sorted-asc' : 'sorted-desc');
       const sorted = [...rows].sort((a, b) => {
         const av = a[key], bv = b[key];
         if (typeof av === 'number') return asc ? av - bv : bv - av;
         return asc ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
       });
-      fillTable(tableId, sorted, keys);
+      if (isKeywords) {
+        allKeywords = sorted;
+        fillKeywordsTable(sorted);
+      } else {
+        fillTable(tableId, sorted, keys || []);
+      }
     });
   });
 }
@@ -522,6 +759,11 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 self._send_json(401, {"error": "Unauthorized"})
                 return
             self._send_json(200, get_gsc_data())
+        elif path == "/api/gsc-history":
+            if not self._is_authed():
+                self._send_json(401, {"error": "Unauthorized"})
+                return
+            self._send_json(200, get_gsc_history())
         else:
             self._send_json(404, {"error": "Not found"})
 

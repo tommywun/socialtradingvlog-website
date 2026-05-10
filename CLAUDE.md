@@ -64,10 +64,12 @@ The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one
    - No SRT? Fetch via YouTube Captions API (`fetch_captions.py`)
    - API fails? Skip, retry tomorrow
 2. Translate to 9 languages:
+   - **AGREED LANGUAGE SET (do not expand)**: es, de, fr, it, pt, ar, nl, pl
    - Top 30 videos by views: GPT-4o-mini (`--engine openai`, high quality)
    - Remaining videos: deep-translator (`--engine deep-translator`, free)
    - Quality gate on both: reject if >50% identical to English, empty segments, wrong character set
-3. Upload to YouTube (max 2 videos/day, ~7,200 API units, quota-aware)
+   - **DO NOT add new languages** (cs, da, el, id, ms, sv, th, vi, hi, ja, ru, zh were added in error — agreed to stick to the original 9 only)
+3. Upload to YouTube (max 8 videos/run, ~28,800 API units, quota-aware)
 4. Telegram summary on completion
 
 **Hybrid transcription strategy:**
@@ -81,7 +83,7 @@ The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one
 - Write heartbeat → dead man's switch alerts if stale (every 12h)
 - Alert Tom only for unknown/unfixable errors
 
-**YouTube API quota:** 60,000 units/day (increased from 10,000 on 2026-03-14). Caption insert = ~400 units. 8 full videos (9 langs × 400 = 3,600 units/video) per day is safe.
+**YouTube API quota:** 60,000 units/day (increased from 10,000 on 2026-03-14). Caption insert = ~400 units. 8 full videos (9 langs × 400 = 3,600 units/video) per day is safe. MAX_VIDEO_UPLOADS_PER_RUN = 8 in run_pipeline.py.
 
 **Quota budget per API call:**
 - `captions.list`: ~50 units per video

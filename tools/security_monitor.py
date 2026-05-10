@@ -262,10 +262,8 @@ def check_file_integrity():
     """Check if critical tool scripts have been modified."""
     critical_files = [
         PROJECT_DIR / "tools" / "site_autopilot.py",
-        PROJECT_DIR / "tools" / "proposal_manager.py",
         PROJECT_DIR / "tools" / "security_monitor.py",
         PROJECT_DIR / "tools" / "analytics_monitor.py",
-        PROJECT_DIR / "tools" / "link_prospector.py",
         PROJECT_DIR / "tools" / "scrape_platform_fees.py",
         PROJECT_DIR / "tools" / "upload_subtitles.py",
         PROJECT_DIR / "tools" / "setup_cron.sh",
@@ -373,6 +371,7 @@ def check_web_directory_exposure():
 
 def check_outbound_connections():
     """Check for unusual outbound connections (data exfiltration)."""
+    import socket as _socket
     issues = []
     allowed_hosts = [
         "api.telegram.org",
@@ -381,6 +380,8 @@ def check_outbound_connections():
         "www.googleapis.com",
         "oauth2.googleapis.com",
         "api.openai.com",
+        "youtube.com",
+        "googleapis.com",
     ]
 
     try:
@@ -396,6 +397,14 @@ def check_outbound_connections():
                     # Check if connecting to non-standard ports
                     port = dest.rsplit(":", 1)[-1] if ":" in dest else ""
                     if port and port not in ("443", "80", "22", "53"):
+                        ip = dest.rsplit(":", 1)[0].strip("[]")
+                        # Reverse-DNS lookup — suppress alert if host is known-good
+                        try:
+                            hostname = _socket.gethostbyaddr(ip)[0]
+                            if any(h in hostname for h in allowed_hosts):
+                                continue
+                        except (_socket.herror, _socket.gaierror, _socket.timeout):
+                            pass  # unresolvable — keep the alert
                         issues.append(f"Outbound connection on unusual port: {dest}")
     except FileNotFoundError:
         pass  # macOS — lsof handled elsewhere
@@ -495,11 +504,19 @@ def main():
     parser = argparse.ArgumentParser(description="STV Security Monitor")
     parser.add_argument("--quick", action="store_true", help="Quick scan (ports + processes)")
     parser.add_argument("--integrity", action="store_true", help="File integrity check only")
+    parser.add_argument("--update-baseline", action="store_true",
+                        help="Silently update file integrity baseline after a legitimate deploy (no alerts)")
     args = parser.parse_args()
 
     print(f"STV Security Monitor — {datetime.now().isoformat()}\n")
 
-    if args.quick:
+    if args.update_baseline:
+        # Recompute hashes for all critical files and save without alerting.
+        # Call after every rsync deploy so the monitor's next scheduled run
+        # doesn't fire a false "MODIFIED" alert.
+        check_file_integrity()
+        print("Baseline updated — hashes saved, no alerts sent.")
+    elif args.quick:
         run_quick_scan()
     elif args.integrity:
         run_integrity_check()

@@ -269,7 +269,7 @@ def check_broken_links():
             for link in links:
                 if link.startswith("http://") or link.startswith("https://"):
                     external_urls.add(link)
-                elif link.startswith("mailto:") or link.startswith("javascript:"):
+                elif link.startswith(("mailto:", "javascript:", "tel:", "data:", "sms:", "ftp:")):
                     continue
                 else:
                     # Internal link — check file exists
@@ -534,7 +534,6 @@ def check_cron_jobs():
             "site_autopilot",
             "scrape_platform_fees",
             "upload_subtitles",
-            "link_prospector",
         ]
 
         missing = []

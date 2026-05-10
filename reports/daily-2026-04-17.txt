@@ -1,37 +1,34 @@
 ============================================================
-  DAILY REPORT — socialtradingvlog.com — 2026-05-10
+  DAILY REPORT — socialtradingvlog.com — 2026-04-17
 ============================================================
 
 ── LAST 7 DAYS ─────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 03 May 2026 → 10 May 2026 (7 days)
+Period: 10 Apr 2026 → 17 Apr 2026 (7 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           3
-  Users:              3
-  Page views:         3
-  Avg session:        6m 46s
-  Bounce rate:        0.0%
+  Sessions:           2
+  Users:              1
+  Page views:         1
+  Avg session:        2m 32s
+  Bounce rate:        50.0%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                       1      1   0m 10s
-  /es/cuanto-dinero-puedes-ganar-copy-trading/            1      1   0m 17s
-  /pt/quanto-dinheiro-pode-ganhar-com-copy-trading/       1      1  19m 52s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            1      1   2m 32s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Organic Search                          2          2
-  Referral                                1          1
+  Organic Search                          2          1
 
 ============================================================
   TOP REFERRERS
@@ -39,24 +36,20 @@ Period: 03 May 2026 → 10 May 2026 (7 days)
   Source                                     Sessions
   ---------------------------------------- ----------
   google                                            2
-  multisearching.com                                1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Spain                                   1          1
-  Switzerland                             1          1
-  United States                           1          1
+  Spain                                   2          1
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  mobile                        2          2
-  desktop                       1          1
+  desktop                       2          1
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
@@ -71,69 +64,81 @@ Period: 03 May 2026 → 10 May 2026 (7 days)
 ── LAST 30 DAYS ────────────────────────────────────────────
 
 Google Analytics Report — socialtradingvlog.com
-Period: 10 Apr 2026 → 10 May 2026 (30 days)
+Period: 18 Mar 2026 → 17 Apr 2026 (30 days)
 
 ============================================================
   OVERVIEW
 ============================================================
-  Sessions:           14
-  Users:              12
-  Page views:         26
-  Avg session:        4m 9s
-  Bounce rate:        7.1%
+  Sessions:           19
+  Users:              11
+  Page views:         34
+  Avg session:        18m 43s
+  Bounce rate:        26.3%
 
 ============================================================
   TOP PAGES (by page views)
 ============================================================
   Page                                                Views  Users Avg Time
   -------------------------------------------------- ------ ------ --------
-  /                                                       8      3   0m 43s
-  /calculators/compare-platforms/                         6      1   1m 29s
-  /es/cuanto-dinero-puedes-ganar-copy-trading/            4      4   2m 22s
-  /fr/combien-peut-on-gagner-avec-le-copy-trading/        3      1   0m 46s
-  /taking-profits.html                                    2      1   9m 40s
-  /es/es-etoro-una-estafa/                                1      1  10m 34s
-  /es/programa-inversor-popular/                          1      1    1m 4s
-  /pt/quanto-dinheiro-pode-ganhar-com-copy-trading/       1      1  19m 52s
+  /es/                                                    5      1   3m 18s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            5      5   2m 52s
+  /pt/etoro-review-analise-completa-apos-9-anos/          4      1  53m 22s
+  /copy-trading-returns.html                              3      1   3m 48s
+  /                                                       2      2    4m 6s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            2      2   1m 49s
+  /etoro-review/                                          2      2   4m 34s
+  /pt/etoro-e-golpe/                                      2      2    4m 0s
+  /ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/      1      1    0m 6s
+  /de/                                                    1      1   0m 29s
+  /es/es-etoro-una-estafa/                                1      1   0m 23s
+  /es/updates/actualizacion-copy-trading-24-ago-2019/      1      1    0m 4s
+  /es/updates/actualizacion-copy-trading-jul-2018/        1      1   0m 10s
+  /fr/etoro-est-il-une-arnaque/                           1      1   0m 20s
+  /popular-investor.html                                  1      1  19m 30s
+  /social-trading.html                                    1      1   1m 14s
+  /taking-profits.html                                    1      1   0m 13s
 
 ============================================================
   TRAFFIC SOURCES
 ============================================================
   Channel                          Sessions      Users
   ------------------------------ ---------- ----------
-  Organic Search                         11          9
-  Referral                                2          2
-  Direct                                  1          1
+  Organic Search                         16          9
+  Organic Video                           2          1
+  Referral                                1          1
 
 ============================================================
   TOP REFERRERS
 ============================================================
   Source                                     Sessions
   ---------------------------------------- ----------
-  google                                           11
-  (direct)                                          1
-  multisearching.com                                1
-  rediff.com                                        1
+  google                                           16
+  youtube.com                                       2
+  fresheye.com                                      1
 
 ============================================================
   TOP COUNTRIES
 ============================================================
   Country                          Sessions      Users
   ------------------------------ ---------- ----------
-  Spain                                   5          4
-  Switzerland                             3          2
-  United States                           3          3
-  Malta                                   1          1
-  Norway                                  1          1
-  Peru                                    1          1
+  United Kingdom                          7          2
+  Malta                                   3          1
+  Spain                                   2          1
+  Chile                                   1          1
+  Colombia                                1          1
+  Dominican Republic                      1          1
+  Japan                                   1          1
+  Mexico                                  1          1
+  Netherlands                             1          1
+  United States                           1          1
 
 ============================================================
   DEVICES
 ============================================================
   Device                 Sessions      Users
   -------------------- ---------- ----------
-  mobile                       10          9
-  desktop                       4          3
+  mobile                       10          5
+  desktop                       9          6
 
 ============================================================
   CTA CLICKS (affiliate button clicks)
@@ -151,12 +156,12 @@ Period: 10 Apr 2026 → 10 May 2026 (30 days)
   Article pages:   9 generated
 
   Last pipeline activity:
-    [04:00:05]   translating to 8 languages [deep-translator]: es de fr it pt ar pl nl
-    [05:19:53]   WARNING: translation had errors (continuing)
-    [05:19:53]   done in 79m 47s
-    [05:19:53] === Pipeline finished 2026-05-10T05:19:53.077402 ===
-    [05:19:53] Completed: 333/333 | Errors: 0 | Videos uploaded: 0
+    [04:00:06]   translating to 8 languages [deep-translator]: es de fr it pt ar pl nl
+    [05:15:49]   WARNING: translation had errors (continuing)
+    [05:15:49]   done in 75m 42s
+    [05:15:49] === Pipeline finished 2026-04-17T05:15:49.559585 ===
+    [05:15:49] Completed: 333/333 | Errors: 0 | Videos uploaded: 0
 
 ============================================================
-  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-05-10.txt
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-04-17.txt
 ============================================================

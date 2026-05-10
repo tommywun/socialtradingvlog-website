@@ -1,0 +1,37 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-04-30
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 23 Apr 2026 → 30 Apr 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 31 Mar 2026 → 30 Apr 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  333 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [04:00:07]   translating to 8 languages [deep-translator]: es de fr it pt ar pl nl
+    [06:16:30]   WARNING: translation had errors (continuing)
+    [06:16:30]   done in 136m 22s
+    [06:16:30] === Pipeline finished 2026-04-30T06:16:30.231525 ===
+    [06:16:30] Completed: 333/333 | Errors: 0 | Videos uploaded: 0
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-04-30.txt
+============================================================

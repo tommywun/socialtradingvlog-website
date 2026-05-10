@@ -1,0 +1,133 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-04-23
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 16 Apr 2026 → 23 Apr 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           5
+  Users:              4
+  Page views:         17
+  Avg session:        2m 57s
+  Bounce rate:        20.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                       6      1   1m 48s
+  /calculators/compare-platforms/                         6      1   1m 29s
+  /fr/combien-peut-on-gagner-avec-le-copy-trading/        3      1   0m 46s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            1      1   8m 51s
+  /es/programa-inversor-popular/                          1      1    1m 4s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Search                          4          3
+  Direct                                  1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 24 Mar 2026 → 23 Apr 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           17
+  Users:              14
+  Page views:         38
+  Avg session:        4m 12s
+  Bounce rate:        23.5%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                       7      2    1m 0s
+  /calculators/compare-platforms/                         6      1   1m 29s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            6      6   3m 43s
+  /copy-trading-returns.html                              3      1   3m 48s
+  /fr/combien-peut-on-gagner-avec-le-copy-trading/        3      1   0m 46s
+  /etoro-review/                                          2      2   4m 34s
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            1      2   0m 11s
+  /ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/      1      1    0m 6s
+  /es/es-etoro-una-estafa/                                1      1   0m 23s
+  /es/programa-inversor-popular/                          1      1    1m 4s
+  /es/updates/actualizacion-copy-trading-24-ago-2019/      1      1    0m 4s
+  /es/updates/actualizacion-copy-trading-jul-2018/        1      1   0m 10s
+  /fr/etoro-est-il-une-arnaque/                           1      1   0m 20s
+  /popular-investor.html                                  1      1  19m 30s
+  /pt/etoro-e-golpe/                                      1      2    0m 3s
+  /social-trading.html                                    1      1   1m 14s
+  /taking-profits.html                                    1      1   0m 13s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Search                         13         11
+  Organic Video                           2          1
+  Direct                                  1          1
+  Referral                                1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  google                                           13
+  youtube.com                                       2
+  (direct)                                          1
+  fresheye.com                                      1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Spain                                   4          3
+  Switzerland                             2          1
+  United Kingdom                          2          1
+  United States                           2          2
+  Chile                                   1          1
+  Colombia                                1          1
+  Dominican Republic                      1          1
+  Japan                                   1          1
+  Malta                                   1          1
+  Mexico                                  1          1
+
+============================================================
+  DEVICES
+============================================================
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  333 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+    [04:00:04]   translating to 8 languages [deep-translator]: es de fr it pt ar pl nl
+    [05:19:07]   WARNING: translation had errors (continuing)
+    [05:19:07]   done in 79m 2s
+    [05:19:07] === Pipeline finished 2026-04-23T05:19:07.214563 ===
+    [05:19:07] Completed: 333/333 | Errors: 0 | Videos uploaded: 0
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-04-23.txt
+============================================================

@@ -52,10 +52,12 @@ LOCK_FILE   = pathlib.Path("/tmp/stv-pipeline.lock")
 MODEL = "local-large"
 
 # Max VIDEO uploads per pipeline run (YouTube quota: 60,000 units/day,
-# caption insert = ~400 units each, 17 languages per video = ~6,850 units/video,
-# so 8 full videos per day is safe with headroom for list/fetch operations)
+# caption insert = ~400 units each, 9 languages per video = ~3,600 units/video,
+# so 16 full videos per day is safe — capped at 8 to leave headroom)
 MAX_VIDEO_UPLOADS_PER_RUN = 8
 
+# Agreed language set — DO NOT EXPAND without explicit agreement with Tom.
+# cs, da, el, id, ms, sv, th, vi, hi, ja, ru, zh were added in error and removed.
 LANGUAGES = [
     "es",     # Spanish — Spain, Latin America (eToro available)
     "de",     # German — Germany, Austria, Switzerland (major eToro market)
@@ -65,15 +67,6 @@ LANGUAGES = [
     "ar",     # Arabic — UAE, Saudi, Kuwait (eToro available)
     "pl",     # Polish — Poland (eToro available, strong Central EU market)
     "nl",     # Dutch — Netherlands (eToro available)
-    "ko",     # Korean — South Korea
-    "th",     # Thai — Thailand (eToro available)
-    "id",     # Indonesian — Indonesia (eToro available)
-    "ms",     # Malay — Malaysia (eToro available)
-    "vi",     # Vietnamese — Vietnam
-    "sv",     # Swedish — Sweden (Nordic, eToro available)
-    "da",     # Danish — Denmark (Nordic, eToro available)
-    "el",     # Greek — Greece (CySEC home market)
-    "cs",     # Czech — Czech Republic (EU, eToro available)
 ]
 
 VIEW_COUNTS_FILE = DATA_DIR / "video-view-counts.json"
@@ -179,7 +172,7 @@ def try_fetch_captions(vid_id):
     srt_en = TRANS_DIR / vid_id / "subtitles.en.srt"
     log(f"  fetching captions via YouTube API...")
     r = subprocess.run(
-        [PYTHON, str(FETCH_CAPS), vid_id],
+        [PYTHON, str(FETCH_CAPS), "--", vid_id],
         capture_output=True, text=True,
     )
     if r.returncode == 0 and srt_en.exists():

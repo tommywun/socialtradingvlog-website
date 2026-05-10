@@ -52,11 +52,9 @@ ALLOWLIST = {
     ("tools/security_monitor.py", 333),
     ("tools/security_monitor.py", 334),  # May shift by 1 line after imports
     ("tools/code_audit.py", 6),  # Docstring mentioning patterns
-    ("tools/proposal_manager.py", 166),  # Input sanitization blocklist
     ("tools/harden_vps_advanced.sh", 30),  # CrowdSec official installer
     ("tools/harden_vps_advanced.sh", 32),  # CrowdSec fallback installer
     # Google OAuth credential loading — standard pattern, files are from Google's own library
-    ("tools/email_outreach.py", 68),
     ("tools/upload_subtitles.py", 71),  # VPS line
     ("tools/upload_subtitles.py", 77),  # Local line
     ("tools/dashboard.py", 424),

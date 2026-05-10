@@ -48,7 +48,7 @@ EXPECTED_PACKAGES = {
     "google-auth": "2.48.0",
     "google-auth-httplib2": "0.3.0",
     "google-auth-oauthlib": "1.2.4",
-    "resend": "2.22.0",
+    "resend": "2.23.0",
 }
 
 # Packages only needed on Mac (local dev), not required on VPS

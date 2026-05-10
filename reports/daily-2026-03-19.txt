@@ -1,0 +1,209 @@
+============================================================
+  DAILY REPORT — socialtradingvlog.com — 2026-03-19
+============================================================
+
+── LAST 7 DAYS ─────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 12 Mar 2026 → 19 Mar 2026 (7 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           7
+  Users:              7
+  Page views:         35
+  Avg session:        9m 37s
+  Bounce rate:        0.0%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /ar/murajaet-etoro-tajrubati-baed-9-sanawat/            3      1   1m 20s
+  /etoro-review/                                          3      1   1m 46s
+  /es/es-etoro-una-estafa/                                2      1    2m 1s
+  /es/mensaje-enviado/                                    2      2   0m 30s
+  /es/que-es-el-trading-social/                           2      2   0m 31s
+  /fr/etoro-est-il-une-arnaque/                           2      1   3m 15s
+  /                                                       1      1   1m 36s
+  /ar/hal-etoro-ihtial/                                   1      1    0m 3s
+  /ar/jamia-al-tahdithat/                                 1      1    0m 6s
+  /ar/updates/tahdith-naskh-al-tadawul-23-yulyu-2019/      1      1   1m 41s
+  /copy-trading-returns.html                              1      1   0m 50s
+  /de/ist-etoro-betrug/                                   1      1   0m 43s
+  /de/nachricht-gesendet/                                 1      1   0m 29s
+  /de/updates/copy-trading-update-30-april-2019/          1      1   2m 35s
+  /es/calculadoras/                                       1      1    1m 9s
+  /es/updates/actualizacion-copy-trading-24-ago-2019/      1      1   1m 34s
+  /es/updates/actualizacion-copy-trading-jul-2018/        1      1   1m 11s
+  /etoro-scam.html                                        1      1    0m 8s
+  /fr/updates/mise-a-jour-copy-trading-29-janvier-2019/      1      1   0m 25s
+  /popular-investor.html                                  1      1   1m 42s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Organic Social                          5          5
+  Organic Search                          1          1
+  Referral                                1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  facebook.com                                      3
+  m.facebook.com                                    2
+  app.sedric.ai                                     1
+  google                                            1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                           3          3
+  Germany                                 1          1
+  Ireland                                 1          1
+  Netherlands                             1          1
+  Sweden                                  1          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                       4          4
+  mobile                        3          3
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── LAST 30 DAYS ────────────────────────────────────────────
+
+Google Analytics Report — socialtradingvlog.com
+Period: 17 Feb 2026 → 19 Mar 2026 (30 days)
+
+============================================================
+  OVERVIEW
+============================================================
+  Sessions:           206
+  Users:              184
+  Page views:         433
+  Avg session:        1m 48s
+  Bounce rate:        55.3%
+
+============================================================
+  TOP PAGES (by page views)
+============================================================
+  Page                                                Views  Users Avg Time
+  -------------------------------------------------- ------ ------ --------
+  /                                                     125     62   0m 54s
+  /video/why-do-most-etoro-traders-lose-money/           38      2  21m 42s
+  /copy-trading.html                                     30      7    1m 7s
+  /social-trading.html                                   27      6   3m 10s
+  /etoro-review/                                         14      5   0m 43s
+  /popular-investor.html                                 14     14   0m 27s
+  /es/es-etoro-una-estafa/                               10      9   0m 41s
+  /etoro-scam.html                                       10      6   0m 59s
+  /calculators/                                           9      3   3m 29s
+  /copy-trading-returns.html                              8      8   0m 23s
+  /es/cuanto-dinero-puedes-ganar-copy-trading/            7      8   0m 25s
+  /index.html                                             7      3   2m 37s
+  /updates.html                                           7      3   1m 31s
+  /calculators/compare-platforms/                         6      1   1m 58s
+  /videos.html                                            6      4   1m 58s
+  /about.html                                             5      4   0m 27s
+  /es/todos-los-videos/                                   5      5   0m 28s
+  /calculators/trade-comparison/                          4      1   1m 35s
+  /es/politica-de-privacidad/                             4      4   0m 30s
+  /es/que-es-el-copy-trading/                             4      4   0m 31s
+
+============================================================
+  TRAFFIC SOURCES
+============================================================
+  Channel                          Sessions      Users
+  ------------------------------ ---------- ----------
+  Direct                                117        111
+  Organic Social                         59         59
+  Organic Search                         19          6
+  Referral                                6          6
+  Organic Video                           4          2
+  Unassigned                              1          1
+
+============================================================
+  TOP REFERRERS
+============================================================
+  Source                                     Sessions
+  ---------------------------------------- ----------
+  (direct)                                        117
+  m.facebook.com                                   35
+  facebook.com                                     24
+  google                                           19
+  youtube.com                                       4
+  app.sedric.ai                                     2
+  (not set)                                         1
+  jabse.com                                         1
+  recipebridge.com                                  1
+  redz.com                                          1
+
+============================================================
+  TOP COUNTRIES
+============================================================
+  Country                          Sessions      Users
+  ------------------------------ ---------- ----------
+  United States                          69         69
+  Singapore                              41         41
+  China                                  39         39
+  Malta                                  22          6
+  (not set)                               6          6
+  Ireland                                 6          6
+  Sweden                                  4          4
+  Netherlands                             3          2
+  New Zealand                             3          1
+  Romania                                 3          1
+
+============================================================
+  DEVICES
+============================================================
+  Device                 Sessions      Users
+  -------------------- ---------- ----------
+  desktop                     151        134
+  mobile                       55         50
+
+============================================================
+  CTA CLICKS (affiliate button clicks)
+============================================================
+  No CTA clicks recorded yet (tracking was just added)
+
+============================================================
+  Report complete.
+============================================================
+
+
+── PIPELINE STATUS ─────────────────────────────────────────
+  Transcriptions:  333 completed
+  Video pages:     1 generated
+  Article pages:   9 generated
+
+  Last pipeline activity:
+        Warning: failed segment 106: HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=th&sl=en&q=has+seen+eToro+absorbing%3F+Because+that+would+be+really+good+to+know.+And+was+it+a+difficult (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 8] nodename nor servname provided, or not known)"))
+    
+        Warning: failed segment 107: HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=th&sl=en&q=process%3F+Did+they+give+you+any+trouble+whatsoever%3F+Did+they+try+and+get+any+more+money+out+of (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 8] nodename nor servname provided, or not known)"))
+    
+        Warning: failed segment 108: HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=th&sl=en&q=you%3F+Or+was+it+all+really+quite+smooth%2C+and+you+just+got+a+notification+saying+that+this (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 8] nodename nor servname provided, or not known)"))
+
+============================================================
+  Report saved: /Users/thomaswest/socialtradingvlog-website/reports/daily-2026-03-19.txt
+============================================================
