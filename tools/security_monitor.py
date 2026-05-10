@@ -392,7 +392,12 @@ def check_outbound_connections():
             if "ESTAB" in line:
                 parts = line.split()
                 if len(parts) >= 5:
+                    local = parts[3]
                     dest = parts[4]
+                    # Skip inbound SSH connections (local port 22) — peer uses ephemeral port
+                    local_port = local.rsplit(":", 1)[-1] if ":" in local else ""
+                    if local_port in ("22", "80", "443"):
+                        continue
                     # Check if connecting to non-standard ports
                     port = dest.rsplit(":", 1)[-1] if ":" in dest else ""
                     if port and port not in ("443", "80", "22", "53"):
