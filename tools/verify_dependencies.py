@@ -48,7 +48,6 @@ EXPECTED_PACKAGES = {
     "google-auth": "2.48.0",
     "google-auth-httplib2": "0.3.0",
     "google-auth-oauthlib": "1.2.4",
-    "resend": "2.23.0",
 }
 
 # Packages only needed on Mac (local dev), not required on VPS
@@ -57,7 +56,6 @@ VPS_OPTIONAL = {
     "deep-translator",     # Translation (runs locally)
     "google-analytics-data",  # Analytics (runs locally)
     "google-auth-oauthlib",   # OAuth flow (initial auth done locally)
-    "resend",              # Email sending (not yet deployed to VPS)
 }
 
 # Known safe transitive dependencies (auto-installed by direct deps)

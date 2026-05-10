@@ -288,7 +288,7 @@ def upgrade_h3_to_h2(content):
         pos = match.start()
         # Check preceding context for sidebar/newsletter markers
         preceding = article[max(0, pos - 400):pos]
-        if 'newsletter' in preceding.lower() or 'sidebar' in preceding.lower():
+        if 'sidebar' in preceding.lower():
             return match.group(0)
         tag = match.group(0)
         return tag.replace('<h3', '<h2').replace('</h3>', '</h2>')
@@ -317,7 +317,7 @@ def find_h2_sections(content):
             abs_pos = article_start + m.start()
             # Skip headings in sidebar, newsletter, or footer sections
             preceding = content[abs_pos - 200:abs_pos] if abs_pos > 200 else content[:abs_pos]
-            if 'sidebar' in preceding or 'newsletter' in preceding or 'footer' in preceding:
+            if 'sidebar' in preceding or 'footer' in preceding:
                 continue
             positions.append(abs_pos)
 

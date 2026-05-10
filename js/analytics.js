@@ -93,14 +93,8 @@
     }
   });
 
-  /* ── Newsletter signup ── */
+  /* ── Contact form ── */
   document.addEventListener('submit', function (e) {
-    var form = e.target.closest('.newsletter-form');
-    if (form) {
-      track('newsletter_signup', { page_path: page });
-      return;
-    }
-    // Contact form
     if (e.target.closest('form[action*="formspree"]')) {
       track('contact_form_submit', { page_path: page });
     }

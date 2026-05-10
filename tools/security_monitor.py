@@ -375,7 +375,6 @@ def check_outbound_connections():
     issues = []
     allowed_hosts = [
         "api.telegram.org",
-        "api.resend.com",
         "analyticsdata.googleapis.com",
         "www.googleapis.com",
         "oauth2.googleapis.com",

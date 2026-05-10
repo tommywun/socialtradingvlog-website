@@ -57,6 +57,9 @@ KEY_PAGES = [
     "/contact/",
     "/es/",
     "/de/",
+    "/fr/",
+    "/pt/",
+    "/ar/",
 ]
 
 EXPECTED_CRON_JOBS = 26  # active entries in setup_cron.sh (excl. 2 DISABLED scrapers)
@@ -190,6 +193,22 @@ def check_live_site(args):
     elapsed = now() - t0
     check("A5. Homepage response time < 4s", elapsed < 4.0 and code == 200,
           f"{elapsed:.2f}s")
+
+    # A6: robots.txt accessible and has directives
+    code, body = http_get(SITE + "/robots.txt")
+    has_rules = "User-agent:" in body
+    check("A6. robots.txt accessible", code == 200 and has_rules,
+          f"status {code}" + (", has directives" if has_rules else ", no User-agent found"))
+
+    # A7: hreflang markup present on key pages
+    hreflang_pages = ["/", "/copy-trading/", "/etoro-review/"]
+    hreflang_fails = []
+    for path in hreflang_pages:
+        _, body = http_get(SITE + path)
+        if "hreflang" not in body:
+            hreflang_fails.append(path)
+    check(f"A7. hreflang markup ({len(hreflang_pages)} pages checked)", not hreflang_fails,
+          "; ".join(hreflang_fails) if hreflang_fails else f"all {len(hreflang_pages)} present")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -663,67 +682,6 @@ def check_content(args):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# I. Newsletter System
-# ═══════════════════════════════════════════════════════════════════════════
-
-def check_newsletter(args):
-    print("\nI. Newsletter System\n")
-
-    # I1: Resend API key present and non-trivial
-    key_file = SECRETS / "resend-api-key.txt"
-    has_key = key_file.exists() and len(key_file.read_text().strip()) > 10
-    check("I1. Resend API key present", has_key,
-          "found" if has_key else "missing at ~/.config/stv-secrets/resend-api-key.txt")
-
-    if has_key:
-        # I2: Resend API reachable + authenticated
-        key = key_file.read_text().strip()
-        req = urllib.request.Request(
-            "https://api.resend.com/domains",
-            headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=10) as r:
-                data = json.loads(r.read())
-                domains = [d.get("name") for d in data.get("data", [])]
-                check("I2. Resend API authenticated", True,
-                      f"domains: {', '.join(domains)}" if domains else "authenticated, no domains yet")
-        except urllib.error.HTTPError as e:
-            check("I2. Resend API authenticated", e.code != 401,
-                  f"HTTP {e.code}" + (" — invalid API key" if e.code == 401 else ""))
-        except Exception as e:
-            check("I2. Resend API reachable", False, str(e))
-
-    # I3: Subscriber count on VPS
-    out, _, _ = ssh(
-        f"python3 -c \"import json; d=json.load(open('{VPS_PROJECT}/data/subscribers.json'));"
-        f" a=sum(1 for s in d if not s.get('unsubscribed')); print(f'{{a}} active / {{len(d)}} total')\""
-        f" 2>/dev/null || echo 'no file'"
-    )
-    if "no file" in out or not out.strip():
-        check("I3. Subscriber list", True,
-              "no subscribers yet (awaiting first sign-up)", warn=True)
-    else:
-        check("I3. Subscriber list accessible", True, out.strip())
-
-    # I4: No failed sends in send-log.json
-    out, _, _ = ssh(
-        f"python3 -c \"import json; log=json.load(open('{VPS_PROJECT}/data/send-log.json'));"
-        f" fails=sum(1 for e in log if not e.get('success')); print(f'{{fails}} failures')\""
-        f" 2>/dev/null || echo 'no log'"
-    )
-    if "no log" in out or not out.strip():
-        check("I4. Newsletter send log", True, "no sends yet", warn=True)
-    else:
-        m = re.search(r"(\d+) failures", out)
-        fails = int(m.group(1)) if m else None
-        if fails is not None:
-            check("I4. No failed newsletter sends", fails == 0, f"{fails} failures in log")
-        else:
-            check("I4. Newsletter send log", True, out.strip(), warn=True)
-
-
-# ═══════════════════════════════════════════════════════════════════════════
 # Main
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -748,7 +706,6 @@ def main():
     check_logs(args)
     check_pipeline(args)
     check_content(args)
-    check_newsletter(args)
 
     total = len(passes) + len(failures) + len(warnings)
     print(f"\n══════════════════════════════════════════════════════════")

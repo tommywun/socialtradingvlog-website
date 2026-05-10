@@ -82,34 +82,6 @@ def send_telegram(message, level="info"):
         return False
 
 
-def send_email(subject, body, level="info"):
-    """Send alert via Resend API."""
-    try:
-        config = load_alert_config()
-        if not config or not config.get("api_key"):
-            return False
-
-        payload = json.dumps({
-            "from": config["from_email"],
-            "to": [config["to_email"]],
-            "subject": f"[STV {level.upper()}] {subject}",
-            "text": body,
-        }).encode()
-
-        req = urllib.request.Request(
-            "https://api.resend.com/emails",
-            data=payload,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {config['api_key']}",
-            },
-        )
-        resp = urllib.request.urlopen(req, timeout=15)
-        return resp.getcode() == 200
-    except Exception as e:
-        print(f"  Email alert failed: {e}")
-        return False
-
 
 def log_to_dashboard(alert_type, message, level="info", details=None):
     """Log alert to dashboard-readable JSON file."""
@@ -144,7 +116,6 @@ def send_alert(alert_type, message, level="info", details=None):
 
     if level in ("critical", "warning"):
         send_telegram(message, level)
-        send_email(alert_type, f"{message}\n\n{details or ''}", level)
 
 
 # ─── Health Checks ─────────────────────────────────────────────────────────
@@ -597,7 +568,6 @@ Checks:
 
     # Send digest via all channels
     send_telegram(digest.replace("*", ""), "info")
-    send_email("Weekly Health Digest", digest, "info")
     log_to_dashboard("weekly_digest", status, "info", digest)
 
     save_health("weekly_digest", {
