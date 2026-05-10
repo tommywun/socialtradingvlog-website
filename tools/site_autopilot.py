@@ -45,15 +45,11 @@ ALERT_LOG = PROJECT_DIR / "data" / "autopilot-alerts.json"
 HEALTH_LOG = PROJECT_DIR / "data" / "autopilot-health.json"
 
 SITE_URL = "https://socialtradingvlog.com"
-DASHBOARD_URL = "https://app.socialtradingvlog.com"
+# DASHBOARD_URL = "https://app.socialtradingvlog.com"  # decommissioned 2026-05-10
 
 # Key pages to check for uptime
 UPTIME_URLS = [
     SITE_URL,
-    f"{SITE_URL}/calculators/",
-    f"{SITE_URL}/calculators/compare-platforms/",
-    f"{SITE_URL}/calculators/fee-calculator/",
-    DASHBOARD_URL,
 ]
 
 # Alert config
@@ -351,7 +347,7 @@ def check_content_dates():
 def check_services():
     """Check that systemd services are running (VPS only)."""
     print("Checking services...")
-    services = ["stv-dashboard"]
+    services = []  # stv-dashboard decommissioned 2026-05-10
     all_ok = True
 
     for svc in services:
@@ -478,49 +474,7 @@ def check_subtitle_pipeline():
     return True
 
 
-def check_platform_data_freshness():
-    """Check if platform comparison data has been verified recently."""
-    print("Checking platform data freshness...")
-    verified_file = PROJECT_DIR / "data" / "platform-verified.json"
-
-    if not verified_file.exists():
-        send_alert("platform_data", "Platform data has never been verified! Run scrape_platform_fees.py", "warning")
-        return False
-
-    verified = json.loads(verified_file.read_text())
-    last_check = verified.get("_last_full_check")
-
-    if last_check:
-        last_dt = datetime.fromisoformat(last_check)
-        days_ago = (datetime.now() - last_dt).days
-
-        if days_ago > 14:
-            send_alert("platform_data", f"Platform data hasn't been verified in {days_ago} days!", "warning")
-            # Auto-fix: run the scraper
-            print(f"  Auto-running platform fee scraper...")
-            try:
-                subprocess.run(
-                    [sys.executable, str(PROJECT_DIR / "tools" / "scrape_platform_fees.py")],
-                    capture_output=True, text=True, timeout=300,
-                )
-                log_to_error_journal(
-                    "Platform Data",
-                    f"Data hadn't been verified in {days_ago} days",
-                    "Weekly scraper cron may have failed",
-                    "Auto-ran scrape_platform_fees.py to update data",
-                )
-            except Exception as e:
-                print(f"  Auto-scrape failed: {e}")
-            return False
-        elif days_ago > 7:
-            send_alert("platform_data", f"Platform data last verified {days_ago} days ago", "info")
-        else:
-            print(f"  ✓ Platform data verified {days_ago} days ago")
-    else:
-        send_alert("platform_data", "No verification timestamp found", "warning")
-        return False
-
-    return True
+# check_platform_data_freshness() removed 2026-05-10 — calculator/comparison pages decommissioned
 
 
 def check_cron_jobs():
@@ -532,7 +486,6 @@ def check_cron_jobs():
 
         expected_jobs = [
             "site_autopilot",
-            "scrape_platform_fees",
             "upload_subtitles",
         ]
 
@@ -570,7 +523,6 @@ def run_daily_check():
     results["disk"] = check_disk()
     results["services"] = check_services()
     results["subtitle_pipeline"] = check_subtitle_pipeline()
-    results["platform_data"] = check_platform_data_freshness()
     results["cron_jobs"] = check_cron_jobs()
 
     # Summary
@@ -708,7 +660,7 @@ def main():
     elif args.check == "pipeline":
         check_subtitle_pipeline()
     elif args.check == "platform-data":
-        check_platform_data_freshness()
+        print("  platform-data check removed — comparison pages decommissioned 2026-05-10")
     elif args.check == "cron":
         check_cron_jobs()
     elif args.check == "daily":

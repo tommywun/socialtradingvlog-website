@@ -391,24 +391,7 @@ def check_cron_jobs(dry_run):
 def check_services(dry_run):
     """Check if key services are running."""
     issues = []
-
-    # Check if dashboard is running (only if systemd service exists)
-    try:
-        r = subprocess.run(
-            ["systemctl", "is-active", "stv-dashboard"],
-            capture_output=True, text=True, timeout=10,
-        )
-        if r.stdout.strip() != "active":
-            issues.append("stv-dashboard")
-            if not dry_run:
-                log("  Auto-fixing: restarting stv-dashboard")
-                subprocess.run(
-                    ["systemctl", "restart", "stv-dashboard"],
-                    capture_output=True, timeout=30,
-                )
-                journal("Restarted stv-dashboard service")
-    except Exception:
-        pass  # systemctl not available or service doesn't exist
+    # stv-dashboard decommissioned 2026-05-10 — no services to monitor
 
     if issues:
         log(f"Service issues: {', '.join(issues)}", "WARN")
