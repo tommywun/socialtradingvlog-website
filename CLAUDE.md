@@ -48,49 +48,6 @@ rsync -avz --delete \
 - **Cron**: `setup_cron.sh` installs all #STV cron jobs (pipeline, security, doctor, backups)
 - **GA key**: `~/.config/stv-secrets/ga-service-account.json` (copied from Mac)
 
-## VPS Autonomous Pipeline Architecture
-
-The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one-time Whisper transcriptions.
-
-**Daily VPS pipeline (6am cron, `run_pipeline.py --vps-auto`):**
-1. For each video (sorted by view count, highest first):
-   - English SRT exists? Skip to translate
-   - No SRT? Fetch via YouTube Captions API (`fetch_captions.py`)
-   - API fails? Skip, retry tomorrow
-2. Translate to 9 languages:
-   - **AGREED LANGUAGE SET (do not expand)**: es, de, fr, it, pt, ar, nl, pl
-   - Top 30 videos by views: GPT-4o-mini (`--engine openai`, high quality)
-   - Remaining videos: deep-translator (`--engine deep-translator`, free)
-   - Quality gate on both: reject if >50% identical to English, empty segments, wrong character set
-   - **DO NOT add new languages** (cs, da, el, id, ms, sv, th, vi, hi, ja, ru, zh were added in error — agreed to stick to the original 9 only)
-3. Upload to YouTube (max 8 videos/run, ~28,800 API units, quota-aware)
-4. Telegram summary on completion
-
-**Hybrid transcription strategy:**
-- Mac: Whisper API for top 30 by views (`transcribe_top_videos.py`) → sync to VPS
-- VPS: YouTube ASR captions for remaining 303 (`fetch_captions.py`)
-- Whisper videos get priority (already sorted by views)
-
-**Self-healing (every 4h, `system_doctor.py`):**
-- Scan logs for errors → match known patterns → auto-fix
-- Check disk space (auto-clean if >85%), services, OAuth tokens, pipeline progress
-- Write heartbeat → dead man's switch alerts if stale (every 12h)
-- Alert Tom only for unknown/unfixable errors
-
-**YouTube API quota:** 60,000 units/day (increased from 10,000 on 2026-03-14). Caption insert = ~400 units. 8 full videos (9 langs × 400 = 3,600 units/video) per day is safe. MAX_VIDEO_UPLOADS_PER_RUN = 8 in run_pipeline.py.
-
-**Quota budget per API call:**
-- `captions.list`: ~50 units per video
-- `captions.download`: ~200 units per video
-- `captions.insert` (upload): ~400 units per language track
-- 9 languages × 400 = 3,600 units to upload subtitles for 1 video
-- ~16 full videos per day with headroom for list/fetch operations
-
-## Newsletter
-- Provider: Resend API
-- Verified domain: `send.socialtradingvlog.com` (NOT socialtradingvlog.com)
-- Subscribers stored in `data/subscribers.json` on VPS
-
 ## Video Pages Pipeline
 Each of the 333 YouTube videos will get a proper SEO-rewritten article page (NOT a transcript dump).
 Pipeline: transcribe video → extract key points → rewrite as SEO article targeting specific keyphrase → Tom approves → publish → translate to all 9 languages with localised SEO terms.
@@ -160,7 +117,7 @@ Security of the entire system (VPS, laptop, secrets, Telegram bot, all tools) is
 ### Secrets management
 - **Location**: `~/.config/stv-secrets/` — NEVER in the repo
 - **Required permissions**: Directory = `700`, all files = `600`
-- **Files**: telegram-bot-token.txt, telegram-chat-id.txt, resend-api-key.txt, email-alerts.json, ga-service-account.json, gmail-oauth.json, gmail-token.pickle, openai-api-key.txt, youtube-oauth.json, youtube-token.pickle, cloudflare-api-token.txt
+- **Files**: telegram-bot-token.txt, telegram-chat-id.txt, email-alerts.json, ga-service-account.json, gmail-oauth.json, gmail-token.pickle, openai-api-key.txt, youtube-oauth.json, youtube-token.pickle, cloudflare-api-token.txt
 - **Rule**: If any secret file is found with permissions wider than 600, fix immediately and alert Tom
 - **Rule**: NEVER log, print, or echo secret values. NEVER pass secrets as CLI arguments (visible in `ps`). Use files or environment variables only.
 
@@ -337,7 +294,7 @@ All 8 direct dependencies + 14 transitive dependencies are pinned with SHA-256 h
 - Install ONLY with: `pip install --require-hashes -r requirements.txt`
 - **NEVER** install packages without hash verification
 - To update a package: download, hash, update requirements.txt, verify, commit
-- Our 8 packages (verified 2026-02-22): beautifulsoup4, deep-translator, google-analytics-data, google-api-python-client, google-auth, google-auth-httplib2, google-auth-oauthlib, resend
+- Our 7 packages (verified 2026-05-10): beautifulsoup4, deep-translator, google-analytics-data, google-api-python-client, google-auth, google-auth-httplib2, google-auth-oauthlib
 
 ### Advanced VPS hardening (`tools/harden_vps_advanced.sh`)
 Run after basic hardening: `sudo bash tools/harden_vps_advanced.sh`
