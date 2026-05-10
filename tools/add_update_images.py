@@ -192,7 +192,6 @@ def page_has_content_images(content):
         return True  # can't find article, skip it
     end = content.find('</article>', start)
     article = content[start:end] if end != -1 else content[start:]
-    # Ignore any images that might be in the video-embed or newsletter
     # Count actual content images
     img_count = len(re.findall(r'<img\s', article))
     return img_count > 0
@@ -268,7 +267,7 @@ def upgrade_h3_to_h2(content):
     """Convert ALL h3 content headings to h2 within article-content for uniformity.
 
     Upgrades h3 tags in the article body to h2. Skips h3 tags that are
-    in sidebar, newsletter, or footer sections.
+    in sidebar or footer sections.
     """
     article_start = content.find('<article class="article-content">')
     if article_start == -1:
@@ -283,10 +282,10 @@ def upgrade_h3_to_h2(content):
     article = content[article_start:article_end]
     after = content[article_end:]
 
-    # Replace h3 tags, but skip ones inside newsletter/sidebar divs
+    # Replace h3 tags, but skip ones inside sidebar divs
     def replace_h3(match):
         pos = match.start()
-        # Check preceding context for sidebar/newsletter markers
+        # Check preceding context for sidebar markers
         preceding = article[max(0, pos - 400):pos]
         if 'sidebar' in preceding.lower():
             return match.group(0)
@@ -315,7 +314,7 @@ def find_h2_sections(content):
         positions = []
         for m in re.finditer(rf'<{tag}[^>]*>', content[article_start:article_end]):
             abs_pos = article_start + m.start()
-            # Skip headings in sidebar, newsletter, or footer sections
+            # Skip headings in sidebar or footer sections
             preceding = content[abs_pos - 200:abs_pos] if abs_pos > 200 else content[:abs_pos]
             if 'sidebar' in preceding or 'footer' in preceding:
                 continue

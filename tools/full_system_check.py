@@ -12,9 +12,7 @@ Sections:
   D. Cron Job Coverage
   E. Security Stack
   F. Log Health
-  G. Subtitle Pipeline
-  H. Content Freshness
-  I. Newsletter System
+  G. Content Freshness
 
 Usage:
     python3 tools/full_system_check.py           # all checks
@@ -590,110 +588,35 @@ def check_logs(args):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# G. Subtitle Pipeline
-# ═══════════════════════════════════════════════════════════════════════════
-
-def check_pipeline(args):
-    print("\nG. Subtitle Pipeline\n")
-
-    # G1: Pipeline last run result (from pipeline.log tail)
-    out, _, _ = ssh(f"tail -5 {VPS_PROJECT}/logs/pipeline.log 2>/dev/null || echo ''")
-    finished = "Pipeline finished" in out or "Completed:" in out
-    last = [l.strip() for l in out.splitlines() if l.strip()]
-    check("G1. Pipeline has run recently", finished,
-          last[-1][:90] if last else "no log content")
-
-    # G2: Subtitle coverage across agreed languages
-    script = (
-        "python3 -c \""
-        "import pathlib; "
-        "t=pathlib.Path('/home/stv/socialtradingvlog-website/transcriptions'); "
-        "langs={'es','de','fr','it','pt','ar','nl','pl'}; "
-        "total=complete=partial=no_en=0; "
-        "[exec("
-        "  'total+=1; '"
-        "  'srt_langs={f.name.split(chr(46))[1] for f in d.glob(chr(115)+chr(117)+chr(98)+chr(116)+chr(105)+chr(116)+chr(108)+chr(101)+chr(115)+chr(46)+chr(42)+chr(46)+chr(115)+chr(114)+chr(116))}; '"
-        "  'has_en=(chr(101)+chr(110)) in srt_langs; '"
-        "  'agreed=srt_langs & langs; '"
-        "  'no_en+=1 if not has_en else 0; '"
-        "  'complete+=1 if has_en and agreed==langs else 0; '"
-        "  'partial+=1 if has_en and agreed and agreed!=langs else 0'"
-        ") for d in t.iterdir() if d.is_dir()]; "
-        "print(f'total={total} complete={complete} partial={partial} no_en={no_en}')\""
-    )
-    # Simpler version without chr() tricks
-    script = r"""python3 << 'PYEOF'
-import pathlib
-t = pathlib.Path('/home/stv/socialtradingvlog-website/transcriptions')
-langs = {'es','de','fr','it','pt','ar','nl','pl'}
-total = complete = partial = no_en = 0
-for d in t.iterdir():
-    if not d.is_dir():
-        continue
-    total += 1
-    srt_langs = {f.name.split('.')[1] for f in d.glob('subtitles.*.srt') if len(f.name.split('.')) >= 3}
-    has_en = 'en' in srt_langs
-    agreed = srt_langs & langs
-    if not has_en:
-        no_en += 1
-    elif agreed == langs:
-        complete += 1
-    elif agreed:
-        partial += 1
-print(f'total={total} complete={complete} partial={partial} no_en={no_en}')
-PYEOF"""
-    out, _, _ = ssh(script, timeout=30)
-    m = re.search(r"total=(\d+) complete=(\d+) partial=(\d+) no_en=(\d+)", out)
-    if m:
-        total, complete, partial, no_en = (
-            int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
-        )
-        remaining = total - complete
-        # Informational — report coverage, always pass
-        check("G2. Subtitle translation coverage (8 langs)", True,
-              f"{complete}/{total} fully translated, {partial} partial, {remaining} remaining")
-    else:
-        check("G2. Subtitle coverage", False, f"could not parse: {out.strip()[:80]}")
-
-    # G3: Subtitle upload cron ran < 25h
-    out, _, _ = ssh(f"stat -c %Y {VPS_PROJECT}/logs/subtitle-upload.log 2>/dev/null || echo 0")
-    try:
-        a = now() - int(out.strip())
-        check("G3. Subtitle upload cron ran < 25h", a < MAX_DAILY_AGE, f"{int(a//3600)}h ago")
-    except Exception:
-        check("G3. Subtitle upload cron", False, "log not found")
-
-
-# ═══════════════════════════════════════════════════════════════════════════
-# H. Content Freshness
+# G. Content Freshness
 # ═══════════════════════════════════════════════════════════════════════════
 
 def check_content(args):
-    print("\nH. Content Freshness\n")
+    print("\nG. Content Freshness\n")
 
-    # H1: Sitemap accessible and contains URLs
+    # G1: Sitemap accessible and contains URLs
     code, body = http_get(SITE + "/sitemap.xml")
     has_urls = "<url>" in body or "<loc>" in body
-    check("H1. Sitemap.xml accessible", code == 200 and has_urls,
+    check("G1. Sitemap.xml accessible", code == 200 and has_urls,
           f"status {code}" + (", has <url> entries" if has_urls else ", no <url> found"))
 
-    # H2: RSS feeds regenerated < 8 days
+    # G2: RSS feeds regenerated < 8 days
     out, _, _ = ssh(f"stat -c %Y {VPS_PROJECT}/logs/rss.log 2>/dev/null || echo 0")
     try:
         a = now() - int(out.strip())
-        check("H2. RSS feeds < 8 days old", a < MAX_WEEKLY_AGE, f"{int(a//86400)}d ago")
+        check("G2. RSS feeds < 8 days old", a < MAX_WEEKLY_AGE, f"{int(a//86400)}d ago")
     except Exception:
-        check("H2. RSS feeds", False, "rss.log not found")
+        check("G2. RSS feeds", False, "rss.log not found")
 
-    # H3: Schema markup regenerated < 8 days
+    # G3: Schema markup regenerated < 8 days
     out, _, _ = ssh(f"stat -c %Y {VPS_PROJECT}/logs/schema.log 2>/dev/null || echo 0")
     try:
         a = now() - int(out.strip())
-        check("H3. Schema markup < 8 days old", a < MAX_WEEKLY_AGE, f"{int(a//86400)}d ago")
+        check("G3. Schema markup < 8 days old", a < MAX_WEEKLY_AGE, f"{int(a//86400)}d ago")
     except Exception:
-        check("H3. Schema markup", False, "schema.log not found")
+        check("G3. Schema markup", False, "schema.log not found")
 
-    # H4: GSC snapshot current — saved to reports/gsc-YYYY-MM-DD.json (not data/gsc-snapshots/)
+    # G4: GSC snapshot current — saved to reports/gsc-YYYY-MM-DD.json (not data/gsc-snapshots/)
     out, _, _ = ssh(f"ls -t {VPS_PROJECT}/reports/gsc-*.json 2>/dev/null | head -1")
     latest = out.strip()
     if latest:
@@ -701,20 +624,20 @@ def check_content(args):
         try:
             a = now() - int(out2.strip())
             name = latest.split("/")[-1]
-            check("H4. GSC snapshot < 49h old", a < 176400,
+            check("G4. GSC snapshot < 49h old", a < 176400,
                   f"{name} — {int(a//3600)}h ago")
         except Exception:
-            check("H4. GSC snapshot", False, "could not stat")
+            check("G4. GSC snapshot", False, "could not stat")
     else:
-        check("H4. GSC snapshot exists", False, "no gsc-*.json in reports/")
+        check("G4. GSC snapshot exists", False, "no gsc-*.json in reports/")
 
-    # H5: Local GA report current (< 25h)
+    # G5: Local GA report current (< 25h)
     report = PROJECT / "reports" / "latest.txt"
     if report.exists():
         a = now() - report.stat().st_mtime
-        check("H5. GA report current < 25h", a < MAX_DAILY_AGE, f"{int(a//3600)}h ago")
+        check("G5. GA report current < 25h", a < MAX_DAILY_AGE, f"{int(a//3600)}h ago")
     else:
-        check("H5. GA report present", False, "reports/latest.txt not found", warn=True)
+        check("G5. GA report present", False, "reports/latest.txt not found", warn=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -740,7 +663,6 @@ def main():
     check_cron(args)
     check_security(args)
     check_logs(args)
-    check_pipeline(args)
     check_content(args)
 
     total = len(passes) + len(failures) + len(warnings)
