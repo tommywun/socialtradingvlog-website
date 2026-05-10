@@ -35,12 +35,15 @@ Latest is always at `reports/latest.txt`.
 - **Cloudflare Account ID**: `8258a1fdf539f95d62ce9f567a16f858`
 - **Cloudflare Worker** `stv-redirects` handles 31 legacy WordPress 301 redirects (`tools/setup_cloudflare_redirects.py`)
 
-### Rsync to VPS (dashboard only)
+### Rsync to VPS
 ```bash
-rsync -avz --delete --exclude='.git' --exclude='reports/' --exclude='data/' --exclude='venv/' --exclude='docs/' \
+rsync -avz --delete \
+  --exclude='.git' --exclude='reports/' --exclude='data/' --exclude='venv/' --exclude='docs/' \
+  --exclude='transcriptions/' --exclude='node_modules' --exclude='logs' \
+  --exclude='backups/' --exclude='tools/__pycache__' \
   ~/socialtradingvlog-website/ stv@89.167.73.64:/home/stv/socialtradingvlog-website/
 ```
-**Critical:** Always exclude `venv/` — the VPS has its own virtualenv used by the systemd service. Rsync `--delete` without this exclude wipes the venv and breaks the dashboard.
+**Critical:** Always exclude `venv/`, `data/`, `logs/`, and `backups/` — these are VPS-generated and must never be wiped by rsync.
 
 ## VPS (Command Centre)
 - **Host**: 89.167.73.64, user `stv`
@@ -160,7 +163,7 @@ Calculator pages link to each other via nav bar.
   7. Only proceed after Tom confirms
   This rule exists because bulk deletions have destroyed approved content TWICE (etoro-review, why-do-most-etoro-traders-lose-money). The fix is to audit first, act second — never the other way around.
 - **Update CC immediately when status changes**: Whenever a task is completed, a situation changes, or progress is made on any tracked item (pipeline, subtitles, video pages, articles, etc.), immediately update `data/status-overrides.json` on VPS to reflect the current state. The command centre is Tom's window into what's happening — stale or inaccurate statuses are misleading. Use: `ssh stv@89.167.73.64 "cat > ~/socialtradingvlog-website/data/status-overrides.json << 'EOF' ... EOF"`
-- **VPS rsync excludes**: When syncing to VPS with rsync --delete, ALWAYS exclude: `.git`, `transcriptions`, `node_modules`, `data`, `.env`, `venv`, `logs`, `tools/__pycache__`. Logs are generated on VPS by cron jobs (pipeline, security, doctor, etc.) and don't exist locally — rsync --delete will wipe them. The __pycache__ is VPS-specific (Python 3.12 vs local version). The venv on VPS is not in git and must not be deleted.
+- **VPS rsync excludes**: When syncing to VPS with rsync --delete, ALWAYS exclude: `.git`, `transcriptions`, `node_modules`, `data`, `.env`, `venv`, `logs`, `backups`, `tools/__pycache__`. Logs and backups are generated on VPS by cron jobs and don't exist locally — rsync --delete will wipe them. This is what caused the backup cron to silently fail for 76 days (Feb–May 2026). The __pycache__ is VPS-specific. The venv must not be deleted.
 - **After adding new pages, regenerate sitemap**: Run `python3 tools/generate_sitemap.py` after creating new pages or translations. The sitemap includes hreflang links — missing pages mean missing SEO signals. This was missed when 5 scam page translations were created (Feb 2026).
 - **Always check CLAUDE.md before asking Tom**: When something fails or you need project info (VPS credentials, tool paths, architecture, prior fixes), check this file FIRST. Don't ask Tom questions that are already answered here.
 
