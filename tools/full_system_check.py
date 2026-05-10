@@ -211,11 +211,18 @@ def check_live_site(args):
         check("A6. robots.txt accessible", False, str(_e))
 
     # A7: hreflang markup present on key pages
+    # Read 8KB — hreflang is in <head> but some pages have long meta sections
     hreflang_pages = ["/", "/copy-trading/", "/etoro-review/"]
     hreflang_fails = []
     for path in hreflang_pages:
-        _, body = http_get(SITE + path)
-        if "hreflang" not in body:
+        try:
+            _req = urllib.request.Request(SITE + path, headers={"User-Agent": "STV-SystemCheck/1.0"})
+            _ctx = ssl.create_default_context()
+            with urllib.request.urlopen(_req, timeout=15, context=_ctx) as _r:
+                _body = _r.read(8192).decode(errors="ignore")
+            if "hreflang" not in _body:
+                hreflang_fails.append(path)
+        except Exception:
             hreflang_fails.append(path)
     check(f"A7. hreflang markup ({len(hreflang_pages)} pages checked)", not hreflang_fails,
           "; ".join(hreflang_fails) if hreflang_fails else f"all {len(hreflang_pages)} present")
