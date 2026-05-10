@@ -81,15 +81,6 @@
       return;
     }
 
-    // Tool card clicks (homepage)
-    if (link.classList.contains('tool-card-link')) {
-      var toolName = '';
-      var h3 = link.querySelector('h3');
-      if (h3) toolName = h3.textContent.trim();
-      track('tool_card_click', { tool_name: toolName, page_path: page });
-      return;
-    }
-
     // Outbound links
     if (href.indexOf('http') === 0 && link.hostname !== location.hostname) {
       track('outbound_click', { link_url: href, link_text: text, page_path: page });
@@ -112,20 +103,6 @@
     // Contact form
     if (e.target.closest('form[action*="formspree"]')) {
       track('contact_form_submit', { page_path: page });
-    }
-  });
-
-  /* ── Calculator usage ── */
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('button[type="submit"], .calc-btn, .compare-btn');
-    if (!btn) return;
-    var calcType = '';
-    if (location.pathname.indexOf('fee-calculator') !== -1) calcType = 'fee_calculator';
-    else if (location.pathname.indexOf('trade-comparison') !== -1) calcType = 'trade_comparison';
-    else if (location.pathname.indexOf('roi-calculator') !== -1) calcType = 'roi_calculator';
-    else if (location.pathname.indexOf('compare-platforms') !== -1) calcType = 'platform_comparison';
-    if (calcType) {
-      track('calculator_use', { calculator_type: calcType, page_path: page });
     }
   });
 

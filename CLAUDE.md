@@ -4,9 +4,7 @@
 - Check the latest GA report: `cat reports/latest.txt`
 - Check pipeline progress: `tail -20 transcriptions/pipeline.log`
 - Check for fix requests from the command centre: `ssh stv@89.167.73.64 "cat ~/socialtradingvlog-website/data/fix-queue.json 2>/dev/null || echo '[]'"`
-- Check fee data freshness: `python3 -c "import json; d=json.load(open('data/platform-fees.json')); print(f'Fee data last updated: {d[\"_last_updated\"]}')"` — if >7 days old, alert Tom and check VPS scraper status
-- If fee data is stale (>7 days): `ssh stv@89.167.73.64 "tail -10 ~/socialtradingvlog-website/logs/scrape-fees.log"` — check if scraper is running, offer to run manually
-- Share key insights, any notable changes, any pending fix requests, and fee data freshness with Tom
+- Share key insights, any notable changes, and any pending fix requests with Tom
 
 ## Secrets location
 All API keys and credentials are stored in `~/.config/stv-secrets/` (NOT in the repo).
@@ -96,15 +94,6 @@ The subtitle pipeline runs fully autonomously on VPS. Mac is only needed for one
 - Provider: Resend API
 - Verified domain: `send.socialtradingvlog.com` (NOT socialtradingvlog.com)
 - Subscribers stored in `data/subscribers.json` on VPS
-
-## Calculators
-4 tools at `/calculators/`:
-- Fee Calculator — spread, overnight, conversion, withdrawal cost breakdown
-- ROI Calculator — compound growth projections for copy trading
-- Compare Platforms — eToro vs Trading 212, Interactive Brokers, etc.
-- Position Size Calculator — allocation per copied trader with risk profiles
-
-Translated to 5 languages: ES (`/es/calculadoras/`), DE (`/de/rechner/`), FR (`/fr/calculateurs/`), PT (`/pt/calculadoras/`), AR (`/ar/calculators/`)
 
 ## Video Pages Pipeline
 Each of the 333 YouTube videos will get a proper SEO-rewritten article page (NOT a transcript dump).
