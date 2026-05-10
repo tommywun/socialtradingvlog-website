@@ -83,6 +83,78 @@ REDIRECTS = [
     ("/de/haeufig-gestellte-fragen/", "/de/"),
     ("/pt/perguntas-frequentes/", "/pt/"),
     ("/ar/al-asilah-al-shaaiah/", "/ar/"),
+
+    # EN calculators -> homepage
+    ("/calculators/", "/"),
+    ("/calculators/fee-calculator/", "/"),
+    ("/calculators/compare-platforms/", "/"),
+    ("/calculators/position-size/", "/"),
+    ("/calculators/roi-calculator/", "/"),
+    ("/calculators/trade-comparison/", "/"),
+
+    # ES calculators -> /es/
+    ("/es/calculadoras/", "/es/"),
+    ("/es/calculadoras/calculadora-comisiones/", "/es/"),
+    ("/es/calculadoras/calculadora-rentabilidad/", "/es/"),
+    ("/es/calculadoras/comparacion-de-operaciones/", "/es/"),
+    ("/es/calculadoras/comparar-plataformas/", "/es/"),
+    ("/es/calculadoras/tamano-posicion/", "/es/"),
+
+    # DE calculators -> /de/
+    ("/de/rechner/", "/de/"),
+    ("/de/rechner/gebuehrenrechner/", "/de/"),
+    ("/de/rechner/handelsvergleich/", "/de/"),
+    ("/de/rechner/plattformen-vergleichen/", "/de/"),
+    ("/de/rechner/positionsgroesse/", "/de/"),
+    ("/de/rechner/renditerechner/", "/de/"),
+
+    # FR calculators -> /fr/
+    ("/fr/calculateurs/", "/fr/"),
+    ("/fr/calculateurs/calculateur-frais/", "/fr/"),
+    ("/fr/calculateurs/calculateur-rendement/", "/fr/"),
+    ("/fr/calculateurs/comparaison-de-trades/", "/fr/"),
+    ("/fr/calculateurs/comparer-plateformes/", "/fr/"),
+    ("/fr/calculateurs/taille-position/", "/fr/"),
+
+    # PT calculators -> /pt/
+    ("/pt/calculadoras/", "/pt/"),
+    ("/pt/calculadoras/calculadora-retorno/", "/pt/"),
+    ("/pt/calculadoras/calculadora-taxas/", "/pt/"),
+    ("/pt/calculadoras/comparacao-de-operacoes/", "/pt/"),
+    ("/pt/calculadoras/comparar-plataformas/", "/pt/"),
+    ("/pt/calculadoras/tamanho-posicao/", "/pt/"),
+
+    # AR calculators -> /ar/
+    ("/ar/calculators/", "/ar/"),
+    ("/ar/calculators/compare-platforms/", "/ar/"),
+    ("/ar/calculators/fee-calculator/", "/ar/"),
+    ("/ar/calculators/position-size/", "/ar/"),
+    ("/ar/calculators/roi-calculator/", "/ar/"),
+    ("/ar/calculators/trade-comparison/", "/ar/"),
+
+    # IT calcolatori -> homepage (section removed entirely)
+    ("/it/calcolatori/", "/"),
+    ("/it/calcolatori/calcolatore-commissioni/", "/"),
+    ("/it/calcolatori/calcolatore-rendimento/", "/"),
+    ("/it/calcolatori/confronta-piattaforme/", "/"),
+    ("/it/calcolatori/dimensione-posizione/", "/"),
+
+    # NL rekenmachines -> homepage
+    ("/nl/rekenmachines/", "/"),
+    ("/nl/rekenmachines/kostenrekenmachine/", "/"),
+    ("/nl/rekenmachines/platforms-vergelijken/", "/"),
+    ("/nl/rekenmachines/positiegrootte/", "/"),
+    ("/nl/rekenmachines/rendement-rekenmachine/", "/"),
+
+    # PL kalkulatory -> homepage
+    ("/pl/kalkulatory/", "/"),
+    ("/pl/kalkulatory/kalkulator-oplat/", "/"),
+    ("/pl/kalkulatory/kalkulator-zwrotu/", "/"),
+    ("/pl/kalkulatory/porownaj-platformy/", "/"),
+    ("/pl/kalkulatory/rozmiar-pozycji/", "/"),
+
+    # US calculators -> homepage
+    ("/us/calculators/", "/"),
 ]
 
 # Worker route patterns — grouped to minimise route count
@@ -108,6 +180,18 @@ ROUTE_PATTERNS = [
     f"*{DOMAIN}/de/haeufig-gestellte-fragen/*",
     f"*{DOMAIN}/pt/perguntas-frequentes/*",
     f"*{DOMAIN}/ar/al-asilah-al-shaaiah/*",
+    # Calculator redirects
+    f"*{DOMAIN}/calculators/*",
+    f"*{DOMAIN}/es/calculadoras/*",
+    f"*{DOMAIN}/de/rechner/*",
+    f"*{DOMAIN}/fr/calculateurs/*",
+    f"*{DOMAIN}/pt/calculadoras/*",
+    f"*{DOMAIN}/ar/calculators/*",
+    f"*{DOMAIN}/it/calcolatori/*",
+    f"*{DOMAIN}/nl/rekenmachines/*",
+    f"*{DOMAIN}/pl/kalkulatory/*",
+    f"*{DOMAIN}/us/calculators/*",
+    f"*{DOMAIN}/ko/*",
 ]
 
 
@@ -141,6 +225,11 @@ async function handleRequest(request) {{
   const target = REDIRECTS[path];
   if (target) {{
     return Response.redirect(BASE + target, 301);
+  }}
+
+  // Korean calculator section removed entirely — catch all /ko/* paths
+  if (path.startsWith("/ko/")) {{
+    return Response.redirect(BASE + "/", 301);
   }}
 
   // No match — pass through to origin (GitHub Pages)

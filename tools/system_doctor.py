@@ -690,7 +690,7 @@ def main():
     check_services(args.dry_run)
     check_oauth_token(args.dry_run)
     check_pipeline_progress()
-    check_fee_data_freshness(args.dry_run)
+    # check_fee_data_freshness(args.dry_run)  # calculators removed 2026-05-09
 
     # 4. Alert for unfixed errors (batch into one message)
     if unfixed:
