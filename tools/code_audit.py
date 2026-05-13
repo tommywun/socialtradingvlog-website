@@ -45,12 +45,12 @@ from security_lib import (
 AUDIT_LOG = LOGS_DIR / "code-audit.log"
 TOOLS_DIR = PROJECT_DIR / "tools"
 
-# Known false positives — (file, line) pairs that have been manually reviewed
-# These are security checks/filters that mention dangerous patterns in blocklists
+# Known false positives — (file, line) pairs that have been manually reviewed.
+# NOTE: line numbers are fragile (shift when code changes above them). The
+# preferred way to suppress is the content-aware rules inside scan_patterns()
+# below, which match by code shape rather than line number. Only add a tuple
+# here when content-aware suppression isn't a clean fit.
 ALLOWLIST = {
-    # Injection filter blocklists (code that BLOCKS dangerous patterns, not uses them)
-    ("tools/security_monitor.py", 333),
-    ("tools/security_monitor.py", 334),  # May shift by 1 line after imports
     ("tools/code_audit.py", 6),  # Docstring mentioning patterns
     ("tools/harden_vps_advanced.sh", 30),  # CrowdSec official installer
     ("tools/harden_vps_advanced.sh", 32),  # CrowdSec fallback installer
@@ -61,8 +61,6 @@ ALLOWLIST = {
     ("tools/youtube_descriptions.py", 69),
     ("tools/post_video_comments.py", 97),
     ("tools/fetch_captions.py", 41),
-    # Security monitor checking for dangerous patterns in env vars (detection, not use)
-    ("tools/security_monitor.py", 345),
 }
 
 
@@ -142,6 +140,20 @@ def scan_patterns(file_path):
                         continue
                     # Context-aware suppression: __import__ for optional deps is common
                     if "__import__" in stripped and ("try" in lines[max(0,i-3):i] or "except" in stripped):
+                        continue
+                    # Context-aware suppression: blocklist enumeration —
+                    # lines like `any(kw in val for kw in ["eval(", "exec(", ...])`
+                    # are defensive scans, not actual eval/exec calls.
+                    if re.search(r'\bany\s*\(', stripped) and re.search(
+                            r'\bfor\s+\w+\s+in\s+[\(\[]', stripped):
+                        continue
+                    # Context-aware suppression: `in` membership tests against a
+                    # literal tuple/list of suspicious tokens, e.g.
+                    # `if "eval(" in user_input:` — pattern detection, not use.
+                    if re.search(
+                            r'\b(?:if|elif|while|assert)\b.*\bin\s+[\(\[].*'
+                            r'(?:exec\(|eval\(|__import__|subprocess|os\.system|os\.popen)',
+                            stripped):
                         continue
                     findings.append({
                         "file": rel,
