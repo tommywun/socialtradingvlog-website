@@ -45,7 +45,6 @@ ALERT_LOG = PROJECT_DIR / "data" / "autopilot-alerts.json"
 HEALTH_LOG = PROJECT_DIR / "data" / "autopilot-health.json"
 
 SITE_URL = "https://socialtradingvlog.com"
-# DASHBOARD_URL = "https://app.socialtradingvlog.com"  # decommissioned 2026-05-10
 
 # Key pages to check for uptime
 UPTIME_URLS = [
@@ -169,7 +168,7 @@ def check_ssl_expiry():
         expiry_str = cert["notAfter"]
         # Format: 'May 20 12:00:00 2026 GMT'
         expiry = datetime.strptime(expiry_str, "%b %d %H:%M:%S %Y %Z")
-        days_left = (expiry - datetime.utcnow()).days
+        days_left = (expiry - datetime.now()).days
 
         print(f"  SSL expires: {expiry_str} ({days_left} days left)")
 
@@ -214,16 +213,25 @@ def check_disk():
 
 
 def check_broken_links():
-    """Scan HTML files for broken internal and external links."""
+    """Scan HTML files for broken internal and external links.
+
+    Persists the full broken set to data/broken-links-snapshot.json and only
+    alerts when the broken set grows since the last run — stops the identical
+    weekly nag when a known set of broken links isn't yet fully fixed.
+    """
     print("Checking for broken links...")
     broken = []
     checked = 0
 
-    # Find all HTML files
+    # External URLs that are known to be flaky/anti-bot/rate-limited but actually live
+    EXTERNAL_ALLOWLIST = {
+        # Add hostnames or full URLs here as they are confirmed live-but-flaky
+        # e.g. "https://www.etoro.com/", "https://www.linkedin.com/"
+    }
+
     html_files = list(PROJECT_DIR.glob("**/*.html"))
-    # Exclude node_modules, .git, tools
     html_files = [f for f in html_files if not any(
-        skip in str(f) for skip in [".git", "node_modules", "tools/"]
+        skip in str(f) for skip in [".git", "node_modules", "tools/", "venv/", "backups/"]
     )]
 
     link_pattern = re.compile(r'href=["\']([^"\'#]+)["\']')
@@ -239,13 +247,11 @@ def check_broken_links():
                 elif link.startswith(("mailto:", "javascript:", "tel:", "data:", "sms:", "ftp:")):
                     continue
                 else:
-                    # Internal link — check file exists
                     if link.startswith("/"):
                         target = PROJECT_DIR / link.lstrip("/")
                     else:
                         target = html_file.parent / link
 
-                    # Try with and without index.html
                     if target.is_dir():
                         target = target / "index.html"
                     if not target.exists() and not target.with_suffix(".html").exists():
@@ -253,14 +259,14 @@ def check_broken_links():
         except Exception:
             continue
 
-    # Check a sample of external URLs (max 50 to avoid rate limits)
-    external_sample = list(external_urls)[:50]
+    # External URLs — check a sample to avoid rate limits
+    external_sample = [u for u in list(external_urls)[:50] if u not in EXTERNAL_ALLOWLIST]
     for url in external_sample:
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "STV-LinkChecker/1.0"}, method="HEAD")
-            resp = urllib.request.urlopen(req, timeout=10, context=SSL_CTX)
+            urllib.request.urlopen(req, timeout=10, context=SSL_CTX)
             checked += 1
-            time.sleep(0.3)  # Rate limit
+            time.sleep(0.3)
         except urllib.error.HTTPError as e:
             if e.code in (404, 410, 403):
                 broken.append({"url": url, "status": e.code, "type": "external"})
@@ -268,77 +274,92 @@ def check_broken_links():
         except Exception:
             checked += 1
 
-    if broken:
-        send_alert("broken_links", f"Found {len(broken)} broken links", "warning",
-                   json.dumps(broken[:20], indent=2))
+    # Diff against last run — only alert on NEW broken links
+    snapshot_path = PROJECT_DIR / "data" / "broken-links-snapshot.json"
+    def link_key(b):
+        return f"{b.get('type','?')}|{b.get('file','')}|{b.get('link','')}|{b.get('url','')}"
+    current_keys = {link_key(b): b for b in broken}
+
+    previous_keys = set()
+    if snapshot_path.exists():
+        try:
+            prev = json.loads(snapshot_path.read_text())
+            previous_keys = {link_key(b) for b in prev.get("broken", [])}
+        except Exception:
+            previous_keys = set()
+
+    new_broken = [b for k, b in current_keys.items() if k not in previous_keys]
+    fixed_count = len(previous_keys - set(current_keys.keys()))
+
+    if new_broken:
+        send_alert(
+            "broken_links",
+            f"{len(new_broken)} NEW broken link(s) (total {len(broken)}, fixed {fixed_count} since last run)",
+            "warning",
+            json.dumps(new_broken[:20], indent=2),
+        )
+    elif broken:
+        print(f"  {len(broken)} broken link(s) — same as last run, no alert "
+              f"(fixed {fixed_count} since last run)")
     else:
         print(f"  ✓ No broken links found ({checked} external URLs checked)")
+
+    # Persist full snapshot so next run can diff
+    snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+    snapshot_path.write_text(json.dumps({
+        "ts": datetime.now().isoformat(),
+        "count": len(broken),
+        "broken": broken,
+    }, indent=2))
 
     save_health("broken_links", {"broken_count": len(broken), "checked": checked, "broken": broken[:50]})
     return len(broken) == 0
 
 
 def check_content_dates():
-    """Find pages with stale year references."""
+    """Find evergreen pages whose latest year reference is stale.
+
+    Only flags pages where no year >= current_year-1 appears anywhere — so
+    archive pages, historical articles, and dated content (e.g. "update 2019")
+    don't trigger. Translated/update directories are skipped wholesale.
+    """
     print("Checking content dates...")
     current_year = datetime.now().year
     stale = []
 
     html_files = list(PROJECT_DIR.glob("**/*.html"))
-    html_files = [f for f in html_files if not any(
-        skip in str(f) for skip in [".git", "node_modules", "tools/"]
-    )]
+    # Skip code/build dirs and historical/translated content that is dated by design
+    skip_segments = (
+        ".git", "node_modules", "tools/", "venv/", "backups/", "/updates/",
+        "/es/", "/de/", "/fr/", "/it/", "/pt/", "/ar/", "/pl/", "/nl/", "/ko/",
+    )
+    html_files = [f for f in html_files if not any(seg in str(f) for seg in skip_segments)]
 
-    # Look for year references that are more than 1 year old
     year_pattern = re.compile(r'\b(20[12]\d)\b')
 
     for html_file in html_files:
         try:
             content = html_file.read_text(encoding="utf-8", errors="ignore")
-            years = year_pattern.findall(content)
-            old_years = [y for y in years if int(y) < current_year - 1]
-            if old_years:
+            years = [int(y) for y in year_pattern.findall(content)]
+            if not years:
+                continue
+            # Only flag if the most recent year on the page is itself stale
+            if max(years) < current_year - 1:
                 stale.append({
                     "file": str(html_file.relative_to(PROJECT_DIR)),
-                    "old_years": list(set(old_years)),
+                    "latest_year": max(years),
                 })
         except Exception:
             continue
 
     if stale:
-        send_alert("content_dates", f"{len(stale)} pages have potentially stale year references", "info",
+        send_alert("content_dates", f"{len(stale)} evergreen pages with stale year references", "info",
                    json.dumps(stale[:20], indent=2))
     else:
-        print(f"  ✓ All content dates look current")
+        print(f"  ✓ All evergreen content dates look current")
 
     save_health("content_dates", {"stale_count": len(stale), "stale": stale[:50]})
     return len(stale) == 0
-
-
-def check_services():
-    """Check that systemd services are running (VPS only)."""
-    print("Checking services...")
-    services = []  # stv-dashboard decommissioned 2026-05-10
-    all_ok = True
-
-    for svc in services:
-        try:
-            result = subprocess.run(
-                ["systemctl", "is-active", svc],
-                capture_output=True, text=True,
-            )
-            status = result.stdout.strip()
-            if status == "active":
-                print(f"  ✓ {svc}: active")
-            else:
-                send_alert("service", f"Service {svc} is {status}!", "critical")
-                all_ok = False
-        except FileNotFoundError:
-            print(f"  (systemctl not available — skipping service check)")
-            break
-
-    save_health("services", {"checked": services})
-    return all_ok
 
 
 ERROR_JOURNAL = PROJECT_DIR / "data" / "error-journal.md"
@@ -363,101 +384,25 @@ def log_to_error_journal(system, error, diagnosis, resolution, status="Fixed"):
         print(f"  Failed to write to error journal: {e}")
 
 
-def check_subtitle_pipeline():
-    """Check subtitle pipeline health — is it producing output?"""
-    print("Checking subtitle pipeline...")
-    issues = []
-
-    # Check if pipeline is running
-    try:
-        result = subprocess.run(["pgrep", "-f", "run_pipeline.py"], capture_output=True, text=True)
-        pipeline_running = result.returncode == 0
-    except Exception:
-        pipeline_running = False
-
-    # Check pipeline log for recent activity
-    pipeline_log = PROJECT_DIR / "transcriptions" / "pipeline.log"
-    if pipeline_log.exists():
-        stat = pipeline_log.stat()
-        hours_since_update = (time.time() - stat.st_mtime) / 3600
-        if hours_since_update > 24:
-            issues.append(f"Pipeline log hasn't been updated in {int(hours_since_update)} hours")
-    else:
-        issues.append("Pipeline log not found")
-
-    # Check for stuck translations
-    try:
-        result = subprocess.run(["pgrep", "-f", "translate_subtitles"], capture_output=True, text=True)
-        translate_pids = result.stdout.strip().split("\n") if result.stdout.strip() else []
-        if len(translate_pids) > 3:
-            issues.append(f"{len(translate_pids)} translate processes running (possible stuck/duplicate)")
-            # Auto-fix: kill excess processes, keep newest
-            if len(translate_pids) > 3:
-                for pid in translate_pids[:-1]:
-                    try:
-                        subprocess.run(["kill", pid.strip()], capture_output=True)
-                    except Exception:
-                        pass
-                log_to_error_journal(
-                    "Subtitle Pipeline",
-                    f"{len(translate_pids)} duplicate translate processes detected",
-                    "Multiple pipeline starts without cleanup spawned competing processes",
-                    f"Auto-killed {len(translate_pids) - 1} excess processes, kept newest",
-                )
-    except Exception:
-        pass
-
-    # Check upload status
-    upload_log = PROJECT_DIR / "reports" / "subtitle-uploads.json"
-    if upload_log.exists():
-        uploads = json.loads(upload_log.read_text())
-        total = sum(len(v) for v in uploads.values())
-        print(f"  Uploads: {total} tracks across {len(uploads)} videos")
-    else:
-        print("  No uploads yet")
-
-    # Count progress
-    try:
-        trans_dir = PROJECT_DIR / "transcriptions"
-        complete = 0
-        has_en = 0
-        total_dirs = 0
-        for d in trans_dir.iterdir():
-            if not d.is_dir() or d.name.startswith("."):
-                continue
-            total_dirs += 1
-            if (d / "subtitles.en.srt").exists():
-                has_en += 1
-                all_done = all((d / f"subtitles.{lang}.srt").exists()
-                              for lang in ["es", "de", "fr", "it", "pt", "ar", "pl", "nl", "ko"])
-                if all_done:
-                    complete += 1
-        print(f"  Progress: {complete}/{total_dirs} fully complete, {has_en} have English")
-    except Exception:
-        pass
-
-    if issues:
-        for issue in issues:
-            send_alert("subtitle_pipeline", issue, "warning")
-        return False
-
-    print("  ✓ Subtitle pipeline OK")
-    return True
-
-
-# check_platform_data_freshness() removed 2026-05-10 — calculator/comparison pages decommissioned
-
-
 def check_cron_jobs():
-    """Verify cron jobs are still installed."""
+    """Verify cron jobs are still installed (VPS only — skipped if no crontab)."""
     print("Checking cron jobs...")
     try:
         result = subprocess.run(["crontab", "-l"], capture_output=True, text=True)
         cron_content = result.stdout
 
+        # If there's no #STV cron at all, assume this isn't the VPS — skip silently.
+        if "#STV" not in cron_content:
+            print("  (no #STV crontab — non-VPS environment, skipping)")
+            return True
+
         expected_jobs = [
             "site_autopilot",
-            "upload_subtitles",
+            "security_monitor",
+            "threat_scanner",
+            "security_selftest",
+            "verify_dependencies",
+            "system_doctor",
         ]
 
         missing = []
@@ -492,8 +437,6 @@ def run_daily_check():
     results["uptime"] = check_uptime()
     results["ssl"] = check_ssl_expiry()
     results["disk"] = check_disk()
-    results["services"] = check_services()
-    results["subtitle_pipeline"] = check_subtitle_pipeline()
     results["cron_jobs"] = check_cron_jobs()
 
     # Summary
@@ -526,12 +469,8 @@ def generate_weekly_digest():
     results["uptime"] = check_uptime()
     results["ssl"] = check_ssl_expiry()
     results["disk"] = check_disk()
-    results["services"] = check_services()
     results["broken_links"] = check_broken_links()
     results["content_dates"] = check_content_dates()
-
-    # Read health log for summary
-    health = load_health()
 
     # Build digest
     ok_count = sum(1 for v in results.values() if v)
@@ -547,22 +486,6 @@ Checks:
     for check, passed in results.items():
         icon = "✓" if passed else "✗"
         digest += f"  {icon} {check}\n"
-
-    # Add subtitle pipeline status
-    pipeline_log = PROJECT_DIR / "transcriptions" / "pipeline.log"
-    if pipeline_log.exists():
-        lines = pipeline_log.read_text().strip().split("\n")
-        last_lines = lines[-5:] if len(lines) >= 5 else lines
-        digest += f"\nSubtitle Pipeline (last activity):\n"
-        for line in last_lines:
-            digest += f"  {line}\n"
-
-    # Add upload status
-    upload_log = PROJECT_DIR / "reports" / "subtitle-uploads.json"
-    if upload_log.exists():
-        uploads = json.loads(upload_log.read_text())
-        total_uploaded = sum(len(langs) for langs in uploads.values())
-        digest += f"\nSubtitle Uploads: {total_uploaded} tracks across {len(uploads)} videos\n"
 
     print(digest)
 
@@ -607,8 +530,7 @@ def main():
     parser = argparse.ArgumentParser(description="STV Site Autopilot")
     parser.add_argument("--check", required=True,
                         choices=["uptime", "daily", "weekly", "links", "disk",
-                                 "content-dates", "ssl", "services", "pipeline",
-                                 "platform-data", "cron", "all"],
+                                 "content-dates", "ssl", "cron", "all"],
                         help="Which check to run")
     args = parser.parse_args()
 
@@ -625,12 +547,6 @@ def main():
         check_broken_links()
     elif args.check == "content-dates":
         check_content_dates()
-    elif args.check == "services":
-        check_services()
-    elif args.check == "pipeline":
-        check_subtitle_pipeline()
-    elif args.check == "platform-data":
-        print("  platform-data check removed — comparison pages decommissioned 2026-05-10")
     elif args.check == "cron":
         check_cron_jobs()
     elif args.check == "daily":

@@ -2,8 +2,18 @@
 
 ## At the start of each session
 - Check the latest GA report: `cat reports/latest.txt`
-- Check pipeline progress: `tail -20 transcriptions/pipeline.log`
 - Share key insights and any notable changes with Tom
+
+## Retired services (do NOT re-enable without discussion)
+- **Subtitle pipeline** — retired 2026-05-10. VPS cron entry removed; Mac launchagent
+  `com.socialtradingvlog.pipeline` moved to `~/Library/LaunchAgents/disabled/`. All 333
+  videos are at 333/333. `run_pipeline.py` still works on demand but is no longer scheduled.
+- **stv-dashboard / app.socialtradingvlog.com** — decommissioned 2026-05-10.
+- **Calculator/comparison pages** — decommissioned 2026-05-10. Cloudflare worker redirects
+  `/calculators/*` → `/`.
+- **OpenClaw gateway (local laptop)** — disabled 2026-05-11. Launchagent moved to
+  `~/Library/LaunchAgents/disabled/ai.openclaw.gateway.plist`. Data in `~/.openclaw/`
+  preserved. Per the AI-era threat awareness policy, do not re-enable.
 
 ## Secrets location
 All API keys and credentials are stored in `~/.config/stv-secrets/` (NOT in the repo).
@@ -25,6 +35,21 @@ Latest is always at `reports/latest.txt`.
 - `python3 tools/upload_subtitles.py --dry-run` — preview YouTube subtitle uploads
 - `python3 tools/system_doctor.py` — self-healing: scan logs, fix known errors, check system health
 - `python3 tools/generate_sitemap.py` — regenerate sitemap.xml (hreflang)
+
+## Site autopilot alerting behavior (2026-05-11 cleanup)
+The site autopilot in `tools/site_autopilot.py` has 5 active checks: uptime, ssl,
+disk, broken_links, content_dates (and the VPS-only cron_jobs presence check).
+- **Broken links** uses a delta against `data/broken-links-snapshot.json`. Alerts ONLY
+  fire when the broken set grows since the previous run. Pre-existing breakage that
+  doesn't change is silent. To force a re-alert after fixes, delete the snapshot file.
+- **Content dates** only flags evergreen pages whose latest year reference is more
+  than 1 year old. Translated dirs (`/es/`, `/de/`, …), `/updates/`, etc. are
+  skipped wholesale — they reference old years legitimately.
+- **External link allowlist**: `EXTERNAL_ALLOWLIST` set in `check_broken_links()`.
+  Add hostnames there when 403/anti-bot URLs are confirmed live-but-flaky.
+- Removed checks (do NOT re-add without good reason): `check_services` (dashboard
+  retired), `check_subtitle_pipeline` (subtitle work complete), platform-data
+  freshness (calculator pages retired).
 
 ## Site architecture
 - **Main site** (`socialtradingvlog.com`) is served from **GitHub Pages** — deploy by `git push` to origin
