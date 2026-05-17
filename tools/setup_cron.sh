@@ -68,13 +68,15 @@ CRON_ENTRIES=$(cat <<'CRONTAB'
 # retired 2026-05-17 along with the decommissioned calculators — scripts archived
 # to tools/archive/. Do not re-add without restoring the calculator pages.
 
-# ── Subtitle Pipeline ───────────────────────────────────── #STV
-
-# Daily subtitle upload attempt at 5am (skips already-uploaded, handles quota)
-0 5 * * * PYTHON_PATH PROJECT_PATH/tools/upload_subtitles.py --skip-english >> LOG_PATH/subtitle-upload.log 2>&1 #STV
-
-# Daily transcription pipeline (VPS-auto: fetch captions via API, translate, upload)
-0 6 * * * PYTHON_PATH PROJECT_PATH/tools/run_pipeline.py --vps-auto >> LOG_PATH/pipeline.log 2>&1 #STV
+# ── Subtitle Pipeline — RETIRED 2026-05-10 (333/333 done) ── #STV
+# DO NOT re-add. The subtitle upload + transcription pipeline crons were
+# permanently retired. They were left in this script by mistake and got
+# resurrected on 2026-05-17 when setup_cron.sh was re-run — removed here so
+# running this script is safe. run_pipeline.py / upload_subtitles.py still
+# work on demand but must never be scheduled again without explicit sign-off.
+#
+# (was: 0 5 * * * upload_subtitles.py --skip-english)
+# (was: 0 6 * * * run_pipeline.py --vps-auto)
 
 # ── Content & Schema ─────────────────────────────────────── #STV
 
