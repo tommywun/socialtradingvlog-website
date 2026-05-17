@@ -34,53 +34,21 @@ Cron chain (monthly):
 
 import sys
 import os
-import re
-import json
 import pathlib
 import subprocess
 import argparse
 from datetime import datetime
 
 PROJECT_DIR = pathlib.Path(__file__).parent.parent
-DATA_DIR = PROJECT_DIR / "data"
-RISK_FILE = DATA_DIR / "etoro-risk-warning.json"
 
-# Sanity bounds for the official figure.
-MIN_SANE = 30
-MAX_SANE = 90
-
-# The regulatory disclaimer phrase, per language. Group 1 = the number; the rest
-# is preserved verbatim so spacing ("50 % der" vs "50% of") and the FR apostrophe
-# variants are never disturbed. These anchors are specific enough that unrelated
-# percentages ("50% discount", "50% per month", "76%... 24% profitable") cannot
-# match by phrase alone.
-DISCLAIMER_RE = re.compile(
-    r"(\d+)(\s*%\s*(?:"
-    r"of\s+retail\s+investor\s+accounts"                              # EN
-    r"|der\s+Privatanlegerkonten"                                     # DE
-    r"|de\s+las\s+cuentas\s+de\s+inversores\s+minoristas"             # ES
-    r"|des\s+comptes\s+d(?:&#x27;|&#39;|'|’|\s)?investisseurs\s+particuliers"  # FR
-    r"|das\s+contas\s+de\s+investidores\s+de\s+varejo"                # PT
-    r"|من\s+حسابات\s+المستثمرين\s+الأفراد"  # AR من حسابات المستثمرين الأفراد
-    r"))",
-    re.IGNORECASE | re.UNICODE,
-)
-
-# If one of these approximation words appears just before the number, this is
-# editorial prose ("around 76% ...", "etwa 76% ...", "حوالي 76% ..."), NOT the
-# compliance disclaimer — leave it exactly as-is.
-HEDGE_RE = re.compile(
-    r"(?:around|roughly|approximately|about|nearly|some|circa|~|"          # EN
-    r"etwa|ungefähr|ungefaehr|rund|ca\.?|"                                 # DE
-    r"alrededor(?:\s+de[l]?)?|aproximadamente|cerca\s+de|casi|en\s+torno|" # ES
-    r"aproximadamente|cerca\s+de|em\s+torno|por\s+volta|quase|"            # PT
-    r"environ|prè?s\s+de|autour\s+de|à\s+peu\s+près|quelque|"              # FR
-    r"حوالي|تقريبا|نحو|قرابة"  # AR  approx. words
-    r")\s*(?:de[l]?\s*)?$",
-    re.IGNORECASE | re.UNICODE,
-)
-
-HEDGE_WINDOW = 32  # chars of left-context inspected for a hedge word
+# The regex, the editorial-76% hedge logic, and "what is the official figure"
+# all live in ONE shared module so this updater and the page generators can
+# never disagree. _risk_disclaimer.py has the full "why" writeup — read it
+# before changing anything about the figure. Do NOT re-define the patterns
+# here; that duplication is exactly the bug class this design removes.
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import _risk_disclaimer as rd
+from _risk_disclaimer import MIN_SANE, MAX_SANE
 
 
 def send_telegram(subject, body, emoji="\U0001F4CA"):
@@ -109,15 +77,13 @@ def run_git(*args):
 def read_target(override):
     if override is not None:
         return override
-    if not RISK_FILE.exists():
-        fail("no scraped data",
-             "data/etoro-risk-warning.json missing. Run scrape_etoro_risk.py "
-             "first (it reads eToro's live figure).")
+    # Shared resolver: JSON (scraper output) first, live-HTML mode as fallback.
+    # Raises if neither is sane — we turn that into a loud Telegram failure
+    # rather than ever guessing.
     try:
-        pct = int(json.loads(RISK_FILE.read_text())["percentage"])
+        return rd.current_target()
     except Exception as e:
-        fail("bad scraped data", f"Could not read percentage from {RISK_FILE}: {e}")
-    return pct
+        fail("cannot determine target", str(e))
 
 
 def find_html_files():
@@ -133,40 +99,29 @@ def find_html_files():
     return files
 
 
-def classify(content, m):
-    """Return 'editorial' if the matched number is hedged, else 'official'."""
-    left = content[max(0, m.start(1) - HEDGE_WINDOW): m.start(1)]
-    return "editorial" if HEDGE_RE.search(left) else "official"
-
-
 def process_file(filepath, target, apply):
-    """Return (changes, skips) lists of (line, old, snippet)."""
+    """Return (changes, skips) lists of (line, old, snippet).
+
+    Reporting uses rd.analyze() (per-match kind); the actual rewrite uses
+    rd.normalize() — the SAME shared transform the generators use, so this
+    updater and a fresh regeneration can never disagree.
+    """
     try:
         content = filepath.read_text(encoding="utf-8")
     except Exception:
         return [], []
 
     changes, skips = [], []
-
-    def line_of(idx):
-        return content.count("\n", 0, idx) + 1
-
-    def repl(m):
-        kind = classify(content, m)
-        val = int(m.group(1))
+    for m, kind, val in rd.analyze(content):
+        ln = content.count("\n", 0, m.start(1)) + 1
         snippet = m.group(0)[:60]
-        ln = line_of(m.start(1))
         if kind == "editorial":
             skips.append((ln, val, snippet))
-            return m.group(0)
-        if val == target:
-            return m.group(0)  # already correct, nothing to do
-        changes.append((ln, val, snippet))
-        return f"{target}{m.group(2)}"
-
-    new_content = DISCLAIMER_RE.sub(repl, content)
+        elif val != target:
+            changes.append((ln, val, snippet))
 
     if apply and changes:
+        new_content, _c, _s = rd.normalize(content, target)
         filepath.write_text(new_content, encoding="utf-8")
     return changes, skips
 

@@ -23,6 +23,18 @@ import json
 import pathlib
 import argparse
 
+# ── eToro risk disclaimer: SINGLE SOURCE OF TRUTH ──────────────────────────
+# Heads up, future reader: the localized risk-warning strings in this file
+# (es/de/fr/pt/ar) contain a STALE, hardcoded disclaimer percentage (e.g.
+# "51%"). Those literals are intentionally NOT kept up to date and editing
+# them does nothing useful. The real, current figure is injected at write
+# time by rd.normalize_html() (see the write call near the bottom of this
+# file), sourced from data/etoro-risk-warning.json with a live-HTML fallback.
+# Read tools/_risk_disclaimer.py for the full why. Do not find/replace the
+# numbers — you'd only risk corrupting the editorial "76%" prose.
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import _risk_disclaimer as rd
+
 BASE_DIR = pathlib.Path(__file__).parent.parent
 
 # ── Asset prefix for translated pages (3 levels deep: /es/video/slug/) ────────
@@ -1273,6 +1285,10 @@ def main():
 
             out_dir.mkdir(parents=True, exist_ok=True)
             page_html = generate_page(lang, video_id, data, trans)
+            # Inject the live eToro risk % from the single source of truth. The
+            # localized literals above are stale placeholders; this overwrites
+            # them. Editorial "76%" prose is preserved. See _risk_disclaimer.py.
+            page_html = rd.normalize_html(page_html)
             out_file.write_text(page_html, encoding="utf-8")
             count += 1
             print(f"  WROTE {lang}/video/{slug}/index.html")

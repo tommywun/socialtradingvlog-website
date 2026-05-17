@@ -36,6 +36,18 @@ import json
 import pathlib
 import argparse
 
+# ── eToro risk disclaimer: SINGLE SOURCE OF TRUTH ──────────────────────────
+# Heads up, future reader: the HTML templates further down contain a STALE,
+# hardcoded disclaimer percentage (e.g. "51% of retail investor accounts...").
+# That literal is intentionally NOT kept up to date and editing it does
+# nothing useful. The real, current figure is injected at write time by
+# rd.normalize_html() (see the write call near the bottom of this file),
+# sourced from data/etoro-risk-warning.json with a live-HTML fallback.
+# Read tools/_risk_disclaimer.py for the full why. Do not find/replace the
+# template number — you'd only risk corrupting the editorial "76%" prose.
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import _risk_disclaimer as rd
+
 BASE_DIR = pathlib.Path(__file__).parent.parent
 TRANS_DIR = BASE_DIR / "transcriptions"
 VIDEO_DIR = BASE_DIR / "video"
@@ -1246,7 +1258,11 @@ def main():
             continue
 
         out_dir.mkdir(exist_ok=True)
-        out_path.write_text(generate_page(video_id, title, meta, transcript_text), encoding="utf-8")
+        # Inject the live eToro risk % from the single source of truth. The
+        # template's hardcoded number is a stale placeholder; this overwrites
+        # it. Editorial "76%" prose is preserved. See _risk_disclaimer.py.
+        page_html = rd.normalize_html(generate_page(video_id, title, meta, transcript_text))
+        out_path.write_text(page_html, encoding="utf-8")
         print(f"  [{video_id}] → /video/{meta['slug']}/")
         generated += 1
 

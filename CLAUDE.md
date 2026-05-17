@@ -80,15 +80,29 @@ cron (1st, 2am): `scrape_etoro_risk.py && update_risk_warnings.py`.
   (apply files, no git), default = apply + commit + push + Telegram.
 - Always review the `--dry-run` CHANGE/SKIP list before a real run. Expected
   steady state: all anchored figures == target except hedged editorial 76%.
-- **Regeneration caveat**: `generate_article_pages.py`, `generate_video_pages.py`,
-  `generate_translated_pages.py` and `tools/translations/*` still HARDCODE the
-  figure (currently 51% — staler than the live site). They were deliberately
-  NOT bulk-rewritten (29 localized files, editorial 76% prose mixed in — too
-  risky to fold into a compliance change). Therefore: **after ANY page
-  regeneration, run `python3 tools/update_risk_warnings.py`** to re-mirror the
-  official figure. The monthly cron is the backstop, but don't leave a stale
-  compliance figure live in the gap. Proper fix (sourcing the figure from the
-  JSON inside the generators) is a tracked follow-up, not done here.
+
+### The figure lives in ONE place — `tools/_risk_disclaimer.py`
+
+Read that module's docstring before touching the risk % anywhere. Summary for
+future readers so nobody gets confused:
+
+- `tools/_risk_disclaimer.py` owns the regex, the editorial-76% hedge logic,
+  and "what is the official figure" (`current_target()`: reads
+  `data/etoro-risk-warning.json`, falls back to the live-HTML mode). Both the
+  monthly updater AND the page generators import it — they can't disagree.
+- **Generators are now correct by construction.** `generate_article_pages.py`,
+  `generate_video_pages.py`, `generate_translated_pages.py` pipe their output
+  through `rd.normalize_html()` immediately before writing. A freshly
+  generated page always carries the live figure regardless of the template.
+  The old "run the updater after every regen" caveat **no longer applies**.
+- ⚠️ Those generators and `tools/translations/*` STILL contain a stale
+  hardcoded `51%` in the disclaimer strings. **This is deliberate and
+  harmless** — it is overwritten at write time. Do NOT find-and-replace those
+  literals; editing them does nothing useful and risks corrupting the
+  editorial "76% … 24% profitable" prose. Change the figure only via
+  `scrape_etoro_risk.py` → `etoro-risk-warning.json`.
+- `update_risk_warnings.py` remains the safety net for already-published
+  static HTML (monthly cron + on demand); generation is the other layer.
 
 ## Site architecture
 - **Main site** (`socialtradingvlog.com`) is served from **GitHub Pages** — deploy by `git push` to origin
