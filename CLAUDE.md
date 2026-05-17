@@ -11,6 +11,10 @@
 - **stv-dashboard / app.socialtradingvlog.com** — decommissioned 2026-05-10.
 - **Calculator/comparison pages** — decommissioned 2026-05-10. Cloudflare worker redirects
   `/calculators/*` → `/`.
+- **Platform-fee scrape chain** — `scrape_platform_fees.py` + `update_fee_pages.py`
+  retired 2026-05-17 (served the decommissioned calculators). Archived to
+  `tools/archive/`. `system_doctor.check_fee_data_freshness()` is already
+  commented out. Do NOT re-add without restoring the calculator pages.
 - **OpenClaw gateway (local laptop)** — disabled 2026-05-11. Launchagent moved to
   `~/Library/LaunchAgents/disabled/ai.openclaw.gateway.plist`. Data in `~/.openclaw/`
   preserved. Per the AI-era threat awareness policy, do not re-enable.
@@ -50,6 +54,41 @@ disk, broken_links, content_dates (and the VPS-only cron_jobs presence check).
 - Removed checks (do NOT re-add without good reason): `check_services` (dashboard
   retired), `check_subtitle_pipeline` (subtitle work complete), platform-data
   freshness (calculator pages retired).
+
+## eToro risk-disclaimer updater (rebuilt 2026-05-17)
+
+Mirrors eToro's official CFD loss percentage onto every language page. Monthly
+cron (1st, 2am): `scrape_etoro_risk.py && update_risk_warnings.py`.
+
+- **Why it was rebuilt**: the old updater chose what to replace from JSON
+  `history[-2]→[-1]` deltas, decoupled from the HTML. A local/VPS JSON
+  split-brain (`data/` is rsync-excluded) produced "0 replacements" + silent
+  `exit 0`, freezing the site at a stale 50% for months while eToro showed 52%.
+- **New model**: HTML is ground truth. Match the *regulatory phrase per
+  language* (`DISCLAIMER_RE`); rewrite its number to the scraped target;
+  `data/etoro-risk-warning.json["percentage"]` (or `--target N`) is the only
+  source of "new". The updater never writes the JSON (single writer = scraper).
+- **Editorial guard**: the "why most lose money" video article says "around
+  76% … only 24% profitable" in prose that *also* contains the regulatory
+  phrase. `HEDGE_RE` (multilingual: around/etwa/alrededor/حوالي/…) skips any
+  number preceded by an approximation word. Never blanket-replace by phrase.
+- **Loud failure (the core fix)**: scrape failure, zero anchored matches
+  (stale pattern), or "change due but 0 applied" → Telegram + `exit 1`. A
+  silent no-op is never success again.
+- **Fetch**: plain `urllib` reads eToro fine — Playwright NOT required.
+- Flags: `--dry-run` (lists every CHANGE and SKIP w/ reason), `--no-commit`
+  (apply files, no git), default = apply + commit + push + Telegram.
+- Always review the `--dry-run` CHANGE/SKIP list before a real run. Expected
+  steady state: all anchored figures == target except hedged editorial 76%.
+- **Regeneration caveat**: `generate_article_pages.py`, `generate_video_pages.py`,
+  `generate_translated_pages.py` and `tools/translations/*` still HARDCODE the
+  figure (currently 51% — staler than the live site). They were deliberately
+  NOT bulk-rewritten (29 localized files, editorial 76% prose mixed in — too
+  risky to fold into a compliance change). Therefore: **after ANY page
+  regeneration, run `python3 tools/update_risk_warnings.py`** to re-mirror the
+  official figure. The monthly cron is the backstop, but don't leave a stale
+  compliance figure live in the gap. Proper fix (sourcing the figure from the
+  JSON inside the generators) is a tracked follow-up, not done here.
 
 ## Site architecture
 - **Main site** (`socialtradingvlog.com`) is served from **GitHub Pages** — deploy by `git push` to origin

@@ -264,7 +264,7 @@ def check_file_integrity():
         PROJECT_DIR / "tools" / "site_autopilot.py",
         PROJECT_DIR / "tools" / "security_monitor.py",
         PROJECT_DIR / "tools" / "analytics_monitor.py",
-        PROJECT_DIR / "tools" / "scrape_platform_fees.py",
+        PROJECT_DIR / "tools" / "update_risk_warnings.py",
         PROJECT_DIR / "tools" / "upload_subtitles.py",
         PROJECT_DIR / "tools" / "setup_cron.sh",
         PROJECT_DIR / "tools" / "threat_scanner.py",

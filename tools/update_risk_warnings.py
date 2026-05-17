@@ -1,24 +1,41 @@
 #!/usr/bin/env python3
 """
-Update Risk Warnings — propagates eToro percentage changes across the site.
+Update Risk Warnings — mirrors eToro's official CFD risk percentage across the site.
 
-After scrape_etoro_risk.py detects a change in the CFD risk percentage,
-this script finds every HTML file containing the old percentage in a
-risk-warning context and replaces it with the new value. Then commits
-and pushes (or alerts Tom if push fails).
+Design (rebuilt 2026-05-17 — see CLAUDE.md "eToro risk percentage updater"):
+
+  * TARGET ("new")  = eToro's current scraped figure, read from
+    data/etoro-risk-warning.json["percentage"] (written by scrape_etoro_risk.py),
+    or overridden with --target N.
+  * OLD             = whatever the *live HTML* actually contains. We never trust
+    JSON history deltas to decide what to replace — that was the bug that froze
+    the site at a stale 50% (a JSON/HTML mismatch produced "0 replacements" and
+    a silent exit 0). HTML is ground truth.
+  * We match the *regulatory disclaimer phrase itself*, per language, and rewrite
+    its leading number to the target — UNLESS the number is hedged by an
+    approximation word ("around 76% ... only 24% profitable"), which is editorial
+    prose, not the compliance line, and must never be touched.
+  * Loud failure: any scrape problem, stale-pattern (zero anchored matches), or
+    "a change is needed but 0 were applied" sends a Telegram alert and exits 1.
+    A silent no-op is never treated as success again.
+
+This script never writes the JSON (single writer = scrape_etoro_risk.py), which
+removes the coupling that caused the local/VPS split-brain.
 
 Usage:
-    python3 tools/update_risk_warnings.py              # Update + commit
-    python3 tools/update_risk_warnings.py --dry-run    # Show what would change
+    python3 tools/update_risk_warnings.py --dry-run     # list every change + skip
+    python3 tools/update_risk_warnings.py --no-commit    # apply files, no git
+    python3 tools/update_risk_warnings.py                # apply + commit + push
+    python3 tools/update_risk_warnings.py --target 52    # override target
 
-Chain after scraper in cron:
-    30 1 * * 1  PYTHON scrape_etoro_risk.py && PYTHON update_risk_warnings.py
+Cron chain (monthly):
+    scrape_etoro_risk.py && update_risk_warnings.py
 """
 
 import sys
 import os
-import json
 import re
+import json
 import pathlib
 import subprocess
 import argparse
@@ -28,34 +45,45 @@ PROJECT_DIR = pathlib.Path(__file__).parent.parent
 DATA_DIR = PROJECT_DIR / "data"
 RISK_FILE = DATA_DIR / "etoro-risk-warning.json"
 
-# Context words that must appear near the percentage to confirm it's a
-# risk warning (not some random "51%" in unrelated text).
-# Covers EN, DE, ES, FR, PT, AR translations.
-CONTEXT_WORDS = [
-    "retail",
-    "cfd",
-    "lose money",
-    "verlieren geld",    # DE
-    "pierden dinero",    # ES
-    "perdem dinheiro",   # PT
-    "perdent de l'argent",  # FR
-    "يخسرون",            # AR (lose)
-    "capital is at risk",
-    "capital at risk",
-    "high risk",
-    "risque",            # FR
-    "riesgo",            # ES
-    "risco",             # PT
-    "risiko",            # DE
-]
-
-# Sanity bounds
+# Sanity bounds for the official figure.
 MIN_SANE = 30
 MAX_SANE = 90
 
+# The regulatory disclaimer phrase, per language. Group 1 = the number; the rest
+# is preserved verbatim so spacing ("50 % der" vs "50% of") and the FR apostrophe
+# variants are never disturbed. These anchors are specific enough that unrelated
+# percentages ("50% discount", "50% per month", "76%... 24% profitable") cannot
+# match by phrase alone.
+DISCLAIMER_RE = re.compile(
+    r"(\d+)(\s*%\s*(?:"
+    r"of\s+retail\s+investor\s+accounts"                              # EN
+    r"|der\s+Privatanlegerkonten"                                     # DE
+    r"|de\s+las\s+cuentas\s+de\s+inversores\s+minoristas"             # ES
+    r"|des\s+comptes\s+d(?:&#x27;|&#39;|'|’|\s)?investisseurs\s+particuliers"  # FR
+    r"|das\s+contas\s+de\s+investidores\s+de\s+varejo"                # PT
+    r"|من\s+حسابات\s+المستثمرين\s+الأفراد"  # AR من حسابات المستثمرين الأفراد
+    r"))",
+    re.IGNORECASE | re.UNICODE,
+)
 
-def send_telegram(subject, body, emoji="📊"):
-    """Send alert via security_lib."""
+# If one of these approximation words appears just before the number, this is
+# editorial prose ("around 76% ...", "etwa 76% ...", "حوالي 76% ..."), NOT the
+# compliance disclaimer — leave it exactly as-is.
+HEDGE_RE = re.compile(
+    r"(?:around|roughly|approximately|about|nearly|some|circa|~|"          # EN
+    r"etwa|ungefähr|ungefaehr|rund|ca\.?|"                                 # DE
+    r"alrededor(?:\s+de[l]?)?|aproximadamente|cerca\s+de|casi|en\s+torno|" # ES
+    r"aproximadamente|cerca\s+de|em\s+torno|por\s+volta|quase|"            # PT
+    r"environ|prè?s\s+de|autour\s+de|à\s+peu\s+près|quelque|"              # FR
+    r"حوالي|تقريبا|نحو|قرابة"  # AR  approx. words
+    r")\s*(?:de[l]?\s*)?$",
+    re.IGNORECASE | re.UNICODE,
+)
+
+HEDGE_WINDOW = 32  # chars of left-context inspected for a hedge word
+
+
+def send_telegram(subject, body, emoji="\U0001F4CA"):
     try:
         sys.path.insert(0, str(PROJECT_DIR / "tools"))
         from security_lib import send_telegram as _send
@@ -64,191 +92,177 @@ def send_telegram(subject, body, emoji="📊"):
         print(f"  Telegram alert failed: {e}")
 
 
+def fail(subject, body):
+    """Loud failure: alert + non-zero exit. Never a silent no-op."""
+    print(f"\n  FAIL: {subject}\n  {body}")
+    send_telegram(f"Risk Updater FAILED — {subject}", body, emoji="⚠️")
+    sys.exit(1)
+
+
 def run_git(*args):
-    """Run a git command in the project directory."""
-    result = subprocess.run(
-        ["git"] + list(args),
-        cwd=str(PROJECT_DIR),
-        capture_output=True, text=True, timeout=30
+    return subprocess.run(
+        ["git"] + list(args), cwd=str(PROJECT_DIR),
+        capture_output=True, text=True, timeout=60,
     )
-    return result
 
 
-def load_data():
-    """Load risk warning data."""
+def read_target(override):
+    if override is not None:
+        return override
     if not RISK_FILE.exists():
-        print("ERROR: data/etoro-risk-warning.json not found.")
-        print("Run scrape_etoro_risk.py first.")
-        sys.exit(1)
-    return json.loads(RISK_FILE.read_text())
+        fail("no scraped data",
+             "data/etoro-risk-warning.json missing. Run scrape_etoro_risk.py "
+             "first (it reads eToro's live figure).")
+    try:
+        pct = int(json.loads(RISK_FILE.read_text())["percentage"])
+    except Exception as e:
+        fail("bad scraped data", f"Could not read percentage from {RISK_FILE}: {e}")
+    return pct
 
 
 def find_html_files():
-    """Find all HTML files in the project (excluding calculators which are self-contained)."""
     files = []
-    for root, dirs, filenames in os.walk(str(PROJECT_DIR)):
-        # Skip directories that don't contain risk warnings
-        rel_root = os.path.relpath(root, str(PROJECT_DIR))
-        if any(skip in rel_root for skip in ["node_modules", "venv", ".git", "backups"]):
+    for root, _dirs, names in os.walk(str(PROJECT_DIR)):
+        rel = os.path.relpath(root, str(PROJECT_DIR))
+        if any(skip in rel for skip in ("node_modules", "venv", ".git",
+                                        "backups", "tools/archive")):
             continue
-        for f in filenames:
-            if f.endswith(".html"):
-                files.append(pathlib.Path(root) / f)
+        for n in names:
+            if n.endswith(".html"):
+                files.append(pathlib.Path(root) / n)
     return files
 
 
-def line_has_risk_context(line):
-    """Check if a line contains risk-warning context words."""
-    lower = line.lower()
-    return any(word in lower for word in CONTEXT_WORDS)
+def classify(content, m):
+    """Return 'editorial' if the matched number is hedged, else 'official'."""
+    left = content[max(0, m.start(1) - HEDGE_WINDOW): m.start(1)]
+    return "editorial" if HEDGE_RE.search(left) else "official"
 
 
-def replace_percentage_in_file(filepath, old_pct, new_pct, dry_run=False):
-    """Replace old percentage with new in a single file. Returns count of replacements."""
+def process_file(filepath, target, apply):
+    """Return (changes, skips) lists of (line, old, snippet)."""
     try:
         content = filepath.read_text(encoding="utf-8")
     except Exception:
-        return 0
+        return [], []
 
-    old_str = f"{old_pct}%"
-    if old_str not in content:
-        return 0
+    changes, skips = [], []
 
-    lines = content.split("\n")
-    replacements = 0
-    new_lines = []
+    def line_of(idx):
+        return content.count("\n", 0, idx) + 1
 
-    for i, line in enumerate(lines):
-        if old_str in line and line_has_risk_context(line):
-            new_line = line.replace(old_str, f"{new_pct}%")
-            new_lines.append(new_line)
-            replacements += 1
-            if dry_run:
-                rel = filepath.relative_to(PROJECT_DIR)
-                print(f"    {rel}:{i+1}  {old_str} → {new_pct}%")
-        else:
-            new_lines.append(line)
+    def repl(m):
+        kind = classify(content, m)
+        val = int(m.group(1))
+        snippet = m.group(0)[:60]
+        ln = line_of(m.start(1))
+        if kind == "editorial":
+            skips.append((ln, val, snippet))
+            return m.group(0)
+        if val == target:
+            return m.group(0)  # already correct, nothing to do
+        changes.append((ln, val, snippet))
+        return f"{target}{m.group(2)}"
 
-    if replacements > 0 and not dry_run:
-        filepath.write_text("\n".join(new_lines), encoding="utf-8")
+    new_content = DISCLAIMER_RE.sub(repl, content)
 
-    return replacements
+    if apply and changes:
+        filepath.write_text(new_content, encoding="utf-8")
+    return changes, skips
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Update risk warning percentage across site")
-    parser.add_argument("--dry-run", action="store_true", help="Show changes without applying")
-    parser.add_argument("--force", type=int, help="Force replacement to this percentage (for testing)")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser(description="Mirror eToro's official risk % across the site")
+    ap.add_argument("--dry-run", action="store_true", help="List every change/skip; write nothing")
+    ap.add_argument("--no-commit", action="store_true", help="Apply file edits but skip git commit/push")
+    ap.add_argument("--target", type=int, help="Override the target percentage (testing/manual)")
+    args = ap.parse_args()
 
-    print(f"Risk Warning Updater — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"Risk Warning Updater — {datetime.now():%Y-%m-%d %H:%M}")
     print("=" * 60)
 
-    data = load_data()
-    current_pct = data["percentage"]
+    target = read_target(args.target)
+    if not (MIN_SANE <= target <= MAX_SANE):
+        fail("target out of range",
+             f"Target {target}% outside sane bounds ({MIN_SANE}-{MAX_SANE}). "
+             "Refusing to touch the site. Check scraper output.")
+    print(f"  Target (eToro official): {target}%\n")
 
-    # Determine old and new percentages
-    if args.force:
-        new_pct = args.force
-        # Find the old percentage from history
-        if len(data["history"]) >= 2:
-            old_pct = data["history"][-2]["percentage"]
-        else:
-            old_pct = 51  # default assumption
-        print(f"  Force mode: replacing {old_pct}% → {new_pct}%")
-    else:
-        # Normal mode: check if the percentage actually changed
-        if len(data["history"]) < 2:
-            print("  No previous percentage in history — nothing to update.")
-            return
+    apply = not args.dry_run
+    total_changes = total_skips = files_changed = matched_any = 0
+    current_values = {}
 
-        new_pct = data["history"][-1]["percentage"]
-        old_pct = data["history"][-2]["percentage"]
-
-        if old_pct == new_pct:
-            print(f"  Percentage unchanged ({new_pct}%) — nothing to update.")
-            return
-
-    # Sanity check
-    if not (MIN_SANE <= new_pct <= MAX_SANE):
-        print(f"  ERROR: New percentage {new_pct}% is outside sane range ({MIN_SANE}-{MAX_SANE}).")
-        print("  Aborting to prevent damage. Check scraper output.")
-        sys.exit(1)
-
-    print(f"\n  Replacing {old_pct}% → {new_pct}% in risk warning context\n")
-
-    # Find and replace
-    html_files = find_html_files()
-    total_replacements = 0
-    files_changed = 0
-
-    for filepath in html_files:
-        count = replace_percentage_in_file(filepath, old_pct, new_pct, dry_run=args.dry_run)
-        if count > 0:
-            total_replacements += count
+    for fp in find_html_files():
+        changes, skips = process_file(fp, target, apply)
+        matched_any += len(changes) + len(skips)
+        for ln, val, _snip in changes + skips:
+            current_values[val] = current_values.get(val, 0) + 1
+        if changes:
             files_changed += 1
+            total_changes += len(changes)
+            rel = fp.relative_to(PROJECT_DIR)
+            for ln, val, snip in changes:
+                print(f"  CHANGE {rel}:{ln}  {val}% -> {target}%   {snip!r}")
+        for ln, val, snip in skips:
+            total_skips += 1
+            rel = fp.relative_to(PROJECT_DIR)
+            print(f"  SKIP   {rel}:{ln}  {val}% (editorial/hedged — left as-is)   {snip!r}")
 
-    print(f"\n  Summary: {total_replacements} replacements across {files_changed} files")
+    # --- Stale-pattern guard: phrasing changed, our anchors no longer match ---
+    if matched_any == 0:
+        fail("no disclaimer matches",
+             "Zero regulatory-disclaimer phrases matched site-wide. The page "
+             "wording or DISCLAIMER_RE is stale — NOT silently doing nothing.")
+
+    print(f"\n  Anchored figures found: " +
+          ", ".join(f"{v}%×{c}" for v, c in sorted(current_values.items())))
+    print(f"  Changes: {total_changes} across {files_changed} files | "
+          f"Editorial skipped: {total_skips}")
+
+    needed = sum(c for v, c in current_values.items() if v != target) - total_skips
 
     if args.dry_run:
-        print("  Dry run — no files were modified.")
+        print("  Dry run — nothing written.")
         return
 
-    if total_replacements == 0:
-        print("  No replacements made (old percentage not found in risk context).")
+    # --- Silent-no-op guard: a change was due but none applied ---
+    if needed > 0 and total_changes == 0:
+        fail("change due but none applied",
+             f"{needed} non-target official disclaimers exist but 0 were "
+             f"replaced. Anchor/encoding mismatch — investigate, do not ignore.")
+
+    if total_changes == 0:
+        print(f"  Site already at {target}% — nothing to do.")
         return
 
-    # Stage all changed HTML files
-    stage = run_git("add", "-A", "*.html")
-    # Also add files in subdirectories
-    for ext_dir in ["ar", "de", "es", "fr", "pt", "updates", "video", "etoro-review", "checklist", "calculators"]:
-        run_git("add", "-A", f"{ext_dir}/")
+    if args.no_commit:
+        print("  --no-commit: files updated, git untouched (awaiting sign-off).")
+        return
 
-    # Check if there are staged changes
+    run_git("add", "-A")
     diff = run_git("diff", "--cached", "--name-only")
     if not diff.stdout.strip():
-        print("  No changes staged (git says nothing changed).")
-        return
+        fail("nothing staged", "Files were edited but git sees no change — investigate.")
 
-    staged_count = len(diff.stdout.strip().splitlines())
-    print(f"  Staged {staged_count} files for commit.")
-
-    # Commit
-    msg = (
-        f"Update eToro risk percentage: {old_pct}% → {new_pct}%\n\n"
-        f"Weekly risk warning check detected a change on etoro.com.\n"
-        f"{files_changed} files updated, {total_replacements} replacements."
-    )
-    commit = run_git("commit", "-m", msg)
-    if commit.returncode != 0:
-        print(f"  ERROR: git commit failed: {commit.stderr}")
-        sys.exit(1)
+    msg = (f"Update eToro risk disclaimer to {target}% (compliance-mandated)\n\n"
+           f"{files_changed} files, {total_changes} replacements. "
+           f"Editorial mentions ({total_skips}) left intact.")
+    if run_git("commit", "-m", msg).returncode != 0:
+        fail("git commit failed", "Edits applied but commit failed. Resolve manually.")
     print(f"  Committed: {msg.splitlines()[0]}")
 
-    # Try to push
     push = run_git("push")
     if push.returncode == 0:
-        print("  Pushed to remote successfully.")
-        send_telegram(
-            "Risk Warning Updated on Live Site",
-            f"eToro CFD risk percentage updated across the site.\n\n"
-            f"Change: {old_pct}% → {new_pct}%\n"
-            f"Files: {files_changed}\n"
-            f"Replacements: {total_replacements}",
-            emoji="✅"
-        )
+        print("  Pushed.")
+        send_telegram("Risk Warning Updated on Live Site",
+                      f"eToro CFD risk % mirrored to {target}%.\n"
+                      f"{files_changed} files, {total_changes} replacements.",
+                      emoji="✅")
     else:
-        print(f"  Push failed (expected on VPS): {push.stderr.strip()}")
-        send_telegram(
-            "Risk Warning Updated — Push Needed",
-            f"eToro risk percentage committed locally ({old_pct}% → {new_pct}%).\n"
-            f"{files_changed} files updated.\n\n"
-            f"Run on Mac:\n"
-            f"  cd ~/socialtradingvlog-website\n"
-            f"  git pull stv:~/socialtradingvlog-website\n"
-            f"  git push",
-            emoji="⚠️"
-        )
+        send_telegram("Risk Warning Committed — Push Needed",
+                      f"Committed locally ({target}%), push failed:\n"
+                      f"{push.stderr.strip()[:300]}", emoji="⚠️")
+        print(f"  Push failed: {push.stderr.strip()}")
 
 
 if __name__ == "__main__":

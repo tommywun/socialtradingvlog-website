@@ -58,13 +58,15 @@ CRON_ENTRIES=$(cat <<'CRONTAB'
 
 # ── Platform Data ───────────────────────────────────────── #STV
 
-# Weekly eToro risk percentage check (Mondays 1:30am, before fee scraper)
-# If percentage changed, update all HTML files and commit
-# DISABLED-20260510 30 1 * * 1 PYTHON_PATH PROJECT_PATH/tools/scrape_etoro_risk.py >> LOG_PATH/scrape-risk.log 2>&1 && PYTHON_PATH PROJECT_PATH/tools/update_risk_warnings.py >> LOG_PATH/scrape-risk.log 2>&1 #STV
+# Monthly eToro risk-disclaimer mirror (1st of month, 2am).
+# scrape_etoro_risk.py reads eToro's official CFD figure; update_risk_warnings.py
+# mirrors it across all language pages if the live site differs. Both fail loudly
+# (Telegram + non-zero exit) — a silent no-op is never treated as success.
+0 2 1 * * PYTHON_PATH PROJECT_PATH/tools/scrape_etoro_risk.py >> LOG_PATH/scrape-risk.log 2>&1 && PYTHON_PATH PROJECT_PATH/tools/update_risk_warnings.py >> LOG_PATH/scrape-risk.log 2>&1 #STV
 
-# Weekly platform fee scrape via Playwright + update verified date (Mondays 2am)
-# Chain update_fee_pages.py to commit the updated JSON after scraping
-# DISABLED-20260510 0 2 * * 1 PYTHON_PATH PROJECT_PATH/tools/scrape_platform_fees.py >> LOG_PATH/scrape-fees.log 2>&1 && PYTHON_PATH PROJECT_PATH/tools/update_fee_pages.py >> LOG_PATH/scrape-fees.log 2>&1 #STV
+# Platform-fee scrape chain (scrape_platform_fees.py + update_fee_pages.py) was
+# retired 2026-05-17 along with the decommissioned calculators — scripts archived
+# to tools/archive/. Do not re-add without restoring the calculator pages.
 
 # ── Subtitle Pipeline ───────────────────────────────────── #STV
 
